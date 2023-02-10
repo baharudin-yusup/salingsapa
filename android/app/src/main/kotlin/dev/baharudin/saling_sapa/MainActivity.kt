@@ -1,0 +1,6 @@
+package dev.baharudin.saling_sapa
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}
