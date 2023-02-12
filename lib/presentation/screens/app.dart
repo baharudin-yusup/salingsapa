@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:saling_sapa/presentation/screens/history_screen.dart';
+import 'package:saling_sapa/presentation/screens/home_screen.dart';
+import 'package:saling_sapa/presentation/screens/setting_screen.dart';
+import 'package:saling_sapa/presentation/screens/video_call_screen.dart';
+import 'package:saling_sapa/presentation/services/navigator_service.dart';
 
+import '../../injection_container.dart';
 import 'splash.dart';
 
 class AppScreen extends StatelessWidget {
@@ -10,6 +16,7 @@ class AppScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      navigatorKey: sl<NavigatorService>().navigatorKey,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -22,7 +29,29 @@ class AppScreen extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(title: 'Flutter Demo Home Page'),
+      onGenerateRoute: (settings) {
+        late final Widget screen;
+        switch (settings.name) {
+          case HistoryScreen.routeName:
+            screen = const HistoryScreen();
+            break;
+          case HomeScreen.routeName:
+            screen = const HomeScreen();
+            break;
+          case SettingScreen.routeName:
+            screen = const SettingScreen();
+            break;
+          case VideoCallScreen.routeName:
+            screen = const VideoCallScreen();
+            break;
+          default:
+            screen = const SplashScreen(title: 'Splash');
+        }
+
+        return MaterialPageRoute(
+          builder: (context) => screen,
+        );
+      },
     );
   }
 }

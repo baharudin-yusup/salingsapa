@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:saling_sapa/presentation/services/notification_service.dart';
+
+import '../../injection_container.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key, required this.title});
@@ -20,6 +23,14 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   int _counter = 0;
+
+  @override
+  void initState() {
+    final NotificationService service = sl();
+    service.requestPermission();
+    service.init();
+    super.initState();
+  }
 
   void _incrementCounter() {
     setState(() {

@@ -45,6 +45,7 @@ dependencies:
   cloud_firestore: ^4.3.2
   firebase_app_check: ^0.1.1+9
   get_it: ^7.2.0
+  flutter_local_notifications: ^13.0.0
 
 dev_dependencies:
   flutter_test:
