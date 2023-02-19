@@ -26,10 +26,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -53,10 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCHvLmNynnAgmFrY_2LPKy5wVOKWUksqyI',
-    appId: '1:861433353418:android:fc0664d66131f7a5a09033',
-    messagingSenderId: '861433353418',
-    projectId: 'saling-sapa-dev',
-    storageBucket: 'saling-sapa-dev.appspot.com',
+    apiKey: 'AIzaSyCfazNdjjuj3XnclxdyVhJdMueY-6fm_No',
+    appId: '1:721041824886:android:3697da392c156fbb8a5357',
+    messagingSenderId: '721041824886',
+    projectId: 'salingsapa-project',
+    storageBucket: 'salingsapa-project.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyAfqDip5zDNjPB7Zd6QUQ7QlDNT4ZtYRf0',
+    appId: '1:721041824886:ios:1e3137bbbedd1fe08a5357',
+    messagingSenderId: '721041824886',
+    projectId: 'salingsapa-project',
+    storageBucket: 'salingsapa-project.appspot.com',
+    iosClientId: '721041824886-km6ghttcsjjbsqq4o2s1mbrcoai6ibvc.apps.googleusercontent.com',
+    iosBundleId: 'dev.baharudin.salingsapa-dev',
   );
 }

@@ -5,14 +5,16 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:saling_sapa/presentation/screens/app.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:saling_sapa/presentation/screens/skeleton_screen.dart';
 
 import 'core/utils/logger.dart';
 import 'firebase_options_dev.dart';
 import 'injection_container.dart' as di;
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await FirebaseAppCheck.instance.activate(
     // Default provider for Android is the Play Integrity provider. You can use the "AndroidProvider" enum to choose
@@ -24,8 +26,8 @@ Future<void> main() async {
   );
   FirebaseMessaging.onBackgroundMessage(handleBackgroundNotification);
 
-  di.setup();
-  runApp(const AppScreen());
+  await di.setup();
+  runApp(const RootScreen());
 }
 
 @pragma('vm:entry-point')
@@ -33,7 +35,7 @@ Future<void> handleBackgroundNotification(RemoteMessage message) async {
   Logger.print("Handling a background message: ${message.messageId}");
 
   try {
-    final localNotificationChannel = const AndroidNotificationChannel(
+    const localNotificationChannel = AndroidNotificationChannel(
       'styleup_notification_channel',
       'StyleUp Notifications',
       importance: Importance.max,

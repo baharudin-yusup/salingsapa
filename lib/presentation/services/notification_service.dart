@@ -6,7 +6,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:saling_sapa/core/errors/failures.dart';
 import 'package:saling_sapa/core/utils/logger.dart';
 import 'package:saling_sapa/presentation/screens/history_screen.dart';
-import 'package:saling_sapa/presentation/screens/home_screen.dart';
+import 'package:saling_sapa/presentation/screens/skeleton_screen.dart';
 import 'package:saling_sapa/presentation/screens/video_call_screen.dart';
 import 'package:saling_sapa/presentation/services/navigator_service.dart';
 
@@ -43,13 +43,6 @@ class NotificationServiceImpl implements NotificationService {
     await _initLocalNotification();
 
     _handleForegroundNotification();
-
-    _firebaseMessaging.getInitialMessage().then((message) {
-      if (message != null) {
-        const NotificationResponse? details = null;
-        openNotificationD(details);
-      }
-    });
   }
 
   @override
@@ -140,17 +133,15 @@ class NotificationServiceImpl implements NotificationService {
   }
 }
 
-@pragma('vm:entry-point')
 void openNotification(NotificationResponse? details) {
   try {
     final NavigatorService navigatorService = sl();
-    navigatorService.pushNamed(HomeScreen.routeName);
+    navigatorService.pushNamed(RootScreen.routeName);
   } catch (error) {
     Logger.error(error, event: 'opening notification');
   }
 }
 
-@pragma('vm:entry-point')
 void openNotificationB(NotificationResponse? details) {
   try {
     final NavigatorService navigatorService = sl();
@@ -160,7 +151,6 @@ void openNotificationB(NotificationResponse? details) {
   }
 }
 
-@pragma('vm:entry-point')
 void openNotificationC(NotificationResponse? details) {
   try {
     final NavigatorService navigatorService = sl();

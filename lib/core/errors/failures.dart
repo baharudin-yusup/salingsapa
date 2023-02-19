@@ -10,3 +10,5 @@ class UnknownFailure extends Failure {}
 class ServerFailure extends Failure {}
 
 class UnAuthorizedFailure extends ServerFailure {}
+
+class CacheFailure extends Failure {}

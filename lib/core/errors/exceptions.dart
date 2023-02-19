@@ -8,3 +8,5 @@ abstract class Exception extends Equatable {
 class ServerException extends Exception {}
 
 class BadDataException extends Exception {}
+
+class CacheException extends Exception {}

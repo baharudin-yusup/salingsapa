@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:saling_sapa/domain/entities/user.dart';
 
 import '../../core/errors/failures.dart';
+import '../entities/auth_status.dart';
 
 abstract class AuthenticationRepository {
   Future<Either<Failure, User>> verifyPhoneNumber(
@@ -10,4 +11,8 @@ abstract class AuthenticationRepository {
   Future<Either<Failure, User>> verifyOtp({required String otp});
 
   Future<Either<Failure, Unit>> signOut();
+
+  Stream<Either<Failure, AuthStatus>> get authorizationStatus;
+
+  Future<Either<Failure, Unit>> init();
 }

@@ -1,17 +1,22 @@
 import 'package:dartz/dartz.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:saling_sapa/core/errors/exceptions.dart';
 import 'package:saling_sapa/core/errors/failures.dart';
 import 'package:saling_sapa/data/models/user_model.dart';
 import 'package:saling_sapa/data/sources/authentication_local_data_source.dart';
 import 'package:saling_sapa/data/sources/authentication_remote_data_source.dart';
+import 'package:saling_sapa/domain/entities/auth_status.dart';
 import 'package:saling_sapa/domain/entities/user.dart';
 import 'package:saling_sapa/domain/repositories/authentication_repository.dart';
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository {
+  final BehaviorSubject<Either<Failure, AuthStatus>>
+      _authorizationStatusStreamController;
   final AuthenticationLocalDataSource _localDataSource;
   final AuthenticationRemoteDatSource _remoteDatSource;
 
-  AuthenticationRepositoryImpl(this._localDataSource, this._remoteDatSource);
+  AuthenticationRepositoryImpl(this._localDataSource, this._remoteDatSource,
+      this._authorizationStatusStreamController);
 
   @override
   Future<Either<Failure, User>> verifyPhoneNumber(
@@ -38,6 +43,25 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       return Right(model.toEntity());
     } on Exception catch (exception) {
       return Left(ServerFailure());
+    }
+  }
+
+  @override
+  Stream<Either<Failure, AuthStatus>> get authorizationStatus =>
+      _authorizationStatusStreamController.stream;
+
+  @override
+  Future<Either<Failure, Unit>> init() async {
+    try {
+      final isAuthTokenValid = await _localDataSource.isAuthTokenValid();
+      _authorizationStatusStreamController.sink.add(Right(isAuthTokenValid
+          ? AuthStatus.lastAuthorized
+          : AuthStatus.unauthorized));
+
+      return const Right(unit);
+    } catch (_) {
+      _authorizationStatusStreamController.sink.add(Left(CacheFailure()));
+      return Left(CacheFailure());
     }
   }
 }

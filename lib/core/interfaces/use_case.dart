@@ -20,8 +20,14 @@ abstract class NoParamUseCase<SuccessType> {
   Future<Either<Failure, SuccessType>> call();
 }
 
-abstract class NoParamUseCaseSync<Param, SuccessType> {
+abstract class NoParamUseCaseSync<SuccessType> {
   const NoParamUseCaseSync();
 
   Either<Failure, SuccessType> call();
+}
+
+abstract class NoParamUseCaseStreamSync<SuccessType> {
+  const NoParamUseCaseStreamSync();
+
+  Stream<Either<Failure, SuccessType>> call();
 }
