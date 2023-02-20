@@ -4,6 +4,11 @@ A Final Exam Project
 
 ## Getting Started
 
+### Flutter Build Commands
+#### Build Dev
+````shell
+flutter build ios --flavor development --target=lib/main_dev.dart
+````
 
 ### Firebase update commands
 #### Dev flavor

@@ -26,9 +26,11 @@ class RootScreen extends StatefulWidget {
 class _RootScreenState extends State<RootScreen> {
   @override
   void initState() {
-    final NotificationService service = sl();
-    service.requestPermission();
-    service.init();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final NotificationService service = sl();
+      await service.requestPermission();
+      await service.init();
+    });
     super.initState();
   }
 

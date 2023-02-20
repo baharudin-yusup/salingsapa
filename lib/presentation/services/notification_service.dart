@@ -53,10 +53,17 @@ class NotificationServiceImpl implements NotificationService {
 
   @override
   Future<void> show(RemoteMessage message) async {
+    Logger.print('Show notification started...');
+
+    final notification = message.notification;
+
+    if (notification == null) {
+      return;
+    }
     _localNotificationsPlugin.show(
       message.hashCode,
-      'Title from local',
-      'Body from local',
+      notification.title,
+      notification.body,
       NotificationDetails(
         android: AndroidNotificationDetails(
           _localNotificationChannel.id,
@@ -74,10 +81,7 @@ class NotificationServiceImpl implements NotificationService {
       NotificationSettings settings =
           await _firebaseMessaging.requestPermission(
         alert: true,
-        announcement: false,
         badge: true,
-        carPlay: false,
-        criticalAlert: false,
         provisional: false,
         sound: true,
       );
@@ -123,11 +127,6 @@ class NotificationServiceImpl implements NotificationService {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       Logger.print('Got a message whilst in the foreground!');
       Logger.print('Message data: ${message.data}');
-
-      if (message.notification != null) {
-        Logger.print(
-            'Message also contained a notification: ${message.notification}');
-      }
       show(message);
     });
   }
