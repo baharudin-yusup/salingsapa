@@ -1,4 +1,4 @@
-package dev.baharudin.saling_sapa
+package dev.baharudin.salingsapa
 
 import io.flutter.embedding.android.FlutterActivity
 

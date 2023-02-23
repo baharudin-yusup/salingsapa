@@ -1,4 +1,4 @@
-name: saling_sapa
+name: salingsapa
 description: A Final Exam Project
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -56,6 +56,10 @@ dependencies:
   flutter_bloc: ^8.1.2
   freezed_annotation: ^2.2.0
   flutter_native_splash: ^2.2.17
+  dynamic_color: ^1.6.2
+  contacts_service: ^0.6.3
+  flutter_contacts: ^1.1.6
+  permission_handler: ^10.2.0
 
 dev_dependencies:
   flutter_test:

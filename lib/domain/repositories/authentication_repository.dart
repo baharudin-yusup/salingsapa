@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:saling_sapa/domain/entities/user.dart';
+import 'package:salingsapa/domain/entities/user.dart';
 
 import '../../core/errors/failures.dart';
 import '../entities/auth_status.dart';

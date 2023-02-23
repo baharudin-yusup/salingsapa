@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:saling_sapa/core/errors/failures.dart';
-import 'package:saling_sapa/core/interfaces/use_case.dart';
-import 'package:saling_sapa/domain/entities/user.dart';
-import 'package:saling_sapa/domain/repositories/authentication_repository.dart';
+import 'package:salingsapa/core/errors/failures.dart';
+import 'package:salingsapa/core/interfaces/use_case.dart';
+import 'package:salingsapa/domain/entities/user.dart';
+import 'package:salingsapa/domain/repositories/authentication_repository.dart';
 
 class VerifyOtp extends UseCase<String, User> {
   final AuthenticationRepository _repository;

@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCfazNdjjuj3XnclxdyVhJdMueY-6fm_No',
-    appId: '1:721041824886:android:3697da392c156fbb8a5357',
+    appId: '1:721041824886:android:02fa4f202301d0cd8a5357',
     messagingSenderId: '721041824886',
     projectId: 'salingsapa-project',
     storageBucket: 'salingsapa-project.appspot.com',
@@ -63,6 +63,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '721041824886',
     projectId: 'salingsapa-project',
     storageBucket: 'salingsapa-project.appspot.com',
+    androidClientId: '721041824886-i70727oifmv1uc19jj3shqumj4us0ecn.apps.googleusercontent.com',
     iosClientId: '721041824886-km6ghttcsjjbsqq4o2s1mbrcoai6ibvc.apps.googleusercontent.com',
     iosBundleId: 'dev.baharudin.salingsapa-dev',
   );

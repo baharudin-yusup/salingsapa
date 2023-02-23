@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  Runner
+
+  Created by Baharudin Yusup on 23/02/23.
+  
+*/
+
+"notification_test_title" = "You can now reorder apparel!";
+"notification_test_body" = "Go to cart.";

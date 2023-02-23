@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:saling_sapa/core/errors/failures.dart';
-import 'package:saling_sapa/core/utils/logger.dart';
-import 'package:saling_sapa/presentation/screens/history_screen.dart';
-import 'package:saling_sapa/presentation/screens/skeleton_screen.dart';
-import 'package:saling_sapa/presentation/screens/video_call_screen.dart';
-import 'package:saling_sapa/presentation/services/navigator_service.dart';
+import 'package:salingsapa/core/errors/failures.dart';
+import 'package:salingsapa/core/utils/logger.dart';
+import 'package:salingsapa/presentation/screens/history_screen.dart';
+import 'package:salingsapa/presentation/screens/skeleton_screen.dart';
+import 'package:salingsapa/presentation/screens/video_call_screen.dart';
+import 'package:salingsapa/presentation/services/navigator_service.dart';
 
 import '../../injection_container.dart';
 import '../screens/setting_screen.dart';
@@ -62,7 +62,7 @@ class NotificationServiceImpl implements NotificationService {
     }
     _localNotificationsPlugin.show(
       message.hashCode,
-      notification.title,
+      notification.titleLocKey,
       notification.body,
       NotificationDetails(
         android: AndroidNotificationDetails(
@@ -125,8 +125,9 @@ class NotificationServiceImpl implements NotificationService {
 
   void _handleForegroundNotification() {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      Logger.print('Got a message whilst in the foreground!');
+      Logger.print('Handle in the foreground...');
       Logger.print('Message data: ${message.data}');
+      Logger.print('Notification data: ${message.notification?.toMap()}');
       show(message);
     });
   }

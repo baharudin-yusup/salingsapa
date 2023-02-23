@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:saling_sapa/core/errors/exceptions.dart';
-import 'package:saling_sapa/core/errors/failures.dart';
-import 'package:saling_sapa/data/models/user_model.dart';
-import 'package:saling_sapa/data/sources/authentication_local_data_source.dart';
-import 'package:saling_sapa/data/sources/authentication_remote_data_source.dart';
-import 'package:saling_sapa/domain/entities/auth_status.dart';
-import 'package:saling_sapa/domain/entities/user.dart';
-import 'package:saling_sapa/domain/repositories/authentication_repository.dart';
+import 'package:salingsapa/core/errors/exceptions.dart';
+import 'package:salingsapa/core/errors/failures.dart';
+import 'package:salingsapa/data/models/user_model.dart';
+import 'package:salingsapa/data/sources/authentication_local_data_source.dart';
+import 'package:salingsapa/data/sources/authentication_remote_data_source.dart';
+import 'package:salingsapa/domain/entities/auth_status.dart';
+import 'package:salingsapa/domain/entities/user.dart';
+import 'package:salingsapa/domain/repositories/authentication_repository.dart';
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository {
   final BehaviorSubject<Either<Failure, AuthStatus>>
@@ -19,13 +19,30 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       this._authorizationStatusStreamController);
 
   @override
+  Future<Either<Failure, Unit>> init() async {
+    late final UserModel currentUser;
+    try {
+      currentUser = await _remoteDatSource.currentUser();
+      _authorizationStatusStreamController.sink
+          .add(const Right(AuthStatus.authorized));
+      return const Right(unit);
+    } catch (_) {
+      _authorizationStatusStreamController.sink
+          .add(const Right(AuthStatus.unauthorized));
+      return Left(CacheFailure());
+    }
+  }
+
+  @override
   Future<Either<Failure, User>> verifyPhoneNumber(
       {required String phoneNumber}) async {
     try {
       final model =
           await _remoteDatSource.verifyPhoneNumber(phoneNumber: phoneNumber);
+      _authorizationStatusStreamController.sink
+          .add(const Right(AuthStatus.authorized));
       return Right(model.toEntity());
-    } on Exception catch (exception) {
+    } on Exception catch (_) {
       return Left(ServerFailure());
     }
   }
@@ -40,8 +57,10 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   Future<Either<Failure, User>> verifyOtp({required String otp}) async {
     try {
       final model = await _remoteDatSource.verifyOtp(otp: otp);
+      _authorizationStatusStreamController.sink
+          .add(const Right(AuthStatus.authorized));
       return Right(model.toEntity());
-    } on Exception catch (exception) {
+    } on Exception catch (_) {
       return Left(ServerFailure());
     }
   }
@@ -49,19 +68,4 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   @override
   Stream<Either<Failure, AuthStatus>> get authorizationStatus =>
       _authorizationStatusStreamController.stream;
-
-  @override
-  Future<Either<Failure, Unit>> init() async {
-    try {
-      final isAuthTokenValid = await _localDataSource.isAuthTokenValid();
-      _authorizationStatusStreamController.sink.add(Right(isAuthTokenValid
-          ? AuthStatus.lastAuthorized
-          : AuthStatus.unauthorized));
-
-      return const Right(unit);
-    } catch (_) {
-      _authorizationStatusStreamController.sink.add(Left(CacheFailure()));
-      return Left(CacheFailure());
-    }
-  }
 }

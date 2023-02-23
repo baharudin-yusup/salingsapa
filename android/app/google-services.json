@@ -7,14 +7,22 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:721041824886:android:3697da392c156fbb8a5357",
+        "mobilesdk_app_id": "1:721041824886:android:02fa4f202301d0cd8a5357",
         "android_client_info": {
-          "package_name": "dev.baharudin.saling_sapa.dev"
+          "package_name": "dev.baharudin.salingsapa.dev"
         }
       },
       "oauth_client": [
         {
-          "client_id": "721041824886-hicle1m98nrgk29p7mak16ri6olrgcfm.apps.googleusercontent.com",
+          "client_id": "721041824886-i70727oifmv1uc19jj3shqumj4us0ecn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.baharudin.salingsapa.dev",
+            "certificate_hash": "546c75312363550552f1c737f7150980e18108bc"
+          }
+        },
+        {
+          "client_id": "721041824886-413cii6ih42mdvumse9sg0mgipj9cl5m.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "721041824886-hicle1m98nrgk29p7mak16ri6olrgcfm.apps.googleusercontent.com",
+              "client_id": "721041824886-413cii6ih42mdvumse9sg0mgipj9cl5m.apps.googleusercontent.com",
               "client_type": 3
             },
             {

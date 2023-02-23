@@ -1,18 +1,22 @@
 import 'dart:io';
 
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:saling_sapa/domain/entities/auth_status.dart';
-import 'package:saling_sapa/presentation/blocs/authorization/authorization_bloc.dart';
-import 'package:saling_sapa/presentation/screens/setting_screen.dart';
-import 'package:saling_sapa/presentation/screens/setup_screen.dart';
-import 'package:saling_sapa/presentation/screens/video_call_screen.dart';
+import 'package:salingsapa/domain/entities/auth_status.dart';
+import 'package:salingsapa/presentation/blocs/authorization/authorization_bloc.dart';
+import 'package:salingsapa/presentation/screens/setting_screen.dart';
+import 'package:salingsapa/presentation/screens/setup_screen.dart';
+import 'package:salingsapa/presentation/screens/verify_otp_screen.dart';
+import 'package:salingsapa/presentation/screens/video_call_screen.dart';
+import 'package:salingsapa/presentation/services/navigator_service.dart';
 
 import '../../injection_container.dart';
+import '../blocs/setup/setup_bloc.dart';
 import '../services/notification_service.dart';
 import 'history_screen.dart';
-import 'home_screen.dart';
+import 'home/home_screen.dart';
 
 class RootScreen extends StatefulWidget {
   static const routeName = '/';
@@ -39,6 +43,7 @@ class _RootScreenState extends State<RootScreen> {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthorizationBloc>(create: (_) => sl()),
+        BlocProvider<SetupBloc>(create: (_) => sl()),
       ],
       child: _rootScreen,
     );
@@ -48,19 +53,20 @@ class _RootScreenState extends State<RootScreen> {
         HistoryScreen.routeName: (_) => const HistoryScreen(),
         RootScreen.routeName: (context) =>
             context.read<AuthorizationBloc>().state.when(
-                  initial: () => const SetupScreen(),
+                  initial: () => const HomeScreen(),
                   changeAuthStatusSuccess: (status) =>
-                      status == AuthStatus.authorized
+                      status == AuthStatus.authorized || true
                           ? const HomeScreen()
-                          : const SetupScreen(),
-                  changeAuthStatusFailure: (_) => const SetupScreen(),
+                          : SetupScreen(),
+                  changeAuthStatusFailure: (_) => SetupScreen(),
                 ),
         SettingScreen.routeName: (_) => const SettingScreen(),
         VideoCallScreen.routeName: (_) => const VideoCallScreen(),
+        VerifyOtpScreen.routeName: (_) => const VerifyOtpScreen(),
       };
 
   Widget get _rootScreen {
-    if (Platform.isIOS || true) {
+    if (Platform.isIOS) {
       return _IosAppScreen(
         routes: _routes,
       );
@@ -82,9 +88,26 @@ class _AndroidAppScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: routes,
+    return DynamicColorBuilder(
+      builder: (lightDynamic, darkDynamic) {
+        lightDynamic ??= ColorScheme.fromSeed(
+            seedColor: Colors.green, brightness: Brightness.light);
+        darkDynamic ??= ColorScheme.fromSeed(
+            seedColor: Colors.green, brightness: Brightness.light);
+        return MaterialApp(
+          navigatorKey: sl<NavigatorService>().navigatorKey,
+          debugShowCheckedModeBanner: false,
+          routes: routes,
+          theme: ThemeData(
+            colorScheme: lightDynamic,
+            useMaterial3: true,
+          ),
+          darkTheme: ThemeData(
+            colorScheme: darkDynamic,
+            useMaterial3: true,
+          ),
+        );
+      },
     );
   }
 }
@@ -99,10 +122,18 @@ class _IosAppScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
-      debugShowCheckedModeBanner: false,
-      routes: routes,
-      theme: CupertinoThemeData(),
+    return DynamicColorBuilder(
+      builder: (lightDynamic, darkDynamic) {
+        lightDynamic ??= ColorScheme.fromSeed(
+            seedColor: Colors.green, brightness: Brightness.light);
+        darkDynamic ??= ColorScheme.fromSeed(
+            seedColor: Colors.green, brightness: Brightness.light);
+        return CupertinoApp(
+          navigatorKey: sl<NavigatorService>().navigatorKey,
+          debugShowCheckedModeBanner: false,
+          routes: routes,
+        );
+      },
     );
   }
 }

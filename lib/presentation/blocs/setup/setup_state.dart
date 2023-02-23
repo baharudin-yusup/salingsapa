@@ -4,9 +4,14 @@ part of 'setup_bloc.dart';
 class SetupState with _$SetupState {
   /// Handle step-1
   const factory SetupState.inputPhoneNumberInitial(
-      [@Default('') String phoneNumber]) = _InputPhoneNumberInitial;
+      [@Default('') String phoneNumber,
+      @Default(false) bool canSubmit]) = InputPhoneNumberInitial;
+  const factory SetupState.inputPhoneNumberVerifyInProgress(
+      String phoneNumber) = _InputPhoneNumberVerifyInProgress;
   const factory SetupState.inputPhoneNumberFailure(
       String phoneNumber, Failure failure) = _InputPhoneNumberFailure;
+  const factory SetupState.inputPhoneNumberSuccess(String phoneNumber) =
+      _InputPhoneNumberSuccess;
 
   /// Handle step-2
   const factory SetupState.inputOtpInitial(String phoneNumber, String otp) =

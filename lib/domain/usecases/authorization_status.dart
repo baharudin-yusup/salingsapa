@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:saling_sapa/core/errors/failures.dart';
-import 'package:saling_sapa/domain/entities/auth_status.dart';
+import 'package:salingsapa/core/errors/failures.dart';
+import 'package:salingsapa/domain/entities/auth_status.dart';
 
 import '../../core/interfaces/use_case.dart';
 import '../repositories/authentication_repository.dart';

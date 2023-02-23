@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:saling_sapa/core/errors/exceptions.dart';
-import 'package:saling_sapa/core/utils/logger.dart';
-import 'package:saling_sapa/data/models/user_model.dart';
+import 'package:salingsapa/core/errors/exceptions.dart';
+import 'package:salingsapa/core/utils/logger.dart';
+import 'package:salingsapa/data/models/user_model.dart';
 
 abstract class AuthenticationRemoteDatSource {
+  Future<UserModel> currentUser();
+
   Future<UserModel> verifyPhoneNumber({required String phoneNumber});
 
   Future<UserModel> verifyOtp({required String otp});
@@ -19,11 +21,25 @@ class AuthenticationRemoteDatSourceImpl
   AuthenticationRemoteDatSourceImpl(this._auth) : _verificationId = '';
 
   @override
+  Future<UserModel> currentUser() async {
+    final currentUser = _auth.currentUser;
+
+    if (currentUser == null) {
+      throw ServerException();
+    }
+
+    return currentUser;
+  }
+
+  @override
   Future<UserModel> verifyPhoneNumber({required String phoneNumber}) async {
     PhoneAuthCredential? phoneAuthCredential;
     FirebaseAuthException? firebaseAuthException;
+
+    Logger.print('Verifying phone number $phoneNumber started...');
     try {
       await _auth.verifyPhoneNumber(
+        phoneNumber: phoneNumber,
         verificationCompleted: (credential) async {
           phoneAuthCredential = credential;
         },
@@ -43,19 +59,24 @@ class AuthenticationRemoteDatSourceImpl
     }
 
     if (firebaseAuthException != null) {
+      Logger.error(firebaseAuthException!, event: 'verifying phone number');
       throw ServerException();
     }
 
     if (phoneAuthCredential == null) {
+      Logger.error('phoneAuthCredential is null!',
+          event: 'verifying phone number');
       throw ServerException();
     }
 
     final user = (await _auth.signInWithCredential(phoneAuthCredential!)).user;
 
     if (user == null) {
+      Logger.error('user is null!', event: 'verifying phone number');
       throw ServerException();
     }
 
+    Logger.print('Verifying phone number success!');
     return user;
   }
 

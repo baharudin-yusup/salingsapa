@@ -6,7 +6,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:saling_sapa/presentation/screens/skeleton_screen.dart';
+import 'package:salingsapa/presentation/screens/skeleton_screen.dart';
 
 import 'core/utils/logger.dart';
 import 'firebase_options_dev.dart';
@@ -22,7 +22,7 @@ Future<void> main() async {
     // 1. debug provider
     // 2. safety net provider
     // 3. play integrity provider
-    androidProvider: AndroidProvider.debug,
+    androidProvider: AndroidProvider.playIntegrity,
   );
   FirebaseMessaging.onBackgroundMessage(handleBackgroundNotification);
 
@@ -32,8 +32,9 @@ Future<void> main() async {
 
 @pragma('vm:entry-point')
 Future<void> handleBackgroundNotification(RemoteMessage message) async {
-  Logger.print("Handling a background message: ${message.messageId}");
-
+  Logger.print("Handling a background message");
+  Logger.print('Message data: ${message.data}');
+  Logger.print('Notification data: ${message.notification?.toMap()}');
   try {
     const localNotificationChannel = AndroidNotificationChannel(
       'styleup_notification_channel',
