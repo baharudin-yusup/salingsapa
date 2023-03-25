@@ -8,7 +8,7 @@ class StartVideoCall extends UseCase<StartVideoCallParam, Unit> {
 
   @override
   Future<Either<Failure, Unit>> call(StartVideoCallParam param) async {
-    return Right(unit);
+    return const Right(unit);
   }
 }
 

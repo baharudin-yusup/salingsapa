@@ -2,15 +2,23 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:salingsapa/presentation/components/intuitive_scaffold/builder.dart';
+
+import 'intuitive_scaffold/intuitive_floating_action_button.dart';
 
 class IntuitiveScaffold extends StatelessWidget {
   final Widget child;
   final IntuitiveAppBar? appBar;
   final IntuitiveBottomNavigationBar? bottomNavigationBar;
+  final IntuitiveFloatingActionButton? floatingActionButton;
 
-  const IntuitiveScaffold(
-      {Key? key, required this.child, this.appBar, this.bottomNavigationBar})
-      : super(key: key);
+  const IntuitiveScaffold({
+    Key? key,
+    required this.child,
+    this.appBar,
+    this.bottomNavigationBar,
+    this.floatingActionButton,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +76,7 @@ class IntuitiveScaffold extends StatelessWidget {
       appBar: materialAppBar,
       body: child,
       bottomNavigationBar: materialNavigationBar,
+      floatingActionButton: floatingActionButton?.build,
     );
   }
 }

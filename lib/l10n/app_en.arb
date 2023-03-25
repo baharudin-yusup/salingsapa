@@ -1,0 +1,39 @@
+{
+  "contacts": "Contacts",
+  "account": "Account",
+  "noContactsFound": "No Contacts Found",
+  "skip": "Skip",
+  "done": "Done",
+  "next": "Next",
+  "phoneNumber": "Phone Number",
+  "enterYourPhoneNumber": "Enter Your Phone Number",
+  "verifyYourPhoneNumber": "Verify Your Phone Number",
+  "setupScreenInfo": "Salingsapa will need to verify your phone number (carrier charges may apply).",
+  "otpSendToInfo": "We have sent you an SMS with a code to {phoneNumber}. To complete your phone number verification, please enter the 6-digit activation code.",
+  "@otpSendToInfo": {
+    "placeholders": {
+      "phoneNumber": {
+        "type": "String",
+        "example": "+62812345"
+      }
+    }
+  },
+  "didNotReceiveCodeInfo": "Didn't receive a verification code?",
+  "resendCode": "Resend Code",
+  "recentCalls": "Recent Calls",
+  "nRecentCalls": "{count, plural, =0{No Recent Calls} =1{1 Recent Call} other{{count} Recent Calls}}",
+  "@nRecentCalls": {
+    "placeholders": {
+      "count": {
+        "type": "num",
+        "format": "compact"
+      }
+    }
+  },
+  "newCall": "New Call",
+  "edit": "Edit",
+  "name": "Name",
+  "nameTextFiledHint": "Input Your Name",
+  "signOut": "Sign Out",
+  "ok": "OK"
+}

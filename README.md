@@ -19,3 +19,13 @@ flutterfire config \
 --ios-bundle-id=dev.baharudin.salingsapa-dev \
 --android-app-id=dev.baharudin.salingsapa.dev
 ```
+
+### App Localization
+```shell
+flutter gen-l10n
+```
+
+### Build runner
+```shell
+dart run build_runner watch --delete-conflicting-outputs 
+```

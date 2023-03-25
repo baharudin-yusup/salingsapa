@@ -4,8 +4,12 @@ import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:salingsapa/domain/entities/auth_status.dart';
+import 'package:salingsapa/presentation/blocs/account/account_bloc.dart';
 import 'package:salingsapa/presentation/blocs/authorization/authorization_bloc.dart';
+import 'package:salingsapa/presentation/screens/home/contact_list_screen.dart';
+import 'package:salingsapa/presentation/screens/onboarding_screen.dart';
 import 'package:salingsapa/presentation/screens/setting_screen.dart';
 import 'package:salingsapa/presentation/screens/setup_screen.dart';
 import 'package:salingsapa/presentation/screens/verify_otp_screen.dart';
@@ -13,10 +17,13 @@ import 'package:salingsapa/presentation/screens/video_call_screen.dart';
 import 'package:salingsapa/presentation/services/navigator_service.dart';
 
 import '../../injection_container.dart';
+import '../blocs/contact_list/contact_list_bloc.dart';
+import '../blocs/home/home_cubit.dart';
+import '../blocs/recent_call/recent_call_bloc.dart';
 import '../blocs/setup/setup_bloc.dart';
 import '../services/notification_service.dart';
-import 'history_screen.dart';
 import 'home/home_screen.dart';
+import 'home/recent_call_screen.dart';
 
 class RootScreen extends StatefulWidget {
   static const routeName = '/';
@@ -50,19 +57,40 @@ class _RootScreenState extends State<RootScreen> {
   }
 
   Map<String, WidgetBuilder> get _routes => {
-        HistoryScreen.routeName: (_) => const HistoryScreen(),
-        RootScreen.routeName: (context) =>
-            context.read<AuthorizationBloc>().state.when(
-                  initial: () => const HomeScreen(),
-                  changeAuthStatusSuccess: (status) =>
-                      status == AuthStatus.authorized || true
-                          ? const HomeScreen()
-                          : SetupScreen(),
-                  changeAuthStatusFailure: (_) => SetupScreen(),
-                ),
+        RecentCallScreen.routeName: (_) => const RecentCallScreen(),
+        RootScreen.routeName: (context) => context
+            .read<AuthorizationBloc>()
+            .state
+            .when(
+              initial: () => const OnboardingScreen(),
+              changeAuthStatusSuccess: (status) => status ==
+                      AuthStatus.authorized
+                  ? MultiBlocProvider(
+                      providers: [
+                        BlocProvider<HomeCubit>(create: (_) => HomeCubit()),
+                        BlocProvider<RecentCallBloc>(
+                            create: (_) =>
+                                sl()..add(const RecentCallEvent.started())),
+                        BlocProvider<ContactListBloc>(
+                            create: (_) => sl()
+                              ..add(const ContactListEvent.refreshPulled())),
+                        BlocProvider<AccountBloc>(
+                            create: (_) =>
+                                sl()..add(const AccountEvent.started()))
+                      ],
+                      child: const HomeScreen(),
+                    )
+                  : const SetupScreen(),
+              changeAuthStatusFailure: (_) => const SetupScreen(),
+            ),
         SettingScreen.routeName: (_) => const SettingScreen(),
         VideoCallScreen.routeName: (_) => const VideoCallScreen(),
         VerifyOtpScreen.routeName: (_) => const VerifyOtpScreen(),
+        SetupScreen.routeName: (_) => const SetupScreen(),
+        ContactListScreen.routeName: (_) => BlocProvider<ContactListBloc>(
+              create: (_) => sl()..add(const ContactListEvent.refreshPulled()),
+              child: const ContactListScreen(),
+            ),
       };
 
   Widget get _rootScreen {
@@ -95,6 +123,8 @@ class _AndroidAppScreen extends StatelessWidget {
         darkDynamic ??= ColorScheme.fromSeed(
             seedColor: Colors.green, brightness: Brightness.light);
         return MaterialApp(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
           navigatorKey: sl<NavigatorService>().navigatorKey,
           debugShowCheckedModeBanner: false,
           routes: routes,
@@ -129,6 +159,8 @@ class _IosAppScreen extends StatelessWidget {
         darkDynamic ??= ColorScheme.fromSeed(
             seedColor: Colors.green, brightness: Brightness.light);
         return CupertinoApp(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
           navigatorKey: sl<NavigatorService>().navigatorKey,
           debugShowCheckedModeBanner: false,
           routes: routes,

@@ -324,6 +324,10 @@ mixin _$ContactListState {
     required TResult Function(List<Contact> contacts) loadSuccess,
     required TResult Function(Failure failure, List<Contact> contacts)
         loadFailure,
+    required TResult Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)
+        startVideoCallFailure,
+    required TResult Function(List<Contact> contacts) startVideoCallSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -332,6 +336,10 @@ mixin _$ContactListState {
     TResult? Function(List<Contact> contacts)? loadInProgress,
     TResult? Function(List<Contact> contacts)? loadSuccess,
     TResult? Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult? Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+        startVideoCallFailure,
+    TResult? Function(List<Contact> contacts)? startVideoCallSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -340,6 +348,10 @@ mixin _$ContactListState {
     TResult Function(List<Contact> contacts)? loadInProgress,
     TResult Function(List<Contact> contacts)? loadSuccess,
     TResult Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+        startVideoCallFailure,
+    TResult Function(List<Contact> contacts)? startVideoCallSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -349,6 +361,10 @@ mixin _$ContactListState {
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
     required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_StartVideoCallFailure value)
+        startVideoCallFailure,
+    required TResult Function(_StartVideoCallSuccess value)
+        startVideoCallSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -357,6 +373,8 @@ mixin _$ContactListState {
     TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_LoadSuccess value)? loadSuccess,
     TResult? Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_StartVideoCallFailure value)? startVideoCallFailure,
+    TResult? Function(_StartVideoCallSuccess value)? startVideoCallSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -365,6 +383,8 @@ mixin _$ContactListState {
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
     TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_StartVideoCallFailure value)? startVideoCallFailure,
+    TResult Function(_StartVideoCallSuccess value)? startVideoCallSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -485,6 +505,10 @@ class _$_Initial implements _Initial {
     required TResult Function(List<Contact> contacts) loadSuccess,
     required TResult Function(Failure failure, List<Contact> contacts)
         loadFailure,
+    required TResult Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)
+        startVideoCallFailure,
+    required TResult Function(List<Contact> contacts) startVideoCallSuccess,
   }) {
     return initial(contacts);
   }
@@ -496,6 +520,10 @@ class _$_Initial implements _Initial {
     TResult? Function(List<Contact> contacts)? loadInProgress,
     TResult? Function(List<Contact> contacts)? loadSuccess,
     TResult? Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult? Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+        startVideoCallFailure,
+    TResult? Function(List<Contact> contacts)? startVideoCallSuccess,
   }) {
     return initial?.call(contacts);
   }
@@ -507,6 +535,10 @@ class _$_Initial implements _Initial {
     TResult Function(List<Contact> contacts)? loadInProgress,
     TResult Function(List<Contact> contacts)? loadSuccess,
     TResult Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+        startVideoCallFailure,
+    TResult Function(List<Contact> contacts)? startVideoCallSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -522,6 +554,10 @@ class _$_Initial implements _Initial {
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
     required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_StartVideoCallFailure value)
+        startVideoCallFailure,
+    required TResult Function(_StartVideoCallSuccess value)
+        startVideoCallSuccess,
   }) {
     return initial(this);
   }
@@ -533,6 +569,8 @@ class _$_Initial implements _Initial {
     TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_LoadSuccess value)? loadSuccess,
     TResult? Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_StartVideoCallFailure value)? startVideoCallFailure,
+    TResult? Function(_StartVideoCallSuccess value)? startVideoCallSuccess,
   }) {
     return initial?.call(this);
   }
@@ -544,6 +582,8 @@ class _$_Initial implements _Initial {
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
     TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_StartVideoCallFailure value)? startVideoCallFailure,
+    TResult Function(_StartVideoCallSuccess value)? startVideoCallSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -641,6 +681,10 @@ class _$_LoadInProgress implements _LoadInProgress {
     required TResult Function(List<Contact> contacts) loadSuccess,
     required TResult Function(Failure failure, List<Contact> contacts)
         loadFailure,
+    required TResult Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)
+        startVideoCallFailure,
+    required TResult Function(List<Contact> contacts) startVideoCallSuccess,
   }) {
     return loadInProgress(contacts);
   }
@@ -652,6 +696,10 @@ class _$_LoadInProgress implements _LoadInProgress {
     TResult? Function(List<Contact> contacts)? loadInProgress,
     TResult? Function(List<Contact> contacts)? loadSuccess,
     TResult? Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult? Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+        startVideoCallFailure,
+    TResult? Function(List<Contact> contacts)? startVideoCallSuccess,
   }) {
     return loadInProgress?.call(contacts);
   }
@@ -663,6 +711,10 @@ class _$_LoadInProgress implements _LoadInProgress {
     TResult Function(List<Contact> contacts)? loadInProgress,
     TResult Function(List<Contact> contacts)? loadSuccess,
     TResult Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+        startVideoCallFailure,
+    TResult Function(List<Contact> contacts)? startVideoCallSuccess,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -678,6 +730,10 @@ class _$_LoadInProgress implements _LoadInProgress {
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
     required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_StartVideoCallFailure value)
+        startVideoCallFailure,
+    required TResult Function(_StartVideoCallSuccess value)
+        startVideoCallSuccess,
   }) {
     return loadInProgress(this);
   }
@@ -689,6 +745,8 @@ class _$_LoadInProgress implements _LoadInProgress {
     TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_LoadSuccess value)? loadSuccess,
     TResult? Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_StartVideoCallFailure value)? startVideoCallFailure,
+    TResult? Function(_StartVideoCallSuccess value)? startVideoCallSuccess,
   }) {
     return loadInProgress?.call(this);
   }
@@ -700,6 +758,8 @@ class _$_LoadInProgress implements _LoadInProgress {
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
     TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_StartVideoCallFailure value)? startVideoCallFailure,
+    TResult Function(_StartVideoCallSuccess value)? startVideoCallSuccess,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -798,6 +858,10 @@ class _$_LoadSuccess implements _LoadSuccess {
     required TResult Function(List<Contact> contacts) loadSuccess,
     required TResult Function(Failure failure, List<Contact> contacts)
         loadFailure,
+    required TResult Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)
+        startVideoCallFailure,
+    required TResult Function(List<Contact> contacts) startVideoCallSuccess,
   }) {
     return loadSuccess(contacts);
   }
@@ -809,6 +873,10 @@ class _$_LoadSuccess implements _LoadSuccess {
     TResult? Function(List<Contact> contacts)? loadInProgress,
     TResult? Function(List<Contact> contacts)? loadSuccess,
     TResult? Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult? Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+        startVideoCallFailure,
+    TResult? Function(List<Contact> contacts)? startVideoCallSuccess,
   }) {
     return loadSuccess?.call(contacts);
   }
@@ -820,6 +888,10 @@ class _$_LoadSuccess implements _LoadSuccess {
     TResult Function(List<Contact> contacts)? loadInProgress,
     TResult Function(List<Contact> contacts)? loadSuccess,
     TResult Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+        startVideoCallFailure,
+    TResult Function(List<Contact> contacts)? startVideoCallSuccess,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -835,6 +907,10 @@ class _$_LoadSuccess implements _LoadSuccess {
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
     required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_StartVideoCallFailure value)
+        startVideoCallFailure,
+    required TResult Function(_StartVideoCallSuccess value)
+        startVideoCallSuccess,
   }) {
     return loadSuccess(this);
   }
@@ -846,6 +922,8 @@ class _$_LoadSuccess implements _LoadSuccess {
     TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_LoadSuccess value)? loadSuccess,
     TResult? Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_StartVideoCallFailure value)? startVideoCallFailure,
+    TResult? Function(_StartVideoCallSuccess value)? startVideoCallSuccess,
   }) {
     return loadSuccess?.call(this);
   }
@@ -857,6 +935,8 @@ class _$_LoadSuccess implements _LoadSuccess {
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
     TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_StartVideoCallFailure value)? startVideoCallFailure,
+    TResult Function(_StartVideoCallSuccess value)? startVideoCallSuccess,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -964,6 +1044,10 @@ class _$_LoadFailure implements _LoadFailure {
     required TResult Function(List<Contact> contacts) loadSuccess,
     required TResult Function(Failure failure, List<Contact> contacts)
         loadFailure,
+    required TResult Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)
+        startVideoCallFailure,
+    required TResult Function(List<Contact> contacts) startVideoCallSuccess,
   }) {
     return loadFailure(failure, contacts);
   }
@@ -975,6 +1059,10 @@ class _$_LoadFailure implements _LoadFailure {
     TResult? Function(List<Contact> contacts)? loadInProgress,
     TResult? Function(List<Contact> contacts)? loadSuccess,
     TResult? Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult? Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+        startVideoCallFailure,
+    TResult? Function(List<Contact> contacts)? startVideoCallSuccess,
   }) {
     return loadFailure?.call(failure, contacts);
   }
@@ -986,6 +1074,10 @@ class _$_LoadFailure implements _LoadFailure {
     TResult Function(List<Contact> contacts)? loadInProgress,
     TResult Function(List<Contact> contacts)? loadSuccess,
     TResult Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+        startVideoCallFailure,
+    TResult Function(List<Contact> contacts)? startVideoCallSuccess,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
@@ -1001,6 +1093,10 @@ class _$_LoadFailure implements _LoadFailure {
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
     required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_StartVideoCallFailure value)
+        startVideoCallFailure,
+    required TResult Function(_StartVideoCallSuccess value)
+        startVideoCallSuccess,
   }) {
     return loadFailure(this);
   }
@@ -1012,6 +1108,8 @@ class _$_LoadFailure implements _LoadFailure {
     TResult? Function(_LoadInProgress value)? loadInProgress,
     TResult? Function(_LoadSuccess value)? loadSuccess,
     TResult? Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_StartVideoCallFailure value)? startVideoCallFailure,
+    TResult? Function(_StartVideoCallSuccess value)? startVideoCallSuccess,
   }) {
     return loadFailure?.call(this);
   }
@@ -1023,6 +1121,8 @@ class _$_LoadFailure implements _LoadFailure {
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
     TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_StartVideoCallFailure value)? startVideoCallFailure,
+    TResult Function(_StartVideoCallSuccess value)? startVideoCallSuccess,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
@@ -1042,5 +1142,387 @@ abstract class _LoadFailure implements ContactListState {
   @override
   @JsonKey(ignore: true)
   _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_StartVideoCallFailureCopyWith<$Res>
+    implements $ContactListStateCopyWith<$Res> {
+  factory _$$_StartVideoCallFailureCopyWith(_$_StartVideoCallFailure value,
+          $Res Function(_$_StartVideoCallFailure) then) =
+      __$$_StartVideoCallFailureCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String errorMessage, DateTime lastTryDate, List<Contact> contacts});
+}
+
+/// @nodoc
+class __$$_StartVideoCallFailureCopyWithImpl<$Res>
+    extends _$ContactListStateCopyWithImpl<$Res, _$_StartVideoCallFailure>
+    implements _$$_StartVideoCallFailureCopyWith<$Res> {
+  __$$_StartVideoCallFailureCopyWithImpl(_$_StartVideoCallFailure _value,
+      $Res Function(_$_StartVideoCallFailure) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMessage = null,
+    Object? lastTryDate = null,
+    Object? contacts = null,
+  }) {
+    return _then(_$_StartVideoCallFailure(
+      null == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == lastTryDate
+          ? _value.lastTryDate
+          : lastTryDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      null == contacts
+          ? _value._contacts
+          : contacts // ignore: cast_nullable_to_non_nullable
+              as List<Contact>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_StartVideoCallFailure implements _StartVideoCallFailure {
+  const _$_StartVideoCallFailure(
+      this.errorMessage, this.lastTryDate, final List<Contact> contacts)
+      : _contacts = contacts;
+
+  @override
+  final String errorMessage;
+  @override
+  final DateTime lastTryDate;
+  final List<Contact> _contacts;
+  @override
+  List<Contact> get contacts {
+    if (_contacts is EqualUnmodifiableListView) return _contacts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_contacts);
+  }
+
+  @override
+  String toString() {
+    return 'ContactListState.startVideoCallFailure(errorMessage: $errorMessage, lastTryDate: $lastTryDate, contacts: $contacts)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_StartVideoCallFailure &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
+            (identical(other.lastTryDate, lastTryDate) ||
+                other.lastTryDate == lastTryDate) &&
+            const DeepCollectionEquality().equals(other._contacts, _contacts));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMessage, lastTryDate,
+      const DeepCollectionEquality().hash(_contacts));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_StartVideoCallFailureCopyWith<_$_StartVideoCallFailure> get copyWith =>
+      __$$_StartVideoCallFailureCopyWithImpl<_$_StartVideoCallFailure>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<Contact> contacts) initial,
+    required TResult Function(List<Contact> contacts) loadInProgress,
+    required TResult Function(List<Contact> contacts) loadSuccess,
+    required TResult Function(Failure failure, List<Contact> contacts)
+        loadFailure,
+    required TResult Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)
+        startVideoCallFailure,
+    required TResult Function(List<Contact> contacts) startVideoCallSuccess,
+  }) {
+    return startVideoCallFailure(errorMessage, lastTryDate, contacts);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<Contact> contacts)? initial,
+    TResult? Function(List<Contact> contacts)? loadInProgress,
+    TResult? Function(List<Contact> contacts)? loadSuccess,
+    TResult? Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult? Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+        startVideoCallFailure,
+    TResult? Function(List<Contact> contacts)? startVideoCallSuccess,
+  }) {
+    return startVideoCallFailure?.call(errorMessage, lastTryDate, contacts);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Contact> contacts)? initial,
+    TResult Function(List<Contact> contacts)? loadInProgress,
+    TResult Function(List<Contact> contacts)? loadSuccess,
+    TResult Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+        startVideoCallFailure,
+    TResult Function(List<Contact> contacts)? startVideoCallSuccess,
+    required TResult orElse(),
+  }) {
+    if (startVideoCallFailure != null) {
+      return startVideoCallFailure(errorMessage, lastTryDate, contacts);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_StartVideoCallFailure value)
+        startVideoCallFailure,
+    required TResult Function(_StartVideoCallSuccess value)
+        startVideoCallSuccess,
+  }) {
+    return startVideoCallFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_StartVideoCallFailure value)? startVideoCallFailure,
+    TResult? Function(_StartVideoCallSuccess value)? startVideoCallSuccess,
+  }) {
+    return startVideoCallFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_StartVideoCallFailure value)? startVideoCallFailure,
+    TResult Function(_StartVideoCallSuccess value)? startVideoCallSuccess,
+    required TResult orElse(),
+  }) {
+    if (startVideoCallFailure != null) {
+      return startVideoCallFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StartVideoCallFailure implements ContactListState {
+  const factory _StartVideoCallFailure(
+      final String errorMessage,
+      final DateTime lastTryDate,
+      final List<Contact> contacts) = _$_StartVideoCallFailure;
+
+  String get errorMessage;
+  DateTime get lastTryDate;
+  @override
+  List<Contact> get contacts;
+  @override
+  @JsonKey(ignore: true)
+  _$$_StartVideoCallFailureCopyWith<_$_StartVideoCallFailure> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_StartVideoCallSuccessCopyWith<$Res>
+    implements $ContactListStateCopyWith<$Res> {
+  factory _$$_StartVideoCallSuccessCopyWith(_$_StartVideoCallSuccess value,
+          $Res Function(_$_StartVideoCallSuccess) then) =
+      __$$_StartVideoCallSuccessCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<Contact> contacts});
+}
+
+/// @nodoc
+class __$$_StartVideoCallSuccessCopyWithImpl<$Res>
+    extends _$ContactListStateCopyWithImpl<$Res, _$_StartVideoCallSuccess>
+    implements _$$_StartVideoCallSuccessCopyWith<$Res> {
+  __$$_StartVideoCallSuccessCopyWithImpl(_$_StartVideoCallSuccess _value,
+      $Res Function(_$_StartVideoCallSuccess) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? contacts = null,
+  }) {
+    return _then(_$_StartVideoCallSuccess(
+      null == contacts
+          ? _value._contacts
+          : contacts // ignore: cast_nullable_to_non_nullable
+              as List<Contact>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_StartVideoCallSuccess implements _StartVideoCallSuccess {
+  const _$_StartVideoCallSuccess(final List<Contact> contacts)
+      : _contacts = contacts;
+
+  final List<Contact> _contacts;
+  @override
+  List<Contact> get contacts {
+    if (_contacts is EqualUnmodifiableListView) return _contacts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_contacts);
+  }
+
+  @override
+  String toString() {
+    return 'ContactListState.startVideoCallSuccess(contacts: $contacts)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_StartVideoCallSuccess &&
+            const DeepCollectionEquality().equals(other._contacts, _contacts));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_contacts));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_StartVideoCallSuccessCopyWith<_$_StartVideoCallSuccess> get copyWith =>
+      __$$_StartVideoCallSuccessCopyWithImpl<_$_StartVideoCallSuccess>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<Contact> contacts) initial,
+    required TResult Function(List<Contact> contacts) loadInProgress,
+    required TResult Function(List<Contact> contacts) loadSuccess,
+    required TResult Function(Failure failure, List<Contact> contacts)
+        loadFailure,
+    required TResult Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)
+        startVideoCallFailure,
+    required TResult Function(List<Contact> contacts) startVideoCallSuccess,
+  }) {
+    return startVideoCallSuccess(contacts);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<Contact> contacts)? initial,
+    TResult? Function(List<Contact> contacts)? loadInProgress,
+    TResult? Function(List<Contact> contacts)? loadSuccess,
+    TResult? Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult? Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+        startVideoCallFailure,
+    TResult? Function(List<Contact> contacts)? startVideoCallSuccess,
+  }) {
+    return startVideoCallSuccess?.call(contacts);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<Contact> contacts)? initial,
+    TResult Function(List<Contact> contacts)? loadInProgress,
+    TResult Function(List<Contact> contacts)? loadSuccess,
+    TResult Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult Function(
+            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+        startVideoCallFailure,
+    TResult Function(List<Contact> contacts)? startVideoCallSuccess,
+    required TResult orElse(),
+  }) {
+    if (startVideoCallSuccess != null) {
+      return startVideoCallSuccess(contacts);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoadInProgress value) loadInProgress,
+    required TResult Function(_LoadSuccess value) loadSuccess,
+    required TResult Function(_LoadFailure value) loadFailure,
+    required TResult Function(_StartVideoCallFailure value)
+        startVideoCallFailure,
+    required TResult Function(_StartVideoCallSuccess value)
+        startVideoCallSuccess,
+  }) {
+    return startVideoCallSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoadInProgress value)? loadInProgress,
+    TResult? Function(_LoadSuccess value)? loadSuccess,
+    TResult? Function(_LoadFailure value)? loadFailure,
+    TResult? Function(_StartVideoCallFailure value)? startVideoCallFailure,
+    TResult? Function(_StartVideoCallSuccess value)? startVideoCallSuccess,
+  }) {
+    return startVideoCallSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoadInProgress value)? loadInProgress,
+    TResult Function(_LoadSuccess value)? loadSuccess,
+    TResult Function(_LoadFailure value)? loadFailure,
+    TResult Function(_StartVideoCallFailure value)? startVideoCallFailure,
+    TResult Function(_StartVideoCallSuccess value)? startVideoCallSuccess,
+    required TResult orElse(),
+  }) {
+    if (startVideoCallSuccess != null) {
+      return startVideoCallSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StartVideoCallSuccess implements ContactListState {
+  const factory _StartVideoCallSuccess(final List<Contact> contacts) =
+      _$_StartVideoCallSuccess;
+
+  @override
+  List<Contact> get contacts;
+  @override
+  @JsonKey(ignore: true)
+  _$$_StartVideoCallSuccessCopyWith<_$_StartVideoCallSuccess> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:salingsapa/core/errors/exceptions.dart';
 import 'package:salingsapa/core/errors/failures.dart';
+import 'package:salingsapa/core/utils/logger.dart';
 import 'package:salingsapa/data/models/user_model.dart';
 import 'package:salingsapa/data/sources/authentication_local_data_source.dart';
 import 'package:salingsapa/data/sources/authentication_remote_data_source.dart';
@@ -23,10 +24,13 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     late final UserModel currentUser;
     try {
       currentUser = await _remoteDatSource.currentUser();
+      Logger.print('(repository) getCurrentUser() value: $currentUser');
       _authorizationStatusStreamController.sink
           .add(const Right(AuthStatus.authorized));
       return const Right(unit);
-    } catch (_) {
+    } catch (error) {
+      Logger.error(error, event: '(repository) getting current user');
+
       _authorizationStatusStreamController.sink
           .add(const Right(AuthStatus.unauthorized));
       return Left(CacheFailure());
@@ -49,8 +53,12 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
 
   @override
   Future<Either<Failure, Unit>> signOut() async {
-    // TODO: implement signOut
-    throw UnimplementedError();
+    try {
+      await _remoteDatSource.signOut();
+      return const Right(unit);
+    } catch (_) {
+      return Left(UnknownFailure());
+    }
   }
 
   @override

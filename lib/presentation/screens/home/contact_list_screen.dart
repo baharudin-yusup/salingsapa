@@ -1,26 +1,98 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:salingsapa/presentation/blocs/contact_list/contact_list_bloc.dart';
 import 'package:salingsapa/presentation/components/contact_card.dart';
 import 'package:salingsapa/presentation/components/intuitive_scaffold.dart';
+import 'package:salingsapa/presentation/screens/video_call_screen.dart';
+import 'package:salingsapa/presentation/services/theme_service.dart';
 
 import '../../../domain/entities/contact.dart';
+import '../../components/show_error_message.dart';
 
 class ContactListScreen extends StatelessWidget {
+  static const routeName = '/contacts';
+
   const ContactListScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ContactListBloc, ContactListState>(
+    return BlocConsumer<ContactListBloc, ContactListState>(
+      listener: (context, state) {
+        state.maybeWhen(
+            orElse: () {},
+            startVideoCallSuccess: (_) =>
+                Navigator.pushNamed(context, VideoCallScreen.routeName),
+            startVideoCallFailure: (errorMessage, _, __) =>
+                showErrorMessage(context, errorMessage));
+      },
+      buildWhen: (previousState, currentState) => currentState.maybeMap(
+        startVideoCallFailure: (_) => false,
+        startVideoCallSuccess: (_) => false,
+        orElse: () => true,
+      ),
       builder: (context, state) {
-        return IntuitiveScaffold(child: buildContactList(state.contacts));
+        return IntuitiveScaffold(
+          appBar: IntuitiveAppBar(
+            middle: Text(AppLocalizations.of(context)!.contacts),
+            materialActions: [
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.search_rounded),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.more_vert_rounded),
+              ),
+            ],
+          ),
+          child: state.maybeMap(
+            loadSuccess: (_) => buildContactList(state.contacts),
+            loadFailure: (_) => buildContactList(state.contacts),
+            orElse: () => buildLoadingUi(),
+          ),
+        );
       },
     );
   }
 
-  Widget buildContactList(List<Contact> contacts) {
-    return ListView(
-      children: contacts.map((contact) => ContactCard(contact)).toList(),
+  Widget buildLoadingUi() {
+    return const Center(
+      child: CircularProgressIndicator.adaptive(),
     );
+  }
+
+  Widget buildContactList(List<Contact> contacts) {
+    if (contacts.isEmpty) {
+      return buildNoContactsUi();
+    }
+    return ListView.separated(
+      padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace),
+      itemCount: contacts.length,
+      itemBuilder: (context, index) {
+        return ContactCard(
+          contacts[index],
+          onTap: (contact) => context
+              .read<ContactListBloc>()
+              .add(ContactListEvent.selectedContactCalled(contact)),
+        );
+      },
+      separatorBuilder: (context, index) => const SizedBox(
+        height: IntuitiveUiConstant.smallSpace,
+      ),
+    );
+  }
+
+  Widget buildNoContactsUi() {
+    return Builder(builder: (context) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(AppLocalizations.of(context)!.noContactsFound),
+          ],
+        ),
+      );
+    });
   }
 }

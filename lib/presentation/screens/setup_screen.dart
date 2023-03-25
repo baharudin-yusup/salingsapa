@@ -9,10 +9,13 @@ import 'package:salingsapa/presentation/screens/verify_otp_screen.dart';
 import 'package:salingsapa/presentation/services/navigator_service.dart';
 import 'package:salingsapa/presentation/services/theme_service.dart';
 import 'package:salingsapa/presentation/services/ui_service.dart';
+import 'package:salingsapa/presentation/utils/app_localizations.dart';
 
 import '../../injection_container.dart';
 
 class SetupScreen extends StatelessWidget {
+  static const routeName = '/setup';
+
   const SetupScreen({Key? key}) : super(key: key);
 
   @override
@@ -44,7 +47,7 @@ class SetupScreen extends StatelessWidget {
           final SetupBloc bloc = context.read();
           return IntuitiveScaffold(
             appBar: IntuitiveAppBar(
-              middle: Text('Enter Your Phone Number'),
+              middle: Text(AppLocalizations.of(context)!.enterYourPhoneNumber),
               cupertinoTrailing: GestureDetector(
                 onTap: bloc.canSubmit()
                     ? () {
@@ -53,7 +56,7 @@ class SetupScreen extends StatelessWidget {
                       }
                     : null,
                 child: Text(
-                  'Done',
+                  AppLocalizations.of(context)!.done,
                   style: TextStyle(
                     color: bloc.canSubmit()
                         ? context.colorScheme().primary
@@ -94,8 +97,9 @@ class SetupScreen extends StatelessWidget {
   }
 
   Widget _buildInfoText() {
-    return Text(
-        'Salingsapa will need to verify your phone number (carrier charges may apply).');
+    return Builder(
+        builder: (context) =>
+            Text(AppLocalizations.of(context)!.setupScreenInfo));
   }
 
   Widget _buildMaterialDoneButton() {
@@ -107,7 +111,7 @@ class SetupScreen extends StatelessWidget {
           child: ElevatedButton.icon(
             onPressed: canSubmit ? () => _onButtonDonePressed(bloc) : null,
             icon: Icon(Icons.adaptive.arrow_forward_rounded),
-            label: Text('Next'),
+            label: Text(AppLocalizations.of(context)!.next),
           ),
         );
       },

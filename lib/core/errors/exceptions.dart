@@ -5,7 +5,26 @@ abstract class Exception extends Equatable {
   List<Object?> get props => [];
 }
 
-class ServerException extends Exception {}
+enum ServerExceptionType {
+  unauthorized,
+  unknown,
+}
+
+class ServerException extends Exception {
+  final String? message;
+  final ServerExceptionType type;
+
+  ServerException({
+    this.message,
+    this.type = ServerExceptionType.unknown,
+  });
+
+  @override
+  List<Object?> get props => [
+        ...super.props,
+        message,
+      ];
+}
 
 class BadDataException extends Exception {}
 

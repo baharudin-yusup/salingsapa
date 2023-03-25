@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:salingsapa/core/errors/failures.dart';
 import 'package:salingsapa/domain/entities/app_permission.dart';
 
-import '../../../core/utils/logger.dart';
 import '../../../domain/entities/contact.dart';
 import '../../../domain/usecases/has_permission.dart';
 import '../../../domain/usecases/refresh_contact_list.dart';
@@ -47,8 +46,6 @@ class ContactListBloc extends Bloc<ContactListEvent, ContactListState> {
       }
     }
 
-    Logger.print('Check permission OK');
-
     final refreshContactListResult = await _refreshContactList();
     refreshContactListResult.fold(
         (failure) =>
@@ -57,5 +54,16 @@ class ContactListBloc extends Bloc<ContactListEvent, ContactListState> {
   }
 
   void _doVideoCall(
-      _SelectedContactCalled event, Emitter<ContactListState> emit) async {}
+      _SelectedContactCalled event, Emitter<ContactListState> emit) async {
+    final contact = event.contact;
+    if (!contact.isRegistered) {
+      emit(ContactListState.startVideoCallFailure(
+          'This number ${contact.phoneNumber} has not been registered.',
+          DateTime.now().toLocal(),
+          state.contacts));
+      return;
+    }
+
+    emit(ContactListState.startVideoCallSuccess(state.contacts));
+  }
 }

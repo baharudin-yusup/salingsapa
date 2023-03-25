@@ -5,7 +5,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:salingsapa/core/errors/failures.dart';
 import 'package:salingsapa/core/utils/logger.dart';
-import 'package:salingsapa/presentation/screens/history_screen.dart';
+import 'package:salingsapa/presentation/screens/home/recent_call_screen.dart';
 import 'package:salingsapa/presentation/screens/skeleton_screen.dart';
 import 'package:salingsapa/presentation/screens/video_call_screen.dart';
 import 'package:salingsapa/presentation/services/navigator_service.dart';
@@ -145,7 +145,7 @@ void openNotification(NotificationResponse? details) {
 void openNotificationB(NotificationResponse? details) {
   try {
     final NavigatorService navigatorService = sl();
-    navigatorService.pushNamed(HistoryScreen.routeName);
+    navigatorService.pushNamed(RecentCallScreen.routeName);
   } catch (error) {
     Logger.error(error, event: 'opening notification');
   }

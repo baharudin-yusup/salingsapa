@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:salingsapa/core/errors/exceptions.dart';
 import 'package:salingsapa/core/utils/logger.dart';
@@ -16,16 +17,18 @@ abstract class AuthenticationRemoteDatSource {
 class AuthenticationRemoteDatSourceImpl
     implements AuthenticationRemoteDatSource {
   final FirebaseAuth _auth;
+  final FirebaseFirestore _firestore;
   String _verificationId;
 
-  AuthenticationRemoteDatSourceImpl(this._auth) : _verificationId = '';
+  AuthenticationRemoteDatSourceImpl(this._auth, this._firestore)
+      : _verificationId = '';
 
   @override
   Future<UserModel> currentUser() async {
     final currentUser = _auth.currentUser;
 
     if (currentUser == null) {
-      throw ServerException();
+      throw ServerException(message: 'unauthenticated');
     }
 
     return currentUser;
@@ -76,8 +79,7 @@ class AuthenticationRemoteDatSourceImpl
       throw ServerException();
     }
 
-    Logger.print('Verifying phone number success!');
-    return user;
+    return await _updateInitialData(user);
   }
 
   @override
@@ -104,6 +106,30 @@ class AuthenticationRemoteDatSourceImpl
     if (user == null) {
       throw ServerException();
     }
+
+    return await _updateInitialData(user);
+  }
+
+  Future<User> _updateInitialData(UserModel user) async {
+    final collectionRef = _firestore.collection('users');
+    final snapshot = await collectionRef.where('id', isEqualTo: user.uid).get();
+
+    if (snapshot.size > 1) {
+      Logger.error('User id: ${user.uid} have more than 1 data in firestore',
+          event: 'verifying phone number');
+      throw ServerException();
+    }
+
+    if (snapshot.size == 1) {
+      Logger.print('User already registered on firestore database');
+      return user;
+    }
+
+    Logger.print('Add new data for user id: ${user.uid} started...');
+    await collectionRef.add(user.toJson());
+    Logger.print('Add new data for user id: ${user.uid} success!');
+
+    Logger.print('Verifying phone number success!');
 
     return user;
   }

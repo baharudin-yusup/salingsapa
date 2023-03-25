@@ -1,13 +1,13 @@
-import 'package:flutter_contacts/flutter_contacts.dart' as fc;
-import 'package:salingsapa/domain/entities/contact.dart';
+class ContactModel {
+  final String? profilePictureUrl;
+  final String name;
+  final String phoneNumber;
+  final bool isRegistered;
 
-typedef ContactModel = fc.Contact;
-
-extension ContactModelToEntity on ContactModel {
-  Contact toEntity() {
-    return Contact(
-      name: displayName,
-      phoneNumber: phones.first.number,
-    );
-  }
+  ContactModel({
+    required this.name,
+    required this.phoneNumber,
+    required this.profilePictureUrl,
+    this.isRegistered = false,
+  });
 }

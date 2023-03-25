@@ -60,6 +60,16 @@ dependencies:
   contacts_service: ^0.6.3
   flutter_contacts: ^1.1.6
   permission_handler: ^10.2.0
+  introduction_screen: ^3.1.6
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+  agora_uikit: ^1.2.1
+  agora_rtc_engine: ^6.1.0
+  uuid: ^3.0.7
+  firebase_storage: ^11.0.16
+  image_picker: ^0.8.7
+  cached_network_image: ^3.2.3
 
 dev_dependencies:
   flutter_test:
@@ -79,6 +89,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salingsapa/presentation/components/intuitive_otp.dart';
 import 'package:salingsapa/presentation/screens/skeleton_screen.dart';
+import 'package:salingsapa/presentation/utils/app_localizations.dart';
 
 import '../../injection_container.dart';
 import '../blocs/setup/setup_bloc.dart';
@@ -43,7 +44,7 @@ class VerifyOtpScreen extends StatelessWidget {
       builder: (context, state) {
         return IntuitiveScaffold(
           appBar: IntuitiveAppBar(
-            middle: Text('Verify Your Phone Number'),
+            middle: Text(AppLocalizations.of(context)!.verifyYourPhoneNumber),
           ),
           child: SafeArea(
             child: ListView(
@@ -70,25 +71,8 @@ class VerifyOtpScreen extends StatelessWidget {
   Widget _buildInfoText() {
     return BlocBuilder<SetupBloc, SetupState>(
       builder: (context, state) {
-        return Text.rich(
-          TextSpan(
-            children: [
-              TextSpan(
-                text: 'We have sent you an SMS with a code to ',
-              ),
-              TextSpan(
-                text: '+62${state.phoneNumber}. ',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              TextSpan(
-                text:
-                    'To complete your phone number verification, please enter the 6-digit activation code.',
-              )
-            ],
-          ),
-        );
+        return Text(AppLocalizations.of(context)!
+            .otpSendToInfo('+62${state.phoneNumber}'));
       },
     );
   }
@@ -98,7 +82,7 @@ class VerifyOtpScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Didn't receive a verification code?",
+          AppLocalizations.of(context)!.didNotReceiveCodeInfo,
           style: context.textTheme().bodyMedium,
         ),
         const SizedBox(
@@ -107,7 +91,7 @@ class VerifyOtpScreen extends StatelessWidget {
         GestureDetector(
           onTap: () {},
           child: Text(
-            'Resend code',
+            AppLocalizations.of(context)!.resendCode,
             style: context.textTheme().bodyLarge?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
