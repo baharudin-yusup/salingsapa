@@ -10,6 +10,11 @@ A Final Exam Project
 flutter build ios --flavor development --target=lib/main_dev.dart
 ````
 
+#### Build Android Appbundle Dev
+````shell
+flutter build appbundle --flavor development --target=lib/main_dev.dart
+````
+
 ### Firebase update commands
 #### Dev flavor
 ```shell
