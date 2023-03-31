@@ -485,26 +485,26 @@ packages:
     dependency: "direct main"
     description:
       name: firebase_remote_config
-      sha256: "3ff69d22847e36a47b890804c248605decd1cd8ed3e1e78a1df197d0c591eada"
+      sha256: "191aa5376ccf512d12e124dc7a99abcb6bd5d4e2b073d102253dd94d5a513e57"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.10"
+    version: "3.0.15"
   firebase_remote_config_platform_interface:
     dependency: transitive
     description:
       name: firebase_remote_config_platform_interface
-      sha256: "852280ea16c0f0827ad06787856890f50e6aab460f1d01afa8527661d2760746"
+      sha256: "3f23e4944011852da5fdd073758009c52d468d78a5a4e3c28752c11de430941a"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.30"
+    version: "1.1.35"
   firebase_remote_config_web:
     dependency: transitive
     description:
       name: firebase_remote_config_web
-      sha256: "69607613a08e2908acf140b8fa4793055c7016315000213ea6290fec35289044"
+      sha256: e79a73c7b42ba283de122f1aed79a8923ec526e6bc8a554e798520b453fca351
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.19"
+    version: "1.1.24"
   firebase_storage:
     dependency: "direct main"
     description:
@@ -627,6 +627,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.9"
+  flutter_ringtone_player:
+    dependency: "direct main"
+    description:
+      name: flutter_ringtone_player
+      sha256: "0b036416fda0654da52221989bd1a8ccd2876cea57f61ecc3a4fc272bd738c67"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.2.0"
   flutter_secure_storage:
     dependency: "direct main"
     description:
@@ -742,7 +750,7 @@ packages:
     source: hosted
     version: "0.15.1"
   http:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: http
       sha256: "6aa2946395183537c8b880962d935877325d6a09a2867c3970c05c0fed6ac482"

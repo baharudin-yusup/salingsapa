@@ -6,7 +6,7 @@ typedef UserModel = fb.User;
 
 extension UserModelToEntity on UserModel {
   User toEntity() {
-    return User(uid, phoneNumber!, displayName ?? phoneNumber!, photoURL);
+    return User(uid, phoneNumber!, displayName ?? phoneNumber!, photoURL, null);
   }
 }
 

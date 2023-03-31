@@ -18,17 +18,17 @@ class AccountScreen extends StatelessWidget {
     return BlocListener<AccountBloc, AccountState>(
       listener: (context, state) {
         final uiService = sl<UiService>();
-        state.map(
-          initial: (_) {
-            uiService.hideLoading();
-          },
-          updateInProgress: (_) {
-            uiService.showLoading();
-          },
-          updateFailure: (_) {
-            uiService.hideLoading();
-          },
-        );
+        // state.map(
+        //   initial: (_) {
+        //     uiService.hideLoading();
+        //   },
+        //   updateInProgress: (_) {
+        //     uiService.showLoading();
+        //   },
+        //   updateFailure: (_) {
+        //     uiService.hideLoading();
+        //   },
+        // );
       },
       listenWhen: (previousState, currentState) {
         return currentState.map(
@@ -39,7 +39,7 @@ class AccountScreen extends StatelessWidget {
       },
       child: IntuitiveScaffold(
         appBar: buildAppBar(context),
-        child: buildBody(),
+        child: buildBody(context),
       ),
     );
   }
@@ -68,14 +68,20 @@ class AccountScreen extends StatelessWidget {
           },
         ),
       ],
+      cupertinoTrailing: TextButton(
+        onPressed: () => context
+            .read<AccountBloc>()
+            .add(const AccountEvent.signOutStarted()),
+        child: Text(AppLocalizations.of(context)!.signOut),
+      ),
     );
   }
 
-  Widget buildBody() {
+  Widget buildBody(BuildContext context) {
     return ListView(
       padding: const EdgeInsets.symmetric(
         horizontal: IntuitiveUiConstant.normalSpace,
-        vertical: IntuitiveUiConstant.tinySpace,
+        vertical: IntuitiveUiConstant.normalSpace,
       ),
       children: [
         showAvatar(),
@@ -88,55 +94,60 @@ class AccountScreen extends StatelessWidget {
   }
 
   Widget showAvatar() {
-    return LayoutBuilder(builder: (context, constraints) {
-      final radius = (constraints.maxWidth / 2) * 0.5;
-      return BlocBuilder<AccountBloc, AccountState>(builder: (context, state) {
-        CachedNetworkImageProvider? profilePicture;
-        if (state.profilePictureUrl != null) {
-          profilePicture = CachedNetworkImageProvider(state.profilePictureUrl!);
-        }
+    return SafeArea(
+      child: LayoutBuilder(builder: (context, constraints) {
+        final radius = (constraints.maxWidth / 2) * 0.5;
+        return BlocBuilder<AccountBloc, AccountState>(
+            builder: (context, state) {
+          CachedNetworkImageProvider? profilePicture;
+          if (state.profilePictureUrl != null) {
+            profilePicture =
+                CachedNetworkImageProvider(state.profilePictureUrl!);
+          }
 
-        return CircleAvatar(
-          radius: radius + 2,
-          child: CircleAvatar(
-            backgroundImage: profilePicture,
-            backgroundColor: context.colorScheme().primary.withOpacity(0.1),
-            radius: radius,
-            child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(radius)),
-              child: InkWell(
+          return CircleAvatar(
+            radius: radius + 1,
+            child: CircleAvatar(
+              backgroundImage: profilePicture,
+              backgroundColor: context.colorScheme().outline,
+              radius: radius,
+              child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(radius)),
-                onTap: () => context
-                    .read<AccountBloc>()
-                    .add(const AccountEvent.pickImageStarted()),
-                child: Column(
-                  children: [
-                    const Spacer(),
-                    Container(
-                      color: context.colorScheme().background.withOpacity(0.5),
-                      width: radius * 2,
-                      height: radius / 2,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(Icons.camera_alt),
-                          const SizedBox(
-                            width: IntuitiveUiConstant.tinySpace,
-                          ),
-                          Text(
-                            AppLocalizations.of(context)!.edit,
-                          )
-                        ],
-                      ),
-                    )
-                  ],
+                child: InkWell(
+                  borderRadius: BorderRadius.all(Radius.circular(radius)),
+                  onTap: () => context
+                      .read<AccountBloc>()
+                      .add(const AccountEvent.pickImageStarted()),
+                  child: Column(
+                    children: [
+                      const Spacer(),
+                      Container(
+                        color:
+                            context.colorScheme().background.withOpacity(0.5),
+                        width: radius * 2,
+                        height: radius / 2,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(Icons.camera_alt),
+                            const SizedBox(
+                              width: IntuitiveUiConstant.tinySpace,
+                            ),
+                            Text(
+                              AppLocalizations.of(context)!.edit,
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        );
-      });
-    });
+          );
+        });
+      }),
+    );
   }
 
   Widget showNameTextField() {

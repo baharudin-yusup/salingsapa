@@ -40,6 +40,20 @@ class IntuitiveScaffold extends StatelessWidget {
       );
     }
 
+    if (bottomNavigationBar != null) {
+      CupertinoTabBar? x;
+      x = CupertinoTabBar(
+        items: bottomNavigationBar!.items
+            .map((e) => BottomNavigationBarItem(icon: e.icon, label: e.label))
+            .toList(),
+      );
+
+      return CupertinoTabScaffold(
+        tabBar: x,
+        tabBuilder: bottomNavigationBar!.tabBuilder!,
+      );
+    }
+
     return CupertinoPageScaffold(
       navigationBar: navigationBar,
       child: child,
@@ -98,11 +112,13 @@ class IntuitiveAppBar {
 class IntuitiveBottomNavigationBar {
   final int currentIndex;
   final void Function(int index) onChanged;
+  final Widget Function(BuildContext context, int index)? tabBuilder;
   final List<IntuitiveBottomNavigationBarItem> items;
 
   IntuitiveBottomNavigationBar({
     required this.items,
     required this.onChanged,
+    this.tabBuilder,
     this.currentIndex = 0,
   });
 }

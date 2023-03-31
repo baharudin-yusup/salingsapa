@@ -20,5 +20,7 @@ abstract class UserRepository {
     required Uint8List imageBytes,
   });
 
-  Stream<RepoResponse<User>> get currentUser;
+  Stream<RepoResponse<User>> get onUserStateChanged;
+
+  Future<RepoResponse<User>> getCurrentUser();
 }

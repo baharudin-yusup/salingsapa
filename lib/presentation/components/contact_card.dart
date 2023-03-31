@@ -49,11 +49,17 @@ class ContactCard extends StatelessWidget {
   }
 
   Widget showCallIcon() {
-    return Builder(
-        builder: (context) => Icon(
-              Icons.call_rounded,
-              color:
-                  contact.isRegistered ? context.colorScheme().primary : null,
-            ));
+    return Builder(builder: (context) {
+      if (!contact.isRegistered) {
+        return const Icon(
+          Icons.videocam_off_outlined,
+        );
+      }
+
+      return Icon(
+        Icons.videocam_outlined,
+        color: context.colorScheme().primary,
+      );
+    });
   }
 }

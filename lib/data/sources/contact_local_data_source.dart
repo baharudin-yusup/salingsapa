@@ -15,12 +15,16 @@ class ContactLocalDataSourceImpl implements ContactLocalDataSource {
   Future<List<ContactModel>> getContactList() async {
     try {
       final contacts = await FlutterContacts.getContacts(withProperties: true);
+
+      if (contacts.isEmpty) {
+        return [];
+      }
       return contacts
+          .where((element) => element.phones.isNotEmpty)
           .map(
             (e) => ContactModel(
               name: e.displayName,
               phoneNumber: e.phones.first.number,
-              profilePictureUrl: null,
             ),
           )
           .toList();

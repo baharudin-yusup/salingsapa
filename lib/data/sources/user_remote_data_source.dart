@@ -22,7 +22,9 @@ abstract class UserRemoteDataSource {
     required Uint8List imageBytes,
   });
 
-  Stream<UserModel?> get currentUser;
+  Stream<UserModel?> get onUserStateChanged;
+
+  Future<UserModel?> getCurrentUser();
 }
 
 class UserRemoteDataSourceImpl implements UserRemoteDataSource {
@@ -123,5 +125,16 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   }
 
   @override
-  Stream<UserModel?> get currentUser => _auth.userChanges();
+  Stream<UserModel?> get onUserStateChanged => _auth.userChanges();
+
+  @override
+  Future<UserModel?> getCurrentUser() async {
+    final user = _auth.currentUser;
+
+    if (user == null) {
+      return null;
+    }
+
+    return user;
+  }
 }

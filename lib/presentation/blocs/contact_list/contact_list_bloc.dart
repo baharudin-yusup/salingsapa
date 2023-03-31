@@ -1,9 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:salingsapa/core/errors/failures.dart';
+import 'package:salingsapa/data/extensions/to_phone_number.dart';
 import 'package:salingsapa/domain/entities/app_permission.dart';
 
 import '../../../domain/entities/contact.dart';
+import '../../../domain/usecases/get_current_user.dart';
 import '../../../domain/usecases/has_permission.dart';
 import '../../../domain/usecases/refresh_contact_list.dart';
 import '../../../domain/usecases/request_permission.dart';
@@ -18,9 +20,10 @@ class ContactListBloc extends Bloc<ContactListEvent, ContactListState> {
   final StartVideoCall _startVideoCall;
   final HasPermission _hasPermission;
   final RequestPermission _requestPermission;
+  final GetCurrentUser _getCurrentUser;
 
   ContactListBloc(this._refreshContactList, this._startVideoCall,
-      this._hasPermission, this._requestPermission)
+      this._hasPermission, this._requestPermission, this._getCurrentUser)
       : super(const ContactListState.initial()) {
     on<_RefreshPulled>(_doRefreshContactList);
     on<_SelectedContactCalled>(_doVideoCall);
@@ -64,6 +67,25 @@ class ContactListBloc extends Bloc<ContactListEvent, ContactListState> {
       return;
     }
 
-    emit(ContactListState.startVideoCallSuccess(state.contacts));
+    final getCurrentUserResult = await _getCurrentUser();
+    getCurrentUserResult.fold(
+      (_) => emit(ContactListState.startVideoCallFailure(
+          'Unknown error', DateTime.now().toLocal(), state.contacts)),
+      (user) {
+        if (user.phoneNumber.toFormattedPhoneNumber() ==
+            contact.phoneNumber.toFormattedPhoneNumber()) {
+          emit(ContactListState.startVideoCallFailure(
+              'You cannot call yourself',
+              DateTime.now().toLocal(),
+              state.contacts));
+          return;
+        }
+        emit(ContactListState.startVideoCallSuccess(
+          state.contacts,
+          selectedContact: contact,
+          calledAt: DateTime.now(),
+        ));
+      },
+    );
   }
 }

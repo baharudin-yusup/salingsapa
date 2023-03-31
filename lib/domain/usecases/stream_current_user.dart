@@ -12,6 +12,6 @@ class StreamCurrentUser extends NoParamUseCaseStreamSync<User> {
 
   @override
   Stream<Either<Failure, User>> call() {
-    return _repository.currentUser;
+    return _repository.onUserStateChanged;
   }
 }
