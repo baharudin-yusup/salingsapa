@@ -67,13 +67,15 @@ class _IntuitiveOtpState extends State<IntuitiveOtp> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        _buildList(),
-        _buildErrorMessage(),
-      ],
+    return Material(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          _buildList(),
+          _buildErrorMessage(),
+        ],
+      ),
     );
   }
 
@@ -164,7 +166,7 @@ class _IntuitiveOtpState extends State<IntuitiveOtp> {
       child: Container(
         width: double.maxFinite,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: context.colorScheme().background,
           border: Border.all(
             color: hasError && isAllFieldFilled
                 ? widget.errorColor

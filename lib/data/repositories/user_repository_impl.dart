@@ -8,6 +8,8 @@ import 'package:salingsapa/data/sources/user_remote_data_source.dart';
 import 'package:salingsapa/domain/entities/user.dart';
 import 'package:salingsapa/domain/repositories/user_repository.dart';
 
+import '../../core/utils/logger.dart';
+
 class UserRepositoryImpl extends UserRepository {
   final UserRemoteDataSource _remoteDataSource;
 
@@ -53,12 +55,38 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Stream<Either<Failure, User>> get currentUser =>
-      _remoteDataSource.currentUser.map((model) {
-        if (model != null) {
-          return Right(model.toEntity());
+  Stream<Either<Failure, User>> get onUserStateChanged =>
+      _remoteDataSource.onUserStateChanged.map((model) {
+        if (model == null) {
+          Logger.print('(repository) no current user active');
+          return Left(UnknownFailure());
         }
-
-        return Left(UnknownFailure());
+        try {
+          Logger.print(
+              '(repository) current user number: ${model.phoneNumber}');
+          return Right(model.toEntity());
+        } catch (error) {
+          Logger.error(error,
+              event:
+                  '(repository) converting model to entity when onUserStateChanged');
+          return Left(UnknownFailure());
+        }
       });
+
+  @override
+  Future<RepoResponse<User>> getCurrentUser() async {
+    try {
+      final user = await _remoteDataSource.getCurrentUser();
+
+      if (user == null) {
+        Logger.print('(repository) no current user active');
+        return Left(ServerFailure());
+      }
+
+      return Right(user.toEntity());
+    } catch (error) {
+      Logger.error(error, event: 'getting current user');
+      return Left(UnknownFailure());
+    }
+  }
 }

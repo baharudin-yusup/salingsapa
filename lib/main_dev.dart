@@ -6,6 +6,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:salingsapa/core/envs/dev_env_impl.dart';
 import 'package:salingsapa/presentation/screens/skeleton_screen.dart';
 
 import 'core/utils/logger.dart';
@@ -26,8 +27,8 @@ Future<void> main() async {
   );
   FirebaseMessaging.onBackgroundMessage(handleBackgroundNotification);
 
-  await di.setup();
-  runApp(const RootScreen());
+  await di.setup(DevEnv());
+  createApp();
 }
 
 @pragma('vm:entry-point')

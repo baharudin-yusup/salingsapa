@@ -12,6 +12,8 @@ abstract class AuthenticationRepository {
 
   Future<Either<Failure, Unit>> signOut();
 
+  Future<Either<Failure, AuthStatus>> getLatestAuthStatus();
+
   Stream<Either<Failure, AuthStatus>> get authorizationStatus;
 
   Future<Either<Failure, Unit>> init();

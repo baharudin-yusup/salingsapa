@@ -5,7 +5,6 @@ import 'package:salingsapa/domain/usecases/sign_out.dart';
 import 'package:salingsapa/domain/usecases/stream_current_user.dart';
 import 'package:salingsapa/domain/usecases/update_name.dart';
 import 'package:salingsapa/domain/usecases/update_profile_picture.dart';
-import 'package:salingsapa/presentation/screens/skeleton_screen.dart';
 import 'package:salingsapa/presentation/services/navigator_service.dart';
 import 'package:salingsapa/presentation/services/ui_service.dart';
 
@@ -28,7 +27,12 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     _streamCurrentUser().listen((userResult) {
       userResult.fold(
         (l) => null,
-        (user) => add(AccountEvent.currentUserUpdated(user)),
+        (user) {
+          if (isClosed) {
+            return;
+          }
+          add(AccountEvent.currentUserUpdated(user));
+        },
       );
     });
     on<_UpdateNameStarted>(_startUpdateName);
@@ -88,11 +92,11 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   void _startSignOut(_SignOutStarted event, Emitter<AccountState> emit) async {
     final signOutResult = await _signOut();
 
-    signOutResult.fold(
-      (l) => null,
-      (_) => _navigatorService.pushNamedAndRemoveUntil(
-          RootScreen.routeName, (route) => false),
-    );
+    // signOutResult.fold(
+    //   (l) => null,
+    //   (_) => _navigatorService.pushNamedAndRemoveUntil(
+    //       RootScreen.routeName, (route) => false),
+    // );
   }
 
   void _editProfilePicture(

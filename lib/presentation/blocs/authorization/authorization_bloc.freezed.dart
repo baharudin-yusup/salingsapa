@@ -327,21 +327,21 @@ abstract class _AuthStatusChanged implements AuthorizationEvent {
 mixin _$AuthorizationState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(AuthStatus status) initial,
     required TResult Function(AuthStatus status) changeAuthStatusSuccess,
     required TResult Function(Failure failure) changeAuthStatusFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(AuthStatus status)? initial,
     TResult? Function(AuthStatus status)? changeAuthStatusSuccess,
     TResult? Function(Failure failure)? changeAuthStatusFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(AuthStatus status)? initial,
     TResult Function(AuthStatus status)? changeAuthStatusSuccess,
     TResult Function(Failure failure)? changeAuthStatusFailure,
     required TResult orElse(),
@@ -396,6 +396,8 @@ abstract class _$$_InitialCopyWith<$Res> {
   factory _$$_InitialCopyWith(
           _$_Initial value, $Res Function(_$_Initial) then) =
       __$$_InitialCopyWithImpl<$Res>;
+  @useResult
+  $Res call({AuthStatus status});
 }
 
 /// @nodoc
@@ -404,57 +406,82 @@ class __$$_InitialCopyWithImpl<$Res>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+  }) {
+    return _then(_$_Initial(
+      null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as AuthStatus,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Initial implements _Initial {
-  const _$_Initial();
+  const _$_Initial([this.status = AuthStatus.unauthorized]);
+
+  @override
+  @JsonKey()
+  final AuthStatus status;
 
   @override
   String toString() {
-    return 'AuthorizationState.initial()';
+    return 'AuthorizationState.initial(status: $status)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType &&
+            other is _$_Initial &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, status);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(AuthStatus status) initial,
     required TResult Function(AuthStatus status) changeAuthStatusSuccess,
     required TResult Function(Failure failure) changeAuthStatusFailure,
   }) {
-    return initial();
+    return initial(status);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(AuthStatus status)? initial,
     TResult? Function(AuthStatus status)? changeAuthStatusSuccess,
     TResult? Function(Failure failure)? changeAuthStatusFailure,
   }) {
-    return initial?.call();
+    return initial?.call(status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(AuthStatus status)? initial,
     TResult Function(AuthStatus status)? changeAuthStatusSuccess,
     TResult Function(Failure failure)? changeAuthStatusFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial();
+      return initial(status);
     }
     return orElse();
   }
@@ -497,7 +524,12 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements AuthorizationState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial([final AuthStatus status]) = _$_Initial;
+
+  AuthStatus get status;
+  @JsonKey(ignore: true)
+  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -566,7 +598,7 @@ class _$_ChangeAuthStatusSuccess implements _ChangeAuthStatusSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(AuthStatus status) initial,
     required TResult Function(AuthStatus status) changeAuthStatusSuccess,
     required TResult Function(Failure failure) changeAuthStatusFailure,
   }) {
@@ -576,7 +608,7 @@ class _$_ChangeAuthStatusSuccess implements _ChangeAuthStatusSuccess {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(AuthStatus status)? initial,
     TResult? Function(AuthStatus status)? changeAuthStatusSuccess,
     TResult? Function(Failure failure)? changeAuthStatusFailure,
   }) {
@@ -586,7 +618,7 @@ class _$_ChangeAuthStatusSuccess implements _ChangeAuthStatusSuccess {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(AuthStatus status)? initial,
     TResult Function(AuthStatus status)? changeAuthStatusSuccess,
     TResult Function(Failure failure)? changeAuthStatusFailure,
     required TResult orElse(),
@@ -710,7 +742,7 @@ class _$_ChangeAuthStatusFailure implements _ChangeAuthStatusFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function(AuthStatus status) initial,
     required TResult Function(AuthStatus status) changeAuthStatusSuccess,
     required TResult Function(Failure failure) changeAuthStatusFailure,
   }) {
@@ -720,7 +752,7 @@ class _$_ChangeAuthStatusFailure implements _ChangeAuthStatusFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
+    TResult? Function(AuthStatus status)? initial,
     TResult? Function(AuthStatus status)? changeAuthStatusSuccess,
     TResult? Function(Failure failure)? changeAuthStatusFailure,
   }) {
@@ -730,7 +762,7 @@ class _$_ChangeAuthStatusFailure implements _ChangeAuthStatusFailure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function(AuthStatus status)? initial,
     TResult Function(AuthStatus status)? changeAuthStatusSuccess,
     TResult Function(Failure failure)? changeAuthStatusFailure,
     required TResult orElse(),

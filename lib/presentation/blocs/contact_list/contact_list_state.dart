@@ -18,6 +18,9 @@ class ContactListState with _$ContactListState {
           String errorMessage, DateTime lastTryDate, List<Contact> contacts) =
       _StartVideoCallFailure;
 
-  const factory ContactListState.startVideoCallSuccess(List<Contact> contacts) =
-      _StartVideoCallSuccess;
+  const factory ContactListState.startVideoCallSuccess(
+    List<Contact> contacts, {
+    required Contact selectedContact,
+    required DateTime calledAt,
+  }) = _StartVideoCallSuccess;
 }

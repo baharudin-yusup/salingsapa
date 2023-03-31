@@ -5,12 +5,14 @@ class User extends Equatable {
   final String phoneNumber;
   final String name;
   final String? profilePictureUrl;
+  final String? fcmToken;
 
   const User(
     this.id,
     this.phoneNumber,
     this.name,
     this.profilePictureUrl,
+    this.fcmToken,
   );
 
   @override
@@ -19,5 +21,6 @@ class User extends Equatable {
         phoneNumber,
         name,
         profilePictureUrl,
+        fcmToken,
       ];
 }

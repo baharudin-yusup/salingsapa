@@ -21,12 +21,19 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
 
   @override
   Future<Either<Failure, Unit>> init() async {
-    late final UserModel currentUser;
+    late final UserModel? currentUser;
     try {
       currentUser = await _remoteDatSource.currentUser();
       Logger.print('(repository) getCurrentUser() value: $currentUser');
-      _authorizationStatusStreamController.sink
-          .add(const Right(AuthStatus.authorized));
+
+      if (currentUser == null) {
+        _authorizationStatusStreamController.sink
+            .add(const Right(AuthStatus.unauthorized));
+      } else {
+        _authorizationStatusStreamController.sink
+            .add(const Right(AuthStatus.authorized));
+      }
+
       return const Right(unit);
     } catch (error) {
       Logger.error(error, event: '(repository) getting current user');
@@ -56,7 +63,8 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     try {
       await _remoteDatSource.signOut();
       return const Right(unit);
-    } catch (_) {
+    } catch (error) {
+      Logger.error(error, event: '(repository) signing out');
       return Left(UnknownFailure());
     }
   }
@@ -76,4 +84,19 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   @override
   Stream<Either<Failure, AuthStatus>> get authorizationStatus =>
       _authorizationStatusStreamController.stream;
+
+  @override
+  Future<Either<Failure, AuthStatus>> getLatestAuthStatus() async {
+    try {
+      final currentUser = await _remoteDatSource.currentUser();
+      Logger.print('(repository) getCurrentUser() value: $currentUser');
+
+      return Right(currentUser == null
+          ? AuthStatus.unauthorized
+          : AuthStatus.authorized);
+    } catch (error) {
+      Logger.error(error, event: '(repository) getting current user');
+      return Left(CacheFailure());
+    }
+  }
 }

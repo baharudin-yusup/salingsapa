@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:salingsapa/core/errors/failures.dart';
 import 'package:salingsapa/core/utils/logger.dart';
+import 'package:salingsapa/data/extensions/extensions.dart';
 import 'package:salingsapa/data/sources/contact_local_data_source.dart';
 import 'package:salingsapa/domain/entities/contact.dart';
 import 'package:salingsapa/domain/repositories/contact_repository.dart';
@@ -25,14 +26,7 @@ class ContactRepositoryImpl implements ContactRepository {
           await _remoteDataSource.getProfilePictureUrls();
 
       final entities = contactModels.map((model) {
-        var phoneNumber =
-            model.phoneNumber.replaceAll('-', '').replaceAll(' ', '');
-
-        if (phoneNumber.startsWith('0')) {
-          phoneNumber = '+62${phoneNumber.substring(1)}';
-        }
-        Logger.print('Old: ${model.phoneNumber}     New: $phoneNumber');
-        Logger.print(profilePictureUrls);
+        final phoneNumber = model.phoneNumber.toFormattedPhoneNumber();
         return Contact(
             name: model.name,
             phoneNumber: model.phoneNumber,
