@@ -87,17 +87,17 @@ android {
     flavorDimensions "default"
 
     productFlavors {
-        development {
+        dev {
             dimension "default"
             resValue "string", "app_name", "Salingsapa DEV"
             applicationIdSuffix ".dev"
         }
-        stagging {
+        stg {
             dimension "default"
             resValue "string", "app_name", "Salingsapa STG"
             applicationIdSuffix ".stg"
         }
-        production {
+        prod {
             dimension "default"
             resValue "string", "app_name", "Salingsapa"
             applicationIdSuffix ""
