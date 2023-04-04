@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:salingsapa/presentation/blocs/contact_list/contact_list_bloc.dart';
-import 'package:salingsapa/presentation/components/contact_card.dart';
-import 'package:salingsapa/presentation/components/intuitive_scaffold.dart';
-import 'package:salingsapa/presentation/screens/video_call_screen.dart';
-import 'package:salingsapa/presentation/services/theme_service.dart';
 
 import '../../../domain/entities/contact.dart';
+import '../../blocs/contact_list/contact_list_bloc.dart';
+import '../../components/contact_card.dart';
+import '../../components/intuitive_scaffold.dart';
 import '../../components/show_error_message.dart';
+import '../../services/theme_service.dart';
+import '../video_call_screen.dart';
 
 class ContactListScreen extends StatelessWidget {
   static const routeName = '/contacts';
@@ -18,11 +18,13 @@ class ContactListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ContactListBloc, ContactListState>(
+      bloc: context.read<ContactListBloc>()
+        ..add(const ContactListEvent.refreshPulled()),
       listener: (context, state) {
         state.maybeWhen(
             orElse: () {},
-            startVideoCallSuccess: (_) =>
-                Navigator.pushNamed(context, VideoCallScreen.routeName),
+            startVideoCallSuccess: (_, contact, __) => Navigator.pushNamed(
+                context, VideoCallScreen.routeName, arguments: contact),
             startVideoCallFailure: (errorMessage, _, __) =>
                 showErrorMessage(context, errorMessage));
       },

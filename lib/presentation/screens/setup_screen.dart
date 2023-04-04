@@ -2,16 +2,16 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:salingsapa/presentation/blocs/setup/setup_bloc.dart';
-import 'package:salingsapa/presentation/components/intuitive_scaffold.dart';
-import 'package:salingsapa/presentation/components/intuitive_textfield.dart';
-import 'package:salingsapa/presentation/screens/verify_otp_screen.dart';
-import 'package:salingsapa/presentation/services/navigator_service.dart';
-import 'package:salingsapa/presentation/services/theme_service.dart';
-import 'package:salingsapa/presentation/services/ui_service.dart';
-import 'package:salingsapa/presentation/utils/app_localizations.dart';
 
 import '../../injection_container.dart';
+import '../blocs/setup/setup_bloc.dart';
+import '../components/intuitive_scaffold.dart';
+import '../components/intuitive_textfield.dart';
+import '../services/navigator_service.dart';
+import '../services/theme_service.dart';
+import '../services/ui_service.dart';
+import '../utils/app_localizations.dart';
+import 'verify_otp_screen.dart';
 
 class SetupScreen extends StatelessWidget {
   static const routeName = '/setup';

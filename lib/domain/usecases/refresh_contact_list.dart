@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:salingsapa/core/errors/failures.dart';
-import 'package:salingsapa/core/interfaces/use_case.dart';
-import 'package:salingsapa/domain/entities/contact.dart';
-import 'package:salingsapa/domain/repositories/contact_repository.dart';
 
+import '../../core/errors/failures.dart';
+import '../../core/interfaces/use_case.dart';
 import '../../core/utils/logger.dart';
+import '../entities/contact.dart';
+import '../repositories/contact_repository.dart';
 
 class RefreshContactList extends NoParamUseCase<List<Contact>> {
   final ContactRepository _contactRepository;

@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:salingsapa/core/utils/logger.dart';
-import 'package:salingsapa/domain/repositories/setting_repository.dart';
 
 import '../../core/errors/failures.dart';
 import '../../core/interfaces/use_case.dart';
+import '../../core/utils/logger.dart';
+import '../repositories/setting_repository.dart';
 
 class IsFirstLaunchApp extends NoParamUseCase<bool> {
   final SettingRepository _repository;

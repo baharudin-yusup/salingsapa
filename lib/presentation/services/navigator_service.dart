@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
-import 'package:salingsapa/core/errors/failures.dart';
 
+import '../../core/errors/failures.dart';
 import '../../core/utils/logger.dart';
 
 abstract class NavigatorService {

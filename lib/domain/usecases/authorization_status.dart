@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:salingsapa/core/errors/failures.dart';
-import 'package:salingsapa/domain/entities/auth_status.dart';
 
+import '../../core/errors/failures.dart';
 import '../../core/interfaces/use_case.dart';
+import '../entities/auth_status.dart';
 import '../repositories/authentication_repository.dart';
 
 class GetAuthStatus extends NoParamUseCaseStreamSync<AuthStatus> {

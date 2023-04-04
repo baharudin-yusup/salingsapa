@@ -1,8 +1,8 @@
 import 'package:flutter_contacts/flutter_contacts.dart';
-import 'package:salingsapa/core/errors/exceptions.dart';
-import 'package:salingsapa/data/models/contact_model.dart';
 
+import '../../core/errors/exceptions.dart';
 import '../../core/utils/logger.dart';
+import '../models/contact_model.dart';
 
 abstract class ContactLocalDataSource {
   Future<List<ContactModel>> getContactList();
@@ -15,12 +15,16 @@ class ContactLocalDataSourceImpl implements ContactLocalDataSource {
   Future<List<ContactModel>> getContactList() async {
     try {
       final contacts = await FlutterContacts.getContacts(withProperties: true);
+
+      if (contacts.isEmpty) {
+        return [];
+      }
       return contacts
+          .where((element) => element.phones.isNotEmpty)
           .map(
             (e) => ContactModel(
               name: e.displayName,
               phoneNumber: e.phones.first.number,
-              profilePictureUrl: null,
             ),
           )
           .toList();

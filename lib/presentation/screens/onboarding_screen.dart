@@ -2,43 +2,39 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:salingsapa/presentation/blocs/introduction/introduction_cubit.dart';
-import 'package:salingsapa/presentation/services/theme_service.dart';
 
-import '../../injection_container.dart';
+import '../blocs/introduction/introduction_cubit.dart';
+import '../services/theme_service.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<IntroductionCubit>(
-      create: (_) => sl(),
-      child: BlocBuilder<IntroductionCubit, IntroductionState>(
-        builder: (context, state) {
-          final IntroductionCubit cubit = context.read();
-          return IntroductionScreen(
-            pages: buildPages(context),
-            skip: Text(AppLocalizations.of(context)!.skip),
-            next: Icon(Icons.adaptive.arrow_forward_rounded),
-            done: Text(AppLocalizations.of(context)!.done),
-            onDone: cubit.onDoneButtonPressed,
-            showDoneButton: true,
-            showSkipButton: true,
-            dotsDecorator: DotsDecorator(
-              size: const Size.square(10.0),
-              activeSize: const Size(20.0, 10.0),
-              activeColor: context.colorScheme().secondary,
-              color: context.colorScheme().secondary.withOpacity(0.3),
-              spacing: const EdgeInsets.symmetric(
-                  horizontal: IntuitiveUiConstant.tinySpace),
-              activeShape: RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.circular(IntuitiveUiConstant.normalRadius)),
-            ),
-          );
-        },
-      ),
+    return BlocBuilder<IntroductionCubit, IntroductionState>(
+      builder: (context, state) {
+        final IntroductionCubit cubit = context.read();
+        return IntroductionScreen(
+          pages: buildPages(context),
+          skip: Text(AppLocalizations.of(context)!.skip),
+          next: Icon(Icons.adaptive.arrow_forward_rounded),
+          done: Text(AppLocalizations.of(context)!.done),
+          onDone: cubit.onDoneButtonPressed,
+          showDoneButton: true,
+          showSkipButton: true,
+          dotsDecorator: DotsDecorator(
+            size: const Size.square(10.0),
+            activeSize: const Size(20.0, 10.0),
+            activeColor: context.colorScheme().secondary,
+            color: context.colorScheme().secondary.withOpacity(0.3),
+            spacing: const EdgeInsets.symmetric(
+                horizontal: IntuitiveUiConstant.tinySpace),
+            activeShape: RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.circular(IntuitiveUiConstant.normalRadius)),
+          ),
+        );
+      },
     );
   }
 
@@ -50,6 +46,7 @@ class OnboardingScreen extends StatelessWidget {
       titleTextStyle: context.textTheme().titleLarge!,
       titlePadding: EdgeInsets.zero,
       bodyPadding: const EdgeInsets.all(IntuitiveUiConstant.largeSpace),
+      pageColor: context.colorScheme().background,
     );
 
     return [

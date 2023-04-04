@@ -35,5 +35,8 @@
   "name": "Name",
   "nameTextFiledHint": "Input Your Name",
   "signOut": "Sign Out",
-  "ok": "OK"
+  "ok": "OK",
+  "incomingVideoCall": "Tap Here to Join Video Call",
+  "callEnded": "Call Ended",
+  "unknownCallerName": "Unknown Caller Name"
 }

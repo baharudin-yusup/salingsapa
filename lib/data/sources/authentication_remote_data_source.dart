@@ -1,11 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:salingsapa/core/errors/exceptions.dart';
-import 'package:salingsapa/core/utils/logger.dart';
-import 'package:salingsapa/data/models/user_model.dart';
+
+import '../../core/errors/exceptions.dart';
+import '../../core/utils/logger.dart';
+import '../models/user_model.dart';
 
 abstract class AuthenticationRemoteDatSource {
-  Future<UserModel> currentUser();
+  Future<UserModel?> currentUser();
 
   Future<UserModel> verifyPhoneNumber({required String phoneNumber});
 
@@ -24,13 +25,8 @@ class AuthenticationRemoteDatSourceImpl
       : _verificationId = '';
 
   @override
-  Future<UserModel> currentUser() async {
+  Future<UserModel?> currentUser() async {
     final currentUser = _auth.currentUser;
-
-    if (currentUser == null) {
-      throw ServerException(message: 'unauthenticated');
-    }
-
     return currentUser;
   }
 
@@ -86,8 +82,9 @@ class AuthenticationRemoteDatSourceImpl
   Future<void> signOut() async {
     try {
       await _auth.signOut();
+      Logger.print('Sign out success!');
     } catch (error) {
-      Logger.error(error, event: 'signing out');
+      Logger.error(error, event: '(data source) signing out');
       throw ServerException();
     }
   }
@@ -112,7 +109,8 @@ class AuthenticationRemoteDatSourceImpl
 
   Future<User> _updateInitialData(UserModel user) async {
     final collectionRef = _firestore.collection('users');
-    final snapshot = await collectionRef.where('id', isEqualTo: user.uid).get();
+    final snapshot =
+        await collectionRef.where('userId', isEqualTo: user.uid).get();
 
     if (snapshot.size > 1) {
       Logger.error('User id: ${user.uid} have more than 1 data in firestore',

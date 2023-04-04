@@ -8,6 +8,7 @@ class IntuitiveUiConstant {
   static const hugeSpace = 40.0;
 
   static const normalRadius = 16.0;
+  static const largeRadius = 32.0;
 }
 
 extension ThemeContext on BuildContext {

@@ -10,6 +10,11 @@ A Final Exam Project
 flutter build ios --flavor development --target=lib/main_dev.dart
 ````
 
+#### Build Android Appbundle Dev
+````shell
+flutter build appbundle --flavor development --target=lib/main_dev.dart
+````
+
 ### Firebase update commands
 #### Dev flavor
 ```shell
@@ -18,6 +23,15 @@ flutterfire config \
 --out=lib/firebase_options_dev.dart \
 --ios-bundle-id=dev.baharudin.salingsapa-dev \
 --android-app-id=dev.baharudin.salingsapa.dev
+```
+
+#### Prod flavor
+```shell
+flutterfire config \
+--project=salingsapa-project \
+--out=lib/firebase_options_prod.dart \
+--ios-bundle-id=dev.baharudin.salingsapa \
+--android-package-name=dev.baharudin.salingsapa
 ```
 
 ### App Localization

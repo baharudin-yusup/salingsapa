@@ -21,6 +21,12 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 apply plugin: 'com.android.application'
 // START: FlutterFire Configuration
 apply plugin: 'com.google.gms.google-services'
@@ -61,20 +67,37 @@ android {
         multiDexEnabled true
     }
 
+    signingConfigs {
+        release {
+            // CI=true is exported by Codemagic
+            if (System.getenv()["CI"]) {
+                storeFile file(System.getenv()["CM_KEYSTORE_PATH"])
+                storePassword System.getenv()["CM_KEYSTORE_PASSWORD"]
+                keyAlias System.getenv()["CM_KEY_ALIAS"]
+                keyPassword System.getenv()["CM_KEY_PASSWORD"]
+            } else {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+                storePassword keystoreProperties['storePassword']
+            }
+        }
+    }
+
     flavorDimensions "default"
 
     productFlavors {
-        development {
+        dev {
             dimension "default"
             resValue "string", "app_name", "Salingsapa DEV"
             applicationIdSuffix ".dev"
         }
-        stagging {
+        stg {
             dimension "default"
             resValue "string", "app_name", "Salingsapa STG"
             applicationIdSuffix ".stg"
         }
-        production {
+        prod {
             dimension "default"
             resValue "string", "app_name", "Salingsapa"
             applicationIdSuffix ""
@@ -84,9 +107,7 @@ android {
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
         }
     }
 }

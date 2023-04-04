@@ -1,10 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:salingsapa/core/errors/failures.dart';
-import 'package:salingsapa/domain/entities/auth_status.dart';
 
+import '../../../core/errors/failures.dart';
 import '../../../core/utils/logger.dart';
+import '../../../domain/entities/auth_status.dart';
 import '../../../domain/usecases/authorization_status.dart';
+import '../../../domain/usecases/stream_current_user.dart';
 
 part 'authorization_bloc.freezed.dart';
 part 'authorization_event.dart';
@@ -12,8 +13,9 @@ part 'authorization_state.dart';
 
 class AuthorizationBloc extends Bloc<AuthorizationEvent, AuthorizationState> {
   final GetAuthStatus _getAuthStatus;
+  final StreamCurrentUser _streamCurrentUser;
 
-  AuthorizationBloc(this._getAuthStatus)
+  AuthorizationBloc(this._getAuthStatus, this._streamCurrentUser)
       : super(const AuthorizationState.initial()) {
     on<_AuthStatusChanged>(_onAuthStatusChanged);
 
@@ -24,20 +26,30 @@ class AuthorizationBloc extends Bloc<AuthorizationEvent, AuthorizationState> {
           (status) =>
               add(AuthorizationEvent.authStatusChanged(status: status)));
     });
+
+    _streamCurrentUser().listen((result) {
+      result.fold(
+        (_) => add(const AuthorizationEvent.authStatusChanged(
+            status: AuthStatus.unauthorized)),
+        (_) => add(const AuthorizationEvent.authStatusChanged(
+            status: AuthStatus.authorized)),
+      );
+    });
   }
 
   void _onAuthStatusChanged(
       _AuthStatusChanged event, Emitter<AuthorizationState> emit) {
     final failure = event.failure;
     if (failure != null) {
-      Logger.print('Current authorization status: $failure');
+      Logger.print('(bloc) current authorization status: $failure');
       emit(AuthorizationState.changeAuthStatusFailure(failure));
     }
 
-    final status = event.status;
-    if (status != null) {
-      Logger.print('Current authorization status: $status');
-      emit(AuthorizationState.changeAuthStatusSuccess(status));
+    final newStatus = event.status;
+
+    if (newStatus != null) {
+      Logger.print('(bloc) current authorization status: $newStatus');
+      emit(AuthorizationState.changeAuthStatusSuccess(newStatus));
     }
   }
 }

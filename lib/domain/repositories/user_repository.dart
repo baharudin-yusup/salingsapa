@@ -1,9 +1,9 @@
 import 'dart:typed_data';
 
 import 'package:dartz/dartz.dart';
-import 'package:salingsapa/core/interfaces/return_type.dart';
 
 import '../../core/errors/failures.dart';
+import '../../core/interfaces/return_type.dart';
 import '../entities/user.dart';
 
 abstract class UserRepository {
@@ -20,5 +20,7 @@ abstract class UserRepository {
     required Uint8List imageBytes,
   });
 
-  Stream<RepoResponse<User>> get currentUser;
+  Stream<RepoResponse<User>> get onUserStateChanged;
+
+  Future<RepoResponse<User>> getCurrentUser();
 }

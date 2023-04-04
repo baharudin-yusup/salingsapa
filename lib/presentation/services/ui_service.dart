@@ -3,10 +3,10 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:salingsapa/presentation/services/navigator_service.dart';
-import 'package:salingsapa/presentation/services/theme_service.dart';
 
 import '../../core/utils/logger.dart';
+import 'navigator_service.dart';
+import 'theme_service.dart';
 
 abstract class UiService {
   void showLoading();

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:salingsapa/presentation/components/intuitive_otp.dart';
-import 'package:salingsapa/presentation/screens/skeleton_screen.dart';
-import 'package:salingsapa/presentation/utils/app_localizations.dart';
 
 import '../../injection_container.dart';
 import '../blocs/setup/setup_bloc.dart';
+import '../components/intuitive_otp.dart';
 import '../components/intuitive_scaffold.dart';
 import '../services/navigator_service.dart';
 import '../services/theme_service.dart';
 import '../services/ui_service.dart';
+import '../utils/app_localizations.dart';
+import 'skeleton_screen.dart';
 
 class VerifyOtpScreen extends StatelessWidget {
   static const routeName = '/verify-otp';
