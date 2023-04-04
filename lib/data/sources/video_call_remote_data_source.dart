@@ -5,16 +5,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:salingsapa/core/errors/exceptions.dart';
-import 'package:salingsapa/data/extensions/extensions.dart';
-import 'package:salingsapa/data/models/video_call_invitation_model.dart';
-import 'package:salingsapa/domain/entities/video_call_invitation.dart';
-import 'package:salingsapa/domain/entities/video_call_status.dart';
-import 'package:salingsapa/domain/entities/video_call_user_update_info.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../core/errors/exceptions.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/contact.dart';
+import '../../domain/entities/video_call_invitation.dart';
+import '../../domain/entities/video_call_status.dart';
+import '../../domain/entities/video_call_user_update_info.dart';
+import '../extensions/extensions.dart';
+import '../models/video_call_invitation_model.dart';
 
 abstract class VideoCallRemoteDataSource {
   void setEngine(RtcEngine engine);
@@ -250,22 +250,22 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
     });
 
     // Set the format of raw audio data.
-    int SAMPLE_RATE = 16000, SAMPLE_NUM_OF_CHANNEL = 1, SAMPLES_PER_CALL = 1024;
+    int sampleRate = 16000, sampleNumOfChannel = 1, samplesPerCall = 1024;
 
     _rtcEngine.setRecordingAudioFrameParameters(
-        sampleRate: SAMPLE_RATE,
-        channel: SAMPLE_NUM_OF_CHANNEL,
+        sampleRate: sampleRate,
+        channel: sampleNumOfChannel,
         mode: RawAudioFrameOpModeType.rawAudioFrameOpModeReadWrite,
-        samplesPerCall: SAMPLES_PER_CALL);
+        samplesPerCall: samplesPerCall);
     _rtcEngine.setPlaybackAudioFrameParameters(
-        sampleRate: SAMPLE_RATE,
-        channel: SAMPLE_NUM_OF_CHANNEL,
+        sampleRate: sampleRate,
+        channel: sampleNumOfChannel,
         mode: RawAudioFrameOpModeType.rawAudioFrameOpModeReadWrite,
-        samplesPerCall: SAMPLES_PER_CALL);
+        samplesPerCall: samplesPerCall);
     _rtcEngine.setMixedAudioFrameParameters(
-        sampleRate: SAMPLE_RATE,
-        channel: SAMPLE_NUM_OF_CHANNEL,
-        samplesPerCall: SAMPLES_PER_CALL);
+        sampleRate: sampleRate,
+        channel: sampleNumOfChannel,
+        samplesPerCall: samplesPerCall);
 
     _rtcEngine.getMediaEngine().registerAudioFrameObserver(audioFrameObserver);
     _rtcEngine.getMediaEngine().registerVideoFrameObserver(videoFrameObserver);

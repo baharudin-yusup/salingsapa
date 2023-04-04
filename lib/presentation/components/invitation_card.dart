@@ -2,11 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:intl/intl.dart';
-import 'package:salingsapa/domain/entities/video_call_invitation.dart';
-import 'package:salingsapa/presentation/services/theme_service.dart';
-import 'package:salingsapa/presentation/utils/app_localizations.dart';
 
 import '../../domain/entities/contact.dart';
+import '../../domain/entities/video_call_invitation.dart';
+import '../services/theme_service.dart';
+import '../utils/app_localizations.dart';
 
 class InvitationCard extends StatelessWidget {
   final Contact? callerContact;

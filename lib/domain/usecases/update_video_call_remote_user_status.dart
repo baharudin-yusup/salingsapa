@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:salingsapa/core/errors/failures.dart';
-import 'package:salingsapa/core/interfaces/use_case.dart';
-import 'package:salingsapa/domain/entities/video_call_invitation.dart';
-import 'package:salingsapa/domain/repositories/video_call_repository.dart';
+
+import '../../core/errors/failures.dart';
+import '../../core/interfaces/use_case.dart';
+import '../entities/video_call_invitation.dart';
+import '../repositories/video_call_repository.dart';
 
 class UpdateVideoCallRemoteUserStatus
     extends UseCase<VideoCallInvitation, Unit> {

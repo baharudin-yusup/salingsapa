@@ -1,13 +1,13 @@
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:salingsapa/presentation/blocs/video_call/video_call_bloc.dart';
-import 'package:salingsapa/presentation/blocs/video_call_control/video_call_control_bloc.dart';
-import 'package:salingsapa/presentation/components/intuitive_circle_icon_button.dart';
-import 'package:salingsapa/presentation/components/intuitive_scaffold.dart';
-import 'package:salingsapa/presentation/services/theme_service.dart';
 
 import '../../core/utils/logger.dart';
+import '../blocs/video_call/video_call_bloc.dart';
+import '../blocs/video_call_control/video_call_control_bloc.dart';
+import '../components/intuitive_circle_icon_button.dart';
+import '../components/intuitive_scaffold.dart';
+import '../services/theme_service.dart';
 
 class VideoCallScreen extends StatelessWidget {
   static const routeName = '/video-call';

@@ -1,4 +1,4 @@
-import 'package:salingsapa/core/envs/env.dart';
+import 'env.dart';
 
 class DevEnv implements Env {
   @override

@@ -1,9 +1,10 @@
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:dartz/dartz.dart';
-import 'package:salingsapa/core/interfaces/return_type.dart';
-import 'package:salingsapa/domain/entities/contact.dart';
-import 'package:salingsapa/domain/entities/video_call_invitation.dart';
-import 'package:salingsapa/domain/entities/video_call_user_update_info.dart';
+
+import '../../core/interfaces/return_type.dart';
+import '../entities/contact.dart';
+import '../entities/video_call_invitation.dart';
+import '../entities/video_call_user_update_info.dart';
 
 abstract class VideoCallRepository {
   Future<RepoResponse<Unit>> init();

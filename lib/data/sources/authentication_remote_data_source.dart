@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:salingsapa/core/errors/exceptions.dart';
-import 'package:salingsapa/core/utils/logger.dart';
-import 'package:salingsapa/data/models/user_model.dart';
+
+import '../../core/errors/exceptions.dart';
+import '../../core/utils/logger.dart';
+import '../models/user_model.dart';
 
 abstract class AuthenticationRemoteDatSource {
   Future<UserModel?> currentUser();

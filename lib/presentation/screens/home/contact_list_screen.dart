@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:salingsapa/presentation/blocs/contact_list/contact_list_bloc.dart';
-import 'package:salingsapa/presentation/components/contact_card.dart';
-import 'package:salingsapa/presentation/components/intuitive_scaffold.dart';
-import 'package:salingsapa/presentation/screens/video_call_screen.dart';
-import 'package:salingsapa/presentation/services/theme_service.dart';
 
 import '../../../domain/entities/contact.dart';
+import '../../blocs/contact_list/contact_list_bloc.dart';
+import '../../components/contact_card.dart';
+import '../../components/intuitive_scaffold.dart';
 import '../../components/show_error_message.dart';
+import '../../services/theme_service.dart';
+import '../video_call_screen.dart';
 
 class ContactListScreen extends StatelessWidget {
   static const routeName = '/contacts';

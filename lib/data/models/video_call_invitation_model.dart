@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:salingsapa/domain/entities/video_call_invitation.dart';
+
+import '../../domain/entities/video_call_invitation.dart';
 
 part 'video_call_invitation_model.g.dart';
 

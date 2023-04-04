@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:salingsapa/domain/entities/video_call_status.dart';
+
+import 'video_call_status.dart';
 
 class VideoCallUserUpdateInfo extends Equatable {
   final VideoCallStatus? status;

@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:salingsapa/domain/entities/user.dart';
 
 import '../../core/errors/failures.dart';
 import '../entities/auth_status.dart';
+import '../entities/user.dart';
 
 abstract class AuthenticationRepository {
   Future<Either<Failure, User>> verifyPhoneNumber(

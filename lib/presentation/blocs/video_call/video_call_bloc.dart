@@ -1,18 +1,19 @@
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:salingsapa/core/utils/logger.dart';
-import 'package:salingsapa/domain/entities/contact.dart';
-import 'package:salingsapa/domain/entities/video_call_invitation.dart';
-import 'package:salingsapa/domain/entities/video_call_status.dart';
-import 'package:salingsapa/domain/entities/video_call_user_update_info.dart';
-import 'package:salingsapa/domain/usecases/get_video_call_engine.dart';
-import 'package:salingsapa/domain/usecases/init_video_call.dart';
-import 'package:salingsapa/domain/usecases/join_video_call.dart';
-import 'package:salingsapa/domain/usecases/leave_video_call.dart';
-import 'package:salingsapa/domain/usecases/start_video_call.dart';
-import 'package:salingsapa/domain/usecases/stream_video_call_status.dart';
-import 'package:salingsapa/domain/usecases/update_video_call_remote_user_status.dart';
+
+import '../../../core/utils/logger.dart';
+import '../../../domain/entities/contact.dart';
+import '../../../domain/entities/video_call_invitation.dart';
+import '../../../domain/entities/video_call_status.dart';
+import '../../../domain/entities/video_call_user_update_info.dart';
+import '../../../domain/usecases/get_video_call_engine.dart';
+import '../../../domain/usecases/init_video_call.dart';
+import '../../../domain/usecases/join_video_call.dart';
+import '../../../domain/usecases/leave_video_call.dart';
+import '../../../domain/usecases/start_video_call.dart';
+import '../../../domain/usecases/stream_video_call_status.dart';
+import '../../../domain/usecases/update_video_call_remote_user_status.dart';
 
 part 'video_call_bloc.freezed.dart';
 part 'video_call_event.dart';
@@ -116,8 +117,7 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
         remoteUid: state.remoteUid));
 
     if (state.invitation != null) {
-      final updateVideoCallRemoteUserStatusResult =
-          await _updateVideoCallRemoteUserStatus(state.invitation!);
+      await _updateVideoCallRemoteUserStatus(state.invitation!);
     }
   }
 
@@ -176,8 +176,7 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
         remoteUid: invitation.callerUid));
 
     if (state.invitation != null) {
-      final updateVideoCallRemoteUserStatusResult =
-          await _updateVideoCallRemoteUserStatus(state.invitation!);
+      await _updateVideoCallRemoteUserStatus(state.invitation!);
     }
   }
 

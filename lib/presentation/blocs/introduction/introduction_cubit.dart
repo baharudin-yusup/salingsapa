@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
-import 'package:salingsapa/presentation/screens/setup_screen.dart';
-import 'package:salingsapa/presentation/services/ui_service.dart';
 
 import '../../../domain/usecases/usecases.dart';
+import '../../screens/setup_screen.dart';
 import '../../services/navigator_service.dart';
+import '../../services/ui_service.dart';
 
 part 'introduction_state.dart';
 

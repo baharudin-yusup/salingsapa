@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:salingsapa/core/errors/failures.dart';
-import 'package:salingsapa/core/interfaces/use_case.dart';
-import 'package:salingsapa/domain/repositories/authentication_repository.dart';
+
+import '../../core/errors/failures.dart';
+import '../../core/interfaces/use_case.dart';
+import '../repositories/authentication_repository.dart';
 
 class SignOut extends NoParamUseCase<Unit> {
   final AuthenticationRepository _repository;

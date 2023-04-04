@@ -1,14 +1,15 @@
 import 'package:dartz/dartz.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:salingsapa/core/errors/exceptions.dart';
-import 'package:salingsapa/core/errors/failures.dart';
-import 'package:salingsapa/core/utils/logger.dart';
-import 'package:salingsapa/data/models/user_model.dart';
-import 'package:salingsapa/data/sources/authentication_local_data_source.dart';
-import 'package:salingsapa/data/sources/authentication_remote_data_source.dart';
-import 'package:salingsapa/domain/entities/auth_status.dart';
-import 'package:salingsapa/domain/entities/user.dart';
-import 'package:salingsapa/domain/repositories/authentication_repository.dart';
+
+import '../../core/errors/exceptions.dart';
+import '../../core/errors/failures.dart';
+import '../../core/utils/logger.dart';
+import '../../domain/entities/auth_status.dart';
+import '../../domain/entities/user.dart';
+import '../../domain/repositories/authentication_repository.dart';
+import '../models/user_model.dart';
+import '../sources/authentication_local_data_source.dart';
+import '../sources/authentication_remote_data_source.dart';
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository {
   final BehaviorSubject<Either<Failure, AuthStatus>>
@@ -21,6 +22,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
 
   @override
   Future<Either<Failure, Unit>> init() async {
+    _localDataSource.init();
     late final UserModel? currentUser;
     try {
       currentUser = await _remoteDatSource.currentUser();
