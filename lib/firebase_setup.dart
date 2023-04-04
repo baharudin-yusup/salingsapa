@@ -1,19 +1,11 @@
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-import 'core/envs/dev_env_impl.dart';
-import 'firebase_options_dev.dart';
-import 'injection_container.dart' as di;
-import 'presentation/screens/skeleton_screen.dart';
 import 'presentation/services/notification_service.dart';
 
-Future<void> main() async {
-  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+Future<void> setupFirebase({FirebaseOptions? options}) async {
+  await Firebase.initializeApp(options: options);
   await FirebaseAppCheck.instance.activate(
     // Default provider for Android is the Play Integrity provider. You can use the "AndroidProvider" enum to choose
     // your preferred provider. Choose from:
@@ -23,7 +15,4 @@ Future<void> main() async {
     androidProvider: AndroidProvider.playIntegrity,
   );
   FirebaseMessaging.onBackgroundMessage(handleBackgroundNotification);
-
-  await di.setup(DevEnv());
-  createApp();
 }

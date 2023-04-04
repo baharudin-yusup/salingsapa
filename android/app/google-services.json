@@ -7,6 +7,58 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:721041824886:android:a080189fe11a56348a5357",
+        "android_client_info": {
+          "package_name": "dev.baharudin.salingsapa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "721041824886-4vgdig9r602549j82su1gk5b0kfj94e8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.baharudin.salingsapa",
+            "certificate_hash": "55c1dc746496ffbaab9a47687b95263fc83ec31b"
+          }
+        },
+        {
+          "client_id": "721041824886-dqaqlsbm3ejpkql0eguji25djmi92b1d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.baharudin.salingsapa",
+            "certificate_hash": "546c75312363550552f1c737f7150980e18108bc"
+          }
+        },
+        {
+          "client_id": "721041824886-413cii6ih42mdvumse9sg0mgipj9cl5m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfazNdjjuj3XnclxdyVhJdMueY-6fm_No"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "721041824886-413cii6ih42mdvumse9sg0mgipj9cl5m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "721041824886-77aee81ehgcrff08mo61bf168fgp4a7q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.baharudin.salingsapa"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:721041824886:android:02fa4f202301d0cd8a5357",
         "android_client_info": {
           "package_name": "dev.baharudin.salingsapa.dev"
@@ -39,10 +91,10 @@
               "client_type": 3
             },
             {
-              "client_id": "721041824886-km6ghttcsjjbsqq4o2s1mbrcoai6ibvc.apps.googleusercontent.com",
+              "client_id": "721041824886-77aee81ehgcrff08mo61bf168fgp4a7q.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "dev.baharudin.salingsapa-dev"
+                "bundle_id": "dev.baharudin.salingsapa"
               }
             }
           ]
