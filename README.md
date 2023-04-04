@@ -25,6 +25,15 @@ flutterfire config \
 --android-app-id=dev.baharudin.salingsapa.dev
 ```
 
+#### Prod flavor
+```shell
+flutterfire config \
+--project=salingsapa-project \
+--out=lib/firebase_options_prod.dart \
+--ios-bundle-id=dev.baharudin.salingsapa \
+--android-package-name=dev.baharudin.salingsapa
+```
+
 ### App Localization
 ```shell
 flutter gen-l10n
