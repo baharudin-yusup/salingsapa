@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:salingsapa/presentation/blocs/home/home_cubit.dart';
-import 'package:salingsapa/presentation/components/intuitive_scaffold.dart';
-import 'package:salingsapa/presentation/screens/home/account_screen.dart';
-import 'package:salingsapa/presentation/screens/home/recent_call_screen.dart';
+
+import '../../blocs/home/home_cubit.dart';
+import '../../components/intuitive_scaffold.dart';
+import 'account_screen.dart';
+import 'recent_call_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

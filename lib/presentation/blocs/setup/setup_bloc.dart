@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:salingsapa/core/errors/failures.dart';
 
+import '../../../core/errors/failures.dart';
 import '../../../core/utils/logger.dart';
 import '../../../domain/usecases/verify_otp.dart';
 import '../../../domain/usecases/verify_phone_number.dart';

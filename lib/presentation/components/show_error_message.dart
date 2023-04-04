@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:salingsapa/presentation/utils/app_localizations.dart';
+
+import '../utils/app_localizations.dart';
 
 void showErrorMessage(BuildContext context, String errorMessage) {
   showDialog(

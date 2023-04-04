@@ -3,20 +3,20 @@ import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:salingsapa/data/extensions/to_phone_number.dart';
-import 'package:salingsapa/domain/entities/video_call_invitation.dart';
-import 'package:salingsapa/presentation/blocs/contact_list/contact_list_bloc.dart';
-import 'package:salingsapa/presentation/blocs/recent_call/recent_call_bloc.dart';
-import 'package:salingsapa/presentation/components/intuitive_scaffold.dart';
-import 'package:salingsapa/presentation/components/intuitive_scaffold/intuitive_floating_action_button.dart';
-import 'package:salingsapa/presentation/components/invitation_card.dart';
-import 'package:salingsapa/presentation/screens/video_call_screen.dart';
-import 'package:salingsapa/presentation/services/theme_service.dart';
-import 'package:salingsapa/presentation/utils/app_localizations.dart';
 
 import '../../../core/errors/failures.dart';
+import '../../../data/extensions/to_phone_number.dart';
 import '../../../domain/entities/call_info.dart';
 import '../../../domain/entities/contact.dart';
+import '../../../domain/entities/video_call_invitation.dart';
+import '../../blocs/contact_list/contact_list_bloc.dart';
+import '../../blocs/recent_call/recent_call_bloc.dart';
+import '../../components/intuitive_scaffold.dart';
+import '../../components/intuitive_scaffold/intuitive_floating_action_button.dart';
+import '../../components/invitation_card.dart';
+import '../../services/theme_service.dart';
+import '../../utils/app_localizations.dart';
+import '../video_call_screen.dart';
 
 class RecentCallScreen extends StatelessWidget {
   static const routeName = '/history';

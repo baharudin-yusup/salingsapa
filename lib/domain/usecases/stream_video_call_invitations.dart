@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:salingsapa/core/utils/logger.dart';
-import 'package:salingsapa/domain/entities/video_call_invitation.dart';
-import 'package:salingsapa/domain/repositories/video_call_repository.dart';
 
 import '../../core/errors/failures.dart';
 import '../../core/interfaces/use_case.dart';
+import '../../core/utils/logger.dart';
+import '../entities/video_call_invitation.dart';
+import '../repositories/video_call_repository.dart';
 
 class StreamVideoCallInvitations
     extends NoParamUseCaseStreamSync<List<VideoCallInvitation>> {

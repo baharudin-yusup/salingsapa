@@ -3,9 +3,9 @@ import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:salingsapa/core/errors/exceptions.dart';
-import 'package:salingsapa/core/utils/logger.dart';
 
+import '../../core/errors/exceptions.dart';
+import '../../core/utils/logger.dart';
 import '../models/user_model.dart';
 
 abstract class UserRemoteDataSource {
@@ -82,7 +82,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       final profilePictureRef =
           storageRef.child('${currentUser.uid}/profile-picture.jpeg');
 
-      final metadata = SettableMetadata(contentType: "image/jpeg");
+      final metadata = SettableMetadata(contentType: 'image/jpeg');
       final uploadTask = await profilePictureRef.putData(imageBytes, metadata);
 
       if (uploadTask.state != TaskState.success) {

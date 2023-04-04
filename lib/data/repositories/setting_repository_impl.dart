@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:salingsapa/core/errors/failures.dart';
-import 'package:salingsapa/core/utils/logger.dart';
-import 'package:salingsapa/data/sources/setting_local_data_source.dart';
-import 'package:salingsapa/domain/repositories/setting_repository.dart';
+
+import '../../core/errors/failures.dart';
+import '../../core/utils/logger.dart';
+import '../../domain/repositories/setting_repository.dart';
+import '../sources/setting_local_data_source.dart';
 
 class SettingRepositoryImpl implements SettingRepository {
   final SettingLocalDataSource _localDataSource;

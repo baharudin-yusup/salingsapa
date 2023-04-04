@@ -5,30 +5,30 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:salingsapa/domain/entities/auth_status.dart';
-import 'package:salingsapa/domain/entities/contact.dart';
-import 'package:salingsapa/domain/entities/video_call_invitation.dart';
-import 'package:salingsapa/presentation/blocs/account/account_bloc.dart';
-import 'package:salingsapa/presentation/blocs/authorization/authorization_bloc.dart';
-import 'package:salingsapa/presentation/blocs/introduction/introduction_cubit.dart';
-import 'package:salingsapa/presentation/blocs/video_call/video_call_bloc.dart';
-import 'package:salingsapa/presentation/blocs/video_call_control/video_call_control_bloc.dart';
-import 'package:salingsapa/presentation/screens/home/contact_list_screen.dart';
-import 'package:salingsapa/presentation/screens/onboarding_screen.dart';
-import 'package:salingsapa/presentation/screens/setting_screen.dart';
-import 'package:salingsapa/presentation/screens/setup_screen.dart';
-import 'package:salingsapa/presentation/screens/verify_otp_screen.dart';
-import 'package:salingsapa/presentation/screens/video_call_screen.dart';
-import 'package:salingsapa/presentation/services/navigator_service.dart';
 
+import '../../domain/entities/auth_status.dart';
+import '../../domain/entities/contact.dart';
+import '../../domain/entities/video_call_invitation.dart';
 import '../../injection_container.dart';
+import '../blocs/account/account_bloc.dart';
+import '../blocs/authorization/authorization_bloc.dart';
 import '../blocs/contact_list/contact_list_bloc.dart';
 import '../blocs/home/home_cubit.dart';
+import '../blocs/introduction/introduction_cubit.dart';
 import '../blocs/recent_call/recent_call_bloc.dart';
 import '../blocs/setup/setup_bloc.dart';
+import '../blocs/video_call/video_call_bloc.dart';
+import '../blocs/video_call_control/video_call_control_bloc.dart';
+import '../services/navigator_service.dart';
 import '../services/notification_service.dart';
+import 'home/contact_list_screen.dart';
 import 'home/home_screen.dart';
 import 'home/recent_call_screen.dart';
+import 'onboarding_screen.dart';
+import 'setting_screen.dart';
+import 'setup_screen.dart';
+import 'verify_otp_screen.dart';
+import 'video_call_screen.dart';
 
 void createApp() {
   runApp(const RootScreen());
@@ -76,7 +76,6 @@ class _RootScreenState extends State<RootScreen> {
                 BlocProvider<VideoCallBloc>(create: (_) {
                   final VideoCallBloc bloc = sl();
                   final argument = ModalRoute.of(context)!.settings.arguments;
-                  late final VideoCallEvent event;
                   if (argument is VideoCallInvitation) {
                     return bloc
                       ..add(VideoCallEvent.setInvitationStarted(argument))

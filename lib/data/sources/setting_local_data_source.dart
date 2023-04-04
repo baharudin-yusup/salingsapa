@@ -1,7 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:salingsapa/core/utils/logger.dart';
+
+import '../../core/utils/logger.dart';
 
 abstract class SettingLocalDataSource {
   Future<bool> getIsFirstLaunchApp();

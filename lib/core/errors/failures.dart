@@ -21,5 +21,5 @@ class CacheFailure extends Failure {}
 class PermissionFailure extends Failure {
   final Either<Permission, List<Permission>> permission;
 
-  PermissionFailure(this.permission);
+  const PermissionFailure(this.permission);
 }

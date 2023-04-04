@@ -1,7 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:salingsapa/domain/entities/contact.dart';
-import 'package:salingsapa/presentation/services/theme_service.dart';
+
+import '../../domain/entities/contact.dart';
+import '../services/theme_service.dart';
 
 class ContactCard extends StatelessWidget {
   final Contact contact;

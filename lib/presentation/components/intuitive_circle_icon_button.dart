@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:salingsapa/presentation/services/theme_service.dart';
+
+import '../services/theme_service.dart';
 
 class IntuitiveCircleIconButton extends StatelessWidget {
   final bool isActive;
@@ -13,7 +14,7 @@ class IntuitiveCircleIconButton extends StatelessWidget {
   final Color? activeColor;
   final Color? passiveColor;
 
-  IntuitiveCircleIconButton({
+  const IntuitiveCircleIconButton({
     Key? key,
     required this.isActive,
     required this.activeIconData,

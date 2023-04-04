@@ -6,6 +6,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../models/auth_token_model.dart';
 
 abstract class AuthenticationLocalDataSource {
+  Future<void> init();
   Future<bool> isAuthTokenValid();
 
   Future<void> setAuthToken(AuthTokenModel authTokenModel);
@@ -40,4 +41,7 @@ class AuthenticationLocalDataSourceImpl
     await _plugin.write(
         key: kAuthToken, value: jsonEncode(authTokenModel.toJson()));
   }
+
+  @override
+  Future<void> init() async {}
 }

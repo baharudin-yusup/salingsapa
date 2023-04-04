@@ -1,14 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:salingsapa/domain/usecases/sign_out.dart';
-import 'package:salingsapa/domain/usecases/stream_current_user.dart';
-import 'package:salingsapa/domain/usecases/update_name.dart';
-import 'package:salingsapa/domain/usecases/update_profile_picture.dart';
-import 'package:salingsapa/presentation/services/navigator_service.dart';
-import 'package:salingsapa/presentation/services/ui_service.dart';
 
 import '../../../domain/entities/user.dart';
+import '../../../domain/usecases/sign_out.dart';
+import '../../../domain/usecases/stream_current_user.dart';
+import '../../../domain/usecases/update_name.dart';
+import '../../../domain/usecases/update_profile_picture.dart';
 
 part 'account_bloc.freezed.dart';
 part 'account_event.dart';
@@ -19,10 +17,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     this._updateName,
     this._streamCurrentUser,
     this._signOut,
-    this._navigatorService,
     this._imagePicker,
     this._updateProfilePicture,
-    this._uiService,
   ) : super(const AccountState.initial()) {
     _streamCurrentUser().listen((userResult) {
       userResult.fold(
@@ -46,8 +42,6 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   final UpdateProfilePicture _updateProfilePicture;
   final StreamCurrentUser _streamCurrentUser;
   final SignOut _signOut;
-  final NavigatorService _navigatorService;
-  final UiService _uiService;
   final ImagePicker _imagePicker;
 
   void _getLatestData(_Started event, Emitter<AccountState> emit) async {
@@ -90,13 +84,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   }
 
   void _startSignOut(_SignOutStarted event, Emitter<AccountState> emit) async {
-    final signOutResult = await _signOut();
-
-    // signOutResult.fold(
-    //   (l) => null,
-    //   (_) => _navigatorService.pushNamedAndRemoveUntil(
-    //       RootScreen.routeName, (route) => false),
-    // );
+    await _signOut();
   }
 
   void _editProfilePicture(

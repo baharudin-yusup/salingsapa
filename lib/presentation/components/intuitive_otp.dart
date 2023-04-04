@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:salingsapa/presentation/services/theme_service.dart';
+
+import '../services/theme_service.dart';
 
 enum OtpLength { otp6, otp5 }
 

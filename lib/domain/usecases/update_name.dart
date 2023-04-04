@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:salingsapa/domain/repositories/user_repository.dart';
 
 import '../../core/errors/failures.dart';
 import '../../core/interfaces/use_case.dart';
+import '../repositories/user_repository.dart';
 
 class UpdateName extends UseCase<String, String> {
   final UserRepository _repository;

@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:salingsapa/core/errors/failures.dart';
-import 'package:salingsapa/core/interfaces/use_case.dart';
-import 'package:salingsapa/domain/repositories/video_call_repository.dart';
+
+import '../../core/errors/failures.dart';
+import '../../core/interfaces/use_case.dart';
+import '../repositories/video_call_repository.dart';
 
 class MuteVideoCallAudio extends UseCase<bool, Unit> {
   final VideoCallRepository _repository;

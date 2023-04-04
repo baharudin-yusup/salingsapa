@@ -1,14 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:salingsapa/presentation/blocs/account/account_bloc.dart';
-import 'package:salingsapa/presentation/components/intuitive_scaffold.dart';
-import 'package:salingsapa/presentation/components/intuitive_textfield.dart';
-import 'package:salingsapa/presentation/services/theme_service.dart';
-import 'package:salingsapa/presentation/services/ui_service.dart';
-import 'package:salingsapa/presentation/utils/app_localizations.dart';
 
-import '../../../injection_container.dart';
+import '../../blocs/account/account_bloc.dart';
+import '../../components/intuitive_scaffold.dart';
+import '../../components/intuitive_textfield.dart';
+import '../../services/theme_service.dart';
+import '../../utils/app_localizations.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({Key? key}) : super(key: key);
@@ -16,20 +14,7 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<AccountBloc, AccountState>(
-      listener: (context, state) {
-        final uiService = sl<UiService>();
-        // state.map(
-        //   initial: (_) {
-        //     uiService.hideLoading();
-        //   },
-        //   updateInProgress: (_) {
-        //     uiService.showLoading();
-        //   },
-        //   updateFailure: (_) {
-        //     uiService.hideLoading();
-        //   },
-        // );
-      },
+      listener: (context, state) {},
       listenWhen: (previousState, currentState) {
         return currentState.map(
           initial: (_) => true,

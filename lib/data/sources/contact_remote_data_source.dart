@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:salingsapa/core/errors/exceptions.dart';
 
+import '../../core/errors/exceptions.dart';
 import '../../core/utils/logger.dart';
 
 abstract class ContactRemoteDataSource {
@@ -10,9 +9,8 @@ abstract class ContactRemoteDataSource {
 
 class ContactRemoteDataSourceImpl implements ContactRemoteDataSource {
   final FirebaseFirestore _firestore;
-  final FirebaseAuth _auth;
 
-  ContactRemoteDataSourceImpl(this._firestore, this._auth);
+  ContactRemoteDataSourceImpl(this._firestore);
   @override
   Future<Map<String, String?>> getProfilePictureUrls() async {
     try {

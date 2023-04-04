@@ -1,14 +1,14 @@
 import 'dart:typed_data';
 
 import 'package:dartz/dartz.dart';
-import 'package:salingsapa/core/errors/failures.dart';
-import 'package:salingsapa/core/interfaces/return_type.dart';
-import 'package:salingsapa/data/models/user_model.dart';
-import 'package:salingsapa/data/sources/user_remote_data_source.dart';
-import 'package:salingsapa/domain/entities/user.dart';
-import 'package:salingsapa/domain/repositories/user_repository.dart';
 
+import '../../core/errors/failures.dart';
+import '../../core/interfaces/return_type.dart';
 import '../../core/utils/logger.dart';
+import '../../domain/entities/user.dart';
+import '../../domain/repositories/user_repository.dart';
+import '../models/user_model.dart';
+import '../sources/user_remote_data_source.dart';
 
 class UserRepositoryImpl extends UserRepository {
   final UserRemoteDataSource _remoteDataSource;

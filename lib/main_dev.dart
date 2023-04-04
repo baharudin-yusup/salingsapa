@@ -6,12 +6,12 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:salingsapa/core/envs/dev_env_impl.dart';
-import 'package:salingsapa/presentation/screens/skeleton_screen.dart';
 
+import 'core/envs/dev_env_impl.dart';
 import 'core/utils/logger.dart';
 import 'firebase_options_dev.dart';
 import 'injection_container.dart' as di;
+import 'presentation/screens/skeleton_screen.dart';
 
 Future<void> main() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +33,7 @@ Future<void> main() async {
 
 @pragma('vm:entry-point')
 Future<void> handleBackgroundNotification(RemoteMessage message) async {
-  Logger.print("Handling a background message");
+  Logger.print('Handling a background message');
   Logger.print('Message data: ${message.data}');
   Logger.print('Notification data: ${message.notification?.toMap()}');
   try {

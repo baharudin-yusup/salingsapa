@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:salingsapa/presentation/components/intuitive_scaffold/builder.dart';
 
+import 'intuitive_scaffold/builder.dart';
 import 'intuitive_scaffold/intuitive_floating_action_button.dart';
 
 class IntuitiveScaffold extends StatelessWidget {

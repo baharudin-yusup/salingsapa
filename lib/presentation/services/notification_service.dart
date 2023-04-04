@@ -3,15 +3,15 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:salingsapa/core/errors/failures.dart';
-import 'package:salingsapa/core/utils/logger.dart';
-import 'package:salingsapa/presentation/screens/home/recent_call_screen.dart';
-import 'package:salingsapa/presentation/screens/skeleton_screen.dart';
-import 'package:salingsapa/presentation/screens/video_call_screen.dart';
-import 'package:salingsapa/presentation/services/navigator_service.dart';
 
+import '../../core/errors/failures.dart';
+import '../../core/utils/logger.dart';
 import '../../injection_container.dart';
+import '../screens/home/recent_call_screen.dart';
 import '../screens/setting_screen.dart';
+import '../screens/skeleton_screen.dart';
+import '../screens/video_call_screen.dart';
+import 'navigator_service.dart';
 
 abstract class NotificationService {
   Future<void> init();
