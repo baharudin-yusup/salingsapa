@@ -6,12 +6,35 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import '../../core/errors/failures.dart';
 import '../../core/utils/logger.dart';
-import '../../injection_container.dart';
-import '../screens/home/recent_call_screen.dart';
-import '../screens/setting_screen.dart';
-import '../screens/skeleton_screen.dart';
-import '../screens/video_call_screen.dart';
-import 'navigator_service.dart';
+
+@pragma('vm:entry-point')
+Future<void> handleBackgroundNotification(RemoteMessage message) async {
+  Logger.print('Handling a background message');
+  Logger.print('Message data: ${message.data}');
+  Logger.print('Notification data: ${message.notification?.toMap()}');
+  try {
+    const localNotificationChannel = AndroidNotificationChannel(
+      'styleup_notification_channel',
+      'StyleUp Notifications',
+      importance: Importance.max,
+    );
+    FlutterLocalNotificationsPlugin().show(
+      message.hashCode,
+      'Title from local',
+      'Body from local',
+      NotificationDetails(
+        android: AndroidNotificationDetails(
+          localNotificationChannel.id,
+          localNotificationChannel.name,
+          importance: localNotificationChannel.importance,
+        ),
+      ),
+      payload: jsonEncode(message.data),
+    );
+  } catch (error) {
+    Logger.error(error, event: 'opening notification');
+  }
+}
 
 abstract class NotificationService {
   Future<void> init();
@@ -112,8 +135,8 @@ class NotificationServiceImpl implements NotificationService {
       await _localNotificationsPlugin.initialize(
         const InitializationSettings(
             android: androidSettings, iOS: iosSettings),
-        onDidReceiveNotificationResponse: openNotificationB,
-        onDidReceiveBackgroundNotificationResponse: openNotificationC,
+        onDidReceiveNotificationResponse: openNotification,
+        onDidReceiveBackgroundNotificationResponse: openNotification,
       );
 
       await _localNotificationsPlugin
@@ -134,38 +157,5 @@ class NotificationServiceImpl implements NotificationService {
 }
 
 void openNotification(NotificationResponse? details) {
-  try {
-    final NavigatorService navigatorService = sl();
-    navigatorService.pushNamed(RootScreen.routeName);
-  } catch (error) {
-    Logger.error(error, event: 'opening notification');
-  }
-}
-
-void openNotificationB(NotificationResponse? details) {
-  try {
-    final NavigatorService navigatorService = sl();
-    navigatorService.pushNamed(RecentCallScreen.routeName);
-  } catch (error) {
-    Logger.error(error, event: 'opening notification');
-  }
-}
-
-void openNotificationC(NotificationResponse? details) {
-  try {
-    final NavigatorService navigatorService = sl();
-    navigatorService.pushNamed(SettingScreen.routeName);
-  } catch (error) {
-    Logger.error(error, event: 'opening notification');
-  }
-}
-
-@pragma('vm:entry-point')
-void openNotificationD(NotificationResponse? details) {
-  try {
-    final NavigatorService navigatorService = sl();
-    navigatorService.pushNamed(VideoCallScreen.routeName);
-  } catch (error) {
-    Logger.error(error, event: 'opening notification');
-  }
+  Logger.print('${details?.payload}');
 }
