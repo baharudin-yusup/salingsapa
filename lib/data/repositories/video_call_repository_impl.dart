@@ -4,13 +4,17 @@ import 'package:permission_handler/permission_handler.dart';
 
 import '../../core/errors/failures.dart';
 import '../../core/interfaces/return_type.dart';
+import '../../core/utils/logger.dart';
 import '../../domain/entities/contact.dart';
 import '../../domain/entities/video_call_invitation.dart';
 import '../../domain/entities/video_call_user_update_info.dart';
+import '../../domain/entities/video_frame.dart';
 import '../../domain/repositories/video_call_repository.dart';
 import '../models/video_call_invitation_model.dart';
 import '../sources/video_call_local_data_source.dart';
 import '../sources/video_call_remote_data_source.dart';
+
+const _tagName = 'VideoCallRepository';
 
 class VideoCallRepositoryImpl implements VideoCallRepository {
   final VideoCallLocalDataSource _localDataSource;
@@ -23,7 +27,7 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
 
   @override
   Stream<RepoResponse<VideoCallUserUpdateInfo>> get videoCallStatus =>
-      _remoteDataSource.videoCallStatus.map((event) => Right(event));
+      _remoteDataSource.status.map((event) => Right(event));
 
   @override
   Future<RepoResponse<Unit>> init() async {
@@ -58,6 +62,12 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
       return Left(UnknownFailure());
     }
 
+    try {
+      _localDataSource.setObserver();
+    } catch (_) {
+      return Left(UnknownFailure());
+    }
+
     _isInitialized = true;
     return const Right(unit);
   }
@@ -65,12 +75,6 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
   @override
   Future<RepoResponse<VideoCallInvitation>> start(
       {required Contact contact}) async {
-    try {
-      _localDataSource.setObserver();
-    } catch (_) {
-      return Left(UnknownFailure());
-    }
-
     try {
       final token = await _remoteDataSource.getToken();
       final invitation = await _remoteDataSource.start(
@@ -87,12 +91,6 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
   @override
   Future<RepoResponse<VideoCallInvitation>> join(
       {required VideoCallInvitation invitation}) async {
-    try {
-      _localDataSource.setObserver();
-    } catch (_) {
-      return Left(UnknownFailure());
-    }
-
     try {
       final token = await _remoteDataSource.getToken();
       final model = await _remoteDataSource.join(
@@ -177,4 +175,42 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
       return Left(UnknownFailure());
     }
   }
+
+  // @override
+  // Stream<RepoResponse<SalingsapaVideoFrame>> get videoFrame =>
+  //     _localDataSource.videoFrame.map((frame) => Right(frame.toEntity()));
+
+  @override
+  Future<RepoResponse<Unit>> disableTakeSnapshot() async {
+    try {
+      await _remoteDataSource.disableTakeSnapshot();
+      return const Right(unit);
+    } catch (error) {
+      Logger.error(
+        error,
+        event: 'disabling take snapshot',
+        name: _tagName,
+      );
+      return Left(UnknownFailure());
+    }
+  }
+
+  @override
+  Future<RepoResponse<Unit>> enableTakeSnapshot() async {
+    try {
+      await _remoteDataSource.enableTakeSnapshot();
+      return const Right(unit);
+    } catch (error) {
+      Logger.error(
+        error,
+        event: 'disabling take snapshot',
+        name: _tagName,
+      );
+      return Left(UnknownFailure());
+    }
+  }
+
+  @override
+  Stream<RepoResponse<PhotoSnapshot>> get photoSnapshot =>
+      _remoteDataSource.photoSnapshot.map((model) => Right(model.toEntity()));
 }

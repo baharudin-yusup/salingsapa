@@ -5,6 +5,7 @@ import '../../core/interfaces/return_type.dart';
 import '../entities/contact.dart';
 import '../entities/video_call_invitation.dart';
 import '../entities/video_call_user_update_info.dart';
+import '../entities/video_frame.dart';
 
 abstract class VideoCallRepository {
   Future<RepoResponse<Unit>> init();
@@ -29,5 +30,14 @@ abstract class VideoCallRepository {
 
   Stream<RepoResponse<List<VideoCallInvitation>>> get invitations;
 
+  // Stream<RepoResponse<SalingsapaVideoFrame>> get videoFrame;
+
   RepoResponse<RtcEngine> get engine;
+
+  /// Photo snapshot usecase
+  Future<RepoResponse<Unit>> enableTakeSnapshot();
+
+  Future<RepoResponse<Unit>> disableTakeSnapshot();
+
+  Stream<RepoResponse<PhotoSnapshot>> get photoSnapshot;
 }

@@ -33,6 +33,21 @@ class ContactRepositoryImpl implements ContactRepository {
             profilePictureUrl: profilePictureUrls[phoneNumber],
             isRegistered: profilePictureUrls.containsKey(phoneNumber));
       }).toList();
+      entities.sort((a, b) {
+        if (a.isRegistered && b.isRegistered) {
+          return a.name.compareTo(b.name);
+        }
+
+        if (a.isRegistered) {
+          return -1;
+        }
+
+        if (b.isRegistered) {
+          return 1;
+        }
+
+        return a.name.compareTo(b.name);
+      });
       return Right(entities);
     } catch (error) {
       Logger.error(error, event: 'getting contact list (repository)');

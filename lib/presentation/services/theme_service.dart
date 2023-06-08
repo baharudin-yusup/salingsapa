@@ -7,6 +7,7 @@ class IntuitiveUiConstant {
   static const largeSpace = 20.0;
   static const hugeSpace = 40.0;
 
+  static const smallRadius = 8.0;
   static const normalRadius = 16.0;
   static const largeRadius = 32.0;
 }

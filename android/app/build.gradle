@@ -110,6 +110,11 @@ android {
             signingConfig signingConfigs.release
         }
     }
+
+    aaptOptions {
+        noCompress 'tflite'
+        noCompress 'lite'
+    }
 }
 
 flutter {

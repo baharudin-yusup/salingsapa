@@ -1,9 +1,13 @@
+import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:uuid/uuid.dart';
 
@@ -15,6 +19,9 @@ import '../../domain/entities/video_call_status.dart';
 import '../../domain/entities/video_call_user_update_info.dart';
 import '../extensions/extensions.dart';
 import '../models/video_call_invitation_model.dart';
+import '../models/video_frame_model.dart';
+
+const _tagName = 'VideoCallRemoteDataSource';
 
 abstract class VideoCallRemoteDataSource {
   void setEngine(RtcEngine engine);
@@ -45,7 +52,13 @@ abstract class VideoCallRemoteDataSource {
 
   Future<void> muteVideo(bool mute);
 
-  Stream<VideoCallUserUpdateInfo> get videoCallStatus;
+  Future<void> enableTakeSnapshot();
+
+  Future<void> disableTakeSnapshot();
+
+  Stream<VideoCallUserUpdateInfo> get status;
+
+  Stream<PhotoSnapshotModel> get photoSnapshot;
 
   Stream<List<VideoCallInvitationModel>> get invitations;
 
@@ -64,28 +77,43 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
   final FirebaseAuth _auth;
   final FirebaseRemoteConfig _remoteConfig;
 
+  Timer? _takeSnapshotTimer;
+  Directory? _snapshotDir;
+  final BehaviorSubject<PhotoSnapshotModel> _photoSnapshotController;
+
   VideoCallRemoteDataSourceImpl(
     this._uuid,
     this._firestore,
     this._auth,
     this._remoteConfig,
-  ) : _streamController = BehaviorSubject();
+  )   : _streamController = BehaviorSubject(),
+        _photoSnapshotController = BehaviorSubject();
 
   @override
   Future<void> init() async {
     try {
+      // Init snapshot directory
+      final tempDir = (await getTemporaryDirectory());
+      _snapshotDir = await Directory('${tempDir.path}/img_snapshot')
+          .create(recursive: true);
+
       // Register the event handler
       _rtcEngine.registerEventHandler(
         RtcEngineEventHandler(
           onJoinChannelSuccess: (RtcConnection connection, int elapsed) {
             Logger.print(
-                'Local user with uid ${connection.localUid} has joined to the channel!');
+              'Local user with uid ${connection.localUid} has joined to the channel!',
+              name: _tagName,
+            );
             const info = VideoCallUserUpdateInfo(
                 status: VideoCallStatus.localUserJoined);
             _streamController.sink.add(info);
           },
           onUserJoined: (RtcConnection connection, int remoteUid, int elapsed) {
-            Logger.print('User with uid $remoteUid has joined to the channel!');
+            Logger.print(
+              'User with uid $remoteUid has joined to the channel!',
+              name: _tagName,
+            );
             final info = VideoCallUserUpdateInfo(
               status: VideoCallStatus.remoteUserJoined,
               remoteUid: remoteUid,
@@ -100,9 +128,13 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
             );
             _streamController.sink.add(info);
           },
+          onSnapshotTaken: _handleSnapshotTaken,
         ),
       );
-      Logger.print('Initialization success!');
+      Logger.print(
+        'Initialization success!',
+        name: _tagName,
+      );
     } catch (_) {
       throw ServerException();
     }
@@ -127,7 +159,9 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
         channelProfile: ChannelProfileType.channelProfileCommunication,
       );
 
-      await _rtcEngine.enableAudio();
+      /// TODO: Remove this
+      await _rtcEngine.disableAudio();
+      // await _rtcEngine.enableAudio();
       await _rtcEngine.enableVideo();
       await _rtcEngine.joinChannel(
         token: token,
@@ -227,59 +261,19 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
     }
   }
 
-  Future<void> z() async {
-    AudioFrameObserver audioFrameObserver = AudioFrameObserver(
-        onRecordAudioFrame: (String channelId, AudioFrame audioFrame) {
-      // Gets the captured audio frame
-    }, onPlaybackAudioFrame: (String channelId, AudioFrame audioFrame) {
-      // Gets the audio frame for playback
-      Logger.print('[onPlaybackAudioFrame] audioFrame: ${audioFrame.toJson()}');
-    });
-
-    VideoFrameObserver videoFrameObserver = VideoFrameObserver(
-        onCaptureVideoFrame: (VideoFrame videoFrame) {
-      // The video data that this callback gets has not been pre-processed
-      // After pre-processing, you can send the processed video data back
-      // to the SDK through this callback
-      Logger.print('[onCaptureVideoFrame] videoFrame: ${videoFrame.toJson()}');
-    }, onRenderVideoFrame:
-            (String channelId, int remoteUid, VideoFrame videoFrame) {
-      // Occurs each time the SDK receives a video frame sent by the remote user.
-      // In this callback, you can get the video data before encoding.
-      // You then process the data according to your particular scenario.
-    });
-
-    // Set the format of raw audio data.
-    int sampleRate = 16000, sampleNumOfChannel = 1, samplesPerCall = 1024;
-
-    _rtcEngine.setRecordingAudioFrameParameters(
-        sampleRate: sampleRate,
-        channel: sampleNumOfChannel,
-        mode: RawAudioFrameOpModeType.rawAudioFrameOpModeReadWrite,
-        samplesPerCall: samplesPerCall);
-    _rtcEngine.setPlaybackAudioFrameParameters(
-        sampleRate: sampleRate,
-        channel: sampleNumOfChannel,
-        mode: RawAudioFrameOpModeType.rawAudioFrameOpModeReadWrite,
-        samplesPerCall: samplesPerCall);
-    _rtcEngine.setMixedAudioFrameParameters(
-        sampleRate: sampleRate,
-        channel: sampleNumOfChannel,
-        samplesPerCall: samplesPerCall);
-
-    _rtcEngine.getMediaEngine().registerAudioFrameObserver(audioFrameObserver);
-    _rtcEngine.getMediaEngine().registerVideoFrameObserver(videoFrameObserver);
-  }
-
   @override
-  Stream<VideoCallUserUpdateInfo> get videoCallStatus =>
-      _streamController.stream;
+  Stream<VideoCallUserUpdateInfo> get status => _streamController.stream;
 
   @override
   Future<String> getToken() async {
     try {
       await _remoteConfig.fetchAndActivate();
-      final token = _remoteConfig.getString(agoraTokenKey);
+      // TODO: Edit this
+      final base64Token = _remoteConfig.getString(agoraTokenKey);
+      final token = utf8.decode(base64.decode(base64Token));
+      const x =
+          '007eJxTYFh+PmzNZ6O9WRIBZ+TFd1xo3ftuh4MNC/f0xu8XfqkkvlVVYEg0NDa3NEtMS7RMNTBJNTJJMk0zNTU1SUwyNzQzSE40+abfkNIQyMigfPofAyMUgvjcDCWpxSXOGYl5eak5DAwAo60jtA==';
+      Logger.print('is token valid? ${token == x}', name: _tagName);
       return token;
     } catch (error) {
       Logger.error(error, event: 'getting agora token');
@@ -333,6 +327,11 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
   @override
   Future<void> muteAudio(bool mute) async {
     try {
+      if (mute) {
+        await _rtcEngine.disableAudio();
+      } else {
+        await _rtcEngine.enableAudio();
+      }
       await _rtcEngine.muteLocalAudioStream(mute);
     } catch (_) {
       throw ServerException();
@@ -429,4 +428,57 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
       throw ServerException();
     }
   }
+
+  void _handleSnapshotTaken(RtcConnection connection, int uid, String filePath,
+      int width, int height, int errCode) {
+    if (errCode != 0) {
+      Logger.error(
+        'error code: $errCode',
+        event: 'taking snapshot',
+        name: _tagName,
+      );
+      return;
+    }
+    final model = PhotoSnapshotModel(filePath);
+    _photoSnapshotController.sink.add(model);
+  }
+
+  @override
+  Future<void> disableTakeSnapshot() async {
+    _takeSnapshotTimer?.cancel();
+  }
+
+  @override
+  Future<void> enableTakeSnapshot() async {
+    _takeSnapshotTimer =
+        Timer.periodic(const Duration(milliseconds: 1750), (timer) async {
+      try {
+        final filePath = _generateSnapshotFilePath();
+        await _rtcEngine.takeSnapshot(
+          uid: 0,
+          filePath: filePath,
+        );
+      } catch (error) {
+        Logger.error(
+          error,
+          event: 'enabling periodic snapshot',
+          name: _tagName,
+        );
+      }
+    });
+  }
+
+  String _generateSnapshotFilePath() {
+    final snapshotDir = _snapshotDir;
+    if (snapshotDir == null) {
+      throw FeatureException();
+    }
+    const imgExtension = 'jpg';
+    final imgName = _uuid.v1();
+    return '${snapshotDir.path}/$imgName.$imgExtension';
+  }
+
+  @override
+  Stream<PhotoSnapshotModel> get photoSnapshot =>
+      _photoSnapshotController.stream;
 }

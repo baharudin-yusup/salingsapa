@@ -7,6 +7,8 @@ import '../../../domain/entities/contact.dart';
 import '../../../domain/entities/video_call_invitation.dart';
 import '../../../domain/entities/video_call_status.dart';
 import '../../../domain/entities/video_call_user_update_info.dart';
+import '../../../domain/usecases/disable_take_photo_snapshot.dart';
+import '../../../domain/usecases/enable_take_photo_snapshot.dart';
 import '../../../domain/usecases/get_video_call_engine.dart';
 import '../../../domain/usecases/init_video_call.dart';
 import '../../../domain/usecases/join_video_call.dart';
@@ -14,6 +16,7 @@ import '../../../domain/usecases/leave_video_call.dart';
 import '../../../domain/usecases/start_video_call.dart';
 import '../../../domain/usecases/stream_video_call_status.dart';
 import '../../../domain/usecases/update_video_call_remote_user_status.dart';
+import '../../utils/toggle_usecase.dart';
 
 part 'video_call_bloc.freezed.dart';
 part 'video_call_event.dart';
@@ -28,12 +31,15 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
     this._getVideoCallEngine,
     this._streamVideoCallStatus,
     this._updateVideoCallRemoteUserStatus,
+    this._enableTakePhotoSnapshot,
+    this._disableTakePhotoSnapshot,
   ) : super(const VideoCallState.initial()) {
     on<_SetInvitationStarted>(_onSetInvitation);
     on<_VideoCallStarted>(_onStartVideoCall);
     on<_JoinVideoCallStarted>(_onJoinVideoCall);
     on<_LeaveVideoCallStarted>(_onLeaveVideoCall);
     on<_UpdateRemoteUserStarted>(_onUpdateRemoteUserStatus);
+    on<_TakePhotoSnapshotFeatureStatusChanged>(_toggleTakePhotoFeature);
 
     _streamVideoCallStatus().listen((result) {
       if (isClosed) return;
@@ -54,6 +60,9 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
   final StreamVideoCallStatus _streamVideoCallStatus;
   final UpdateVideoCallRemoteUserStatus _updateVideoCallRemoteUserStatus;
 
+  final EnableTakePhotoSnapshot _enableTakePhotoSnapshot;
+  final DisableTakePhotoSnapshot _disableTakePhotoSnapshot;
+
   @override
   Future<void> close() async {
     if (state.invitation != null) {
@@ -67,6 +76,7 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
     emit(VideoCallState.joinChannelInProgress(
         invitation: state.invitation,
         isRemoteUserJoined: state.isRemoteUserJoined,
+        isTakePhotoEnabled: state.isTakePhotoEnabled,
         localUid: state.localUid,
         remoteUid: state.remoteUid));
 
@@ -75,6 +85,7 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
       (_) => emit(VideoCallState.joinChannelFailure(
           invitation: state.invitation,
           isRemoteUserJoined: state.isRemoteUserJoined,
+          isTakePhotoEnabled: state.isTakePhotoEnabled,
           localUid: state.localUid,
           remoteUid: state.remoteUid)),
       (_) => null,
@@ -87,6 +98,7 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
         emit(VideoCallState.joinChannelFailure(
             invitation: state.invitation,
             isRemoteUserJoined: state.isRemoteUserJoined,
+            isTakePhotoEnabled: state.isTakePhotoEnabled,
             localUid: state.localUid,
             remoteUid: state.remoteUid));
         return null;
@@ -101,6 +113,7 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
         emit(VideoCallState.joinChannelFailure(
             invitation: state.invitation,
             isRemoteUserJoined: state.isRemoteUserJoined,
+            isTakePhotoEnabled: state.isTakePhotoEnabled,
             localUid: state.localUid,
             remoteUid: state.remoteUid));
         return null;
@@ -113,6 +126,7 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
         invitation: invitation,
         engine: engine,
         isRemoteUserJoined: state.isRemoteUserJoined,
+        isTakePhotoEnabled: state.isTakePhotoEnabled,
         localUid: invitation.callerUid,
         remoteUid: state.remoteUid));
 
@@ -126,6 +140,7 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
     emit(VideoCallState.joinChannelInProgress(
         invitation: state.invitation,
         isRemoteUserJoined: state.isRemoteUserJoined,
+        isTakePhotoEnabled: state.isTakePhotoEnabled,
         localUid: state.localUid,
         remoteUid: state.remoteUid));
 
@@ -134,6 +149,7 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
       (_) => emit(VideoCallState.joinChannelFailure(
           invitation: state.invitation,
           isRemoteUserJoined: state.isRemoteUserJoined,
+          isTakePhotoEnabled: state.isTakePhotoEnabled,
           localUid: state.localUid,
           remoteUid: state.remoteUid)),
       (_) => null,
@@ -146,6 +162,7 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
         emit(VideoCallState.joinChannelFailure(
             invitation: state.invitation,
             isRemoteUserJoined: state.isRemoteUserJoined,
+            isTakePhotoEnabled: state.isTakePhotoEnabled,
             localUid: state.localUid,
             remoteUid: state.remoteUid));
         return null;
@@ -160,6 +177,7 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
         emit(VideoCallState.joinChannelFailure(
             invitation: state.invitation,
             isRemoteUserJoined: state.isRemoteUserJoined,
+            isTakePhotoEnabled: state.isTakePhotoEnabled,
             localUid: state.localUid,
             remoteUid: state.remoteUid));
         return null;
@@ -172,6 +190,7 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
         invitation: invitation,
         engine: engine,
         isRemoteUserJoined: state.isRemoteUserJoined,
+        isTakePhotoEnabled: state.isTakePhotoEnabled,
         localUid: invitation.targetUid,
         remoteUid: invitation.callerUid));
 
@@ -185,6 +204,7 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
     emit(VideoCallState.leaveChannelInProgress(
         invitation: state.invitation,
         isRemoteUserJoined: state.isRemoteUserJoined,
+        isTakePhotoEnabled: state.isTakePhotoEnabled,
         localUid: state.localUid,
         remoteUid: state.remoteUid));
 
@@ -193,9 +213,11 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
       (_) => emit(VideoCallState.leaveChannelFailure(
           invitation: state.invitation,
           isRemoteUserJoined: state.isRemoteUserJoined,
+          isTakePhotoEnabled: state.isTakePhotoEnabled,
           localUid: state.localUid,
           remoteUid: state.remoteUid)),
       (_) => emit(VideoCallState.leaveChannelSuccess(
+          isTakePhotoEnabled: state.isTakePhotoEnabled,
           invitation: null,
           localUid: state.localUid,
           remoteUid: state.remoteUid)),
@@ -211,6 +233,7 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
         final engine = getEngineResult.fold(
           (_) {
             emit(VideoCallState.remoteUserJoinFailure(
+                isTakePhotoEnabled: state.isTakePhotoEnabled,
                 invitation: state.invitation,
                 localUid: state.localUid,
                 remoteUid: state.remoteUid));
@@ -222,6 +245,7 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
         state.maybeMap(
           remoteUserJoinSuccess: (_) {},
           orElse: () => emit(VideoCallState.remoteUserJoinSuccess(
+              isTakePhotoEnabled: state.isTakePhotoEnabled,
               invitation: state.invitation,
               engine: engine,
               localUid: state.localUid,
@@ -233,18 +257,21 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
         state.maybeMap(
           joinChannelSuccess: (previousState) => emit(
               VideoCallState.remoteUserLeaveSuccess(
+                  isTakePhotoEnabled: state.isTakePhotoEnabled,
                   invitation: state.invitation,
                   localUid: state.localUid,
                   remoteUid: state.remoteUid,
                   engine: previousState.engine)),
           remoteUserJoinSuccess: (previousState) => emit(
               VideoCallState.remoteUserLeaveSuccess(
+                  isTakePhotoEnabled: state.isTakePhotoEnabled,
                   invitation: state.invitation,
                   localUid: state.localUid,
                   remoteUid: state.remoteUid,
                   engine: previousState.engine)),
           remoteUserLeaveSuccess: (_) {},
           orElse: () => emit(VideoCallState.remoteUserLeaveSuccess(
+              isTakePhotoEnabled: state.isTakePhotoEnabled,
               invitation: state.invitation,
               localUid: state.localUid,
               remoteUid: state.remoteUid)),
@@ -268,6 +295,19 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
         ));
       },
       orElse: () {},
+    );
+  }
+
+  void _toggleTakePhotoFeature(_TakePhotoSnapshotFeatureStatusChanged event,
+      Emitter<VideoCallState> emit) async {
+    final isNeedToEnable = event.isEnabled;
+    if (isNeedToEnable == state.isTakePhotoEnabled) return;
+
+    await toggleUseCase(
+      isNeedToEnable ? _enableTakePhotoSnapshot : _disableTakePhotoSnapshot,
+      onSuccess: (_) {
+        emit(state.copyWith(isTakePhotoEnabled: isNeedToEnable));
+      },
     );
   }
 }
