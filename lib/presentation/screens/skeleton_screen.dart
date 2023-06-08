@@ -204,8 +204,8 @@ class _IosAppScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return DynamicColorBuilder(
       builder: (lightDynamic, darkDynamic) {
-        final brightness = WidgetsBinding.instance.window.platformBrightness;
-
+        final brightness =
+            View.of(context).platformDispatcher.platformBrightness;
         lightDynamic ??= ColorScheme.fromSeed(
           seedColor: Colors.green,
           brightness: Brightness.light,

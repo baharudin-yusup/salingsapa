@@ -5,7 +5,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../core/utils/logger.dart';
 import '../models/video_frame_model.dart';
 
 abstract class VideoCallLocalDataSource {
@@ -20,14 +19,9 @@ abstract class VideoCallLocalDataSource {
   Stream<SalingsapaVideoFrameModel> get videoFrame;
 }
 
-const _tagName = 'VideoCallLocalDataSource';
-
 class VideoCallLocalDataSourceImpl implements VideoCallLocalDataSource {
   late RtcEngine _engine;
-  late AudioFrameObserver _audioFrameObserver;
-  late VideoFrameObserver _videoFrameObserver;
 
-  bool _isNeedToSendVideoFrame = true;
   late BehaviorSubject<SalingsapaVideoFrameModel> _videoFrameController;
   late Timer _videoFrameSendTimer;
 
@@ -46,12 +40,9 @@ class VideoCallLocalDataSourceImpl implements VideoCallLocalDataSource {
     _videoFrameSendTimer =
         Timer.periodic(const Duration(milliseconds: 300), (timer) {
       if (_videoFrameController.isClosed) {
-        _isNeedToSendVideoFrame = false;
         timer.cancel();
         return;
       }
-
-      _isNeedToSendVideoFrame = true;
     });
     _videoFrameController = BehaviorSubject();
 
@@ -62,73 +53,6 @@ class VideoCallLocalDataSourceImpl implements VideoCallLocalDataSource {
     //       Logger.print(
     //           '[onPlaybackAudioFrame] audioFrame: ${audioFrame.toJson()}');
     //     });
-
-    _videoFrameObserver = VideoFrameObserver(
-      onCaptureVideoFrame: (VideoFrame videoFrame) {
-        // The video data that this callback gets has not been pre-processed
-        // After pre-processing, you can send the processed video data back
-        // to the SDK through this callback
-        if (!_isNeedToSendVideoFrame || _videoFrameController.isClosed) return;
-        _isNeedToSendVideoFrame = false;
-        Logger.print(
-          'frame type: ${videoFrame.type?.name}\n'
-          'rotation: ${videoFrame.rotation}\n',
-          name: _tagName,
-        );
-        final y = videoFrame.yBuffer;
-        final yS = videoFrame.yStride;
-
-        final u = videoFrame.uBuffer;
-        final uS = videoFrame.uStride;
-
-        final v = videoFrame.vBuffer;
-        final vS = videoFrame.vStride;
-
-        final width = videoFrame.width;
-        final height = videoFrame.height;
-
-        if (y == null ||
-            yS == null ||
-            u == null ||
-            uS == null ||
-            v == null ||
-            vS == null ||
-            width == null ||
-            height == null) {
-          Logger.print(
-            'some YUV data not available',
-            name: _tagName,
-          );
-          return;
-        }
-        final yL = y.length;
-        final uL = u.length;
-        final vL = v.length;
-
-        Logger.print(
-          'YUV:\n'
-          'd: ${width}x$height\n'
-          'yL: $yL \t yS: $yS \t r: ${yL / yS}\n'
-          'uL: $uL \t uS: $uS \t r: ${uL / uS}\n'
-          'vL: $vL \t vS: $vS \t r: ${vL / vS}\n',
-          name: _tagName,
-        );
-        final model = SalingsapaVideoFrameModel(
-          y: y,
-          u: u,
-          v: v,
-          width: width,
-          height: height,
-        );
-        _videoFrameController.sink.add(model);
-      },
-      onRenderVideoFrame:
-          (String channelId, int remoteUid, VideoFrame videoFrame) {
-        // Occurs each time the SDK receives a video frame sent by the remote user.
-        // In this callback, you can get the video data before encoding.
-        // You then process the data according to your particular scenario.
-      },
-    );
 
     // Set the format of raw audio data.
     // int sampleRate = 16000, sampleNumOfChannel = 1, samplesPerCall = 1024;

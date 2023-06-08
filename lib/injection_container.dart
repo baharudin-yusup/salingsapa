@@ -9,7 +9,6 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:salingsapa/presentation/blocs/sign_language_recognition_bloc/sign_language_recognition_bloc.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:uuid/uuid.dart';
 
@@ -94,6 +93,7 @@ import 'presentation/blocs/contact_list/contact_list_bloc.dart';
 import 'presentation/blocs/introduction/introduction_cubit.dart';
 import 'presentation/blocs/recent_call/recent_call_bloc.dart';
 import 'presentation/blocs/setup/setup_bloc.dart';
+import 'presentation/blocs/sign_language_recognition_bloc/sign_language_recognition_bloc.dart';
 import 'presentation/blocs/speech_recognition_bloc/speech_recognition_bloc.dart';
 import 'presentation/blocs/video_call/video_call_bloc.dart';
 import 'presentation/blocs/video_call_caption/video_call_caption_bloc.dart';
