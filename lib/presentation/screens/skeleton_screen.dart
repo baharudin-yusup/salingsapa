@@ -17,7 +17,10 @@ import '../blocs/home/home_cubit.dart';
 import '../blocs/introduction/introduction_cubit.dart';
 import '../blocs/recent_call/recent_call_bloc.dart';
 import '../blocs/setup/setup_bloc.dart';
+import '../blocs/sign_language_recognition_bloc/sign_language_recognition_bloc.dart';
+import '../blocs/speech_recognition_bloc/speech_recognition_bloc.dart';
 import '../blocs/video_call/video_call_bloc.dart';
+import '../blocs/video_call_caption/video_call_caption_bloc.dart';
 import '../blocs/video_call_control/video_call_control_bloc.dart';
 import '../services/navigator_service.dart';
 import '../services/notification_service.dart';
@@ -28,7 +31,7 @@ import 'onboarding_screen.dart';
 import 'setting_screen.dart';
 import 'setup_screen.dart';
 import 'verify_otp_screen.dart';
-import 'video_call_screen.dart';
+import 'video_call/video_call_screen.dart';
 
 void createApp() {
   runApp(const RootScreen());
@@ -71,25 +74,32 @@ class _RootScreenState extends State<RootScreen> {
   Map<String, WidgetBuilder> get _routes => {
         RecentCallScreen.routeName: (_) => const RecentCallScreen(),
         SettingScreen.routeName: (_) => const SettingScreen(),
-        VideoCallScreen.routeName: (context) => MultiBlocProvider(
-              providers: [
-                BlocProvider<VideoCallBloc>(create: (_) {
-                  final VideoCallBloc bloc = sl();
-                  final argument = ModalRoute.of(context)!.settings.arguments;
-                  if (argument is VideoCallInvitation) {
-                    return bloc
-                      ..add(VideoCallEvent.setInvitationStarted(argument))
-                      ..add(VideoCallEvent.joinVideoCallStarted(argument));
-                  } else if (argument is Contact) {
-                    return bloc..add(VideoCallEvent.videoCallStarted(argument));
-                  } else {
-                    return bloc;
-                  }
-                }),
-                BlocProvider<VideoCallControlBloc>(create: (_) => sl()),
-              ],
-              child: const VideoCallScreen(),
-            ),
+        VideoCallScreen.routeName: (context) {
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider<SpeechRecognitionBloc>(
+                  create: (_) =>
+                      sl()..add(const SpeechRecognitionEvent.started())),
+              BlocProvider<SignLanguageRecognitionBloc>(create: (_) => sl()),
+              BlocProvider<VideoCallBloc>(create: (_) {
+                final VideoCallBloc bloc = sl();
+                final argument = ModalRoute.of(context)!.settings.arguments;
+                if (argument is VideoCallInvitation) {
+                  return bloc
+                    ..add(VideoCallEvent.setInvitationStarted(argument))
+                    ..add(VideoCallEvent.joinVideoCallStarted(argument));
+                } else if (argument is Contact) {
+                  return bloc..add(VideoCallEvent.videoCallStarted(argument));
+                } else {
+                  return bloc;
+                }
+              }),
+              BlocProvider<VideoCallControlBloc>(create: (_) => sl()),
+              BlocProvider<VideoCallCaptionBloc>(create: (_) => sl()),
+            ],
+            child: const VideoCallScreen(),
+          );
+        },
         VerifyOtpScreen.routeName: (_) => const VerifyOtpScreen(),
         SetupScreen.routeName: (_) => const SetupScreen(),
         ContactListScreen.routeName: (_) => const ContactListScreen(),

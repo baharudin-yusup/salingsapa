@@ -9,33 +9,57 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:salingsapa/presentation/blocs/sign_language_recognition_bloc/sign_language_recognition_bloc.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 import 'package:uuid/uuid.dart';
 
 import 'core/envs/env.dart';
+import 'data/plugins/sign_language_recognition_plugin.dart';
+import 'data/plugins/speech_recognition_plugin.dart';
 import 'data/repositories/authentication_repository_impl.dart';
+import 'data/repositories/caption_repository_impl.dart';
 import 'data/repositories/contact_repository_impl.dart';
 import 'data/repositories/setting_repository_impl.dart';
+import 'data/repositories/sign_language_recognition_repository_impl.dart';
+import 'data/repositories/speech_recognition_repository_impl.dart';
 import 'data/repositories/user_repository_impl.dart';
 import 'data/repositories/video_call_repository_impl.dart';
 import 'data/sources/authentication_local_data_source.dart';
 import 'data/sources/authentication_remote_data_source.dart';
+import 'data/sources/caption_remote_data_source.dart';
 import 'data/sources/contact_local_data_source.dart';
 import 'data/sources/contact_remote_data_source.dart';
 import 'data/sources/setting_local_data_source.dart';
+import 'data/sources/sign_language_recognition_local_data_source.dart';
 import 'data/sources/user_remote_data_source.dart';
 import 'data/sources/video_call_local_data_source.dart';
 import 'data/sources/video_call_remote_data_source.dart';
 import 'domain/repositories/authentication_repository.dart';
+import 'domain/repositories/caption_repository.dart';
 import 'domain/repositories/contact_repository.dart';
 import 'domain/repositories/setting_repository.dart';
+import 'domain/repositories/sign_language_recognition_repository.dart';
+import 'domain/repositories/speech_recognition_repository.dart';
 import 'domain/repositories/user_repository.dart';
 import 'domain/repositories/video_call_repository.dart';
 import 'domain/usecases/authorization_status.dart';
+import 'domain/usecases/close_sign_language_recognition.dart';
+import 'domain/usecases/disable_caption.dart';
+import 'domain/usecases/disable_sign_language_recognition.dart';
+import 'domain/usecases/disable_speech_recognition.dart';
+import 'domain/usecases/disable_take_photo_snapshot.dart';
+import 'domain/usecases/enable_caption.dart';
+import 'domain/usecases/enable_sign_language_recognition.dart';
+import 'domain/usecases/enable_speech_recognition.dart';
+import 'domain/usecases/enable_take_photo_snapshot.dart';
 import 'domain/usecases/flip_video_call_camera.dart';
 import 'domain/usecases/get_current_user.dart';
 import 'domain/usecases/get_recent_call.dart';
 import 'domain/usecases/get_video_call_engine.dart';
 import 'domain/usecases/has_permission.dart';
+import 'domain/usecases/init_caption.dart';
+import 'domain/usecases/init_sign_language_recognition.dart';
+import 'domain/usecases/init_speech_recognition.dart';
 import 'domain/usecases/init_video_call.dart';
 import 'domain/usecases/is_first_launch_app.dart';
 import 'domain/usecases/join_video_call.dart';
@@ -44,15 +68,24 @@ import 'domain/usecases/mute_video_call_audio.dart';
 import 'domain/usecases/mute_video_call_video.dart';
 import 'domain/usecases/refresh_contact_list.dart';
 import 'domain/usecases/request_permission.dart';
+import 'domain/usecases/reset_sign_language_recognition.dart';
 import 'domain/usecases/set_is_first_launch_app.dart';
 import 'domain/usecases/sign_out.dart';
+import 'domain/usecases/start_sign_language_recognition.dart';
 import 'domain/usecases/start_video_call.dart';
+import 'domain/usecases/stream_caption.dart';
 import 'domain/usecases/stream_current_user.dart';
+import 'domain/usecases/stream_photo_snapshot.dart';
+import 'domain/usecases/stream_sign_language_recognition_result.dart';
+import 'domain/usecases/stream_sign_language_recognition_status.dart';
+import 'domain/usecases/stream_speech_recognition_result.dart';
+import 'domain/usecases/stream_speech_recognition_status.dart';
 import 'domain/usecases/stream_video_call_invitations.dart';
 import 'domain/usecases/stream_video_call_status.dart';
 import 'domain/usecases/update_name.dart';
 import 'domain/usecases/update_profile_picture.dart';
 import 'domain/usecases/update_video_call_remote_user_status.dart';
+import 'domain/usecases/upload_caption.dart';
 import 'domain/usecases/verify_otp.dart';
 import 'domain/usecases/verify_phone_number.dart';
 import 'presentation/blocs/account/account_bloc.dart';
@@ -61,7 +94,9 @@ import 'presentation/blocs/contact_list/contact_list_bloc.dart';
 import 'presentation/blocs/introduction/introduction_cubit.dart';
 import 'presentation/blocs/recent_call/recent_call_bloc.dart';
 import 'presentation/blocs/setup/setup_bloc.dart';
+import 'presentation/blocs/speech_recognition_bloc/speech_recognition_bloc.dart';
 import 'presentation/blocs/video_call/video_call_bloc.dart';
+import 'presentation/blocs/video_call_caption/video_call_caption_bloc.dart';
 import 'presentation/blocs/video_call_control/video_call_control_bloc.dart';
 import 'presentation/services/navigator_service.dart';
 import 'presentation/services/notification_service.dart';
@@ -88,9 +123,13 @@ Future<void> setup(Env env) async {
   sl.registerFactory(() => IntroductionCubit(sl(), sl(), sl()));
   sl.registerFactory(() => RecentCallBloc(sl(), sl(), sl()));
   sl.registerFactory(() => AccountBloc(sl(), sl(), sl(), sl(), sl()));
-  sl.registerFactory(
-      () => VideoCallBloc(sl(), sl(), sl(), sl(), sl(), sl(), sl()));
+  sl.registerFactory(() =>
+      VideoCallBloc(sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl()));
   sl.registerFactory(() => VideoCallControlBloc(sl(), sl(), sl()));
+  sl.registerFactory(() => VideoCallCaptionBloc(sl(), sl(), sl(), sl(), sl()));
+  sl.registerFactory(() => SignLanguageRecognitionBloc(
+      sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl()));
+  sl.registerFactory(() => SpeechRecognitionBloc(sl(), sl(), sl(), sl(), sl()));
 
   /// Singleton BLoC
   sl.registerLazySingleton(() => ContactListBloc(sl(), sl(), sl(), sl()));
@@ -115,6 +154,10 @@ Future<void> setup(Env env) async {
   sl.registerLazySingleton(() => MuteVideoCallAudio(sl()));
   sl.registerLazySingleton(() => MuteVideoCallVideo(sl()));
   sl.registerLazySingleton(() => UpdateVideoCallRemoteUserStatus(sl()));
+  // sl.registerLazySingleton(() => StreamVideoFrame(sl()));
+  sl.registerLazySingleton(() => EnableTakePhotoSnapshot(sl()));
+  sl.registerLazySingleton(() => DisableTakePhotoSnapshot(sl()));
+  sl.registerLazySingleton(() => StreamPhotoSnapshot(sl()));
 
   sl.registerLazySingleton(() => const HasPermission());
   sl.registerLazySingleton(() => const RequestPermission());
@@ -126,6 +169,31 @@ Future<void> setup(Env env) async {
   sl.registerLazySingleton(() => UpdateProfilePicture(sl()));
   sl.registerLazySingleton(() => GetCurrentUser(sl()));
 
+  /// Caption usecase
+  sl.registerLazySingleton(() => InitCaption(sl()));
+  sl.registerLazySingleton(() => EnableCaption(sl()));
+  sl.registerLazySingleton(() => DisableCaption(sl()));
+  sl.registerLazySingleton(() => StreamCaption(sl()));
+  sl.registerLazySingleton(() => UploadCaption(sl()));
+
+  /// Sign language usecase
+  sl.registerLazySingleton(() => InitSignLanguageRecognition(sl()));
+  sl.registerLazySingleton(() => EnableSignLanguageRecognition(sl()));
+  sl.registerLazySingleton(() => DisableSignLanguageRecognition(sl()));
+  sl.registerLazySingleton(() => CloseSignLanguageRecognition(sl()));
+  sl.registerLazySingleton(() => StreamSignLanguageRecognitionResult(sl()));
+  sl.registerLazySingleton(() => StreamSignLanguageRecognitionStatus(sl()));
+  // sl.registerLazySingleton(() => AnalyzeVideoFrame(sl()));
+  sl.registerLazySingleton(() => StartSignLanguageRecognition(sl()));
+  sl.registerLazySingleton(() => ResetSignLanguageRecognition(sl()));
+
+  /// Speech recognition use case
+  sl.registerLazySingleton(() => InitSpeechRecognition(sl()));
+  sl.registerLazySingleton(() => EnableSpeechRecognition(sl()));
+  sl.registerLazySingleton(() => DisableSpeechRecognition(sl()));
+  sl.registerLazySingleton(() => StreamSpeechRecognitionResult(sl()));
+  sl.registerLazySingleton(() => StreamSpeechRecognitionStatus(sl()));
+
   /// Repositories
   sl.registerLazySingleton<AuthenticationRepository>(
       () => AuthenticationRepositoryImpl(sl(), sl(), BehaviorSubject()));
@@ -136,6 +204,12 @@ Future<void> setup(Env env) async {
   sl.registerLazySingleton<UserRepository>(() => UserRepositoryImpl(sl()));
   sl.registerLazySingleton<VideoCallRepository>(
       () => VideoCallRepositoryImpl(sl(), sl()));
+  sl.registerLazySingleton<CaptionRepository>(
+      () => CaptionRepositoryImpl(sl()));
+  sl.registerLazySingleton<SignLanguageRecognitionRepository>(
+      () => SignLanguageRecognizerRepositoryImpl(sl(), sl()));
+  sl.registerLazySingleton<SpeechRecognitionRepository>(
+      () => SpeechRecognitionRepositoryImpl(sl()));
 
   /// Data sources
   sl.registerLazySingleton<AuthenticationLocalDataSource>(
@@ -154,6 +228,16 @@ Future<void> setup(Env env) async {
       () => VideoCallLocalDataSourceImpl());
   sl.registerLazySingleton<VideoCallRemoteDataSource>(
       () => VideoCallRemoteDataSourceImpl(sl(), sl(), sl(), sl()));
+  sl.registerLazySingleton<CaptionRemoteDataSource>(
+      () => CaptionRemoteDataSourceImpl(sl(), sl()));
+  sl.registerLazySingleton<SignLanguageRecognitionLocalDataSource>(
+      () => SignLanguageRecognitionLocalDataSourceImpl());
+
+  /// Internal Plugins
+  sl.registerLazySingleton<SpeechRecognitionPlugin>(
+      () => SpeechRecognitionPluginImpl(sl(), sl()));
+  sl.registerLazySingleton<SignLanguageRecognitionPlugin>(
+      () => SignLanguageRecognitionPluginImpl(sl()));
 
   /// External plugin
   final auth = FirebaseAuth.instance;
@@ -163,6 +247,7 @@ Future<void> setup(Env env) async {
   final imagePicker = ImagePicker();
   const uuid = Uuid();
   const secureStorage = FlutterSecureStorage();
+  final speechToText = SpeechToText();
 
   sl.registerLazySingleton(() => secureStorage);
   // sl.registerLazySingleton(() => FirebaseMessaging.instance);
@@ -174,6 +259,7 @@ Future<void> setup(Env env) async {
   sl.registerLazySingleton(() => remoteConfig);
   sl.registerLazySingleton(() => imagePicker);
   sl.registerLazySingleton(() => uuid);
+  sl.registerLazySingleton(() => speechToText);
 
   /// Post Creation
   final authorizationBloc = sl<AuthorizationBloc>();

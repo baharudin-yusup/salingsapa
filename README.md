@@ -15,6 +15,11 @@ flutter build ios --flavor development --target=lib/main_dev.dart
 flutter build appbundle --flavor development --target=lib/main_dev.dart
 ````
 
+##### Prod
+````shell
+flutter build appbundle --flavor prod --target=lib/main_prod.dart
+````
+
 ### Firebase update commands
 #### Dev flavor
 ```shell
