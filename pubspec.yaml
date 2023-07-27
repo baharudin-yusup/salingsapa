@@ -2,7 +2,7 @@ name: salingsapa
 description: A Final Exam Project
 publish_to: 'none'
 
-version: 0.1.1+1
+version: 0.1.2+1
 
 environment:
   sdk: '>=2.19.2 <3.0.0'
@@ -17,11 +17,11 @@ dependencies:
   firebase_analytics: ^10.1.1
   firebase_auth: ^4.2.6
   firebase_messaging: ^14.2.2
-  firebase_remote_config: ^3.0.15
+  firebase_remote_config: ^4.2.2
   cloud_firestore: ^4.3.2
   firebase_app_check: ^0.1.1+9
   get_it: ^7.2.0
-  flutter_local_notifications: ^13.0.0
+  flutter_local_notifications: ^14.1.1
 
   rxdart: ^0.27.7
   json_annotation: ^4.8.0

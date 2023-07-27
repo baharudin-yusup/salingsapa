@@ -20,7 +20,7 @@ Future<void> main() async {
     // 1. debug provider
     // 2. safety net provider
     // 3. play integrity provider
-    androidProvider: AndroidProvider.playIntegrity,
+    androidProvider: AndroidProvider.debug,
   );
   FirebaseMessaging.onBackgroundMessage(handleBackgroundNotification);
 

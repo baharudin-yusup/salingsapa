@@ -72,6 +72,9 @@ class VideoCallScreen extends StatelessWidget {
                       bloc.add(
                           VideoCallCaptionEvent.localCaptionReceived(caption));
                       break;
+                    case RecognitionStatus.idle:
+                      // TODO: Handle this case.
+                      break;
                   }
                 },
                 orElse: () {},
@@ -86,6 +89,7 @@ class VideoCallScreen extends StatelessWidget {
                   final VideoCallCaptionBloc bloc = context.read();
 
                   switch (status) {
+                    case RecognitionStatus.idle:
                     case RecognitionStatus.off:
                       bloc.add(
                           VideoCallCaptionEvent.uploadCaptionStarted(caption));
