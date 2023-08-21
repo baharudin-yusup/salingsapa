@@ -1,6 +1,6 @@
 # Salingsapa Project
 
-A Final Exam Project
+A video call apps to enable deaf people to communicate with normal people using sign language recognition and speech-to-text 
 
 ## Getting Started
 
