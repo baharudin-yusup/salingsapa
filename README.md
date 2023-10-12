@@ -1,27 +1,40 @@
 # Salingsapa Project
 
-A video call apps to enable deaf people to communicate with normal people using sign language recognition and speech-to-text 
+[![Codemagic build status](https://api.codemagic.io/apps/642645586c092f62d7cd27b1/642c624515a0bb9f0fdcf443/status_badge.svg)](https://codemagic.io/apps/642645586c092f62d7cd27b1/642c624515a0bb9f0fdcf443/latest_build)
 
-## Getting Started
+A video call application that allows deaf individuals to communicate with hearing individuals using sign language recognition and speech-to-text.
+
+## Project Specifications
+
+1. Utilizes "Clean Architecture."
+2. Employs BLoC state management.
+3. Uses WebRTC with Agora for video calls.
+4. Backend powered by Firebase.
+5. Speech-to-Text functionality using Native Android & iOS APIs.
+6. Sign Language Recognition using TensorflowLite.
+7. CI/CD integration through Codemagic.
+8. Dataset obtained from ASL Alphanet by Akash [here](https://www.kaggle.com/datasets/grassknoted/asl-alphabet/data).
+
+## How to Configure?
 
 ### Flutter Build Commands
-#### Build Dev
-````shell
+
+#### Build Development
+
+```shell
 flutter build ios --flavor development --target=lib/main_dev.dart
-````
+```
 
-#### Build Android Appbundle Dev
-````shell
+#### Build Android Appbundle Development
+
+```shell
 flutter build appbundle --flavor development --target=lib/main_dev.dart
-````
+```
 
-##### Prod
-````shell
-flutter build appbundle --flavor prod --target=lib/main_prod.dart
-````
+### Firebase Update Commands
 
-### Firebase update commands
-#### Dev flavor
+#### Development Flavor
+
 ```shell
 flutterfire config \
 --project=salingsapa-project \
@@ -30,7 +43,8 @@ flutterfire config \
 --android-app-id=dev.baharudin.salingsapa.dev
 ```
 
-#### Prod flavor
+#### Production Flavor
+
 ```shell
 flutterfire config \
 --project=salingsapa-project \
@@ -39,12 +53,8 @@ flutterfire config \
 --android-package-name=dev.baharudin.salingsapa
 ```
 
-### App Localization
-```shell
-flutter gen-l10n
-```
 
-### Build runner
-```shell
-dart run build_runner watch --delete-conflicting-outputs 
-```
+## Additional Information
+
+- Author of the repository: Baharudin Yusup
+- LinkedIn Profile: [https://linkedin.com/in/baharudin-yusup](https://linkedin.com/in/baharudin-yusup)
