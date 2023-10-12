@@ -41,6 +41,9 @@ class SignLanguageRecognitionPluginImpl
   final Uuid _uuid;
   var _word = '';
 
+  Timer? _idleTimer;
+  var _idleCounter = 0;
+
   SignLanguageRecognitionPluginImpl(this._uuid)
       : _statusController = BehaviorSubject(),
         _resultController = BehaviorSubject(),
@@ -194,6 +197,7 @@ class SignLanguageRecognitionPluginImpl
 
   @override
   Future<void> analyzePhotoSnapshot(PhotoSnapshotModel photoSnapshot) async {
+    // Start the recognition
     try {
       await _startRecognition(photoSnapshot);
     } catch (error) {
@@ -204,6 +208,7 @@ class SignLanguageRecognitionPluginImpl
       );
     }
 
+    // After analyzed, delete the temporary photo snapshot
     try {
       await _deletePhotoSnapshot(photoSnapshot);
       Logger.print(
@@ -220,25 +225,20 @@ class SignLanguageRecognitionPluginImpl
   }
 
   Future<void> _startRecognition(PhotoSnapshotModel photoSnapshot) async {
-    List<Map<String, dynamic>> recognitionResults;
+    late List<Map<String, dynamic>>? recognitionResults;
+
+    // Run model, if the result is null then start idle counter
+    // if the result is not null then go to the next process
     try {
       final r = await Tflite.runModelOnImage(
         path: photoSnapshot.filePath,
         numResults: 3,
         imageMean: 127.5,
         imageStd: 127.5,
-        threshold: 0.9,
+        threshold: 0.75,
         asynch: true,
       );
-
-      if (r == null) {
-        Logger.print(
-          'recognition result: null',
-          name: _tagName,
-        );
-        return;
-      }
-      recognitionResults = r.map((e) => Map<String, dynamic>.from(e)).toList();
+      recognitionResults = r?.map((e) => Map<String, dynamic>.from(e)).toList();
     } catch (error) {
       Logger.error(
         error,
@@ -248,11 +248,14 @@ class SignLanguageRecognitionPluginImpl
       return;
     }
 
-    if (recognitionResults.isEmpty) {
+    // if the result is null then start idle counter
+    // if the result is not null then go to the next process
+    if (recognitionResults == null || recognitionResults.isEmpty) {
       Logger.print(
         'recognition result: empty',
         name: _tagName,
       );
+      _increaseIdleCounter();
       return;
     }
 
@@ -293,6 +296,7 @@ class SignLanguageRecognitionPluginImpl
   }
 
   void _checkResult(SignLanguageRecognitionResultModel model) {
+    _resetIdleCounter();
     _previousModel = _currentModel;
     _currentModel = model;
 
@@ -346,6 +350,30 @@ class SignLanguageRecognitionPluginImpl
   }
 
   String _generateId() => _uuid.v1();
+
+  void _resetIdleCounter() {
+    _idleTimer = null;
+    _idleCounter = 0;
+  }
+
+  void _increaseIdleCounter() {
+    _idleTimer ??= _startIdleTimer();
+    _idleCounter++;
+  }
+
+  Timer _startIdleTimer() {
+    return Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (_idleCounter > 4) {
+        _idleCounter = 0;
+        _doIdle();
+        timer.cancel();
+      }
+    });
+  }
+
+  void _doIdle() {
+    _statusController.sink.add(RecognitionStatus.idle);
+  }
 }
 
 // class SignLanguageRecognitionPluginImpl

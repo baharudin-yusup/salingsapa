@@ -171,6 +171,10 @@ class SignLanguageRecognitionBloc
         });
         break;
       case RecognitionStatus.listening:
+        // TODO: Handle this case.
+        break;
+      case RecognitionStatus.idle:
+        // TODO: Handle this case.
         break;
     }
     emit(state.copyWith(status: status));
