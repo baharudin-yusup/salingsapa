@@ -29,3 +29,5 @@ class ServerException extends Exception {
 class BadDataException extends Exception {}
 
 class CacheException extends Exception {}
+
+class FeatureException extends Exception {}

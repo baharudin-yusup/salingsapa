@@ -16,4 +16,7 @@ class VideoCallEvent with _$VideoCallEvent {
 
   const factory VideoCallEvent.updateRemoteUserStatusStarted(
       VideoCallUserUpdateInfo info) = _UpdateRemoteUserStarted;
+
+  const factory VideoCallEvent.takePhotoSnapshotFeatureStatusChanged(
+      bool isEnabled) = _TakePhotoSnapshotFeatureStatusChanged;
 }

@@ -16,7 +16,7 @@ import '../../components/intuitive_scaffold/intuitive_floating_action_button.dar
 import '../../components/invitation_card.dart';
 import '../../services/theme_service.dart';
 import '../../utils/app_localizations.dart';
-import '../video_call_screen.dart';
+import '../video_call/video_call_screen.dart';
 
 class RecentCallScreen extends StatelessWidget {
   static const routeName = '/history';

@@ -6,6 +6,7 @@ abstract class Failure extends Equatable {
   final String errorMessage;
 
   const Failure({this.errorMessage = 'Unknown Error'});
+
   @override
   List<Object?> get props => [];
 }
@@ -17,6 +18,8 @@ class ServerFailure extends Failure {}
 class UnAuthorizedFailure extends ServerFailure {}
 
 class CacheFailure extends Failure {}
+
+class FeatureFailure extends Failure {}
 
 class PermissionFailure extends Failure {
   final Either<Permission, List<Permission>> permission;

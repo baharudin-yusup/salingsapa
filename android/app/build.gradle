@@ -99,8 +99,8 @@ android {
         }
         prod {
             dimension "default"
-            resValue "string", "app_name", "Salingsapa"
-            applicationIdSuffix ""
+//            resValue "string", "app_name", "Salingsapa"
+//            applicationIdSuffix ""
         }
     }
 
@@ -109,6 +109,11 @@ android {
         release {
             signingConfig signingConfigs.release
         }
+    }
+
+    aaptOptions {
+        noCompress 'tflite'
+        noCompress 'lite'
     }
 }
 

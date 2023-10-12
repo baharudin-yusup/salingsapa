@@ -14,6 +14,12 @@ abstract class UseCaseSync<Param, SuccessType> {
   Either<Failure, SuccessType> call(Param param);
 }
 
+abstract class UseCaseStreamSync<Param, SuccessType> {
+  const UseCaseStreamSync();
+
+  Stream<Either<Failure, SuccessType>> call(Param param);
+}
+
 abstract class NoParamUseCase<SuccessType> {
   const NoParamUseCase();
 

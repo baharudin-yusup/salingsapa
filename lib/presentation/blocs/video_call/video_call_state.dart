@@ -5,6 +5,7 @@ class VideoCallState with _$VideoCallState {
   const factory VideoCallState.initial({
     @Default(null) VideoCallInvitation? invitation,
     @Default(false) bool isRemoteUserJoined,
+    @Default(false) bool isTakePhotoEnabled,
     @Default(-1) int localUid,
     @Default(-1) int remoteUid,
   }) = _Initial;
@@ -12,6 +13,7 @@ class VideoCallState with _$VideoCallState {
   const factory VideoCallState.joinChannelInProgress({
     required VideoCallInvitation? invitation,
     required bool isRemoteUserJoined,
+    required bool isTakePhotoEnabled,
     required int localUid,
     required int remoteUid,
   }) = _JoinChannelInProgress;
@@ -19,6 +21,7 @@ class VideoCallState with _$VideoCallState {
   const factory VideoCallState.joinChannelSuccess({
     required VideoCallInvitation invitation,
     required bool isRemoteUserJoined,
+    required bool isTakePhotoEnabled,
     required RtcEngine engine,
     required int localUid,
     required int remoteUid,
@@ -27,6 +30,7 @@ class VideoCallState with _$VideoCallState {
   const factory VideoCallState.remoteUserJoinSuccess({
     required VideoCallInvitation? invitation,
     @Default(true) bool isRemoteUserJoined,
+    required bool isTakePhotoEnabled,
     required RtcEngine engine,
     required int localUid,
     required int remoteUid,
@@ -35,6 +39,7 @@ class VideoCallState with _$VideoCallState {
   const factory VideoCallState.joinChannelFailure({
     required VideoCallInvitation? invitation,
     required bool isRemoteUserJoined,
+    required bool isTakePhotoEnabled,
     required int localUid,
     required int remoteUid,
   }) = _JoinChannelFailure;
@@ -42,6 +47,7 @@ class VideoCallState with _$VideoCallState {
   const factory VideoCallState.remoteUserJoinFailure({
     required VideoCallInvitation? invitation,
     @Default(false) bool isRemoteUserJoined,
+    required bool isTakePhotoEnabled,
     required int localUid,
     required int remoteUid,
   }) = _RemoteUserJoinFailure;
@@ -49,6 +55,7 @@ class VideoCallState with _$VideoCallState {
   const factory VideoCallState.leaveChannelInProgress({
     required VideoCallInvitation? invitation,
     required bool isRemoteUserJoined,
+    required bool isTakePhotoEnabled,
     required int localUid,
     required int remoteUid,
   }) = _LeaveChannelInProgress;
@@ -56,6 +63,7 @@ class VideoCallState with _$VideoCallState {
   const factory VideoCallState.leaveChannelSuccess({
     required VideoCallInvitation? invitation,
     @Default(false) bool isRemoteUserJoined,
+    required bool isTakePhotoEnabled,
     required int localUid,
     required int remoteUid,
   }) = _LeaveChannelSuccess;
@@ -63,6 +71,7 @@ class VideoCallState with _$VideoCallState {
   const factory VideoCallState.remoteUserLeaveSuccess({
     required VideoCallInvitation? invitation,
     @Default(false) bool isRemoteUserJoined,
+    required bool isTakePhotoEnabled,
     @Default(null) RtcEngine? engine,
     required int localUid,
     required int remoteUid,
@@ -71,6 +80,7 @@ class VideoCallState with _$VideoCallState {
   const factory VideoCallState.leaveChannelFailure({
     required VideoCallInvitation? invitation,
     required bool isRemoteUserJoined,
+    required bool isTakePhotoEnabled,
     required int localUid,
     required int remoteUid,
   }) = _LeaveChannelFailure;

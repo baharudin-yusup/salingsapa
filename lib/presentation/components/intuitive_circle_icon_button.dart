@@ -8,7 +8,7 @@ class IntuitiveCircleIconButton extends StatelessWidget {
   final IconData? passiveIconData;
   final double iconSize;
   final double radius;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final bool showColorChange;
   final bool showBorder;
   final Color? activeColor;
@@ -16,17 +16,18 @@ class IntuitiveCircleIconButton extends StatelessWidget {
 
   const IntuitiveCircleIconButton({
     Key? key,
-    required this.isActive,
+    this.isActive = false,
     required this.activeIconData,
     this.passiveIconData,
-    this.iconSize = 40,
     this.radius = 30,
+    double? iconSize,
     required this.onTap,
     this.showColorChange = true,
     this.showBorder = false,
     this.activeColor,
     this.passiveColor,
-  }) : super(key: key);
+  })  : iconSize = iconSize ?? radius * 1.2,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
