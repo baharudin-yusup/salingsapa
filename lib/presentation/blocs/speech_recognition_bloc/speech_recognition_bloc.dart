@@ -102,6 +102,9 @@ class SpeechRecognitionBloc
         break;
       case RecognitionStatus.listening:
         break;
+      case RecognitionStatus.idle:
+        // TODO: Handle this case.
+        break;
     }
     emit(state.copyWith(status: status));
   }
