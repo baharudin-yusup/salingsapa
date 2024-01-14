@@ -1,6 +1,10 @@
-# Delete Account - Salingsapa
+# Customer Support
 
-Thank you for using **Salingsapa**. If you need assistance or have any concerns regarding the account deletion process, please contact our support team:
+Welcome to Salingsapa Support. If you have any questions or concerns, please feel free to reach out to us.
+
+## Delete Account
+
+If you wish to delete your Salingsapa account, follow these steps:
 
 1. **Open Salingsapa App:** Launch the Salingsapa mobile app.
 2. **Log in to Your Account:** Sign in to your Salingsapa account.
@@ -16,4 +20,4 @@ Thank you for using **Salingsapa**. If you need assistance or have any concerns 
 If you have any questions or need assistance during this process, please [email our support team](mailto:baharudin.yusup@outlook.com?subject=Salingsapa%20Account%20Deletion%20Support).
 
 Thank you,
-Salingsapa
+Salingsapa Support
