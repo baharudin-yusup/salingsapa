@@ -87,24 +87,25 @@ class _$SetupEventCopyWithImpl<$Res, $Val extends SetupEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$SetupEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$SetupEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString() {
@@ -114,7 +115,7 @@ class _$_Started implements _Started {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
 
   @override
@@ -196,24 +197,24 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements SetupEvent {
-  const factory _Started() = _$_Started;
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_PhoneNumberChangedCopyWith<$Res> {
-  factory _$$_PhoneNumberChangedCopyWith(_$_PhoneNumberChanged value,
-          $Res Function(_$_PhoneNumberChanged) then) =
-      __$$_PhoneNumberChangedCopyWithImpl<$Res>;
+abstract class _$$PhoneNumberChangedImplCopyWith<$Res> {
+  factory _$$PhoneNumberChangedImplCopyWith(_$PhoneNumberChangedImpl value,
+          $Res Function(_$PhoneNumberChangedImpl) then) =
+      __$$PhoneNumberChangedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String phoneNumber});
 }
 
 /// @nodoc
-class __$$_PhoneNumberChangedCopyWithImpl<$Res>
-    extends _$SetupEventCopyWithImpl<$Res, _$_PhoneNumberChanged>
-    implements _$$_PhoneNumberChangedCopyWith<$Res> {
-  __$$_PhoneNumberChangedCopyWithImpl(
-      _$_PhoneNumberChanged _value, $Res Function(_$_PhoneNumberChanged) _then)
+class __$$PhoneNumberChangedImplCopyWithImpl<$Res>
+    extends _$SetupEventCopyWithImpl<$Res, _$PhoneNumberChangedImpl>
+    implements _$$PhoneNumberChangedImplCopyWith<$Res> {
+  __$$PhoneNumberChangedImplCopyWithImpl(_$PhoneNumberChangedImpl _value,
+      $Res Function(_$PhoneNumberChangedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -221,7 +222,7 @@ class __$$_PhoneNumberChangedCopyWithImpl<$Res>
   $Res call({
     Object? phoneNumber = null,
   }) {
-    return _then(_$_PhoneNumberChanged(
+    return _then(_$PhoneNumberChangedImpl(
       null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -232,8 +233,8 @@ class __$$_PhoneNumberChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PhoneNumberChanged implements _PhoneNumberChanged {
-  const _$_PhoneNumberChanged(this.phoneNumber);
+class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
+  const _$PhoneNumberChangedImpl(this.phoneNumber);
 
   @override
   final String phoneNumber;
@@ -247,7 +248,7 @@ class _$_PhoneNumberChanged implements _PhoneNumberChanged {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PhoneNumberChanged &&
+            other is _$PhoneNumberChangedImpl &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber));
   }
@@ -258,8 +259,8 @@ class _$_PhoneNumberChanged implements _PhoneNumberChanged {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PhoneNumberChangedCopyWith<_$_PhoneNumberChanged> get copyWith =>
-      __$$_PhoneNumberChangedCopyWithImpl<_$_PhoneNumberChanged>(
+  _$$PhoneNumberChangedImplCopyWith<_$PhoneNumberChangedImpl> get copyWith =>
+      __$$PhoneNumberChangedImplCopyWithImpl<_$PhoneNumberChangedImpl>(
           this, _$identity);
 
   @override
@@ -339,34 +340,34 @@ class _$_PhoneNumberChanged implements _PhoneNumberChanged {
 
 abstract class _PhoneNumberChanged implements SetupEvent {
   const factory _PhoneNumberChanged(final String phoneNumber) =
-      _$_PhoneNumberChanged;
+      _$PhoneNumberChangedImpl;
 
   String get phoneNumber;
   @JsonKey(ignore: true)
-  _$$_PhoneNumberChangedCopyWith<_$_PhoneNumberChanged> get copyWith =>
+  _$$PhoneNumberChangedImplCopyWith<_$PhoneNumberChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ButtonDonePressedCopyWith<$Res> {
-  factory _$$_ButtonDonePressedCopyWith(_$_ButtonDonePressed value,
-          $Res Function(_$_ButtonDonePressed) then) =
-      __$$_ButtonDonePressedCopyWithImpl<$Res>;
+abstract class _$$ButtonDonePressedImplCopyWith<$Res> {
+  factory _$$ButtonDonePressedImplCopyWith(_$ButtonDonePressedImpl value,
+          $Res Function(_$ButtonDonePressedImpl) then) =
+      __$$ButtonDonePressedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ButtonDonePressedCopyWithImpl<$Res>
-    extends _$SetupEventCopyWithImpl<$Res, _$_ButtonDonePressed>
-    implements _$$_ButtonDonePressedCopyWith<$Res> {
-  __$$_ButtonDonePressedCopyWithImpl(
-      _$_ButtonDonePressed _value, $Res Function(_$_ButtonDonePressed) _then)
+class __$$ButtonDonePressedImplCopyWithImpl<$Res>
+    extends _$SetupEventCopyWithImpl<$Res, _$ButtonDonePressedImpl>
+    implements _$$ButtonDonePressedImplCopyWith<$Res> {
+  __$$ButtonDonePressedImplCopyWithImpl(_$ButtonDonePressedImpl _value,
+      $Res Function(_$ButtonDonePressedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ButtonDonePressed implements _ButtonDonePressed {
-  const _$_ButtonDonePressed();
+class _$ButtonDonePressedImpl implements _ButtonDonePressed {
+  const _$ButtonDonePressedImpl();
 
   @override
   String toString() {
@@ -376,7 +377,7 @@ class _$_ButtonDonePressed implements _ButtonDonePressed {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ButtonDonePressed);
+        (other.runtimeType == runtimeType && other is _$ButtonDonePressedImpl);
   }
 
   @override
@@ -458,24 +459,24 @@ class _$_ButtonDonePressed implements _ButtonDonePressed {
 }
 
 abstract class _ButtonDonePressed implements SetupEvent {
-  const factory _ButtonDonePressed() = _$_ButtonDonePressed;
+  const factory _ButtonDonePressed() = _$ButtonDonePressedImpl;
 }
 
 /// @nodoc
-abstract class _$$_OtpChangedCopyWith<$Res> {
-  factory _$$_OtpChangedCopyWith(
-          _$_OtpChanged value, $Res Function(_$_OtpChanged) then) =
-      __$$_OtpChangedCopyWithImpl<$Res>;
+abstract class _$$OtpChangedImplCopyWith<$Res> {
+  factory _$$OtpChangedImplCopyWith(
+          _$OtpChangedImpl value, $Res Function(_$OtpChangedImpl) then) =
+      __$$OtpChangedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String otp});
 }
 
 /// @nodoc
-class __$$_OtpChangedCopyWithImpl<$Res>
-    extends _$SetupEventCopyWithImpl<$Res, _$_OtpChanged>
-    implements _$$_OtpChangedCopyWith<$Res> {
-  __$$_OtpChangedCopyWithImpl(
-      _$_OtpChanged _value, $Res Function(_$_OtpChanged) _then)
+class __$$OtpChangedImplCopyWithImpl<$Res>
+    extends _$SetupEventCopyWithImpl<$Res, _$OtpChangedImpl>
+    implements _$$OtpChangedImplCopyWith<$Res> {
+  __$$OtpChangedImplCopyWithImpl(
+      _$OtpChangedImpl _value, $Res Function(_$OtpChangedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -483,7 +484,7 @@ class __$$_OtpChangedCopyWithImpl<$Res>
   $Res call({
     Object? otp = null,
   }) {
-    return _then(_$_OtpChanged(
+    return _then(_$OtpChangedImpl(
       null == otp
           ? _value.otp
           : otp // ignore: cast_nullable_to_non_nullable
@@ -494,8 +495,8 @@ class __$$_OtpChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OtpChanged implements _OtpChanged {
-  const _$_OtpChanged(this.otp);
+class _$OtpChangedImpl implements _OtpChanged {
+  const _$OtpChangedImpl(this.otp);
 
   @override
   final String otp;
@@ -509,7 +510,7 @@ class _$_OtpChanged implements _OtpChanged {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OtpChanged &&
+            other is _$OtpChangedImpl &&
             (identical(other.otp, otp) || other.otp == otp));
   }
 
@@ -519,8 +520,8 @@ class _$_OtpChanged implements _OtpChanged {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OtpChangedCopyWith<_$_OtpChanged> get copyWith =>
-      __$$_OtpChangedCopyWithImpl<_$_OtpChanged>(this, _$identity);
+  _$$OtpChangedImplCopyWith<_$OtpChangedImpl> get copyWith =>
+      __$$OtpChangedImplCopyWithImpl<_$OtpChangedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -598,11 +599,11 @@ class _$_OtpChanged implements _OtpChanged {
 }
 
 abstract class _OtpChanged implements SetupEvent {
-  const factory _OtpChanged(final String otp) = _$_OtpChanged;
+  const factory _OtpChanged(final String otp) = _$OtpChangedImpl;
 
   String get otp;
   @JsonKey(ignore: true)
-  _$$_OtpChangedCopyWith<_$_OtpChanged> get copyWith =>
+  _$$OtpChangedImplCopyWith<_$OtpChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -753,22 +754,24 @@ class _$SetupStateCopyWithImpl<$Res, $Val extends SetupState>
 }
 
 /// @nodoc
-abstract class _$$InputPhoneNumberInitialCopyWith<$Res>
+abstract class _$$InputPhoneNumberInitialImplCopyWith<$Res>
     implements $SetupStateCopyWith<$Res> {
-  factory _$$InputPhoneNumberInitialCopyWith(_$InputPhoneNumberInitial value,
-          $Res Function(_$InputPhoneNumberInitial) then) =
-      __$$InputPhoneNumberInitialCopyWithImpl<$Res>;
+  factory _$$InputPhoneNumberInitialImplCopyWith(
+          _$InputPhoneNumberInitialImpl value,
+          $Res Function(_$InputPhoneNumberInitialImpl) then) =
+      __$$InputPhoneNumberInitialImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String phoneNumber, bool canSubmit});
 }
 
 /// @nodoc
-class __$$InputPhoneNumberInitialCopyWithImpl<$Res>
-    extends _$SetupStateCopyWithImpl<$Res, _$InputPhoneNumberInitial>
-    implements _$$InputPhoneNumberInitialCopyWith<$Res> {
-  __$$InputPhoneNumberInitialCopyWithImpl(_$InputPhoneNumberInitial _value,
-      $Res Function(_$InputPhoneNumberInitial) _then)
+class __$$InputPhoneNumberInitialImplCopyWithImpl<$Res>
+    extends _$SetupStateCopyWithImpl<$Res, _$InputPhoneNumberInitialImpl>
+    implements _$$InputPhoneNumberInitialImplCopyWith<$Res> {
+  __$$InputPhoneNumberInitialImplCopyWithImpl(
+      _$InputPhoneNumberInitialImpl _value,
+      $Res Function(_$InputPhoneNumberInitialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -777,7 +780,7 @@ class __$$InputPhoneNumberInitialCopyWithImpl<$Res>
     Object? phoneNumber = null,
     Object? canSubmit = null,
   }) {
-    return _then(_$InputPhoneNumberInitial(
+    return _then(_$InputPhoneNumberInitialImpl(
       null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -792,8 +795,8 @@ class __$$InputPhoneNumberInitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InputPhoneNumberInitial implements InputPhoneNumberInitial {
-  const _$InputPhoneNumberInitial(
+class _$InputPhoneNumberInitialImpl implements InputPhoneNumberInitial {
+  const _$InputPhoneNumberInitialImpl(
       [this.phoneNumber = '', this.canSubmit = false]);
 
   @override
@@ -812,7 +815,7 @@ class _$InputPhoneNumberInitial implements InputPhoneNumberInitial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InputPhoneNumberInitial &&
+            other is _$InputPhoneNumberInitialImpl &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
             (identical(other.canSubmit, canSubmit) ||
@@ -825,9 +828,9 @@ class _$InputPhoneNumberInitial implements InputPhoneNumberInitial {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InputPhoneNumberInitialCopyWith<_$InputPhoneNumberInitial> get copyWith =>
-      __$$InputPhoneNumberInitialCopyWithImpl<_$InputPhoneNumberInitial>(
-          this, _$identity);
+  _$$InputPhoneNumberInitialImplCopyWith<_$InputPhoneNumberInitialImpl>
+      get copyWith => __$$InputPhoneNumberInitialImplCopyWithImpl<
+          _$InputPhoneNumberInitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -961,36 +964,37 @@ class _$InputPhoneNumberInitial implements InputPhoneNumberInitial {
 abstract class InputPhoneNumberInitial implements SetupState {
   const factory InputPhoneNumberInitial(
       [final String phoneNumber,
-      final bool canSubmit]) = _$InputPhoneNumberInitial;
+      final bool canSubmit]) = _$InputPhoneNumberInitialImpl;
 
   @override
   String get phoneNumber;
   bool get canSubmit;
   @override
   @JsonKey(ignore: true)
-  _$$InputPhoneNumberInitialCopyWith<_$InputPhoneNumberInitial> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$InputPhoneNumberInitialImplCopyWith<_$InputPhoneNumberInitialImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_InputPhoneNumberVerifyInProgressCopyWith<$Res>
+abstract class _$$InputPhoneNumberVerifyInProgressImplCopyWith<$Res>
     implements $SetupStateCopyWith<$Res> {
-  factory _$$_InputPhoneNumberVerifyInProgressCopyWith(
-          _$_InputPhoneNumberVerifyInProgress value,
-          $Res Function(_$_InputPhoneNumberVerifyInProgress) then) =
-      __$$_InputPhoneNumberVerifyInProgressCopyWithImpl<$Res>;
+  factory _$$InputPhoneNumberVerifyInProgressImplCopyWith(
+          _$InputPhoneNumberVerifyInProgressImpl value,
+          $Res Function(_$InputPhoneNumberVerifyInProgressImpl) then) =
+      __$$InputPhoneNumberVerifyInProgressImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String phoneNumber});
 }
 
 /// @nodoc
-class __$$_InputPhoneNumberVerifyInProgressCopyWithImpl<$Res>
-    extends _$SetupStateCopyWithImpl<$Res, _$_InputPhoneNumberVerifyInProgress>
-    implements _$$_InputPhoneNumberVerifyInProgressCopyWith<$Res> {
-  __$$_InputPhoneNumberVerifyInProgressCopyWithImpl(
-      _$_InputPhoneNumberVerifyInProgress _value,
-      $Res Function(_$_InputPhoneNumberVerifyInProgress) _then)
+class __$$InputPhoneNumberVerifyInProgressImplCopyWithImpl<$Res>
+    extends _$SetupStateCopyWithImpl<$Res,
+        _$InputPhoneNumberVerifyInProgressImpl>
+    implements _$$InputPhoneNumberVerifyInProgressImplCopyWith<$Res> {
+  __$$InputPhoneNumberVerifyInProgressImplCopyWithImpl(
+      _$InputPhoneNumberVerifyInProgressImpl _value,
+      $Res Function(_$InputPhoneNumberVerifyInProgressImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -998,7 +1002,7 @@ class __$$_InputPhoneNumberVerifyInProgressCopyWithImpl<$Res>
   $Res call({
     Object? phoneNumber = null,
   }) {
-    return _then(_$_InputPhoneNumberVerifyInProgress(
+    return _then(_$InputPhoneNumberVerifyInProgressImpl(
       null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -1009,9 +1013,9 @@ class __$$_InputPhoneNumberVerifyInProgressCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InputPhoneNumberVerifyInProgress
+class _$InputPhoneNumberVerifyInProgressImpl
     implements _InputPhoneNumberVerifyInProgress {
-  const _$_InputPhoneNumberVerifyInProgress(this.phoneNumber);
+  const _$InputPhoneNumberVerifyInProgressImpl(this.phoneNumber);
 
   @override
   final String phoneNumber;
@@ -1025,7 +1029,7 @@ class _$_InputPhoneNumberVerifyInProgress
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InputPhoneNumberVerifyInProgress &&
+            other is _$InputPhoneNumberVerifyInProgressImpl &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber));
   }
@@ -1036,10 +1040,10 @@ class _$_InputPhoneNumberVerifyInProgress
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InputPhoneNumberVerifyInProgressCopyWith<
-          _$_InputPhoneNumberVerifyInProgress>
-      get copyWith => __$$_InputPhoneNumberVerifyInProgressCopyWithImpl<
-          _$_InputPhoneNumberVerifyInProgress>(this, _$identity);
+  _$$InputPhoneNumberVerifyInProgressImplCopyWith<
+          _$InputPhoneNumberVerifyInProgressImpl>
+      get copyWith => __$$InputPhoneNumberVerifyInProgressImplCopyWithImpl<
+          _$InputPhoneNumberVerifyInProgressImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1172,34 +1176,36 @@ class _$_InputPhoneNumberVerifyInProgress
 
 abstract class _InputPhoneNumberVerifyInProgress implements SetupState {
   const factory _InputPhoneNumberVerifyInProgress(final String phoneNumber) =
-      _$_InputPhoneNumberVerifyInProgress;
+      _$InputPhoneNumberVerifyInProgressImpl;
 
   @override
   String get phoneNumber;
   @override
   @JsonKey(ignore: true)
-  _$$_InputPhoneNumberVerifyInProgressCopyWith<
-          _$_InputPhoneNumberVerifyInProgress>
+  _$$InputPhoneNumberVerifyInProgressImplCopyWith<
+          _$InputPhoneNumberVerifyInProgressImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_InputPhoneNumberFailureCopyWith<$Res>
+abstract class _$$InputPhoneNumberFailureImplCopyWith<$Res>
     implements $SetupStateCopyWith<$Res> {
-  factory _$$_InputPhoneNumberFailureCopyWith(_$_InputPhoneNumberFailure value,
-          $Res Function(_$_InputPhoneNumberFailure) then) =
-      __$$_InputPhoneNumberFailureCopyWithImpl<$Res>;
+  factory _$$InputPhoneNumberFailureImplCopyWith(
+          _$InputPhoneNumberFailureImpl value,
+          $Res Function(_$InputPhoneNumberFailureImpl) then) =
+      __$$InputPhoneNumberFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String phoneNumber, Failure failure});
 }
 
 /// @nodoc
-class __$$_InputPhoneNumberFailureCopyWithImpl<$Res>
-    extends _$SetupStateCopyWithImpl<$Res, _$_InputPhoneNumberFailure>
-    implements _$$_InputPhoneNumberFailureCopyWith<$Res> {
-  __$$_InputPhoneNumberFailureCopyWithImpl(_$_InputPhoneNumberFailure _value,
-      $Res Function(_$_InputPhoneNumberFailure) _then)
+class __$$InputPhoneNumberFailureImplCopyWithImpl<$Res>
+    extends _$SetupStateCopyWithImpl<$Res, _$InputPhoneNumberFailureImpl>
+    implements _$$InputPhoneNumberFailureImplCopyWith<$Res> {
+  __$$InputPhoneNumberFailureImplCopyWithImpl(
+      _$InputPhoneNumberFailureImpl _value,
+      $Res Function(_$InputPhoneNumberFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1208,7 +1214,7 @@ class __$$_InputPhoneNumberFailureCopyWithImpl<$Res>
     Object? phoneNumber = null,
     Object? failure = null,
   }) {
-    return _then(_$_InputPhoneNumberFailure(
+    return _then(_$InputPhoneNumberFailureImpl(
       null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -1223,8 +1229,8 @@ class __$$_InputPhoneNumberFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InputPhoneNumberFailure implements _InputPhoneNumberFailure {
-  const _$_InputPhoneNumberFailure(this.phoneNumber, this.failure);
+class _$InputPhoneNumberFailureImpl implements _InputPhoneNumberFailure {
+  const _$InputPhoneNumberFailureImpl(this.phoneNumber, this.failure);
 
   @override
   final String phoneNumber;
@@ -1240,7 +1246,7 @@ class _$_InputPhoneNumberFailure implements _InputPhoneNumberFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InputPhoneNumberFailure &&
+            other is _$InputPhoneNumberFailureImpl &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
             (identical(other.failure, failure) || other.failure == failure));
@@ -1252,10 +1258,9 @@ class _$_InputPhoneNumberFailure implements _InputPhoneNumberFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InputPhoneNumberFailureCopyWith<_$_InputPhoneNumberFailure>
-      get copyWith =>
-          __$$_InputPhoneNumberFailureCopyWithImpl<_$_InputPhoneNumberFailure>(
-              this, _$identity);
+  _$$InputPhoneNumberFailureImplCopyWith<_$InputPhoneNumberFailureImpl>
+      get copyWith => __$$InputPhoneNumberFailureImplCopyWithImpl<
+          _$InputPhoneNumberFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1389,34 +1394,36 @@ class _$_InputPhoneNumberFailure implements _InputPhoneNumberFailure {
 abstract class _InputPhoneNumberFailure implements SetupState {
   const factory _InputPhoneNumberFailure(
           final String phoneNumber, final Failure failure) =
-      _$_InputPhoneNumberFailure;
+      _$InputPhoneNumberFailureImpl;
 
   @override
   String get phoneNumber;
   Failure get failure;
   @override
   @JsonKey(ignore: true)
-  _$$_InputPhoneNumberFailureCopyWith<_$_InputPhoneNumberFailure>
+  _$$InputPhoneNumberFailureImplCopyWith<_$InputPhoneNumberFailureImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_InputPhoneNumberSuccessCopyWith<$Res>
+abstract class _$$InputPhoneNumberSuccessImplCopyWith<$Res>
     implements $SetupStateCopyWith<$Res> {
-  factory _$$_InputPhoneNumberSuccessCopyWith(_$_InputPhoneNumberSuccess value,
-          $Res Function(_$_InputPhoneNumberSuccess) then) =
-      __$$_InputPhoneNumberSuccessCopyWithImpl<$Res>;
+  factory _$$InputPhoneNumberSuccessImplCopyWith(
+          _$InputPhoneNumberSuccessImpl value,
+          $Res Function(_$InputPhoneNumberSuccessImpl) then) =
+      __$$InputPhoneNumberSuccessImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String phoneNumber});
 }
 
 /// @nodoc
-class __$$_InputPhoneNumberSuccessCopyWithImpl<$Res>
-    extends _$SetupStateCopyWithImpl<$Res, _$_InputPhoneNumberSuccess>
-    implements _$$_InputPhoneNumberSuccessCopyWith<$Res> {
-  __$$_InputPhoneNumberSuccessCopyWithImpl(_$_InputPhoneNumberSuccess _value,
-      $Res Function(_$_InputPhoneNumberSuccess) _then)
+class __$$InputPhoneNumberSuccessImplCopyWithImpl<$Res>
+    extends _$SetupStateCopyWithImpl<$Res, _$InputPhoneNumberSuccessImpl>
+    implements _$$InputPhoneNumberSuccessImplCopyWith<$Res> {
+  __$$InputPhoneNumberSuccessImplCopyWithImpl(
+      _$InputPhoneNumberSuccessImpl _value,
+      $Res Function(_$InputPhoneNumberSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1424,7 +1431,7 @@ class __$$_InputPhoneNumberSuccessCopyWithImpl<$Res>
   $Res call({
     Object? phoneNumber = null,
   }) {
-    return _then(_$_InputPhoneNumberSuccess(
+    return _then(_$InputPhoneNumberSuccessImpl(
       null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -1435,8 +1442,8 @@ class __$$_InputPhoneNumberSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InputPhoneNumberSuccess implements _InputPhoneNumberSuccess {
-  const _$_InputPhoneNumberSuccess(this.phoneNumber);
+class _$InputPhoneNumberSuccessImpl implements _InputPhoneNumberSuccess {
+  const _$InputPhoneNumberSuccessImpl(this.phoneNumber);
 
   @override
   final String phoneNumber;
@@ -1450,7 +1457,7 @@ class _$_InputPhoneNumberSuccess implements _InputPhoneNumberSuccess {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InputPhoneNumberSuccess &&
+            other is _$InputPhoneNumberSuccessImpl &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber));
   }
@@ -1461,10 +1468,9 @@ class _$_InputPhoneNumberSuccess implements _InputPhoneNumberSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InputPhoneNumberSuccessCopyWith<_$_InputPhoneNumberSuccess>
-      get copyWith =>
-          __$$_InputPhoneNumberSuccessCopyWithImpl<_$_InputPhoneNumberSuccess>(
-              this, _$identity);
+  _$$InputPhoneNumberSuccessImplCopyWith<_$InputPhoneNumberSuccessImpl>
+      get copyWith => __$$InputPhoneNumberSuccessImplCopyWithImpl<
+          _$InputPhoneNumberSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1597,33 +1603,33 @@ class _$_InputPhoneNumberSuccess implements _InputPhoneNumberSuccess {
 
 abstract class _InputPhoneNumberSuccess implements SetupState {
   const factory _InputPhoneNumberSuccess(final String phoneNumber) =
-      _$_InputPhoneNumberSuccess;
+      _$InputPhoneNumberSuccessImpl;
 
   @override
   String get phoneNumber;
   @override
   @JsonKey(ignore: true)
-  _$$_InputPhoneNumberSuccessCopyWith<_$_InputPhoneNumberSuccess>
+  _$$InputPhoneNumberSuccessImplCopyWith<_$InputPhoneNumberSuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_InputOtpInitialCopyWith<$Res>
+abstract class _$$InputOtpInitialImplCopyWith<$Res>
     implements $SetupStateCopyWith<$Res> {
-  factory _$$_InputOtpInitialCopyWith(
-          _$_InputOtpInitial value, $Res Function(_$_InputOtpInitial) then) =
-      __$$_InputOtpInitialCopyWithImpl<$Res>;
+  factory _$$InputOtpInitialImplCopyWith(_$InputOtpInitialImpl value,
+          $Res Function(_$InputOtpInitialImpl) then) =
+      __$$InputOtpInitialImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String phoneNumber, String otp});
 }
 
 /// @nodoc
-class __$$_InputOtpInitialCopyWithImpl<$Res>
-    extends _$SetupStateCopyWithImpl<$Res, _$_InputOtpInitial>
-    implements _$$_InputOtpInitialCopyWith<$Res> {
-  __$$_InputOtpInitialCopyWithImpl(
-      _$_InputOtpInitial _value, $Res Function(_$_InputOtpInitial) _then)
+class __$$InputOtpInitialImplCopyWithImpl<$Res>
+    extends _$SetupStateCopyWithImpl<$Res, _$InputOtpInitialImpl>
+    implements _$$InputOtpInitialImplCopyWith<$Res> {
+  __$$InputOtpInitialImplCopyWithImpl(
+      _$InputOtpInitialImpl _value, $Res Function(_$InputOtpInitialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1632,7 +1638,7 @@ class __$$_InputOtpInitialCopyWithImpl<$Res>
     Object? phoneNumber = null,
     Object? otp = null,
   }) {
-    return _then(_$_InputOtpInitial(
+    return _then(_$InputOtpInitialImpl(
       null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -1647,8 +1653,8 @@ class __$$_InputOtpInitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InputOtpInitial implements _InputOtpInitial {
-  const _$_InputOtpInitial(this.phoneNumber, this.otp);
+class _$InputOtpInitialImpl implements _InputOtpInitial {
+  const _$InputOtpInitialImpl(this.phoneNumber, this.otp);
 
   @override
   final String phoneNumber;
@@ -1664,7 +1670,7 @@ class _$_InputOtpInitial implements _InputOtpInitial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InputOtpInitial &&
+            other is _$InputOtpInitialImpl &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
             (identical(other.otp, otp) || other.otp == otp));
@@ -1676,8 +1682,9 @@ class _$_InputOtpInitial implements _InputOtpInitial {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InputOtpInitialCopyWith<_$_InputOtpInitial> get copyWith =>
-      __$$_InputOtpInitialCopyWithImpl<_$_InputOtpInitial>(this, _$identity);
+  _$$InputOtpInitialImplCopyWith<_$InputOtpInitialImpl> get copyWith =>
+      __$$InputOtpInitialImplCopyWithImpl<_$InputOtpInitialImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1810,36 +1817,36 @@ class _$_InputOtpInitial implements _InputOtpInitial {
 
 abstract class _InputOtpInitial implements SetupState {
   const factory _InputOtpInitial(final String phoneNumber, final String otp) =
-      _$_InputOtpInitial;
+      _$InputOtpInitialImpl;
 
   @override
   String get phoneNumber;
   String get otp;
   @override
   @JsonKey(ignore: true)
-  _$$_InputOtpInitialCopyWith<_$_InputOtpInitial> get copyWith =>
+  _$$InputOtpInitialImplCopyWith<_$InputOtpInitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_InputOtpValidationInProgressCopyWith<$Res>
+abstract class _$$InputOtpValidationInProgressImplCopyWith<$Res>
     implements $SetupStateCopyWith<$Res> {
-  factory _$$_InputOtpValidationInProgressCopyWith(
-          _$_InputOtpValidationInProgress value,
-          $Res Function(_$_InputOtpValidationInProgress) then) =
-      __$$_InputOtpValidationInProgressCopyWithImpl<$Res>;
+  factory _$$InputOtpValidationInProgressImplCopyWith(
+          _$InputOtpValidationInProgressImpl value,
+          $Res Function(_$InputOtpValidationInProgressImpl) then) =
+      __$$InputOtpValidationInProgressImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String phoneNumber, String otp});
 }
 
 /// @nodoc
-class __$$_InputOtpValidationInProgressCopyWithImpl<$Res>
-    extends _$SetupStateCopyWithImpl<$Res, _$_InputOtpValidationInProgress>
-    implements _$$_InputOtpValidationInProgressCopyWith<$Res> {
-  __$$_InputOtpValidationInProgressCopyWithImpl(
-      _$_InputOtpValidationInProgress _value,
-      $Res Function(_$_InputOtpValidationInProgress) _then)
+class __$$InputOtpValidationInProgressImplCopyWithImpl<$Res>
+    extends _$SetupStateCopyWithImpl<$Res, _$InputOtpValidationInProgressImpl>
+    implements _$$InputOtpValidationInProgressImplCopyWith<$Res> {
+  __$$InputOtpValidationInProgressImplCopyWithImpl(
+      _$InputOtpValidationInProgressImpl _value,
+      $Res Function(_$InputOtpValidationInProgressImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1848,7 +1855,7 @@ class __$$_InputOtpValidationInProgressCopyWithImpl<$Res>
     Object? phoneNumber = null,
     Object? otp = null,
   }) {
-    return _then(_$_InputOtpValidationInProgress(
+    return _then(_$InputOtpValidationInProgressImpl(
       null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -1863,8 +1870,9 @@ class __$$_InputOtpValidationInProgressCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InputOtpValidationInProgress implements _InputOtpValidationInProgress {
-  const _$_InputOtpValidationInProgress(this.phoneNumber, this.otp);
+class _$InputOtpValidationInProgressImpl
+    implements _InputOtpValidationInProgress {
+  const _$InputOtpValidationInProgressImpl(this.phoneNumber, this.otp);
 
   @override
   final String phoneNumber;
@@ -1880,7 +1888,7 @@ class _$_InputOtpValidationInProgress implements _InputOtpValidationInProgress {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InputOtpValidationInProgress &&
+            other is _$InputOtpValidationInProgressImpl &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
             (identical(other.otp, otp) || other.otp == otp));
@@ -1892,9 +1900,10 @@ class _$_InputOtpValidationInProgress implements _InputOtpValidationInProgress {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InputOtpValidationInProgressCopyWith<_$_InputOtpValidationInProgress>
-      get copyWith => __$$_InputOtpValidationInProgressCopyWithImpl<
-          _$_InputOtpValidationInProgress>(this, _$identity);
+  _$$InputOtpValidationInProgressImplCopyWith<
+          _$InputOtpValidationInProgressImpl>
+      get copyWith => __$$InputOtpValidationInProgressImplCopyWithImpl<
+          _$InputOtpValidationInProgressImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2028,36 +2037,37 @@ class _$_InputOtpValidationInProgress implements _InputOtpValidationInProgress {
 abstract class _InputOtpValidationInProgress implements SetupState {
   const factory _InputOtpValidationInProgress(
           final String phoneNumber, final String otp) =
-      _$_InputOtpValidationInProgress;
+      _$InputOtpValidationInProgressImpl;
 
   @override
   String get phoneNumber;
   String get otp;
   @override
   @JsonKey(ignore: true)
-  _$$_InputOtpValidationInProgressCopyWith<_$_InputOtpValidationInProgress>
+  _$$InputOtpValidationInProgressImplCopyWith<
+          _$InputOtpValidationInProgressImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_InputOtpValidationSuccessCopyWith<$Res>
+abstract class _$$InputOtpValidationSuccessImplCopyWith<$Res>
     implements $SetupStateCopyWith<$Res> {
-  factory _$$_InputOtpValidationSuccessCopyWith(
-          _$_InputOtpValidationSuccess value,
-          $Res Function(_$_InputOtpValidationSuccess) then) =
-      __$$_InputOtpValidationSuccessCopyWithImpl<$Res>;
+  factory _$$InputOtpValidationSuccessImplCopyWith(
+          _$InputOtpValidationSuccessImpl value,
+          $Res Function(_$InputOtpValidationSuccessImpl) then) =
+      __$$InputOtpValidationSuccessImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String phoneNumber, String otp});
 }
 
 /// @nodoc
-class __$$_InputOtpValidationSuccessCopyWithImpl<$Res>
-    extends _$SetupStateCopyWithImpl<$Res, _$_InputOtpValidationSuccess>
-    implements _$$_InputOtpValidationSuccessCopyWith<$Res> {
-  __$$_InputOtpValidationSuccessCopyWithImpl(
-      _$_InputOtpValidationSuccess _value,
-      $Res Function(_$_InputOtpValidationSuccess) _then)
+class __$$InputOtpValidationSuccessImplCopyWithImpl<$Res>
+    extends _$SetupStateCopyWithImpl<$Res, _$InputOtpValidationSuccessImpl>
+    implements _$$InputOtpValidationSuccessImplCopyWith<$Res> {
+  __$$InputOtpValidationSuccessImplCopyWithImpl(
+      _$InputOtpValidationSuccessImpl _value,
+      $Res Function(_$InputOtpValidationSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2066,7 +2076,7 @@ class __$$_InputOtpValidationSuccessCopyWithImpl<$Res>
     Object? phoneNumber = null,
     Object? otp = null,
   }) {
-    return _then(_$_InputOtpValidationSuccess(
+    return _then(_$InputOtpValidationSuccessImpl(
       null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -2081,8 +2091,8 @@ class __$$_InputOtpValidationSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InputOtpValidationSuccess implements _InputOtpValidationSuccess {
-  const _$_InputOtpValidationSuccess(this.phoneNumber, this.otp);
+class _$InputOtpValidationSuccessImpl implements _InputOtpValidationSuccess {
+  const _$InputOtpValidationSuccessImpl(this.phoneNumber, this.otp);
 
   @override
   final String phoneNumber;
@@ -2098,7 +2108,7 @@ class _$_InputOtpValidationSuccess implements _InputOtpValidationSuccess {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InputOtpValidationSuccess &&
+            other is _$InputOtpValidationSuccessImpl &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
             (identical(other.otp, otp) || other.otp == otp));
@@ -2110,9 +2120,9 @@ class _$_InputOtpValidationSuccess implements _InputOtpValidationSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InputOtpValidationSuccessCopyWith<_$_InputOtpValidationSuccess>
-      get copyWith => __$$_InputOtpValidationSuccessCopyWithImpl<
-          _$_InputOtpValidationSuccess>(this, _$identity);
+  _$$InputOtpValidationSuccessImplCopyWith<_$InputOtpValidationSuccessImpl>
+      get copyWith => __$$InputOtpValidationSuccessImplCopyWithImpl<
+          _$InputOtpValidationSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2246,36 +2256,36 @@ class _$_InputOtpValidationSuccess implements _InputOtpValidationSuccess {
 abstract class _InputOtpValidationSuccess implements SetupState {
   const factory _InputOtpValidationSuccess(
           final String phoneNumber, final String otp) =
-      _$_InputOtpValidationSuccess;
+      _$InputOtpValidationSuccessImpl;
 
   @override
   String get phoneNumber;
   String get otp;
   @override
   @JsonKey(ignore: true)
-  _$$_InputOtpValidationSuccessCopyWith<_$_InputOtpValidationSuccess>
+  _$$InputOtpValidationSuccessImplCopyWith<_$InputOtpValidationSuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_InputOtpValidationFailureCopyWith<$Res>
+abstract class _$$InputOtpValidationFailureImplCopyWith<$Res>
     implements $SetupStateCopyWith<$Res> {
-  factory _$$_InputOtpValidationFailureCopyWith(
-          _$_InputOtpValidationFailure value,
-          $Res Function(_$_InputOtpValidationFailure) then) =
-      __$$_InputOtpValidationFailureCopyWithImpl<$Res>;
+  factory _$$InputOtpValidationFailureImplCopyWith(
+          _$InputOtpValidationFailureImpl value,
+          $Res Function(_$InputOtpValidationFailureImpl) then) =
+      __$$InputOtpValidationFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String phoneNumber, String otp, Failure failure});
 }
 
 /// @nodoc
-class __$$_InputOtpValidationFailureCopyWithImpl<$Res>
-    extends _$SetupStateCopyWithImpl<$Res, _$_InputOtpValidationFailure>
-    implements _$$_InputOtpValidationFailureCopyWith<$Res> {
-  __$$_InputOtpValidationFailureCopyWithImpl(
-      _$_InputOtpValidationFailure _value,
-      $Res Function(_$_InputOtpValidationFailure) _then)
+class __$$InputOtpValidationFailureImplCopyWithImpl<$Res>
+    extends _$SetupStateCopyWithImpl<$Res, _$InputOtpValidationFailureImpl>
+    implements _$$InputOtpValidationFailureImplCopyWith<$Res> {
+  __$$InputOtpValidationFailureImplCopyWithImpl(
+      _$InputOtpValidationFailureImpl _value,
+      $Res Function(_$InputOtpValidationFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2285,7 +2295,7 @@ class __$$_InputOtpValidationFailureCopyWithImpl<$Res>
     Object? otp = null,
     Object? failure = null,
   }) {
-    return _then(_$_InputOtpValidationFailure(
+    return _then(_$InputOtpValidationFailureImpl(
       null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -2304,8 +2314,9 @@ class __$$_InputOtpValidationFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InputOtpValidationFailure implements _InputOtpValidationFailure {
-  const _$_InputOtpValidationFailure(this.phoneNumber, this.otp, this.failure);
+class _$InputOtpValidationFailureImpl implements _InputOtpValidationFailure {
+  const _$InputOtpValidationFailureImpl(
+      this.phoneNumber, this.otp, this.failure);
 
   @override
   final String phoneNumber;
@@ -2323,7 +2334,7 @@ class _$_InputOtpValidationFailure implements _InputOtpValidationFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InputOtpValidationFailure &&
+            other is _$InputOtpValidationFailureImpl &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
             (identical(other.otp, otp) || other.otp == otp) &&
@@ -2336,9 +2347,9 @@ class _$_InputOtpValidationFailure implements _InputOtpValidationFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InputOtpValidationFailureCopyWith<_$_InputOtpValidationFailure>
-      get copyWith => __$$_InputOtpValidationFailureCopyWithImpl<
-          _$_InputOtpValidationFailure>(this, _$identity);
+  _$$InputOtpValidationFailureImplCopyWith<_$InputOtpValidationFailureImpl>
+      get copyWith => __$$InputOtpValidationFailureImplCopyWithImpl<
+          _$InputOtpValidationFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2472,7 +2483,7 @@ class _$_InputOtpValidationFailure implements _InputOtpValidationFailure {
 abstract class _InputOtpValidationFailure implements SetupState {
   const factory _InputOtpValidationFailure(
           final String phoneNumber, final String otp, final Failure failure) =
-      _$_InputOtpValidationFailure;
+      _$InputOtpValidationFailureImpl;
 
   @override
   String get phoneNumber;
@@ -2480,6 +2491,6 @@ abstract class _InputOtpValidationFailure implements SetupState {
   Failure get failure;
   @override
   @JsonKey(ignore: true)
-  _$$_InputOtpValidationFailureCopyWith<_$_InputOtpValidationFailure>
+  _$$InputOtpValidationFailureImplCopyWith<_$InputOtpValidationFailureImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

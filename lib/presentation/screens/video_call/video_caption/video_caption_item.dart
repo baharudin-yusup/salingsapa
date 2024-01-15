@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../components/intuitive_circle_icon_button.dart';
-import '../../services/theme_service.dart';
+import '../../../components/intuitive_circle_icon_button.dart';
+import '../../../services/theme_service.dart';
 
 enum VideoCaptionSendButtonLocation {
   left,
@@ -13,7 +13,7 @@ enum VideoCaptionAlignment {
   right,
 }
 
-class VideoCaption extends StatelessWidget {
+class VideoCaptionItem extends StatelessWidget {
   final String? title;
   final String? caption;
   final VoidCallback? onSendButtonPressed;
@@ -21,7 +21,7 @@ class VideoCaption extends StatelessWidget {
   final VideoCaptionSendButtonLocation sendButtonLocation;
   final VideoCaptionAlignment alignment;
 
-  const VideoCaption(
+  const VideoCaptionItem(
     this.caption, {
     Key? key,
     this.onSendButtonPressed,

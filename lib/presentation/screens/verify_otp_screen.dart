@@ -21,7 +21,7 @@ class VerifyOtpScreen extends StatelessWidget {
     final SetupBloc bloc = context.read();
     return BlocConsumer<SetupBloc, SetupState>(
       listener: (context, state) {
-        final NavigatorService service = sl();
+        final NavigatorService navigatorService = sl();
         final UiService uiService = sl();
         state.map(
             inputPhoneNumberInitial: (_) {},
@@ -34,7 +34,7 @@ class VerifyOtpScreen extends StatelessWidget {
             },
             inputOtpValidationSuccess: (_) {
               uiService.hideLoading();
-              service.pushNamedAndRemoveUntil(
+              navigatorService.pushNamedAndRemoveUntil(
                   RootScreen.routeName, (route) => false);
             },
             inputOtpValidationFailure: (_) {

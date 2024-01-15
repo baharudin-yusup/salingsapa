@@ -8,6 +8,7 @@ import '../../components/contact_card.dart';
 import '../../components/intuitive_scaffold.dart';
 import '../../components/show_error_message.dart';
 import '../../services/theme_service.dart';
+import '../room/create_room_screen.dart';
 import '../video_call/video_call_screen.dart';
 
 class ContactListScreen extends StatelessWidget {
@@ -24,7 +25,7 @@ class ContactListScreen extends StatelessWidget {
         state.maybeWhen(
             orElse: () {},
             startVideoCallSuccess: (_, contact, __) => Navigator.pushNamed(
-                context, VideoCallScreen.routeName, arguments: contact),
+                context, CreateRoomScreen.routeName, arguments: contact),
             startVideoCallFailure: (errorMessage, _, __) =>
                 showErrorMessage(context, errorMessage));
       },

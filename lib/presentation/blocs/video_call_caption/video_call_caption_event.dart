@@ -2,8 +2,7 @@ part of 'video_call_caption_bloc.dart';
 
 @freezed
 class VideoCallCaptionEvent with _$VideoCallCaptionEvent {
-  const factory VideoCallCaptionEvent.started({required String invitationId}) =
-      _Started;
+  const factory VideoCallCaptionEvent.started(Room room) = _Started;
 
   const factory VideoCallCaptionEvent.toggleFeatureStarted() =
       _ToggleFeatureStarted;
