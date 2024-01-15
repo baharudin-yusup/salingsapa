@@ -1,6 +1,4 @@
 enum VideoCallStatus {
-  localUserJoined,
-  localUserLeave,
-  remoteUserJoined,
-  remoteUserLeave,
+  joined,
+  leave,
 }
