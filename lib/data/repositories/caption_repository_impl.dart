@@ -13,9 +13,9 @@ class CaptionRepositoryImpl implements CaptionRepository {
   CaptionRepositoryImpl(this._remoteDataSource);
 
   @override
-  Future<Either<Failure, Unit>> init({required String invitationId}) async {
+  Future<Either<Failure, Unit>> init({required String roomId}) async {
     try {
-      await _remoteDataSource.init(invitationId);
+      await _remoteDataSource.init(roomId);
       return const Right(unit);
     } catch (error) {
       Logger.error(error, event: 'initializing caption repository');

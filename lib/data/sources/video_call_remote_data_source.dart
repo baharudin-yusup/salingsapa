@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import 'dart:math';
 
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:path_provider/path_provider.dart';
@@ -14,12 +14,17 @@ import 'package:uuid/uuid.dart';
 import '../../core/errors/exceptions.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/contact.dart';
-import '../../domain/entities/video_call_invitation.dart';
 import '../../domain/entities/video_call_status.dart';
 import '../../domain/entities/video_call_user_update_info.dart';
+import '../constants/api_constant.dart';
 import '../extensions/extensions.dart';
-import '../models/video_call_invitation_model.dart';
+import '../models/apis/create_room_request.dart';
+import '../models/apis/create_room_response.dart';
+import '../models/apis/join_room_response.dart';
+import '../models/room_model.dart';
 import '../models/video_frame_model.dart';
+import '../plugins/network_plugin.dart';
+import 'api_service.dart';
 
 const _tagName = 'VideoCallRemoteDataSource';
 
@@ -28,23 +33,15 @@ abstract class VideoCallRemoteDataSource {
 
   Future<void> init();
 
-  Future<VideoCallInvitationModel> start(
-    String token,
-    Contact contact,
-  );
+  String getUserId();
 
-  Future<String> getToken();
+  Future<RoomModel> createRoom(Contact contact);
+
+  Future<void> joinRoom(String roomId);
+
+  Future<void> leaveRoom(String roomId);
 
   Future<String> getAppId();
-
-  Future<VideoCallInvitationModel> join(
-    String token,
-    VideoCallInvitation invitation,
-  );
-
-  Future<void> updateRemoteUserStatus(VideoCallInvitation invitation);
-
-  Future<void> leave(VideoCallInvitation invitation);
 
   Future<void> flipCamera();
 
@@ -60,7 +57,7 @@ abstract class VideoCallRemoteDataSource {
 
   Stream<PhotoSnapshotModel> get photoSnapshot;
 
-  Stream<List<VideoCallInvitationModel>> get invitations;
+  Stream<List<RoomModel>> get rooms;
 
   RtcEngine? get engine;
 }
@@ -69,13 +66,22 @@ const agoraTokenKey = 'agoraTestToken';
 const agoraAppIdKey = 'agoraAppId';
 
 class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
-  late RtcEngine _rtcEngine;
+  RtcEngine? _rtcEngine;
+
+  RtcEngine get _engine {
+    if (_rtcEngine == null) {
+      throw GeneralException();
+    }
+
+    return _rtcEngine!;
+  }
 
   final BehaviorSubject<VideoCallUserUpdateInfo> _streamController;
   final Uuid _uuid;
   final FirebaseFirestore _firestore;
   final FirebaseAuth _auth;
   final FirebaseRemoteConfig _remoteConfig;
+  final ApiService _apiService;
 
   Timer? _takeSnapshotTimer;
   Directory? _snapshotDir;
@@ -86,6 +92,7 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
     this._firestore,
     this._auth,
     this._remoteConfig,
+    this._apiService,
   )   : _streamController = BehaviorSubject(),
         _photoSnapshotController = BehaviorSubject();
 
@@ -98,15 +105,17 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
           .create(recursive: true);
 
       // Register the event handler
-      _rtcEngine.registerEventHandler(
+      _engine.registerEventHandler(
         RtcEngineEventHandler(
           onJoinChannelSuccess: (RtcConnection connection, int elapsed) {
             Logger.print(
               'Local user with uid ${connection.localUid} has joined to the channel!',
               name: _tagName,
             );
-            const info = VideoCallUserUpdateInfo(
-                status: VideoCallStatus.localUserJoined);
+            final info = VideoCallLocalUserUpdateInfo(
+              status: VideoCallStatus.joined,
+              uid: connection.localUid,
+            );
             _streamController.sink.add(info);
           },
           onUserJoined: (RtcConnection connection, int remoteUid, int elapsed) {
@@ -114,17 +123,17 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
               'User with uid $remoteUid has joined to the channel!',
               name: _tagName,
             );
-            final info = VideoCallUserUpdateInfo(
-              status: VideoCallStatus.remoteUserJoined,
-              remoteUid: remoteUid,
+            final info = VideoCallRemoteUserUpdateInfo(
+              status: VideoCallStatus.joined,
+              uid: remoteUid,
             );
             _streamController.sink.add(info);
           },
           onUserOffline: (RtcConnection connection, int remoteUid,
               UserOfflineReasonType reason) {
-            final info = VideoCallUserUpdateInfo(
-              status: VideoCallStatus.remoteUserLeave,
-              remoteUid: remoteUid,
+            final info = VideoCallRemoteUserUpdateInfo(
+              status: VideoCallStatus.leave,
+              uid: remoteUid,
             );
             _streamController.sink.add(info);
           },
@@ -141,119 +150,72 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
   }
 
   @override
-  Future<VideoCallInvitationModel> start(
-    String token,
-    Contact contact,
-  ) async {
+  String getUserId() {
+    // Get current user id
     try {
       final currentUser = _auth.currentUser;
-
       if (currentUser == null) {
         throw ServerException(type: ServerExceptionType.unauthorized);
       }
+      return currentUser.uid;
+    } catch (error) {
+      rethrow;
+    }
+  }
 
-      final uid = _generateUid();
-      final channelName = _generateChannelName();
+  @override
+  Future<RoomModel> createRoom(Contact contact) async {
+    // Create room and generate token
+    final request = CreateRoomRequest(
+        guestPhoneNumber: contact.phoneNumber.toFormattedPhoneNumber());
+    final response = await _apiService.createRoom(request);
+    return response.data.room;
+  }
+
+  @override
+  Future<void> joinRoom(String roomId) async {
+    Logger.print('joining room $roomId started...');
+    // Join room and generate token
+    final response = await _apiService.joinRoom(roomId);
+    final token = response.data.token;
+
+    // Start the streaming
+    try {
       const options = ChannelMediaOptions(
         clientRoleType: ClientRoleType.clientRoleBroadcaster,
         channelProfile: ChannelProfileType.channelProfileCommunication,
       );
 
       /// TODO: Remove this
-      await _rtcEngine.disableAudio();
+      await _engine.disableAudio();
       // await _rtcEngine.enableAudio();
-      await _rtcEngine.enableVideo();
-      await _rtcEngine.joinChannel(
+      await _engine.enableVideo();
+      await _engine.joinChannelWithUserAccount(
         token: token,
-        channelId: channelName,
+        channelId: roomId,
+        userAccount: getUserId(),
         options: options,
-        uid: uid,
       );
-
-      final invitationModel = VideoCallInvitationModel(
-        invitationId: _generateInvitationId(),
-        callerPhoneNumber: currentUser.phoneNumber!,
-        targetPhoneNumber: contact.phoneNumber.toFormattedPhoneNumber(),
-        channelName: channelName,
-        createdAt: DateTime.now(),
-        validUntil: DateTime.now().add(const Duration(minutes: 10)),
-        isValid: true,
-        invitationType: VideoCallInvitationTypeModel.call.index,
-        isTargetJoined: false,
-        isCallerJoined: true,
-        callerUid: uid,
-        targetUid: 0,
-      );
-      await _invitationCollection.add(invitationModel.toJson());
-
-      return invitationModel;
     } on ServerException catch (error) {
-      Logger.error(error, event: 'starting video call');
+      Logger.error(error, event: 'starting the streaming');
       rethrow;
     } catch (error) {
-      Logger.error(error, event: 'starting video call');
-      throw ServerException();
+      Logger.error(error, event: 'starting the streaming');
+      throw GeneralException();
     }
   }
 
   @override
-  Future<VideoCallInvitationModel> join(
-    String token,
-    VideoCallInvitation invitation,
-  ) async {
+  Future<void> leaveRoom(String roomId) async {
+    // Leave the room
+    await _apiService.leaveRoom(roomId);
+
+    // Leave the agora streaming
     try {
-      final documentSnapshot =
-          await _getCloudInvitationModel(invitation.invitationId).get();
-
-      if (documentSnapshot.size != 1) {
-        throw ServerException();
-      }
-
-      final uid = _generateUid();
-      const options = ChannelMediaOptions(
-        clientRoleType: ClientRoleType.clientRoleBroadcaster,
-        channelProfile: ChannelProfileType.channelProfileCommunication,
-      );
-      await _rtcEngine.enableAudio();
-      await _rtcEngine.enableVideo();
-      await _rtcEngine.joinChannel(
-        token: token,
-        channelId: invitation.channelName,
-        options: options,
-        uid: uid,
-      );
-
-      final queryDocumentSnapshot = documentSnapshot.docs[0];
-      final documentRef = queryDocumentSnapshot.reference;
-      await documentRef.update({
-        'isValid': false,
-        'targetUid': uid,
-      });
-      final model = await _updateUserJoinedStatus(invitation, true);
-      return model.copyWith(targetUid: uid);
-    } on ServerException {
-      rethrow;
-    } catch (_) {
-      throw ServerException();
-    }
-  }
-
-  @override
-  Future<void> leave(VideoCallInvitation invitation) async {
-    try {
-      await _rtcEngine.disableVideo();
-      await _rtcEngine.disableAudio();
-      await _rtcEngine.leaveChannel();
-
-      final snapshot =
-          await _getCloudInvitationModel(invitation.invitationId).get();
-
-      if (snapshot.size != 1) {
-        throw ServerException();
-      }
-      final documentRef = snapshot.docs.first.reference;
-      await documentRef.update({'isValid': false});
-      await _updateUserJoinedStatus(invitation, false);
+      await _engine.disableVideo();
+      await _engine.disableAudio();
+      await _engine.leaveChannel();
+      await _engine.release();
     } on ServerException {
       rethrow;
     } catch (_) {
@@ -265,27 +227,10 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
   Stream<VideoCallUserUpdateInfo> get status => _streamController.stream;
 
   @override
-  Future<String> getToken() async {
-    try {
-      await _remoteConfig.fetchAndActivate();
-      // TODO: Edit this
-      final base64Token = _remoteConfig.getString(agoraTokenKey);
-      final token = utf8.decode(base64.decode(base64Token));
-      const x =
-          '007eJxTYFh+PmzNZ6O9WRIBZ+TFd1xo3ftuh4MNC/f0xu8XfqkkvlVVYEg0NDa3NEtMS7RMNTBJNTJJMk0zNTU1SUwyNzQzSE40+abfkNIQyMigfPofAyMUgvjcDCWpxSXOGYl5eak5DAwAo60jtA==';
-      Logger.print('is token valid? ${token == x}', name: _tagName);
-      return token;
-    } catch (error) {
-      Logger.error(error, event: 'getting agora token');
-      throw ServerException();
-    }
-  }
+  RtcEngine? get engine => _engine;
 
   @override
-  RtcEngine? get engine => _rtcEngine;
-
-  @override
-  Stream<List<VideoCallInvitationModel>> get invitations {
+  Stream<List<RoomModel>> get rooms {
     final user = _auth.currentUser;
 
     if (user == null) {
@@ -293,32 +238,30 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
     }
 
     final targetPhoneNumber = user.phoneNumber!.toFormattedPhoneNumber();
-    Logger.print('targetPhoneNumber: $targetPhoneNumber');
-    return _invitationCollection
-        .where('targetPhoneNumber', isEqualTo: targetPhoneNumber)
-        .orderBy('createdAt')
+    Logger.print('guestPhoneNumber: $targetPhoneNumber');
+    return _roomCollection
+        .where('guestPhoneNumber', isEqualTo: targetPhoneNumber)
+        .orderBy('createdAt', descending: true)
         .snapshots()
         .map((snapshot) {
-      final invitations = <VideoCallInvitationModel>[];
+      final rooms = <RoomModel>[];
 
-      for (var element in snapshot.docs.reversed) {
-        final json = element.data();
+      for (var room in snapshot.docs) {
         try {
-          invitations.add(VideoCallInvitationModel.fromJson(json));
+          rooms.add(RoomModel.fromJson(room.data()));
         } catch (error) {
-          Logger.error(error,
-              event: 'mapping video call invitations. data: $json');
+          Logger.error(error, event: 'mapping video call rooms. data: $json');
         }
       }
 
-      return invitations;
+      return rooms;
     });
   }
 
   @override
   Future<void> flipCamera() async {
     try {
-      await _rtcEngine.switchCamera();
+      await _engine.switchCamera();
     } catch (_) {
       throw ServerException();
     }
@@ -328,11 +271,11 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
   Future<void> muteAudio(bool mute) async {
     try {
       if (mute) {
-        await _rtcEngine.disableAudio();
+        await _engine.disableAudio();
       } else {
-        await _rtcEngine.enableAudio();
+        await _engine.enableAudio();
       }
-      await _rtcEngine.muteLocalAudioStream(mute);
+      await _engine.muteLocalAudioStream(mute);
     } catch (_) {
       throw ServerException();
     }
@@ -341,78 +284,14 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
   @override
   Future<void> muteVideo(bool mute) async {
     try {
-      await _rtcEngine.muteLocalVideoStream(mute);
+      await _engine.muteLocalVideoStream(mute);
     } catch (_) {
       throw ServerException();
     }
   }
 
-  Future<VideoCallInvitationModel> _updateUserJoinedStatus(
-      VideoCallInvitation invitation, bool isJoined) async {
-    try {
-      final currentUser = _auth.currentUser;
-
-      if (currentUser == null) {
-        throw ServerException();
-      }
-      final phoneNumber = currentUser.phoneNumber?.toFormattedPhoneNumber();
-      if (phoneNumber == null) {
-        throw ServerException();
-      }
-
-      final queryResult =
-          await _getCloudInvitationModel(invitation.invitationId).get();
-
-      if (queryResult.size != 1) {
-        throw ServerException();
-      }
-
-      final document = queryResult.docs[0];
-      final model = VideoCallInvitationModel.fromJson(document.data());
-
-      if (model.callerPhoneNumber == phoneNumber) {
-        Logger.print('Update isCallerJoined value to $isJoined');
-        await document.reference.update({'isCallerJoined': isJoined});
-        return model.copyWith(isCallerJoined: isJoined);
-      }
-
-      if (model.targetPhoneNumber == phoneNumber) {
-        Logger.print('Update isTargetJoined value to $isJoined');
-        await document.reference.update({'isTargetJoined': isJoined});
-        return model.copyWith(isTargetJoined: isJoined);
-      }
-
-      throw ServerException();
-    } catch (error) {
-      Logger.error(error, event: 'updating remote user status');
-      throw ServerException();
-    }
-  }
-
-  String _generateChannelName() => 'testChannel';
-
-  String _generateInvitationId() => _uuid.v4();
-
-  CollectionReference<Map<String, dynamic>> get _invitationCollection =>
-      _firestore.collection('invitations');
-
-  Query<Map<String, dynamic>> _getCloudInvitationModel(String invitationId) {
-    return _invitationCollection.where('invitationId', isEqualTo: invitationId);
-  }
-
-  int _generateUid() => Random.secure().nextInt(pow(2, 16).toInt());
-
-  @override
-  Future<void> updateRemoteUserStatus(VideoCallInvitation invitation) async {
-    // final model = await _updateUserJoinedStatus(invitation, true);
-    //
-    // if (model.isTargetJoined && model.isCallerJoined) {
-    //   const info = VideoCallUserUpdateInfo(
-    //     status: VideoCallStatus.remoteUserJoined,
-    //   );
-    //   _streamController.sink.add(info);
-    // }
-  }
+  CollectionReference<Map<String, dynamic>> get _roomCollection =>
+      _firestore.collection('rooms');
 
   @override
   void setEngine(RtcEngine engine) => _rtcEngine = engine;
@@ -454,7 +333,7 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
         Timer.periodic(const Duration(milliseconds: 1750), (timer) async {
       try {
         final filePath = _generateSnapshotFilePath();
-        await _rtcEngine.takeSnapshot(
+        await _engine.takeSnapshot(
           uid: 0,
           filePath: filePath,
         );
