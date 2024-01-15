@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
@@ -13,6 +14,7 @@ import 'package:speech_to_text/speech_to_text.dart';
 import 'package:uuid/uuid.dart';
 
 import 'core/envs/env.dart';
+import 'data/plugins/network_plugin.dart';
 import 'data/plugins/sign_language_recognition_plugin.dart';
 import 'data/plugins/speech_recognition_plugin.dart';
 import 'data/repositories/authentication_repository_impl.dart';
@@ -23,6 +25,7 @@ import 'data/repositories/sign_language_recognition_repository_impl.dart';
 import 'data/repositories/speech_recognition_repository_impl.dart';
 import 'data/repositories/user_repository_impl.dart';
 import 'data/repositories/video_call_repository_impl.dart';
+import 'data/sources/api_service.dart';
 import 'data/sources/authentication_local_data_source.dart';
 import 'data/sources/authentication_remote_data_source.dart';
 import 'data/sources/caption_remote_data_source.dart';
@@ -54,15 +57,14 @@ import 'domain/usecases/enable_take_photo_snapshot.dart';
 import 'domain/usecases/flip_video_call_camera.dart';
 import 'domain/usecases/get_current_user.dart';
 import 'domain/usecases/get_recent_call.dart';
-import 'domain/usecases/get_video_call_engine.dart';
 import 'domain/usecases/has_permission.dart';
 import 'domain/usecases/init_caption.dart';
 import 'domain/usecases/init_sign_language_recognition.dart';
 import 'domain/usecases/init_speech_recognition.dart';
 import 'domain/usecases/init_video_call.dart';
 import 'domain/usecases/is_first_launch_app.dart';
-import 'domain/usecases/join_video_call.dart';
-import 'domain/usecases/leave_video_call.dart';
+import 'domain/usecases/join_room.dart';
+import 'domain/usecases/leave_room.dart';
 import 'domain/usecases/mute_video_call_audio.dart';
 import 'domain/usecases/mute_video_call_video.dart';
 import 'domain/usecases/refresh_contact_list.dart';
@@ -71,7 +73,7 @@ import 'domain/usecases/reset_sign_language_recognition.dart';
 import 'domain/usecases/set_is_first_launch_app.dart';
 import 'domain/usecases/sign_out.dart';
 import 'domain/usecases/start_sign_language_recognition.dart';
-import 'domain/usecases/start_video_call.dart';
+import 'domain/usecases/create_room.dart';
 import 'domain/usecases/stream_caption.dart';
 import 'domain/usecases/stream_current_user.dart';
 import 'domain/usecases/stream_photo_snapshot.dart';
@@ -83,19 +85,18 @@ import 'domain/usecases/stream_video_call_invitations.dart';
 import 'domain/usecases/stream_video_call_status.dart';
 import 'domain/usecases/update_name.dart';
 import 'domain/usecases/update_profile_picture.dart';
-import 'domain/usecases/update_video_call_remote_user_status.dart';
 import 'domain/usecases/upload_caption.dart';
 import 'domain/usecases/verify_otp.dart';
 import 'domain/usecases/verify_phone_number.dart';
 import 'presentation/blocs/account/account_bloc.dart';
 import 'presentation/blocs/authorization/authorization_bloc.dart';
 import 'presentation/blocs/contact_list/contact_list_bloc.dart';
+import 'presentation/blocs/create_room/create_room_bloc.dart';
 import 'presentation/blocs/introduction/introduction_cubit.dart';
 import 'presentation/blocs/recent_call/recent_call_bloc.dart';
 import 'presentation/blocs/setup/setup_bloc.dart';
 import 'presentation/blocs/sign_language_recognition_bloc/sign_language_recognition_bloc.dart';
 import 'presentation/blocs/speech_recognition_bloc/speech_recognition_bloc.dart';
-import 'presentation/blocs/video_call/video_call_bloc.dart';
 import 'presentation/blocs/video_call_caption/video_call_caption_bloc.dart';
 import 'presentation/blocs/video_call_control/video_call_control_bloc.dart';
 import 'presentation/services/navigator_service.dart';
@@ -123,8 +124,6 @@ Future<void> setup(Env env) async {
   sl.registerFactory(() => IntroductionCubit(sl(), sl(), sl()));
   sl.registerFactory(() => RecentCallBloc(sl(), sl(), sl()));
   sl.registerFactory(() => AccountBloc(sl(), sl(), sl(), sl(), sl()));
-  sl.registerFactory(() =>
-      VideoCallBloc(sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl()));
   sl.registerFactory(() => VideoCallControlBloc(sl(), sl(), sl()));
   sl.registerFactory(() => VideoCallCaptionBloc(sl(), sl(), sl(), sl(), sl()));
   sl.registerFactory(() => SignLanguageRecognitionBloc(
@@ -143,17 +142,15 @@ Future<void> setup(Env env) async {
   sl.registerLazySingleton(() => GetAuthStatus(sl()));
   sl.registerLazySingleton(() => RefreshContactList(sl()));
 
-  sl.registerLazySingleton(() => InitVideoCall(sl()));
-  sl.registerLazySingleton(() => StartVideoCall(sl()));
-  sl.registerLazySingleton(() => JoinVideoCall(sl()));
-  sl.registerLazySingleton(() => LeaveVideoCall(sl()));
-  sl.registerLazySingleton(() => GetVideoCallEngine(sl()));
+  sl.registerLazySingleton(() => InitVideoEngine(sl()));
+  sl.registerLazySingleton(() => CreateRoom(sl()));
+  sl.registerLazySingleton(() => JoinRoom(sl()));
+  sl.registerLazySingleton(() => LeaveRoom(sl()));
   sl.registerLazySingleton(() => StreamVideoCallStatus(sl()));
   sl.registerLazySingleton(() => StreamVideoCallInvitations(sl()));
   sl.registerLazySingleton(() => FlipVideoCallCamera(sl()));
   sl.registerLazySingleton(() => MuteVideoCallAudio(sl()));
   sl.registerLazySingleton(() => MuteVideoCallVideo(sl()));
-  sl.registerLazySingleton(() => UpdateVideoCallRemoteUserStatus(sl()));
   // sl.registerLazySingleton(() => StreamVideoFrame(sl()));
   sl.registerLazySingleton(() => EnableTakePhotoSnapshot(sl()));
   sl.registerLazySingleton(() => DisableTakePhotoSnapshot(sl()));
@@ -215,7 +212,7 @@ Future<void> setup(Env env) async {
   sl.registerLazySingleton<AuthenticationLocalDataSource>(
       () => AuthenticationLocalDataSourceImpl(sl()));
   sl.registerLazySingleton<AuthenticationRemoteDatSource>(
-      () => AuthenticationRemoteDatSourceImpl(sl(), sl()));
+      () => AuthenticationRemoteDatSourceImpl(sl(), sl(), sl()));
   sl.registerLazySingleton<ContactLocalDataSource>(
       () => ContactLocalDataSourceImpl());
   sl.registerLazySingleton<SettingLocalDataSource>(
@@ -227,7 +224,7 @@ Future<void> setup(Env env) async {
   sl.registerLazySingleton<VideoCallLocalDataSource>(
       () => VideoCallLocalDataSourceImpl());
   sl.registerLazySingleton<VideoCallRemoteDataSource>(
-      () => VideoCallRemoteDataSourceImpl(sl(), sl(), sl(), sl()));
+      () => VideoCallRemoteDataSourceImpl(sl(), sl(), sl(), sl(), sl()));
   sl.registerLazySingleton<CaptionRemoteDataSource>(
       () => CaptionRemoteDataSourceImpl(sl(), sl()));
   sl.registerLazySingleton<SignLanguageRecognitionLocalDataSource>(
@@ -238,6 +235,9 @@ Future<void> setup(Env env) async {
       () => SpeechRecognitionPluginImpl(sl(), sl()));
   sl.registerLazySingleton<SignLanguageRecognitionPlugin>(
       () => SignLanguageRecognitionPluginImpl(sl()));
+  sl.registerLazySingleton<ApiService>(() => ApiServiceImpl(sl()));
+  sl.registerLazySingleton<NetworkPlugin>(
+      () => NetworkPluginImpl(sl(), env.baseUrl));
 
   /// External plugin
   final auth = FirebaseAuth.instance;
@@ -248,6 +248,7 @@ Future<void> setup(Env env) async {
   const uuid = Uuid();
   const secureStorage = FlutterSecureStorage();
   final speechToText = SpeechToText();
+  final dio = Dio();
 
   sl.registerLazySingleton(() => secureStorage);
   // sl.registerLazySingleton(() => FirebaseMessaging.instance);
@@ -260,6 +261,7 @@ Future<void> setup(Env env) async {
   sl.registerLazySingleton(() => imagePicker);
   sl.registerLazySingleton(() => uuid);
   sl.registerLazySingleton(() => speechToText);
+  sl.registerLazySingleton(() => dio);
 
   /// Post Creation
   final authorizationBloc = sl<AuthorizationBloc>();

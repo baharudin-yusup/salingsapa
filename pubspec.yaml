@@ -41,7 +41,7 @@ dependencies:
     sdk: flutter
   intl: ^0.18.0
   agora_uikit: ^1.2.1
-  agora_rtc_engine: ^6.1.0
+  agora_rtc_engine: ^6.2.6
   uuid: ^4.1.0
   firebase_storage: ^11.0.16
   image_picker: ^1.0.4
@@ -52,6 +52,7 @@ dependencies:
   speech_to_text: ^6.1.1
   tflite: ^1.1.2
   path_provider: ^2.0.15
+  dio: ^5.4.0
 
 dependency_overrides:
   tflite:
