@@ -16,7 +16,7 @@ class IntuitiveOtp extends StatefulWidget {
   final Color errorColor;
 
   const IntuitiveOtp({
-    Key? key,
+    super.key,
     this.controller,
     this.focusNode,
     this.obscure,
@@ -25,7 +25,7 @@ class IntuitiveOtp extends StatefulWidget {
     this.onChanged,
     this.ceriaOTPType,
     this.errorColor = Colors.red,
-  }) : super(key: key);
+  });
 
   @override
   State<IntuitiveOtp> createState() => _IntuitiveOtpState();

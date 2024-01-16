@@ -23,13 +23,13 @@ class VideoCaptionItem extends StatelessWidget {
 
   const VideoCaptionItem(
     this.caption, {
-    Key? key,
+    super.key,
     this.onSendButtonPressed,
     this.sendButtonLocation = VideoCaptionSendButtonLocation.right,
     this.showSendButton = true,
     this.title,
     this.alignment = VideoCaptionAlignment.left,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

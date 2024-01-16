@@ -10,9 +10,9 @@ class ContactCard extends StatelessWidget {
 
   const ContactCard(
     this.contact, {
-    Key? key,
+    super.key,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

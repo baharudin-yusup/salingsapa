@@ -42,7 +42,7 @@ void createApp() {
 class RootScreen extends StatefulWidget {
   static const routeName = '/';
 
-  const RootScreen({Key? key}) : super(key: key);
+  const RootScreen({super.key});
 
   @override
   State<RootScreen> createState() => _RootScreenState();
@@ -155,10 +155,9 @@ class _AndroidAppScreen extends StatelessWidget {
   final Widget home;
 
   const _AndroidAppScreen({
-    Key? key,
     required this.routes,
     required this.home,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -196,10 +195,9 @@ class _IosAppScreen extends StatelessWidget {
   final Widget home;
 
   const _IosAppScreen({
-    Key? key,
     required this.routes,
     required this.home,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

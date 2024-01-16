@@ -15,7 +15,7 @@ import 'skeleton_screen.dart';
 class VerifyOtpScreen extends StatelessWidget {
   static const routeName = '/verify-otp';
 
-  const VerifyOtpScreen({Key? key}) : super(key: key);
+  const VerifyOtpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

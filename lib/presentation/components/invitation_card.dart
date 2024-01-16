@@ -15,10 +15,10 @@ class InvitationCard extends StatelessWidget {
 
   const InvitationCard(
     this.room, {
-    Key? key,
+    super.key,
     this.onTap,
     this.callerContact,
-  }) : super(key: key);
+  });
 
   bool get isValid =>
       (room.isValid && room.validUntil.isAfter(DateTime.now()));

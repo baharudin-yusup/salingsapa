@@ -13,12 +13,12 @@ class IntuitiveScaffold extends StatelessWidget {
   final IntuitiveFloatingActionButton? floatingActionButton;
 
   const IntuitiveScaffold({
-    Key? key,
+    super.key,
     required this.child,
     this.appBar,
     this.bottomNavigationBar,
     this.floatingActionButton,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

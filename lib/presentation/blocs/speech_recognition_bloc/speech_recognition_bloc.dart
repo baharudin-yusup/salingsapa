@@ -76,7 +76,7 @@ class SpeechRecognitionBloc
     }
 
     await toggleUseCase(
-        isNeedToEnable ? _enableSpeechRecognition : _disableSpeechRecognition);
+        (isNeedToEnable ? _enableSpeechRecognition : _disableSpeechRecognition).call);
   }
 
   void _assignCaption(

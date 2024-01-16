@@ -9,7 +9,7 @@ import '../../services/theme_service.dart';
 import '../../utils/app_localizations.dart';
 
 class AccountScreen extends StatelessWidget {
-  const AccountScreen({Key? key}) : super(key: key);
+  const AccountScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

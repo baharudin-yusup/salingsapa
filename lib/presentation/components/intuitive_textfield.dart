@@ -18,7 +18,7 @@ class IntuitiveTextField extends StatelessWidget {
   final bool? enabled;
 
   const IntuitiveTextField({
-    Key? key,
+    super.key,
     this.prefix,
     this.padding = const EdgeInsets.all(IntuitiveUiConstant.tinySpace),
     this.textInputAction,
@@ -29,7 +29,7 @@ class IntuitiveTextField extends StatelessWidget {
     this.controller,
     this.enabled,
     this.onSubmitted,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
