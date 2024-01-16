@@ -76,24 +76,25 @@ class _$AuthorizationEventCopyWithImpl<$Res, $Val extends AuthorizationEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$AuthorizationEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$AuthorizationEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString() {
@@ -103,7 +104,7 @@ class _$_Started implements _Started {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
 
   @override
@@ -174,24 +175,24 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements AuthorizationEvent {
-  const factory _Started() = _$_Started;
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_AuthStatusChangedCopyWith<$Res> {
-  factory _$$_AuthStatusChangedCopyWith(_$_AuthStatusChanged value,
-          $Res Function(_$_AuthStatusChanged) then) =
-      __$$_AuthStatusChangedCopyWithImpl<$Res>;
+abstract class _$$AuthStatusChangedImplCopyWith<$Res> {
+  factory _$$AuthStatusChangedImplCopyWith(_$AuthStatusChangedImpl value,
+          $Res Function(_$AuthStatusChangedImpl) then) =
+      __$$AuthStatusChangedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AuthStatus? status, Failure? failure});
 }
 
 /// @nodoc
-class __$$_AuthStatusChangedCopyWithImpl<$Res>
-    extends _$AuthorizationEventCopyWithImpl<$Res, _$_AuthStatusChanged>
-    implements _$$_AuthStatusChangedCopyWith<$Res> {
-  __$$_AuthStatusChangedCopyWithImpl(
-      _$_AuthStatusChanged _value, $Res Function(_$_AuthStatusChanged) _then)
+class __$$AuthStatusChangedImplCopyWithImpl<$Res>
+    extends _$AuthorizationEventCopyWithImpl<$Res, _$AuthStatusChangedImpl>
+    implements _$$AuthStatusChangedImplCopyWith<$Res> {
+  __$$AuthStatusChangedImplCopyWithImpl(_$AuthStatusChangedImpl _value,
+      $Res Function(_$AuthStatusChangedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -200,7 +201,7 @@ class __$$_AuthStatusChangedCopyWithImpl<$Res>
     Object? status = freezed,
     Object? failure = freezed,
   }) {
-    return _then(_$_AuthStatusChanged(
+    return _then(_$AuthStatusChangedImpl(
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -215,8 +216,8 @@ class __$$_AuthStatusChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AuthStatusChanged implements _AuthStatusChanged {
-  const _$_AuthStatusChanged({this.status, this.failure});
+class _$AuthStatusChangedImpl implements _AuthStatusChanged {
+  const _$AuthStatusChangedImpl({this.status, this.failure});
 
   @override
   final AuthStatus? status;
@@ -232,7 +233,7 @@ class _$_AuthStatusChanged implements _AuthStatusChanged {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthStatusChanged &&
+            other is _$AuthStatusChangedImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.failure, failure) || other.failure == failure));
   }
@@ -243,8 +244,8 @@ class _$_AuthStatusChanged implements _AuthStatusChanged {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthStatusChangedCopyWith<_$_AuthStatusChanged> get copyWith =>
-      __$$_AuthStatusChangedCopyWithImpl<_$_AuthStatusChanged>(
+  _$$AuthStatusChangedImplCopyWith<_$AuthStatusChangedImpl> get copyWith =>
+      __$$AuthStatusChangedImplCopyWithImpl<_$AuthStatusChangedImpl>(
           this, _$identity);
 
   @override
@@ -314,12 +315,12 @@ class _$_AuthStatusChanged implements _AuthStatusChanged {
 abstract class _AuthStatusChanged implements AuthorizationEvent {
   const factory _AuthStatusChanged(
       {final AuthStatus? status,
-      final Failure? failure}) = _$_AuthStatusChanged;
+      final Failure? failure}) = _$AuthStatusChangedImpl;
 
   AuthStatus? get status;
   Failure? get failure;
   @JsonKey(ignore: true)
-  _$$_AuthStatusChangedCopyWith<_$_AuthStatusChanged> get copyWith =>
+  _$$AuthStatusChangedImplCopyWith<_$AuthStatusChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -392,19 +393,20 @@ class _$AuthorizationStateCopyWithImpl<$Res, $Val extends AuthorizationState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AuthStatus status});
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$AuthorizationStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$AuthorizationStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -412,7 +414,7 @@ class __$$_InitialCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
   }) {
-    return _then(_$_Initial(
+    return _then(_$InitialImpl(
       null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -423,8 +425,8 @@ class __$$_InitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial([this.status = AuthStatus.unauthorized]);
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl([this.status = AuthStatus.unauthorized]);
 
   @override
   @JsonKey()
@@ -439,7 +441,7 @@ class _$_Initial implements _Initial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Initial &&
+            other is _$InitialImpl &&
             (identical(other.status, status) || other.status == status));
   }
 
@@ -449,8 +451,8 @@ class _$_Initial implements _Initial {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
-      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -524,29 +526,32 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements AuthorizationState {
-  const factory _Initial([final AuthStatus status]) = _$_Initial;
+  const factory _Initial([final AuthStatus status]) = _$InitialImpl;
 
   AuthStatus get status;
   @JsonKey(ignore: true)
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ChangeAuthStatusSuccessCopyWith<$Res> {
-  factory _$$_ChangeAuthStatusSuccessCopyWith(_$_ChangeAuthStatusSuccess value,
-          $Res Function(_$_ChangeAuthStatusSuccess) then) =
-      __$$_ChangeAuthStatusSuccessCopyWithImpl<$Res>;
+abstract class _$$ChangeAuthStatusSuccessImplCopyWith<$Res> {
+  factory _$$ChangeAuthStatusSuccessImplCopyWith(
+          _$ChangeAuthStatusSuccessImpl value,
+          $Res Function(_$ChangeAuthStatusSuccessImpl) then) =
+      __$$ChangeAuthStatusSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AuthStatus status});
 }
 
 /// @nodoc
-class __$$_ChangeAuthStatusSuccessCopyWithImpl<$Res>
-    extends _$AuthorizationStateCopyWithImpl<$Res, _$_ChangeAuthStatusSuccess>
-    implements _$$_ChangeAuthStatusSuccessCopyWith<$Res> {
-  __$$_ChangeAuthStatusSuccessCopyWithImpl(_$_ChangeAuthStatusSuccess _value,
-      $Res Function(_$_ChangeAuthStatusSuccess) _then)
+class __$$ChangeAuthStatusSuccessImplCopyWithImpl<$Res>
+    extends _$AuthorizationStateCopyWithImpl<$Res,
+        _$ChangeAuthStatusSuccessImpl>
+    implements _$$ChangeAuthStatusSuccessImplCopyWith<$Res> {
+  __$$ChangeAuthStatusSuccessImplCopyWithImpl(
+      _$ChangeAuthStatusSuccessImpl _value,
+      $Res Function(_$ChangeAuthStatusSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -554,7 +559,7 @@ class __$$_ChangeAuthStatusSuccessCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
   }) {
-    return _then(_$_ChangeAuthStatusSuccess(
+    return _then(_$ChangeAuthStatusSuccessImpl(
       null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -565,8 +570,8 @@ class __$$_ChangeAuthStatusSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChangeAuthStatusSuccess implements _ChangeAuthStatusSuccess {
-  const _$_ChangeAuthStatusSuccess(this.status);
+class _$ChangeAuthStatusSuccessImpl implements _ChangeAuthStatusSuccess {
+  const _$ChangeAuthStatusSuccessImpl(this.status);
 
   @override
   final AuthStatus status;
@@ -580,7 +585,7 @@ class _$_ChangeAuthStatusSuccess implements _ChangeAuthStatusSuccess {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChangeAuthStatusSuccess &&
+            other is _$ChangeAuthStatusSuccessImpl &&
             (identical(other.status, status) || other.status == status));
   }
 
@@ -590,10 +595,9 @@ class _$_ChangeAuthStatusSuccess implements _ChangeAuthStatusSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChangeAuthStatusSuccessCopyWith<_$_ChangeAuthStatusSuccess>
-      get copyWith =>
-          __$$_ChangeAuthStatusSuccessCopyWithImpl<_$_ChangeAuthStatusSuccess>(
-              this, _$identity);
+  _$$ChangeAuthStatusSuccessImplCopyWith<_$ChangeAuthStatusSuccessImpl>
+      get copyWith => __$$ChangeAuthStatusSuccessImplCopyWithImpl<
+          _$ChangeAuthStatusSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -668,29 +672,32 @@ class _$_ChangeAuthStatusSuccess implements _ChangeAuthStatusSuccess {
 
 abstract class _ChangeAuthStatusSuccess implements AuthorizationState {
   const factory _ChangeAuthStatusSuccess(final AuthStatus status) =
-      _$_ChangeAuthStatusSuccess;
+      _$ChangeAuthStatusSuccessImpl;
 
   AuthStatus get status;
   @JsonKey(ignore: true)
-  _$$_ChangeAuthStatusSuccessCopyWith<_$_ChangeAuthStatusSuccess>
+  _$$ChangeAuthStatusSuccessImplCopyWith<_$ChangeAuthStatusSuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ChangeAuthStatusFailureCopyWith<$Res> {
-  factory _$$_ChangeAuthStatusFailureCopyWith(_$_ChangeAuthStatusFailure value,
-          $Res Function(_$_ChangeAuthStatusFailure) then) =
-      __$$_ChangeAuthStatusFailureCopyWithImpl<$Res>;
+abstract class _$$ChangeAuthStatusFailureImplCopyWith<$Res> {
+  factory _$$ChangeAuthStatusFailureImplCopyWith(
+          _$ChangeAuthStatusFailureImpl value,
+          $Res Function(_$ChangeAuthStatusFailureImpl) then) =
+      __$$ChangeAuthStatusFailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Failure failure});
 }
 
 /// @nodoc
-class __$$_ChangeAuthStatusFailureCopyWithImpl<$Res>
-    extends _$AuthorizationStateCopyWithImpl<$Res, _$_ChangeAuthStatusFailure>
-    implements _$$_ChangeAuthStatusFailureCopyWith<$Res> {
-  __$$_ChangeAuthStatusFailureCopyWithImpl(_$_ChangeAuthStatusFailure _value,
-      $Res Function(_$_ChangeAuthStatusFailure) _then)
+class __$$ChangeAuthStatusFailureImplCopyWithImpl<$Res>
+    extends _$AuthorizationStateCopyWithImpl<$Res,
+        _$ChangeAuthStatusFailureImpl>
+    implements _$$ChangeAuthStatusFailureImplCopyWith<$Res> {
+  __$$ChangeAuthStatusFailureImplCopyWithImpl(
+      _$ChangeAuthStatusFailureImpl _value,
+      $Res Function(_$ChangeAuthStatusFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -698,7 +705,7 @@ class __$$_ChangeAuthStatusFailureCopyWithImpl<$Res>
   $Res call({
     Object? failure = null,
   }) {
-    return _then(_$_ChangeAuthStatusFailure(
+    return _then(_$ChangeAuthStatusFailureImpl(
       null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -709,8 +716,8 @@ class __$$_ChangeAuthStatusFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChangeAuthStatusFailure implements _ChangeAuthStatusFailure {
-  const _$_ChangeAuthStatusFailure(this.failure);
+class _$ChangeAuthStatusFailureImpl implements _ChangeAuthStatusFailure {
+  const _$ChangeAuthStatusFailureImpl(this.failure);
 
   @override
   final Failure failure;
@@ -724,7 +731,7 @@ class _$_ChangeAuthStatusFailure implements _ChangeAuthStatusFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChangeAuthStatusFailure &&
+            other is _$ChangeAuthStatusFailureImpl &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
@@ -734,10 +741,9 @@ class _$_ChangeAuthStatusFailure implements _ChangeAuthStatusFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChangeAuthStatusFailureCopyWith<_$_ChangeAuthStatusFailure>
-      get copyWith =>
-          __$$_ChangeAuthStatusFailureCopyWithImpl<_$_ChangeAuthStatusFailure>(
-              this, _$identity);
+  _$$ChangeAuthStatusFailureImplCopyWith<_$ChangeAuthStatusFailureImpl>
+      get copyWith => __$$ChangeAuthStatusFailureImplCopyWithImpl<
+          _$ChangeAuthStatusFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -812,10 +818,10 @@ class _$_ChangeAuthStatusFailure implements _ChangeAuthStatusFailure {
 
 abstract class _ChangeAuthStatusFailure implements AuthorizationState {
   const factory _ChangeAuthStatusFailure(final Failure failure) =
-      _$_ChangeAuthStatusFailure;
+      _$ChangeAuthStatusFailureImpl;
 
   Failure get failure;
   @JsonKey(ignore: true)
-  _$$_ChangeAuthStatusFailureCopyWith<_$_ChangeAuthStatusFailure>
+  _$$ChangeAuthStatusFailureImplCopyWith<_$ChangeAuthStatusFailureImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../data/extensions/extensions.dart';
 import '../../injection_container.dart';
 import '../blocs/setup/setup_bloc.dart';
 import '../components/intuitive_otp.dart';
@@ -21,7 +22,7 @@ class VerifyOtpScreen extends StatelessWidget {
     final SetupBloc bloc = context.read();
     return BlocConsumer<SetupBloc, SetupState>(
       listener: (context, state) {
-        final NavigatorService service = sl();
+        final NavigatorService navigatorService = sl();
         final UiService uiService = sl();
         state.map(
             inputPhoneNumberInitial: (_) {},
@@ -34,7 +35,7 @@ class VerifyOtpScreen extends StatelessWidget {
             },
             inputOtpValidationSuccess: (_) {
               uiService.hideLoading();
-              service.pushNamedAndRemoveUntil(
+              navigatorService.pushNamedAndRemoveUntil(
                   RootScreen.routeName, (route) => false);
             },
             inputOtpValidationFailure: (_) {
@@ -72,7 +73,7 @@ class VerifyOtpScreen extends StatelessWidget {
     return BlocBuilder<SetupBloc, SetupState>(
       builder: (context, state) {
         return Text(AppLocalizations.of(context)!
-            .otpSendToInfo('+62${state.phoneNumber}'));
+            .otpSendToInfo(state.phoneNumber.toFormattedPhoneNumber()));
       },
     );
   }

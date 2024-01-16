@@ -88,24 +88,25 @@ class _$VideoCallControlEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$VideoCallControlEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$VideoCallControlEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString() {
@@ -115,7 +116,7 @@ class _$_Started implements _Started {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
 
   @override
@@ -197,29 +198,29 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements VideoCallControlEvent {
-  const factory _Started() = _$_Started;
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_FlipCameraStartedCopyWith<$Res> {
-  factory _$$_FlipCameraStartedCopyWith(_$_FlipCameraStarted value,
-          $Res Function(_$_FlipCameraStarted) then) =
-      __$$_FlipCameraStartedCopyWithImpl<$Res>;
+abstract class _$$FlipCameraStartedImplCopyWith<$Res> {
+  factory _$$FlipCameraStartedImplCopyWith(_$FlipCameraStartedImpl value,
+          $Res Function(_$FlipCameraStartedImpl) then) =
+      __$$FlipCameraStartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FlipCameraStartedCopyWithImpl<$Res>
-    extends _$VideoCallControlEventCopyWithImpl<$Res, _$_FlipCameraStarted>
-    implements _$$_FlipCameraStartedCopyWith<$Res> {
-  __$$_FlipCameraStartedCopyWithImpl(
-      _$_FlipCameraStarted _value, $Res Function(_$_FlipCameraStarted) _then)
+class __$$FlipCameraStartedImplCopyWithImpl<$Res>
+    extends _$VideoCallControlEventCopyWithImpl<$Res, _$FlipCameraStartedImpl>
+    implements _$$FlipCameraStartedImplCopyWith<$Res> {
+  __$$FlipCameraStartedImplCopyWithImpl(_$FlipCameraStartedImpl _value,
+      $Res Function(_$FlipCameraStartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_FlipCameraStarted implements _FlipCameraStarted {
-  const _$_FlipCameraStarted();
+class _$FlipCameraStartedImpl implements _FlipCameraStarted {
+  const _$FlipCameraStartedImpl();
 
   @override
   String toString() {
@@ -229,7 +230,7 @@ class _$_FlipCameraStarted implements _FlipCameraStarted {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_FlipCameraStarted);
+        (other.runtimeType == runtimeType && other is _$FlipCameraStartedImpl);
   }
 
   @override
@@ -311,29 +312,29 @@ class _$_FlipCameraStarted implements _FlipCameraStarted {
 }
 
 abstract class _FlipCameraStarted implements VideoCallControlEvent {
-  const factory _FlipCameraStarted() = _$_FlipCameraStarted;
+  const factory _FlipCameraStarted() = _$FlipCameraStartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_MuteAudioStartedCopyWith<$Res> {
-  factory _$$_MuteAudioStartedCopyWith(
-          _$_MuteAudioStarted value, $Res Function(_$_MuteAudioStarted) then) =
-      __$$_MuteAudioStartedCopyWithImpl<$Res>;
+abstract class _$$MuteAudioStartedImplCopyWith<$Res> {
+  factory _$$MuteAudioStartedImplCopyWith(_$MuteAudioStartedImpl value,
+          $Res Function(_$MuteAudioStartedImpl) then) =
+      __$$MuteAudioStartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_MuteAudioStartedCopyWithImpl<$Res>
-    extends _$VideoCallControlEventCopyWithImpl<$Res, _$_MuteAudioStarted>
-    implements _$$_MuteAudioStartedCopyWith<$Res> {
-  __$$_MuteAudioStartedCopyWithImpl(
-      _$_MuteAudioStarted _value, $Res Function(_$_MuteAudioStarted) _then)
+class __$$MuteAudioStartedImplCopyWithImpl<$Res>
+    extends _$VideoCallControlEventCopyWithImpl<$Res, _$MuteAudioStartedImpl>
+    implements _$$MuteAudioStartedImplCopyWith<$Res> {
+  __$$MuteAudioStartedImplCopyWithImpl(_$MuteAudioStartedImpl _value,
+      $Res Function(_$MuteAudioStartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_MuteAudioStarted implements _MuteAudioStarted {
-  const _$_MuteAudioStarted();
+class _$MuteAudioStartedImpl implements _MuteAudioStarted {
+  const _$MuteAudioStartedImpl();
 
   @override
   String toString() {
@@ -343,7 +344,7 @@ class _$_MuteAudioStarted implements _MuteAudioStarted {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_MuteAudioStarted);
+        (other.runtimeType == runtimeType && other is _$MuteAudioStartedImpl);
   }
 
   @override
@@ -425,29 +426,29 @@ class _$_MuteAudioStarted implements _MuteAudioStarted {
 }
 
 abstract class _MuteAudioStarted implements VideoCallControlEvent {
-  const factory _MuteAudioStarted() = _$_MuteAudioStarted;
+  const factory _MuteAudioStarted() = _$MuteAudioStartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_MuteVideoStartedCopyWith<$Res> {
-  factory _$$_MuteVideoStartedCopyWith(
-          _$_MuteVideoStarted value, $Res Function(_$_MuteVideoStarted) then) =
-      __$$_MuteVideoStartedCopyWithImpl<$Res>;
+abstract class _$$MuteVideoStartedImplCopyWith<$Res> {
+  factory _$$MuteVideoStartedImplCopyWith(_$MuteVideoStartedImpl value,
+          $Res Function(_$MuteVideoStartedImpl) then) =
+      __$$MuteVideoStartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_MuteVideoStartedCopyWithImpl<$Res>
-    extends _$VideoCallControlEventCopyWithImpl<$Res, _$_MuteVideoStarted>
-    implements _$$_MuteVideoStartedCopyWith<$Res> {
-  __$$_MuteVideoStartedCopyWithImpl(
-      _$_MuteVideoStarted _value, $Res Function(_$_MuteVideoStarted) _then)
+class __$$MuteVideoStartedImplCopyWithImpl<$Res>
+    extends _$VideoCallControlEventCopyWithImpl<$Res, _$MuteVideoStartedImpl>
+    implements _$$MuteVideoStartedImplCopyWith<$Res> {
+  __$$MuteVideoStartedImplCopyWithImpl(_$MuteVideoStartedImpl _value,
+      $Res Function(_$MuteVideoStartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_MuteVideoStarted implements _MuteVideoStarted {
-  const _$_MuteVideoStarted();
+class _$MuteVideoStartedImpl implements _MuteVideoStarted {
+  const _$MuteVideoStartedImpl();
 
   @override
   String toString() {
@@ -457,7 +458,7 @@ class _$_MuteVideoStarted implements _MuteVideoStarted {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_MuteVideoStarted);
+        (other.runtimeType == runtimeType && other is _$MuteVideoStartedImpl);
   }
 
   @override
@@ -539,7 +540,7 @@ class _$_MuteVideoStarted implements _MuteVideoStarted {
 }
 
 abstract class _MuteVideoStarted implements VideoCallControlEvent {
-  const factory _MuteVideoStarted() = _$_MuteVideoStarted;
+  const factory _MuteVideoStarted() = _$MuteVideoStartedImpl;
 }
 
 /// @nodoc
@@ -673,21 +674,22 @@ class _$VideoCallControlStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res>
+abstract class _$$InitialImplCopyWith<$Res>
     implements $VideoCallControlStateCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera});
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$VideoCallControlStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$VideoCallControlStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -697,7 +699,7 @@ class __$$_InitialCopyWithImpl<$Res>
     Object? isVideoMuted = null,
     Object? isUsingFrontCamera = null,
   }) {
-    return _then(_$_Initial(
+    return _then(_$InitialImpl(
       null == isAudioMuted
           ? _value.isAudioMuted
           : isAudioMuted // ignore: cast_nullable_to_non_nullable
@@ -716,8 +718,8 @@ class __$$_InitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial(
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl(
       [this.isAudioMuted = false,
       this.isVideoMuted = false,
       this.isUsingFrontCamera = true]);
@@ -741,7 +743,7 @@ class _$_Initial implements _Initial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Initial &&
+            other is _$InitialImpl &&
             (identical(other.isAudioMuted, isAudioMuted) ||
                 other.isAudioMuted == isAudioMuted) &&
             (identical(other.isVideoMuted, isVideoMuted) ||
@@ -757,8 +759,8 @@ class _$_Initial implements _Initial {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
-      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -864,7 +866,7 @@ abstract class _Initial implements VideoCallControlState {
   const factory _Initial(
       [final bool isAudioMuted,
       final bool isVideoMuted,
-      final bool isUsingFrontCamera]) = _$_Initial;
+      final bool isUsingFrontCamera]) = _$InitialImpl;
 
   @override
   bool get isAudioMuted;
@@ -874,28 +876,30 @@ abstract class _Initial implements VideoCallControlState {
   bool get isUsingFrontCamera;
   @override
   @JsonKey(ignore: true)
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ChangeControlInProgressCopyWith<$Res>
+abstract class _$$ChangeControlInProgressImplCopyWith<$Res>
     implements $VideoCallControlStateCopyWith<$Res> {
-  factory _$$_ChangeControlInProgressCopyWith(_$_ChangeControlInProgress value,
-          $Res Function(_$_ChangeControlInProgress) then) =
-      __$$_ChangeControlInProgressCopyWithImpl<$Res>;
+  factory _$$ChangeControlInProgressImplCopyWith(
+          _$ChangeControlInProgressImpl value,
+          $Res Function(_$ChangeControlInProgressImpl) then) =
+      __$$ChangeControlInProgressImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera});
 }
 
 /// @nodoc
-class __$$_ChangeControlInProgressCopyWithImpl<$Res>
+class __$$ChangeControlInProgressImplCopyWithImpl<$Res>
     extends _$VideoCallControlStateCopyWithImpl<$Res,
-        _$_ChangeControlInProgress>
-    implements _$$_ChangeControlInProgressCopyWith<$Res> {
-  __$$_ChangeControlInProgressCopyWithImpl(_$_ChangeControlInProgress _value,
-      $Res Function(_$_ChangeControlInProgress) _then)
+        _$ChangeControlInProgressImpl>
+    implements _$$ChangeControlInProgressImplCopyWith<$Res> {
+  __$$ChangeControlInProgressImplCopyWithImpl(
+      _$ChangeControlInProgressImpl _value,
+      $Res Function(_$ChangeControlInProgressImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -905,7 +909,7 @@ class __$$_ChangeControlInProgressCopyWithImpl<$Res>
     Object? isVideoMuted = null,
     Object? isUsingFrontCamera = null,
   }) {
-    return _then(_$_ChangeControlInProgress(
+    return _then(_$ChangeControlInProgressImpl(
       isAudioMuted: null == isAudioMuted
           ? _value.isAudioMuted
           : isAudioMuted // ignore: cast_nullable_to_non_nullable
@@ -924,8 +928,8 @@ class __$$_ChangeControlInProgressCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChangeControlInProgress implements _ChangeControlInProgress {
-  const _$_ChangeControlInProgress(
+class _$ChangeControlInProgressImpl implements _ChangeControlInProgress {
+  const _$ChangeControlInProgressImpl(
       {required this.isAudioMuted,
       required this.isVideoMuted,
       required this.isUsingFrontCamera});
@@ -946,7 +950,7 @@ class _$_ChangeControlInProgress implements _ChangeControlInProgress {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChangeControlInProgress &&
+            other is _$ChangeControlInProgressImpl &&
             (identical(other.isAudioMuted, isAudioMuted) ||
                 other.isAudioMuted == isAudioMuted) &&
             (identical(other.isVideoMuted, isVideoMuted) ||
@@ -962,10 +966,9 @@ class _$_ChangeControlInProgress implements _ChangeControlInProgress {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChangeControlInProgressCopyWith<_$_ChangeControlInProgress>
-      get copyWith =>
-          __$$_ChangeControlInProgressCopyWithImpl<_$_ChangeControlInProgress>(
-              this, _$identity);
+  _$$ChangeControlInProgressImplCopyWith<_$ChangeControlInProgressImpl>
+      get copyWith => __$$ChangeControlInProgressImplCopyWithImpl<
+          _$ChangeControlInProgressImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1074,7 +1077,7 @@ abstract class _ChangeControlInProgress implements VideoCallControlState {
   const factory _ChangeControlInProgress(
       {required final bool isAudioMuted,
       required final bool isVideoMuted,
-      required final bool isUsingFrontCamera}) = _$_ChangeControlInProgress;
+      required final bool isUsingFrontCamera}) = _$ChangeControlInProgressImpl;
 
   @override
   bool get isAudioMuted;
@@ -1084,27 +1087,28 @@ abstract class _ChangeControlInProgress implements VideoCallControlState {
   bool get isUsingFrontCamera;
   @override
   @JsonKey(ignore: true)
-  _$$_ChangeControlInProgressCopyWith<_$_ChangeControlInProgress>
+  _$$ChangeControlInProgressImplCopyWith<_$ChangeControlInProgressImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ChangeControlSuccessCopyWith<$Res>
+abstract class _$$ChangeControlSuccessImplCopyWith<$Res>
     implements $VideoCallControlStateCopyWith<$Res> {
-  factory _$$_ChangeControlSuccessCopyWith(_$_ChangeControlSuccess value,
-          $Res Function(_$_ChangeControlSuccess) then) =
-      __$$_ChangeControlSuccessCopyWithImpl<$Res>;
+  factory _$$ChangeControlSuccessImplCopyWith(_$ChangeControlSuccessImpl value,
+          $Res Function(_$ChangeControlSuccessImpl) then) =
+      __$$ChangeControlSuccessImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera});
 }
 
 /// @nodoc
-class __$$_ChangeControlSuccessCopyWithImpl<$Res>
-    extends _$VideoCallControlStateCopyWithImpl<$Res, _$_ChangeControlSuccess>
-    implements _$$_ChangeControlSuccessCopyWith<$Res> {
-  __$$_ChangeControlSuccessCopyWithImpl(_$_ChangeControlSuccess _value,
-      $Res Function(_$_ChangeControlSuccess) _then)
+class __$$ChangeControlSuccessImplCopyWithImpl<$Res>
+    extends _$VideoCallControlStateCopyWithImpl<$Res,
+        _$ChangeControlSuccessImpl>
+    implements _$$ChangeControlSuccessImplCopyWith<$Res> {
+  __$$ChangeControlSuccessImplCopyWithImpl(_$ChangeControlSuccessImpl _value,
+      $Res Function(_$ChangeControlSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1114,7 +1118,7 @@ class __$$_ChangeControlSuccessCopyWithImpl<$Res>
     Object? isVideoMuted = null,
     Object? isUsingFrontCamera = null,
   }) {
-    return _then(_$_ChangeControlSuccess(
+    return _then(_$ChangeControlSuccessImpl(
       isAudioMuted: null == isAudioMuted
           ? _value.isAudioMuted
           : isAudioMuted // ignore: cast_nullable_to_non_nullable
@@ -1133,8 +1137,8 @@ class __$$_ChangeControlSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChangeControlSuccess implements _ChangeControlSuccess {
-  const _$_ChangeControlSuccess(
+class _$ChangeControlSuccessImpl implements _ChangeControlSuccess {
+  const _$ChangeControlSuccessImpl(
       {required this.isAudioMuted,
       required this.isVideoMuted,
       required this.isUsingFrontCamera});
@@ -1155,7 +1159,7 @@ class _$_ChangeControlSuccess implements _ChangeControlSuccess {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChangeControlSuccess &&
+            other is _$ChangeControlSuccessImpl &&
             (identical(other.isAudioMuted, isAudioMuted) ||
                 other.isAudioMuted == isAudioMuted) &&
             (identical(other.isVideoMuted, isVideoMuted) ||
@@ -1171,9 +1175,10 @@ class _$_ChangeControlSuccess implements _ChangeControlSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChangeControlSuccessCopyWith<_$_ChangeControlSuccess> get copyWith =>
-      __$$_ChangeControlSuccessCopyWithImpl<_$_ChangeControlSuccess>(
-          this, _$identity);
+  _$$ChangeControlSuccessImplCopyWith<_$ChangeControlSuccessImpl>
+      get copyWith =>
+          __$$ChangeControlSuccessImplCopyWithImpl<_$ChangeControlSuccessImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1281,7 +1286,7 @@ abstract class _ChangeControlSuccess implements VideoCallControlState {
   const factory _ChangeControlSuccess(
       {required final bool isAudioMuted,
       required final bool isVideoMuted,
-      required final bool isUsingFrontCamera}) = _$_ChangeControlSuccess;
+      required final bool isUsingFrontCamera}) = _$ChangeControlSuccessImpl;
 
   @override
   bool get isAudioMuted;
@@ -1291,16 +1296,16 @@ abstract class _ChangeControlSuccess implements VideoCallControlState {
   bool get isUsingFrontCamera;
   @override
   @JsonKey(ignore: true)
-  _$$_ChangeControlSuccessCopyWith<_$_ChangeControlSuccess> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ChangeControlSuccessImplCopyWith<_$ChangeControlSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ChangeControlFailureCopyWith<$Res>
+abstract class _$$ChangeControlFailureImplCopyWith<$Res>
     implements $VideoCallControlStateCopyWith<$Res> {
-  factory _$$_ChangeControlFailureCopyWith(_$_ChangeControlFailure value,
-          $Res Function(_$_ChangeControlFailure) then) =
-      __$$_ChangeControlFailureCopyWithImpl<$Res>;
+  factory _$$ChangeControlFailureImplCopyWith(_$ChangeControlFailureImpl value,
+          $Res Function(_$ChangeControlFailureImpl) then) =
+      __$$ChangeControlFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1311,11 +1316,12 @@ abstract class _$$_ChangeControlFailureCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ChangeControlFailureCopyWithImpl<$Res>
-    extends _$VideoCallControlStateCopyWithImpl<$Res, _$_ChangeControlFailure>
-    implements _$$_ChangeControlFailureCopyWith<$Res> {
-  __$$_ChangeControlFailureCopyWithImpl(_$_ChangeControlFailure _value,
-      $Res Function(_$_ChangeControlFailure) _then)
+class __$$ChangeControlFailureImplCopyWithImpl<$Res>
+    extends _$VideoCallControlStateCopyWithImpl<$Res,
+        _$ChangeControlFailureImpl>
+    implements _$$ChangeControlFailureImplCopyWith<$Res> {
+  __$$ChangeControlFailureImplCopyWithImpl(_$ChangeControlFailureImpl _value,
+      $Res Function(_$ChangeControlFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1326,7 +1332,7 @@ class __$$_ChangeControlFailureCopyWithImpl<$Res>
     Object? isUsingFrontCamera = null,
     Object? errorMessage = null,
   }) {
-    return _then(_$_ChangeControlFailure(
+    return _then(_$ChangeControlFailureImpl(
       isAudioMuted: null == isAudioMuted
           ? _value.isAudioMuted
           : isAudioMuted // ignore: cast_nullable_to_non_nullable
@@ -1349,8 +1355,8 @@ class __$$_ChangeControlFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChangeControlFailure implements _ChangeControlFailure {
-  const _$_ChangeControlFailure(
+class _$ChangeControlFailureImpl implements _ChangeControlFailure {
+  const _$ChangeControlFailureImpl(
       {required this.isAudioMuted,
       required this.isVideoMuted,
       required this.isUsingFrontCamera,
@@ -1374,7 +1380,7 @@ class _$_ChangeControlFailure implements _ChangeControlFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChangeControlFailure &&
+            other is _$ChangeControlFailureImpl &&
             (identical(other.isAudioMuted, isAudioMuted) ||
                 other.isAudioMuted == isAudioMuted) &&
             (identical(other.isVideoMuted, isVideoMuted) ||
@@ -1392,9 +1398,10 @@ class _$_ChangeControlFailure implements _ChangeControlFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChangeControlFailureCopyWith<_$_ChangeControlFailure> get copyWith =>
-      __$$_ChangeControlFailureCopyWithImpl<_$_ChangeControlFailure>(
-          this, _$identity);
+  _$$ChangeControlFailureImplCopyWith<_$ChangeControlFailureImpl>
+      get copyWith =>
+          __$$ChangeControlFailureImplCopyWithImpl<_$ChangeControlFailureImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1504,7 +1511,7 @@ abstract class _ChangeControlFailure implements VideoCallControlState {
       {required final bool isAudioMuted,
       required final bool isVideoMuted,
       required final bool isUsingFrontCamera,
-      required final String errorMessage}) = _$_ChangeControlFailure;
+      required final String errorMessage}) = _$ChangeControlFailureImpl;
 
   @override
   bool get isAudioMuted;
@@ -1515,6 +1522,6 @@ abstract class _ChangeControlFailure implements VideoCallControlState {
   String get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_ChangeControlFailureCopyWith<_$_ChangeControlFailure> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ChangeControlFailureImplCopyWith<_$ChangeControlFailureImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

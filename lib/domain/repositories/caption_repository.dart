@@ -4,7 +4,7 @@ import '../../core/errors/failures.dart';
 import '../entities/caption.dart';
 
 abstract class CaptionRepository {
-  Future<Either<Failure, Unit>> init({required String invitationId});
+  Future<Either<Failure, Unit>> init({required String roomId});
 
   Future<Either<Failure, Unit>> enable();
 

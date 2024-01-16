@@ -18,77 +18,87 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$VideoCallEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Contact contact) videoCallStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        setInvitationStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        joinVideoCallStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        leaveVideoCallStarted,
+    required TResult Function() engineStarted,
+    required TResult Function() joinRoomStarted,
+    required TResult Function() joinRoomFailed,
+    required TResult Function() leaveRoomStarted,
     required TResult Function(VideoCallUserUpdateInfo info)
-        updateRemoteUserStatusStarted,
+        updateUserStatusStarted,
     required TResult Function(bool isEnabled)
         takePhotoSnapshotFeatureStatusChanged,
+    required TResult Function() disableTakePhotoSnapshotStarted,
+    required TResult Function() enableTakePhotoSnapshotStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Contact contact)? videoCallStarted,
-    TResult? Function(VideoCallInvitation invitation)? setInvitationStarted,
-    TResult? Function(VideoCallInvitation invitation)? joinVideoCallStarted,
-    TResult? Function(VideoCallInvitation invitation)? leaveVideoCallStarted,
-    TResult? Function(VideoCallUserUpdateInfo info)?
-        updateRemoteUserStatusStarted,
+    TResult? Function()? engineStarted,
+    TResult? Function()? joinRoomStarted,
+    TResult? Function()? joinRoomFailed,
+    TResult? Function()? leaveRoomStarted,
+    TResult? Function(VideoCallUserUpdateInfo info)? updateUserStatusStarted,
     TResult? Function(bool isEnabled)? takePhotoSnapshotFeatureStatusChanged,
+    TResult? Function()? disableTakePhotoSnapshotStarted,
+    TResult? Function()? enableTakePhotoSnapshotStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Contact contact)? videoCallStarted,
-    TResult Function(VideoCallInvitation invitation)? setInvitationStarted,
-    TResult Function(VideoCallInvitation invitation)? joinVideoCallStarted,
-    TResult Function(VideoCallInvitation invitation)? leaveVideoCallStarted,
-    TResult Function(VideoCallUserUpdateInfo info)?
-        updateRemoteUserStatusStarted,
+    TResult Function()? engineStarted,
+    TResult Function()? joinRoomStarted,
+    TResult Function()? joinRoomFailed,
+    TResult Function()? leaveRoomStarted,
+    TResult Function(VideoCallUserUpdateInfo info)? updateUserStatusStarted,
     TResult Function(bool isEnabled)? takePhotoSnapshotFeatureStatusChanged,
+    TResult Function()? disableTakePhotoSnapshotStarted,
+    TResult Function()? enableTakePhotoSnapshotStarted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_VideoCallStarted value) videoCallStarted,
-    required TResult Function(_SetInvitationStarted value) setInvitationStarted,
-    required TResult Function(_JoinVideoCallStarted value) joinVideoCallStarted,
-    required TResult Function(_LeaveVideoCallStarted value)
-        leaveVideoCallStarted,
-    required TResult Function(_UpdateRemoteUserStarted value)
-        updateRemoteUserStatusStarted,
+    required TResult Function(_EngineStarted value) engineStarted,
+    required TResult Function(_JoinRoomStarted value) joinRoomStarted,
+    required TResult Function(_JoinRoomFailed value) joinRoomFailed,
+    required TResult Function(_LeaveRoomStarted value) leaveRoomStarted,
+    required TResult Function(_UpdateUserStatusStarted value)
+        updateUserStatusStarted,
     required TResult Function(_TakePhotoSnapshotFeatureStatusChanged value)
         takePhotoSnapshotFeatureStatusChanged,
+    required TResult Function(_DisableTakePhotoSnapshotStarted value)
+        disableTakePhotoSnapshotStarted,
+    required TResult Function(_EnableTakePhotoSnapshotStarted value)
+        enableTakePhotoSnapshotStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_VideoCallStarted value)? videoCallStarted,
-    TResult? Function(_SetInvitationStarted value)? setInvitationStarted,
-    TResult? Function(_JoinVideoCallStarted value)? joinVideoCallStarted,
-    TResult? Function(_LeaveVideoCallStarted value)? leaveVideoCallStarted,
-    TResult? Function(_UpdateRemoteUserStarted value)?
-        updateRemoteUserStatusStarted,
+    TResult? Function(_EngineStarted value)? engineStarted,
+    TResult? Function(_JoinRoomStarted value)? joinRoomStarted,
+    TResult? Function(_JoinRoomFailed value)? joinRoomFailed,
+    TResult? Function(_LeaveRoomStarted value)? leaveRoomStarted,
+    TResult? Function(_UpdateUserStatusStarted value)? updateUserStatusStarted,
     TResult? Function(_TakePhotoSnapshotFeatureStatusChanged value)?
         takePhotoSnapshotFeatureStatusChanged,
+    TResult? Function(_DisableTakePhotoSnapshotStarted value)?
+        disableTakePhotoSnapshotStarted,
+    TResult? Function(_EnableTakePhotoSnapshotStarted value)?
+        enableTakePhotoSnapshotStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_VideoCallStarted value)? videoCallStarted,
-    TResult Function(_SetInvitationStarted value)? setInvitationStarted,
-    TResult Function(_JoinVideoCallStarted value)? joinVideoCallStarted,
-    TResult Function(_LeaveVideoCallStarted value)? leaveVideoCallStarted,
-    TResult Function(_UpdateRemoteUserStarted value)?
-        updateRemoteUserStatusStarted,
+    TResult Function(_EngineStarted value)? engineStarted,
+    TResult Function(_JoinRoomStarted value)? joinRoomStarted,
+    TResult Function(_JoinRoomFailed value)? joinRoomFailed,
+    TResult Function(_LeaveRoomStarted value)? leaveRoomStarted,
+    TResult Function(_UpdateUserStatusStarted value)? updateUserStatusStarted,
     TResult Function(_TakePhotoSnapshotFeatureStatusChanged value)?
         takePhotoSnapshotFeatureStatusChanged,
+    TResult Function(_DisableTakePhotoSnapshotStarted value)?
+        disableTakePhotoSnapshotStarted,
+    TResult Function(_EnableTakePhotoSnapshotStarted value)?
+        enableTakePhotoSnapshotStarted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,112 +123,87 @@ class _$VideoCallEventCopyWithImpl<$Res, $Val extends VideoCallEvent>
 }
 
 /// @nodoc
-abstract class _$$_VideoCallStartedCopyWith<$Res> {
-  factory _$$_VideoCallStartedCopyWith(
-          _$_VideoCallStarted value, $Res Function(_$_VideoCallStarted) then) =
-      __$$_VideoCallStartedCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Contact contact});
+abstract class _$$EngineStartedImplCopyWith<$Res> {
+  factory _$$EngineStartedImplCopyWith(
+          _$EngineStartedImpl value, $Res Function(_$EngineStartedImpl) then) =
+      __$$EngineStartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_VideoCallStartedCopyWithImpl<$Res>
-    extends _$VideoCallEventCopyWithImpl<$Res, _$_VideoCallStarted>
-    implements _$$_VideoCallStartedCopyWith<$Res> {
-  __$$_VideoCallStartedCopyWithImpl(
-      _$_VideoCallStarted _value, $Res Function(_$_VideoCallStarted) _then)
+class __$$EngineStartedImplCopyWithImpl<$Res>
+    extends _$VideoCallEventCopyWithImpl<$Res, _$EngineStartedImpl>
+    implements _$$EngineStartedImplCopyWith<$Res> {
+  __$$EngineStartedImplCopyWithImpl(
+      _$EngineStartedImpl _value, $Res Function(_$EngineStartedImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? contact = null,
-  }) {
-    return _then(_$_VideoCallStarted(
-      null == contact
-          ? _value.contact
-          : contact // ignore: cast_nullable_to_non_nullable
-              as Contact,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$_VideoCallStarted implements _VideoCallStarted {
-  const _$_VideoCallStarted(this.contact);
-
-  @override
-  final Contact contact;
+class _$EngineStartedImpl implements _EngineStarted {
+  const _$EngineStartedImpl();
 
   @override
   String toString() {
-    return 'VideoCallEvent.videoCallStarted(contact: $contact)';
+    return 'VideoCallEvent.engineStarted()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_VideoCallStarted &&
-            (identical(other.contact, contact) || other.contact == contact));
+        (other.runtimeType == runtimeType && other is _$EngineStartedImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, contact);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_VideoCallStartedCopyWith<_$_VideoCallStarted> get copyWith =>
-      __$$_VideoCallStartedCopyWithImpl<_$_VideoCallStarted>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Contact contact) videoCallStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        setInvitationStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        joinVideoCallStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        leaveVideoCallStarted,
+    required TResult Function() engineStarted,
+    required TResult Function() joinRoomStarted,
+    required TResult Function() joinRoomFailed,
+    required TResult Function() leaveRoomStarted,
     required TResult Function(VideoCallUserUpdateInfo info)
-        updateRemoteUserStatusStarted,
+        updateUserStatusStarted,
     required TResult Function(bool isEnabled)
         takePhotoSnapshotFeatureStatusChanged,
+    required TResult Function() disableTakePhotoSnapshotStarted,
+    required TResult Function() enableTakePhotoSnapshotStarted,
   }) {
-    return videoCallStarted(contact);
+    return engineStarted();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Contact contact)? videoCallStarted,
-    TResult? Function(VideoCallInvitation invitation)? setInvitationStarted,
-    TResult? Function(VideoCallInvitation invitation)? joinVideoCallStarted,
-    TResult? Function(VideoCallInvitation invitation)? leaveVideoCallStarted,
-    TResult? Function(VideoCallUserUpdateInfo info)?
-        updateRemoteUserStatusStarted,
+    TResult? Function()? engineStarted,
+    TResult? Function()? joinRoomStarted,
+    TResult? Function()? joinRoomFailed,
+    TResult? Function()? leaveRoomStarted,
+    TResult? Function(VideoCallUserUpdateInfo info)? updateUserStatusStarted,
     TResult? Function(bool isEnabled)? takePhotoSnapshotFeatureStatusChanged,
+    TResult? Function()? disableTakePhotoSnapshotStarted,
+    TResult? Function()? enableTakePhotoSnapshotStarted,
   }) {
-    return videoCallStarted?.call(contact);
+    return engineStarted?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Contact contact)? videoCallStarted,
-    TResult Function(VideoCallInvitation invitation)? setInvitationStarted,
-    TResult Function(VideoCallInvitation invitation)? joinVideoCallStarted,
-    TResult Function(VideoCallInvitation invitation)? leaveVideoCallStarted,
-    TResult Function(VideoCallUserUpdateInfo info)?
-        updateRemoteUserStatusStarted,
+    TResult Function()? engineStarted,
+    TResult Function()? joinRoomStarted,
+    TResult Function()? joinRoomFailed,
+    TResult Function()? leaveRoomStarted,
+    TResult Function(VideoCallUserUpdateInfo info)? updateUserStatusStarted,
     TResult Function(bool isEnabled)? takePhotoSnapshotFeatureStatusChanged,
+    TResult Function()? disableTakePhotoSnapshotStarted,
+    TResult Function()? enableTakePhotoSnapshotStarted,
     required TResult orElse(),
   }) {
-    if (videoCallStarted != null) {
-      return videoCallStarted(contact);
+    if (engineStarted != null) {
+      return engineStarted();
     }
     return orElse();
   }
@@ -226,172 +211,149 @@ class _$_VideoCallStarted implements _VideoCallStarted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_VideoCallStarted value) videoCallStarted,
-    required TResult Function(_SetInvitationStarted value) setInvitationStarted,
-    required TResult Function(_JoinVideoCallStarted value) joinVideoCallStarted,
-    required TResult Function(_LeaveVideoCallStarted value)
-        leaveVideoCallStarted,
-    required TResult Function(_UpdateRemoteUserStarted value)
-        updateRemoteUserStatusStarted,
+    required TResult Function(_EngineStarted value) engineStarted,
+    required TResult Function(_JoinRoomStarted value) joinRoomStarted,
+    required TResult Function(_JoinRoomFailed value) joinRoomFailed,
+    required TResult Function(_LeaveRoomStarted value) leaveRoomStarted,
+    required TResult Function(_UpdateUserStatusStarted value)
+        updateUserStatusStarted,
     required TResult Function(_TakePhotoSnapshotFeatureStatusChanged value)
         takePhotoSnapshotFeatureStatusChanged,
+    required TResult Function(_DisableTakePhotoSnapshotStarted value)
+        disableTakePhotoSnapshotStarted,
+    required TResult Function(_EnableTakePhotoSnapshotStarted value)
+        enableTakePhotoSnapshotStarted,
   }) {
-    return videoCallStarted(this);
+    return engineStarted(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_VideoCallStarted value)? videoCallStarted,
-    TResult? Function(_SetInvitationStarted value)? setInvitationStarted,
-    TResult? Function(_JoinVideoCallStarted value)? joinVideoCallStarted,
-    TResult? Function(_LeaveVideoCallStarted value)? leaveVideoCallStarted,
-    TResult? Function(_UpdateRemoteUserStarted value)?
-        updateRemoteUserStatusStarted,
+    TResult? Function(_EngineStarted value)? engineStarted,
+    TResult? Function(_JoinRoomStarted value)? joinRoomStarted,
+    TResult? Function(_JoinRoomFailed value)? joinRoomFailed,
+    TResult? Function(_LeaveRoomStarted value)? leaveRoomStarted,
+    TResult? Function(_UpdateUserStatusStarted value)? updateUserStatusStarted,
     TResult? Function(_TakePhotoSnapshotFeatureStatusChanged value)?
         takePhotoSnapshotFeatureStatusChanged,
+    TResult? Function(_DisableTakePhotoSnapshotStarted value)?
+        disableTakePhotoSnapshotStarted,
+    TResult? Function(_EnableTakePhotoSnapshotStarted value)?
+        enableTakePhotoSnapshotStarted,
   }) {
-    return videoCallStarted?.call(this);
+    return engineStarted?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_VideoCallStarted value)? videoCallStarted,
-    TResult Function(_SetInvitationStarted value)? setInvitationStarted,
-    TResult Function(_JoinVideoCallStarted value)? joinVideoCallStarted,
-    TResult Function(_LeaveVideoCallStarted value)? leaveVideoCallStarted,
-    TResult Function(_UpdateRemoteUserStarted value)?
-        updateRemoteUserStatusStarted,
+    TResult Function(_EngineStarted value)? engineStarted,
+    TResult Function(_JoinRoomStarted value)? joinRoomStarted,
+    TResult Function(_JoinRoomFailed value)? joinRoomFailed,
+    TResult Function(_LeaveRoomStarted value)? leaveRoomStarted,
+    TResult Function(_UpdateUserStatusStarted value)? updateUserStatusStarted,
     TResult Function(_TakePhotoSnapshotFeatureStatusChanged value)?
         takePhotoSnapshotFeatureStatusChanged,
+    TResult Function(_DisableTakePhotoSnapshotStarted value)?
+        disableTakePhotoSnapshotStarted,
+    TResult Function(_EnableTakePhotoSnapshotStarted value)?
+        enableTakePhotoSnapshotStarted,
     required TResult orElse(),
   }) {
-    if (videoCallStarted != null) {
-      return videoCallStarted(this);
+    if (engineStarted != null) {
+      return engineStarted(this);
     }
     return orElse();
   }
 }
 
-abstract class _VideoCallStarted implements VideoCallEvent {
-  const factory _VideoCallStarted(final Contact contact) = _$_VideoCallStarted;
-
-  Contact get contact;
-  @JsonKey(ignore: true)
-  _$$_VideoCallStartedCopyWith<_$_VideoCallStarted> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _EngineStarted implements VideoCallEvent {
+  const factory _EngineStarted() = _$EngineStartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_SetInvitationStartedCopyWith<$Res> {
-  factory _$$_SetInvitationStartedCopyWith(_$_SetInvitationStarted value,
-          $Res Function(_$_SetInvitationStarted) then) =
-      __$$_SetInvitationStartedCopyWithImpl<$Res>;
-  @useResult
-  $Res call({VideoCallInvitation invitation});
+abstract class _$$JoinRoomStartedImplCopyWith<$Res> {
+  factory _$$JoinRoomStartedImplCopyWith(_$JoinRoomStartedImpl value,
+          $Res Function(_$JoinRoomStartedImpl) then) =
+      __$$JoinRoomStartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SetInvitationStartedCopyWithImpl<$Res>
-    extends _$VideoCallEventCopyWithImpl<$Res, _$_SetInvitationStarted>
-    implements _$$_SetInvitationStartedCopyWith<$Res> {
-  __$$_SetInvitationStartedCopyWithImpl(_$_SetInvitationStarted _value,
-      $Res Function(_$_SetInvitationStarted) _then)
+class __$$JoinRoomStartedImplCopyWithImpl<$Res>
+    extends _$VideoCallEventCopyWithImpl<$Res, _$JoinRoomStartedImpl>
+    implements _$$JoinRoomStartedImplCopyWith<$Res> {
+  __$$JoinRoomStartedImplCopyWithImpl(
+      _$JoinRoomStartedImpl _value, $Res Function(_$JoinRoomStartedImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? invitation = null,
-  }) {
-    return _then(_$_SetInvitationStarted(
-      null == invitation
-          ? _value.invitation
-          : invitation // ignore: cast_nullable_to_non_nullable
-              as VideoCallInvitation,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$_SetInvitationStarted implements _SetInvitationStarted {
-  const _$_SetInvitationStarted(this.invitation);
-
-  @override
-  final VideoCallInvitation invitation;
+class _$JoinRoomStartedImpl implements _JoinRoomStarted {
+  const _$JoinRoomStartedImpl();
 
   @override
   String toString() {
-    return 'VideoCallEvent.setInvitationStarted(invitation: $invitation)';
+    return 'VideoCallEvent.joinRoomStarted()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_SetInvitationStarted &&
-            (identical(other.invitation, invitation) ||
-                other.invitation == invitation));
+        (other.runtimeType == runtimeType && other is _$JoinRoomStartedImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, invitation);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_SetInvitationStartedCopyWith<_$_SetInvitationStarted> get copyWith =>
-      __$$_SetInvitationStartedCopyWithImpl<_$_SetInvitationStarted>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Contact contact) videoCallStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        setInvitationStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        joinVideoCallStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        leaveVideoCallStarted,
+    required TResult Function() engineStarted,
+    required TResult Function() joinRoomStarted,
+    required TResult Function() joinRoomFailed,
+    required TResult Function() leaveRoomStarted,
     required TResult Function(VideoCallUserUpdateInfo info)
-        updateRemoteUserStatusStarted,
+        updateUserStatusStarted,
     required TResult Function(bool isEnabled)
         takePhotoSnapshotFeatureStatusChanged,
+    required TResult Function() disableTakePhotoSnapshotStarted,
+    required TResult Function() enableTakePhotoSnapshotStarted,
   }) {
-    return setInvitationStarted(invitation);
+    return joinRoomStarted();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Contact contact)? videoCallStarted,
-    TResult? Function(VideoCallInvitation invitation)? setInvitationStarted,
-    TResult? Function(VideoCallInvitation invitation)? joinVideoCallStarted,
-    TResult? Function(VideoCallInvitation invitation)? leaveVideoCallStarted,
-    TResult? Function(VideoCallUserUpdateInfo info)?
-        updateRemoteUserStatusStarted,
+    TResult? Function()? engineStarted,
+    TResult? Function()? joinRoomStarted,
+    TResult? Function()? joinRoomFailed,
+    TResult? Function()? leaveRoomStarted,
+    TResult? Function(VideoCallUserUpdateInfo info)? updateUserStatusStarted,
     TResult? Function(bool isEnabled)? takePhotoSnapshotFeatureStatusChanged,
+    TResult? Function()? disableTakePhotoSnapshotStarted,
+    TResult? Function()? enableTakePhotoSnapshotStarted,
   }) {
-    return setInvitationStarted?.call(invitation);
+    return joinRoomStarted?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Contact contact)? videoCallStarted,
-    TResult Function(VideoCallInvitation invitation)? setInvitationStarted,
-    TResult Function(VideoCallInvitation invitation)? joinVideoCallStarted,
-    TResult Function(VideoCallInvitation invitation)? leaveVideoCallStarted,
-    TResult Function(VideoCallUserUpdateInfo info)?
-        updateRemoteUserStatusStarted,
+    TResult Function()? engineStarted,
+    TResult Function()? joinRoomStarted,
+    TResult Function()? joinRoomFailed,
+    TResult Function()? leaveRoomStarted,
+    TResult Function(VideoCallUserUpdateInfo info)? updateUserStatusStarted,
     TResult Function(bool isEnabled)? takePhotoSnapshotFeatureStatusChanged,
+    TResult Function()? disableTakePhotoSnapshotStarted,
+    TResult Function()? enableTakePhotoSnapshotStarted,
     required TResult orElse(),
   }) {
-    if (setInvitationStarted != null) {
-      return setInvitationStarted(invitation);
+    if (joinRoomStarted != null) {
+      return joinRoomStarted();
     }
     return orElse();
   }
@@ -399,173 +361,149 @@ class _$_SetInvitationStarted implements _SetInvitationStarted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_VideoCallStarted value) videoCallStarted,
-    required TResult Function(_SetInvitationStarted value) setInvitationStarted,
-    required TResult Function(_JoinVideoCallStarted value) joinVideoCallStarted,
-    required TResult Function(_LeaveVideoCallStarted value)
-        leaveVideoCallStarted,
-    required TResult Function(_UpdateRemoteUserStarted value)
-        updateRemoteUserStatusStarted,
+    required TResult Function(_EngineStarted value) engineStarted,
+    required TResult Function(_JoinRoomStarted value) joinRoomStarted,
+    required TResult Function(_JoinRoomFailed value) joinRoomFailed,
+    required TResult Function(_LeaveRoomStarted value) leaveRoomStarted,
+    required TResult Function(_UpdateUserStatusStarted value)
+        updateUserStatusStarted,
     required TResult Function(_TakePhotoSnapshotFeatureStatusChanged value)
         takePhotoSnapshotFeatureStatusChanged,
+    required TResult Function(_DisableTakePhotoSnapshotStarted value)
+        disableTakePhotoSnapshotStarted,
+    required TResult Function(_EnableTakePhotoSnapshotStarted value)
+        enableTakePhotoSnapshotStarted,
   }) {
-    return setInvitationStarted(this);
+    return joinRoomStarted(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_VideoCallStarted value)? videoCallStarted,
-    TResult? Function(_SetInvitationStarted value)? setInvitationStarted,
-    TResult? Function(_JoinVideoCallStarted value)? joinVideoCallStarted,
-    TResult? Function(_LeaveVideoCallStarted value)? leaveVideoCallStarted,
-    TResult? Function(_UpdateRemoteUserStarted value)?
-        updateRemoteUserStatusStarted,
+    TResult? Function(_EngineStarted value)? engineStarted,
+    TResult? Function(_JoinRoomStarted value)? joinRoomStarted,
+    TResult? Function(_JoinRoomFailed value)? joinRoomFailed,
+    TResult? Function(_LeaveRoomStarted value)? leaveRoomStarted,
+    TResult? Function(_UpdateUserStatusStarted value)? updateUserStatusStarted,
     TResult? Function(_TakePhotoSnapshotFeatureStatusChanged value)?
         takePhotoSnapshotFeatureStatusChanged,
+    TResult? Function(_DisableTakePhotoSnapshotStarted value)?
+        disableTakePhotoSnapshotStarted,
+    TResult? Function(_EnableTakePhotoSnapshotStarted value)?
+        enableTakePhotoSnapshotStarted,
   }) {
-    return setInvitationStarted?.call(this);
+    return joinRoomStarted?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_VideoCallStarted value)? videoCallStarted,
-    TResult Function(_SetInvitationStarted value)? setInvitationStarted,
-    TResult Function(_JoinVideoCallStarted value)? joinVideoCallStarted,
-    TResult Function(_LeaveVideoCallStarted value)? leaveVideoCallStarted,
-    TResult Function(_UpdateRemoteUserStarted value)?
-        updateRemoteUserStatusStarted,
+    TResult Function(_EngineStarted value)? engineStarted,
+    TResult Function(_JoinRoomStarted value)? joinRoomStarted,
+    TResult Function(_JoinRoomFailed value)? joinRoomFailed,
+    TResult Function(_LeaveRoomStarted value)? leaveRoomStarted,
+    TResult Function(_UpdateUserStatusStarted value)? updateUserStatusStarted,
     TResult Function(_TakePhotoSnapshotFeatureStatusChanged value)?
         takePhotoSnapshotFeatureStatusChanged,
+    TResult Function(_DisableTakePhotoSnapshotStarted value)?
+        disableTakePhotoSnapshotStarted,
+    TResult Function(_EnableTakePhotoSnapshotStarted value)?
+        enableTakePhotoSnapshotStarted,
     required TResult orElse(),
   }) {
-    if (setInvitationStarted != null) {
-      return setInvitationStarted(this);
+    if (joinRoomStarted != null) {
+      return joinRoomStarted(this);
     }
     return orElse();
   }
 }
 
-abstract class _SetInvitationStarted implements VideoCallEvent {
-  const factory _SetInvitationStarted(final VideoCallInvitation invitation) =
-      _$_SetInvitationStarted;
-
-  VideoCallInvitation get invitation;
-  @JsonKey(ignore: true)
-  _$$_SetInvitationStartedCopyWith<_$_SetInvitationStarted> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _JoinRoomStarted implements VideoCallEvent {
+  const factory _JoinRoomStarted() = _$JoinRoomStartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_JoinVideoCallStartedCopyWith<$Res> {
-  factory _$$_JoinVideoCallStartedCopyWith(_$_JoinVideoCallStarted value,
-          $Res Function(_$_JoinVideoCallStarted) then) =
-      __$$_JoinVideoCallStartedCopyWithImpl<$Res>;
-  @useResult
-  $Res call({VideoCallInvitation invitation});
+abstract class _$$JoinRoomFailedImplCopyWith<$Res> {
+  factory _$$JoinRoomFailedImplCopyWith(_$JoinRoomFailedImpl value,
+          $Res Function(_$JoinRoomFailedImpl) then) =
+      __$$JoinRoomFailedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_JoinVideoCallStartedCopyWithImpl<$Res>
-    extends _$VideoCallEventCopyWithImpl<$Res, _$_JoinVideoCallStarted>
-    implements _$$_JoinVideoCallStartedCopyWith<$Res> {
-  __$$_JoinVideoCallStartedCopyWithImpl(_$_JoinVideoCallStarted _value,
-      $Res Function(_$_JoinVideoCallStarted) _then)
+class __$$JoinRoomFailedImplCopyWithImpl<$Res>
+    extends _$VideoCallEventCopyWithImpl<$Res, _$JoinRoomFailedImpl>
+    implements _$$JoinRoomFailedImplCopyWith<$Res> {
+  __$$JoinRoomFailedImplCopyWithImpl(
+      _$JoinRoomFailedImpl _value, $Res Function(_$JoinRoomFailedImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? invitation = null,
-  }) {
-    return _then(_$_JoinVideoCallStarted(
-      null == invitation
-          ? _value.invitation
-          : invitation // ignore: cast_nullable_to_non_nullable
-              as VideoCallInvitation,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$_JoinVideoCallStarted implements _JoinVideoCallStarted {
-  const _$_JoinVideoCallStarted(this.invitation);
-
-  @override
-  final VideoCallInvitation invitation;
+class _$JoinRoomFailedImpl implements _JoinRoomFailed {
+  const _$JoinRoomFailedImpl();
 
   @override
   String toString() {
-    return 'VideoCallEvent.joinVideoCallStarted(invitation: $invitation)';
+    return 'VideoCallEvent.joinRoomFailed()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_JoinVideoCallStarted &&
-            (identical(other.invitation, invitation) ||
-                other.invitation == invitation));
+        (other.runtimeType == runtimeType && other is _$JoinRoomFailedImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, invitation);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_JoinVideoCallStartedCopyWith<_$_JoinVideoCallStarted> get copyWith =>
-      __$$_JoinVideoCallStartedCopyWithImpl<_$_JoinVideoCallStarted>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Contact contact) videoCallStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        setInvitationStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        joinVideoCallStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        leaveVideoCallStarted,
+    required TResult Function() engineStarted,
+    required TResult Function() joinRoomStarted,
+    required TResult Function() joinRoomFailed,
+    required TResult Function() leaveRoomStarted,
     required TResult Function(VideoCallUserUpdateInfo info)
-        updateRemoteUserStatusStarted,
+        updateUserStatusStarted,
     required TResult Function(bool isEnabled)
         takePhotoSnapshotFeatureStatusChanged,
+    required TResult Function() disableTakePhotoSnapshotStarted,
+    required TResult Function() enableTakePhotoSnapshotStarted,
   }) {
-    return joinVideoCallStarted(invitation);
+    return joinRoomFailed();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Contact contact)? videoCallStarted,
-    TResult? Function(VideoCallInvitation invitation)? setInvitationStarted,
-    TResult? Function(VideoCallInvitation invitation)? joinVideoCallStarted,
-    TResult? Function(VideoCallInvitation invitation)? leaveVideoCallStarted,
-    TResult? Function(VideoCallUserUpdateInfo info)?
-        updateRemoteUserStatusStarted,
+    TResult? Function()? engineStarted,
+    TResult? Function()? joinRoomStarted,
+    TResult? Function()? joinRoomFailed,
+    TResult? Function()? leaveRoomStarted,
+    TResult? Function(VideoCallUserUpdateInfo info)? updateUserStatusStarted,
     TResult? Function(bool isEnabled)? takePhotoSnapshotFeatureStatusChanged,
+    TResult? Function()? disableTakePhotoSnapshotStarted,
+    TResult? Function()? enableTakePhotoSnapshotStarted,
   }) {
-    return joinVideoCallStarted?.call(invitation);
+    return joinRoomFailed?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Contact contact)? videoCallStarted,
-    TResult Function(VideoCallInvitation invitation)? setInvitationStarted,
-    TResult Function(VideoCallInvitation invitation)? joinVideoCallStarted,
-    TResult Function(VideoCallInvitation invitation)? leaveVideoCallStarted,
-    TResult Function(VideoCallUserUpdateInfo info)?
-        updateRemoteUserStatusStarted,
+    TResult Function()? engineStarted,
+    TResult Function()? joinRoomStarted,
+    TResult Function()? joinRoomFailed,
+    TResult Function()? leaveRoomStarted,
+    TResult Function(VideoCallUserUpdateInfo info)? updateUserStatusStarted,
     TResult Function(bool isEnabled)? takePhotoSnapshotFeatureStatusChanged,
+    TResult Function()? disableTakePhotoSnapshotStarted,
+    TResult Function()? enableTakePhotoSnapshotStarted,
     required TResult orElse(),
   }) {
-    if (joinVideoCallStarted != null) {
-      return joinVideoCallStarted(invitation);
+    if (joinRoomFailed != null) {
+      return joinRoomFailed();
     }
     return orElse();
   }
@@ -573,173 +511,149 @@ class _$_JoinVideoCallStarted implements _JoinVideoCallStarted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_VideoCallStarted value) videoCallStarted,
-    required TResult Function(_SetInvitationStarted value) setInvitationStarted,
-    required TResult Function(_JoinVideoCallStarted value) joinVideoCallStarted,
-    required TResult Function(_LeaveVideoCallStarted value)
-        leaveVideoCallStarted,
-    required TResult Function(_UpdateRemoteUserStarted value)
-        updateRemoteUserStatusStarted,
+    required TResult Function(_EngineStarted value) engineStarted,
+    required TResult Function(_JoinRoomStarted value) joinRoomStarted,
+    required TResult Function(_JoinRoomFailed value) joinRoomFailed,
+    required TResult Function(_LeaveRoomStarted value) leaveRoomStarted,
+    required TResult Function(_UpdateUserStatusStarted value)
+        updateUserStatusStarted,
     required TResult Function(_TakePhotoSnapshotFeatureStatusChanged value)
         takePhotoSnapshotFeatureStatusChanged,
+    required TResult Function(_DisableTakePhotoSnapshotStarted value)
+        disableTakePhotoSnapshotStarted,
+    required TResult Function(_EnableTakePhotoSnapshotStarted value)
+        enableTakePhotoSnapshotStarted,
   }) {
-    return joinVideoCallStarted(this);
+    return joinRoomFailed(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_VideoCallStarted value)? videoCallStarted,
-    TResult? Function(_SetInvitationStarted value)? setInvitationStarted,
-    TResult? Function(_JoinVideoCallStarted value)? joinVideoCallStarted,
-    TResult? Function(_LeaveVideoCallStarted value)? leaveVideoCallStarted,
-    TResult? Function(_UpdateRemoteUserStarted value)?
-        updateRemoteUserStatusStarted,
+    TResult? Function(_EngineStarted value)? engineStarted,
+    TResult? Function(_JoinRoomStarted value)? joinRoomStarted,
+    TResult? Function(_JoinRoomFailed value)? joinRoomFailed,
+    TResult? Function(_LeaveRoomStarted value)? leaveRoomStarted,
+    TResult? Function(_UpdateUserStatusStarted value)? updateUserStatusStarted,
     TResult? Function(_TakePhotoSnapshotFeatureStatusChanged value)?
         takePhotoSnapshotFeatureStatusChanged,
+    TResult? Function(_DisableTakePhotoSnapshotStarted value)?
+        disableTakePhotoSnapshotStarted,
+    TResult? Function(_EnableTakePhotoSnapshotStarted value)?
+        enableTakePhotoSnapshotStarted,
   }) {
-    return joinVideoCallStarted?.call(this);
+    return joinRoomFailed?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_VideoCallStarted value)? videoCallStarted,
-    TResult Function(_SetInvitationStarted value)? setInvitationStarted,
-    TResult Function(_JoinVideoCallStarted value)? joinVideoCallStarted,
-    TResult Function(_LeaveVideoCallStarted value)? leaveVideoCallStarted,
-    TResult Function(_UpdateRemoteUserStarted value)?
-        updateRemoteUserStatusStarted,
+    TResult Function(_EngineStarted value)? engineStarted,
+    TResult Function(_JoinRoomStarted value)? joinRoomStarted,
+    TResult Function(_JoinRoomFailed value)? joinRoomFailed,
+    TResult Function(_LeaveRoomStarted value)? leaveRoomStarted,
+    TResult Function(_UpdateUserStatusStarted value)? updateUserStatusStarted,
     TResult Function(_TakePhotoSnapshotFeatureStatusChanged value)?
         takePhotoSnapshotFeatureStatusChanged,
+    TResult Function(_DisableTakePhotoSnapshotStarted value)?
+        disableTakePhotoSnapshotStarted,
+    TResult Function(_EnableTakePhotoSnapshotStarted value)?
+        enableTakePhotoSnapshotStarted,
     required TResult orElse(),
   }) {
-    if (joinVideoCallStarted != null) {
-      return joinVideoCallStarted(this);
+    if (joinRoomFailed != null) {
+      return joinRoomFailed(this);
     }
     return orElse();
   }
 }
 
-abstract class _JoinVideoCallStarted implements VideoCallEvent {
-  const factory _JoinVideoCallStarted(final VideoCallInvitation invitation) =
-      _$_JoinVideoCallStarted;
-
-  VideoCallInvitation get invitation;
-  @JsonKey(ignore: true)
-  _$$_JoinVideoCallStartedCopyWith<_$_JoinVideoCallStarted> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _JoinRoomFailed implements VideoCallEvent {
+  const factory _JoinRoomFailed() = _$JoinRoomFailedImpl;
 }
 
 /// @nodoc
-abstract class _$$_LeaveVideoCallStartedCopyWith<$Res> {
-  factory _$$_LeaveVideoCallStartedCopyWith(_$_LeaveVideoCallStarted value,
-          $Res Function(_$_LeaveVideoCallStarted) then) =
-      __$$_LeaveVideoCallStartedCopyWithImpl<$Res>;
-  @useResult
-  $Res call({VideoCallInvitation invitation});
+abstract class _$$LeaveRoomStartedImplCopyWith<$Res> {
+  factory _$$LeaveRoomStartedImplCopyWith(_$LeaveRoomStartedImpl value,
+          $Res Function(_$LeaveRoomStartedImpl) then) =
+      __$$LeaveRoomStartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LeaveVideoCallStartedCopyWithImpl<$Res>
-    extends _$VideoCallEventCopyWithImpl<$Res, _$_LeaveVideoCallStarted>
-    implements _$$_LeaveVideoCallStartedCopyWith<$Res> {
-  __$$_LeaveVideoCallStartedCopyWithImpl(_$_LeaveVideoCallStarted _value,
-      $Res Function(_$_LeaveVideoCallStarted) _then)
+class __$$LeaveRoomStartedImplCopyWithImpl<$Res>
+    extends _$VideoCallEventCopyWithImpl<$Res, _$LeaveRoomStartedImpl>
+    implements _$$LeaveRoomStartedImplCopyWith<$Res> {
+  __$$LeaveRoomStartedImplCopyWithImpl(_$LeaveRoomStartedImpl _value,
+      $Res Function(_$LeaveRoomStartedImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? invitation = null,
-  }) {
-    return _then(_$_LeaveVideoCallStarted(
-      null == invitation
-          ? _value.invitation
-          : invitation // ignore: cast_nullable_to_non_nullable
-              as VideoCallInvitation,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$_LeaveVideoCallStarted implements _LeaveVideoCallStarted {
-  const _$_LeaveVideoCallStarted(this.invitation);
-
-  @override
-  final VideoCallInvitation invitation;
+class _$LeaveRoomStartedImpl implements _LeaveRoomStarted {
+  const _$LeaveRoomStartedImpl();
 
   @override
   String toString() {
-    return 'VideoCallEvent.leaveVideoCallStarted(invitation: $invitation)';
+    return 'VideoCallEvent.leaveRoomStarted()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_LeaveVideoCallStarted &&
-            (identical(other.invitation, invitation) ||
-                other.invitation == invitation));
+        (other.runtimeType == runtimeType && other is _$LeaveRoomStartedImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, invitation);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_LeaveVideoCallStartedCopyWith<_$_LeaveVideoCallStarted> get copyWith =>
-      __$$_LeaveVideoCallStartedCopyWithImpl<_$_LeaveVideoCallStarted>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Contact contact) videoCallStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        setInvitationStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        joinVideoCallStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        leaveVideoCallStarted,
+    required TResult Function() engineStarted,
+    required TResult Function() joinRoomStarted,
+    required TResult Function() joinRoomFailed,
+    required TResult Function() leaveRoomStarted,
     required TResult Function(VideoCallUserUpdateInfo info)
-        updateRemoteUserStatusStarted,
+        updateUserStatusStarted,
     required TResult Function(bool isEnabled)
         takePhotoSnapshotFeatureStatusChanged,
+    required TResult Function() disableTakePhotoSnapshotStarted,
+    required TResult Function() enableTakePhotoSnapshotStarted,
   }) {
-    return leaveVideoCallStarted(invitation);
+    return leaveRoomStarted();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Contact contact)? videoCallStarted,
-    TResult? Function(VideoCallInvitation invitation)? setInvitationStarted,
-    TResult? Function(VideoCallInvitation invitation)? joinVideoCallStarted,
-    TResult? Function(VideoCallInvitation invitation)? leaveVideoCallStarted,
-    TResult? Function(VideoCallUserUpdateInfo info)?
-        updateRemoteUserStatusStarted,
+    TResult? Function()? engineStarted,
+    TResult? Function()? joinRoomStarted,
+    TResult? Function()? joinRoomFailed,
+    TResult? Function()? leaveRoomStarted,
+    TResult? Function(VideoCallUserUpdateInfo info)? updateUserStatusStarted,
     TResult? Function(bool isEnabled)? takePhotoSnapshotFeatureStatusChanged,
+    TResult? Function()? disableTakePhotoSnapshotStarted,
+    TResult? Function()? enableTakePhotoSnapshotStarted,
   }) {
-    return leaveVideoCallStarted?.call(invitation);
+    return leaveRoomStarted?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Contact contact)? videoCallStarted,
-    TResult Function(VideoCallInvitation invitation)? setInvitationStarted,
-    TResult Function(VideoCallInvitation invitation)? joinVideoCallStarted,
-    TResult Function(VideoCallInvitation invitation)? leaveVideoCallStarted,
-    TResult Function(VideoCallUserUpdateInfo info)?
-        updateRemoteUserStatusStarted,
+    TResult Function()? engineStarted,
+    TResult Function()? joinRoomStarted,
+    TResult Function()? joinRoomFailed,
+    TResult Function()? leaveRoomStarted,
+    TResult Function(VideoCallUserUpdateInfo info)? updateUserStatusStarted,
     TResult Function(bool isEnabled)? takePhotoSnapshotFeatureStatusChanged,
+    TResult Function()? disableTakePhotoSnapshotStarted,
+    TResult Function()? enableTakePhotoSnapshotStarted,
     required TResult orElse(),
   }) {
-    if (leaveVideoCallStarted != null) {
-      return leaveVideoCallStarted(invitation);
+    if (leaveRoomStarted != null) {
+      return leaveRoomStarted();
     }
     return orElse();
   }
@@ -747,79 +661,84 @@ class _$_LeaveVideoCallStarted implements _LeaveVideoCallStarted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_VideoCallStarted value) videoCallStarted,
-    required TResult Function(_SetInvitationStarted value) setInvitationStarted,
-    required TResult Function(_JoinVideoCallStarted value) joinVideoCallStarted,
-    required TResult Function(_LeaveVideoCallStarted value)
-        leaveVideoCallStarted,
-    required TResult Function(_UpdateRemoteUserStarted value)
-        updateRemoteUserStatusStarted,
+    required TResult Function(_EngineStarted value) engineStarted,
+    required TResult Function(_JoinRoomStarted value) joinRoomStarted,
+    required TResult Function(_JoinRoomFailed value) joinRoomFailed,
+    required TResult Function(_LeaveRoomStarted value) leaveRoomStarted,
+    required TResult Function(_UpdateUserStatusStarted value)
+        updateUserStatusStarted,
     required TResult Function(_TakePhotoSnapshotFeatureStatusChanged value)
         takePhotoSnapshotFeatureStatusChanged,
+    required TResult Function(_DisableTakePhotoSnapshotStarted value)
+        disableTakePhotoSnapshotStarted,
+    required TResult Function(_EnableTakePhotoSnapshotStarted value)
+        enableTakePhotoSnapshotStarted,
   }) {
-    return leaveVideoCallStarted(this);
+    return leaveRoomStarted(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_VideoCallStarted value)? videoCallStarted,
-    TResult? Function(_SetInvitationStarted value)? setInvitationStarted,
-    TResult? Function(_JoinVideoCallStarted value)? joinVideoCallStarted,
-    TResult? Function(_LeaveVideoCallStarted value)? leaveVideoCallStarted,
-    TResult? Function(_UpdateRemoteUserStarted value)?
-        updateRemoteUserStatusStarted,
+    TResult? Function(_EngineStarted value)? engineStarted,
+    TResult? Function(_JoinRoomStarted value)? joinRoomStarted,
+    TResult? Function(_JoinRoomFailed value)? joinRoomFailed,
+    TResult? Function(_LeaveRoomStarted value)? leaveRoomStarted,
+    TResult? Function(_UpdateUserStatusStarted value)? updateUserStatusStarted,
     TResult? Function(_TakePhotoSnapshotFeatureStatusChanged value)?
         takePhotoSnapshotFeatureStatusChanged,
+    TResult? Function(_DisableTakePhotoSnapshotStarted value)?
+        disableTakePhotoSnapshotStarted,
+    TResult? Function(_EnableTakePhotoSnapshotStarted value)?
+        enableTakePhotoSnapshotStarted,
   }) {
-    return leaveVideoCallStarted?.call(this);
+    return leaveRoomStarted?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_VideoCallStarted value)? videoCallStarted,
-    TResult Function(_SetInvitationStarted value)? setInvitationStarted,
-    TResult Function(_JoinVideoCallStarted value)? joinVideoCallStarted,
-    TResult Function(_LeaveVideoCallStarted value)? leaveVideoCallStarted,
-    TResult Function(_UpdateRemoteUserStarted value)?
-        updateRemoteUserStatusStarted,
+    TResult Function(_EngineStarted value)? engineStarted,
+    TResult Function(_JoinRoomStarted value)? joinRoomStarted,
+    TResult Function(_JoinRoomFailed value)? joinRoomFailed,
+    TResult Function(_LeaveRoomStarted value)? leaveRoomStarted,
+    TResult Function(_UpdateUserStatusStarted value)? updateUserStatusStarted,
     TResult Function(_TakePhotoSnapshotFeatureStatusChanged value)?
         takePhotoSnapshotFeatureStatusChanged,
+    TResult Function(_DisableTakePhotoSnapshotStarted value)?
+        disableTakePhotoSnapshotStarted,
+    TResult Function(_EnableTakePhotoSnapshotStarted value)?
+        enableTakePhotoSnapshotStarted,
     required TResult orElse(),
   }) {
-    if (leaveVideoCallStarted != null) {
-      return leaveVideoCallStarted(this);
+    if (leaveRoomStarted != null) {
+      return leaveRoomStarted(this);
     }
     return orElse();
   }
 }
 
-abstract class _LeaveVideoCallStarted implements VideoCallEvent {
-  const factory _LeaveVideoCallStarted(final VideoCallInvitation invitation) =
-      _$_LeaveVideoCallStarted;
-
-  VideoCallInvitation get invitation;
-  @JsonKey(ignore: true)
-  _$$_LeaveVideoCallStartedCopyWith<_$_LeaveVideoCallStarted> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _LeaveRoomStarted implements VideoCallEvent {
+  const factory _LeaveRoomStarted() = _$LeaveRoomStartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_UpdateRemoteUserStartedCopyWith<$Res> {
-  factory _$$_UpdateRemoteUserStartedCopyWith(_$_UpdateRemoteUserStarted value,
-          $Res Function(_$_UpdateRemoteUserStarted) then) =
-      __$$_UpdateRemoteUserStartedCopyWithImpl<$Res>;
+abstract class _$$UpdateUserStatusStartedImplCopyWith<$Res> {
+  factory _$$UpdateUserStatusStartedImplCopyWith(
+          _$UpdateUserStatusStartedImpl value,
+          $Res Function(_$UpdateUserStatusStartedImpl) then) =
+      __$$UpdateUserStatusStartedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({VideoCallUserUpdateInfo info});
 }
 
 /// @nodoc
-class __$$_UpdateRemoteUserStartedCopyWithImpl<$Res>
-    extends _$VideoCallEventCopyWithImpl<$Res, _$_UpdateRemoteUserStarted>
-    implements _$$_UpdateRemoteUserStartedCopyWith<$Res> {
-  __$$_UpdateRemoteUserStartedCopyWithImpl(_$_UpdateRemoteUserStarted _value,
-      $Res Function(_$_UpdateRemoteUserStarted) _then)
+class __$$UpdateUserStatusStartedImplCopyWithImpl<$Res>
+    extends _$VideoCallEventCopyWithImpl<$Res, _$UpdateUserStatusStartedImpl>
+    implements _$$UpdateUserStatusStartedImplCopyWith<$Res> {
+  __$$UpdateUserStatusStartedImplCopyWithImpl(
+      _$UpdateUserStatusStartedImpl _value,
+      $Res Function(_$UpdateUserStatusStartedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -827,7 +746,7 @@ class __$$_UpdateRemoteUserStartedCopyWithImpl<$Res>
   $Res call({
     Object? info = null,
   }) {
-    return _then(_$_UpdateRemoteUserStarted(
+    return _then(_$UpdateUserStatusStartedImpl(
       null == info
           ? _value.info
           : info // ignore: cast_nullable_to_non_nullable
@@ -838,22 +757,22 @@ class __$$_UpdateRemoteUserStartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateRemoteUserStarted implements _UpdateRemoteUserStarted {
-  const _$_UpdateRemoteUserStarted(this.info);
+class _$UpdateUserStatusStartedImpl implements _UpdateUserStatusStarted {
+  const _$UpdateUserStatusStartedImpl(this.info);
 
   @override
   final VideoCallUserUpdateInfo info;
 
   @override
   String toString() {
-    return 'VideoCallEvent.updateRemoteUserStatusStarted(info: $info)';
+    return 'VideoCallEvent.updateUserStatusStarted(info: $info)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateRemoteUserStarted &&
+            other is _$UpdateUserStatusStartedImpl &&
             (identical(other.info, info) || other.info == info));
   }
 
@@ -863,57 +782,57 @@ class _$_UpdateRemoteUserStarted implements _UpdateRemoteUserStarted {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateRemoteUserStartedCopyWith<_$_UpdateRemoteUserStarted>
-      get copyWith =>
-          __$$_UpdateRemoteUserStartedCopyWithImpl<_$_UpdateRemoteUserStarted>(
-              this, _$identity);
+  _$$UpdateUserStatusStartedImplCopyWith<_$UpdateUserStatusStartedImpl>
+      get copyWith => __$$UpdateUserStatusStartedImplCopyWithImpl<
+          _$UpdateUserStatusStartedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Contact contact) videoCallStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        setInvitationStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        joinVideoCallStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        leaveVideoCallStarted,
+    required TResult Function() engineStarted,
+    required TResult Function() joinRoomStarted,
+    required TResult Function() joinRoomFailed,
+    required TResult Function() leaveRoomStarted,
     required TResult Function(VideoCallUserUpdateInfo info)
-        updateRemoteUserStatusStarted,
+        updateUserStatusStarted,
     required TResult Function(bool isEnabled)
         takePhotoSnapshotFeatureStatusChanged,
+    required TResult Function() disableTakePhotoSnapshotStarted,
+    required TResult Function() enableTakePhotoSnapshotStarted,
   }) {
-    return updateRemoteUserStatusStarted(info);
+    return updateUserStatusStarted(info);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Contact contact)? videoCallStarted,
-    TResult? Function(VideoCallInvitation invitation)? setInvitationStarted,
-    TResult? Function(VideoCallInvitation invitation)? joinVideoCallStarted,
-    TResult? Function(VideoCallInvitation invitation)? leaveVideoCallStarted,
-    TResult? Function(VideoCallUserUpdateInfo info)?
-        updateRemoteUserStatusStarted,
+    TResult? Function()? engineStarted,
+    TResult? Function()? joinRoomStarted,
+    TResult? Function()? joinRoomFailed,
+    TResult? Function()? leaveRoomStarted,
+    TResult? Function(VideoCallUserUpdateInfo info)? updateUserStatusStarted,
     TResult? Function(bool isEnabled)? takePhotoSnapshotFeatureStatusChanged,
+    TResult? Function()? disableTakePhotoSnapshotStarted,
+    TResult? Function()? enableTakePhotoSnapshotStarted,
   }) {
-    return updateRemoteUserStatusStarted?.call(info);
+    return updateUserStatusStarted?.call(info);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Contact contact)? videoCallStarted,
-    TResult Function(VideoCallInvitation invitation)? setInvitationStarted,
-    TResult Function(VideoCallInvitation invitation)? joinVideoCallStarted,
-    TResult Function(VideoCallInvitation invitation)? leaveVideoCallStarted,
-    TResult Function(VideoCallUserUpdateInfo info)?
-        updateRemoteUserStatusStarted,
+    TResult Function()? engineStarted,
+    TResult Function()? joinRoomStarted,
+    TResult Function()? joinRoomFailed,
+    TResult Function()? leaveRoomStarted,
+    TResult Function(VideoCallUserUpdateInfo info)? updateUserStatusStarted,
     TResult Function(bool isEnabled)? takePhotoSnapshotFeatureStatusChanged,
+    TResult Function()? disableTakePhotoSnapshotStarted,
+    TResult Function()? enableTakePhotoSnapshotStarted,
     required TResult orElse(),
   }) {
-    if (updateRemoteUserStatusStarted != null) {
-      return updateRemoteUserStatusStarted(info);
+    if (updateUserStatusStarted != null) {
+      return updateUserStatusStarted(info);
     }
     return orElse();
   }
@@ -921,82 +840,91 @@ class _$_UpdateRemoteUserStarted implements _UpdateRemoteUserStarted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_VideoCallStarted value) videoCallStarted,
-    required TResult Function(_SetInvitationStarted value) setInvitationStarted,
-    required TResult Function(_JoinVideoCallStarted value) joinVideoCallStarted,
-    required TResult Function(_LeaveVideoCallStarted value)
-        leaveVideoCallStarted,
-    required TResult Function(_UpdateRemoteUserStarted value)
-        updateRemoteUserStatusStarted,
+    required TResult Function(_EngineStarted value) engineStarted,
+    required TResult Function(_JoinRoomStarted value) joinRoomStarted,
+    required TResult Function(_JoinRoomFailed value) joinRoomFailed,
+    required TResult Function(_LeaveRoomStarted value) leaveRoomStarted,
+    required TResult Function(_UpdateUserStatusStarted value)
+        updateUserStatusStarted,
     required TResult Function(_TakePhotoSnapshotFeatureStatusChanged value)
         takePhotoSnapshotFeatureStatusChanged,
+    required TResult Function(_DisableTakePhotoSnapshotStarted value)
+        disableTakePhotoSnapshotStarted,
+    required TResult Function(_EnableTakePhotoSnapshotStarted value)
+        enableTakePhotoSnapshotStarted,
   }) {
-    return updateRemoteUserStatusStarted(this);
+    return updateUserStatusStarted(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_VideoCallStarted value)? videoCallStarted,
-    TResult? Function(_SetInvitationStarted value)? setInvitationStarted,
-    TResult? Function(_JoinVideoCallStarted value)? joinVideoCallStarted,
-    TResult? Function(_LeaveVideoCallStarted value)? leaveVideoCallStarted,
-    TResult? Function(_UpdateRemoteUserStarted value)?
-        updateRemoteUserStatusStarted,
+    TResult? Function(_EngineStarted value)? engineStarted,
+    TResult? Function(_JoinRoomStarted value)? joinRoomStarted,
+    TResult? Function(_JoinRoomFailed value)? joinRoomFailed,
+    TResult? Function(_LeaveRoomStarted value)? leaveRoomStarted,
+    TResult? Function(_UpdateUserStatusStarted value)? updateUserStatusStarted,
     TResult? Function(_TakePhotoSnapshotFeatureStatusChanged value)?
         takePhotoSnapshotFeatureStatusChanged,
+    TResult? Function(_DisableTakePhotoSnapshotStarted value)?
+        disableTakePhotoSnapshotStarted,
+    TResult? Function(_EnableTakePhotoSnapshotStarted value)?
+        enableTakePhotoSnapshotStarted,
   }) {
-    return updateRemoteUserStatusStarted?.call(this);
+    return updateUserStatusStarted?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_VideoCallStarted value)? videoCallStarted,
-    TResult Function(_SetInvitationStarted value)? setInvitationStarted,
-    TResult Function(_JoinVideoCallStarted value)? joinVideoCallStarted,
-    TResult Function(_LeaveVideoCallStarted value)? leaveVideoCallStarted,
-    TResult Function(_UpdateRemoteUserStarted value)?
-        updateRemoteUserStatusStarted,
+    TResult Function(_EngineStarted value)? engineStarted,
+    TResult Function(_JoinRoomStarted value)? joinRoomStarted,
+    TResult Function(_JoinRoomFailed value)? joinRoomFailed,
+    TResult Function(_LeaveRoomStarted value)? leaveRoomStarted,
+    TResult Function(_UpdateUserStatusStarted value)? updateUserStatusStarted,
     TResult Function(_TakePhotoSnapshotFeatureStatusChanged value)?
         takePhotoSnapshotFeatureStatusChanged,
+    TResult Function(_DisableTakePhotoSnapshotStarted value)?
+        disableTakePhotoSnapshotStarted,
+    TResult Function(_EnableTakePhotoSnapshotStarted value)?
+        enableTakePhotoSnapshotStarted,
     required TResult orElse(),
   }) {
-    if (updateRemoteUserStatusStarted != null) {
-      return updateRemoteUserStatusStarted(this);
+    if (updateUserStatusStarted != null) {
+      return updateUserStatusStarted(this);
     }
     return orElse();
   }
 }
 
-abstract class _UpdateRemoteUserStarted implements VideoCallEvent {
-  const factory _UpdateRemoteUserStarted(final VideoCallUserUpdateInfo info) =
-      _$_UpdateRemoteUserStarted;
+abstract class _UpdateUserStatusStarted implements VideoCallEvent {
+  const factory _UpdateUserStatusStarted(final VideoCallUserUpdateInfo info) =
+      _$UpdateUserStatusStartedImpl;
 
   VideoCallUserUpdateInfo get info;
   @JsonKey(ignore: true)
-  _$$_UpdateRemoteUserStartedCopyWith<_$_UpdateRemoteUserStarted>
+  _$$UpdateUserStatusStartedImplCopyWith<_$UpdateUserStatusStartedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_TakePhotoSnapshotFeatureStatusChangedCopyWith<$Res> {
-  factory _$$_TakePhotoSnapshotFeatureStatusChangedCopyWith(
-          _$_TakePhotoSnapshotFeatureStatusChanged value,
-          $Res Function(_$_TakePhotoSnapshotFeatureStatusChanged) then) =
-      __$$_TakePhotoSnapshotFeatureStatusChangedCopyWithImpl<$Res>;
+abstract class _$$TakePhotoSnapshotFeatureStatusChangedImplCopyWith<$Res> {
+  factory _$$TakePhotoSnapshotFeatureStatusChangedImplCopyWith(
+          _$TakePhotoSnapshotFeatureStatusChangedImpl value,
+          $Res Function(_$TakePhotoSnapshotFeatureStatusChangedImpl) then) =
+      __$$TakePhotoSnapshotFeatureStatusChangedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool isEnabled});
 }
 
 /// @nodoc
-class __$$_TakePhotoSnapshotFeatureStatusChangedCopyWithImpl<$Res>
+class __$$TakePhotoSnapshotFeatureStatusChangedImplCopyWithImpl<$Res>
     extends _$VideoCallEventCopyWithImpl<$Res,
-        _$_TakePhotoSnapshotFeatureStatusChanged>
-    implements _$$_TakePhotoSnapshotFeatureStatusChangedCopyWith<$Res> {
-  __$$_TakePhotoSnapshotFeatureStatusChangedCopyWithImpl(
-      _$_TakePhotoSnapshotFeatureStatusChanged _value,
-      $Res Function(_$_TakePhotoSnapshotFeatureStatusChanged) _then)
+        _$TakePhotoSnapshotFeatureStatusChangedImpl>
+    implements _$$TakePhotoSnapshotFeatureStatusChangedImplCopyWith<$Res> {
+  __$$TakePhotoSnapshotFeatureStatusChangedImplCopyWithImpl(
+      _$TakePhotoSnapshotFeatureStatusChangedImpl _value,
+      $Res Function(_$TakePhotoSnapshotFeatureStatusChangedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1004,7 +932,7 @@ class __$$_TakePhotoSnapshotFeatureStatusChangedCopyWithImpl<$Res>
   $Res call({
     Object? isEnabled = null,
   }) {
-    return _then(_$_TakePhotoSnapshotFeatureStatusChanged(
+    return _then(_$TakePhotoSnapshotFeatureStatusChangedImpl(
       null == isEnabled
           ? _value.isEnabled
           : isEnabled // ignore: cast_nullable_to_non_nullable
@@ -1015,9 +943,9 @@ class __$$_TakePhotoSnapshotFeatureStatusChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TakePhotoSnapshotFeatureStatusChanged
+class _$TakePhotoSnapshotFeatureStatusChangedImpl
     implements _TakePhotoSnapshotFeatureStatusChanged {
-  const _$_TakePhotoSnapshotFeatureStatusChanged(this.isEnabled);
+  const _$TakePhotoSnapshotFeatureStatusChangedImpl(this.isEnabled);
 
   @override
   final bool isEnabled;
@@ -1031,7 +959,7 @@ class _$_TakePhotoSnapshotFeatureStatusChanged
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TakePhotoSnapshotFeatureStatusChanged &&
+            other is _$TakePhotoSnapshotFeatureStatusChangedImpl &&
             (identical(other.isEnabled, isEnabled) ||
                 other.isEnabled == isEnabled));
   }
@@ -1042,25 +970,24 @@ class _$_TakePhotoSnapshotFeatureStatusChanged
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TakePhotoSnapshotFeatureStatusChangedCopyWith<
-          _$_TakePhotoSnapshotFeatureStatusChanged>
-      get copyWith => __$$_TakePhotoSnapshotFeatureStatusChangedCopyWithImpl<
-          _$_TakePhotoSnapshotFeatureStatusChanged>(this, _$identity);
+  _$$TakePhotoSnapshotFeatureStatusChangedImplCopyWith<
+          _$TakePhotoSnapshotFeatureStatusChangedImpl>
+      get copyWith => __$$TakePhotoSnapshotFeatureStatusChangedImplCopyWithImpl<
+          _$TakePhotoSnapshotFeatureStatusChangedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Contact contact) videoCallStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        setInvitationStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        joinVideoCallStarted,
-    required TResult Function(VideoCallInvitation invitation)
-        leaveVideoCallStarted,
+    required TResult Function() engineStarted,
+    required TResult Function() joinRoomStarted,
+    required TResult Function() joinRoomFailed,
+    required TResult Function() leaveRoomStarted,
     required TResult Function(VideoCallUserUpdateInfo info)
-        updateRemoteUserStatusStarted,
+        updateUserStatusStarted,
     required TResult Function(bool isEnabled)
         takePhotoSnapshotFeatureStatusChanged,
+    required TResult Function() disableTakePhotoSnapshotStarted,
+    required TResult Function() enableTakePhotoSnapshotStarted,
   }) {
     return takePhotoSnapshotFeatureStatusChanged(isEnabled);
   }
@@ -1068,13 +995,14 @@ class _$_TakePhotoSnapshotFeatureStatusChanged
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Contact contact)? videoCallStarted,
-    TResult? Function(VideoCallInvitation invitation)? setInvitationStarted,
-    TResult? Function(VideoCallInvitation invitation)? joinVideoCallStarted,
-    TResult? Function(VideoCallInvitation invitation)? leaveVideoCallStarted,
-    TResult? Function(VideoCallUserUpdateInfo info)?
-        updateRemoteUserStatusStarted,
+    TResult? Function()? engineStarted,
+    TResult? Function()? joinRoomStarted,
+    TResult? Function()? joinRoomFailed,
+    TResult? Function()? leaveRoomStarted,
+    TResult? Function(VideoCallUserUpdateInfo info)? updateUserStatusStarted,
     TResult? Function(bool isEnabled)? takePhotoSnapshotFeatureStatusChanged,
+    TResult? Function()? disableTakePhotoSnapshotStarted,
+    TResult? Function()? enableTakePhotoSnapshotStarted,
   }) {
     return takePhotoSnapshotFeatureStatusChanged?.call(isEnabled);
   }
@@ -1082,13 +1010,14 @@ class _$_TakePhotoSnapshotFeatureStatusChanged
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Contact contact)? videoCallStarted,
-    TResult Function(VideoCallInvitation invitation)? setInvitationStarted,
-    TResult Function(VideoCallInvitation invitation)? joinVideoCallStarted,
-    TResult Function(VideoCallInvitation invitation)? leaveVideoCallStarted,
-    TResult Function(VideoCallUserUpdateInfo info)?
-        updateRemoteUserStatusStarted,
+    TResult Function()? engineStarted,
+    TResult Function()? joinRoomStarted,
+    TResult Function()? joinRoomFailed,
+    TResult Function()? leaveRoomStarted,
+    TResult Function(VideoCallUserUpdateInfo info)? updateUserStatusStarted,
     TResult Function(bool isEnabled)? takePhotoSnapshotFeatureStatusChanged,
+    TResult Function()? disableTakePhotoSnapshotStarted,
+    TResult Function()? enableTakePhotoSnapshotStarted,
     required TResult orElse(),
   }) {
     if (takePhotoSnapshotFeatureStatusChanged != null) {
@@ -1100,15 +1029,18 @@ class _$_TakePhotoSnapshotFeatureStatusChanged
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_VideoCallStarted value) videoCallStarted,
-    required TResult Function(_SetInvitationStarted value) setInvitationStarted,
-    required TResult Function(_JoinVideoCallStarted value) joinVideoCallStarted,
-    required TResult Function(_LeaveVideoCallStarted value)
-        leaveVideoCallStarted,
-    required TResult Function(_UpdateRemoteUserStarted value)
-        updateRemoteUserStatusStarted,
+    required TResult Function(_EngineStarted value) engineStarted,
+    required TResult Function(_JoinRoomStarted value) joinRoomStarted,
+    required TResult Function(_JoinRoomFailed value) joinRoomFailed,
+    required TResult Function(_LeaveRoomStarted value) leaveRoomStarted,
+    required TResult Function(_UpdateUserStatusStarted value)
+        updateUserStatusStarted,
     required TResult Function(_TakePhotoSnapshotFeatureStatusChanged value)
         takePhotoSnapshotFeatureStatusChanged,
+    required TResult Function(_DisableTakePhotoSnapshotStarted value)
+        disableTakePhotoSnapshotStarted,
+    required TResult Function(_EnableTakePhotoSnapshotStarted value)
+        enableTakePhotoSnapshotStarted,
   }) {
     return takePhotoSnapshotFeatureStatusChanged(this);
   }
@@ -1116,14 +1048,17 @@ class _$_TakePhotoSnapshotFeatureStatusChanged
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_VideoCallStarted value)? videoCallStarted,
-    TResult? Function(_SetInvitationStarted value)? setInvitationStarted,
-    TResult? Function(_JoinVideoCallStarted value)? joinVideoCallStarted,
-    TResult? Function(_LeaveVideoCallStarted value)? leaveVideoCallStarted,
-    TResult? Function(_UpdateRemoteUserStarted value)?
-        updateRemoteUserStatusStarted,
+    TResult? Function(_EngineStarted value)? engineStarted,
+    TResult? Function(_JoinRoomStarted value)? joinRoomStarted,
+    TResult? Function(_JoinRoomFailed value)? joinRoomFailed,
+    TResult? Function(_LeaveRoomStarted value)? leaveRoomStarted,
+    TResult? Function(_UpdateUserStatusStarted value)? updateUserStatusStarted,
     TResult? Function(_TakePhotoSnapshotFeatureStatusChanged value)?
         takePhotoSnapshotFeatureStatusChanged,
+    TResult? Function(_DisableTakePhotoSnapshotStarted value)?
+        disableTakePhotoSnapshotStarted,
+    TResult? Function(_EnableTakePhotoSnapshotStarted value)?
+        enableTakePhotoSnapshotStarted,
   }) {
     return takePhotoSnapshotFeatureStatusChanged?.call(this);
   }
@@ -1131,14 +1066,17 @@ class _$_TakePhotoSnapshotFeatureStatusChanged
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_VideoCallStarted value)? videoCallStarted,
-    TResult Function(_SetInvitationStarted value)? setInvitationStarted,
-    TResult Function(_JoinVideoCallStarted value)? joinVideoCallStarted,
-    TResult Function(_LeaveVideoCallStarted value)? leaveVideoCallStarted,
-    TResult Function(_UpdateRemoteUserStarted value)?
-        updateRemoteUserStatusStarted,
+    TResult Function(_EngineStarted value)? engineStarted,
+    TResult Function(_JoinRoomStarted value)? joinRoomStarted,
+    TResult Function(_JoinRoomFailed value)? joinRoomFailed,
+    TResult Function(_LeaveRoomStarted value)? leaveRoomStarted,
+    TResult Function(_UpdateUserStatusStarted value)? updateUserStatusStarted,
     TResult Function(_TakePhotoSnapshotFeatureStatusChanged value)?
         takePhotoSnapshotFeatureStatusChanged,
+    TResult Function(_DisableTakePhotoSnapshotStarted value)?
+        disableTakePhotoSnapshotStarted,
+    TResult Function(_EnableTakePhotoSnapshotStarted value)?
+        enableTakePhotoSnapshotStarted,
     required TResult orElse(),
   }) {
     if (takePhotoSnapshotFeatureStatusChanged != null) {
@@ -1151,243 +1089,422 @@ class _$_TakePhotoSnapshotFeatureStatusChanged
 abstract class _TakePhotoSnapshotFeatureStatusChanged
     implements VideoCallEvent {
   const factory _TakePhotoSnapshotFeatureStatusChanged(final bool isEnabled) =
-      _$_TakePhotoSnapshotFeatureStatusChanged;
+      _$TakePhotoSnapshotFeatureStatusChangedImpl;
 
   bool get isEnabled;
   @JsonKey(ignore: true)
-  _$$_TakePhotoSnapshotFeatureStatusChangedCopyWith<
-          _$_TakePhotoSnapshotFeatureStatusChanged>
+  _$$TakePhotoSnapshotFeatureStatusChangedImplCopyWith<
+          _$TakePhotoSnapshotFeatureStatusChangedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$VideoCallState {
-  VideoCallInvitation? get invitation => throw _privateConstructorUsedError;
-  bool get isRemoteUserJoined => throw _privateConstructorUsedError;
-  bool get isTakePhotoEnabled => throw _privateConstructorUsedError;
-  int get localUid => throw _privateConstructorUsedError;
-  int get remoteUid => throw _privateConstructorUsedError;
+abstract class _$$DisableTakePhotoSnapshotStartedImplCopyWith<$Res> {
+  factory _$$DisableTakePhotoSnapshotStartedImplCopyWith(
+          _$DisableTakePhotoSnapshotStartedImpl value,
+          $Res Function(_$DisableTakePhotoSnapshotStartedImpl) then) =
+      __$$DisableTakePhotoSnapshotStartedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DisableTakePhotoSnapshotStartedImplCopyWithImpl<$Res>
+    extends _$VideoCallEventCopyWithImpl<$Res,
+        _$DisableTakePhotoSnapshotStartedImpl>
+    implements _$$DisableTakePhotoSnapshotStartedImplCopyWith<$Res> {
+  __$$DisableTakePhotoSnapshotStartedImplCopyWithImpl(
+      _$DisableTakePhotoSnapshotStartedImpl _value,
+      $Res Function(_$DisableTakePhotoSnapshotStartedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DisableTakePhotoSnapshotStartedImpl
+    implements _DisableTakePhotoSnapshotStarted {
+  const _$DisableTakePhotoSnapshotStartedImpl();
+
+  @override
+  String toString() {
+    return 'VideoCallEvent.disableTakePhotoSnapshotStarted()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DisableTakePhotoSnapshotStartedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        initial,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        joinChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)
-        remoteUserLeaveSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelFailure,
+    required TResult Function() engineStarted,
+    required TResult Function() joinRoomStarted,
+    required TResult Function() joinRoomFailed,
+    required TResult Function() leaveRoomStarted,
+    required TResult Function(VideoCallUserUpdateInfo info)
+        updateUserStatusStarted,
+    required TResult Function(bool isEnabled)
+        takePhotoSnapshotFeatureStatusChanged,
+    required TResult Function() disableTakePhotoSnapshotStarted,
+    required TResult Function() enableTakePhotoSnapshotStarted,
+  }) {
+    return disableTakePhotoSnapshotStarted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? engineStarted,
+    TResult? Function()? joinRoomStarted,
+    TResult? Function()? joinRoomFailed,
+    TResult? Function()? leaveRoomStarted,
+    TResult? Function(VideoCallUserUpdateInfo info)? updateUserStatusStarted,
+    TResult? Function(bool isEnabled)? takePhotoSnapshotFeatureStatusChanged,
+    TResult? Function()? disableTakePhotoSnapshotStarted,
+    TResult? Function()? enableTakePhotoSnapshotStarted,
+  }) {
+    return disableTakePhotoSnapshotStarted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? engineStarted,
+    TResult Function()? joinRoomStarted,
+    TResult Function()? joinRoomFailed,
+    TResult Function()? leaveRoomStarted,
+    TResult Function(VideoCallUserUpdateInfo info)? updateUserStatusStarted,
+    TResult Function(bool isEnabled)? takePhotoSnapshotFeatureStatusChanged,
+    TResult Function()? disableTakePhotoSnapshotStarted,
+    TResult Function()? enableTakePhotoSnapshotStarted,
+    required TResult orElse(),
+  }) {
+    if (disableTakePhotoSnapshotStarted != null) {
+      return disableTakePhotoSnapshotStarted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EngineStarted value) engineStarted,
+    required TResult Function(_JoinRoomStarted value) joinRoomStarted,
+    required TResult Function(_JoinRoomFailed value) joinRoomFailed,
+    required TResult Function(_LeaveRoomStarted value) leaveRoomStarted,
+    required TResult Function(_UpdateUserStatusStarted value)
+        updateUserStatusStarted,
+    required TResult Function(_TakePhotoSnapshotFeatureStatusChanged value)
+        takePhotoSnapshotFeatureStatusChanged,
+    required TResult Function(_DisableTakePhotoSnapshotStarted value)
+        disableTakePhotoSnapshotStarted,
+    required TResult Function(_EnableTakePhotoSnapshotStarted value)
+        enableTakePhotoSnapshotStarted,
+  }) {
+    return disableTakePhotoSnapshotStarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EngineStarted value)? engineStarted,
+    TResult? Function(_JoinRoomStarted value)? joinRoomStarted,
+    TResult? Function(_JoinRoomFailed value)? joinRoomFailed,
+    TResult? Function(_LeaveRoomStarted value)? leaveRoomStarted,
+    TResult? Function(_UpdateUserStatusStarted value)? updateUserStatusStarted,
+    TResult? Function(_TakePhotoSnapshotFeatureStatusChanged value)?
+        takePhotoSnapshotFeatureStatusChanged,
+    TResult? Function(_DisableTakePhotoSnapshotStarted value)?
+        disableTakePhotoSnapshotStarted,
+    TResult? Function(_EnableTakePhotoSnapshotStarted value)?
+        enableTakePhotoSnapshotStarted,
+  }) {
+    return disableTakePhotoSnapshotStarted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EngineStarted value)? engineStarted,
+    TResult Function(_JoinRoomStarted value)? joinRoomStarted,
+    TResult Function(_JoinRoomFailed value)? joinRoomFailed,
+    TResult Function(_LeaveRoomStarted value)? leaveRoomStarted,
+    TResult Function(_UpdateUserStatusStarted value)? updateUserStatusStarted,
+    TResult Function(_TakePhotoSnapshotFeatureStatusChanged value)?
+        takePhotoSnapshotFeatureStatusChanged,
+    TResult Function(_DisableTakePhotoSnapshotStarted value)?
+        disableTakePhotoSnapshotStarted,
+    TResult Function(_EnableTakePhotoSnapshotStarted value)?
+        enableTakePhotoSnapshotStarted,
+    required TResult orElse(),
+  }) {
+    if (disableTakePhotoSnapshotStarted != null) {
+      return disableTakePhotoSnapshotStarted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DisableTakePhotoSnapshotStarted implements VideoCallEvent {
+  const factory _DisableTakePhotoSnapshotStarted() =
+      _$DisableTakePhotoSnapshotStartedImpl;
+}
+
+/// @nodoc
+abstract class _$$EnableTakePhotoSnapshotStartedImplCopyWith<$Res> {
+  factory _$$EnableTakePhotoSnapshotStartedImplCopyWith(
+          _$EnableTakePhotoSnapshotStartedImpl value,
+          $Res Function(_$EnableTakePhotoSnapshotStartedImpl) then) =
+      __$$EnableTakePhotoSnapshotStartedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$EnableTakePhotoSnapshotStartedImplCopyWithImpl<$Res>
+    extends _$VideoCallEventCopyWithImpl<$Res,
+        _$EnableTakePhotoSnapshotStartedImpl>
+    implements _$$EnableTakePhotoSnapshotStartedImplCopyWith<$Res> {
+  __$$EnableTakePhotoSnapshotStartedImplCopyWithImpl(
+      _$EnableTakePhotoSnapshotStartedImpl _value,
+      $Res Function(_$EnableTakePhotoSnapshotStartedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$EnableTakePhotoSnapshotStartedImpl
+    implements _EnableTakePhotoSnapshotStarted {
+  const _$EnableTakePhotoSnapshotStartedImpl();
+
+  @override
+  String toString() {
+    return 'VideoCallEvent.enableTakePhotoSnapshotStarted()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EnableTakePhotoSnapshotStartedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() engineStarted,
+    required TResult Function() joinRoomStarted,
+    required TResult Function() joinRoomFailed,
+    required TResult Function() leaveRoomStarted,
+    required TResult Function(VideoCallUserUpdateInfo info)
+        updateUserStatusStarted,
+    required TResult Function(bool isEnabled)
+        takePhotoSnapshotFeatureStatusChanged,
+    required TResult Function() disableTakePhotoSnapshotStarted,
+    required TResult Function() enableTakePhotoSnapshotStarted,
+  }) {
+    return enableTakePhotoSnapshotStarted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? engineStarted,
+    TResult? Function()? joinRoomStarted,
+    TResult? Function()? joinRoomFailed,
+    TResult? Function()? leaveRoomStarted,
+    TResult? Function(VideoCallUserUpdateInfo info)? updateUserStatusStarted,
+    TResult? Function(bool isEnabled)? takePhotoSnapshotFeatureStatusChanged,
+    TResult? Function()? disableTakePhotoSnapshotStarted,
+    TResult? Function()? enableTakePhotoSnapshotStarted,
+  }) {
+    return enableTakePhotoSnapshotStarted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? engineStarted,
+    TResult Function()? joinRoomStarted,
+    TResult Function()? joinRoomFailed,
+    TResult Function()? leaveRoomStarted,
+    TResult Function(VideoCallUserUpdateInfo info)? updateUserStatusStarted,
+    TResult Function(bool isEnabled)? takePhotoSnapshotFeatureStatusChanged,
+    TResult Function()? disableTakePhotoSnapshotStarted,
+    TResult Function()? enableTakePhotoSnapshotStarted,
+    required TResult orElse(),
+  }) {
+    if (enableTakePhotoSnapshotStarted != null) {
+      return enableTakePhotoSnapshotStarted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EngineStarted value) engineStarted,
+    required TResult Function(_JoinRoomStarted value) joinRoomStarted,
+    required TResult Function(_JoinRoomFailed value) joinRoomFailed,
+    required TResult Function(_LeaveRoomStarted value) leaveRoomStarted,
+    required TResult Function(_UpdateUserStatusStarted value)
+        updateUserStatusStarted,
+    required TResult Function(_TakePhotoSnapshotFeatureStatusChanged value)
+        takePhotoSnapshotFeatureStatusChanged,
+    required TResult Function(_DisableTakePhotoSnapshotStarted value)
+        disableTakePhotoSnapshotStarted,
+    required TResult Function(_EnableTakePhotoSnapshotStarted value)
+        enableTakePhotoSnapshotStarted,
+  }) {
+    return enableTakePhotoSnapshotStarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EngineStarted value)? engineStarted,
+    TResult? Function(_JoinRoomStarted value)? joinRoomStarted,
+    TResult? Function(_JoinRoomFailed value)? joinRoomFailed,
+    TResult? Function(_LeaveRoomStarted value)? leaveRoomStarted,
+    TResult? Function(_UpdateUserStatusStarted value)? updateUserStatusStarted,
+    TResult? Function(_TakePhotoSnapshotFeatureStatusChanged value)?
+        takePhotoSnapshotFeatureStatusChanged,
+    TResult? Function(_DisableTakePhotoSnapshotStarted value)?
+        disableTakePhotoSnapshotStarted,
+    TResult? Function(_EnableTakePhotoSnapshotStarted value)?
+        enableTakePhotoSnapshotStarted,
+  }) {
+    return enableTakePhotoSnapshotStarted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EngineStarted value)? engineStarted,
+    TResult Function(_JoinRoomStarted value)? joinRoomStarted,
+    TResult Function(_JoinRoomFailed value)? joinRoomFailed,
+    TResult Function(_LeaveRoomStarted value)? leaveRoomStarted,
+    TResult Function(_UpdateUserStatusStarted value)? updateUserStatusStarted,
+    TResult Function(_TakePhotoSnapshotFeatureStatusChanged value)?
+        takePhotoSnapshotFeatureStatusChanged,
+    TResult Function(_DisableTakePhotoSnapshotStarted value)?
+        disableTakePhotoSnapshotStarted,
+    TResult Function(_EnableTakePhotoSnapshotStarted value)?
+        enableTakePhotoSnapshotStarted,
+    required TResult orElse(),
+  }) {
+    if (enableTakePhotoSnapshotStarted != null) {
+      return enableTakePhotoSnapshotStarted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EnableTakePhotoSnapshotStarted implements VideoCallEvent {
+  const factory _EnableTakePhotoSnapshotStarted() =
+      _$EnableTakePhotoSnapshotStartedImpl;
+}
+
+/// @nodoc
+mixin _$VideoCallState {
+  Room get room => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Room room) initial,
+    required TResult Function(Room room) initEngineInProgress,
+    required TResult Function(Room room, RtcEngine engine) initEngineSuccess,
+    required TResult Function(Room room, Failure failure) initEngineFailure,
+    required TResult Function(Room room, RtcEngine engine) joinRoomInProgress,
+    required TResult Function(Room room, RtcEngine engine, Failure failure)
+        joinRoomFailure,
+    required TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)
+        joinRoomSuccess,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomInProgress,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomSuccess,
+    required TResult Function(Room room, Failure failure) leaveRoomFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult? Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
+    TResult? Function(Room room)? initial,
+    TResult? Function(Room room)? initEngineInProgress,
+    TResult? Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult? Function(Room room, Failure failure)? initEngineFailure,
+    TResult? Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult? Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult? Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult? Function(Room room, Failure failure)? leaveRoomFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
+    TResult Function(Room room)? initial,
+    TResult Function(Room room)? initEngineInProgress,
+    TResult Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult Function(Room room, Failure failure)? initEngineFailure,
+    TResult Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult Function(Room room, Failure failure)? leaveRoomFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_JoinChannelInProgress value)
-        joinChannelInProgress,
-    required TResult Function(_JoinChannelSuccess value) joinChannelSuccess,
-    required TResult Function(_RemoteUserJoinSuccess value)
-        remoteUserJoinSuccess,
-    required TResult Function(_JoinChannelFailure value) joinChannelFailure,
-    required TResult Function(_RemoteUserJoinFailure value)
-        remoteUserJoinFailure,
-    required TResult Function(_LeaveChannelInProgress value)
-        leaveChannelInProgress,
-    required TResult Function(_LeaveChannelSuccess value) leaveChannelSuccess,
-    required TResult Function(_RemoteUserLeaveSuccess value)
-        remoteUserLeaveSuccess,
-    required TResult Function(_LeaveChannelFailure value) leaveChannelFailure,
+    required TResult Function(_InitEngineInProgress value) initEngineInProgress,
+    required TResult Function(_InitEngineSuccess value) initEngineSuccess,
+    required TResult Function(_InitEngineFailure value) initEngineFailure,
+    required TResult Function(_JoinRoomInProgress value) joinRoomInProgress,
+    required TResult Function(_JoinRoomFailure value) joinRoomFailure,
+    required TResult Function(_JoinRoomSuccess value) joinRoomSuccess,
+    required TResult Function(_LeaveRoomInProgress value) leaveRoomInProgress,
+    required TResult Function(_LeaveRoomSuccess value) leaveRoomSuccess,
+    required TResult Function(_LeaveRoomFailure value) leaveRoomFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult? Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult? Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult? Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult? Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult? Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult? Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult? Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult? Function(_LeaveChannelFailure value)? leaveChannelFailure,
+    TResult? Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult? Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult? Function(_InitEngineFailure value)? initEngineFailure,
+    TResult? Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult? Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult? Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult? Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult? Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult? Function(_LeaveRoomFailure value)? leaveRoomFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult Function(_LeaveChannelFailure value)? leaveChannelFailure,
+    TResult Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult Function(_InitEngineFailure value)? initEngineFailure,
+    TResult Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult Function(_LeaveRoomFailure value)? leaveRoomFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1403,12 +1520,7 @@ abstract class $VideoCallStateCopyWith<$Res> {
           VideoCallState value, $Res Function(VideoCallState) then) =
       _$VideoCallStateCopyWithImpl<$Res, VideoCallState>;
   @useResult
-  $Res call(
-      {VideoCallInvitation invitation,
-      bool isRemoteUserJoined,
-      bool isTakePhotoEnabled,
-      int localUid,
-      int remoteUid});
+  $Res call({Room room});
 }
 
 /// @nodoc
@@ -1424,339 +1536,140 @@ class _$VideoCallStateCopyWithImpl<$Res, $Val extends VideoCallState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? invitation = null,
-    Object? isRemoteUserJoined = null,
-    Object? isTakePhotoEnabled = null,
-    Object? localUid = null,
-    Object? remoteUid = null,
+    Object? room = null,
   }) {
     return _then(_value.copyWith(
-      invitation: null == invitation
-          ? _value.invitation!
-          : invitation // ignore: cast_nullable_to_non_nullable
-              as VideoCallInvitation,
-      isRemoteUserJoined: null == isRemoteUserJoined
-          ? _value.isRemoteUserJoined
-          : isRemoteUserJoined // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isTakePhotoEnabled: null == isTakePhotoEnabled
-          ? _value.isTakePhotoEnabled
-          : isTakePhotoEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      localUid: null == localUid
-          ? _value.localUid
-          : localUid // ignore: cast_nullable_to_non_nullable
-              as int,
-      remoteUid: null == remoteUid
-          ? _value.remoteUid
-          : remoteUid // ignore: cast_nullable_to_non_nullable
-              as int,
+      room: null == room
+          ? _value.room
+          : room // ignore: cast_nullable_to_non_nullable
+              as Room,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res>
+abstract class _$$InitialImplCopyWith<$Res>
     implements $VideoCallStateCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {VideoCallInvitation? invitation,
-      bool isRemoteUserJoined,
-      bool isTakePhotoEnabled,
-      int localUid,
-      int remoteUid});
+  $Res call({Room room});
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$VideoCallStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$VideoCallStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? invitation = freezed,
-    Object? isRemoteUserJoined = null,
-    Object? isTakePhotoEnabled = null,
-    Object? localUid = null,
-    Object? remoteUid = null,
+    Object? room = null,
   }) {
-    return _then(_$_Initial(
-      invitation: freezed == invitation
-          ? _value.invitation
-          : invitation // ignore: cast_nullable_to_non_nullable
-              as VideoCallInvitation?,
-      isRemoteUserJoined: null == isRemoteUserJoined
-          ? _value.isRemoteUserJoined
-          : isRemoteUserJoined // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isTakePhotoEnabled: null == isTakePhotoEnabled
-          ? _value.isTakePhotoEnabled
-          : isTakePhotoEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      localUid: null == localUid
-          ? _value.localUid
-          : localUid // ignore: cast_nullable_to_non_nullable
-              as int,
-      remoteUid: null == remoteUid
-          ? _value.remoteUid
-          : remoteUid // ignore: cast_nullable_to_non_nullable
-              as int,
+    return _then(_$InitialImpl(
+      null == room
+          ? _value.room
+          : room // ignore: cast_nullable_to_non_nullable
+              as Room,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial(
-      {this.invitation = null,
-      this.isRemoteUserJoined = false,
-      this.isTakePhotoEnabled = false,
-      this.localUid = -1,
-      this.remoteUid = -1});
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl(this.room);
 
   @override
-  @JsonKey()
-  final VideoCallInvitation? invitation;
-  @override
-  @JsonKey()
-  final bool isRemoteUserJoined;
-  @override
-  @JsonKey()
-  final bool isTakePhotoEnabled;
-  @override
-  @JsonKey()
-  final int localUid;
-  @override
-  @JsonKey()
-  final int remoteUid;
+  final Room room;
 
   @override
   String toString() {
-    return 'VideoCallState.initial(invitation: $invitation, isRemoteUserJoined: $isRemoteUserJoined, isTakePhotoEnabled: $isTakePhotoEnabled, localUid: $localUid, remoteUid: $remoteUid)';
+    return 'VideoCallState.initial(room: $room)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Initial &&
-            (identical(other.invitation, invitation) ||
-                other.invitation == invitation) &&
-            (identical(other.isRemoteUserJoined, isRemoteUserJoined) ||
-                other.isRemoteUserJoined == isRemoteUserJoined) &&
-            (identical(other.isTakePhotoEnabled, isTakePhotoEnabled) ||
-                other.isTakePhotoEnabled == isTakePhotoEnabled) &&
-            (identical(other.localUid, localUid) ||
-                other.localUid == localUid) &&
-            (identical(other.remoteUid, remoteUid) ||
-                other.remoteUid == remoteUid));
+            other is _$InitialImpl &&
+            (identical(other.room, room) || other.room == room));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, invitation, isRemoteUserJoined,
-      isTakePhotoEnabled, localUid, remoteUid);
+  int get hashCode => Object.hash(runtimeType, room);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
-      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        initial,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        joinChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)
-        remoteUserLeaveSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelFailure,
+    required TResult Function(Room room) initial,
+    required TResult Function(Room room) initEngineInProgress,
+    required TResult Function(Room room, RtcEngine engine) initEngineSuccess,
+    required TResult Function(Room room, Failure failure) initEngineFailure,
+    required TResult Function(Room room, RtcEngine engine) joinRoomInProgress,
+    required TResult Function(Room room, RtcEngine engine, Failure failure)
+        joinRoomFailure,
+    required TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)
+        joinRoomSuccess,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomInProgress,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomSuccess,
+    required TResult Function(Room room, Failure failure) leaveRoomFailure,
   }) {
-    return initial(invitation, isRemoteUserJoined, isTakePhotoEnabled, localUid,
-        remoteUid);
+    return initial(room);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult? Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
+    TResult? Function(Room room)? initial,
+    TResult? Function(Room room)? initEngineInProgress,
+    TResult? Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult? Function(Room room, Failure failure)? initEngineFailure,
+    TResult? Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult? Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult? Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult? Function(Room room, Failure failure)? leaveRoomFailure,
   }) {
-    return initial?.call(invitation, isRemoteUserJoined, isTakePhotoEnabled,
-        localUid, remoteUid);
+    return initial?.call(room);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
+    TResult Function(Room room)? initial,
+    TResult Function(Room room)? initEngineInProgress,
+    TResult Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult Function(Room room, Failure failure)? initEngineFailure,
+    TResult Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult Function(Room room, Failure failure)? leaveRoomFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(invitation, isRemoteUserJoined, isTakePhotoEnabled,
-          localUid, remoteUid);
+      return initial(room);
     }
     return orElse();
   }
@@ -1765,20 +1678,15 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_JoinChannelInProgress value)
-        joinChannelInProgress,
-    required TResult Function(_JoinChannelSuccess value) joinChannelSuccess,
-    required TResult Function(_RemoteUserJoinSuccess value)
-        remoteUserJoinSuccess,
-    required TResult Function(_JoinChannelFailure value) joinChannelFailure,
-    required TResult Function(_RemoteUserJoinFailure value)
-        remoteUserJoinFailure,
-    required TResult Function(_LeaveChannelInProgress value)
-        leaveChannelInProgress,
-    required TResult Function(_LeaveChannelSuccess value) leaveChannelSuccess,
-    required TResult Function(_RemoteUserLeaveSuccess value)
-        remoteUserLeaveSuccess,
-    required TResult Function(_LeaveChannelFailure value) leaveChannelFailure,
+    required TResult Function(_InitEngineInProgress value) initEngineInProgress,
+    required TResult Function(_InitEngineSuccess value) initEngineSuccess,
+    required TResult Function(_InitEngineFailure value) initEngineFailure,
+    required TResult Function(_JoinRoomInProgress value) joinRoomInProgress,
+    required TResult Function(_JoinRoomFailure value) joinRoomFailure,
+    required TResult Function(_JoinRoomSuccess value) joinRoomSuccess,
+    required TResult Function(_LeaveRoomInProgress value) leaveRoomInProgress,
+    required TResult Function(_LeaveRoomSuccess value) leaveRoomSuccess,
+    required TResult Function(_LeaveRoomFailure value) leaveRoomFailure,
   }) {
     return initial(this);
   }
@@ -1787,15 +1695,15 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult? Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult? Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult? Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult? Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult? Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult? Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult? Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult? Function(_LeaveChannelFailure value)? leaveChannelFailure,
+    TResult? Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult? Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult? Function(_InitEngineFailure value)? initEngineFailure,
+    TResult? Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult? Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult? Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult? Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult? Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult? Function(_LeaveRoomFailure value)? leaveRoomFailure,
   }) {
     return initial?.call(this);
   }
@@ -1804,15 +1712,15 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult Function(_LeaveChannelFailure value)? leaveChannelFailure,
+    TResult Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult Function(_InitEngineFailure value)? initEngineFailure,
+    TResult Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult Function(_LeaveRoomFailure value)? leaveRoomFailure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1823,3083 +1731,1442 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements VideoCallState {
-  const factory _Initial(
-      {final VideoCallInvitation? invitation,
-      final bool isRemoteUserJoined,
+  const factory _Initial(final Room room) = _$InitialImpl;
+
+  @override
+  Room get room;
+  @override
+  @JsonKey(ignore: true)
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$InitEngineInProgressImplCopyWith<$Res>
+    implements $VideoCallStateCopyWith<$Res> {
+  factory _$$InitEngineInProgressImplCopyWith(_$InitEngineInProgressImpl value,
+          $Res Function(_$InitEngineInProgressImpl) then) =
+      __$$InitEngineInProgressImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Room room});
+}
+
+/// @nodoc
+class __$$InitEngineInProgressImplCopyWithImpl<$Res>
+    extends _$VideoCallStateCopyWithImpl<$Res, _$InitEngineInProgressImpl>
+    implements _$$InitEngineInProgressImplCopyWith<$Res> {
+  __$$InitEngineInProgressImplCopyWithImpl(_$InitEngineInProgressImpl _value,
+      $Res Function(_$InitEngineInProgressImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? room = null,
+  }) {
+    return _then(_$InitEngineInProgressImpl(
+      null == room
+          ? _value.room
+          : room // ignore: cast_nullable_to_non_nullable
+              as Room,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InitEngineInProgressImpl implements _InitEngineInProgress {
+  const _$InitEngineInProgressImpl(this.room);
+
+  @override
+  final Room room;
+
+  @override
+  String toString() {
+    return 'VideoCallState.initEngineInProgress(room: $room)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InitEngineInProgressImpl &&
+            (identical(other.room, room) || other.room == room));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, room);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitEngineInProgressImplCopyWith<_$InitEngineInProgressImpl>
+      get copyWith =>
+          __$$InitEngineInProgressImplCopyWithImpl<_$InitEngineInProgressImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Room room) initial,
+    required TResult Function(Room room) initEngineInProgress,
+    required TResult Function(Room room, RtcEngine engine) initEngineSuccess,
+    required TResult Function(Room room, Failure failure) initEngineFailure,
+    required TResult Function(Room room, RtcEngine engine) joinRoomInProgress,
+    required TResult Function(Room room, RtcEngine engine, Failure failure)
+        joinRoomFailure,
+    required TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)
+        joinRoomSuccess,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomInProgress,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomSuccess,
+    required TResult Function(Room room, Failure failure) leaveRoomFailure,
+  }) {
+    return initEngineInProgress(room);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Room room)? initial,
+    TResult? Function(Room room)? initEngineInProgress,
+    TResult? Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult? Function(Room room, Failure failure)? initEngineFailure,
+    TResult? Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult? Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult? Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult? Function(Room room, Failure failure)? leaveRoomFailure,
+  }) {
+    return initEngineInProgress?.call(room);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Room room)? initial,
+    TResult Function(Room room)? initEngineInProgress,
+    TResult Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult Function(Room room, Failure failure)? initEngineFailure,
+    TResult Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult Function(Room room, Failure failure)? leaveRoomFailure,
+    required TResult orElse(),
+  }) {
+    if (initEngineInProgress != null) {
+      return initEngineInProgress(room);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InitEngineInProgress value) initEngineInProgress,
+    required TResult Function(_InitEngineSuccess value) initEngineSuccess,
+    required TResult Function(_InitEngineFailure value) initEngineFailure,
+    required TResult Function(_JoinRoomInProgress value) joinRoomInProgress,
+    required TResult Function(_JoinRoomFailure value) joinRoomFailure,
+    required TResult Function(_JoinRoomSuccess value) joinRoomSuccess,
+    required TResult Function(_LeaveRoomInProgress value) leaveRoomInProgress,
+    required TResult Function(_LeaveRoomSuccess value) leaveRoomSuccess,
+    required TResult Function(_LeaveRoomFailure value) leaveRoomFailure,
+  }) {
+    return initEngineInProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult? Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult? Function(_InitEngineFailure value)? initEngineFailure,
+    TResult? Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult? Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult? Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult? Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult? Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult? Function(_LeaveRoomFailure value)? leaveRoomFailure,
+  }) {
+    return initEngineInProgress?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult Function(_InitEngineFailure value)? initEngineFailure,
+    TResult Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult Function(_LeaveRoomFailure value)? leaveRoomFailure,
+    required TResult orElse(),
+  }) {
+    if (initEngineInProgress != null) {
+      return initEngineInProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InitEngineInProgress implements VideoCallState {
+  const factory _InitEngineInProgress(final Room room) =
+      _$InitEngineInProgressImpl;
+
+  @override
+  Room get room;
+  @override
+  @JsonKey(ignore: true)
+  _$$InitEngineInProgressImplCopyWith<_$InitEngineInProgressImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$InitEngineSuccessImplCopyWith<$Res>
+    implements $VideoCallStateCopyWith<$Res> {
+  factory _$$InitEngineSuccessImplCopyWith(_$InitEngineSuccessImpl value,
+          $Res Function(_$InitEngineSuccessImpl) then) =
+      __$$InitEngineSuccessImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Room room, RtcEngine engine});
+}
+
+/// @nodoc
+class __$$InitEngineSuccessImplCopyWithImpl<$Res>
+    extends _$VideoCallStateCopyWithImpl<$Res, _$InitEngineSuccessImpl>
+    implements _$$InitEngineSuccessImplCopyWith<$Res> {
+  __$$InitEngineSuccessImplCopyWithImpl(_$InitEngineSuccessImpl _value,
+      $Res Function(_$InitEngineSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? room = null,
+    Object? engine = null,
+  }) {
+    return _then(_$InitEngineSuccessImpl(
+      null == room
+          ? _value.room
+          : room // ignore: cast_nullable_to_non_nullable
+              as Room,
+      null == engine
+          ? _value.engine
+          : engine // ignore: cast_nullable_to_non_nullable
+              as RtcEngine,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InitEngineSuccessImpl implements _InitEngineSuccess {
+  const _$InitEngineSuccessImpl(this.room, this.engine);
+
+  @override
+  final Room room;
+  @override
+  final RtcEngine engine;
+
+  @override
+  String toString() {
+    return 'VideoCallState.initEngineSuccess(room: $room, engine: $engine)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InitEngineSuccessImpl &&
+            (identical(other.room, room) || other.room == room) &&
+            (identical(other.engine, engine) || other.engine == engine));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, room, engine);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitEngineSuccessImplCopyWith<_$InitEngineSuccessImpl> get copyWith =>
+      __$$InitEngineSuccessImplCopyWithImpl<_$InitEngineSuccessImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Room room) initial,
+    required TResult Function(Room room) initEngineInProgress,
+    required TResult Function(Room room, RtcEngine engine) initEngineSuccess,
+    required TResult Function(Room room, Failure failure) initEngineFailure,
+    required TResult Function(Room room, RtcEngine engine) joinRoomInProgress,
+    required TResult Function(Room room, RtcEngine engine, Failure failure)
+        joinRoomFailure,
+    required TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)
+        joinRoomSuccess,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomInProgress,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomSuccess,
+    required TResult Function(Room room, Failure failure) leaveRoomFailure,
+  }) {
+    return initEngineSuccess(room, engine);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Room room)? initial,
+    TResult? Function(Room room)? initEngineInProgress,
+    TResult? Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult? Function(Room room, Failure failure)? initEngineFailure,
+    TResult? Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult? Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult? Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult? Function(Room room, Failure failure)? leaveRoomFailure,
+  }) {
+    return initEngineSuccess?.call(room, engine);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Room room)? initial,
+    TResult Function(Room room)? initEngineInProgress,
+    TResult Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult Function(Room room, Failure failure)? initEngineFailure,
+    TResult Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult Function(Room room, Failure failure)? leaveRoomFailure,
+    required TResult orElse(),
+  }) {
+    if (initEngineSuccess != null) {
+      return initEngineSuccess(room, engine);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InitEngineInProgress value) initEngineInProgress,
+    required TResult Function(_InitEngineSuccess value) initEngineSuccess,
+    required TResult Function(_InitEngineFailure value) initEngineFailure,
+    required TResult Function(_JoinRoomInProgress value) joinRoomInProgress,
+    required TResult Function(_JoinRoomFailure value) joinRoomFailure,
+    required TResult Function(_JoinRoomSuccess value) joinRoomSuccess,
+    required TResult Function(_LeaveRoomInProgress value) leaveRoomInProgress,
+    required TResult Function(_LeaveRoomSuccess value) leaveRoomSuccess,
+    required TResult Function(_LeaveRoomFailure value) leaveRoomFailure,
+  }) {
+    return initEngineSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult? Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult? Function(_InitEngineFailure value)? initEngineFailure,
+    TResult? Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult? Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult? Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult? Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult? Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult? Function(_LeaveRoomFailure value)? leaveRoomFailure,
+  }) {
+    return initEngineSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult Function(_InitEngineFailure value)? initEngineFailure,
+    TResult Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult Function(_LeaveRoomFailure value)? leaveRoomFailure,
+    required TResult orElse(),
+  }) {
+    if (initEngineSuccess != null) {
+      return initEngineSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InitEngineSuccess implements VideoCallState {
+  const factory _InitEngineSuccess(final Room room, final RtcEngine engine) =
+      _$InitEngineSuccessImpl;
+
+  @override
+  Room get room;
+  RtcEngine get engine;
+  @override
+  @JsonKey(ignore: true)
+  _$$InitEngineSuccessImplCopyWith<_$InitEngineSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$InitEngineFailureImplCopyWith<$Res>
+    implements $VideoCallStateCopyWith<$Res> {
+  factory _$$InitEngineFailureImplCopyWith(_$InitEngineFailureImpl value,
+          $Res Function(_$InitEngineFailureImpl) then) =
+      __$$InitEngineFailureImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Room room, Failure failure});
+}
+
+/// @nodoc
+class __$$InitEngineFailureImplCopyWithImpl<$Res>
+    extends _$VideoCallStateCopyWithImpl<$Res, _$InitEngineFailureImpl>
+    implements _$$InitEngineFailureImplCopyWith<$Res> {
+  __$$InitEngineFailureImplCopyWithImpl(_$InitEngineFailureImpl _value,
+      $Res Function(_$InitEngineFailureImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? room = null,
+    Object? failure = null,
+  }) {
+    return _then(_$InitEngineFailureImpl(
+      null == room
+          ? _value.room
+          : room // ignore: cast_nullable_to_non_nullable
+              as Room,
+      null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InitEngineFailureImpl implements _InitEngineFailure {
+  const _$InitEngineFailureImpl(this.room, this.failure);
+
+  @override
+  final Room room;
+  @override
+  final Failure failure;
+
+  @override
+  String toString() {
+    return 'VideoCallState.initEngineFailure(room: $room, failure: $failure)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$InitEngineFailureImpl &&
+            (identical(other.room, room) || other.room == room) &&
+            (identical(other.failure, failure) || other.failure == failure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, room, failure);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InitEngineFailureImplCopyWith<_$InitEngineFailureImpl> get copyWith =>
+      __$$InitEngineFailureImplCopyWithImpl<_$InitEngineFailureImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Room room) initial,
+    required TResult Function(Room room) initEngineInProgress,
+    required TResult Function(Room room, RtcEngine engine) initEngineSuccess,
+    required TResult Function(Room room, Failure failure) initEngineFailure,
+    required TResult Function(Room room, RtcEngine engine) joinRoomInProgress,
+    required TResult Function(Room room, RtcEngine engine, Failure failure)
+        joinRoomFailure,
+    required TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)
+        joinRoomSuccess,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomInProgress,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomSuccess,
+    required TResult Function(Room room, Failure failure) leaveRoomFailure,
+  }) {
+    return initEngineFailure(room, failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Room room)? initial,
+    TResult? Function(Room room)? initEngineInProgress,
+    TResult? Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult? Function(Room room, Failure failure)? initEngineFailure,
+    TResult? Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult? Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult? Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult? Function(Room room, Failure failure)? leaveRoomFailure,
+  }) {
+    return initEngineFailure?.call(room, failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Room room)? initial,
+    TResult Function(Room room)? initEngineInProgress,
+    TResult Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult Function(Room room, Failure failure)? initEngineFailure,
+    TResult Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult Function(Room room, Failure failure)? leaveRoomFailure,
+    required TResult orElse(),
+  }) {
+    if (initEngineFailure != null) {
+      return initEngineFailure(room, failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InitEngineInProgress value) initEngineInProgress,
+    required TResult Function(_InitEngineSuccess value) initEngineSuccess,
+    required TResult Function(_InitEngineFailure value) initEngineFailure,
+    required TResult Function(_JoinRoomInProgress value) joinRoomInProgress,
+    required TResult Function(_JoinRoomFailure value) joinRoomFailure,
+    required TResult Function(_JoinRoomSuccess value) joinRoomSuccess,
+    required TResult Function(_LeaveRoomInProgress value) leaveRoomInProgress,
+    required TResult Function(_LeaveRoomSuccess value) leaveRoomSuccess,
+    required TResult Function(_LeaveRoomFailure value) leaveRoomFailure,
+  }) {
+    return initEngineFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult? Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult? Function(_InitEngineFailure value)? initEngineFailure,
+    TResult? Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult? Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult? Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult? Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult? Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult? Function(_LeaveRoomFailure value)? leaveRoomFailure,
+  }) {
+    return initEngineFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult Function(_InitEngineFailure value)? initEngineFailure,
+    TResult Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult Function(_LeaveRoomFailure value)? leaveRoomFailure,
+    required TResult orElse(),
+  }) {
+    if (initEngineFailure != null) {
+      return initEngineFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InitEngineFailure implements VideoCallState {
+  const factory _InitEngineFailure(final Room room, final Failure failure) =
+      _$InitEngineFailureImpl;
+
+  @override
+  Room get room;
+  Failure get failure;
+  @override
+  @JsonKey(ignore: true)
+  _$$InitEngineFailureImplCopyWith<_$InitEngineFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$JoinRoomInProgressImplCopyWith<$Res>
+    implements $VideoCallStateCopyWith<$Res> {
+  factory _$$JoinRoomInProgressImplCopyWith(_$JoinRoomInProgressImpl value,
+          $Res Function(_$JoinRoomInProgressImpl) then) =
+      __$$JoinRoomInProgressImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Room room, RtcEngine engine});
+}
+
+/// @nodoc
+class __$$JoinRoomInProgressImplCopyWithImpl<$Res>
+    extends _$VideoCallStateCopyWithImpl<$Res, _$JoinRoomInProgressImpl>
+    implements _$$JoinRoomInProgressImplCopyWith<$Res> {
+  __$$JoinRoomInProgressImplCopyWithImpl(_$JoinRoomInProgressImpl _value,
+      $Res Function(_$JoinRoomInProgressImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? room = null,
+    Object? engine = null,
+  }) {
+    return _then(_$JoinRoomInProgressImpl(
+      null == room
+          ? _value.room
+          : room // ignore: cast_nullable_to_non_nullable
+              as Room,
+      null == engine
+          ? _value.engine
+          : engine // ignore: cast_nullable_to_non_nullable
+              as RtcEngine,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$JoinRoomInProgressImpl implements _JoinRoomInProgress {
+  const _$JoinRoomInProgressImpl(this.room, this.engine);
+
+  @override
+  final Room room;
+  @override
+  final RtcEngine engine;
+
+  @override
+  String toString() {
+    return 'VideoCallState.joinRoomInProgress(room: $room, engine: $engine)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$JoinRoomInProgressImpl &&
+            (identical(other.room, room) || other.room == room) &&
+            (identical(other.engine, engine) || other.engine == engine));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, room, engine);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$JoinRoomInProgressImplCopyWith<_$JoinRoomInProgressImpl> get copyWith =>
+      __$$JoinRoomInProgressImplCopyWithImpl<_$JoinRoomInProgressImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Room room) initial,
+    required TResult Function(Room room) initEngineInProgress,
+    required TResult Function(Room room, RtcEngine engine) initEngineSuccess,
+    required TResult Function(Room room, Failure failure) initEngineFailure,
+    required TResult Function(Room room, RtcEngine engine) joinRoomInProgress,
+    required TResult Function(Room room, RtcEngine engine, Failure failure)
+        joinRoomFailure,
+    required TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)
+        joinRoomSuccess,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomInProgress,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomSuccess,
+    required TResult Function(Room room, Failure failure) leaveRoomFailure,
+  }) {
+    return joinRoomInProgress(room, engine);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Room room)? initial,
+    TResult? Function(Room room)? initEngineInProgress,
+    TResult? Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult? Function(Room room, Failure failure)? initEngineFailure,
+    TResult? Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult? Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult? Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult? Function(Room room, Failure failure)? leaveRoomFailure,
+  }) {
+    return joinRoomInProgress?.call(room, engine);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Room room)? initial,
+    TResult Function(Room room)? initEngineInProgress,
+    TResult Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult Function(Room room, Failure failure)? initEngineFailure,
+    TResult Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult Function(Room room, Failure failure)? leaveRoomFailure,
+    required TResult orElse(),
+  }) {
+    if (joinRoomInProgress != null) {
+      return joinRoomInProgress(room, engine);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InitEngineInProgress value) initEngineInProgress,
+    required TResult Function(_InitEngineSuccess value) initEngineSuccess,
+    required TResult Function(_InitEngineFailure value) initEngineFailure,
+    required TResult Function(_JoinRoomInProgress value) joinRoomInProgress,
+    required TResult Function(_JoinRoomFailure value) joinRoomFailure,
+    required TResult Function(_JoinRoomSuccess value) joinRoomSuccess,
+    required TResult Function(_LeaveRoomInProgress value) leaveRoomInProgress,
+    required TResult Function(_LeaveRoomSuccess value) leaveRoomSuccess,
+    required TResult Function(_LeaveRoomFailure value) leaveRoomFailure,
+  }) {
+    return joinRoomInProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult? Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult? Function(_InitEngineFailure value)? initEngineFailure,
+    TResult? Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult? Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult? Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult? Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult? Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult? Function(_LeaveRoomFailure value)? leaveRoomFailure,
+  }) {
+    return joinRoomInProgress?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult Function(_InitEngineFailure value)? initEngineFailure,
+    TResult Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult Function(_LeaveRoomFailure value)? leaveRoomFailure,
+    required TResult orElse(),
+  }) {
+    if (joinRoomInProgress != null) {
+      return joinRoomInProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _JoinRoomInProgress implements VideoCallState {
+  const factory _JoinRoomInProgress(final Room room, final RtcEngine engine) =
+      _$JoinRoomInProgressImpl;
+
+  @override
+  Room get room;
+  RtcEngine get engine;
+  @override
+  @JsonKey(ignore: true)
+  _$$JoinRoomInProgressImplCopyWith<_$JoinRoomInProgressImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$JoinRoomFailureImplCopyWith<$Res>
+    implements $VideoCallStateCopyWith<$Res> {
+  factory _$$JoinRoomFailureImplCopyWith(_$JoinRoomFailureImpl value,
+          $Res Function(_$JoinRoomFailureImpl) then) =
+      __$$JoinRoomFailureImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Room room, RtcEngine engine, Failure failure});
+}
+
+/// @nodoc
+class __$$JoinRoomFailureImplCopyWithImpl<$Res>
+    extends _$VideoCallStateCopyWithImpl<$Res, _$JoinRoomFailureImpl>
+    implements _$$JoinRoomFailureImplCopyWith<$Res> {
+  __$$JoinRoomFailureImplCopyWithImpl(
+      _$JoinRoomFailureImpl _value, $Res Function(_$JoinRoomFailureImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? room = null,
+    Object? engine = null,
+    Object? failure = null,
+  }) {
+    return _then(_$JoinRoomFailureImpl(
+      null == room
+          ? _value.room
+          : room // ignore: cast_nullable_to_non_nullable
+              as Room,
+      null == engine
+          ? _value.engine
+          : engine // ignore: cast_nullable_to_non_nullable
+              as RtcEngine,
+      null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$JoinRoomFailureImpl implements _JoinRoomFailure {
+  const _$JoinRoomFailureImpl(this.room, this.engine, this.failure);
+
+  @override
+  final Room room;
+  @override
+  final RtcEngine engine;
+  @override
+  final Failure failure;
+
+  @override
+  String toString() {
+    return 'VideoCallState.joinRoomFailure(room: $room, engine: $engine, failure: $failure)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$JoinRoomFailureImpl &&
+            (identical(other.room, room) || other.room == room) &&
+            (identical(other.engine, engine) || other.engine == engine) &&
+            (identical(other.failure, failure) || other.failure == failure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, room, engine, failure);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$JoinRoomFailureImplCopyWith<_$JoinRoomFailureImpl> get copyWith =>
+      __$$JoinRoomFailureImplCopyWithImpl<_$JoinRoomFailureImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Room room) initial,
+    required TResult Function(Room room) initEngineInProgress,
+    required TResult Function(Room room, RtcEngine engine) initEngineSuccess,
+    required TResult Function(Room room, Failure failure) initEngineFailure,
+    required TResult Function(Room room, RtcEngine engine) joinRoomInProgress,
+    required TResult Function(Room room, RtcEngine engine, Failure failure)
+        joinRoomFailure,
+    required TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)
+        joinRoomSuccess,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomInProgress,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomSuccess,
+    required TResult Function(Room room, Failure failure) leaveRoomFailure,
+  }) {
+    return joinRoomFailure(room, engine, failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Room room)? initial,
+    TResult? Function(Room room)? initEngineInProgress,
+    TResult? Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult? Function(Room room, Failure failure)? initEngineFailure,
+    TResult? Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult? Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult? Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult? Function(Room room, Failure failure)? leaveRoomFailure,
+  }) {
+    return joinRoomFailure?.call(room, engine, failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Room room)? initial,
+    TResult Function(Room room)? initEngineInProgress,
+    TResult Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult Function(Room room, Failure failure)? initEngineFailure,
+    TResult Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult Function(Room room, Failure failure)? leaveRoomFailure,
+    required TResult orElse(),
+  }) {
+    if (joinRoomFailure != null) {
+      return joinRoomFailure(room, engine, failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InitEngineInProgress value) initEngineInProgress,
+    required TResult Function(_InitEngineSuccess value) initEngineSuccess,
+    required TResult Function(_InitEngineFailure value) initEngineFailure,
+    required TResult Function(_JoinRoomInProgress value) joinRoomInProgress,
+    required TResult Function(_JoinRoomFailure value) joinRoomFailure,
+    required TResult Function(_JoinRoomSuccess value) joinRoomSuccess,
+    required TResult Function(_LeaveRoomInProgress value) leaveRoomInProgress,
+    required TResult Function(_LeaveRoomSuccess value) leaveRoomSuccess,
+    required TResult Function(_LeaveRoomFailure value) leaveRoomFailure,
+  }) {
+    return joinRoomFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult? Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult? Function(_InitEngineFailure value)? initEngineFailure,
+    TResult? Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult? Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult? Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult? Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult? Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult? Function(_LeaveRoomFailure value)? leaveRoomFailure,
+  }) {
+    return joinRoomFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult Function(_InitEngineFailure value)? initEngineFailure,
+    TResult Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult Function(_LeaveRoomFailure value)? leaveRoomFailure,
+    required TResult orElse(),
+  }) {
+    if (joinRoomFailure != null) {
+      return joinRoomFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _JoinRoomFailure implements VideoCallState {
+  const factory _JoinRoomFailure(
+          final Room room, final RtcEngine engine, final Failure failure) =
+      _$JoinRoomFailureImpl;
+
+  @override
+  Room get room;
+  RtcEngine get engine;
+  Failure get failure;
+  @override
+  @JsonKey(ignore: true)
+  _$$JoinRoomFailureImplCopyWith<_$JoinRoomFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$JoinRoomSuccessImplCopyWith<$Res>
+    implements $VideoCallStateCopyWith<$Res> {
+  factory _$$JoinRoomSuccessImplCopyWith(_$JoinRoomSuccessImpl value,
+          $Res Function(_$JoinRoomSuccessImpl) then) =
+      __$$JoinRoomSuccessImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Room room,
+      RtcEngine engine,
+      int? localVideoUid,
+      int? remoteVideoUid,
+      bool isTakePhotoEnabled,
+      Failure? failure});
+}
+
+/// @nodoc
+class __$$JoinRoomSuccessImplCopyWithImpl<$Res>
+    extends _$VideoCallStateCopyWithImpl<$Res, _$JoinRoomSuccessImpl>
+    implements _$$JoinRoomSuccessImplCopyWith<$Res> {
+  __$$JoinRoomSuccessImplCopyWithImpl(
+      _$JoinRoomSuccessImpl _value, $Res Function(_$JoinRoomSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? room = null,
+    Object? engine = null,
+    Object? localVideoUid = freezed,
+    Object? remoteVideoUid = freezed,
+    Object? isTakePhotoEnabled = null,
+    Object? failure = freezed,
+  }) {
+    return _then(_$JoinRoomSuccessImpl(
+      room: null == room
+          ? _value.room
+          : room // ignore: cast_nullable_to_non_nullable
+              as Room,
+      engine: null == engine
+          ? _value.engine
+          : engine // ignore: cast_nullable_to_non_nullable
+              as RtcEngine,
+      localVideoUid: freezed == localVideoUid
+          ? _value.localVideoUid
+          : localVideoUid // ignore: cast_nullable_to_non_nullable
+              as int?,
+      remoteVideoUid: freezed == remoteVideoUid
+          ? _value.remoteVideoUid
+          : remoteVideoUid // ignore: cast_nullable_to_non_nullable
+              as int?,
+      isTakePhotoEnabled: null == isTakePhotoEnabled
+          ? _value.isTakePhotoEnabled
+          : isTakePhotoEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      failure: freezed == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$JoinRoomSuccessImpl implements _JoinRoomSuccess {
+  const _$JoinRoomSuccessImpl(
+      {required this.room,
+      required this.engine,
+      this.localVideoUid,
+      this.remoteVideoUid,
+      this.isTakePhotoEnabled = false,
+      this.failure});
+
+  @override
+  final Room room;
+  @override
+  final RtcEngine engine;
+  @override
+  final int? localVideoUid;
+  @override
+  final int? remoteVideoUid;
+  @override
+  @JsonKey()
+  final bool isTakePhotoEnabled;
+  @override
+  final Failure? failure;
+
+  @override
+  String toString() {
+    return 'VideoCallState.joinRoomSuccess(room: $room, engine: $engine, localVideoUid: $localVideoUid, remoteVideoUid: $remoteVideoUid, isTakePhotoEnabled: $isTakePhotoEnabled, failure: $failure)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$JoinRoomSuccessImpl &&
+            (identical(other.room, room) || other.room == room) &&
+            (identical(other.engine, engine) || other.engine == engine) &&
+            (identical(other.localVideoUid, localVideoUid) ||
+                other.localVideoUid == localVideoUid) &&
+            (identical(other.remoteVideoUid, remoteVideoUid) ||
+                other.remoteVideoUid == remoteVideoUid) &&
+            (identical(other.isTakePhotoEnabled, isTakePhotoEnabled) ||
+                other.isTakePhotoEnabled == isTakePhotoEnabled) &&
+            (identical(other.failure, failure) || other.failure == failure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, room, engine, localVideoUid,
+      remoteVideoUid, isTakePhotoEnabled, failure);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$JoinRoomSuccessImplCopyWith<_$JoinRoomSuccessImpl> get copyWith =>
+      __$$JoinRoomSuccessImplCopyWithImpl<_$JoinRoomSuccessImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Room room) initial,
+    required TResult Function(Room room) initEngineInProgress,
+    required TResult Function(Room room, RtcEngine engine) initEngineSuccess,
+    required TResult Function(Room room, Failure failure) initEngineFailure,
+    required TResult Function(Room room, RtcEngine engine) joinRoomInProgress,
+    required TResult Function(Room room, RtcEngine engine, Failure failure)
+        joinRoomFailure,
+    required TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)
+        joinRoomSuccess,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomInProgress,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomSuccess,
+    required TResult Function(Room room, Failure failure) leaveRoomFailure,
+  }) {
+    return joinRoomSuccess(room, engine, localVideoUid, remoteVideoUid,
+        isTakePhotoEnabled, failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Room room)? initial,
+    TResult? Function(Room room)? initEngineInProgress,
+    TResult? Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult? Function(Room room, Failure failure)? initEngineFailure,
+    TResult? Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult? Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult? Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult? Function(Room room, Failure failure)? leaveRoomFailure,
+  }) {
+    return joinRoomSuccess?.call(room, engine, localVideoUid, remoteVideoUid,
+        isTakePhotoEnabled, failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Room room)? initial,
+    TResult Function(Room room)? initEngineInProgress,
+    TResult Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult Function(Room room, Failure failure)? initEngineFailure,
+    TResult Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult Function(Room room, Failure failure)? leaveRoomFailure,
+    required TResult orElse(),
+  }) {
+    if (joinRoomSuccess != null) {
+      return joinRoomSuccess(room, engine, localVideoUid, remoteVideoUid,
+          isTakePhotoEnabled, failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InitEngineInProgress value) initEngineInProgress,
+    required TResult Function(_InitEngineSuccess value) initEngineSuccess,
+    required TResult Function(_InitEngineFailure value) initEngineFailure,
+    required TResult Function(_JoinRoomInProgress value) joinRoomInProgress,
+    required TResult Function(_JoinRoomFailure value) joinRoomFailure,
+    required TResult Function(_JoinRoomSuccess value) joinRoomSuccess,
+    required TResult Function(_LeaveRoomInProgress value) leaveRoomInProgress,
+    required TResult Function(_LeaveRoomSuccess value) leaveRoomSuccess,
+    required TResult Function(_LeaveRoomFailure value) leaveRoomFailure,
+  }) {
+    return joinRoomSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult? Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult? Function(_InitEngineFailure value)? initEngineFailure,
+    TResult? Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult? Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult? Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult? Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult? Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult? Function(_LeaveRoomFailure value)? leaveRoomFailure,
+  }) {
+    return joinRoomSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult Function(_InitEngineFailure value)? initEngineFailure,
+    TResult Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult Function(_LeaveRoomFailure value)? leaveRoomFailure,
+    required TResult orElse(),
+  }) {
+    if (joinRoomSuccess != null) {
+      return joinRoomSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _JoinRoomSuccess implements VideoCallState {
+  const factory _JoinRoomSuccess(
+      {required final Room room,
+      required final RtcEngine engine,
+      final int? localVideoUid,
+      final int? remoteVideoUid,
       final bool isTakePhotoEnabled,
-      final int localUid,
-      final int remoteUid}) = _$_Initial;
+      final Failure? failure}) = _$JoinRoomSuccessImpl;
 
   @override
-  VideoCallInvitation? get invitation;
-  @override
-  bool get isRemoteUserJoined;
-  @override
-  bool get isTakePhotoEnabled;
-  @override
-  int get localUid;
-  @override
-  int get remoteUid;
-  @override
-  @JsonKey(ignore: true)
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_JoinChannelInProgressCopyWith<$Res>
-    implements $VideoCallStateCopyWith<$Res> {
-  factory _$$_JoinChannelInProgressCopyWith(_$_JoinChannelInProgress value,
-          $Res Function(_$_JoinChannelInProgress) then) =
-      __$$_JoinChannelInProgressCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {VideoCallInvitation? invitation,
-      bool isRemoteUserJoined,
-      bool isTakePhotoEnabled,
-      int localUid,
-      int remoteUid});
-}
-
-/// @nodoc
-class __$$_JoinChannelInProgressCopyWithImpl<$Res>
-    extends _$VideoCallStateCopyWithImpl<$Res, _$_JoinChannelInProgress>
-    implements _$$_JoinChannelInProgressCopyWith<$Res> {
-  __$$_JoinChannelInProgressCopyWithImpl(_$_JoinChannelInProgress _value,
-      $Res Function(_$_JoinChannelInProgress) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? invitation = freezed,
-    Object? isRemoteUserJoined = null,
-    Object? isTakePhotoEnabled = null,
-    Object? localUid = null,
-    Object? remoteUid = null,
-  }) {
-    return _then(_$_JoinChannelInProgress(
-      invitation: freezed == invitation
-          ? _value.invitation
-          : invitation // ignore: cast_nullable_to_non_nullable
-              as VideoCallInvitation?,
-      isRemoteUserJoined: null == isRemoteUserJoined
-          ? _value.isRemoteUserJoined
-          : isRemoteUserJoined // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isTakePhotoEnabled: null == isTakePhotoEnabled
-          ? _value.isTakePhotoEnabled
-          : isTakePhotoEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      localUid: null == localUid
-          ? _value.localUid
-          : localUid // ignore: cast_nullable_to_non_nullable
-              as int,
-      remoteUid: null == remoteUid
-          ? _value.remoteUid
-          : remoteUid // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_JoinChannelInProgress implements _JoinChannelInProgress {
-  const _$_JoinChannelInProgress(
-      {required this.invitation,
-      required this.isRemoteUserJoined,
-      required this.isTakePhotoEnabled,
-      required this.localUid,
-      required this.remoteUid});
-
-  @override
-  final VideoCallInvitation? invitation;
-  @override
-  final bool isRemoteUserJoined;
-  @override
-  final bool isTakePhotoEnabled;
-  @override
-  final int localUid;
-  @override
-  final int remoteUid;
-
-  @override
-  String toString() {
-    return 'VideoCallState.joinChannelInProgress(invitation: $invitation, isRemoteUserJoined: $isRemoteUserJoined, isTakePhotoEnabled: $isTakePhotoEnabled, localUid: $localUid, remoteUid: $remoteUid)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_JoinChannelInProgress &&
-            (identical(other.invitation, invitation) ||
-                other.invitation == invitation) &&
-            (identical(other.isRemoteUserJoined, isRemoteUserJoined) ||
-                other.isRemoteUserJoined == isRemoteUserJoined) &&
-            (identical(other.isTakePhotoEnabled, isTakePhotoEnabled) ||
-                other.isTakePhotoEnabled == isTakePhotoEnabled) &&
-            (identical(other.localUid, localUid) ||
-                other.localUid == localUid) &&
-            (identical(other.remoteUid, remoteUid) ||
-                other.remoteUid == remoteUid));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, invitation, isRemoteUserJoined,
-      isTakePhotoEnabled, localUid, remoteUid);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_JoinChannelInProgressCopyWith<_$_JoinChannelInProgress> get copyWith =>
-      __$$_JoinChannelInProgressCopyWithImpl<_$_JoinChannelInProgress>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        initial,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        joinChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)
-        remoteUserLeaveSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelFailure,
-  }) {
-    return joinChannelInProgress(invitation, isRemoteUserJoined,
-        isTakePhotoEnabled, localUid, remoteUid);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult? Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
-  }) {
-    return joinChannelInProgress?.call(invitation, isRemoteUserJoined,
-        isTakePhotoEnabled, localUid, remoteUid);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
-    required TResult orElse(),
-  }) {
-    if (joinChannelInProgress != null) {
-      return joinChannelInProgress(invitation, isRemoteUserJoined,
-          isTakePhotoEnabled, localUid, remoteUid);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_JoinChannelInProgress value)
-        joinChannelInProgress,
-    required TResult Function(_JoinChannelSuccess value) joinChannelSuccess,
-    required TResult Function(_RemoteUserJoinSuccess value)
-        remoteUserJoinSuccess,
-    required TResult Function(_JoinChannelFailure value) joinChannelFailure,
-    required TResult Function(_RemoteUserJoinFailure value)
-        remoteUserJoinFailure,
-    required TResult Function(_LeaveChannelInProgress value)
-        leaveChannelInProgress,
-    required TResult Function(_LeaveChannelSuccess value) leaveChannelSuccess,
-    required TResult Function(_RemoteUserLeaveSuccess value)
-        remoteUserLeaveSuccess,
-    required TResult Function(_LeaveChannelFailure value) leaveChannelFailure,
-  }) {
-    return joinChannelInProgress(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult? Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult? Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult? Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult? Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult? Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult? Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult? Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult? Function(_LeaveChannelFailure value)? leaveChannelFailure,
-  }) {
-    return joinChannelInProgress?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult Function(_LeaveChannelFailure value)? leaveChannelFailure,
-    required TResult orElse(),
-  }) {
-    if (joinChannelInProgress != null) {
-      return joinChannelInProgress(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _JoinChannelInProgress implements VideoCallState {
-  const factory _JoinChannelInProgress(
-      {required final VideoCallInvitation? invitation,
-      required final bool isRemoteUserJoined,
-      required final bool isTakePhotoEnabled,
-      required final int localUid,
-      required final int remoteUid}) = _$_JoinChannelInProgress;
-
-  @override
-  VideoCallInvitation? get invitation;
-  @override
-  bool get isRemoteUserJoined;
-  @override
-  bool get isTakePhotoEnabled;
-  @override
-  int get localUid;
-  @override
-  int get remoteUid;
-  @override
-  @JsonKey(ignore: true)
-  _$$_JoinChannelInProgressCopyWith<_$_JoinChannelInProgress> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_JoinChannelSuccessCopyWith<$Res>
-    implements $VideoCallStateCopyWith<$Res> {
-  factory _$$_JoinChannelSuccessCopyWith(_$_JoinChannelSuccess value,
-          $Res Function(_$_JoinChannelSuccess) then) =
-      __$$_JoinChannelSuccessCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {VideoCallInvitation invitation,
-      bool isRemoteUserJoined,
-      bool isTakePhotoEnabled,
-      RtcEngine engine,
-      int localUid,
-      int remoteUid});
-}
-
-/// @nodoc
-class __$$_JoinChannelSuccessCopyWithImpl<$Res>
-    extends _$VideoCallStateCopyWithImpl<$Res, _$_JoinChannelSuccess>
-    implements _$$_JoinChannelSuccessCopyWith<$Res> {
-  __$$_JoinChannelSuccessCopyWithImpl(
-      _$_JoinChannelSuccess _value, $Res Function(_$_JoinChannelSuccess) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? invitation = null,
-    Object? isRemoteUserJoined = null,
-    Object? isTakePhotoEnabled = null,
-    Object? engine = null,
-    Object? localUid = null,
-    Object? remoteUid = null,
-  }) {
-    return _then(_$_JoinChannelSuccess(
-      invitation: null == invitation
-          ? _value.invitation
-          : invitation // ignore: cast_nullable_to_non_nullable
-              as VideoCallInvitation,
-      isRemoteUserJoined: null == isRemoteUserJoined
-          ? _value.isRemoteUserJoined
-          : isRemoteUserJoined // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isTakePhotoEnabled: null == isTakePhotoEnabled
-          ? _value.isTakePhotoEnabled
-          : isTakePhotoEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      engine: null == engine
-          ? _value.engine
-          : engine // ignore: cast_nullable_to_non_nullable
-              as RtcEngine,
-      localUid: null == localUid
-          ? _value.localUid
-          : localUid // ignore: cast_nullable_to_non_nullable
-              as int,
-      remoteUid: null == remoteUid
-          ? _value.remoteUid
-          : remoteUid // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_JoinChannelSuccess implements _JoinChannelSuccess {
-  const _$_JoinChannelSuccess(
-      {required this.invitation,
-      required this.isRemoteUserJoined,
-      required this.isTakePhotoEnabled,
-      required this.engine,
-      required this.localUid,
-      required this.remoteUid});
-
-  @override
-  final VideoCallInvitation invitation;
-  @override
-  final bool isRemoteUserJoined;
-  @override
-  final bool isTakePhotoEnabled;
-  @override
-  final RtcEngine engine;
-  @override
-  final int localUid;
-  @override
-  final int remoteUid;
-
-  @override
-  String toString() {
-    return 'VideoCallState.joinChannelSuccess(invitation: $invitation, isRemoteUserJoined: $isRemoteUserJoined, isTakePhotoEnabled: $isTakePhotoEnabled, engine: $engine, localUid: $localUid, remoteUid: $remoteUid)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_JoinChannelSuccess &&
-            (identical(other.invitation, invitation) ||
-                other.invitation == invitation) &&
-            (identical(other.isRemoteUserJoined, isRemoteUserJoined) ||
-                other.isRemoteUserJoined == isRemoteUserJoined) &&
-            (identical(other.isTakePhotoEnabled, isTakePhotoEnabled) ||
-                other.isTakePhotoEnabled == isTakePhotoEnabled) &&
-            (identical(other.engine, engine) || other.engine == engine) &&
-            (identical(other.localUid, localUid) ||
-                other.localUid == localUid) &&
-            (identical(other.remoteUid, remoteUid) ||
-                other.remoteUid == remoteUid));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, invitation, isRemoteUserJoined,
-      isTakePhotoEnabled, engine, localUid, remoteUid);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_JoinChannelSuccessCopyWith<_$_JoinChannelSuccess> get copyWith =>
-      __$$_JoinChannelSuccessCopyWithImpl<_$_JoinChannelSuccess>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        initial,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        joinChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)
-        remoteUserLeaveSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelFailure,
-  }) {
-    return joinChannelSuccess(invitation, isRemoteUserJoined,
-        isTakePhotoEnabled, engine, localUid, remoteUid);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult? Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
-  }) {
-    return joinChannelSuccess?.call(invitation, isRemoteUserJoined,
-        isTakePhotoEnabled, engine, localUid, remoteUid);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
-    required TResult orElse(),
-  }) {
-    if (joinChannelSuccess != null) {
-      return joinChannelSuccess(invitation, isRemoteUserJoined,
-          isTakePhotoEnabled, engine, localUid, remoteUid);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_JoinChannelInProgress value)
-        joinChannelInProgress,
-    required TResult Function(_JoinChannelSuccess value) joinChannelSuccess,
-    required TResult Function(_RemoteUserJoinSuccess value)
-        remoteUserJoinSuccess,
-    required TResult Function(_JoinChannelFailure value) joinChannelFailure,
-    required TResult Function(_RemoteUserJoinFailure value)
-        remoteUserJoinFailure,
-    required TResult Function(_LeaveChannelInProgress value)
-        leaveChannelInProgress,
-    required TResult Function(_LeaveChannelSuccess value) leaveChannelSuccess,
-    required TResult Function(_RemoteUserLeaveSuccess value)
-        remoteUserLeaveSuccess,
-    required TResult Function(_LeaveChannelFailure value) leaveChannelFailure,
-  }) {
-    return joinChannelSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult? Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult? Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult? Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult? Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult? Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult? Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult? Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult? Function(_LeaveChannelFailure value)? leaveChannelFailure,
-  }) {
-    return joinChannelSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult Function(_LeaveChannelFailure value)? leaveChannelFailure,
-    required TResult orElse(),
-  }) {
-    if (joinChannelSuccess != null) {
-      return joinChannelSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _JoinChannelSuccess implements VideoCallState {
-  const factory _JoinChannelSuccess(
-      {required final VideoCallInvitation invitation,
-      required final bool isRemoteUserJoined,
-      required final bool isTakePhotoEnabled,
-      required final RtcEngine engine,
-      required final int localUid,
-      required final int remoteUid}) = _$_JoinChannelSuccess;
-
-  @override
-  VideoCallInvitation get invitation;
-  @override
-  bool get isRemoteUserJoined;
-  @override
-  bool get isTakePhotoEnabled;
+  Room get room;
   RtcEngine get engine;
-  @override
-  int get localUid;
-  @override
-  int get remoteUid;
-  @override
-  @JsonKey(ignore: true)
-  _$$_JoinChannelSuccessCopyWith<_$_JoinChannelSuccess> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_RemoteUserJoinSuccessCopyWith<$Res>
-    implements $VideoCallStateCopyWith<$Res> {
-  factory _$$_RemoteUserJoinSuccessCopyWith(_$_RemoteUserJoinSuccess value,
-          $Res Function(_$_RemoteUserJoinSuccess) then) =
-      __$$_RemoteUserJoinSuccessCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {VideoCallInvitation? invitation,
-      bool isRemoteUserJoined,
-      bool isTakePhotoEnabled,
-      RtcEngine engine,
-      int localUid,
-      int remoteUid});
-}
-
-/// @nodoc
-class __$$_RemoteUserJoinSuccessCopyWithImpl<$Res>
-    extends _$VideoCallStateCopyWithImpl<$Res, _$_RemoteUserJoinSuccess>
-    implements _$$_RemoteUserJoinSuccessCopyWith<$Res> {
-  __$$_RemoteUserJoinSuccessCopyWithImpl(_$_RemoteUserJoinSuccess _value,
-      $Res Function(_$_RemoteUserJoinSuccess) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? invitation = freezed,
-    Object? isRemoteUserJoined = null,
-    Object? isTakePhotoEnabled = null,
-    Object? engine = null,
-    Object? localUid = null,
-    Object? remoteUid = null,
-  }) {
-    return _then(_$_RemoteUserJoinSuccess(
-      invitation: freezed == invitation
-          ? _value.invitation
-          : invitation // ignore: cast_nullable_to_non_nullable
-              as VideoCallInvitation?,
-      isRemoteUserJoined: null == isRemoteUserJoined
-          ? _value.isRemoteUserJoined
-          : isRemoteUserJoined // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isTakePhotoEnabled: null == isTakePhotoEnabled
-          ? _value.isTakePhotoEnabled
-          : isTakePhotoEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      engine: null == engine
-          ? _value.engine
-          : engine // ignore: cast_nullable_to_non_nullable
-              as RtcEngine,
-      localUid: null == localUid
-          ? _value.localUid
-          : localUid // ignore: cast_nullable_to_non_nullable
-              as int,
-      remoteUid: null == remoteUid
-          ? _value.remoteUid
-          : remoteUid // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_RemoteUserJoinSuccess implements _RemoteUserJoinSuccess {
-  const _$_RemoteUserJoinSuccess(
-      {required this.invitation,
-      this.isRemoteUserJoined = true,
-      required this.isTakePhotoEnabled,
-      required this.engine,
-      required this.localUid,
-      required this.remoteUid});
-
-  @override
-  final VideoCallInvitation? invitation;
-  @override
-  @JsonKey()
-  final bool isRemoteUserJoined;
-  @override
-  final bool isTakePhotoEnabled;
-  @override
-  final RtcEngine engine;
-  @override
-  final int localUid;
-  @override
-  final int remoteUid;
-
-  @override
-  String toString() {
-    return 'VideoCallState.remoteUserJoinSuccess(invitation: $invitation, isRemoteUserJoined: $isRemoteUserJoined, isTakePhotoEnabled: $isTakePhotoEnabled, engine: $engine, localUid: $localUid, remoteUid: $remoteUid)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_RemoteUserJoinSuccess &&
-            (identical(other.invitation, invitation) ||
-                other.invitation == invitation) &&
-            (identical(other.isRemoteUserJoined, isRemoteUserJoined) ||
-                other.isRemoteUserJoined == isRemoteUserJoined) &&
-            (identical(other.isTakePhotoEnabled, isTakePhotoEnabled) ||
-                other.isTakePhotoEnabled == isTakePhotoEnabled) &&
-            (identical(other.engine, engine) || other.engine == engine) &&
-            (identical(other.localUid, localUid) ||
-                other.localUid == localUid) &&
-            (identical(other.remoteUid, remoteUid) ||
-                other.remoteUid == remoteUid));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, invitation, isRemoteUserJoined,
-      isTakePhotoEnabled, engine, localUid, remoteUid);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_RemoteUserJoinSuccessCopyWith<_$_RemoteUserJoinSuccess> get copyWith =>
-      __$$_RemoteUserJoinSuccessCopyWithImpl<_$_RemoteUserJoinSuccess>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        initial,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        joinChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)
-        remoteUserLeaveSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelFailure,
-  }) {
-    return remoteUserJoinSuccess(invitation, isRemoteUserJoined,
-        isTakePhotoEnabled, engine, localUid, remoteUid);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult? Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
-  }) {
-    return remoteUserJoinSuccess?.call(invitation, isRemoteUserJoined,
-        isTakePhotoEnabled, engine, localUid, remoteUid);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
-    required TResult orElse(),
-  }) {
-    if (remoteUserJoinSuccess != null) {
-      return remoteUserJoinSuccess(invitation, isRemoteUserJoined,
-          isTakePhotoEnabled, engine, localUid, remoteUid);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_JoinChannelInProgress value)
-        joinChannelInProgress,
-    required TResult Function(_JoinChannelSuccess value) joinChannelSuccess,
-    required TResult Function(_RemoteUserJoinSuccess value)
-        remoteUserJoinSuccess,
-    required TResult Function(_JoinChannelFailure value) joinChannelFailure,
-    required TResult Function(_RemoteUserJoinFailure value)
-        remoteUserJoinFailure,
-    required TResult Function(_LeaveChannelInProgress value)
-        leaveChannelInProgress,
-    required TResult Function(_LeaveChannelSuccess value) leaveChannelSuccess,
-    required TResult Function(_RemoteUserLeaveSuccess value)
-        remoteUserLeaveSuccess,
-    required TResult Function(_LeaveChannelFailure value) leaveChannelFailure,
-  }) {
-    return remoteUserJoinSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult? Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult? Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult? Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult? Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult? Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult? Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult? Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult? Function(_LeaveChannelFailure value)? leaveChannelFailure,
-  }) {
-    return remoteUserJoinSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult Function(_LeaveChannelFailure value)? leaveChannelFailure,
-    required TResult orElse(),
-  }) {
-    if (remoteUserJoinSuccess != null) {
-      return remoteUserJoinSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _RemoteUserJoinSuccess implements VideoCallState {
-  const factory _RemoteUserJoinSuccess(
-      {required final VideoCallInvitation? invitation,
-      final bool isRemoteUserJoined,
-      required final bool isTakePhotoEnabled,
-      required final RtcEngine engine,
-      required final int localUid,
-      required final int remoteUid}) = _$_RemoteUserJoinSuccess;
-
-  @override
-  VideoCallInvitation? get invitation;
-  @override
-  bool get isRemoteUserJoined;
-  @override
+  int? get localVideoUid;
+  int? get remoteVideoUid;
   bool get isTakePhotoEnabled;
-  RtcEngine get engine;
-  @override
-  int get localUid;
-  @override
-  int get remoteUid;
+  Failure? get failure;
   @override
   @JsonKey(ignore: true)
-  _$$_RemoteUserJoinSuccessCopyWith<_$_RemoteUserJoinSuccess> get copyWith =>
+  _$$JoinRoomSuccessImplCopyWith<_$JoinRoomSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_JoinChannelFailureCopyWith<$Res>
+abstract class _$$LeaveRoomInProgressImplCopyWith<$Res>
     implements $VideoCallStateCopyWith<$Res> {
-  factory _$$_JoinChannelFailureCopyWith(_$_JoinChannelFailure value,
-          $Res Function(_$_JoinChannelFailure) then) =
-      __$$_JoinChannelFailureCopyWithImpl<$Res>;
+  factory _$$LeaveRoomInProgressImplCopyWith(_$LeaveRoomInProgressImpl value,
+          $Res Function(_$LeaveRoomInProgressImpl) then) =
+      __$$LeaveRoomInProgressImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {VideoCallInvitation? invitation,
-      bool isRemoteUserJoined,
-      bool isTakePhotoEnabled,
-      int localUid,
-      int remoteUid});
+  $Res call({Room room, RtcEngine? engine});
 }
 
 /// @nodoc
-class __$$_JoinChannelFailureCopyWithImpl<$Res>
-    extends _$VideoCallStateCopyWithImpl<$Res, _$_JoinChannelFailure>
-    implements _$$_JoinChannelFailureCopyWith<$Res> {
-  __$$_JoinChannelFailureCopyWithImpl(
-      _$_JoinChannelFailure _value, $Res Function(_$_JoinChannelFailure) _then)
+class __$$LeaveRoomInProgressImplCopyWithImpl<$Res>
+    extends _$VideoCallStateCopyWithImpl<$Res, _$LeaveRoomInProgressImpl>
+    implements _$$LeaveRoomInProgressImplCopyWith<$Res> {
+  __$$LeaveRoomInProgressImplCopyWithImpl(_$LeaveRoomInProgressImpl _value,
+      $Res Function(_$LeaveRoomInProgressImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? invitation = freezed,
-    Object? isRemoteUserJoined = null,
-    Object? isTakePhotoEnabled = null,
-    Object? localUid = null,
-    Object? remoteUid = null,
-  }) {
-    return _then(_$_JoinChannelFailure(
-      invitation: freezed == invitation
-          ? _value.invitation
-          : invitation // ignore: cast_nullable_to_non_nullable
-              as VideoCallInvitation?,
-      isRemoteUserJoined: null == isRemoteUserJoined
-          ? _value.isRemoteUserJoined
-          : isRemoteUserJoined // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isTakePhotoEnabled: null == isTakePhotoEnabled
-          ? _value.isTakePhotoEnabled
-          : isTakePhotoEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      localUid: null == localUid
-          ? _value.localUid
-          : localUid // ignore: cast_nullable_to_non_nullable
-              as int,
-      remoteUid: null == remoteUid
-          ? _value.remoteUid
-          : remoteUid // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_JoinChannelFailure implements _JoinChannelFailure {
-  const _$_JoinChannelFailure(
-      {required this.invitation,
-      required this.isRemoteUserJoined,
-      required this.isTakePhotoEnabled,
-      required this.localUid,
-      required this.remoteUid});
-
-  @override
-  final VideoCallInvitation? invitation;
-  @override
-  final bool isRemoteUserJoined;
-  @override
-  final bool isTakePhotoEnabled;
-  @override
-  final int localUid;
-  @override
-  final int remoteUid;
-
-  @override
-  String toString() {
-    return 'VideoCallState.joinChannelFailure(invitation: $invitation, isRemoteUserJoined: $isRemoteUserJoined, isTakePhotoEnabled: $isTakePhotoEnabled, localUid: $localUid, remoteUid: $remoteUid)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_JoinChannelFailure &&
-            (identical(other.invitation, invitation) ||
-                other.invitation == invitation) &&
-            (identical(other.isRemoteUserJoined, isRemoteUserJoined) ||
-                other.isRemoteUserJoined == isRemoteUserJoined) &&
-            (identical(other.isTakePhotoEnabled, isTakePhotoEnabled) ||
-                other.isTakePhotoEnabled == isTakePhotoEnabled) &&
-            (identical(other.localUid, localUid) ||
-                other.localUid == localUid) &&
-            (identical(other.remoteUid, remoteUid) ||
-                other.remoteUid == remoteUid));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, invitation, isRemoteUserJoined,
-      isTakePhotoEnabled, localUid, remoteUid);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_JoinChannelFailureCopyWith<_$_JoinChannelFailure> get copyWith =>
-      __$$_JoinChannelFailureCopyWithImpl<_$_JoinChannelFailure>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        initial,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        joinChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)
-        remoteUserLeaveSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelFailure,
-  }) {
-    return joinChannelFailure(invitation, isRemoteUserJoined,
-        isTakePhotoEnabled, localUid, remoteUid);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult? Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
-  }) {
-    return joinChannelFailure?.call(invitation, isRemoteUserJoined,
-        isTakePhotoEnabled, localUid, remoteUid);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
-    required TResult orElse(),
-  }) {
-    if (joinChannelFailure != null) {
-      return joinChannelFailure(invitation, isRemoteUserJoined,
-          isTakePhotoEnabled, localUid, remoteUid);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_JoinChannelInProgress value)
-        joinChannelInProgress,
-    required TResult Function(_JoinChannelSuccess value) joinChannelSuccess,
-    required TResult Function(_RemoteUserJoinSuccess value)
-        remoteUserJoinSuccess,
-    required TResult Function(_JoinChannelFailure value) joinChannelFailure,
-    required TResult Function(_RemoteUserJoinFailure value)
-        remoteUserJoinFailure,
-    required TResult Function(_LeaveChannelInProgress value)
-        leaveChannelInProgress,
-    required TResult Function(_LeaveChannelSuccess value) leaveChannelSuccess,
-    required TResult Function(_RemoteUserLeaveSuccess value)
-        remoteUserLeaveSuccess,
-    required TResult Function(_LeaveChannelFailure value) leaveChannelFailure,
-  }) {
-    return joinChannelFailure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult? Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult? Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult? Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult? Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult? Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult? Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult? Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult? Function(_LeaveChannelFailure value)? leaveChannelFailure,
-  }) {
-    return joinChannelFailure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult Function(_LeaveChannelFailure value)? leaveChannelFailure,
-    required TResult orElse(),
-  }) {
-    if (joinChannelFailure != null) {
-      return joinChannelFailure(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _JoinChannelFailure implements VideoCallState {
-  const factory _JoinChannelFailure(
-      {required final VideoCallInvitation? invitation,
-      required final bool isRemoteUserJoined,
-      required final bool isTakePhotoEnabled,
-      required final int localUid,
-      required final int remoteUid}) = _$_JoinChannelFailure;
-
-  @override
-  VideoCallInvitation? get invitation;
-  @override
-  bool get isRemoteUserJoined;
-  @override
-  bool get isTakePhotoEnabled;
-  @override
-  int get localUid;
-  @override
-  int get remoteUid;
-  @override
-  @JsonKey(ignore: true)
-  _$$_JoinChannelFailureCopyWith<_$_JoinChannelFailure> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_RemoteUserJoinFailureCopyWith<$Res>
-    implements $VideoCallStateCopyWith<$Res> {
-  factory _$$_RemoteUserJoinFailureCopyWith(_$_RemoteUserJoinFailure value,
-          $Res Function(_$_RemoteUserJoinFailure) then) =
-      __$$_RemoteUserJoinFailureCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {VideoCallInvitation? invitation,
-      bool isRemoteUserJoined,
-      bool isTakePhotoEnabled,
-      int localUid,
-      int remoteUid});
-}
-
-/// @nodoc
-class __$$_RemoteUserJoinFailureCopyWithImpl<$Res>
-    extends _$VideoCallStateCopyWithImpl<$Res, _$_RemoteUserJoinFailure>
-    implements _$$_RemoteUserJoinFailureCopyWith<$Res> {
-  __$$_RemoteUserJoinFailureCopyWithImpl(_$_RemoteUserJoinFailure _value,
-      $Res Function(_$_RemoteUserJoinFailure) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? invitation = freezed,
-    Object? isRemoteUserJoined = null,
-    Object? isTakePhotoEnabled = null,
-    Object? localUid = null,
-    Object? remoteUid = null,
-  }) {
-    return _then(_$_RemoteUserJoinFailure(
-      invitation: freezed == invitation
-          ? _value.invitation
-          : invitation // ignore: cast_nullable_to_non_nullable
-              as VideoCallInvitation?,
-      isRemoteUserJoined: null == isRemoteUserJoined
-          ? _value.isRemoteUserJoined
-          : isRemoteUserJoined // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isTakePhotoEnabled: null == isTakePhotoEnabled
-          ? _value.isTakePhotoEnabled
-          : isTakePhotoEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      localUid: null == localUid
-          ? _value.localUid
-          : localUid // ignore: cast_nullable_to_non_nullable
-              as int,
-      remoteUid: null == remoteUid
-          ? _value.remoteUid
-          : remoteUid // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_RemoteUserJoinFailure implements _RemoteUserJoinFailure {
-  const _$_RemoteUserJoinFailure(
-      {required this.invitation,
-      this.isRemoteUserJoined = false,
-      required this.isTakePhotoEnabled,
-      required this.localUid,
-      required this.remoteUid});
-
-  @override
-  final VideoCallInvitation? invitation;
-  @override
-  @JsonKey()
-  final bool isRemoteUserJoined;
-  @override
-  final bool isTakePhotoEnabled;
-  @override
-  final int localUid;
-  @override
-  final int remoteUid;
-
-  @override
-  String toString() {
-    return 'VideoCallState.remoteUserJoinFailure(invitation: $invitation, isRemoteUserJoined: $isRemoteUserJoined, isTakePhotoEnabled: $isTakePhotoEnabled, localUid: $localUid, remoteUid: $remoteUid)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_RemoteUserJoinFailure &&
-            (identical(other.invitation, invitation) ||
-                other.invitation == invitation) &&
-            (identical(other.isRemoteUserJoined, isRemoteUserJoined) ||
-                other.isRemoteUserJoined == isRemoteUserJoined) &&
-            (identical(other.isTakePhotoEnabled, isTakePhotoEnabled) ||
-                other.isTakePhotoEnabled == isTakePhotoEnabled) &&
-            (identical(other.localUid, localUid) ||
-                other.localUid == localUid) &&
-            (identical(other.remoteUid, remoteUid) ||
-                other.remoteUid == remoteUid));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, invitation, isRemoteUserJoined,
-      isTakePhotoEnabled, localUid, remoteUid);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_RemoteUserJoinFailureCopyWith<_$_RemoteUserJoinFailure> get copyWith =>
-      __$$_RemoteUserJoinFailureCopyWithImpl<_$_RemoteUserJoinFailure>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        initial,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        joinChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)
-        remoteUserLeaveSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelFailure,
-  }) {
-    return remoteUserJoinFailure(invitation, isRemoteUserJoined,
-        isTakePhotoEnabled, localUid, remoteUid);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult? Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
-  }) {
-    return remoteUserJoinFailure?.call(invitation, isRemoteUserJoined,
-        isTakePhotoEnabled, localUid, remoteUid);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
-    required TResult orElse(),
-  }) {
-    if (remoteUserJoinFailure != null) {
-      return remoteUserJoinFailure(invitation, isRemoteUserJoined,
-          isTakePhotoEnabled, localUid, remoteUid);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_JoinChannelInProgress value)
-        joinChannelInProgress,
-    required TResult Function(_JoinChannelSuccess value) joinChannelSuccess,
-    required TResult Function(_RemoteUserJoinSuccess value)
-        remoteUserJoinSuccess,
-    required TResult Function(_JoinChannelFailure value) joinChannelFailure,
-    required TResult Function(_RemoteUserJoinFailure value)
-        remoteUserJoinFailure,
-    required TResult Function(_LeaveChannelInProgress value)
-        leaveChannelInProgress,
-    required TResult Function(_LeaveChannelSuccess value) leaveChannelSuccess,
-    required TResult Function(_RemoteUserLeaveSuccess value)
-        remoteUserLeaveSuccess,
-    required TResult Function(_LeaveChannelFailure value) leaveChannelFailure,
-  }) {
-    return remoteUserJoinFailure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult? Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult? Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult? Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult? Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult? Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult? Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult? Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult? Function(_LeaveChannelFailure value)? leaveChannelFailure,
-  }) {
-    return remoteUserJoinFailure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult Function(_LeaveChannelFailure value)? leaveChannelFailure,
-    required TResult orElse(),
-  }) {
-    if (remoteUserJoinFailure != null) {
-      return remoteUserJoinFailure(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _RemoteUserJoinFailure implements VideoCallState {
-  const factory _RemoteUserJoinFailure(
-      {required final VideoCallInvitation? invitation,
-      final bool isRemoteUserJoined,
-      required final bool isTakePhotoEnabled,
-      required final int localUid,
-      required final int remoteUid}) = _$_RemoteUserJoinFailure;
-
-  @override
-  VideoCallInvitation? get invitation;
-  @override
-  bool get isRemoteUserJoined;
-  @override
-  bool get isTakePhotoEnabled;
-  @override
-  int get localUid;
-  @override
-  int get remoteUid;
-  @override
-  @JsonKey(ignore: true)
-  _$$_RemoteUserJoinFailureCopyWith<_$_RemoteUserJoinFailure> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_LeaveChannelInProgressCopyWith<$Res>
-    implements $VideoCallStateCopyWith<$Res> {
-  factory _$$_LeaveChannelInProgressCopyWith(_$_LeaveChannelInProgress value,
-          $Res Function(_$_LeaveChannelInProgress) then) =
-      __$$_LeaveChannelInProgressCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {VideoCallInvitation? invitation,
-      bool isRemoteUserJoined,
-      bool isTakePhotoEnabled,
-      int localUid,
-      int remoteUid});
-}
-
-/// @nodoc
-class __$$_LeaveChannelInProgressCopyWithImpl<$Res>
-    extends _$VideoCallStateCopyWithImpl<$Res, _$_LeaveChannelInProgress>
-    implements _$$_LeaveChannelInProgressCopyWith<$Res> {
-  __$$_LeaveChannelInProgressCopyWithImpl(_$_LeaveChannelInProgress _value,
-      $Res Function(_$_LeaveChannelInProgress) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? invitation = freezed,
-    Object? isRemoteUserJoined = null,
-    Object? isTakePhotoEnabled = null,
-    Object? localUid = null,
-    Object? remoteUid = null,
-  }) {
-    return _then(_$_LeaveChannelInProgress(
-      invitation: freezed == invitation
-          ? _value.invitation
-          : invitation // ignore: cast_nullable_to_non_nullable
-              as VideoCallInvitation?,
-      isRemoteUserJoined: null == isRemoteUserJoined
-          ? _value.isRemoteUserJoined
-          : isRemoteUserJoined // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isTakePhotoEnabled: null == isTakePhotoEnabled
-          ? _value.isTakePhotoEnabled
-          : isTakePhotoEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      localUid: null == localUid
-          ? _value.localUid
-          : localUid // ignore: cast_nullable_to_non_nullable
-              as int,
-      remoteUid: null == remoteUid
-          ? _value.remoteUid
-          : remoteUid // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_LeaveChannelInProgress implements _LeaveChannelInProgress {
-  const _$_LeaveChannelInProgress(
-      {required this.invitation,
-      required this.isRemoteUserJoined,
-      required this.isTakePhotoEnabled,
-      required this.localUid,
-      required this.remoteUid});
-
-  @override
-  final VideoCallInvitation? invitation;
-  @override
-  final bool isRemoteUserJoined;
-  @override
-  final bool isTakePhotoEnabled;
-  @override
-  final int localUid;
-  @override
-  final int remoteUid;
-
-  @override
-  String toString() {
-    return 'VideoCallState.leaveChannelInProgress(invitation: $invitation, isRemoteUserJoined: $isRemoteUserJoined, isTakePhotoEnabled: $isTakePhotoEnabled, localUid: $localUid, remoteUid: $remoteUid)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_LeaveChannelInProgress &&
-            (identical(other.invitation, invitation) ||
-                other.invitation == invitation) &&
-            (identical(other.isRemoteUserJoined, isRemoteUserJoined) ||
-                other.isRemoteUserJoined == isRemoteUserJoined) &&
-            (identical(other.isTakePhotoEnabled, isTakePhotoEnabled) ||
-                other.isTakePhotoEnabled == isTakePhotoEnabled) &&
-            (identical(other.localUid, localUid) ||
-                other.localUid == localUid) &&
-            (identical(other.remoteUid, remoteUid) ||
-                other.remoteUid == remoteUid));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, invitation, isRemoteUserJoined,
-      isTakePhotoEnabled, localUid, remoteUid);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_LeaveChannelInProgressCopyWith<_$_LeaveChannelInProgress> get copyWith =>
-      __$$_LeaveChannelInProgressCopyWithImpl<_$_LeaveChannelInProgress>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        initial,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        joinChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)
-        remoteUserLeaveSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelFailure,
-  }) {
-    return leaveChannelInProgress(invitation, isRemoteUserJoined,
-        isTakePhotoEnabled, localUid, remoteUid);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult? Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
-  }) {
-    return leaveChannelInProgress?.call(invitation, isRemoteUserJoined,
-        isTakePhotoEnabled, localUid, remoteUid);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
-    required TResult orElse(),
-  }) {
-    if (leaveChannelInProgress != null) {
-      return leaveChannelInProgress(invitation, isRemoteUserJoined,
-          isTakePhotoEnabled, localUid, remoteUid);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_JoinChannelInProgress value)
-        joinChannelInProgress,
-    required TResult Function(_JoinChannelSuccess value) joinChannelSuccess,
-    required TResult Function(_RemoteUserJoinSuccess value)
-        remoteUserJoinSuccess,
-    required TResult Function(_JoinChannelFailure value) joinChannelFailure,
-    required TResult Function(_RemoteUserJoinFailure value)
-        remoteUserJoinFailure,
-    required TResult Function(_LeaveChannelInProgress value)
-        leaveChannelInProgress,
-    required TResult Function(_LeaveChannelSuccess value) leaveChannelSuccess,
-    required TResult Function(_RemoteUserLeaveSuccess value)
-        remoteUserLeaveSuccess,
-    required TResult Function(_LeaveChannelFailure value) leaveChannelFailure,
-  }) {
-    return leaveChannelInProgress(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult? Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult? Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult? Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult? Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult? Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult? Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult? Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult? Function(_LeaveChannelFailure value)? leaveChannelFailure,
-  }) {
-    return leaveChannelInProgress?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult Function(_LeaveChannelFailure value)? leaveChannelFailure,
-    required TResult orElse(),
-  }) {
-    if (leaveChannelInProgress != null) {
-      return leaveChannelInProgress(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LeaveChannelInProgress implements VideoCallState {
-  const factory _LeaveChannelInProgress(
-      {required final VideoCallInvitation? invitation,
-      required final bool isRemoteUserJoined,
-      required final bool isTakePhotoEnabled,
-      required final int localUid,
-      required final int remoteUid}) = _$_LeaveChannelInProgress;
-
-  @override
-  VideoCallInvitation? get invitation;
-  @override
-  bool get isRemoteUserJoined;
-  @override
-  bool get isTakePhotoEnabled;
-  @override
-  int get localUid;
-  @override
-  int get remoteUid;
-  @override
-  @JsonKey(ignore: true)
-  _$$_LeaveChannelInProgressCopyWith<_$_LeaveChannelInProgress> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_LeaveChannelSuccessCopyWith<$Res>
-    implements $VideoCallStateCopyWith<$Res> {
-  factory _$$_LeaveChannelSuccessCopyWith(_$_LeaveChannelSuccess value,
-          $Res Function(_$_LeaveChannelSuccess) then) =
-      __$$_LeaveChannelSuccessCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {VideoCallInvitation? invitation,
-      bool isRemoteUserJoined,
-      bool isTakePhotoEnabled,
-      int localUid,
-      int remoteUid});
-}
-
-/// @nodoc
-class __$$_LeaveChannelSuccessCopyWithImpl<$Res>
-    extends _$VideoCallStateCopyWithImpl<$Res, _$_LeaveChannelSuccess>
-    implements _$$_LeaveChannelSuccessCopyWith<$Res> {
-  __$$_LeaveChannelSuccessCopyWithImpl(_$_LeaveChannelSuccess _value,
-      $Res Function(_$_LeaveChannelSuccess) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? invitation = freezed,
-    Object? isRemoteUserJoined = null,
-    Object? isTakePhotoEnabled = null,
-    Object? localUid = null,
-    Object? remoteUid = null,
-  }) {
-    return _then(_$_LeaveChannelSuccess(
-      invitation: freezed == invitation
-          ? _value.invitation
-          : invitation // ignore: cast_nullable_to_non_nullable
-              as VideoCallInvitation?,
-      isRemoteUserJoined: null == isRemoteUserJoined
-          ? _value.isRemoteUserJoined
-          : isRemoteUserJoined // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isTakePhotoEnabled: null == isTakePhotoEnabled
-          ? _value.isTakePhotoEnabled
-          : isTakePhotoEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      localUid: null == localUid
-          ? _value.localUid
-          : localUid // ignore: cast_nullable_to_non_nullable
-              as int,
-      remoteUid: null == remoteUid
-          ? _value.remoteUid
-          : remoteUid // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_LeaveChannelSuccess implements _LeaveChannelSuccess {
-  const _$_LeaveChannelSuccess(
-      {required this.invitation,
-      this.isRemoteUserJoined = false,
-      required this.isTakePhotoEnabled,
-      required this.localUid,
-      required this.remoteUid});
-
-  @override
-  final VideoCallInvitation? invitation;
-  @override
-  @JsonKey()
-  final bool isRemoteUserJoined;
-  @override
-  final bool isTakePhotoEnabled;
-  @override
-  final int localUid;
-  @override
-  final int remoteUid;
-
-  @override
-  String toString() {
-    return 'VideoCallState.leaveChannelSuccess(invitation: $invitation, isRemoteUserJoined: $isRemoteUserJoined, isTakePhotoEnabled: $isTakePhotoEnabled, localUid: $localUid, remoteUid: $remoteUid)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_LeaveChannelSuccess &&
-            (identical(other.invitation, invitation) ||
-                other.invitation == invitation) &&
-            (identical(other.isRemoteUserJoined, isRemoteUserJoined) ||
-                other.isRemoteUserJoined == isRemoteUserJoined) &&
-            (identical(other.isTakePhotoEnabled, isTakePhotoEnabled) ||
-                other.isTakePhotoEnabled == isTakePhotoEnabled) &&
-            (identical(other.localUid, localUid) ||
-                other.localUid == localUid) &&
-            (identical(other.remoteUid, remoteUid) ||
-                other.remoteUid == remoteUid));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, invitation, isRemoteUserJoined,
-      isTakePhotoEnabled, localUid, remoteUid);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_LeaveChannelSuccessCopyWith<_$_LeaveChannelSuccess> get copyWith =>
-      __$$_LeaveChannelSuccessCopyWithImpl<_$_LeaveChannelSuccess>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        initial,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        joinChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)
-        remoteUserLeaveSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelFailure,
-  }) {
-    return leaveChannelSuccess(invitation, isRemoteUserJoined,
-        isTakePhotoEnabled, localUid, remoteUid);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult? Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
-  }) {
-    return leaveChannelSuccess?.call(invitation, isRemoteUserJoined,
-        isTakePhotoEnabled, localUid, remoteUid);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
-    required TResult orElse(),
-  }) {
-    if (leaveChannelSuccess != null) {
-      return leaveChannelSuccess(invitation, isRemoteUserJoined,
-          isTakePhotoEnabled, localUid, remoteUid);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_JoinChannelInProgress value)
-        joinChannelInProgress,
-    required TResult Function(_JoinChannelSuccess value) joinChannelSuccess,
-    required TResult Function(_RemoteUserJoinSuccess value)
-        remoteUserJoinSuccess,
-    required TResult Function(_JoinChannelFailure value) joinChannelFailure,
-    required TResult Function(_RemoteUserJoinFailure value)
-        remoteUserJoinFailure,
-    required TResult Function(_LeaveChannelInProgress value)
-        leaveChannelInProgress,
-    required TResult Function(_LeaveChannelSuccess value) leaveChannelSuccess,
-    required TResult Function(_RemoteUserLeaveSuccess value)
-        remoteUserLeaveSuccess,
-    required TResult Function(_LeaveChannelFailure value) leaveChannelFailure,
-  }) {
-    return leaveChannelSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult? Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult? Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult? Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult? Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult? Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult? Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult? Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult? Function(_LeaveChannelFailure value)? leaveChannelFailure,
-  }) {
-    return leaveChannelSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult Function(_LeaveChannelFailure value)? leaveChannelFailure,
-    required TResult orElse(),
-  }) {
-    if (leaveChannelSuccess != null) {
-      return leaveChannelSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LeaveChannelSuccess implements VideoCallState {
-  const factory _LeaveChannelSuccess(
-      {required final VideoCallInvitation? invitation,
-      final bool isRemoteUserJoined,
-      required final bool isTakePhotoEnabled,
-      required final int localUid,
-      required final int remoteUid}) = _$_LeaveChannelSuccess;
-
-  @override
-  VideoCallInvitation? get invitation;
-  @override
-  bool get isRemoteUserJoined;
-  @override
-  bool get isTakePhotoEnabled;
-  @override
-  int get localUid;
-  @override
-  int get remoteUid;
-  @override
-  @JsonKey(ignore: true)
-  _$$_LeaveChannelSuccessCopyWith<_$_LeaveChannelSuccess> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_RemoteUserLeaveSuccessCopyWith<$Res>
-    implements $VideoCallStateCopyWith<$Res> {
-  factory _$$_RemoteUserLeaveSuccessCopyWith(_$_RemoteUserLeaveSuccess value,
-          $Res Function(_$_RemoteUserLeaveSuccess) then) =
-      __$$_RemoteUserLeaveSuccessCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {VideoCallInvitation? invitation,
-      bool isRemoteUserJoined,
-      bool isTakePhotoEnabled,
-      RtcEngine? engine,
-      int localUid,
-      int remoteUid});
-}
-
-/// @nodoc
-class __$$_RemoteUserLeaveSuccessCopyWithImpl<$Res>
-    extends _$VideoCallStateCopyWithImpl<$Res, _$_RemoteUserLeaveSuccess>
-    implements _$$_RemoteUserLeaveSuccessCopyWith<$Res> {
-  __$$_RemoteUserLeaveSuccessCopyWithImpl(_$_RemoteUserLeaveSuccess _value,
-      $Res Function(_$_RemoteUserLeaveSuccess) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? invitation = freezed,
-    Object? isRemoteUserJoined = null,
-    Object? isTakePhotoEnabled = null,
+    Object? room = null,
     Object? engine = freezed,
-    Object? localUid = null,
-    Object? remoteUid = null,
   }) {
-    return _then(_$_RemoteUserLeaveSuccess(
-      invitation: freezed == invitation
-          ? _value.invitation
-          : invitation // ignore: cast_nullable_to_non_nullable
-              as VideoCallInvitation?,
-      isRemoteUserJoined: null == isRemoteUserJoined
-          ? _value.isRemoteUserJoined
-          : isRemoteUserJoined // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isTakePhotoEnabled: null == isTakePhotoEnabled
-          ? _value.isTakePhotoEnabled
-          : isTakePhotoEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
+    return _then(_$LeaveRoomInProgressImpl(
+      room: null == room
+          ? _value.room
+          : room // ignore: cast_nullable_to_non_nullable
+              as Room,
       engine: freezed == engine
           ? _value.engine
           : engine // ignore: cast_nullable_to_non_nullable
               as RtcEngine?,
-      localUid: null == localUid
-          ? _value.localUid
-          : localUid // ignore: cast_nullable_to_non_nullable
-              as int,
-      remoteUid: null == remoteUid
-          ? _value.remoteUid
-          : remoteUid // ignore: cast_nullable_to_non_nullable
-              as int,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_RemoteUserLeaveSuccess implements _RemoteUserLeaveSuccess {
-  const _$_RemoteUserLeaveSuccess(
-      {required this.invitation,
-      this.isRemoteUserJoined = false,
-      required this.isTakePhotoEnabled,
-      this.engine = null,
-      required this.localUid,
-      required this.remoteUid});
+class _$LeaveRoomInProgressImpl implements _LeaveRoomInProgress {
+  const _$LeaveRoomInProgressImpl({required this.room, this.engine = null});
 
   @override
-  final VideoCallInvitation? invitation;
-  @override
-  @JsonKey()
-  final bool isRemoteUserJoined;
-  @override
-  final bool isTakePhotoEnabled;
+  final Room room;
   @override
   @JsonKey()
   final RtcEngine? engine;
-  @override
-  final int localUid;
-  @override
-  final int remoteUid;
 
   @override
   String toString() {
-    return 'VideoCallState.remoteUserLeaveSuccess(invitation: $invitation, isRemoteUserJoined: $isRemoteUserJoined, isTakePhotoEnabled: $isTakePhotoEnabled, engine: $engine, localUid: $localUid, remoteUid: $remoteUid)';
+    return 'VideoCallState.leaveRoomInProgress(room: $room, engine: $engine)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RemoteUserLeaveSuccess &&
-            (identical(other.invitation, invitation) ||
-                other.invitation == invitation) &&
-            (identical(other.isRemoteUserJoined, isRemoteUserJoined) ||
-                other.isRemoteUserJoined == isRemoteUserJoined) &&
-            (identical(other.isTakePhotoEnabled, isTakePhotoEnabled) ||
-                other.isTakePhotoEnabled == isTakePhotoEnabled) &&
-            (identical(other.engine, engine) || other.engine == engine) &&
-            (identical(other.localUid, localUid) ||
-                other.localUid == localUid) &&
-            (identical(other.remoteUid, remoteUid) ||
-                other.remoteUid == remoteUid));
+            other is _$LeaveRoomInProgressImpl &&
+            (identical(other.room, room) || other.room == room) &&
+            (identical(other.engine, engine) || other.engine == engine));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, invitation, isRemoteUserJoined,
-      isTakePhotoEnabled, engine, localUid, remoteUid);
+  int get hashCode => Object.hash(runtimeType, room, engine);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RemoteUserLeaveSuccessCopyWith<_$_RemoteUserLeaveSuccess> get copyWith =>
-      __$$_RemoteUserLeaveSuccessCopyWithImpl<_$_RemoteUserLeaveSuccess>(
+  _$$LeaveRoomInProgressImplCopyWith<_$LeaveRoomInProgressImpl> get copyWith =>
+      __$$LeaveRoomInProgressImplCopyWithImpl<_$LeaveRoomInProgressImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        initial,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        joinChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)
-        remoteUserLeaveSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelFailure,
+    required TResult Function(Room room) initial,
+    required TResult Function(Room room) initEngineInProgress,
+    required TResult Function(Room room, RtcEngine engine) initEngineSuccess,
+    required TResult Function(Room room, Failure failure) initEngineFailure,
+    required TResult Function(Room room, RtcEngine engine) joinRoomInProgress,
+    required TResult Function(Room room, RtcEngine engine, Failure failure)
+        joinRoomFailure,
+    required TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)
+        joinRoomSuccess,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomInProgress,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomSuccess,
+    required TResult Function(Room room, Failure failure) leaveRoomFailure,
   }) {
-    return remoteUserLeaveSuccess(invitation, isRemoteUserJoined,
-        isTakePhotoEnabled, engine, localUid, remoteUid);
+    return leaveRoomInProgress(room, engine);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult? Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
+    TResult? Function(Room room)? initial,
+    TResult? Function(Room room)? initEngineInProgress,
+    TResult? Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult? Function(Room room, Failure failure)? initEngineFailure,
+    TResult? Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult? Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult? Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult? Function(Room room, Failure failure)? leaveRoomFailure,
   }) {
-    return remoteUserLeaveSuccess?.call(invitation, isRemoteUserJoined,
-        isTakePhotoEnabled, engine, localUid, remoteUid);
+    return leaveRoomInProgress?.call(room, engine);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
+    TResult Function(Room room)? initial,
+    TResult Function(Room room)? initEngineInProgress,
+    TResult Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult Function(Room room, Failure failure)? initEngineFailure,
+    TResult Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult Function(Room room, Failure failure)? leaveRoomFailure,
     required TResult orElse(),
   }) {
-    if (remoteUserLeaveSuccess != null) {
-      return remoteUserLeaveSuccess(invitation, isRemoteUserJoined,
-          isTakePhotoEnabled, engine, localUid, remoteUid);
+    if (leaveRoomInProgress != null) {
+      return leaveRoomInProgress(room, engine);
     }
     return orElse();
   }
@@ -4908,388 +3175,205 @@ class _$_RemoteUserLeaveSuccess implements _RemoteUserLeaveSuccess {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_JoinChannelInProgress value)
-        joinChannelInProgress,
-    required TResult Function(_JoinChannelSuccess value) joinChannelSuccess,
-    required TResult Function(_RemoteUserJoinSuccess value)
-        remoteUserJoinSuccess,
-    required TResult Function(_JoinChannelFailure value) joinChannelFailure,
-    required TResult Function(_RemoteUserJoinFailure value)
-        remoteUserJoinFailure,
-    required TResult Function(_LeaveChannelInProgress value)
-        leaveChannelInProgress,
-    required TResult Function(_LeaveChannelSuccess value) leaveChannelSuccess,
-    required TResult Function(_RemoteUserLeaveSuccess value)
-        remoteUserLeaveSuccess,
-    required TResult Function(_LeaveChannelFailure value) leaveChannelFailure,
+    required TResult Function(_InitEngineInProgress value) initEngineInProgress,
+    required TResult Function(_InitEngineSuccess value) initEngineSuccess,
+    required TResult Function(_InitEngineFailure value) initEngineFailure,
+    required TResult Function(_JoinRoomInProgress value) joinRoomInProgress,
+    required TResult Function(_JoinRoomFailure value) joinRoomFailure,
+    required TResult Function(_JoinRoomSuccess value) joinRoomSuccess,
+    required TResult Function(_LeaveRoomInProgress value) leaveRoomInProgress,
+    required TResult Function(_LeaveRoomSuccess value) leaveRoomSuccess,
+    required TResult Function(_LeaveRoomFailure value) leaveRoomFailure,
   }) {
-    return remoteUserLeaveSuccess(this);
+    return leaveRoomInProgress(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult? Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult? Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult? Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult? Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult? Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult? Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult? Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult? Function(_LeaveChannelFailure value)? leaveChannelFailure,
+    TResult? Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult? Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult? Function(_InitEngineFailure value)? initEngineFailure,
+    TResult? Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult? Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult? Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult? Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult? Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult? Function(_LeaveRoomFailure value)? leaveRoomFailure,
   }) {
-    return remoteUserLeaveSuccess?.call(this);
+    return leaveRoomInProgress?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult Function(_LeaveChannelFailure value)? leaveChannelFailure,
+    TResult Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult Function(_InitEngineFailure value)? initEngineFailure,
+    TResult Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult Function(_LeaveRoomFailure value)? leaveRoomFailure,
     required TResult orElse(),
   }) {
-    if (remoteUserLeaveSuccess != null) {
-      return remoteUserLeaveSuccess(this);
+    if (leaveRoomInProgress != null) {
+      return leaveRoomInProgress(this);
     }
     return orElse();
   }
 }
 
-abstract class _RemoteUserLeaveSuccess implements VideoCallState {
-  const factory _RemoteUserLeaveSuccess(
-      {required final VideoCallInvitation? invitation,
-      final bool isRemoteUserJoined,
-      required final bool isTakePhotoEnabled,
-      final RtcEngine? engine,
-      required final int localUid,
-      required final int remoteUid}) = _$_RemoteUserLeaveSuccess;
+abstract class _LeaveRoomInProgress implements VideoCallState {
+  const factory _LeaveRoomInProgress(
+      {required final Room room,
+      final RtcEngine? engine}) = _$LeaveRoomInProgressImpl;
 
   @override
-  VideoCallInvitation? get invitation;
-  @override
-  bool get isRemoteUserJoined;
-  @override
-  bool get isTakePhotoEnabled;
+  Room get room;
   RtcEngine? get engine;
   @override
-  int get localUid;
-  @override
-  int get remoteUid;
-  @override
   @JsonKey(ignore: true)
-  _$$_RemoteUserLeaveSuccessCopyWith<_$_RemoteUserLeaveSuccess> get copyWith =>
+  _$$LeaveRoomInProgressImplCopyWith<_$LeaveRoomInProgressImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LeaveChannelFailureCopyWith<$Res>
+abstract class _$$LeaveRoomSuccessImplCopyWith<$Res>
     implements $VideoCallStateCopyWith<$Res> {
-  factory _$$_LeaveChannelFailureCopyWith(_$_LeaveChannelFailure value,
-          $Res Function(_$_LeaveChannelFailure) then) =
-      __$$_LeaveChannelFailureCopyWithImpl<$Res>;
+  factory _$$LeaveRoomSuccessImplCopyWith(_$LeaveRoomSuccessImpl value,
+          $Res Function(_$LeaveRoomSuccessImpl) then) =
+      __$$LeaveRoomSuccessImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {VideoCallInvitation? invitation,
-      bool isRemoteUserJoined,
-      bool isTakePhotoEnabled,
-      int localUid,
-      int remoteUid});
+  $Res call({Room room, RtcEngine? engine});
 }
 
 /// @nodoc
-class __$$_LeaveChannelFailureCopyWithImpl<$Res>
-    extends _$VideoCallStateCopyWithImpl<$Res, _$_LeaveChannelFailure>
-    implements _$$_LeaveChannelFailureCopyWith<$Res> {
-  __$$_LeaveChannelFailureCopyWithImpl(_$_LeaveChannelFailure _value,
-      $Res Function(_$_LeaveChannelFailure) _then)
+class __$$LeaveRoomSuccessImplCopyWithImpl<$Res>
+    extends _$VideoCallStateCopyWithImpl<$Res, _$LeaveRoomSuccessImpl>
+    implements _$$LeaveRoomSuccessImplCopyWith<$Res> {
+  __$$LeaveRoomSuccessImplCopyWithImpl(_$LeaveRoomSuccessImpl _value,
+      $Res Function(_$LeaveRoomSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? invitation = freezed,
-    Object? isRemoteUserJoined = null,
-    Object? isTakePhotoEnabled = null,
-    Object? localUid = null,
-    Object? remoteUid = null,
+    Object? room = null,
+    Object? engine = freezed,
   }) {
-    return _then(_$_LeaveChannelFailure(
-      invitation: freezed == invitation
-          ? _value.invitation
-          : invitation // ignore: cast_nullable_to_non_nullable
-              as VideoCallInvitation?,
-      isRemoteUserJoined: null == isRemoteUserJoined
-          ? _value.isRemoteUserJoined
-          : isRemoteUserJoined // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isTakePhotoEnabled: null == isTakePhotoEnabled
-          ? _value.isTakePhotoEnabled
-          : isTakePhotoEnabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-      localUid: null == localUid
-          ? _value.localUid
-          : localUid // ignore: cast_nullable_to_non_nullable
-              as int,
-      remoteUid: null == remoteUid
-          ? _value.remoteUid
-          : remoteUid // ignore: cast_nullable_to_non_nullable
-              as int,
+    return _then(_$LeaveRoomSuccessImpl(
+      room: null == room
+          ? _value.room
+          : room // ignore: cast_nullable_to_non_nullable
+              as Room,
+      engine: freezed == engine
+          ? _value.engine
+          : engine // ignore: cast_nullable_to_non_nullable
+              as RtcEngine?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_LeaveChannelFailure implements _LeaveChannelFailure {
-  const _$_LeaveChannelFailure(
-      {required this.invitation,
-      required this.isRemoteUserJoined,
-      required this.isTakePhotoEnabled,
-      required this.localUid,
-      required this.remoteUid});
+class _$LeaveRoomSuccessImpl implements _LeaveRoomSuccess {
+  const _$LeaveRoomSuccessImpl({required this.room, this.engine = null});
 
   @override
-  final VideoCallInvitation? invitation;
+  final Room room;
   @override
-  final bool isRemoteUserJoined;
-  @override
-  final bool isTakePhotoEnabled;
-  @override
-  final int localUid;
-  @override
-  final int remoteUid;
+  @JsonKey()
+  final RtcEngine? engine;
 
   @override
   String toString() {
-    return 'VideoCallState.leaveChannelFailure(invitation: $invitation, isRemoteUserJoined: $isRemoteUserJoined, isTakePhotoEnabled: $isTakePhotoEnabled, localUid: $localUid, remoteUid: $remoteUid)';
+    return 'VideoCallState.leaveRoomSuccess(room: $room, engine: $engine)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LeaveChannelFailure &&
-            (identical(other.invitation, invitation) ||
-                other.invitation == invitation) &&
-            (identical(other.isRemoteUserJoined, isRemoteUserJoined) ||
-                other.isRemoteUserJoined == isRemoteUserJoined) &&
-            (identical(other.isTakePhotoEnabled, isTakePhotoEnabled) ||
-                other.isTakePhotoEnabled == isTakePhotoEnabled) &&
-            (identical(other.localUid, localUid) ||
-                other.localUid == localUid) &&
-            (identical(other.remoteUid, remoteUid) ||
-                other.remoteUid == remoteUid));
+            other is _$LeaveRoomSuccessImpl &&
+            (identical(other.room, room) || other.room == room) &&
+            (identical(other.engine, engine) || other.engine == engine));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, invitation, isRemoteUserJoined,
-      isTakePhotoEnabled, localUid, remoteUid);
+  int get hashCode => Object.hash(runtimeType, room, engine);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LeaveChannelFailureCopyWith<_$_LeaveChannelFailure> get copyWith =>
-      __$$_LeaveChannelFailureCopyWithImpl<_$_LeaveChannelFailure>(
+  _$$LeaveRoomSuccessImplCopyWith<_$LeaveRoomSuccessImpl> get copyWith =>
+      __$$LeaveRoomSuccessImplCopyWithImpl<_$LeaveRoomSuccessImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        initial,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        joinChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        joinChannelFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        remoteUserJoinFailure,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelInProgress,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)
-        remoteUserLeaveSuccess,
-    required TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            int localUid,
-            int remoteUid)
-        leaveChannelFailure,
+    required TResult Function(Room room) initial,
+    required TResult Function(Room room) initEngineInProgress,
+    required TResult Function(Room room, RtcEngine engine) initEngineSuccess,
+    required TResult Function(Room room, Failure failure) initEngineFailure,
+    required TResult Function(Room room, RtcEngine engine) joinRoomInProgress,
+    required TResult Function(Room room, RtcEngine engine, Failure failure)
+        joinRoomFailure,
+    required TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)
+        joinRoomSuccess,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomInProgress,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomSuccess,
+    required TResult Function(Room room, Failure failure) leaveRoomFailure,
   }) {
-    return leaveChannelFailure(invitation, isRemoteUserJoined,
-        isTakePhotoEnabled, localUid, remoteUid);
+    return leaveRoomSuccess(room, engine);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult? Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult? Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult? Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
+    TResult? Function(Room room)? initial,
+    TResult? Function(Room room)? initEngineInProgress,
+    TResult? Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult? Function(Room room, Failure failure)? initEngineFailure,
+    TResult? Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult? Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult? Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult? Function(Room room, Failure failure)? leaveRoomFailure,
   }) {
-    return leaveChannelFailure?.call(invitation, isRemoteUserJoined,
-        isTakePhotoEnabled, localUid, remoteUid);
+    return leaveRoomSuccess?.call(room, engine);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        initial,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelInProgress,
-    TResult Function(
-            VideoCallInvitation invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        joinChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserJoinSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        joinChannelFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        remoteUserJoinFailure,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelInProgress,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelSuccess,
-    TResult Function(
-            VideoCallInvitation? invitation,
-            bool isRemoteUserJoined,
-            bool isTakePhotoEnabled,
-            RtcEngine? engine,
-            int localUid,
-            int remoteUid)?
-        remoteUserLeaveSuccess,
-    TResult Function(VideoCallInvitation? invitation, bool isRemoteUserJoined,
-            bool isTakePhotoEnabled, int localUid, int remoteUid)?
-        leaveChannelFailure,
+    TResult Function(Room room)? initial,
+    TResult Function(Room room)? initEngineInProgress,
+    TResult Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult Function(Room room, Failure failure)? initEngineFailure,
+    TResult Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult Function(Room room, Failure failure)? leaveRoomFailure,
     required TResult orElse(),
   }) {
-    if (leaveChannelFailure != null) {
-      return leaveChannelFailure(invitation, isRemoteUserJoined,
-          isTakePhotoEnabled, localUid, remoteUid);
+    if (leaveRoomSuccess != null) {
+      return leaveRoomSuccess(room, engine);
     }
     return orElse();
   }
@@ -5298,83 +3382,274 @@ class _$_LeaveChannelFailure implements _LeaveChannelFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_JoinChannelInProgress value)
-        joinChannelInProgress,
-    required TResult Function(_JoinChannelSuccess value) joinChannelSuccess,
-    required TResult Function(_RemoteUserJoinSuccess value)
-        remoteUserJoinSuccess,
-    required TResult Function(_JoinChannelFailure value) joinChannelFailure,
-    required TResult Function(_RemoteUserJoinFailure value)
-        remoteUserJoinFailure,
-    required TResult Function(_LeaveChannelInProgress value)
-        leaveChannelInProgress,
-    required TResult Function(_LeaveChannelSuccess value) leaveChannelSuccess,
-    required TResult Function(_RemoteUserLeaveSuccess value)
-        remoteUserLeaveSuccess,
-    required TResult Function(_LeaveChannelFailure value) leaveChannelFailure,
+    required TResult Function(_InitEngineInProgress value) initEngineInProgress,
+    required TResult Function(_InitEngineSuccess value) initEngineSuccess,
+    required TResult Function(_InitEngineFailure value) initEngineFailure,
+    required TResult Function(_JoinRoomInProgress value) joinRoomInProgress,
+    required TResult Function(_JoinRoomFailure value) joinRoomFailure,
+    required TResult Function(_JoinRoomSuccess value) joinRoomSuccess,
+    required TResult Function(_LeaveRoomInProgress value) leaveRoomInProgress,
+    required TResult Function(_LeaveRoomSuccess value) leaveRoomSuccess,
+    required TResult Function(_LeaveRoomFailure value) leaveRoomFailure,
   }) {
-    return leaveChannelFailure(this);
+    return leaveRoomSuccess(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult? Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult? Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult? Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult? Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult? Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult? Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult? Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult? Function(_LeaveChannelFailure value)? leaveChannelFailure,
+    TResult? Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult? Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult? Function(_InitEngineFailure value)? initEngineFailure,
+    TResult? Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult? Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult? Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult? Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult? Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult? Function(_LeaveRoomFailure value)? leaveRoomFailure,
   }) {
-    return leaveChannelFailure?.call(this);
+    return leaveRoomSuccess?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_JoinChannelInProgress value)? joinChannelInProgress,
-    TResult Function(_JoinChannelSuccess value)? joinChannelSuccess,
-    TResult Function(_RemoteUserJoinSuccess value)? remoteUserJoinSuccess,
-    TResult Function(_JoinChannelFailure value)? joinChannelFailure,
-    TResult Function(_RemoteUserJoinFailure value)? remoteUserJoinFailure,
-    TResult Function(_LeaveChannelInProgress value)? leaveChannelInProgress,
-    TResult Function(_LeaveChannelSuccess value)? leaveChannelSuccess,
-    TResult Function(_RemoteUserLeaveSuccess value)? remoteUserLeaveSuccess,
-    TResult Function(_LeaveChannelFailure value)? leaveChannelFailure,
+    TResult Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult Function(_InitEngineFailure value)? initEngineFailure,
+    TResult Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult Function(_LeaveRoomFailure value)? leaveRoomFailure,
     required TResult orElse(),
   }) {
-    if (leaveChannelFailure != null) {
-      return leaveChannelFailure(this);
+    if (leaveRoomSuccess != null) {
+      return leaveRoomSuccess(this);
     }
     return orElse();
   }
 }
 
-abstract class _LeaveChannelFailure implements VideoCallState {
-  const factory _LeaveChannelFailure(
-      {required final VideoCallInvitation? invitation,
-      required final bool isRemoteUserJoined,
-      required final bool isTakePhotoEnabled,
-      required final int localUid,
-      required final int remoteUid}) = _$_LeaveChannelFailure;
+abstract class _LeaveRoomSuccess implements VideoCallState {
+  const factory _LeaveRoomSuccess(
+      {required final Room room,
+      final RtcEngine? engine}) = _$LeaveRoomSuccessImpl;
 
   @override
-  VideoCallInvitation? get invitation;
-  @override
-  bool get isRemoteUserJoined;
-  @override
-  bool get isTakePhotoEnabled;
-  @override
-  int get localUid;
-  @override
-  int get remoteUid;
+  Room get room;
+  RtcEngine? get engine;
   @override
   @JsonKey(ignore: true)
-  _$$_LeaveChannelFailureCopyWith<_$_LeaveChannelFailure> get copyWith =>
+  _$$LeaveRoomSuccessImplCopyWith<_$LeaveRoomSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LeaveRoomFailureImplCopyWith<$Res>
+    implements $VideoCallStateCopyWith<$Res> {
+  factory _$$LeaveRoomFailureImplCopyWith(_$LeaveRoomFailureImpl value,
+          $Res Function(_$LeaveRoomFailureImpl) then) =
+      __$$LeaveRoomFailureImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Room room, Failure failure});
+}
+
+/// @nodoc
+class __$$LeaveRoomFailureImplCopyWithImpl<$Res>
+    extends _$VideoCallStateCopyWithImpl<$Res, _$LeaveRoomFailureImpl>
+    implements _$$LeaveRoomFailureImplCopyWith<$Res> {
+  __$$LeaveRoomFailureImplCopyWithImpl(_$LeaveRoomFailureImpl _value,
+      $Res Function(_$LeaveRoomFailureImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? room = null,
+    Object? failure = null,
+  }) {
+    return _then(_$LeaveRoomFailureImpl(
+      room: null == room
+          ? _value.room
+          : room // ignore: cast_nullable_to_non_nullable
+              as Room,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LeaveRoomFailureImpl implements _LeaveRoomFailure {
+  const _$LeaveRoomFailureImpl({required this.room, required this.failure});
+
+  @override
+  final Room room;
+  @override
+  final Failure failure;
+
+  @override
+  String toString() {
+    return 'VideoCallState.leaveRoomFailure(room: $room, failure: $failure)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LeaveRoomFailureImpl &&
+            (identical(other.room, room) || other.room == room) &&
+            (identical(other.failure, failure) || other.failure == failure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, room, failure);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LeaveRoomFailureImplCopyWith<_$LeaveRoomFailureImpl> get copyWith =>
+      __$$LeaveRoomFailureImplCopyWithImpl<_$LeaveRoomFailureImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Room room) initial,
+    required TResult Function(Room room) initEngineInProgress,
+    required TResult Function(Room room, RtcEngine engine) initEngineSuccess,
+    required TResult Function(Room room, Failure failure) initEngineFailure,
+    required TResult Function(Room room, RtcEngine engine) joinRoomInProgress,
+    required TResult Function(Room room, RtcEngine engine, Failure failure)
+        joinRoomFailure,
+    required TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)
+        joinRoomSuccess,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomInProgress,
+    required TResult Function(Room room, RtcEngine? engine) leaveRoomSuccess,
+    required TResult Function(Room room, Failure failure) leaveRoomFailure,
+  }) {
+    return leaveRoomFailure(room, failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Room room)? initial,
+    TResult? Function(Room room)? initEngineInProgress,
+    TResult? Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult? Function(Room room, Failure failure)? initEngineFailure,
+    TResult? Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult? Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult? Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult? Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult? Function(Room room, Failure failure)? leaveRoomFailure,
+  }) {
+    return leaveRoomFailure?.call(room, failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Room room)? initial,
+    TResult Function(Room room)? initEngineInProgress,
+    TResult Function(Room room, RtcEngine engine)? initEngineSuccess,
+    TResult Function(Room room, Failure failure)? initEngineFailure,
+    TResult Function(Room room, RtcEngine engine)? joinRoomInProgress,
+    TResult Function(Room room, RtcEngine engine, Failure failure)?
+        joinRoomFailure,
+    TResult Function(Room room, RtcEngine engine, int? localVideoUid,
+            int? remoteVideoUid, bool isTakePhotoEnabled, Failure? failure)?
+        joinRoomSuccess,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomInProgress,
+    TResult Function(Room room, RtcEngine? engine)? leaveRoomSuccess,
+    TResult Function(Room room, Failure failure)? leaveRoomFailure,
+    required TResult orElse(),
+  }) {
+    if (leaveRoomFailure != null) {
+      return leaveRoomFailure(room, failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InitEngineInProgress value) initEngineInProgress,
+    required TResult Function(_InitEngineSuccess value) initEngineSuccess,
+    required TResult Function(_InitEngineFailure value) initEngineFailure,
+    required TResult Function(_JoinRoomInProgress value) joinRoomInProgress,
+    required TResult Function(_JoinRoomFailure value) joinRoomFailure,
+    required TResult Function(_JoinRoomSuccess value) joinRoomSuccess,
+    required TResult Function(_LeaveRoomInProgress value) leaveRoomInProgress,
+    required TResult Function(_LeaveRoomSuccess value) leaveRoomSuccess,
+    required TResult Function(_LeaveRoomFailure value) leaveRoomFailure,
+  }) {
+    return leaveRoomFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult? Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult? Function(_InitEngineFailure value)? initEngineFailure,
+    TResult? Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult? Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult? Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult? Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult? Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult? Function(_LeaveRoomFailure value)? leaveRoomFailure,
+  }) {
+    return leaveRoomFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InitEngineInProgress value)? initEngineInProgress,
+    TResult Function(_InitEngineSuccess value)? initEngineSuccess,
+    TResult Function(_InitEngineFailure value)? initEngineFailure,
+    TResult Function(_JoinRoomInProgress value)? joinRoomInProgress,
+    TResult Function(_JoinRoomFailure value)? joinRoomFailure,
+    TResult Function(_JoinRoomSuccess value)? joinRoomSuccess,
+    TResult Function(_LeaveRoomInProgress value)? leaveRoomInProgress,
+    TResult Function(_LeaveRoomSuccess value)? leaveRoomSuccess,
+    TResult Function(_LeaveRoomFailure value)? leaveRoomFailure,
+    required TResult orElse(),
+  }) {
+    if (leaveRoomFailure != null) {
+      return leaveRoomFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LeaveRoomFailure implements VideoCallState {
+  const factory _LeaveRoomFailure(
+      {required final Room room,
+      required final Failure failure}) = _$LeaveRoomFailureImpl;
+
+  @override
+  Room get room;
+  Failure get failure;
+  @override
+  @JsonKey(ignore: true)
+  _$$LeaveRoomFailureImplCopyWith<_$LeaveRoomFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

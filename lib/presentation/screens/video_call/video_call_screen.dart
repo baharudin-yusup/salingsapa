@@ -1,8 +1,6 @@
-import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/utils/logger.dart';
 import '../../../domain/entities/recognition_status.dart';
 import '../../blocs/sign_language_recognition_bloc/sign_language_recognition_bloc.dart';
 import '../../blocs/speech_recognition_bloc/speech_recognition_bloc.dart';
@@ -12,9 +10,10 @@ import '../../blocs/video_call_control/video_call_control_bloc.dart';
 import '../../components/intuitive_circle_icon_button.dart';
 import '../../components/intuitive_scaffold.dart';
 import '../../services/theme_service.dart';
-import '../../utils/dimension.dart';
-import 'caption_fragment.dart';
 import 'recognition_buttons_fragment.dart';
+import 'video_caption/video_caption_list.dart';
+import 'video_interface/floating_video_interface.dart';
+import 'video_interface/fullscreen_video_interface.dart';
 
 class VideoCallScreen extends StatelessWidget {
   static const routeName = '/video-call';
@@ -28,27 +27,18 @@ class VideoCallScreen extends StatelessWidget {
         listeners: [
           BlocListener<VideoCallBloc, VideoCallState>(
             listener: (context, state) {
-              final SignLanguageRecognitionBloc signLanguageRecognitionBloc =
-                  context.read();
-              final VideoCallCaptionBloc videoCallCaptionBloc = context.read();
-              final SpeechRecognitionBloc speechRecognitionBloc =
-                  context.read();
               state.maybeMap(
-                joinChannelSuccess: (data) {
-                  final invitationId = data.invitation.invitationId;
-                  videoCallCaptionBloc.add(VideoCallCaptionEvent.started(
-                      invitationId: invitationId));
-
-                  final engine = data.engine;
+                joinRoomSuccess: (state) {
+                  final SignLanguageRecognitionBloc
+                      signLanguageRecognitionBloc = context.read();
+                  final VideoCallCaptionBloc videoCallCaptionBloc =
+                      context.read();
+                  final SpeechRecognitionBloc speechRecognitionBloc =
+                      context.read();
+                  videoCallCaptionBloc
+                      .add(VideoCallCaptionEvent.started(state.room));
                   signLanguageRecognitionBloc
-                      .add(SignLanguageRecognitionEvent.started(engine));
-                  speechRecognitionBloc
-                      .add(const SpeechRecognitionEvent.started());
-                },
-                remoteUserJoinSuccess: (data) {
-                  final engine = data.engine;
-                  signLanguageRecognitionBloc
-                      .add(SignLanguageRecognitionEvent.started(engine));
+                      .add(SignLanguageRecognitionEvent.started(state.engine));
                   speechRecognitionBloc
                       .add(const SpeechRecognitionEvent.started());
                 },
@@ -58,19 +48,19 @@ class VideoCallScreen extends StatelessWidget {
           ),
           BlocListener<SpeechRecognitionBloc, SpeechRecognitionState>(
             listener: (context, state) {
-              state.maybeWhen(
-                caption: (_, status, caption) {
+              state.maybeMap(
+                caption: (state) {
                   final VideoCallCaptionBloc bloc = context.read();
 
-                  switch (status) {
+                  switch (state.status) {
                     case RecognitionStatus.off:
-                      bloc.add(
-                          VideoCallCaptionEvent.uploadCaptionStarted(caption));
+                      bloc.add(VideoCallCaptionEvent.uploadCaptionStarted(
+                          state.caption));
                       break;
                     case RecognitionStatus.on:
                     case RecognitionStatus.listening:
-                      bloc.add(
-                          VideoCallCaptionEvent.localCaptionReceived(caption));
+                      bloc.add(VideoCallCaptionEvent.localCaptionReceived(
+                          state.caption));
                       break;
                     case RecognitionStatus.idle:
                       // TODO: Handle this case.
@@ -84,20 +74,20 @@ class VideoCallScreen extends StatelessWidget {
           BlocListener<SignLanguageRecognitionBloc,
               SignLanguageRecognitionState>(
             listener: (context, state) {
-              state.maybeWhen(
-                updateCaptionSuccess: (_, status, caption) {
+              state.maybeMap(
+                updateCaptionSuccess: (state) {
                   final VideoCallCaptionBloc bloc = context.read();
 
-                  switch (status) {
+                  switch (state.status) {
                     case RecognitionStatus.idle:
                     case RecognitionStatus.off:
-                      bloc.add(
-                          VideoCallCaptionEvent.uploadCaptionStarted(caption));
+                      bloc.add(VideoCallCaptionEvent.uploadCaptionStarted(
+                          state.caption));
                       break;
                     case RecognitionStatus.on:
                     case RecognitionStatus.listening:
-                      bloc.add(
-                          VideoCallCaptionEvent.localCaptionReceived(caption));
+                      bloc.add(VideoCallCaptionEvent.localCaptionReceived(
+                          state.caption));
                       break;
                   }
                 },
@@ -115,229 +105,15 @@ class VideoCallScreen extends StatelessWidget {
     return Stack(
       alignment: Alignment.topCenter,
       children: [
-        showFullScreenVideo(),
-        buildCaptions(),
-        showFloatingVideo(),
+        const FullscreenVideoInterface(),
+        const VideoCaptionList(),
+        const FloatingVideoInterface(),
         buildRecognitionButton(),
         showVideoCallConfigurationButtons(),
       ],
     );
   }
 
-  Widget buildCaptions() {
-    return BlocBuilder<VideoCallCaptionBloc, VideoCallCaptionState>(
-      builder: (context, videoCallCaptionState) {
-        if (!videoCallCaptionState.isEnabled) {
-          return const SizedBox();
-        }
-
-        final VideoCallCaptionBloc videoCallCaptionBloc = context.read();
-        return BlocBuilder<SignLanguageRecognitionBloc,
-                SignLanguageRecognitionState>(
-            builder: (context, signLanguageState) {
-          final localCaption = videoCallCaptionState.localCaptions.combine();
-          final remoteCaption = videoCallCaptionState.remoteCaptions;
-          final widgets = <Widget>[];
-          if (remoteCaption != null) {
-            widgets.add(VideoCaption(
-              remoteCaption,
-              title: 'He / She',
-              showSendButton: false,
-            ));
-          }
-
-          widgets.add(
-            VideoCaption(
-              localCaption?.rawData,
-              title: 'You',
-              alignment: VideoCaptionAlignment.right,
-              showSendButton: localCaption != null,
-              onSendButtonPressed: () {
-                if (localCaption != null) {
-                  videoCallCaptionBloc.add(
-                      VideoCallCaptionEvent.uploadCaptionStarted(localCaption));
-                  final SignLanguageRecognitionBloc
-                      signLanguageRecognitionBloc = context.read();
-                  signLanguageRecognitionBloc.add(
-                      const SignLanguageRecognitionEvent.resetDataStarted());
-                }
-              },
-            ),
-          );
-
-          if (widgets.length == 2) {
-            widgets.insert(
-                1, const SizedBox(height: IntuitiveUiConstant.tinySpace));
-          }
-
-          return Positioned(
-            bottom: context.maxHeight * 0.2,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: IntuitiveUiConstant.normalSpace),
-              child: ConstrainedBox(
-                constraints: BoxConstraints(maxWidth: context.maxWidth * 0.9),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: widgets,
-                ),
-              ),
-            ),
-          );
-        });
-      },
-    );
-  }
-
-  Widget showFullScreenVideo() {
-    return LayoutBuilder(builder: (context, constraints) {
-      return SizedBox(
-        width: constraints.maxWidth,
-        height: constraints.maxHeight,
-        child: BlocBuilder<VideoCallBloc, VideoCallState>(
-            buildWhen: (_, state) => state.maybeMap(
-                  initial: (_) => true,
-                  joinChannelSuccess: (_) => true,
-                  joinChannelFailure: (_) => true,
-                  leaveChannelSuccess: (_) => true,
-                  remoteUserJoinSuccess: (_) => true,
-                  remoteUserLeaveSuccess: (_) => true,
-                  orElse: () => false,
-                ),
-            builder: (context, state) {
-              Logger.print(
-                  'state.isRemoteUserJoined: ${state.isRemoteUserJoined}');
-              Logger.print(
-                  'local uid: ${state.localUid} | remote uid: ${state.remoteUid}');
-              if (!state.isRemoteUserJoined && state.localUid < 0) {
-                return buildNoUserUi();
-              }
-
-              if (!state.isRemoteUserJoined || state.remoteUid < 0) {
-                /// Show local user
-                Logger.print('Show local user video on fullscreen');
-                return state.maybeMap(
-                  remoteUserLeaveSuccess: (data) {
-                    final engine = data.engine;
-                    if (engine == null) {
-                      return buildNoUserUi();
-                    }
-                    return AgoraVideoView(
-                      controller: VideoViewController(
-                        rtcEngine: engine,
-                        canvas: const VideoCanvas(uid: 0),
-                      ),
-                    );
-                  },
-                  joinChannelSuccess: (data) => AgoraVideoView(
-                    controller: VideoViewController(
-                      rtcEngine: data.engine,
-                      canvas: const VideoCanvas(uid: 0),
-                    ),
-                  ),
-                  orElse: () => buildNoUserUi(),
-                );
-              }
-
-              return state.maybeMap(
-                joinChannelSuccess: (data) => AgoraVideoView(
-                  controller: VideoViewController.remote(
-                    rtcEngine: data.engine,
-                    canvas: VideoCanvas(uid: state.remoteUid),
-                    connection:
-                        RtcConnection(channelId: data.invitation.channelName),
-                  ),
-                ),
-                remoteUserJoinSuccess: (data) {
-                  final invitation = state.invitation;
-
-                  if (invitation == null || state.remoteUid < 0) {
-                    return buildNoUserUi();
-                  }
-                  return AgoraVideoView(
-                    controller: VideoViewController.remote(
-                      rtcEngine: data.engine,
-                      canvas: VideoCanvas(uid: state.remoteUid),
-                      connection:
-                          RtcConnection(channelId: invitation.channelName),
-                    ),
-                  );
-                },
-                orElse: () => buildNoUserUi(),
-              );
-            }),
-      );
-    });
-  }
-
-  Widget showFloatingVideo() {
-    return SafeArea(
-      child: Align(
-        alignment: Alignment.topRight,
-        child: Padding(
-          padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace),
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              final width = constraints.maxWidth / 2.5;
-              return SizedBox(
-                width: width,
-                height: width * 16 / 9,
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.all(
-                      Radius.circular(IntuitiveUiConstant.normalRadius)),
-                  child: BlocBuilder<VideoCallBloc, VideoCallState>(
-                    buildWhen: (_, state) => state.maybeMap(
-                      initial: (_) => true,
-                      joinChannelSuccess: (_) => true,
-                      joinChannelFailure: (_) => true,
-                      leaveChannelSuccess: (_) => true,
-                      remoteUserJoinSuccess: (_) => true,
-                      remoteUserJoinFailure: (_) => true,
-                      remoteUserLeaveSuccess: (_) => true,
-                      orElse: () => false,
-                    ),
-                    builder: (context, state) {
-                      Logger.print(
-                          'state.isRemoteUserJoined (${state.runtimeType}) 2: ${state.isRemoteUserJoined}');
-                      if (!state.isRemoteUserJoined || state.remoteUid < 0) {
-                        return buildNoUserUi();
-                      }
-                      return state.maybeMap(
-                        joinChannelSuccess: (data) => AgoraVideoView(
-                          controller: VideoViewController(
-                            rtcEngine: data.engine,
-                            canvas: const VideoCanvas(uid: 0),
-                          ),
-                        ),
-                        remoteUserJoinSuccess: (data) => AgoraVideoView(
-                          controller: VideoViewController(
-                            rtcEngine: data.engine,
-                            canvas: const VideoCanvas(uid: 0),
-                          ),
-                        ),
-                        orElse: () => buildNoUserUi(),
-                      );
-                    },
-                  ),
-                ),
-              );
-            },
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildNoUserUi() {
-    return Builder(builder: (context) {
-      return Container(
-        color: context.colorScheme().background.withOpacity(0.3),
-        child: const Center(
-          child: Icon(Icons.no_accounts),
-        ),
-      );
-    });
-  }
 
   Widget showVideoCallConfigurationButtons() {
     Widget buildCaptionButton() {

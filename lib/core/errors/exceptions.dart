@@ -31,3 +31,21 @@ class BadDataException extends Exception {}
 class CacheException extends Exception {}
 
 class FeatureException extends Exception {}
+
+class GeneralException extends Exception {}
+
+class ApiServerException extends ServerException {
+  final dynamic data;
+
+  ApiServerException._({
+    required super.message,
+    required this.data,
+  });
+
+  factory ApiServerException.fromJson(Map<String, dynamic> json) {
+    return ApiServerException._(
+      message: json['message'],
+      data: json['data'],
+    );
+  }
+}

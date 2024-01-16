@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../core/errors/exceptions.dart';
 import '../../core/utils/logger.dart';
 import '../models/user_model.dart';
+import '../plugins/network_plugin.dart';
 
 abstract class AuthenticationRemoteDatSource {
   Future<UserModel?> currentUser();
@@ -19,10 +20,25 @@ class AuthenticationRemoteDatSourceImpl
     implements AuthenticationRemoteDatSource {
   final FirebaseAuth _auth;
   final FirebaseFirestore _firestore;
+  final NetworkPlugin _networkPlugin;
   String _verificationId;
 
-  AuthenticationRemoteDatSourceImpl(this._auth, this._firestore)
-      : _verificationId = '';
+  AuthenticationRemoteDatSourceImpl(
+      this._auth, this._firestore, this._networkPlugin)
+      : _verificationId = '' {
+    _auth.idTokenChanges().listen((user) async {
+      try {
+        final token = await user?.getIdToken();
+        _networkPlugin.setAuthToken(token);
+      } catch (error) {
+        Logger.error(error, event: 'getting auth token');
+      }
+    });
+
+    _auth.currentUser
+        ?.getIdToken()
+        .then((token) => _networkPlugin.setAuthToken(token));
+  }
 
   @override
   Future<UserModel?> currentUser() async {
@@ -39,7 +55,7 @@ class AuthenticationRemoteDatSourceImpl
     try {
       await _auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
-        verificationCompleted: (credential) async {
+        verificationCompleted: (credential) {
           phoneAuthCredential = credential;
         },
         verificationFailed: (error) {

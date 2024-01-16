@@ -1,312 +1,294 @@
+import 'dart:async';
+
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../core/errors/failures.dart';
 import '../../../core/utils/logger.dart';
-import '../../../domain/entities/contact.dart';
-import '../../../domain/entities/video_call_invitation.dart';
+import '../../../domain/entities/room.dart';
 import '../../../domain/entities/video_call_status.dart';
 import '../../../domain/entities/video_call_user_update_info.dart';
 import '../../../domain/usecases/disable_take_photo_snapshot.dart';
 import '../../../domain/usecases/enable_take_photo_snapshot.dart';
-import '../../../domain/usecases/get_video_call_engine.dart';
 import '../../../domain/usecases/init_video_call.dart';
-import '../../../domain/usecases/join_video_call.dart';
-import '../../../domain/usecases/leave_video_call.dart';
-import '../../../domain/usecases/start_video_call.dart';
+import '../../../domain/usecases/join_room.dart';
+import '../../../domain/usecases/leave_room.dart';
 import '../../../domain/usecases/stream_video_call_status.dart';
-import '../../../domain/usecases/update_video_call_remote_user_status.dart';
-import '../../utils/toggle_usecase.dart';
 
 part 'video_call_bloc.freezed.dart';
+
 part 'video_call_event.dart';
+
 part 'video_call_state.dart';
 
 class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
   VideoCallBloc(
-    this._startVideoCall,
-    this._joinVideoCall,
-    this._leaveVideoCall,
-    this._initVideoCall,
-    this._getVideoCallEngine,
+    this._joinRoom,
+    this._leaveRoom,
+    this._initVideoEngine,
     this._streamVideoCallStatus,
-    this._updateVideoCallRemoteUserStatus,
     this._enableTakePhotoSnapshot,
-    this._disableTakePhotoSnapshot,
-  ) : super(const VideoCallState.initial()) {
-    on<_SetInvitationStarted>(_onSetInvitation);
-    on<_VideoCallStarted>(_onStartVideoCall);
-    on<_JoinVideoCallStarted>(_onJoinVideoCall);
-    on<_LeaveVideoCallStarted>(_onLeaveVideoCall);
-    on<_UpdateRemoteUserStarted>(_onUpdateRemoteUserStatus);
-    on<_TakePhotoSnapshotFeatureStatusChanged>(_toggleTakePhotoFeature);
+    this._disableTakePhotoSnapshot, {
+    required Room room,
+  }) : super(VideoCallState.initial(room)) {
+    on<_EngineStarted>(_onStartVideoEngine);
+    on<_JoinRoomStarted>(_onStartJoinRoom);
+    on<_JoinRoomFailed>(_onFailJoinRoom);
+    on<_LeaveRoomStarted>(_onStartLeaveRoom);
+    on<_UpdateUserStatusStarted>(_onUpdateUserStatus);
+    on<_TakePhotoSnapshotFeatureStatusChanged>(_onStartToggleTakePhotoFeature);
+    on<_DisableTakePhotoSnapshotStarted>(_onStartDisableTakePhotoSnapshot);
+    on<_EnableTakePhotoSnapshotStarted>(_onStartEnableTakePhotoSnapshot);
 
     _streamVideoCallStatus().listen((result) {
       if (isClosed) return;
       result.fold(
         (_) => null,
         (status) {
-          add(VideoCallEvent.updateRemoteUserStatusStarted(status));
+          add(VideoCallEvent.updateUserStatusStarted(status));
         },
       );
     });
+
+    add(const VideoCallEvent.engineStarted());
   }
 
-  final InitVideoCall _initVideoCall;
-  final StartVideoCall _startVideoCall;
-  final JoinVideoCall _joinVideoCall;
-  final LeaveVideoCall _leaveVideoCall;
-  final GetVideoCallEngine _getVideoCallEngine;
+  final InitVideoEngine _initVideoEngine;
+  final JoinRoom _joinRoom;
+  final LeaveRoom _leaveRoom;
   final StreamVideoCallStatus _streamVideoCallStatus;
-  final UpdateVideoCallRemoteUserStatus _updateVideoCallRemoteUserStatus;
 
   final EnableTakePhotoSnapshot _enableTakePhotoSnapshot;
   final DisableTakePhotoSnapshot _disableTakePhotoSnapshot;
 
+  Timer? _joinRoomTimeoutControl;
+
   @override
   Future<void> close() async {
-    if (state.invitation != null) {
-      await _leaveVideoCall(state.invitation!);
-    }
+    _joinRoomTimeoutControl?.cancel();
+    await _leaveRoom(state.room);
     return super.close();
   }
 
-  void _onStartVideoCall(
-      _VideoCallStarted event, Emitter<VideoCallState> emit) async {
-    emit(VideoCallState.joinChannelInProgress(
-        invitation: state.invitation,
-        isRemoteUserJoined: state.isRemoteUserJoined,
-        isTakePhotoEnabled: state.isTakePhotoEnabled,
-        localUid: state.localUid,
-        remoteUid: state.remoteUid));
+  void _onStartVideoEngine(
+      _EngineStarted event, Emitter<VideoCallState> emit) async {
+    emit(VideoCallState.initEngineInProgress(state.room));
 
-    final initVideoCallResult = await _initVideoCall();
+    final initVideoCallResult = await _initVideoEngine();
     initVideoCallResult.fold(
-      (_) => emit(VideoCallState.joinChannelFailure(
-          invitation: state.invitation,
-          isRemoteUserJoined: state.isRemoteUserJoined,
-          isTakePhotoEnabled: state.isTakePhotoEnabled,
-          localUid: state.localUid,
-          remoteUid: state.remoteUid)),
-      (_) => null,
-    );
-    if (initVideoCallResult.isLeft()) return;
-
-    final startVideoCallResult = await _startVideoCall(event.contact);
-    final invitation = startVideoCallResult.fold(
-      (_) {
-        emit(VideoCallState.joinChannelFailure(
-            invitation: state.invitation,
-            isRemoteUserJoined: state.isRemoteUserJoined,
-            isTakePhotoEnabled: state.isTakePhotoEnabled,
-            localUid: state.localUid,
-            remoteUid: state.remoteUid));
-        return null;
-      },
-      (invitation) => invitation,
-    );
-    if (invitation == null) return;
-
-    final getEngineResult = _getVideoCallEngine();
-    final engine = getEngineResult.fold(
-      (_) {
-        emit(VideoCallState.joinChannelFailure(
-            invitation: state.invitation,
-            isRemoteUserJoined: state.isRemoteUserJoined,
-            isTakePhotoEnabled: state.isTakePhotoEnabled,
-            localUid: state.localUid,
-            remoteUid: state.remoteUid));
-        return null;
-      },
-      (engine) => engine,
-    );
-    if (engine == null) return;
-
-    emit(VideoCallState.joinChannelSuccess(
-        invitation: invitation,
-        engine: engine,
-        isRemoteUserJoined: state.isRemoteUserJoined,
-        isTakePhotoEnabled: state.isTakePhotoEnabled,
-        localUid: invitation.callerUid,
-        remoteUid: state.remoteUid));
-
-    if (state.invitation != null) {
-      await _updateVideoCallRemoteUserStatus(state.invitation!);
-    }
-  }
-
-  void _onJoinVideoCall(
-      _JoinVideoCallStarted event, Emitter<VideoCallState> emit) async {
-    emit(VideoCallState.joinChannelInProgress(
-        invitation: state.invitation,
-        isRemoteUserJoined: state.isRemoteUserJoined,
-        isTakePhotoEnabled: state.isTakePhotoEnabled,
-        localUid: state.localUid,
-        remoteUid: state.remoteUid));
-
-    final initVideoCallResult = await _initVideoCall();
-    initVideoCallResult.fold(
-      (_) => emit(VideoCallState.joinChannelFailure(
-          invitation: state.invitation,
-          isRemoteUserJoined: state.isRemoteUserJoined,
-          isTakePhotoEnabled: state.isTakePhotoEnabled,
-          localUid: state.localUid,
-          remoteUid: state.remoteUid)),
-      (_) => null,
-    );
-    if (initVideoCallResult.isLeft()) return;
-
-    final joinVideoCallResult = await _joinVideoCall(event.invitation);
-    final invitation = joinVideoCallResult.fold(
-      (_) {
-        emit(VideoCallState.joinChannelFailure(
-            invitation: state.invitation,
-            isRemoteUserJoined: state.isRemoteUserJoined,
-            isTakePhotoEnabled: state.isTakePhotoEnabled,
-            localUid: state.localUid,
-            remoteUid: state.remoteUid));
-        return null;
-      },
-      (invitation) => invitation,
-    );
-    if (invitation == null) return;
-
-    final getEngineResult = _getVideoCallEngine();
-    final engine = getEngineResult.fold(
-      (_) {
-        emit(VideoCallState.joinChannelFailure(
-            invitation: state.invitation,
-            isRemoteUserJoined: state.isRemoteUserJoined,
-            isTakePhotoEnabled: state.isTakePhotoEnabled,
-            localUid: state.localUid,
-            remoteUid: state.remoteUid));
-        return null;
-      },
-      (engine) => engine,
-    );
-    if (engine == null) return;
-
-    emit(VideoCallState.joinChannelSuccess(
-        invitation: invitation,
-        engine: engine,
-        isRemoteUserJoined: state.isRemoteUserJoined,
-        isTakePhotoEnabled: state.isTakePhotoEnabled,
-        localUid: invitation.targetUid,
-        remoteUid: invitation.callerUid));
-
-    if (state.invitation != null) {
-      await _updateVideoCallRemoteUserStatus(state.invitation!);
-    }
-  }
-
-  void _onLeaveVideoCall(
-      _LeaveVideoCallStarted event, Emitter<VideoCallState> emit) async {
-    emit(VideoCallState.leaveChannelInProgress(
-        invitation: state.invitation,
-        isRemoteUserJoined: state.isRemoteUserJoined,
-        isTakePhotoEnabled: state.isTakePhotoEnabled,
-        localUid: state.localUid,
-        remoteUid: state.remoteUid));
-
-    final startVideoCallResult = await _leaveVideoCall(event.invitation);
-    startVideoCallResult.fold(
-      (_) => emit(VideoCallState.leaveChannelFailure(
-          invitation: state.invitation,
-          isRemoteUserJoined: state.isRemoteUserJoined,
-          isTakePhotoEnabled: state.isTakePhotoEnabled,
-          localUid: state.localUid,
-          remoteUid: state.remoteUid)),
-      (_) => emit(VideoCallState.leaveChannelSuccess(
-          isTakePhotoEnabled: state.isTakePhotoEnabled,
-          invitation: null,
-          localUid: state.localUid,
-          remoteUid: state.remoteUid)),
-    );
-  }
-
-  void _onUpdateRemoteUserStatus(
-      _UpdateRemoteUserStarted event, Emitter<VideoCallState> emit) {
-    final info = event.info;
-    switch (info.status) {
-      case VideoCallStatus.remoteUserJoined:
-        final getEngineResult = _getVideoCallEngine();
-        final engine = getEngineResult.fold(
-          (_) {
-            emit(VideoCallState.remoteUserJoinFailure(
-                isTakePhotoEnabled: state.isTakePhotoEnabled,
-                invitation: state.invitation,
-                localUid: state.localUid,
-                remoteUid: state.remoteUid));
-            return null;
+      (failure) {
+        state.maybeWhen(
+          initEngineInProgress: (room) {
+            emit(VideoCallState.initEngineFailure(room, failure));
           },
-          (engine) => engine,
+          orElse: () {},
         );
-        if (engine == null) return;
-        state.maybeMap(
-          remoteUserJoinSuccess: (_) {},
-          orElse: () => emit(VideoCallState.remoteUserJoinSuccess(
-              isTakePhotoEnabled: state.isTakePhotoEnabled,
-              invitation: state.invitation,
-              engine: engine,
-              localUid: state.localUid,
-              remoteUid: info.remoteUid ?? state.remoteUid)),
+      },
+      (engine) {
+        emit(VideoCallState.initEngineSuccess(state.room, engine));
+        add(const VideoCallEvent.joinRoomStarted());
+      },
+    );
+  }
+
+  void _onStartJoinRoom(
+      _JoinRoomStarted event, Emitter<VideoCallState> emit) async {
+    state.maybeWhen(
+      initEngineSuccess: (room, engine) {
+        emit(VideoCallState.joinRoomInProgress(room, engine));
+      },
+      orElse: () {},
+    );
+
+    final joinVideoCallResult = await _joinRoom(state.room);
+    joinVideoCallResult.fold(
+      (failure) {
+        Logger.error(failure, event: 'joining room');
+        state.maybeWhen(
+          initEngineSuccess: (room, engine) {
+            emit(VideoCallState.joinRoomFailure(room, engine, failure));
+          },
+          joinRoomInProgress: (room, engine) {
+            emit(VideoCallState.joinRoomFailure(room, engine, failure));
+          },
+          orElse: () {},
         );
+      },
+      (_) {
+        _joinRoomTimeoutControl = Timer(
+          const Duration(seconds: 10),
+          () {
+            if (isClosed) return;
+            add(const VideoCallEvent.joinRoomFailed());
+          },
+        );
+      },
+    );
+  }
+
+  void _onFailJoinRoom(
+      _JoinRoomFailed event, Emitter<VideoCallState> emit) async {
+    state.maybeWhen(
+      joinRoomInProgress: (room, engine) {
+        emit(VideoCallState.joinRoomFailure(room, engine, UnknownFailure()));
+      },
+      orElse: () {},
+    );
+  }
+
+  void _onStartLeaveRoom(
+      _LeaveRoomStarted event, Emitter<VideoCallState> emit) async {
+    state.maybeWhen(
+      initial: (room) {
+        emit(VideoCallState.leaveRoomInProgress(room: room));
+      },
+      initEngineInProgress: (room) {
+        emit(VideoCallState.leaveRoomInProgress(room: room));
+      },
+      initEngineSuccess: (room, engine) {
+        emit(VideoCallState.leaveRoomInProgress(room: room, engine: engine));
+      },
+      initEngineFailure: (room, failure) {
+        emit(VideoCallState.leaveRoomInProgress(room: room));
+      },
+      joinRoomInProgress: (room, engine) {
+        emit(VideoCallState.leaveRoomInProgress(room: room, engine: engine));
+      },
+      joinRoomSuccess:
+          (room, engine, remoteUserStatus, isTakePhotoEnabled, _, __) {
+        emit(VideoCallState.leaveRoomInProgress(room: room, engine: engine));
+      },
+      joinRoomFailure: (room, engine, failure) {
+        emit(VideoCallState.leaveRoomInProgress(room: room, engine: engine));
+      },
+      orElse: () {},
+    );
+
+    final startVideoCallResult = await _leaveRoom(state.room);
+    startVideoCallResult.fold(
+      (failure) {
+        state.maybeWhen(
+          leaveRoomInProgress: (room, engine) {
+            emit(VideoCallState.leaveRoomFailure(room: room, failure: failure));
+          },
+          orElse: () {},
+        );
+      },
+      (_) {
+        emit(VideoCallState.leaveRoomSuccess(room: state.room));
+      },
+    );
+  }
+
+  void _onUpdateUserStatus(
+      _UpdateUserStatusStarted event, Emitter<VideoCallState> emit) {
+    final info = event.info;
+
+    Logger.print('Update user status (${info.runtimeType} ${info.status}), current state: ${state.runtimeType}');
+
+    switch (info.status) {
+      case VideoCallStatus.joined:
+        _joinRoomTimeoutControl?.cancel();
+
+        if (info is VideoCallLocalUserUpdateInfo) {
+          state.maybeWhen(
+            joinRoomInProgress: (room, engine) {
+              emit(VideoCallState.joinRoomSuccess(
+                room: room,
+                engine: engine,
+                localVideoUid: info.uid,
+              ));
+            },
+            orElse: () {},
+          );
+        }
+
+        if (info is VideoCallRemoteUserUpdateInfo) {
+          state.maybeMap(
+            joinRoomSuccess: (state) {
+              emit(state.copyWith(remoteVideoUid: info.uid));
+            },
+            orElse: () {},
+          );
+        }
         break;
-      case VideoCallStatus.remoteUserLeave:
-        Logger.print('(bloc) Remote user leave');
-        state.maybeMap(
-          joinChannelSuccess: (previousState) => emit(
-              VideoCallState.remoteUserLeaveSuccess(
-                  isTakePhotoEnabled: state.isTakePhotoEnabled,
-                  invitation: state.invitation,
-                  localUid: state.localUid,
-                  remoteUid: state.remoteUid,
-                  engine: previousState.engine)),
-          remoteUserJoinSuccess: (previousState) => emit(
-              VideoCallState.remoteUserLeaveSuccess(
-                  isTakePhotoEnabled: state.isTakePhotoEnabled,
-                  invitation: state.invitation,
-                  localUid: state.localUid,
-                  remoteUid: state.remoteUid,
-                  engine: previousState.engine)),
-          remoteUserLeaveSuccess: (_) {},
-          orElse: () => emit(VideoCallState.remoteUserLeaveSuccess(
-              isTakePhotoEnabled: state.isTakePhotoEnabled,
-              invitation: state.invitation,
-              localUid: state.localUid,
-              remoteUid: state.remoteUid)),
-        );
+      case VideoCallStatus.leave:
+        if (info is VideoCallRemoteUserUpdateInfo) {
+          state.maybeMap(
+            joinRoomSuccess: (state) {
+              emit(state.copyWith(remoteVideoUid: null));
+              add(const VideoCallEvent.leaveRoomStarted());
+            },
+            orElse: () {},
+          );
+        }
         break;
       default:
         break;
     }
   }
 
-  void _onSetInvitation(
-      _SetInvitationStarted event, Emitter<VideoCallState> emit) {
-    final invitation = event.invitation;
+  void _onStartToggleTakePhotoFeature(
+      _TakePhotoSnapshotFeatureStatusChanged event,
+      Emitter<VideoCallState> emit) async {
     state.maybeMap(
-      initial: (initialState) {
-        emit(VideoCallState.initial(
-          invitation: invitation,
-          isRemoteUserJoined: initialState.isRemoteUserJoined,
-          localUid: initialState.localUid,
-          remoteUid: initialState.remoteUid,
-        ));
+      joinRoomSuccess: (state) {
+        if (event.isEnabled == state.isTakePhotoEnabled) return;
+        if (state.isTakePhotoEnabled) {
+          add(const VideoCallEvent.disableTakePhotoSnapshotStarted());
+        } else {
+          add(const VideoCallEvent.disableTakePhotoSnapshotStarted());
+        }
       },
       orElse: () {},
     );
   }
 
-  void _toggleTakePhotoFeature(_TakePhotoSnapshotFeatureStatusChanged event,
+  void _onStartDisableTakePhotoSnapshot(_DisableTakePhotoSnapshotStarted event,
       Emitter<VideoCallState> emit) async {
-    final isNeedToEnable = event.isEnabled;
-    if (isNeedToEnable == state.isTakePhotoEnabled) return;
+    final disableTakePhotoSnapshotResult = await _disableTakePhotoSnapshot();
 
-    await toggleUseCase(
-      isNeedToEnable ? _enableTakePhotoSnapshot : _disableTakePhotoSnapshot,
-      onSuccess: (_) {
-        emit(state.copyWith(isTakePhotoEnabled: isNeedToEnable));
+    disableTakePhotoSnapshotResult.fold(
+      (failure) {
+        state.maybeMap(
+          joinRoomSuccess: (state) {
+            emit(state.copyWith(failure: failure));
+          },
+          orElse: () {},
+        );
+      },
+      (_) {
+        state.maybeMap(
+          joinRoomSuccess: (state) {
+            emit(state.copyWith(isTakePhotoEnabled: false));
+          },
+          orElse: () {},
+        );
+      },
+    );
+  }
+
+  void _onStartEnableTakePhotoSnapshot(_EnableTakePhotoSnapshotStarted event,
+      Emitter<VideoCallState> emit) async {
+    final enableTakePhotoSnapshotResult = await _enableTakePhotoSnapshot();
+
+    enableTakePhotoSnapshotResult.fold(
+      (failure) {
+        state.maybeMap(
+          joinRoomSuccess: (state) {
+            emit(state.copyWith(failure: failure));
+          },
+          orElse: () {},
+        );
+      },
+      (_) {
+        state.maybeMap(
+          joinRoomSuccess: (state) {
+            emit(state.copyWith(isTakePhotoEnabled: true));
+          },
+          orElse: () {},
+        );
       },
     );
   }

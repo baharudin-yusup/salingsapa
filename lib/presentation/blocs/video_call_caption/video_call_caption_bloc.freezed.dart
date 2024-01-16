@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$VideoCallCaptionEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String invitationId) started,
+    required TResult Function(Room room) started,
     required TResult Function() toggleFeatureStarted,
     required TResult Function(List<Caption> captions, Failure? failure)
         updateRemoteCaptionStarted,
@@ -28,7 +28,7 @@ mixin _$VideoCallCaptionEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String invitationId)? started,
+    TResult? Function(Room room)? started,
     TResult? Function()? toggleFeatureStarted,
     TResult? Function(List<Caption> captions, Failure? failure)?
         updateRemoteCaptionStarted,
@@ -38,7 +38,7 @@ mixin _$VideoCallCaptionEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String invitationId)? started,
+    TResult Function(Room room)? started,
     TResult Function()? toggleFeatureStarted,
     TResult Function(List<Caption> captions, Failure? failure)?
         updateRemoteCaptionStarted,
@@ -100,96 +100,96 @@ class _$VideoCallCaptionEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String invitationId});
+  $Res call({Room room});
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$VideoCallCaptionEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$VideoCallCaptionEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? invitationId = null,
+    Object? room = null,
   }) {
-    return _then(_$_Started(
-      invitationId: null == invitationId
-          ? _value.invitationId
-          : invitationId // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_$StartedImpl(
+      null == room
+          ? _value.room
+          : room // ignore: cast_nullable_to_non_nullable
+              as Room,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started({required this.invitationId});
+class _$StartedImpl implements _Started {
+  const _$StartedImpl(this.room);
 
   @override
-  final String invitationId;
+  final Room room;
 
   @override
   String toString() {
-    return 'VideoCallCaptionEvent.started(invitationId: $invitationId)';
+    return 'VideoCallCaptionEvent.started(room: $room)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Started &&
-            (identical(other.invitationId, invitationId) ||
-                other.invitationId == invitationId));
+            other is _$StartedImpl &&
+            (identical(other.room, room) || other.room == room));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, invitationId);
+  int get hashCode => Object.hash(runtimeType, room);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StartedCopyWith<_$_Started> get copyWith =>
-      __$$_StartedCopyWithImpl<_$_Started>(this, _$identity);
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
+      __$$StartedImplCopyWithImpl<_$StartedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String invitationId) started,
+    required TResult Function(Room room) started,
     required TResult Function() toggleFeatureStarted,
     required TResult Function(List<Caption> captions, Failure? failure)
         updateRemoteCaptionStarted,
     required TResult Function(Caption? caption) localCaptionReceived,
     required TResult Function(Caption caption) uploadCaptionStarted,
   }) {
-    return started(invitationId);
+    return started(room);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String invitationId)? started,
+    TResult? Function(Room room)? started,
     TResult? Function()? toggleFeatureStarted,
     TResult? Function(List<Caption> captions, Failure? failure)?
         updateRemoteCaptionStarted,
     TResult? Function(Caption? caption)? localCaptionReceived,
     TResult? Function(Caption caption)? uploadCaptionStarted,
   }) {
-    return started?.call(invitationId);
+    return started?.call(room);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String invitationId)? started,
+    TResult Function(Room room)? started,
     TResult Function()? toggleFeatureStarted,
     TResult Function(List<Caption> captions, Failure? failure)?
         updateRemoteCaptionStarted,
@@ -198,7 +198,7 @@ class _$_Started implements _Started {
     required TResult orElse(),
   }) {
     if (started != null) {
-      return started(invitationId);
+      return started(room);
     }
     return orElse();
   }
@@ -248,34 +248,35 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements VideoCallCaptionEvent {
-  const factory _Started({required final String invitationId}) = _$_Started;
+  const factory _Started(final Room room) = _$StartedImpl;
 
-  String get invitationId;
+  Room get room;
   @JsonKey(ignore: true)
-  _$$_StartedCopyWith<_$_Started> get copyWith =>
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ToggleFeatureStartedCopyWith<$Res> {
-  factory _$$_ToggleFeatureStartedCopyWith(_$_ToggleFeatureStarted value,
-          $Res Function(_$_ToggleFeatureStarted) then) =
-      __$$_ToggleFeatureStartedCopyWithImpl<$Res>;
+abstract class _$$ToggleFeatureStartedImplCopyWith<$Res> {
+  factory _$$ToggleFeatureStartedImplCopyWith(_$ToggleFeatureStartedImpl value,
+          $Res Function(_$ToggleFeatureStartedImpl) then) =
+      __$$ToggleFeatureStartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ToggleFeatureStartedCopyWithImpl<$Res>
-    extends _$VideoCallCaptionEventCopyWithImpl<$Res, _$_ToggleFeatureStarted>
-    implements _$$_ToggleFeatureStartedCopyWith<$Res> {
-  __$$_ToggleFeatureStartedCopyWithImpl(_$_ToggleFeatureStarted _value,
-      $Res Function(_$_ToggleFeatureStarted) _then)
+class __$$ToggleFeatureStartedImplCopyWithImpl<$Res>
+    extends _$VideoCallCaptionEventCopyWithImpl<$Res,
+        _$ToggleFeatureStartedImpl>
+    implements _$$ToggleFeatureStartedImplCopyWith<$Res> {
+  __$$ToggleFeatureStartedImplCopyWithImpl(_$ToggleFeatureStartedImpl _value,
+      $Res Function(_$ToggleFeatureStartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ToggleFeatureStarted implements _ToggleFeatureStarted {
-  const _$_ToggleFeatureStarted();
+class _$ToggleFeatureStartedImpl implements _ToggleFeatureStarted {
+  const _$ToggleFeatureStartedImpl();
 
   @override
   String toString() {
@@ -285,7 +286,8 @@ class _$_ToggleFeatureStarted implements _ToggleFeatureStarted {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ToggleFeatureStarted);
+        (other.runtimeType == runtimeType &&
+            other is _$ToggleFeatureStartedImpl);
   }
 
   @override
@@ -294,7 +296,7 @@ class _$_ToggleFeatureStarted implements _ToggleFeatureStarted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String invitationId) started,
+    required TResult Function(Room room) started,
     required TResult Function() toggleFeatureStarted,
     required TResult Function(List<Caption> captions, Failure? failure)
         updateRemoteCaptionStarted,
@@ -307,7 +309,7 @@ class _$_ToggleFeatureStarted implements _ToggleFeatureStarted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String invitationId)? started,
+    TResult? Function(Room room)? started,
     TResult? Function()? toggleFeatureStarted,
     TResult? Function(List<Caption> captions, Failure? failure)?
         updateRemoteCaptionStarted,
@@ -320,7 +322,7 @@ class _$_ToggleFeatureStarted implements _ToggleFeatureStarted {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String invitationId)? started,
+    TResult Function(Room room)? started,
     TResult Function()? toggleFeatureStarted,
     TResult Function(List<Caption> captions, Failure? failure)?
         updateRemoteCaptionStarted,
@@ -379,27 +381,27 @@ class _$_ToggleFeatureStarted implements _ToggleFeatureStarted {
 }
 
 abstract class _ToggleFeatureStarted implements VideoCallCaptionEvent {
-  const factory _ToggleFeatureStarted() = _$_ToggleFeatureStarted;
+  const factory _ToggleFeatureStarted() = _$ToggleFeatureStartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_UpdateRemoteCaptionStartedCopyWith<$Res> {
-  factory _$$_UpdateRemoteCaptionStartedCopyWith(
-          _$_UpdateRemoteCaptionStarted value,
-          $Res Function(_$_UpdateRemoteCaptionStarted) then) =
-      __$$_UpdateRemoteCaptionStartedCopyWithImpl<$Res>;
+abstract class _$$UpdateRemoteCaptionStartedImplCopyWith<$Res> {
+  factory _$$UpdateRemoteCaptionStartedImplCopyWith(
+          _$UpdateRemoteCaptionStartedImpl value,
+          $Res Function(_$UpdateRemoteCaptionStartedImpl) then) =
+      __$$UpdateRemoteCaptionStartedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Caption> captions, Failure? failure});
 }
 
 /// @nodoc
-class __$$_UpdateRemoteCaptionStartedCopyWithImpl<$Res>
+class __$$UpdateRemoteCaptionStartedImplCopyWithImpl<$Res>
     extends _$VideoCallCaptionEventCopyWithImpl<$Res,
-        _$_UpdateRemoteCaptionStarted>
-    implements _$$_UpdateRemoteCaptionStartedCopyWith<$Res> {
-  __$$_UpdateRemoteCaptionStartedCopyWithImpl(
-      _$_UpdateRemoteCaptionStarted _value,
-      $Res Function(_$_UpdateRemoteCaptionStarted) _then)
+        _$UpdateRemoteCaptionStartedImpl>
+    implements _$$UpdateRemoteCaptionStartedImplCopyWith<$Res> {
+  __$$UpdateRemoteCaptionStartedImplCopyWithImpl(
+      _$UpdateRemoteCaptionStartedImpl _value,
+      $Res Function(_$UpdateRemoteCaptionStartedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -408,7 +410,7 @@ class __$$_UpdateRemoteCaptionStartedCopyWithImpl<$Res>
     Object? captions = null,
     Object? failure = freezed,
   }) {
-    return _then(_$_UpdateRemoteCaptionStarted(
+    return _then(_$UpdateRemoteCaptionStartedImpl(
       captions: null == captions
           ? _value._captions
           : captions // ignore: cast_nullable_to_non_nullable
@@ -423,8 +425,8 @@ class __$$_UpdateRemoteCaptionStartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateRemoteCaptionStarted implements _UpdateRemoteCaptionStarted {
-  const _$_UpdateRemoteCaptionStarted(
+class _$UpdateRemoteCaptionStartedImpl implements _UpdateRemoteCaptionStarted {
+  const _$UpdateRemoteCaptionStartedImpl(
       {final List<Caption> captions = const [], this.failure})
       : _captions = captions;
 
@@ -449,7 +451,7 @@ class _$_UpdateRemoteCaptionStarted implements _UpdateRemoteCaptionStarted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateRemoteCaptionStarted &&
+            other is _$UpdateRemoteCaptionStartedImpl &&
             const DeepCollectionEquality().equals(other._captions, _captions) &&
             (identical(other.failure, failure) || other.failure == failure));
   }
@@ -461,14 +463,14 @@ class _$_UpdateRemoteCaptionStarted implements _UpdateRemoteCaptionStarted {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateRemoteCaptionStartedCopyWith<_$_UpdateRemoteCaptionStarted>
-      get copyWith => __$$_UpdateRemoteCaptionStartedCopyWithImpl<
-          _$_UpdateRemoteCaptionStarted>(this, _$identity);
+  _$$UpdateRemoteCaptionStartedImplCopyWith<_$UpdateRemoteCaptionStartedImpl>
+      get copyWith => __$$UpdateRemoteCaptionStartedImplCopyWithImpl<
+          _$UpdateRemoteCaptionStartedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String invitationId) started,
+    required TResult Function(Room room) started,
     required TResult Function() toggleFeatureStarted,
     required TResult Function(List<Caption> captions, Failure? failure)
         updateRemoteCaptionStarted,
@@ -481,7 +483,7 @@ class _$_UpdateRemoteCaptionStarted implements _UpdateRemoteCaptionStarted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String invitationId)? started,
+    TResult? Function(Room room)? started,
     TResult? Function()? toggleFeatureStarted,
     TResult? Function(List<Caption> captions, Failure? failure)?
         updateRemoteCaptionStarted,
@@ -494,7 +496,7 @@ class _$_UpdateRemoteCaptionStarted implements _UpdateRemoteCaptionStarted {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String invitationId)? started,
+    TResult Function(Room room)? started,
     TResult Function()? toggleFeatureStarted,
     TResult Function(List<Caption> captions, Failure? failure)?
         updateRemoteCaptionStarted,
@@ -555,30 +557,31 @@ class _$_UpdateRemoteCaptionStarted implements _UpdateRemoteCaptionStarted {
 abstract class _UpdateRemoteCaptionStarted implements VideoCallCaptionEvent {
   const factory _UpdateRemoteCaptionStarted(
       {final List<Caption> captions,
-      final Failure? failure}) = _$_UpdateRemoteCaptionStarted;
+      final Failure? failure}) = _$UpdateRemoteCaptionStartedImpl;
 
   List<Caption> get captions;
   Failure? get failure;
   @JsonKey(ignore: true)
-  _$$_UpdateRemoteCaptionStartedCopyWith<_$_UpdateRemoteCaptionStarted>
+  _$$UpdateRemoteCaptionStartedImplCopyWith<_$UpdateRemoteCaptionStartedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LocalCaptionReceivedCopyWith<$Res> {
-  factory _$$_LocalCaptionReceivedCopyWith(_$_LocalCaptionReceived value,
-          $Res Function(_$_LocalCaptionReceived) then) =
-      __$$_LocalCaptionReceivedCopyWithImpl<$Res>;
+abstract class _$$LocalCaptionReceivedImplCopyWith<$Res> {
+  factory _$$LocalCaptionReceivedImplCopyWith(_$LocalCaptionReceivedImpl value,
+          $Res Function(_$LocalCaptionReceivedImpl) then) =
+      __$$LocalCaptionReceivedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Caption? caption});
 }
 
 /// @nodoc
-class __$$_LocalCaptionReceivedCopyWithImpl<$Res>
-    extends _$VideoCallCaptionEventCopyWithImpl<$Res, _$_LocalCaptionReceived>
-    implements _$$_LocalCaptionReceivedCopyWith<$Res> {
-  __$$_LocalCaptionReceivedCopyWithImpl(_$_LocalCaptionReceived _value,
-      $Res Function(_$_LocalCaptionReceived) _then)
+class __$$LocalCaptionReceivedImplCopyWithImpl<$Res>
+    extends _$VideoCallCaptionEventCopyWithImpl<$Res,
+        _$LocalCaptionReceivedImpl>
+    implements _$$LocalCaptionReceivedImplCopyWith<$Res> {
+  __$$LocalCaptionReceivedImplCopyWithImpl(_$LocalCaptionReceivedImpl _value,
+      $Res Function(_$LocalCaptionReceivedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -586,7 +589,7 @@ class __$$_LocalCaptionReceivedCopyWithImpl<$Res>
   $Res call({
     Object? caption = freezed,
   }) {
-    return _then(_$_LocalCaptionReceived(
+    return _then(_$LocalCaptionReceivedImpl(
       freezed == caption
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
@@ -597,8 +600,8 @@ class __$$_LocalCaptionReceivedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LocalCaptionReceived implements _LocalCaptionReceived {
-  const _$_LocalCaptionReceived([this.caption = null]);
+class _$LocalCaptionReceivedImpl implements _LocalCaptionReceived {
+  const _$LocalCaptionReceivedImpl([this.caption = null]);
 
   @override
   @JsonKey()
@@ -613,7 +616,7 @@ class _$_LocalCaptionReceived implements _LocalCaptionReceived {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LocalCaptionReceived &&
+            other is _$LocalCaptionReceivedImpl &&
             (identical(other.caption, caption) || other.caption == caption));
   }
 
@@ -623,14 +626,15 @@ class _$_LocalCaptionReceived implements _LocalCaptionReceived {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LocalCaptionReceivedCopyWith<_$_LocalCaptionReceived> get copyWith =>
-      __$$_LocalCaptionReceivedCopyWithImpl<_$_LocalCaptionReceived>(
-          this, _$identity);
+  _$$LocalCaptionReceivedImplCopyWith<_$LocalCaptionReceivedImpl>
+      get copyWith =>
+          __$$LocalCaptionReceivedImplCopyWithImpl<_$LocalCaptionReceivedImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String invitationId) started,
+    required TResult Function(Room room) started,
     required TResult Function() toggleFeatureStarted,
     required TResult Function(List<Caption> captions, Failure? failure)
         updateRemoteCaptionStarted,
@@ -643,7 +647,7 @@ class _$_LocalCaptionReceived implements _LocalCaptionReceived {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String invitationId)? started,
+    TResult? Function(Room room)? started,
     TResult? Function()? toggleFeatureStarted,
     TResult? Function(List<Caption> captions, Failure? failure)?
         updateRemoteCaptionStarted,
@@ -656,7 +660,7 @@ class _$_LocalCaptionReceived implements _LocalCaptionReceived {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String invitationId)? started,
+    TResult Function(Room room)? started,
     TResult Function()? toggleFeatureStarted,
     TResult Function(List<Caption> captions, Failure? failure)?
         updateRemoteCaptionStarted,
@@ -716,29 +720,30 @@ class _$_LocalCaptionReceived implements _LocalCaptionReceived {
 
 abstract class _LocalCaptionReceived implements VideoCallCaptionEvent {
   const factory _LocalCaptionReceived([final Caption? caption]) =
-      _$_LocalCaptionReceived;
+      _$LocalCaptionReceivedImpl;
 
   Caption? get caption;
   @JsonKey(ignore: true)
-  _$$_LocalCaptionReceivedCopyWith<_$_LocalCaptionReceived> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$LocalCaptionReceivedImplCopyWith<_$LocalCaptionReceivedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_UploadCaptionStartedCopyWith<$Res> {
-  factory _$$_UploadCaptionStartedCopyWith(_$_UploadCaptionStarted value,
-          $Res Function(_$_UploadCaptionStarted) then) =
-      __$$_UploadCaptionStartedCopyWithImpl<$Res>;
+abstract class _$$UploadCaptionStartedImplCopyWith<$Res> {
+  factory _$$UploadCaptionStartedImplCopyWith(_$UploadCaptionStartedImpl value,
+          $Res Function(_$UploadCaptionStartedImpl) then) =
+      __$$UploadCaptionStartedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Caption caption});
 }
 
 /// @nodoc
-class __$$_UploadCaptionStartedCopyWithImpl<$Res>
-    extends _$VideoCallCaptionEventCopyWithImpl<$Res, _$_UploadCaptionStarted>
-    implements _$$_UploadCaptionStartedCopyWith<$Res> {
-  __$$_UploadCaptionStartedCopyWithImpl(_$_UploadCaptionStarted _value,
-      $Res Function(_$_UploadCaptionStarted) _then)
+class __$$UploadCaptionStartedImplCopyWithImpl<$Res>
+    extends _$VideoCallCaptionEventCopyWithImpl<$Res,
+        _$UploadCaptionStartedImpl>
+    implements _$$UploadCaptionStartedImplCopyWith<$Res> {
+  __$$UploadCaptionStartedImplCopyWithImpl(_$UploadCaptionStartedImpl _value,
+      $Res Function(_$UploadCaptionStartedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -746,7 +751,7 @@ class __$$_UploadCaptionStartedCopyWithImpl<$Res>
   $Res call({
     Object? caption = null,
   }) {
-    return _then(_$_UploadCaptionStarted(
+    return _then(_$UploadCaptionStartedImpl(
       null == caption
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
@@ -757,8 +762,8 @@ class __$$_UploadCaptionStartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UploadCaptionStarted implements _UploadCaptionStarted {
-  const _$_UploadCaptionStarted(this.caption);
+class _$UploadCaptionStartedImpl implements _UploadCaptionStarted {
+  const _$UploadCaptionStartedImpl(this.caption);
 
   @override
   final Caption caption;
@@ -772,7 +777,7 @@ class _$_UploadCaptionStarted implements _UploadCaptionStarted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UploadCaptionStarted &&
+            other is _$UploadCaptionStartedImpl &&
             (identical(other.caption, caption) || other.caption == caption));
   }
 
@@ -782,14 +787,15 @@ class _$_UploadCaptionStarted implements _UploadCaptionStarted {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UploadCaptionStartedCopyWith<_$_UploadCaptionStarted> get copyWith =>
-      __$$_UploadCaptionStartedCopyWithImpl<_$_UploadCaptionStarted>(
-          this, _$identity);
+  _$$UploadCaptionStartedImplCopyWith<_$UploadCaptionStartedImpl>
+      get copyWith =>
+          __$$UploadCaptionStartedImplCopyWithImpl<_$UploadCaptionStartedImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String invitationId) started,
+    required TResult Function(Room room) started,
     required TResult Function() toggleFeatureStarted,
     required TResult Function(List<Caption> captions, Failure? failure)
         updateRemoteCaptionStarted,
@@ -802,7 +808,7 @@ class _$_UploadCaptionStarted implements _UploadCaptionStarted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String invitationId)? started,
+    TResult? Function(Room room)? started,
     TResult? Function()? toggleFeatureStarted,
     TResult? Function(List<Caption> captions, Failure? failure)?
         updateRemoteCaptionStarted,
@@ -815,7 +821,7 @@ class _$_UploadCaptionStarted implements _UploadCaptionStarted {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String invitationId)? started,
+    TResult Function(Room room)? started,
     TResult Function()? toggleFeatureStarted,
     TResult Function(List<Caption> captions, Failure? failure)?
         updateRemoteCaptionStarted,
@@ -875,12 +881,12 @@ class _$_UploadCaptionStarted implements _UploadCaptionStarted {
 
 abstract class _UploadCaptionStarted implements VideoCallCaptionEvent {
   const factory _UploadCaptionStarted(final Caption caption) =
-      _$_UploadCaptionStarted;
+      _$UploadCaptionStartedImpl;
 
   Caption get caption;
   @JsonKey(ignore: true)
-  _$$_UploadCaptionStartedCopyWith<_$_UploadCaptionStarted> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UploadCaptionStartedImplCopyWith<_$UploadCaptionStartedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1017,11 +1023,11 @@ class _$VideoCallCaptionStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res>
+abstract class _$$InitialImplCopyWith<$Res>
     implements $VideoCallCaptionStateCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1029,10 +1035,11 @@ abstract class _$$_InitialCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$VideoCallCaptionStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$VideoCallCaptionStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1042,7 +1049,7 @@ class __$$_InitialCopyWithImpl<$Res>
     Object? localCaptions = null,
     Object? remoteCaptions = freezed,
   }) {
-    return _then(_$_Initial(
+    return _then(_$InitialImpl(
       isEnabled: null == isEnabled
           ? _value.isEnabled
           : isEnabled // ignore: cast_nullable_to_non_nullable
@@ -1061,8 +1068,8 @@ class __$$_InitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial(
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl(
       {this.isEnabled = false,
       final List<Caption> localCaptions = const [],
       this.remoteCaptions})
@@ -1092,7 +1099,7 @@ class _$_Initial implements _Initial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Initial &&
+            other is _$InitialImpl &&
             (identical(other.isEnabled, isEnabled) ||
                 other.isEnabled == isEnabled) &&
             const DeepCollectionEquality()
@@ -1108,8 +1115,8 @@ class _$_Initial implements _Initial {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
-      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1217,7 +1224,7 @@ abstract class _Initial implements VideoCallCaptionState {
   const factory _Initial(
       {final bool isEnabled,
       final List<Caption> localCaptions,
-      final String? remoteCaptions}) = _$_Initial;
+      final String? remoteCaptions}) = _$InitialImpl;
 
   @override
   bool get isEnabled;
@@ -1227,16 +1234,16 @@ abstract class _Initial implements VideoCallCaptionState {
   String? get remoteCaptions;
   @override
   @JsonKey(ignore: true)
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ToggleFeatureFailureCopyWith<$Res>
+abstract class _$$ToggleFeatureFailureImplCopyWith<$Res>
     implements $VideoCallCaptionStateCopyWith<$Res> {
-  factory _$$_ToggleFeatureFailureCopyWith(_$_ToggleFeatureFailure value,
-          $Res Function(_$_ToggleFeatureFailure) then) =
-      __$$_ToggleFeatureFailureCopyWithImpl<$Res>;
+  factory _$$ToggleFeatureFailureImplCopyWith(_$ToggleFeatureFailureImpl value,
+          $Res Function(_$ToggleFeatureFailureImpl) then) =
+      __$$ToggleFeatureFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1247,11 +1254,12 @@ abstract class _$$_ToggleFeatureFailureCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ToggleFeatureFailureCopyWithImpl<$Res>
-    extends _$VideoCallCaptionStateCopyWithImpl<$Res, _$_ToggleFeatureFailure>
-    implements _$$_ToggleFeatureFailureCopyWith<$Res> {
-  __$$_ToggleFeatureFailureCopyWithImpl(_$_ToggleFeatureFailure _value,
-      $Res Function(_$_ToggleFeatureFailure) _then)
+class __$$ToggleFeatureFailureImplCopyWithImpl<$Res>
+    extends _$VideoCallCaptionStateCopyWithImpl<$Res,
+        _$ToggleFeatureFailureImpl>
+    implements _$$ToggleFeatureFailureImplCopyWith<$Res> {
+  __$$ToggleFeatureFailureImplCopyWithImpl(_$ToggleFeatureFailureImpl _value,
+      $Res Function(_$ToggleFeatureFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1262,7 +1270,7 @@ class __$$_ToggleFeatureFailureCopyWithImpl<$Res>
     Object? remoteCaptions = freezed,
     Object? failure = null,
   }) {
-    return _then(_$_ToggleFeatureFailure(
+    return _then(_$ToggleFeatureFailureImpl(
       isEnabled: null == isEnabled
           ? _value.isEnabled
           : isEnabled // ignore: cast_nullable_to_non_nullable
@@ -1285,8 +1293,8 @@ class __$$_ToggleFeatureFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ToggleFeatureFailure implements _ToggleFeatureFailure {
-  const _$_ToggleFeatureFailure(
+class _$ToggleFeatureFailureImpl implements _ToggleFeatureFailure {
+  const _$ToggleFeatureFailureImpl(
       {required this.isEnabled,
       required final List<Caption> localCaptions,
       required this.remoteCaptions,
@@ -1317,7 +1325,7 @@ class _$_ToggleFeatureFailure implements _ToggleFeatureFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ToggleFeatureFailure &&
+            other is _$ToggleFeatureFailureImpl &&
             (identical(other.isEnabled, isEnabled) ||
                 other.isEnabled == isEnabled) &&
             const DeepCollectionEquality()
@@ -1338,9 +1346,10 @@ class _$_ToggleFeatureFailure implements _ToggleFeatureFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ToggleFeatureFailureCopyWith<_$_ToggleFeatureFailure> get copyWith =>
-      __$$_ToggleFeatureFailureCopyWithImpl<_$_ToggleFeatureFailure>(
-          this, _$identity);
+  _$$ToggleFeatureFailureImplCopyWith<_$ToggleFeatureFailureImpl>
+      get copyWith =>
+          __$$ToggleFeatureFailureImplCopyWithImpl<_$ToggleFeatureFailureImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1452,7 +1461,7 @@ abstract class _ToggleFeatureFailure implements VideoCallCaptionState {
       {required final bool isEnabled,
       required final List<Caption> localCaptions,
       required final String? remoteCaptions,
-      required final Failure failure}) = _$_ToggleFeatureFailure;
+      required final Failure failure}) = _$ToggleFeatureFailureImpl;
 
   @override
   bool get isEnabled;
@@ -1463,17 +1472,17 @@ abstract class _ToggleFeatureFailure implements VideoCallCaptionState {
   Failure get failure;
   @override
   @JsonKey(ignore: true)
-  _$$_ToggleFeatureFailureCopyWith<_$_ToggleFeatureFailure> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ToggleFeatureFailureImplCopyWith<_$ToggleFeatureFailureImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_UpdateRemoteCaptionFailureCopyWith<$Res>
+abstract class _$$UpdateRemoteCaptionFailureImplCopyWith<$Res>
     implements $VideoCallCaptionStateCopyWith<$Res> {
-  factory _$$_UpdateRemoteCaptionFailureCopyWith(
-          _$_UpdateRemoteCaptionFailure value,
-          $Res Function(_$_UpdateRemoteCaptionFailure) then) =
-      __$$_UpdateRemoteCaptionFailureCopyWithImpl<$Res>;
+  factory _$$UpdateRemoteCaptionFailureImplCopyWith(
+          _$UpdateRemoteCaptionFailureImpl value,
+          $Res Function(_$UpdateRemoteCaptionFailureImpl) then) =
+      __$$UpdateRemoteCaptionFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1484,13 +1493,13 @@ abstract class _$$_UpdateRemoteCaptionFailureCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UpdateRemoteCaptionFailureCopyWithImpl<$Res>
+class __$$UpdateRemoteCaptionFailureImplCopyWithImpl<$Res>
     extends _$VideoCallCaptionStateCopyWithImpl<$Res,
-        _$_UpdateRemoteCaptionFailure>
-    implements _$$_UpdateRemoteCaptionFailureCopyWith<$Res> {
-  __$$_UpdateRemoteCaptionFailureCopyWithImpl(
-      _$_UpdateRemoteCaptionFailure _value,
-      $Res Function(_$_UpdateRemoteCaptionFailure) _then)
+        _$UpdateRemoteCaptionFailureImpl>
+    implements _$$UpdateRemoteCaptionFailureImplCopyWith<$Res> {
+  __$$UpdateRemoteCaptionFailureImplCopyWithImpl(
+      _$UpdateRemoteCaptionFailureImpl _value,
+      $Res Function(_$UpdateRemoteCaptionFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1501,7 +1510,7 @@ class __$$_UpdateRemoteCaptionFailureCopyWithImpl<$Res>
     Object? remoteCaptions = freezed,
     Object? failure = null,
   }) {
-    return _then(_$_UpdateRemoteCaptionFailure(
+    return _then(_$UpdateRemoteCaptionFailureImpl(
       isEnabled: null == isEnabled
           ? _value.isEnabled
           : isEnabled // ignore: cast_nullable_to_non_nullable
@@ -1524,8 +1533,8 @@ class __$$_UpdateRemoteCaptionFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateRemoteCaptionFailure implements _UpdateRemoteCaptionFailure {
-  const _$_UpdateRemoteCaptionFailure(
+class _$UpdateRemoteCaptionFailureImpl implements _UpdateRemoteCaptionFailure {
+  const _$UpdateRemoteCaptionFailureImpl(
       {required this.isEnabled,
       required final List<Caption> localCaptions,
       required this.remoteCaptions,
@@ -1556,7 +1565,7 @@ class _$_UpdateRemoteCaptionFailure implements _UpdateRemoteCaptionFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateRemoteCaptionFailure &&
+            other is _$UpdateRemoteCaptionFailureImpl &&
             (identical(other.isEnabled, isEnabled) ||
                 other.isEnabled == isEnabled) &&
             const DeepCollectionEquality()
@@ -1577,9 +1586,9 @@ class _$_UpdateRemoteCaptionFailure implements _UpdateRemoteCaptionFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateRemoteCaptionFailureCopyWith<_$_UpdateRemoteCaptionFailure>
-      get copyWith => __$$_UpdateRemoteCaptionFailureCopyWithImpl<
-          _$_UpdateRemoteCaptionFailure>(this, _$identity);
+  _$$UpdateRemoteCaptionFailureImplCopyWith<_$UpdateRemoteCaptionFailureImpl>
+      get copyWith => __$$UpdateRemoteCaptionFailureImplCopyWithImpl<
+          _$UpdateRemoteCaptionFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1691,7 +1700,7 @@ abstract class _UpdateRemoteCaptionFailure implements VideoCallCaptionState {
       {required final bool isEnabled,
       required final List<Caption> localCaptions,
       required final String? remoteCaptions,
-      required final Failure failure}) = _$_UpdateRemoteCaptionFailure;
+      required final Failure failure}) = _$UpdateRemoteCaptionFailureImpl;
 
   @override
   bool get isEnabled;
@@ -1702,16 +1711,16 @@ abstract class _UpdateRemoteCaptionFailure implements VideoCallCaptionState {
   Failure get failure;
   @override
   @JsonKey(ignore: true)
-  _$$_UpdateRemoteCaptionFailureCopyWith<_$_UpdateRemoteCaptionFailure>
+  _$$UpdateRemoteCaptionFailureImplCopyWith<_$UpdateRemoteCaptionFailureImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_UploadCaptionFailureCopyWith<$Res>
+abstract class _$$UploadCaptionFailureImplCopyWith<$Res>
     implements $VideoCallCaptionStateCopyWith<$Res> {
-  factory _$$_UploadCaptionFailureCopyWith(_$_UploadCaptionFailure value,
-          $Res Function(_$_UploadCaptionFailure) then) =
-      __$$_UploadCaptionFailureCopyWithImpl<$Res>;
+  factory _$$UploadCaptionFailureImplCopyWith(_$UploadCaptionFailureImpl value,
+          $Res Function(_$UploadCaptionFailureImpl) then) =
+      __$$UploadCaptionFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1722,11 +1731,12 @@ abstract class _$$_UploadCaptionFailureCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UploadCaptionFailureCopyWithImpl<$Res>
-    extends _$VideoCallCaptionStateCopyWithImpl<$Res, _$_UploadCaptionFailure>
-    implements _$$_UploadCaptionFailureCopyWith<$Res> {
-  __$$_UploadCaptionFailureCopyWithImpl(_$_UploadCaptionFailure _value,
-      $Res Function(_$_UploadCaptionFailure) _then)
+class __$$UploadCaptionFailureImplCopyWithImpl<$Res>
+    extends _$VideoCallCaptionStateCopyWithImpl<$Res,
+        _$UploadCaptionFailureImpl>
+    implements _$$UploadCaptionFailureImplCopyWith<$Res> {
+  __$$UploadCaptionFailureImplCopyWithImpl(_$UploadCaptionFailureImpl _value,
+      $Res Function(_$UploadCaptionFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1737,7 +1747,7 @@ class __$$_UploadCaptionFailureCopyWithImpl<$Res>
     Object? remoteCaptions = freezed,
     Object? failure = null,
   }) {
-    return _then(_$_UploadCaptionFailure(
+    return _then(_$UploadCaptionFailureImpl(
       isEnabled: null == isEnabled
           ? _value.isEnabled
           : isEnabled // ignore: cast_nullable_to_non_nullable
@@ -1760,8 +1770,8 @@ class __$$_UploadCaptionFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UploadCaptionFailure implements _UploadCaptionFailure {
-  const _$_UploadCaptionFailure(
+class _$UploadCaptionFailureImpl implements _UploadCaptionFailure {
+  const _$UploadCaptionFailureImpl(
       {required this.isEnabled,
       required final List<Caption> localCaptions,
       required this.remoteCaptions,
@@ -1792,7 +1802,7 @@ class _$_UploadCaptionFailure implements _UploadCaptionFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UploadCaptionFailure &&
+            other is _$UploadCaptionFailureImpl &&
             (identical(other.isEnabled, isEnabled) ||
                 other.isEnabled == isEnabled) &&
             const DeepCollectionEquality()
@@ -1813,9 +1823,10 @@ class _$_UploadCaptionFailure implements _UploadCaptionFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UploadCaptionFailureCopyWith<_$_UploadCaptionFailure> get copyWith =>
-      __$$_UploadCaptionFailureCopyWithImpl<_$_UploadCaptionFailure>(
-          this, _$identity);
+  _$$UploadCaptionFailureImplCopyWith<_$UploadCaptionFailureImpl>
+      get copyWith =>
+          __$$UploadCaptionFailureImplCopyWithImpl<_$UploadCaptionFailureImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1927,7 +1938,7 @@ abstract class _UploadCaptionFailure implements VideoCallCaptionState {
       {required final bool isEnabled,
       required final List<Caption> localCaptions,
       required final String? remoteCaptions,
-      required final Failure failure}) = _$_UploadCaptionFailure;
+      required final Failure failure}) = _$UploadCaptionFailureImpl;
 
   @override
   bool get isEnabled;
@@ -1938,6 +1949,6 @@ abstract class _UploadCaptionFailure implements VideoCallCaptionState {
   Failure get failure;
   @override
   @JsonKey(ignore: true)
-  _$$_UploadCaptionFailureCopyWith<_$_UploadCaptionFailure> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UploadCaptionFailureImplCopyWith<_$UploadCaptionFailureImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

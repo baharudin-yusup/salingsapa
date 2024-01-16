@@ -14,6 +14,13 @@ abstract class NavigatorService {
   });
 
   @optionalTypeArgs
+  Future<Either<Failure, T?>>
+      pushReplacementNamed<T extends Object?, TO extends Object?>(
+    String routeName, {
+    Object? arguments,
+  });
+
+  @optionalTypeArgs
   Future<Either<Failure, T?>> pushNamedAndRemoveUntil<T extends Object?>(
     String newRouteName,
     RoutePredicate predicate, {
@@ -39,6 +46,23 @@ class NavigatorServiceImpl implements NavigatorService {
     try {
       final result = await Navigator.of(context!)
           .pushNamed<T>(routeName, arguments: arguments);
+      return Right(result);
+    } catch (error) {
+      Logger.error(error, event: 'opening route');
+      return Left(UnknownFailure());
+    }
+  }
+
+  @override
+  @optionalTypeArgs
+  Future<Either<Failure, T?>>
+      pushReplacementNamed<T extends Object?, TO extends Object?>(
+          String routeName,
+          {Object? arguments}) async {
+    try {
+      Logger.print('start navigating to $routeName');
+      final result = await Navigator.of(context!)
+          .pushReplacementNamed<T, TO>(routeName, arguments: arguments);
       return Right(result);
     } catch (error) {
       Logger.error(error, event: 'opening route');

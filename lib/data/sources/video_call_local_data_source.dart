@@ -5,6 +5,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:uuid/uuid.dart';
 
+import '../../core/errors/exceptions.dart';
 import '../models/video_frame_model.dart';
 
 abstract class VideoCallLocalDataSource {
@@ -20,7 +21,14 @@ abstract class VideoCallLocalDataSource {
 }
 
 class VideoCallLocalDataSourceImpl implements VideoCallLocalDataSource {
-  late RtcEngine _engine;
+  RtcEngine? _rtcEngine;
+  RtcEngine get _engine {
+    if (_rtcEngine == null) {
+      throw GeneralException();
+    }
+
+    return _rtcEngine!;
+  }
 
   late BehaviorSubject<SalingsapaVideoFrameModel> _videoFrameController;
   late Timer _videoFrameSendTimer;
@@ -31,9 +39,7 @@ class VideoCallLocalDataSourceImpl implements VideoCallLocalDataSource {
   }
 
   @override
-  void setEngine(RtcEngine engine) {
-    _engine = engine;
-  }
+  void setEngine(RtcEngine engine) => _rtcEngine = engine;
 
   @override
   Future<void> setObserver() async {

@@ -8,7 +8,7 @@ import '../../../core/errors/failures.dart';
 import '../../../data/extensions/to_phone_number.dart';
 import '../../../domain/entities/call_info.dart';
 import '../../../domain/entities/contact.dart';
-import '../../../domain/entities/video_call_invitation.dart';
+import '../../../domain/entities/room.dart';
 import '../../blocs/contact_list/contact_list_bloc.dart';
 import '../../blocs/recent_call/recent_call_bloc.dart';
 import '../../components/intuitive_scaffold.dart';
@@ -67,7 +67,7 @@ class RecentCallScreen extends StatelessWidget {
   Widget showInvitationList(BuildContext context) {
     return BlocBuilder<RecentCallBloc, RecentCallState>(
         builder: (context, state) {
-      return StreamBuilder<Either<Failure, List<VideoCallInvitation>>>(
+      return StreamBuilder<Either<Failure, List<Room>>>(
           stream: state.invitations,
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
@@ -97,7 +97,7 @@ class RecentCallScreen extends StatelessWidget {
                       contact = contactListState.contacts.firstWhere(
                           (contact) =>
                               contact.phoneNumber.toFormattedPhoneNumber() ==
-                              invitation.callerPhoneNumber
+                              invitation.hostPhoneNumber
                                   .toFormattedPhoneNumber());
                     } catch (_) {}
 
@@ -107,9 +107,9 @@ class RecentCallScreen extends StatelessWidget {
                       child: InvitationCard(
                         invitation,
                         callerContact: contact,
-                        onTap: (invitation) => Navigator.pushNamed(
+                        onTap: (room) => Navigator.pushNamed(
                             context, VideoCallScreen.routeName,
-                            arguments: invitation),
+                            arguments: room),
                       ),
                     );
                   },

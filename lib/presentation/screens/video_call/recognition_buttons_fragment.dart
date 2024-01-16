@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../blocs/sign_language_recognition_bloc/sign_language_recognition_bloc.dart';
 import '../../blocs/speech_recognition_bloc/speech_recognition_bloc.dart';
@@ -18,24 +19,41 @@ class RecognitionButtonsFragment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: context.colorScheme().background.withOpacity(0.5),
-        borderRadius: const BorderRadius.all(
-          Radius.circular(IntuitiveUiConstant.normalRadius),
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<SignLanguageRecognitionBloc, SignLanguageRecognitionState>(
+          listener: (context, state) {
+            state.maybeMap(
+              failure: (state) {
+                Fluttertoast.showToast(
+                  msg: state.failure.errorMessage,
+                  toastLength: Toast.LENGTH_SHORT,
+                );
+              },
+              orElse: () {},
+            );
+          },
         ),
-      ),
-      padding: const EdgeInsets.all(IntuitiveUiConstant.smallSpace),
-      margin: const EdgeInsets.all(IntuitiveUiConstant.normalSpace),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _buildSpeechRecognitionButton(),
-          const SizedBox(height: IntuitiveUiConstant.tinySpace),
-          _buildSignLanguageRecognitionButton(),
-          const SizedBox(height: IntuitiveUiConstant.tinySpace),
-          _buildDisableRecognitionButton(),
-        ],
+      ],
+      child: Container(
+        decoration: BoxDecoration(
+          color: context.colorScheme().background.withOpacity(0.5),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(IntuitiveUiConstant.normalRadius),
+          ),
+        ),
+        padding: const EdgeInsets.all(IntuitiveUiConstant.smallSpace),
+        margin: const EdgeInsets.all(IntuitiveUiConstant.normalSpace),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _buildSpeechRecognitionButton(),
+            const SizedBox(height: IntuitiveUiConstant.tinySpace),
+            _buildSignLanguageRecognitionButton(),
+            const SizedBox(height: IntuitiveUiConstant.tinySpace),
+            _buildDisableRecognitionButton(),
+          ],
+        ),
       ),
     );
   }
