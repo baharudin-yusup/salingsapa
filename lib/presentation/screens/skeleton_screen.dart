@@ -52,9 +52,9 @@ class _RootScreenState extends State<RootScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      final NotificationService service = sl();
-      await service.requestPermission();
-      await service.init();
+      final NotificationService navigatorService = sl();
+      await navigatorService.requestPermission();
+      await navigatorService.init();
     });
     super.initState();
   }

@@ -20,79 +20,76 @@ class SetupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<SetupBloc>(
-      create: (_) => sl(),
-      child: BlocConsumer<SetupBloc, SetupState>(
-        listener: (context, state) {
-          final UiService uiService = sl();
-          final NavigatorService service = sl();
-          state.map(
-              inputPhoneNumberInitial: (_) {},
-              inputPhoneNumberVerifyInProgress: (value) {
-                uiService.showLoading();
-              },
-              inputPhoneNumberFailure: (_) {
-                uiService.hideLoading();
-              },
-              inputPhoneNumberSuccess: (_) {
-                uiService.hideLoading();
-                service.pushNamed(VerifyOtpScreen.routeName);
-              },
-              inputOtpInitial: (_) {},
-              inputOtpValidationInProgress: (_) {},
-              inputOtpValidationSuccess: (_) {},
-              inputOtpValidationFailure: (_) {});
-        },
-        builder: (context, state) {
-          final SetupBloc bloc = context.read();
-          return IntuitiveScaffold(
-            appBar: IntuitiveAppBar(
-              middle: Text(AppLocalizations.of(context)!.enterYourPhoneNumber),
-              cupertinoTrailing: GestureDetector(
-                onTap: bloc.canSubmit()
-                    ? () {
-                        FocusManager.instance.primaryFocus?.unfocus();
-                        _onButtonDonePressed(bloc);
-                      }
-                    : null,
-                child: Text(
-                  AppLocalizations.of(context)!.done,
-                  style: TextStyle(
-                    color: bloc.canSubmit()
-                        ? context.colorScheme().primary
-                        : context.colorScheme().background.withOpacity(0.5),
-                  ),
+    return BlocConsumer<SetupBloc, SetupState>(
+      listener: (context, state) {
+        final UiService uiService = sl();
+        final NavigatorService service = sl();
+        state.map(
+            inputPhoneNumberInitial: (_) {},
+            inputPhoneNumberVerifyInProgress: (value) {
+              uiService.showLoading();
+            },
+            inputPhoneNumberFailure: (_) {
+              uiService.hideLoading();
+            },
+            inputPhoneNumberSuccess: (_) {
+              uiService.hideLoading();
+              service.pushNamed(VerifyOtpScreen.routeName);
+            },
+            inputOtpInitial: (_) {},
+            inputOtpValidationInProgress: (_) {},
+            inputOtpValidationSuccess: (_) {},
+            inputOtpValidationFailure: (_) {});
+      },
+      builder: (context, state) {
+        final SetupBloc bloc = context.read();
+        return IntuitiveScaffold(
+          appBar: IntuitiveAppBar(
+            middle: Text(AppLocalizations.of(context)!.enterYourPhoneNumber),
+            cupertinoTrailing: GestureDetector(
+              onTap: bloc.canSubmit()
+                  ? () {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                      _onButtonDonePressed(bloc);
+                    }
+                  : null,
+              child: Text(
+                AppLocalizations.of(context)!.done,
+                style: TextStyle(
+                  color: bloc.canSubmit()
+                      ? context.colorScheme().primary
+                      : context.colorScheme().background.withOpacity(0.5),
                 ),
               ),
             ),
-            child: SafeArea(
-              child: ListView(
-                padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace),
-                children: [
-                  _buildInfoText(),
-                  const SizedBox(height: IntuitiveUiConstant.normalSpace),
-                  IntuitiveTextField(
-                    hint: 'Phone number',
-                    textInputType: TextInputType.number,
-                    prefix: const Padding(
-                      padding:
-                          EdgeInsets.only(right: IntuitiveUiConstant.tinySpace),
-                      child: Text('+62'),
-                    ),
+          ),
+          child: SafeArea(
+            child: ListView(
+              padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace),
+              children: [
+                _buildInfoText(),
+                const SizedBox(height: IntuitiveUiConstant.normalSpace),
+                IntuitiveTextField(
+                  hint: 'Phone number',
+                  textInputType: TextInputType.number,
+                  prefix: const Padding(
                     padding:
-                        const EdgeInsets.all(IntuitiveUiConstant.smallSpace),
-                    textInputAction: TextInputAction.done,
-                    onChanged: (phoneNumber) =>
-                        bloc.add(SetupEvent.phoneNumberChanged(phoneNumber)),
+                        EdgeInsets.only(right: IntuitiveUiConstant.tinySpace),
+                    child: Text('+62'),
                   ),
-                  const SizedBox(height: IntuitiveUiConstant.largeSpace),
-                  if (Platform.isAndroid) _buildMaterialDoneButton(),
-                ],
-              ),
+                  padding:
+                      const EdgeInsets.all(IntuitiveUiConstant.smallSpace),
+                  textInputAction: TextInputAction.done,
+                  onChanged: (phoneNumber) =>
+                      bloc.add(SetupEvent.phoneNumberChanged(phoneNumber)),
+                ),
+                const SizedBox(height: IntuitiveUiConstant.largeSpace),
+                if (Platform.isAndroid) _buildMaterialDoneButton(),
+              ],
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 

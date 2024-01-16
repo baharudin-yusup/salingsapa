@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../data/extensions/extensions.dart';
 import '../../injection_container.dart';
 import '../blocs/setup/setup_bloc.dart';
 import '../components/intuitive_otp.dart';
@@ -72,7 +73,7 @@ class VerifyOtpScreen extends StatelessWidget {
     return BlocBuilder<SetupBloc, SetupState>(
       builder: (context, state) {
         return Text(AppLocalizations.of(context)!
-            .otpSendToInfo('+62${state.phoneNumber}'));
+            .otpSendToInfo(state.phoneNumber.toFormattedPhoneNumber()));
       },
     );
   }

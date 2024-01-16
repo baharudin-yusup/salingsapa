@@ -3,11 +3,14 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/errors/failures.dart';
 import '../../../core/utils/logger.dart';
+import '../../../data/extensions/extensions.dart';
 import '../../../domain/usecases/verify_otp.dart';
 import '../../../domain/usecases/verify_phone_number.dart';
 
 part 'setup_bloc.freezed.dart';
+
 part 'setup_event.dart';
+
 part 'setup_state.dart';
 
 class SetupBloc extends Bloc<SetupEvent, SetupState> {
@@ -33,7 +36,7 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
       _ButtonDonePressed event, Emitter<SetupState> emit) async {
     emit(SetupState.inputPhoneNumberVerifyInProgress(state.phoneNumber));
     await _verifyPhoneNumber('+62${state.phoneNumber}');
-    emit(SetupState.inputPhoneNumberSuccess(state.phoneNumber));
+    emit(SetupState.inputPhoneNumberSuccess('+62${state.phoneNumber}'));
   }
 
   void _inputOtp(_OtpChanged event, Emitter<SetupState> emit) async {
