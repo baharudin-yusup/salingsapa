@@ -13,7 +13,7 @@ import '../room/create_room_screen.dart';
 class ContactListScreen extends StatelessWidget {
   static const routeName = '/contacts';
 
-  const ContactListScreen({Key? key}) : super(key: key);
+  const ContactListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -18,7 +18,7 @@ import 'video_interface/fullscreen_video_interface.dart';
 class VideoCallScreen extends StatelessWidget {
   static const routeName = '/video-call';
 
-  const VideoCallScreen({Key? key}) : super(key: key);
+  const VideoCallScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

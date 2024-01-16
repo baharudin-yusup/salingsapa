@@ -13,9 +13,9 @@ class RecognitionButtonsFragment extends StatelessWidget {
   final double radius;
 
   const RecognitionButtonsFragment({
-    Key? key,
+    super.key,
     this.radius = 25,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

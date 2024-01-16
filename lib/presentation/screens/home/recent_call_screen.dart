@@ -21,7 +21,7 @@ import '../video_call/video_call_screen.dart';
 class RecentCallScreen extends StatelessWidget {
   static const routeName = '/history';
 
-  const RecentCallScreen({Key? key}) : super(key: key);
+  const RecentCallScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

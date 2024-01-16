@@ -109,9 +109,9 @@ class SignLanguageRecognitionBloc
     }
 
     await toggleUseCase(
-      isNeedToEnable
+      (isNeedToEnable
           ? _enableSignLanguageRecognition
-          : _disableSignLanguageRecognition,
+          : _disableSignLanguageRecognition).call,
       onSuccess: (_) {
         Logger.print(
           'enabling feature success',

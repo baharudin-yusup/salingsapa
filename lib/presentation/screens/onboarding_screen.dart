@@ -7,7 +7,7 @@ import '../blocs/introduction/introduction_cubit.dart';
 import '../services/theme_service.dart';
 
 class OnboardingScreen extends StatelessWidget {
-  const OnboardingScreen({Key? key}) : super(key: key);
+  const OnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
