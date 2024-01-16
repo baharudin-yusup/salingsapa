@@ -4,6 +4,8 @@ extension ToPhoneNumber on String {
 
     if (phoneNumber.startsWith('0')) {
       phoneNumber = '$countryCode${phoneNumber.substring(1)}';
+    } else if (!phoneNumber.startsWith('+')) {
+      phoneNumber = '+$phoneNumber';
     }
 
     return phoneNumber;

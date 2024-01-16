@@ -56,7 +56,7 @@ class AuthenticationRemoteDatSourceImpl
     try {
       await _auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
-        verificationCompleted: (credential) async {
+        verificationCompleted: (credential) {
           phoneAuthCredential = credential;
         },
         verificationFailed: (error) {

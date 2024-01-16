@@ -53,6 +53,7 @@ dependencies:
   tflite: ^1.1.2
   path_provider: ^2.0.15
   dio: ^5.4.0
+  fluttertoast: ^8.2.4
 
 dependency_overrides:
   tflite:
