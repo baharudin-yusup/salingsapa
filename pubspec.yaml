@@ -50,15 +50,13 @@ dependencies:
   http: ^1.1.0
   camera: ^0.10.5+2
   speech_to_text: ^6.1.1
-  tflite: ^1.1.2
+  tflite:
+    git:
+      url: https://github.com/baharudin-yusup/flutter_tflite
+      ref: master
   path_provider: ^2.1.2
   dio: ^5.4.0
   fluttertoast: ^8.2.4
-
-dependency_overrides:
-  tflite:
-    git:
-      url: https://github.com/St-Luciferr/flutter_tflite.git
 
 dev_dependencies:
   flutter_test:
