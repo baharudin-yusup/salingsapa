@@ -51,7 +51,7 @@ dependencies:
   camera: ^0.10.5+2
   speech_to_text: ^6.1.1
   tflite: ^1.1.2
-  path_provider: ^2.0.15
+  path_provider: ^2.1.2
   dio: ^5.4.0
   fluttertoast: ^8.2.4
 
