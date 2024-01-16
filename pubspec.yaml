@@ -2,7 +2,7 @@ name: salingsapa
 description: A Final Exam Project
 publish_to: 'none'
 
-version: 0.5.0+3
+version: 0.6.0+3
 
 environment:
   sdk: '>=2.19.2 <3.0.0'
@@ -39,14 +39,13 @@ dependencies:
   introduction_screen: ^3.1.6
   flutter_localizations:
     sdk: flutter
-  intl: ^0.18.0
-  agora_uikit: ^1.2.1
+  intl: ^0.18.1
   agora_rtc_engine: ^6.2.6
   uuid: ^4.1.0
   firebase_storage: ^11.0.16
   image_picker: ^1.0.4
   cached_network_image: ^3.2.3
-  flutter_ringtone_player: ^3.2.0
+  flutter_ringtone_player: ^4.0.0+2
   http: ^1.1.0
   camera: ^0.10.5+2
   speech_to_text: ^6.1.1
@@ -61,7 +60,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
   build_runner: ^2.3.3
   json_serializable: ^6.6.1
 

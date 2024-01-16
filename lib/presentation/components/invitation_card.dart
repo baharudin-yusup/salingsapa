@@ -118,6 +118,6 @@ class InvitationCard extends StatelessWidget {
   }
 
   void playSound() {
-    FlutterRingtonePlayer.playNotification();
+    FlutterRingtonePlayer().playNotification();
   }
 }
