@@ -93,24 +93,25 @@ class _$AccountEventCopyWithImpl<$Res, $Val extends AccountEvent>
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$AccountEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$AccountEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$StartedImpl implements _Started {
+  const _$StartedImpl();
 
   @override
   String toString() {
@@ -120,7 +121,7 @@ class _$_Started implements _Started {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Started);
+        (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
 
   @override
@@ -208,29 +209,29 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements AccountEvent {
-  const factory _Started() = _$_Started;
+  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_SignOutStartedCopyWith<$Res> {
-  factory _$$_SignOutStartedCopyWith(
-          _$_SignOutStarted value, $Res Function(_$_SignOutStarted) then) =
-      __$$_SignOutStartedCopyWithImpl<$Res>;
+abstract class _$$SignOutStartedImplCopyWith<$Res> {
+  factory _$$SignOutStartedImplCopyWith(_$SignOutStartedImpl value,
+          $Res Function(_$SignOutStartedImpl) then) =
+      __$$SignOutStartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SignOutStartedCopyWithImpl<$Res>
-    extends _$AccountEventCopyWithImpl<$Res, _$_SignOutStarted>
-    implements _$$_SignOutStartedCopyWith<$Res> {
-  __$$_SignOutStartedCopyWithImpl(
-      _$_SignOutStarted _value, $Res Function(_$_SignOutStarted) _then)
+class __$$SignOutStartedImplCopyWithImpl<$Res>
+    extends _$AccountEventCopyWithImpl<$Res, _$SignOutStartedImpl>
+    implements _$$SignOutStartedImplCopyWith<$Res> {
+  __$$SignOutStartedImplCopyWithImpl(
+      _$SignOutStartedImpl _value, $Res Function(_$SignOutStartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_SignOutStarted implements _SignOutStarted {
-  const _$_SignOutStarted();
+class _$SignOutStartedImpl implements _SignOutStarted {
+  const _$SignOutStartedImpl();
 
   @override
   String toString() {
@@ -240,7 +241,7 @@ class _$_SignOutStarted implements _SignOutStarted {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SignOutStarted);
+        (other.runtimeType == runtimeType && other is _$SignOutStartedImpl);
   }
 
   @override
@@ -328,29 +329,29 @@ class _$_SignOutStarted implements _SignOutStarted {
 }
 
 abstract class _SignOutStarted implements AccountEvent {
-  const factory _SignOutStarted() = _$_SignOutStarted;
+  const factory _SignOutStarted() = _$SignOutStartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_PickImageStartedCopyWith<$Res> {
-  factory _$$_PickImageStartedCopyWith(
-          _$_PickImageStarted value, $Res Function(_$_PickImageStarted) then) =
-      __$$_PickImageStartedCopyWithImpl<$Res>;
+abstract class _$$PickImageStartedImplCopyWith<$Res> {
+  factory _$$PickImageStartedImplCopyWith(_$PickImageStartedImpl value,
+          $Res Function(_$PickImageStartedImpl) then) =
+      __$$PickImageStartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_PickImageStartedCopyWithImpl<$Res>
-    extends _$AccountEventCopyWithImpl<$Res, _$_PickImageStarted>
-    implements _$$_PickImageStartedCopyWith<$Res> {
-  __$$_PickImageStartedCopyWithImpl(
-      _$_PickImageStarted _value, $Res Function(_$_PickImageStarted) _then)
+class __$$PickImageStartedImplCopyWithImpl<$Res>
+    extends _$AccountEventCopyWithImpl<$Res, _$PickImageStartedImpl>
+    implements _$$PickImageStartedImplCopyWith<$Res> {
+  __$$PickImageStartedImplCopyWithImpl(_$PickImageStartedImpl _value,
+      $Res Function(_$PickImageStartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_PickImageStarted implements _PickImageStarted {
-  const _$_PickImageStarted();
+class _$PickImageStartedImpl implements _PickImageStarted {
+  const _$PickImageStartedImpl();
 
   @override
   String toString() {
@@ -360,7 +361,7 @@ class _$_PickImageStarted implements _PickImageStarted {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_PickImageStarted);
+        (other.runtimeType == runtimeType && other is _$PickImageStartedImpl);
   }
 
   @override
@@ -448,24 +449,24 @@ class _$_PickImageStarted implements _PickImageStarted {
 }
 
 abstract class _PickImageStarted implements AccountEvent {
-  const factory _PickImageStarted() = _$_PickImageStarted;
+  const factory _PickImageStarted() = _$PickImageStartedImpl;
 }
 
 /// @nodoc
-abstract class _$$_UpdateNameStartedCopyWith<$Res> {
-  factory _$$_UpdateNameStartedCopyWith(_$_UpdateNameStarted value,
-          $Res Function(_$_UpdateNameStarted) then) =
-      __$$_UpdateNameStartedCopyWithImpl<$Res>;
+abstract class _$$UpdateNameStartedImplCopyWith<$Res> {
+  factory _$$UpdateNameStartedImplCopyWith(_$UpdateNameStartedImpl value,
+          $Res Function(_$UpdateNameStartedImpl) then) =
+      __$$UpdateNameStartedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String name});
 }
 
 /// @nodoc
-class __$$_UpdateNameStartedCopyWithImpl<$Res>
-    extends _$AccountEventCopyWithImpl<$Res, _$_UpdateNameStarted>
-    implements _$$_UpdateNameStartedCopyWith<$Res> {
-  __$$_UpdateNameStartedCopyWithImpl(
-      _$_UpdateNameStarted _value, $Res Function(_$_UpdateNameStarted) _then)
+class __$$UpdateNameStartedImplCopyWithImpl<$Res>
+    extends _$AccountEventCopyWithImpl<$Res, _$UpdateNameStartedImpl>
+    implements _$$UpdateNameStartedImplCopyWith<$Res> {
+  __$$UpdateNameStartedImplCopyWithImpl(_$UpdateNameStartedImpl _value,
+      $Res Function(_$UpdateNameStartedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -473,7 +474,7 @@ class __$$_UpdateNameStartedCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
   }) {
-    return _then(_$_UpdateNameStarted(
+    return _then(_$UpdateNameStartedImpl(
       null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -484,8 +485,8 @@ class __$$_UpdateNameStartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateNameStarted implements _UpdateNameStarted {
-  const _$_UpdateNameStarted(this.name);
+class _$UpdateNameStartedImpl implements _UpdateNameStarted {
+  const _$UpdateNameStartedImpl(this.name);
 
   @override
   final String name;
@@ -499,7 +500,7 @@ class _$_UpdateNameStarted implements _UpdateNameStarted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateNameStarted &&
+            other is _$UpdateNameStartedImpl &&
             (identical(other.name, name) || other.name == name));
   }
 
@@ -509,8 +510,8 @@ class _$_UpdateNameStarted implements _UpdateNameStarted {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateNameStartedCopyWith<_$_UpdateNameStarted> get copyWith =>
-      __$$_UpdateNameStartedCopyWithImpl<_$_UpdateNameStarted>(
+  _$$UpdateNameStartedImplCopyWith<_$UpdateNameStartedImpl> get copyWith =>
+      __$$UpdateNameStartedImplCopyWithImpl<_$UpdateNameStartedImpl>(
           this, _$identity);
 
   @override
@@ -595,29 +596,29 @@ class _$_UpdateNameStarted implements _UpdateNameStarted {
 }
 
 abstract class _UpdateNameStarted implements AccountEvent {
-  const factory _UpdateNameStarted(final String name) = _$_UpdateNameStarted;
+  const factory _UpdateNameStarted(final String name) = _$UpdateNameStartedImpl;
 
   String get name;
   @JsonKey(ignore: true)
-  _$$_UpdateNameStartedCopyWith<_$_UpdateNameStarted> get copyWith =>
+  _$$UpdateNameStartedImplCopyWith<_$UpdateNameStartedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_CurrentUserUpdatedCopyWith<$Res> {
-  factory _$$_CurrentUserUpdatedCopyWith(_$_CurrentUserUpdated value,
-          $Res Function(_$_CurrentUserUpdated) then) =
-      __$$_CurrentUserUpdatedCopyWithImpl<$Res>;
+abstract class _$$CurrentUserUpdatedImplCopyWith<$Res> {
+  factory _$$CurrentUserUpdatedImplCopyWith(_$CurrentUserUpdatedImpl value,
+          $Res Function(_$CurrentUserUpdatedImpl) then) =
+      __$$CurrentUserUpdatedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({User user});
 }
 
 /// @nodoc
-class __$$_CurrentUserUpdatedCopyWithImpl<$Res>
-    extends _$AccountEventCopyWithImpl<$Res, _$_CurrentUserUpdated>
-    implements _$$_CurrentUserUpdatedCopyWith<$Res> {
-  __$$_CurrentUserUpdatedCopyWithImpl(
-      _$_CurrentUserUpdated _value, $Res Function(_$_CurrentUserUpdated) _then)
+class __$$CurrentUserUpdatedImplCopyWithImpl<$Res>
+    extends _$AccountEventCopyWithImpl<$Res, _$CurrentUserUpdatedImpl>
+    implements _$$CurrentUserUpdatedImplCopyWith<$Res> {
+  __$$CurrentUserUpdatedImplCopyWithImpl(_$CurrentUserUpdatedImpl _value,
+      $Res Function(_$CurrentUserUpdatedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -625,7 +626,7 @@ class __$$_CurrentUserUpdatedCopyWithImpl<$Res>
   $Res call({
     Object? user = null,
   }) {
-    return _then(_$_CurrentUserUpdated(
+    return _then(_$CurrentUserUpdatedImpl(
       null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -636,8 +637,8 @@ class __$$_CurrentUserUpdatedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CurrentUserUpdated implements _CurrentUserUpdated {
-  const _$_CurrentUserUpdated(this.user);
+class _$CurrentUserUpdatedImpl implements _CurrentUserUpdated {
+  const _$CurrentUserUpdatedImpl(this.user);
 
   @override
   final User user;
@@ -651,7 +652,7 @@ class _$_CurrentUserUpdated implements _CurrentUserUpdated {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CurrentUserUpdated &&
+            other is _$CurrentUserUpdatedImpl &&
             (identical(other.user, user) || other.user == user));
   }
 
@@ -661,8 +662,8 @@ class _$_CurrentUserUpdated implements _CurrentUserUpdated {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CurrentUserUpdatedCopyWith<_$_CurrentUserUpdated> get copyWith =>
-      __$$_CurrentUserUpdatedCopyWithImpl<_$_CurrentUserUpdated>(
+  _$$CurrentUserUpdatedImplCopyWith<_$CurrentUserUpdatedImpl> get copyWith =>
+      __$$CurrentUserUpdatedImplCopyWithImpl<_$CurrentUserUpdatedImpl>(
           this, _$identity);
 
   @override
@@ -747,11 +748,11 @@ class _$_CurrentUserUpdated implements _CurrentUserUpdated {
 }
 
 abstract class _CurrentUserUpdated implements AccountEvent {
-  const factory _CurrentUserUpdated(final User user) = _$_CurrentUserUpdated;
+  const factory _CurrentUserUpdated(final User user) = _$CurrentUserUpdatedImpl;
 
   User get user;
   @JsonKey(ignore: true)
-  _$$_CurrentUserUpdatedCopyWith<_$_CurrentUserUpdated> get copyWith =>
+  _$$CurrentUserUpdatedImplCopyWith<_$CurrentUserUpdatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -872,21 +873,22 @@ class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res>
+abstract class _$$InitialImplCopyWith<$Res>
     implements $AccountStateCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? name, String? phoneNumber, String? profilePictureUrl});
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$AccountStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -896,7 +898,7 @@ class __$$_InitialCopyWithImpl<$Res>
     Object? phoneNumber = freezed,
     Object? profilePictureUrl = freezed,
   }) {
-    return _then(_$_Initial(
+    return _then(_$InitialImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -915,8 +917,8 @@ class __$$_InitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial(
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl(
       {this.name = null,
       this.phoneNumber = null,
       this.profilePictureUrl = null});
@@ -940,7 +942,7 @@ class _$_Initial implements _Initial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Initial &&
+            other is _$InitialImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
@@ -955,8 +957,8 @@ class _$_Initial implements _Initial {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
-      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1049,7 +1051,7 @@ abstract class _Initial implements AccountState {
   const factory _Initial(
       {final String? name,
       final String? phoneNumber,
-      final String? profilePictureUrl}) = _$_Initial;
+      final String? profilePictureUrl}) = _$InitialImpl;
 
   @override
   String? get name;
@@ -1059,27 +1061,27 @@ abstract class _Initial implements AccountState {
   String? get profilePictureUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_UpdateInProgressCopyWith<$Res>
+abstract class _$$UpdateInProgressImplCopyWith<$Res>
     implements $AccountStateCopyWith<$Res> {
-  factory _$$_UpdateInProgressCopyWith(
-          _$_UpdateInProgress value, $Res Function(_$_UpdateInProgress) then) =
-      __$$_UpdateInProgressCopyWithImpl<$Res>;
+  factory _$$UpdateInProgressImplCopyWith(_$UpdateInProgressImpl value,
+          $Res Function(_$UpdateInProgressImpl) then) =
+      __$$UpdateInProgressImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? name, String? phoneNumber, String? profilePictureUrl});
 }
 
 /// @nodoc
-class __$$_UpdateInProgressCopyWithImpl<$Res>
-    extends _$AccountStateCopyWithImpl<$Res, _$_UpdateInProgress>
-    implements _$$_UpdateInProgressCopyWith<$Res> {
-  __$$_UpdateInProgressCopyWithImpl(
-      _$_UpdateInProgress _value, $Res Function(_$_UpdateInProgress) _then)
+class __$$UpdateInProgressImplCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$UpdateInProgressImpl>
+    implements _$$UpdateInProgressImplCopyWith<$Res> {
+  __$$UpdateInProgressImplCopyWithImpl(_$UpdateInProgressImpl _value,
+      $Res Function(_$UpdateInProgressImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1089,7 +1091,7 @@ class __$$_UpdateInProgressCopyWithImpl<$Res>
     Object? phoneNumber = freezed,
     Object? profilePictureUrl = freezed,
   }) {
-    return _then(_$_UpdateInProgress(
+    return _then(_$UpdateInProgressImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -1108,8 +1110,8 @@ class __$$_UpdateInProgressCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateInProgress implements _UpdateInProgress {
-  const _$_UpdateInProgress(
+class _$UpdateInProgressImpl implements _UpdateInProgress {
+  const _$UpdateInProgressImpl(
       {required this.name,
       required this.phoneNumber,
       required this.profilePictureUrl});
@@ -1130,7 +1132,7 @@ class _$_UpdateInProgress implements _UpdateInProgress {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateInProgress &&
+            other is _$UpdateInProgressImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
@@ -1145,8 +1147,9 @@ class _$_UpdateInProgress implements _UpdateInProgress {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateInProgressCopyWith<_$_UpdateInProgress> get copyWith =>
-      __$$_UpdateInProgressCopyWithImpl<_$_UpdateInProgress>(this, _$identity);
+  _$$UpdateInProgressImplCopyWith<_$UpdateInProgressImpl> get copyWith =>
+      __$$UpdateInProgressImplCopyWithImpl<_$UpdateInProgressImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1239,7 +1242,7 @@ abstract class _UpdateInProgress implements AccountState {
   const factory _UpdateInProgress(
       {required final String? name,
       required final String? phoneNumber,
-      required final String? profilePictureUrl}) = _$_UpdateInProgress;
+      required final String? profilePictureUrl}) = _$UpdateInProgressImpl;
 
   @override
   String? get name;
@@ -1249,16 +1252,16 @@ abstract class _UpdateInProgress implements AccountState {
   String? get profilePictureUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_UpdateInProgressCopyWith<_$_UpdateInProgress> get copyWith =>
+  _$$UpdateInProgressImplCopyWith<_$UpdateInProgressImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_UpdateFailureCopyWith<$Res>
+abstract class _$$UpdateFailureImplCopyWith<$Res>
     implements $AccountStateCopyWith<$Res> {
-  factory _$$_UpdateFailureCopyWith(
-          _$_UpdateFailure value, $Res Function(_$_UpdateFailure) then) =
-      __$$_UpdateFailureCopyWithImpl<$Res>;
+  factory _$$UpdateFailureImplCopyWith(
+          _$UpdateFailureImpl value, $Res Function(_$UpdateFailureImpl) then) =
+      __$$UpdateFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1269,11 +1272,11 @@ abstract class _$$_UpdateFailureCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UpdateFailureCopyWithImpl<$Res>
-    extends _$AccountStateCopyWithImpl<$Res, _$_UpdateFailure>
-    implements _$$_UpdateFailureCopyWith<$Res> {
-  __$$_UpdateFailureCopyWithImpl(
-      _$_UpdateFailure _value, $Res Function(_$_UpdateFailure) _then)
+class __$$UpdateFailureImplCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$UpdateFailureImpl>
+    implements _$$UpdateFailureImplCopyWith<$Res> {
+  __$$UpdateFailureImplCopyWithImpl(
+      _$UpdateFailureImpl _value, $Res Function(_$UpdateFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1284,7 +1287,7 @@ class __$$_UpdateFailureCopyWithImpl<$Res>
     Object? profilePictureUrl = freezed,
     Object? errorMessage = null,
   }) {
-    return _then(_$_UpdateFailure(
+    return _then(_$UpdateFailureImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -1307,8 +1310,8 @@ class __$$_UpdateFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateFailure implements _UpdateFailure {
-  const _$_UpdateFailure(
+class _$UpdateFailureImpl implements _UpdateFailure {
+  const _$UpdateFailureImpl(
       {required this.name,
       required this.phoneNumber,
       required this.profilePictureUrl,
@@ -1332,7 +1335,7 @@ class _$_UpdateFailure implements _UpdateFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateFailure &&
+            other is _$UpdateFailureImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
@@ -1349,8 +1352,8 @@ class _$_UpdateFailure implements _UpdateFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateFailureCopyWith<_$_UpdateFailure> get copyWith =>
-      __$$_UpdateFailureCopyWithImpl<_$_UpdateFailure>(this, _$identity);
+  _$$UpdateFailureImplCopyWith<_$UpdateFailureImpl> get copyWith =>
+      __$$UpdateFailureImplCopyWithImpl<_$UpdateFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1445,7 +1448,7 @@ abstract class _UpdateFailure implements AccountState {
       {required final String? name,
       required final String? phoneNumber,
       required final String? profilePictureUrl,
-      required final String errorMessage}) = _$_UpdateFailure;
+      required final String errorMessage}) = _$UpdateFailureImpl;
 
   @override
   String? get name;
@@ -1456,6 +1459,6 @@ abstract class _UpdateFailure implements AccountState {
   String get errorMessage;
   @override
   @JsonKey(ignore: true)
-  _$$_UpdateFailureCopyWith<_$_UpdateFailure> get copyWith =>
+  _$$UpdateFailureImplCopyWith<_$UpdateFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

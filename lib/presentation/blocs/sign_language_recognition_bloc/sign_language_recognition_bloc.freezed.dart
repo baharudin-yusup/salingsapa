@@ -104,19 +104,20 @@ class _$SignLanguageRecognitionEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_StartedCopyWith<$Res> {
-  factory _$$_StartedCopyWith(
-          _$_Started value, $Res Function(_$_Started) then) =
-      __$$_StartedCopyWithImpl<$Res>;
+abstract class _$$StartedImplCopyWith<$Res> {
+  factory _$$StartedImplCopyWith(
+          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
+      __$$StartedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({RtcEngine engine});
 }
 
 /// @nodoc
-class __$$_StartedCopyWithImpl<$Res>
-    extends _$SignLanguageRecognitionEventCopyWithImpl<$Res, _$_Started>
-    implements _$$_StartedCopyWith<$Res> {
-  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+class __$$StartedImplCopyWithImpl<$Res>
+    extends _$SignLanguageRecognitionEventCopyWithImpl<$Res, _$StartedImpl>
+    implements _$$StartedImplCopyWith<$Res> {
+  __$$StartedImplCopyWithImpl(
+      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -124,7 +125,7 @@ class __$$_StartedCopyWithImpl<$Res>
   $Res call({
     Object? engine = null,
   }) {
-    return _then(_$_Started(
+    return _then(_$StartedImpl(
       null == engine
           ? _value.engine
           : engine // ignore: cast_nullable_to_non_nullable
@@ -135,8 +136,8 @@ class __$$_StartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started(this.engine);
+class _$StartedImpl implements _Started {
+  const _$StartedImpl(this.engine);
 
   @override
   final RtcEngine engine;
@@ -150,7 +151,7 @@ class _$_Started implements _Started {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Started &&
+            other is _$StartedImpl &&
             (identical(other.engine, engine) || other.engine == engine));
   }
 
@@ -160,8 +161,8 @@ class _$_Started implements _Started {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StartedCopyWith<_$_Started> get copyWith =>
-      __$$_StartedCopyWithImpl<_$_Started>(this, _$identity);
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
+      __$$StartedImplCopyWithImpl<_$StartedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -253,30 +254,30 @@ class _$_Started implements _Started {
 }
 
 abstract class _Started implements SignLanguageRecognitionEvent {
-  const factory _Started(final RtcEngine engine) = _$_Started;
+  const factory _Started(final RtcEngine engine) = _$StartedImpl;
 
   RtcEngine get engine;
   @JsonKey(ignore: true)
-  _$$_StartedCopyWith<_$_Started> get copyWith =>
+  _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ToggleFeatureStartedCopyWith<$Res> {
-  factory _$$_ToggleFeatureStartedCopyWith(_$_ToggleFeatureStarted value,
-          $Res Function(_$_ToggleFeatureStarted) then) =
-      __$$_ToggleFeatureStartedCopyWithImpl<$Res>;
+abstract class _$$ToggleFeatureStartedImplCopyWith<$Res> {
+  factory _$$ToggleFeatureStartedImplCopyWith(_$ToggleFeatureStartedImpl value,
+          $Res Function(_$ToggleFeatureStartedImpl) then) =
+      __$$ToggleFeatureStartedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool isEnabled});
 }
 
 /// @nodoc
-class __$$_ToggleFeatureStartedCopyWithImpl<$Res>
+class __$$ToggleFeatureStartedImplCopyWithImpl<$Res>
     extends _$SignLanguageRecognitionEventCopyWithImpl<$Res,
-        _$_ToggleFeatureStarted>
-    implements _$$_ToggleFeatureStartedCopyWith<$Res> {
-  __$$_ToggleFeatureStartedCopyWithImpl(_$_ToggleFeatureStarted _value,
-      $Res Function(_$_ToggleFeatureStarted) _then)
+        _$ToggleFeatureStartedImpl>
+    implements _$$ToggleFeatureStartedImplCopyWith<$Res> {
+  __$$ToggleFeatureStartedImplCopyWithImpl(_$ToggleFeatureStartedImpl _value,
+      $Res Function(_$ToggleFeatureStartedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -284,7 +285,7 @@ class __$$_ToggleFeatureStartedCopyWithImpl<$Res>
   $Res call({
     Object? isEnabled = null,
   }) {
-    return _then(_$_ToggleFeatureStarted(
+    return _then(_$ToggleFeatureStartedImpl(
       null == isEnabled
           ? _value.isEnabled
           : isEnabled // ignore: cast_nullable_to_non_nullable
@@ -295,8 +296,8 @@ class __$$_ToggleFeatureStartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ToggleFeatureStarted implements _ToggleFeatureStarted {
-  const _$_ToggleFeatureStarted([this.isEnabled = false]);
+class _$ToggleFeatureStartedImpl implements _ToggleFeatureStarted {
+  const _$ToggleFeatureStartedImpl([this.isEnabled = false]);
 
   @override
   @JsonKey()
@@ -311,7 +312,7 @@ class _$_ToggleFeatureStarted implements _ToggleFeatureStarted {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ToggleFeatureStarted &&
+            other is _$ToggleFeatureStartedImpl &&
             (identical(other.isEnabled, isEnabled) ||
                 other.isEnabled == isEnabled));
   }
@@ -322,9 +323,10 @@ class _$_ToggleFeatureStarted implements _ToggleFeatureStarted {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ToggleFeatureStartedCopyWith<_$_ToggleFeatureStarted> get copyWith =>
-      __$$_ToggleFeatureStartedCopyWithImpl<_$_ToggleFeatureStarted>(
-          this, _$identity);
+  _$$ToggleFeatureStartedImplCopyWith<_$ToggleFeatureStartedImpl>
+      get copyWith =>
+          __$$ToggleFeatureStartedImplCopyWithImpl<_$ToggleFeatureStartedImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -417,30 +419,31 @@ class _$_ToggleFeatureStarted implements _ToggleFeatureStarted {
 
 abstract class _ToggleFeatureStarted implements SignLanguageRecognitionEvent {
   const factory _ToggleFeatureStarted([final bool isEnabled]) =
-      _$_ToggleFeatureStarted;
+      _$ToggleFeatureStartedImpl;
 
   bool get isEnabled;
   @JsonKey(ignore: true)
-  _$$_ToggleFeatureStartedCopyWith<_$_ToggleFeatureStarted> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ToggleFeatureStartedImplCopyWith<_$ToggleFeatureStartedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_PhotoSnapshotReceivedCopyWith<$Res> {
-  factory _$$_PhotoSnapshotReceivedCopyWith(_$_PhotoSnapshotReceived value,
-          $Res Function(_$_PhotoSnapshotReceived) then) =
-      __$$_PhotoSnapshotReceivedCopyWithImpl<$Res>;
+abstract class _$$PhotoSnapshotReceivedImplCopyWith<$Res> {
+  factory _$$PhotoSnapshotReceivedImplCopyWith(
+          _$PhotoSnapshotReceivedImpl value,
+          $Res Function(_$PhotoSnapshotReceivedImpl) then) =
+      __$$PhotoSnapshotReceivedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({PhotoSnapshot photoSnapshot});
 }
 
 /// @nodoc
-class __$$_PhotoSnapshotReceivedCopyWithImpl<$Res>
+class __$$PhotoSnapshotReceivedImplCopyWithImpl<$Res>
     extends _$SignLanguageRecognitionEventCopyWithImpl<$Res,
-        _$_PhotoSnapshotReceived>
-    implements _$$_PhotoSnapshotReceivedCopyWith<$Res> {
-  __$$_PhotoSnapshotReceivedCopyWithImpl(_$_PhotoSnapshotReceived _value,
-      $Res Function(_$_PhotoSnapshotReceived) _then)
+        _$PhotoSnapshotReceivedImpl>
+    implements _$$PhotoSnapshotReceivedImplCopyWith<$Res> {
+  __$$PhotoSnapshotReceivedImplCopyWithImpl(_$PhotoSnapshotReceivedImpl _value,
+      $Res Function(_$PhotoSnapshotReceivedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -448,7 +451,7 @@ class __$$_PhotoSnapshotReceivedCopyWithImpl<$Res>
   $Res call({
     Object? photoSnapshot = null,
   }) {
-    return _then(_$_PhotoSnapshotReceived(
+    return _then(_$PhotoSnapshotReceivedImpl(
       null == photoSnapshot
           ? _value.photoSnapshot
           : photoSnapshot // ignore: cast_nullable_to_non_nullable
@@ -459,8 +462,8 @@ class __$$_PhotoSnapshotReceivedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PhotoSnapshotReceived implements _PhotoSnapshotReceived {
-  const _$_PhotoSnapshotReceived(this.photoSnapshot);
+class _$PhotoSnapshotReceivedImpl implements _PhotoSnapshotReceived {
+  const _$PhotoSnapshotReceivedImpl(this.photoSnapshot);
 
   @override
   final PhotoSnapshot photoSnapshot;
@@ -474,7 +477,7 @@ class _$_PhotoSnapshotReceived implements _PhotoSnapshotReceived {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PhotoSnapshotReceived &&
+            other is _$PhotoSnapshotReceivedImpl &&
             (identical(other.photoSnapshot, photoSnapshot) ||
                 other.photoSnapshot == photoSnapshot));
   }
@@ -485,9 +488,9 @@ class _$_PhotoSnapshotReceived implements _PhotoSnapshotReceived {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PhotoSnapshotReceivedCopyWith<_$_PhotoSnapshotReceived> get copyWith =>
-      __$$_PhotoSnapshotReceivedCopyWithImpl<_$_PhotoSnapshotReceived>(
-          this, _$identity);
+  _$$PhotoSnapshotReceivedImplCopyWith<_$PhotoSnapshotReceivedImpl>
+      get copyWith => __$$PhotoSnapshotReceivedImplCopyWithImpl<
+          _$PhotoSnapshotReceivedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -580,29 +583,29 @@ class _$_PhotoSnapshotReceived implements _PhotoSnapshotReceived {
 
 abstract class _PhotoSnapshotReceived implements SignLanguageRecognitionEvent {
   const factory _PhotoSnapshotReceived(final PhotoSnapshot photoSnapshot) =
-      _$_PhotoSnapshotReceived;
+      _$PhotoSnapshotReceivedImpl;
 
   PhotoSnapshot get photoSnapshot;
   @JsonKey(ignore: true)
-  _$$_PhotoSnapshotReceivedCopyWith<_$_PhotoSnapshotReceived> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PhotoSnapshotReceivedImplCopyWith<_$PhotoSnapshotReceivedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_StatusChangedCopyWith<$Res> {
-  factory _$$_StatusChangedCopyWith(
-          _$_StatusChanged value, $Res Function(_$_StatusChanged) then) =
-      __$$_StatusChangedCopyWithImpl<$Res>;
+abstract class _$$StatusChangedImplCopyWith<$Res> {
+  factory _$$StatusChangedImplCopyWith(
+          _$StatusChangedImpl value, $Res Function(_$StatusChangedImpl) then) =
+      __$$StatusChangedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({RecognitionStatus status});
 }
 
 /// @nodoc
-class __$$_StatusChangedCopyWithImpl<$Res>
-    extends _$SignLanguageRecognitionEventCopyWithImpl<$Res, _$_StatusChanged>
-    implements _$$_StatusChangedCopyWith<$Res> {
-  __$$_StatusChangedCopyWithImpl(
-      _$_StatusChanged _value, $Res Function(_$_StatusChanged) _then)
+class __$$StatusChangedImplCopyWithImpl<$Res>
+    extends _$SignLanguageRecognitionEventCopyWithImpl<$Res,
+        _$StatusChangedImpl> implements _$$StatusChangedImplCopyWith<$Res> {
+  __$$StatusChangedImplCopyWithImpl(
+      _$StatusChangedImpl _value, $Res Function(_$StatusChangedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -610,7 +613,7 @@ class __$$_StatusChangedCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
   }) {
-    return _then(_$_StatusChanged(
+    return _then(_$StatusChangedImpl(
       null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -621,8 +624,8 @@ class __$$_StatusChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_StatusChanged implements _StatusChanged {
-  const _$_StatusChanged(this.status);
+class _$StatusChangedImpl implements _StatusChanged {
+  const _$StatusChangedImpl(this.status);
 
   @override
   final RecognitionStatus status;
@@ -636,7 +639,7 @@ class _$_StatusChanged implements _StatusChanged {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StatusChanged &&
+            other is _$StatusChangedImpl &&
             (identical(other.status, status) || other.status == status));
   }
 
@@ -646,8 +649,8 @@ class _$_StatusChanged implements _StatusChanged {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StatusChangedCopyWith<_$_StatusChanged> get copyWith =>
-      __$$_StatusChangedCopyWithImpl<_$_StatusChanged>(this, _$identity);
+  _$$StatusChangedImplCopyWith<_$StatusChangedImpl> get copyWith =>
+      __$$StatusChangedImplCopyWithImpl<_$StatusChangedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -740,29 +743,29 @@ class _$_StatusChanged implements _StatusChanged {
 
 abstract class _StatusChanged implements SignLanguageRecognitionEvent {
   const factory _StatusChanged(final RecognitionStatus status) =
-      _$_StatusChanged;
+      _$StatusChangedImpl;
 
   RecognitionStatus get status;
   @JsonKey(ignore: true)
-  _$$_StatusChangedCopyWith<_$_StatusChanged> get copyWith =>
+  _$$StatusChangedImplCopyWith<_$StatusChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_CaptionReceivedCopyWith<$Res> {
-  factory _$$_CaptionReceivedCopyWith(
-          _$_CaptionReceived value, $Res Function(_$_CaptionReceived) then) =
-      __$$_CaptionReceivedCopyWithImpl<$Res>;
+abstract class _$$CaptionReceivedImplCopyWith<$Res> {
+  factory _$$CaptionReceivedImplCopyWith(_$CaptionReceivedImpl value,
+          $Res Function(_$CaptionReceivedImpl) then) =
+      __$$CaptionReceivedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Caption caption});
 }
 
 /// @nodoc
-class __$$_CaptionReceivedCopyWithImpl<$Res>
-    extends _$SignLanguageRecognitionEventCopyWithImpl<$Res, _$_CaptionReceived>
-    implements _$$_CaptionReceivedCopyWith<$Res> {
-  __$$_CaptionReceivedCopyWithImpl(
-      _$_CaptionReceived _value, $Res Function(_$_CaptionReceived) _then)
+class __$$CaptionReceivedImplCopyWithImpl<$Res>
+    extends _$SignLanguageRecognitionEventCopyWithImpl<$Res,
+        _$CaptionReceivedImpl> implements _$$CaptionReceivedImplCopyWith<$Res> {
+  __$$CaptionReceivedImplCopyWithImpl(
+      _$CaptionReceivedImpl _value, $Res Function(_$CaptionReceivedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -770,7 +773,7 @@ class __$$_CaptionReceivedCopyWithImpl<$Res>
   $Res call({
     Object? caption = null,
   }) {
-    return _then(_$_CaptionReceived(
+    return _then(_$CaptionReceivedImpl(
       null == caption
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
@@ -781,8 +784,8 @@ class __$$_CaptionReceivedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CaptionReceived implements _CaptionReceived {
-  const _$_CaptionReceived(this.caption);
+class _$CaptionReceivedImpl implements _CaptionReceived {
+  const _$CaptionReceivedImpl(this.caption);
 
   @override
   final Caption caption;
@@ -796,7 +799,7 @@ class _$_CaptionReceived implements _CaptionReceived {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CaptionReceived &&
+            other is _$CaptionReceivedImpl &&
             (identical(other.caption, caption) || other.caption == caption));
   }
 
@@ -806,8 +809,9 @@ class _$_CaptionReceived implements _CaptionReceived {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CaptionReceivedCopyWith<_$_CaptionReceived> get copyWith =>
-      __$$_CaptionReceivedCopyWithImpl<_$_CaptionReceived>(this, _$identity);
+  _$$CaptionReceivedImplCopyWith<_$CaptionReceivedImpl> get copyWith =>
+      __$$CaptionReceivedImplCopyWithImpl<_$CaptionReceivedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -899,34 +903,35 @@ class _$_CaptionReceived implements _CaptionReceived {
 }
 
 abstract class _CaptionReceived implements SignLanguageRecognitionEvent {
-  const factory _CaptionReceived(final Caption caption) = _$_CaptionReceived;
+  const factory _CaptionReceived(final Caption caption) = _$CaptionReceivedImpl;
 
   Caption get caption;
   @JsonKey(ignore: true)
-  _$$_CaptionReceivedCopyWith<_$_CaptionReceived> get copyWith =>
+  _$$CaptionReceivedImplCopyWith<_$CaptionReceivedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ResetDataStartedCopyWith<$Res> {
-  factory _$$_ResetDataStartedCopyWith(
-          _$_ResetDataStarted value, $Res Function(_$_ResetDataStarted) then) =
-      __$$_ResetDataStartedCopyWithImpl<$Res>;
+abstract class _$$ResetDataStartedImplCopyWith<$Res> {
+  factory _$$ResetDataStartedImplCopyWith(_$ResetDataStartedImpl value,
+          $Res Function(_$ResetDataStartedImpl) then) =
+      __$$ResetDataStartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ResetDataStartedCopyWithImpl<$Res>
+class __$$ResetDataStartedImplCopyWithImpl<$Res>
     extends _$SignLanguageRecognitionEventCopyWithImpl<$Res,
-        _$_ResetDataStarted> implements _$$_ResetDataStartedCopyWith<$Res> {
-  __$$_ResetDataStartedCopyWithImpl(
-      _$_ResetDataStarted _value, $Res Function(_$_ResetDataStarted) _then)
+        _$ResetDataStartedImpl>
+    implements _$$ResetDataStartedImplCopyWith<$Res> {
+  __$$ResetDataStartedImplCopyWithImpl(_$ResetDataStartedImpl _value,
+      $Res Function(_$ResetDataStartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ResetDataStarted implements _ResetDataStarted {
-  const _$_ResetDataStarted();
+class _$ResetDataStartedImpl implements _ResetDataStarted {
+  const _$ResetDataStartedImpl();
 
   @override
   String toString() {
@@ -936,7 +941,7 @@ class _$_ResetDataStarted implements _ResetDataStarted {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ResetDataStarted);
+        (other.runtimeType == runtimeType && other is _$ResetDataStartedImpl);
   }
 
   @override
@@ -1032,7 +1037,7 @@ class _$_ResetDataStarted implements _ResetDataStarted {
 }
 
 abstract class _ResetDataStarted implements SignLanguageRecognitionEvent {
-  const factory _ResetDataStarted() = _$_ResetDataStarted;
+  const factory _ResetDataStarted() = _$ResetDataStartedImpl;
 }
 
 /// @nodoc
@@ -1151,21 +1156,22 @@ class _$SignLanguageRecognitionStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res>
+abstract class _$$InitialImplCopyWith<$Res>
     implements $SignLanguageRecognitionStateCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isReady, RecognitionStatus status, Caption? caption});
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$SignLanguageRecognitionStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$SignLanguageRecognitionStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1175,7 +1181,7 @@ class __$$_InitialCopyWithImpl<$Res>
     Object? status = null,
     Object? caption = freezed,
   }) {
-    return _then(_$_Initial(
+    return _then(_$InitialImpl(
       isReady: null == isReady
           ? _value.isReady
           : isReady // ignore: cast_nullable_to_non_nullable
@@ -1194,8 +1200,8 @@ class __$$_InitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial(
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl(
       {this.isReady = false,
       this.status = RecognitionStatus.off,
       this.caption = null});
@@ -1219,7 +1225,7 @@ class _$_Initial implements _Initial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Initial &&
+            other is _$InitialImpl &&
             (identical(other.isReady, isReady) || other.isReady == isReady) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.caption, caption) || other.caption == caption));
@@ -1231,8 +1237,8 @@ class _$_Initial implements _Initial {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
-      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1321,7 +1327,7 @@ abstract class _Initial implements SignLanguageRecognitionState {
   const factory _Initial(
       {final bool isReady,
       final RecognitionStatus status,
-      final Caption? caption}) = _$_Initial;
+      final Caption? caption}) = _$InitialImpl;
 
   @override
   bool get isReady;
@@ -1331,16 +1337,16 @@ abstract class _Initial implements SignLanguageRecognitionState {
   Caption? get caption;
   @override
   @JsonKey(ignore: true)
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_FailureCopyWith<$Res>
+abstract class _$$FailureImplCopyWith<$Res>
     implements $SignLanguageRecognitionStateCopyWith<$Res> {
-  factory _$$_FailureCopyWith(
-          _$_Failure value, $Res Function(_$_Failure) then) =
-      __$$_FailureCopyWithImpl<$Res>;
+  factory _$$FailureImplCopyWith(
+          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
+      __$$FailureImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1351,10 +1357,11 @@ abstract class _$$_FailureCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_FailureCopyWithImpl<$Res>
-    extends _$SignLanguageRecognitionStateCopyWithImpl<$Res, _$_Failure>
-    implements _$$_FailureCopyWith<$Res> {
-  __$$_FailureCopyWithImpl(_$_Failure _value, $Res Function(_$_Failure) _then)
+class __$$FailureImplCopyWithImpl<$Res>
+    extends _$SignLanguageRecognitionStateCopyWithImpl<$Res, _$FailureImpl>
+    implements _$$FailureImplCopyWith<$Res> {
+  __$$FailureImplCopyWithImpl(
+      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1365,7 +1372,7 @@ class __$$_FailureCopyWithImpl<$Res>
     Object? caption = freezed,
     Object? failure = null,
   }) {
-    return _then(_$_Failure(
+    return _then(_$FailureImpl(
       isReady: null == isReady
           ? _value.isReady
           : isReady // ignore: cast_nullable_to_non_nullable
@@ -1388,8 +1395,8 @@ class __$$_FailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Failure implements _Failure {
-  const _$_Failure(
+class _$FailureImpl implements _Failure {
+  const _$FailureImpl(
       {required this.isReady,
       required this.status,
       required this.caption,
@@ -1413,7 +1420,7 @@ class _$_Failure implements _Failure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Failure &&
+            other is _$FailureImpl &&
             (identical(other.isReady, isReady) || other.isReady == isReady) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.caption, caption) || other.caption == caption) &&
@@ -1427,8 +1434,8 @@ class _$_Failure implements _Failure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FailureCopyWith<_$_Failure> get copyWith =>
-      __$$_FailureCopyWithImpl<_$_Failure>(this, _$identity);
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
+      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1518,7 +1525,7 @@ abstract class _Failure implements SignLanguageRecognitionState {
       {required final bool isReady,
       required final RecognitionStatus status,
       required final Caption? caption,
-      required final Failure failure}) = _$_Failure;
+      required final Failure failure}) = _$FailureImpl;
 
   @override
   bool get isReady;
@@ -1529,28 +1536,28 @@ abstract class _Failure implements SignLanguageRecognitionState {
   Failure get failure;
   @override
   @JsonKey(ignore: true)
-  _$$_FailureCopyWith<_$_Failure> get copyWith =>
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_UpdateCaptionSuccessCopyWith<$Res>
+abstract class _$$UpdateCaptionSuccessImplCopyWith<$Res>
     implements $SignLanguageRecognitionStateCopyWith<$Res> {
-  factory _$$_UpdateCaptionSuccessCopyWith(_$_UpdateCaptionSuccess value,
-          $Res Function(_$_UpdateCaptionSuccess) then) =
-      __$$_UpdateCaptionSuccessCopyWithImpl<$Res>;
+  factory _$$UpdateCaptionSuccessImplCopyWith(_$UpdateCaptionSuccessImpl value,
+          $Res Function(_$UpdateCaptionSuccessImpl) then) =
+      __$$UpdateCaptionSuccessImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isReady, RecognitionStatus status, Caption caption});
 }
 
 /// @nodoc
-class __$$_UpdateCaptionSuccessCopyWithImpl<$Res>
+class __$$UpdateCaptionSuccessImplCopyWithImpl<$Res>
     extends _$SignLanguageRecognitionStateCopyWithImpl<$Res,
-        _$_UpdateCaptionSuccess>
-    implements _$$_UpdateCaptionSuccessCopyWith<$Res> {
-  __$$_UpdateCaptionSuccessCopyWithImpl(_$_UpdateCaptionSuccess _value,
-      $Res Function(_$_UpdateCaptionSuccess) _then)
+        _$UpdateCaptionSuccessImpl>
+    implements _$$UpdateCaptionSuccessImplCopyWith<$Res> {
+  __$$UpdateCaptionSuccessImplCopyWithImpl(_$UpdateCaptionSuccessImpl _value,
+      $Res Function(_$UpdateCaptionSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1560,7 +1567,7 @@ class __$$_UpdateCaptionSuccessCopyWithImpl<$Res>
     Object? status = null,
     Object? caption = null,
   }) {
-    return _then(_$_UpdateCaptionSuccess(
+    return _then(_$UpdateCaptionSuccessImpl(
       isReady: null == isReady
           ? _value.isReady
           : isReady // ignore: cast_nullable_to_non_nullable
@@ -1579,8 +1586,8 @@ class __$$_UpdateCaptionSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UpdateCaptionSuccess implements _UpdateCaptionSuccess {
-  const _$_UpdateCaptionSuccess(
+class _$UpdateCaptionSuccessImpl implements _UpdateCaptionSuccess {
+  const _$UpdateCaptionSuccessImpl(
       {this.isReady = false,
       this.status = RecognitionStatus.off,
       required this.caption});
@@ -1603,7 +1610,7 @@ class _$_UpdateCaptionSuccess implements _UpdateCaptionSuccess {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UpdateCaptionSuccess &&
+            other is _$UpdateCaptionSuccessImpl &&
             (identical(other.isReady, isReady) || other.isReady == isReady) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.caption, caption) || other.caption == caption));
@@ -1615,9 +1622,10 @@ class _$_UpdateCaptionSuccess implements _UpdateCaptionSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UpdateCaptionSuccessCopyWith<_$_UpdateCaptionSuccess> get copyWith =>
-      __$$_UpdateCaptionSuccessCopyWithImpl<_$_UpdateCaptionSuccess>(
-          this, _$identity);
+  _$$UpdateCaptionSuccessImplCopyWith<_$UpdateCaptionSuccessImpl>
+      get copyWith =>
+          __$$UpdateCaptionSuccessImplCopyWithImpl<_$UpdateCaptionSuccessImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1706,7 +1714,7 @@ abstract class _UpdateCaptionSuccess implements SignLanguageRecognitionState {
   const factory _UpdateCaptionSuccess(
       {final bool isReady,
       final RecognitionStatus status,
-      required final Caption caption}) = _$_UpdateCaptionSuccess;
+      required final Caption caption}) = _$UpdateCaptionSuccessImpl;
 
   @override
   bool get isReady;
@@ -1716,6 +1724,6 @@ abstract class _UpdateCaptionSuccess implements SignLanguageRecognitionState {
   Caption get caption;
   @override
   @JsonKey(ignore: true)
-  _$$_UpdateCaptionSuccessCopyWith<_$_UpdateCaptionSuccess> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UpdateCaptionSuccessImplCopyWith<_$UpdateCaptionSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

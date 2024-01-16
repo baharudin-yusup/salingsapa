@@ -8,11 +8,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../domain/entities/auth_status.dart';
 import '../../domain/entities/contact.dart';
-import '../../domain/entities/video_call_invitation.dart';
+import '../../domain/entities/room.dart';
 import '../../injection_container.dart';
 import '../blocs/account/account_bloc.dart';
 import '../blocs/authorization/authorization_bloc.dart';
 import '../blocs/contact_list/contact_list_bloc.dart';
+import '../blocs/create_room/create_room_bloc.dart';
 import '../blocs/home/home_cubit.dart';
 import '../blocs/introduction/introduction_cubit.dart';
 import '../blocs/recent_call/recent_call_bloc.dart';
@@ -28,6 +29,7 @@ import 'home/contact_list_screen.dart';
 import 'home/home_screen.dart';
 import 'home/recent_call_screen.dart';
 import 'onboarding_screen.dart';
+import 'room/create_room_screen.dart';
 import 'setting_screen.dart';
 import 'setup_screen.dart';
 import 'verify_otp_screen.dart';
@@ -50,9 +52,9 @@ class _RootScreenState extends State<RootScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      final NotificationService service = sl();
-      await service.requestPermission();
-      await service.init();
+      final NotificationService navigatorService = sl();
+      await navigatorService.requestPermission();
+      await navigatorService.init();
     });
     super.initState();
   }
@@ -74,26 +76,25 @@ class _RootScreenState extends State<RootScreen> {
   Map<String, WidgetBuilder> get _routes => {
         RecentCallScreen.routeName: (_) => const RecentCallScreen(),
         SettingScreen.routeName: (_) => const SettingScreen(),
+        CreateRoomScreen.routeName: (context) {
+          final contact = ModalRoute.of(context)!.settings.arguments as Contact;
+          return BlocProvider<CreateRoomBloc>(
+            create: (_) => CreateRoomBloc(sl(), contact: contact),
+            child: const CreateRoomScreen(),
+          );
+        },
         VideoCallScreen.routeName: (context) {
+          final room = ModalRoute.of(context)!.settings.arguments as Room;
           return MultiBlocProvider(
             providers: [
+              BlocProvider<VideoCallBloc>(
+                  create: (_) => VideoCallBloc(
+                      sl(), sl(), sl(), sl(), sl(), sl(),
+                      room: room)),
               BlocProvider<SpeechRecognitionBloc>(
                   create: (_) =>
                       sl()..add(const SpeechRecognitionEvent.started())),
               BlocProvider<SignLanguageRecognitionBloc>(create: (_) => sl()),
-              BlocProvider<VideoCallBloc>(create: (_) {
-                final VideoCallBloc bloc = sl();
-                final argument = ModalRoute.of(context)!.settings.arguments;
-                if (argument is VideoCallInvitation) {
-                  return bloc
-                    ..add(VideoCallEvent.setInvitationStarted(argument))
-                    ..add(VideoCallEvent.joinVideoCallStarted(argument));
-                } else if (argument is Contact) {
-                  return bloc..add(VideoCallEvent.videoCallStarted(argument));
-                } else {
-                  return bloc;
-                }
-              }),
               BlocProvider<VideoCallControlBloc>(create: (_) => sl()),
               BlocProvider<VideoCallCaptionBloc>(create: (_) => sl()),
             ],

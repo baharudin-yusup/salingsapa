@@ -4,24 +4,24 @@ import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:intl/intl.dart';
 
 import '../../domain/entities/contact.dart';
-import '../../domain/entities/video_call_invitation.dart';
+import '../../domain/entities/room.dart';
 import '../services/theme_service.dart';
 import '../utils/app_localizations.dart';
 
 class InvitationCard extends StatelessWidget {
   final Contact? callerContact;
-  final VideoCallInvitation invitation;
-  final void Function(VideoCallInvitation invitation)? onTap;
+  final Room room;
+  final void Function(Room room)? onTap;
 
   const InvitationCard(
-    this.invitation, {
+    this.room, {
     Key? key,
     this.onTap,
     this.callerContact,
   }) : super(key: key);
 
   bool get isValid =>
-      (invitation.isValid && invitation.validUntil.isAfter(DateTime.now()));
+      (room.isValid && room.validUntil.isAfter(DateTime.now()));
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class InvitationCard extends StatelessWidget {
     }
 
     return ListTile(
-      onTap: onTap != null && isValid ? () => onTap!(invitation) : null,
+      onTap: onTap != null && isValid ? () => onTap!(room) : null,
       selected: isValid,
       enabled: true,
       dense: true,
@@ -83,8 +83,8 @@ class InvitationCard extends StatelessWidget {
   }
 
   Widget showDescription(BuildContext context) {
-    final difference = DateTime.now().difference(invitation.createdAt);
-    final isDaySame = DateTime.now().day == invitation.createdAt.day;
+    final difference = DateTime.now().difference(room.createdAt);
+    final isDaySame = DateTime.now().day == room.createdAt.day;
     final daysDifference = difference.inDays;
     late final DateFormat dateFormat;
     if (daysDifference < 1 && isDaySame) {
@@ -95,7 +95,7 @@ class InvitationCard extends StatelessWidget {
       dateFormat = DateFormat('dd/MM/yyyy');
     }
 
-    final createdAt = dateFormat.format(invitation.createdAt.toLocal());
+    final createdAt = dateFormat.format(room.createdAt.toLocal());
     if (isValid) {
       return Row(
         children: [

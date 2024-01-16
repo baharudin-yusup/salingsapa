@@ -1,9 +1,11 @@
 extension ToPhoneNumber on String {
-  String toFormattedPhoneNumber() {
+  String toFormattedPhoneNumber({String countryCode = '+62'}) {
     var phoneNumber = replaceAll('-', '').replaceAll(' ', '');
 
     if (phoneNumber.startsWith('0')) {
-      phoneNumber = '+62${phoneNumber.substring(1)}';
+      phoneNumber = '$countryCode${phoneNumber.substring(1)}';
+    } else if (!phoneNumber.startsWith('+')) {
+      phoneNumber = '+$phoneNumber';
     }
 
     return phoneNumber;

@@ -2,86 +2,50 @@ part of 'video_call_bloc.dart';
 
 @freezed
 class VideoCallState with _$VideoCallState {
-  const factory VideoCallState.initial({
-    @Default(null) VideoCallInvitation? invitation,
-    @Default(false) bool isRemoteUserJoined,
+  const factory VideoCallState.initial(Room room) = _Initial;
+
+  // Handle init engine state
+  const factory VideoCallState.initEngineInProgress(Room room) =
+      _InitEngineInProgress;
+
+  const factory VideoCallState.initEngineSuccess(Room room, RtcEngine engine) =
+      _InitEngineSuccess;
+
+  const factory VideoCallState.initEngineFailure(Room room, Failure failure) =
+      _InitEngineFailure;
+
+  // Handle user join room + streaming state
+  const factory VideoCallState.joinRoomInProgress(Room room, RtcEngine engine) =
+      _JoinRoomInProgress;
+
+  const factory VideoCallState.joinRoomFailure(
+    Room room,
+    RtcEngine engine,
+    Failure failure,
+  ) = _JoinRoomFailure;
+
+  const factory VideoCallState.joinRoomSuccess({
+    required Room room,
+    required RtcEngine engine,
+    int? localVideoUid,
+    int? remoteVideoUid,
     @Default(false) bool isTakePhotoEnabled,
-    @Default(-1) int localUid,
-    @Default(-1) int remoteUid,
-  }) = _Initial;
+    Failure? failure,
+  }) = _JoinRoomSuccess;
 
-  const factory VideoCallState.joinChannelInProgress({
-    required VideoCallInvitation? invitation,
-    required bool isRemoteUserJoined,
-    required bool isTakePhotoEnabled,
-    required int localUid,
-    required int remoteUid,
-  }) = _JoinChannelInProgress;
-
-  const factory VideoCallState.joinChannelSuccess({
-    required VideoCallInvitation invitation,
-    required bool isRemoteUserJoined,
-    required bool isTakePhotoEnabled,
-    required RtcEngine engine,
-    required int localUid,
-    required int remoteUid,
-  }) = _JoinChannelSuccess;
-
-  const factory VideoCallState.remoteUserJoinSuccess({
-    required VideoCallInvitation? invitation,
-    @Default(true) bool isRemoteUserJoined,
-    required bool isTakePhotoEnabled,
-    required RtcEngine engine,
-    required int localUid,
-    required int remoteUid,
-  }) = _RemoteUserJoinSuccess;
-
-  const factory VideoCallState.joinChannelFailure({
-    required VideoCallInvitation? invitation,
-    required bool isRemoteUserJoined,
-    required bool isTakePhotoEnabled,
-    required int localUid,
-    required int remoteUid,
-  }) = _JoinChannelFailure;
-
-  const factory VideoCallState.remoteUserJoinFailure({
-    required VideoCallInvitation? invitation,
-    @Default(false) bool isRemoteUserJoined,
-    required bool isTakePhotoEnabled,
-    required int localUid,
-    required int remoteUid,
-  }) = _RemoteUserJoinFailure;
-
-  const factory VideoCallState.leaveChannelInProgress({
-    required VideoCallInvitation? invitation,
-    required bool isRemoteUserJoined,
-    required bool isTakePhotoEnabled,
-    required int localUid,
-    required int remoteUid,
-  }) = _LeaveChannelInProgress;
-
-  const factory VideoCallState.leaveChannelSuccess({
-    required VideoCallInvitation? invitation,
-    @Default(false) bool isRemoteUserJoined,
-    required bool isTakePhotoEnabled,
-    required int localUid,
-    required int remoteUid,
-  }) = _LeaveChannelSuccess;
-
-  const factory VideoCallState.remoteUserLeaveSuccess({
-    required VideoCallInvitation? invitation,
-    @Default(false) bool isRemoteUserJoined,
-    required bool isTakePhotoEnabled,
+  // Handle leave room + streaming
+  const factory VideoCallState.leaveRoomInProgress({
+    required Room room,
     @Default(null) RtcEngine? engine,
-    required int localUid,
-    required int remoteUid,
-  }) = _RemoteUserLeaveSuccess;
+  }) = _LeaveRoomInProgress;
 
-  const factory VideoCallState.leaveChannelFailure({
-    required VideoCallInvitation? invitation,
-    required bool isRemoteUserJoined,
-    required bool isTakePhotoEnabled,
-    required int localUid,
-    required int remoteUid,
-  }) = _LeaveChannelFailure;
+  const factory VideoCallState.leaveRoomSuccess({
+    required Room room,
+    @Default(null) RtcEngine? engine,
+  }) = _LeaveRoomSuccess;
+
+  const factory VideoCallState.leaveRoomFailure({
+    required Room room,
+    required Failure failure,
+  }) = _LeaveRoomFailure;
 }

@@ -76,25 +76,25 @@ class _$ContactListEventCopyWithImpl<$Res, $Val extends ContactListEvent>
 }
 
 /// @nodoc
-abstract class _$$_RefreshPulledCopyWith<$Res> {
-  factory _$$_RefreshPulledCopyWith(
-          _$_RefreshPulled value, $Res Function(_$_RefreshPulled) then) =
-      __$$_RefreshPulledCopyWithImpl<$Res>;
+abstract class _$$RefreshPulledImplCopyWith<$Res> {
+  factory _$$RefreshPulledImplCopyWith(
+          _$RefreshPulledImpl value, $Res Function(_$RefreshPulledImpl) then) =
+      __$$RefreshPulledImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_RefreshPulledCopyWithImpl<$Res>
-    extends _$ContactListEventCopyWithImpl<$Res, _$_RefreshPulled>
-    implements _$$_RefreshPulledCopyWith<$Res> {
-  __$$_RefreshPulledCopyWithImpl(
-      _$_RefreshPulled _value, $Res Function(_$_RefreshPulled) _then)
+class __$$RefreshPulledImplCopyWithImpl<$Res>
+    extends _$ContactListEventCopyWithImpl<$Res, _$RefreshPulledImpl>
+    implements _$$RefreshPulledImplCopyWith<$Res> {
+  __$$RefreshPulledImplCopyWithImpl(
+      _$RefreshPulledImpl _value, $Res Function(_$RefreshPulledImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_RefreshPulled implements _RefreshPulled {
-  const _$_RefreshPulled();
+class _$RefreshPulledImpl implements _RefreshPulled {
+  const _$RefreshPulledImpl();
 
   @override
   String toString() {
@@ -104,7 +104,7 @@ class _$_RefreshPulled implements _RefreshPulled {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_RefreshPulled);
+        (other.runtimeType == runtimeType && other is _$RefreshPulledImpl);
   }
 
   @override
@@ -175,24 +175,25 @@ class _$_RefreshPulled implements _RefreshPulled {
 }
 
 abstract class _RefreshPulled implements ContactListEvent {
-  const factory _RefreshPulled() = _$_RefreshPulled;
+  const factory _RefreshPulled() = _$RefreshPulledImpl;
 }
 
 /// @nodoc
-abstract class _$$_SelectedContactCalledCopyWith<$Res> {
-  factory _$$_SelectedContactCalledCopyWith(_$_SelectedContactCalled value,
-          $Res Function(_$_SelectedContactCalled) then) =
-      __$$_SelectedContactCalledCopyWithImpl<$Res>;
+abstract class _$$SelectedContactCalledImplCopyWith<$Res> {
+  factory _$$SelectedContactCalledImplCopyWith(
+          _$SelectedContactCalledImpl value,
+          $Res Function(_$SelectedContactCalledImpl) then) =
+      __$$SelectedContactCalledImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Contact contact});
 }
 
 /// @nodoc
-class __$$_SelectedContactCalledCopyWithImpl<$Res>
-    extends _$ContactListEventCopyWithImpl<$Res, _$_SelectedContactCalled>
-    implements _$$_SelectedContactCalledCopyWith<$Res> {
-  __$$_SelectedContactCalledCopyWithImpl(_$_SelectedContactCalled _value,
-      $Res Function(_$_SelectedContactCalled) _then)
+class __$$SelectedContactCalledImplCopyWithImpl<$Res>
+    extends _$ContactListEventCopyWithImpl<$Res, _$SelectedContactCalledImpl>
+    implements _$$SelectedContactCalledImplCopyWith<$Res> {
+  __$$SelectedContactCalledImplCopyWithImpl(_$SelectedContactCalledImpl _value,
+      $Res Function(_$SelectedContactCalledImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -200,7 +201,7 @@ class __$$_SelectedContactCalledCopyWithImpl<$Res>
   $Res call({
     Object? contact = null,
   }) {
-    return _then(_$_SelectedContactCalled(
+    return _then(_$SelectedContactCalledImpl(
       null == contact
           ? _value.contact
           : contact // ignore: cast_nullable_to_non_nullable
@@ -211,8 +212,8 @@ class __$$_SelectedContactCalledCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_SelectedContactCalled implements _SelectedContactCalled {
-  const _$_SelectedContactCalled(this.contact);
+class _$SelectedContactCalledImpl implements _SelectedContactCalled {
+  const _$SelectedContactCalledImpl(this.contact);
 
   @override
   final Contact contact;
@@ -226,7 +227,7 @@ class _$_SelectedContactCalled implements _SelectedContactCalled {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SelectedContactCalled &&
+            other is _$SelectedContactCalledImpl &&
             (identical(other.contact, contact) || other.contact == contact));
   }
 
@@ -236,9 +237,9 @@ class _$_SelectedContactCalled implements _SelectedContactCalled {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SelectedContactCalledCopyWith<_$_SelectedContactCalled> get copyWith =>
-      __$$_SelectedContactCalledCopyWithImpl<_$_SelectedContactCalled>(
-          this, _$identity);
+  _$$SelectedContactCalledImplCopyWith<_$SelectedContactCalledImpl>
+      get copyWith => __$$SelectedContactCalledImplCopyWithImpl<
+          _$SelectedContactCalledImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -306,12 +307,12 @@ class _$_SelectedContactCalled implements _SelectedContactCalled {
 
 abstract class _SelectedContactCalled implements ContactListEvent {
   const factory _SelectedContactCalled(final Contact contact) =
-      _$_SelectedContactCalled;
+      _$SelectedContactCalledImpl;
 
   Contact get contact;
   @JsonKey(ignore: true)
-  _$$_SelectedContactCalledCopyWith<_$_SelectedContactCalled> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SelectedContactCalledImplCopyWith<_$SelectedContactCalledImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -434,21 +435,22 @@ class _$ContactListStateCopyWithImpl<$Res, $Val extends ContactListState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res>
+abstract class _$$InitialImplCopyWith<$Res>
     implements $ContactListStateCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Contact> contacts});
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$ContactListStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$ContactListStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -456,7 +458,7 @@ class __$$_InitialCopyWithImpl<$Res>
   $Res call({
     Object? contacts = null,
   }) {
-    return _then(_$_Initial(
+    return _then(_$InitialImpl(
       null == contacts
           ? _value._contacts
           : contacts // ignore: cast_nullable_to_non_nullable
@@ -467,8 +469,8 @@ class __$$_InitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial([final List<Contact> contacts = const []])
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl([final List<Contact> contacts = const []])
       : _contacts = contacts;
 
   final List<Contact> _contacts;
@@ -489,7 +491,7 @@ class _$_Initial implements _Initial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Initial &&
+            other is _$InitialImpl &&
             const DeepCollectionEquality().equals(other._contacts, _contacts));
   }
 
@@ -500,8 +502,8 @@ class _$_Initial implements _Initial {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
-      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -606,33 +608,33 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements ContactListState {
-  const factory _Initial([final List<Contact> contacts]) = _$_Initial;
+  const factory _Initial([final List<Contact> contacts]) = _$InitialImpl;
 
   @override
   List<Contact> get contacts;
   @override
   @JsonKey(ignore: true)
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadInProgressCopyWith<$Res>
+abstract class _$$LoadInProgressImplCopyWith<$Res>
     implements $ContactListStateCopyWith<$Res> {
-  factory _$$_LoadInProgressCopyWith(
-          _$_LoadInProgress value, $Res Function(_$_LoadInProgress) then) =
-      __$$_LoadInProgressCopyWithImpl<$Res>;
+  factory _$$LoadInProgressImplCopyWith(_$LoadInProgressImpl value,
+          $Res Function(_$LoadInProgressImpl) then) =
+      __$$LoadInProgressImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Contact> contacts});
 }
 
 /// @nodoc
-class __$$_LoadInProgressCopyWithImpl<$Res>
-    extends _$ContactListStateCopyWithImpl<$Res, _$_LoadInProgress>
-    implements _$$_LoadInProgressCopyWith<$Res> {
-  __$$_LoadInProgressCopyWithImpl(
-      _$_LoadInProgress _value, $Res Function(_$_LoadInProgress) _then)
+class __$$LoadInProgressImplCopyWithImpl<$Res>
+    extends _$ContactListStateCopyWithImpl<$Res, _$LoadInProgressImpl>
+    implements _$$LoadInProgressImplCopyWith<$Res> {
+  __$$LoadInProgressImplCopyWithImpl(
+      _$LoadInProgressImpl _value, $Res Function(_$LoadInProgressImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -640,7 +642,7 @@ class __$$_LoadInProgressCopyWithImpl<$Res>
   $Res call({
     Object? contacts = null,
   }) {
-    return _then(_$_LoadInProgress(
+    return _then(_$LoadInProgressImpl(
       null == contacts
           ? _value._contacts
           : contacts // ignore: cast_nullable_to_non_nullable
@@ -651,8 +653,9 @@ class __$$_LoadInProgressCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadInProgress implements _LoadInProgress {
-  const _$_LoadInProgress(final List<Contact> contacts) : _contacts = contacts;
+class _$LoadInProgressImpl implements _LoadInProgress {
+  const _$LoadInProgressImpl(final List<Contact> contacts)
+      : _contacts = contacts;
 
   final List<Contact> _contacts;
   @override
@@ -671,7 +674,7 @@ class _$_LoadInProgress implements _LoadInProgress {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadInProgress &&
+            other is _$LoadInProgressImpl &&
             const DeepCollectionEquality().equals(other._contacts, _contacts));
   }
 
@@ -682,8 +685,9 @@ class _$_LoadInProgress implements _LoadInProgress {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadInProgressCopyWith<_$_LoadInProgress> get copyWith =>
-      __$$_LoadInProgressCopyWithImpl<_$_LoadInProgress>(this, _$identity);
+  _$$LoadInProgressImplCopyWith<_$LoadInProgressImpl> get copyWith =>
+      __$$LoadInProgressImplCopyWithImpl<_$LoadInProgressImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -789,33 +793,33 @@ class _$_LoadInProgress implements _LoadInProgress {
 
 abstract class _LoadInProgress implements ContactListState {
   const factory _LoadInProgress(final List<Contact> contacts) =
-      _$_LoadInProgress;
+      _$LoadInProgressImpl;
 
   @override
   List<Contact> get contacts;
   @override
   @JsonKey(ignore: true)
-  _$$_LoadInProgressCopyWith<_$_LoadInProgress> get copyWith =>
+  _$$LoadInProgressImplCopyWith<_$LoadInProgressImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadSuccessCopyWith<$Res>
+abstract class _$$LoadSuccessImplCopyWith<$Res>
     implements $ContactListStateCopyWith<$Res> {
-  factory _$$_LoadSuccessCopyWith(
-          _$_LoadSuccess value, $Res Function(_$_LoadSuccess) then) =
-      __$$_LoadSuccessCopyWithImpl<$Res>;
+  factory _$$LoadSuccessImplCopyWith(
+          _$LoadSuccessImpl value, $Res Function(_$LoadSuccessImpl) then) =
+      __$$LoadSuccessImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Contact> contacts});
 }
 
 /// @nodoc
-class __$$_LoadSuccessCopyWithImpl<$Res>
-    extends _$ContactListStateCopyWithImpl<$Res, _$_LoadSuccess>
-    implements _$$_LoadSuccessCopyWith<$Res> {
-  __$$_LoadSuccessCopyWithImpl(
-      _$_LoadSuccess _value, $Res Function(_$_LoadSuccess) _then)
+class __$$LoadSuccessImplCopyWithImpl<$Res>
+    extends _$ContactListStateCopyWithImpl<$Res, _$LoadSuccessImpl>
+    implements _$$LoadSuccessImplCopyWith<$Res> {
+  __$$LoadSuccessImplCopyWithImpl(
+      _$LoadSuccessImpl _value, $Res Function(_$LoadSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -823,7 +827,7 @@ class __$$_LoadSuccessCopyWithImpl<$Res>
   $Res call({
     Object? contacts = null,
   }) {
-    return _then(_$_LoadSuccess(
+    return _then(_$LoadSuccessImpl(
       null == contacts
           ? _value._contacts
           : contacts // ignore: cast_nullable_to_non_nullable
@@ -834,8 +838,8 @@ class __$$_LoadSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadSuccess implements _LoadSuccess {
-  const _$_LoadSuccess(final List<Contact> contacts) : _contacts = contacts;
+class _$LoadSuccessImpl implements _LoadSuccess {
+  const _$LoadSuccessImpl(final List<Contact> contacts) : _contacts = contacts;
 
   final List<Contact> _contacts;
   @override
@@ -854,7 +858,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadSuccess &&
+            other is _$LoadSuccessImpl &&
             const DeepCollectionEquality().equals(other._contacts, _contacts));
   }
 
@@ -865,8 +869,8 @@ class _$_LoadSuccess implements _LoadSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
-      __$$_LoadSuccessCopyWithImpl<_$_LoadSuccess>(this, _$identity);
+  _$$LoadSuccessImplCopyWith<_$LoadSuccessImpl> get copyWith =>
+      __$$LoadSuccessImplCopyWithImpl<_$LoadSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -971,33 +975,33 @@ class _$_LoadSuccess implements _LoadSuccess {
 }
 
 abstract class _LoadSuccess implements ContactListState {
-  const factory _LoadSuccess(final List<Contact> contacts) = _$_LoadSuccess;
+  const factory _LoadSuccess(final List<Contact> contacts) = _$LoadSuccessImpl;
 
   @override
   List<Contact> get contacts;
   @override
   @JsonKey(ignore: true)
-  _$$_LoadSuccessCopyWith<_$_LoadSuccess> get copyWith =>
+  _$$LoadSuccessImplCopyWith<_$LoadSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadFailureCopyWith<$Res>
+abstract class _$$LoadFailureImplCopyWith<$Res>
     implements $ContactListStateCopyWith<$Res> {
-  factory _$$_LoadFailureCopyWith(
-          _$_LoadFailure value, $Res Function(_$_LoadFailure) then) =
-      __$$_LoadFailureCopyWithImpl<$Res>;
+  factory _$$LoadFailureImplCopyWith(
+          _$LoadFailureImpl value, $Res Function(_$LoadFailureImpl) then) =
+      __$$LoadFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Failure failure, List<Contact> contacts});
 }
 
 /// @nodoc
-class __$$_LoadFailureCopyWithImpl<$Res>
-    extends _$ContactListStateCopyWithImpl<$Res, _$_LoadFailure>
-    implements _$$_LoadFailureCopyWith<$Res> {
-  __$$_LoadFailureCopyWithImpl(
-      _$_LoadFailure _value, $Res Function(_$_LoadFailure) _then)
+class __$$LoadFailureImplCopyWithImpl<$Res>
+    extends _$ContactListStateCopyWithImpl<$Res, _$LoadFailureImpl>
+    implements _$$LoadFailureImplCopyWith<$Res> {
+  __$$LoadFailureImplCopyWithImpl(
+      _$LoadFailureImpl _value, $Res Function(_$LoadFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1006,7 +1010,7 @@ class __$$_LoadFailureCopyWithImpl<$Res>
     Object? failure = null,
     Object? contacts = null,
   }) {
-    return _then(_$_LoadFailure(
+    return _then(_$LoadFailureImpl(
       null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -1021,8 +1025,9 @@ class __$$_LoadFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadFailure implements _LoadFailure {
-  const _$_LoadFailure(this.failure, [final List<Contact> contacts = const []])
+class _$LoadFailureImpl implements _LoadFailure {
+  const _$LoadFailureImpl(this.failure,
+      [final List<Contact> contacts = const []])
       : _contacts = contacts;
 
   @override
@@ -1045,7 +1050,7 @@ class _$_LoadFailure implements _LoadFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadFailure &&
+            other is _$LoadFailureImpl &&
             (identical(other.failure, failure) || other.failure == failure) &&
             const DeepCollectionEquality().equals(other._contacts, _contacts));
   }
@@ -1057,8 +1062,8 @@ class _$_LoadFailure implements _LoadFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
-      __$$_LoadFailureCopyWithImpl<_$_LoadFailure>(this, _$identity);
+  _$$LoadFailureImplCopyWith<_$LoadFailureImpl> get copyWith =>
+      __$$LoadFailureImplCopyWithImpl<_$LoadFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1164,23 +1169,24 @@ class _$_LoadFailure implements _LoadFailure {
 
 abstract class _LoadFailure implements ContactListState {
   const factory _LoadFailure(final Failure failure,
-      [final List<Contact> contacts]) = _$_LoadFailure;
+      [final List<Contact> contacts]) = _$LoadFailureImpl;
 
   Failure get failure;
   @override
   List<Contact> get contacts;
   @override
   @JsonKey(ignore: true)
-  _$$_LoadFailureCopyWith<_$_LoadFailure> get copyWith =>
+  _$$LoadFailureImplCopyWith<_$LoadFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_StartVideoCallFailureCopyWith<$Res>
+abstract class _$$StartVideoCallFailureImplCopyWith<$Res>
     implements $ContactListStateCopyWith<$Res> {
-  factory _$$_StartVideoCallFailureCopyWith(_$_StartVideoCallFailure value,
-          $Res Function(_$_StartVideoCallFailure) then) =
-      __$$_StartVideoCallFailureCopyWithImpl<$Res>;
+  factory _$$StartVideoCallFailureImplCopyWith(
+          _$StartVideoCallFailureImpl value,
+          $Res Function(_$StartVideoCallFailureImpl) then) =
+      __$$StartVideoCallFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1188,11 +1194,11 @@ abstract class _$$_StartVideoCallFailureCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_StartVideoCallFailureCopyWithImpl<$Res>
-    extends _$ContactListStateCopyWithImpl<$Res, _$_StartVideoCallFailure>
-    implements _$$_StartVideoCallFailureCopyWith<$Res> {
-  __$$_StartVideoCallFailureCopyWithImpl(_$_StartVideoCallFailure _value,
-      $Res Function(_$_StartVideoCallFailure) _then)
+class __$$StartVideoCallFailureImplCopyWithImpl<$Res>
+    extends _$ContactListStateCopyWithImpl<$Res, _$StartVideoCallFailureImpl>
+    implements _$$StartVideoCallFailureImplCopyWith<$Res> {
+  __$$StartVideoCallFailureImplCopyWithImpl(_$StartVideoCallFailureImpl _value,
+      $Res Function(_$StartVideoCallFailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1202,7 +1208,7 @@ class __$$_StartVideoCallFailureCopyWithImpl<$Res>
     Object? lastTryDate = null,
     Object? contacts = null,
   }) {
-    return _then(_$_StartVideoCallFailure(
+    return _then(_$StartVideoCallFailureImpl(
       null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -1221,8 +1227,8 @@ class __$$_StartVideoCallFailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_StartVideoCallFailure implements _StartVideoCallFailure {
-  const _$_StartVideoCallFailure(
+class _$StartVideoCallFailureImpl implements _StartVideoCallFailure {
+  const _$StartVideoCallFailureImpl(
       this.errorMessage, this.lastTryDate, final List<Contact> contacts)
       : _contacts = contacts;
 
@@ -1247,7 +1253,7 @@ class _$_StartVideoCallFailure implements _StartVideoCallFailure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StartVideoCallFailure &&
+            other is _$StartVideoCallFailureImpl &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.lastTryDate, lastTryDate) ||
@@ -1262,9 +1268,9 @@ class _$_StartVideoCallFailure implements _StartVideoCallFailure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StartVideoCallFailureCopyWith<_$_StartVideoCallFailure> get copyWith =>
-      __$$_StartVideoCallFailureCopyWithImpl<_$_StartVideoCallFailure>(
-          this, _$identity);
+  _$$StartVideoCallFailureImplCopyWith<_$StartVideoCallFailureImpl>
+      get copyWith => __$$StartVideoCallFailureImplCopyWithImpl<
+          _$StartVideoCallFailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1372,7 +1378,7 @@ abstract class _StartVideoCallFailure implements ContactListState {
   const factory _StartVideoCallFailure(
       final String errorMessage,
       final DateTime lastTryDate,
-      final List<Contact> contacts) = _$_StartVideoCallFailure;
+      final List<Contact> contacts) = _$StartVideoCallFailureImpl;
 
   String get errorMessage;
   DateTime get lastTryDate;
@@ -1380,16 +1386,17 @@ abstract class _StartVideoCallFailure implements ContactListState {
   List<Contact> get contacts;
   @override
   @JsonKey(ignore: true)
-  _$$_StartVideoCallFailureCopyWith<_$_StartVideoCallFailure> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$StartVideoCallFailureImplCopyWith<_$StartVideoCallFailureImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_StartVideoCallSuccessCopyWith<$Res>
+abstract class _$$StartVideoCallSuccessImplCopyWith<$Res>
     implements $ContactListStateCopyWith<$Res> {
-  factory _$$_StartVideoCallSuccessCopyWith(_$_StartVideoCallSuccess value,
-          $Res Function(_$_StartVideoCallSuccess) then) =
-      __$$_StartVideoCallSuccessCopyWithImpl<$Res>;
+  factory _$$StartVideoCallSuccessImplCopyWith(
+          _$StartVideoCallSuccessImpl value,
+          $Res Function(_$StartVideoCallSuccessImpl) then) =
+      __$$StartVideoCallSuccessImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1397,11 +1404,11 @@ abstract class _$$_StartVideoCallSuccessCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_StartVideoCallSuccessCopyWithImpl<$Res>
-    extends _$ContactListStateCopyWithImpl<$Res, _$_StartVideoCallSuccess>
-    implements _$$_StartVideoCallSuccessCopyWith<$Res> {
-  __$$_StartVideoCallSuccessCopyWithImpl(_$_StartVideoCallSuccess _value,
-      $Res Function(_$_StartVideoCallSuccess) _then)
+class __$$StartVideoCallSuccessImplCopyWithImpl<$Res>
+    extends _$ContactListStateCopyWithImpl<$Res, _$StartVideoCallSuccessImpl>
+    implements _$$StartVideoCallSuccessImplCopyWith<$Res> {
+  __$$StartVideoCallSuccessImplCopyWithImpl(_$StartVideoCallSuccessImpl _value,
+      $Res Function(_$StartVideoCallSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1411,7 +1418,7 @@ class __$$_StartVideoCallSuccessCopyWithImpl<$Res>
     Object? selectedContact = null,
     Object? calledAt = null,
   }) {
-    return _then(_$_StartVideoCallSuccess(
+    return _then(_$StartVideoCallSuccessImpl(
       null == contacts
           ? _value._contacts
           : contacts // ignore: cast_nullable_to_non_nullable
@@ -1430,8 +1437,8 @@ class __$$_StartVideoCallSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_StartVideoCallSuccess implements _StartVideoCallSuccess {
-  const _$_StartVideoCallSuccess(final List<Contact> contacts,
+class _$StartVideoCallSuccessImpl implements _StartVideoCallSuccess {
+  const _$StartVideoCallSuccessImpl(final List<Contact> contacts,
       {required this.selectedContact, required this.calledAt})
       : _contacts = contacts;
 
@@ -1457,7 +1464,7 @@ class _$_StartVideoCallSuccess implements _StartVideoCallSuccess {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StartVideoCallSuccess &&
+            other is _$StartVideoCallSuccessImpl &&
             const DeepCollectionEquality().equals(other._contacts, _contacts) &&
             (identical(other.selectedContact, selectedContact) ||
                 other.selectedContact == selectedContact) &&
@@ -1475,9 +1482,9 @@ class _$_StartVideoCallSuccess implements _StartVideoCallSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StartVideoCallSuccessCopyWith<_$_StartVideoCallSuccess> get copyWith =>
-      __$$_StartVideoCallSuccessCopyWithImpl<_$_StartVideoCallSuccess>(
-          this, _$identity);
+  _$$StartVideoCallSuccessImplCopyWith<_$StartVideoCallSuccessImpl>
+      get copyWith => __$$StartVideoCallSuccessImplCopyWithImpl<
+          _$StartVideoCallSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1584,7 +1591,7 @@ class _$_StartVideoCallSuccess implements _StartVideoCallSuccess {
 abstract class _StartVideoCallSuccess implements ContactListState {
   const factory _StartVideoCallSuccess(final List<Contact> contacts,
       {required final Contact selectedContact,
-      required final DateTime calledAt}) = _$_StartVideoCallSuccess;
+      required final DateTime calledAt}) = _$StartVideoCallSuccessImpl;
 
   @override
   List<Contact> get contacts;
@@ -1592,6 +1599,6 @@ abstract class _StartVideoCallSuccess implements ContactListState {
   DateTime get calledAt;
   @override
   @JsonKey(ignore: true)
-  _$$_StartVideoCallSuccessCopyWith<_$_StartVideoCallSuccess> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$StartVideoCallSuccessImplCopyWith<_$StartVideoCallSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

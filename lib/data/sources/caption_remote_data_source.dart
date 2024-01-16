@@ -8,7 +8,7 @@ import '../extensions/firebase_auth.dart';
 import '../models/caption_model.dart';
 
 abstract class CaptionRemoteDataSource {
-  Future<void> init(final String invitationId);
+  Future<void> init(String roomId);
 
   Future<void> enable();
 
@@ -45,10 +45,10 @@ class CaptionRemoteDataSourceImpl implements CaptionRemoteDataSource {
   }
 
   @override
-  Future<void> init(final String invitationId) async {
+  Future<void> init(String roomId) async {
     final queryResult = await _firestore
-        .collection(FirestoreConstant.videoCallCollectionName)
-        .where('invitationId', isEqualTo: invitationId)
+        .collection(FirestoreConstant.roomCollectionName)
+        .where(FirestoreConstant.roomIdKey, isEqualTo: roomId)
         .get();
 
     if (queryResult.size != 1) throw ServerException();
@@ -61,7 +61,7 @@ class CaptionRemoteDataSourceImpl implements CaptionRemoteDataSource {
   Future<void> enable() async {
     try {
       final userId = _auth.userId;
-      _query = reference.where('userId', isNotEqualTo: userId);
+      _query = reference.where(FirestoreConstant.userIdKey, isNotEqualTo: userId);
     } on ServerException {
       rethrow;
     } catch (error) {

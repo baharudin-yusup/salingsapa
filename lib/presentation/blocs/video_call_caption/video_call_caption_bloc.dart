@@ -7,6 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../core/errors/failures.dart';
 import '../../../core/utils/logger.dart';
 import '../../../domain/entities/caption.dart';
+import '../../../domain/entities/room.dart';
 import '../../../domain/usecases/disable_caption.dart';
 import '../../../domain/usecases/enable_caption.dart';
 import '../../../domain/usecases/init_caption.dart';
@@ -14,16 +15,22 @@ import '../../../domain/usecases/stream_caption.dart';
 import '../../../domain/usecases/upload_caption.dart';
 
 part 'video_call_caption_bloc.freezed.dart';
+
 part 'video_call_caption_event.dart';
+
 part 'video_call_caption_state.dart';
 
 const _tagName = 'VideoCallCaptionBloc';
 
 class VideoCallCaptionBloc
     extends Bloc<VideoCallCaptionEvent, VideoCallCaptionState> {
-  VideoCallCaptionBloc(this._initCaption, this._enableCaption,
-      this._disableCaption, this._streamCaption, this._uploadCaption)
-      : super(const VideoCallCaptionState.initial()) {
+  VideoCallCaptionBloc(
+    this._initCaption,
+    this._enableCaption,
+    this._disableCaption,
+    this._streamCaption,
+    this._uploadCaption,
+  ) : super(const VideoCallCaptionState.initial()) {
     on<_Started>(_startInitCaption);
     on<_ToggleFeatureStarted>(_startToggleFeature);
     on<_UpdateRemoteCaptionStarted>(_startUpdateCaptions);
@@ -50,7 +57,7 @@ class VideoCallCaptionBloc
 
   void _startInitCaption(
       _Started event, Emitter<VideoCallCaptionState> emit) async {
-    await _initCaption(event.invitationId);
+    await _initCaption(event.room);
   }
 
   void _startToggleFeature(

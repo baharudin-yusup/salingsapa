@@ -1,1 +1,3 @@
-abstract class Env {}
+abstract class Env {
+  String get baseUrl;
+}

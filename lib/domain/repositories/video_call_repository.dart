@@ -3,22 +3,20 @@ import 'package:dartz/dartz.dart';
 
 import '../../core/interfaces/return_type.dart';
 import '../entities/contact.dart';
-import '../entities/video_call_invitation.dart';
+import '../entities/room.dart';
 import '../entities/video_call_user_update_info.dart';
 import '../entities/video_frame.dart';
 
 abstract class VideoCallRepository {
-  Future<RepoResponse<Unit>> init();
+  Future<RepoResponse<RtcEngine>> init();
 
-  Future<RepoResponse<VideoCallInvitation>> start({required Contact contact});
+  Future<RepoResponse<Room>> createRoom({required Contact contact});
 
-  Future<RepoResponse<VideoCallInvitation>> join(
-      {required VideoCallInvitation invitation});
+  Future<RepoResponse<Unit>> joinRoom({required Room room});
 
-  Future<RepoResponse<Unit>> updateRemoteUserStatus(
-      {required VideoCallInvitation invitation});
+  // Future<RepoResponse<Unit>> updateRemoteUserStatus({required Room invitation});
 
-  Future<RepoResponse<Unit>> leave({required VideoCallInvitation invitation});
+  Future<RepoResponse<Unit>> leaveRoom({required Room room});
 
   Future<RepoResponse<Unit>> flipCamera();
 
@@ -28,7 +26,7 @@ abstract class VideoCallRepository {
 
   Stream<RepoResponse<VideoCallUserUpdateInfo>> get videoCallStatus;
 
-  Stream<RepoResponse<List<VideoCallInvitation>>> get invitations;
+  Stream<RepoResponse<List<Room>>> get invitations;
 
   // Stream<RepoResponse<SalingsapaVideoFrame>> get videoFrame;
 
