@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/errors/failures.dart';
 import '../../../core/utils/logger.dart';
-import '../../../data/extensions/extensions.dart';
 import '../../../domain/usecases/verify_otp.dart';
 import '../../../domain/usecases/verify_phone_number.dart';
 

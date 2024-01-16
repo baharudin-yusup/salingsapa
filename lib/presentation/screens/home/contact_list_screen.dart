@@ -9,7 +9,6 @@ import '../../components/intuitive_scaffold.dart';
 import '../../components/show_error_message.dart';
 import '../../services/theme_service.dart';
 import '../room/create_room_screen.dart';
-import '../video_call/video_call_screen.dart';
 
 class ContactListScreen extends StatelessWidget {
   static const routeName = '/contacts';

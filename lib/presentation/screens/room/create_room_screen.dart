@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:salingsapa/domain/entities/contact.dart';
 
+import '../../../domain/entities/contact.dart';
 import '../../../injection_container.dart';
 import '../../blocs/create_room/create_room_bloc.dart';
 import '../../services/navigator_service.dart';

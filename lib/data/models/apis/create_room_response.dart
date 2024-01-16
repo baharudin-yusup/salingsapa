@@ -14,6 +14,8 @@ class CreateRoomResponse extends BaseApiResponse<CreateRoomResponseData> {
 
   factory CreateRoomResponse.fromJson(Map<String, dynamic> json) =>
       _$CreateRoomResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CreateRoomResponseToJson(this);
 }
 
 @JsonSerializable()
@@ -26,4 +28,6 @@ class CreateRoomResponseData {
 
   factory CreateRoomResponseData.fromJson(Map<String, dynamic> json) =>
       _$CreateRoomResponseDataFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CreateRoomResponseDataToJson(this);
 }

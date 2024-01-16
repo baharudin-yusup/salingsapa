@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:salingsapa/presentation/screens/video_call/video_caption/video_caption_item.dart';
 
 import '../../../blocs/sign_language_recognition_bloc/sign_language_recognition_bloc.dart';
 import '../../../blocs/video_call_caption/video_call_caption_bloc.dart';
 import '../../../services/theme_service.dart';
 import '../../../utils/dimension.dart';
+import 'video_caption_item.dart';
 
 class VideoCaptionList extends StatelessWidget {
   const VideoCaptionList({super.key});
