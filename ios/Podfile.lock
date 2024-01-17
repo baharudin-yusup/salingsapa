@@ -632,11 +632,6 @@ PODS:
     - AgoraIrisRTC_iOS (= 4.2.6-build.3)
     - AgoraRtcEngine_iOS (= 4.2.6)
     - Flutter
-  - agora_rtm (1.5.9):
-    - AgoraRtm_iOS (= 1.5.1)
-    - Flutter
-  - agora_uikit (0.0.1):
-    - Flutter
   - AgoraIrisRTC_iOS (4.2.6-build.3)
   - AgoraRtcEngine_iOS (4.2.6):
     - AgoraRtcEngine_iOS/AIAEC (= 4.2.6)
@@ -667,7 +662,6 @@ PODS:
   - AgoraRtcEngine_iOS/VideoCodecEnc (4.2.6)
   - AgoraRtcEngine_iOS/VirtualBackground (4.2.6)
   - AgoraRtcEngine_iOS/VQA (4.2.6)
-  - AgoraRtm_iOS (1.5.1)
   - AppCheckCore (10.18.0):
     - GoogleUtilities/Environment (~> 7.11)
     - PromisesObjC (~> 2.3)
@@ -982,8 +976,6 @@ PODS:
 
 DEPENDENCIES:
   - agora_rtc_engine (from `.symlinks/plugins/agora_rtc_engine/ios`)
-  - agora_rtm (from `.symlinks/plugins/agora_rtm/ios`)
-  - agora_uikit (from `.symlinks/plugins/agora_uikit/ios`)
   - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
   - contacts_service (from `.symlinks/plugins/contacts_service/ios`)
@@ -1016,7 +1008,6 @@ SPEC REPOS:
     - abseil
     - AgoraIrisRTC_iOS
     - AgoraRtcEngine_iOS
-    - AgoraRtm_iOS
     - AppCheckCore
     - BoringSSL-GRPC
     - Firebase
@@ -1054,10 +1045,6 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   agora_rtc_engine:
     :path: ".symlinks/plugins/agora_rtc_engine/ios"
-  agora_rtm:
-    :path: ".symlinks/plugins/agora_rtm/ios"
-  agora_uikit:
-    :path: ".symlinks/plugins/agora_uikit/ios"
   camera_avfoundation:
     :path: ".symlinks/plugins/camera_avfoundation/ios"
   cloud_firestore:
@@ -1112,11 +1099,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   abseil: 926fb7a82dc6d2b8e1f2ed7f3a718bce691d1e46
   agora_rtc_engine: 5b2a7c221e1f3dfb8dee0fb0659f269be24fa81b
-  agora_rtm: 51b5cef21d9d664563b9a420f2c59531b1ad3e4c
-  agora_uikit: ca47b21e2af19474ddd8ec153670c2dc8cf3a9e8
   AgoraIrisRTC_iOS: 8346499b82968a4967e3d0bec2cf14bf7c0c3f76
   AgoraRtcEngine_iOS: ac647332ad8f86d79cf810601c9e62b28c3a4de0
-  AgoraRtm_iOS: 595a9fa33a409831e6183396ea8f8bc563918403
   AppCheckCore: 4687c03428947d5b26a6bf9bb5566b39f5473bf1
   BoringSSL-GRPC: 3175b25143e648463a56daeaaa499c6cb86dad33
   camera_avfoundation: 8b8d780bcfb6a4a02b0fbe2b4bd17b5b71946e68
