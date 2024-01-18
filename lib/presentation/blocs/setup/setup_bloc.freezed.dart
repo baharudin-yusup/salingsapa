@@ -113,7 +113,7 @@ class _$StartedImpl implements _Started {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
@@ -245,7 +245,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PhoneNumberChangedImpl &&
@@ -375,7 +375,7 @@ class _$ButtonDonePressedImpl implements _ButtonDonePressed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$ButtonDonePressedImpl);
   }
@@ -507,7 +507,7 @@ class _$OtpChangedImpl implements _OtpChanged {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OtpChangedImpl &&
@@ -812,7 +812,7 @@ class _$InputPhoneNumberInitialImpl implements InputPhoneNumberInitial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InputPhoneNumberInitialImpl &&
@@ -1026,7 +1026,7 @@ class _$InputPhoneNumberVerifyInProgressImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InputPhoneNumberVerifyInProgressImpl &&
@@ -1243,7 +1243,7 @@ class _$InputPhoneNumberFailureImpl implements _InputPhoneNumberFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InputPhoneNumberFailureImpl &&
@@ -1454,7 +1454,7 @@ class _$InputPhoneNumberSuccessImpl implements _InputPhoneNumberSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InputPhoneNumberSuccessImpl &&
@@ -1667,7 +1667,7 @@ class _$InputOtpInitialImpl implements _InputOtpInitial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InputOtpInitialImpl &&
@@ -1885,7 +1885,7 @@ class _$InputOtpValidationInProgressImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InputOtpValidationInProgressImpl &&
@@ -2105,7 +2105,7 @@ class _$InputOtpValidationSuccessImpl implements _InputOtpValidationSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InputOtpValidationSuccessImpl &&
@@ -2331,7 +2331,7 @@ class _$InputOtpValidationFailureImpl implements _InputOtpValidationFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InputOtpValidationFailureImpl &&

@@ -114,7 +114,7 @@ class _$StartedImpl implements _Started {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
@@ -228,7 +228,7 @@ class _$FlipCameraStartedImpl implements _FlipCameraStarted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$FlipCameraStartedImpl);
   }
@@ -342,7 +342,7 @@ class _$MuteAudioStartedImpl implements _MuteAudioStarted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$MuteAudioStartedImpl);
   }
@@ -456,7 +456,7 @@ class _$MuteVideoStartedImpl implements _MuteVideoStarted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$MuteVideoStartedImpl);
   }
@@ -740,7 +740,7 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
@@ -947,7 +947,7 @@ class _$ChangeControlInProgressImpl implements _ChangeControlInProgress {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChangeControlInProgressImpl &&
@@ -1156,7 +1156,7 @@ class _$ChangeControlSuccessImpl implements _ChangeControlSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChangeControlSuccessImpl &&
@@ -1377,7 +1377,7 @@ class _$ChangeControlFailureImpl implements _ChangeControlFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChangeControlFailureImpl &&

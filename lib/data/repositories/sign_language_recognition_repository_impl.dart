@@ -31,7 +31,7 @@ class SignLanguageRecognizerRepositoryImpl
       return const Right(unit);
     } catch (error) {
       Logger.error(error, event: 'initializing plugin', name: _tagName);
-      return Left(UnknownFailure());
+      return Left(UnknownFailure(createdAt: DateTime.now()));
     }
   }
 
@@ -40,7 +40,7 @@ class SignLanguageRecognizerRepositoryImpl
       SalingsapaVideoFrame frame) async {
     final result =
         await _plugin.analyzeFrame(SalingsapaVideoFrameModel.fromEntity(frame));
-    if (result == null) return Left(FeatureFailure());
+    if (result == null) return const Left(FeatureFailure());
     return Right(result);
   }
 
@@ -51,18 +51,24 @@ class SignLanguageRecognizerRepositoryImpl
       return const Right(unit);
     } catch (error) {
       Logger.error(error, event: 'disabling plugin', name: _tagName);
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 
   @override
   Future<Either<Failure, Unit>> enable() async {
     try {
-      await _plugin.enable();
-      return const Right(unit);
+      // TODO: Enable this later
+      // await _plugin.enable();
+      // return const Right(unit);
+      return Left(FeatureFailure(
+        errorMessage:
+            'Sorry, the sign language recognition feature is temporarily disabled',
+        createdAt: DateTime.now(),
+      ));
     } catch (error) {
       Logger.error(error, event: 'enabling plugin', name: _tagName);
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 
@@ -87,7 +93,7 @@ class SignLanguageRecognizerRepositoryImpl
       return const Right(unit);
     } catch (error) {
       Logger.error(error, event: 'closing plugin', name: _tagName);
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 
@@ -100,7 +106,7 @@ class SignLanguageRecognizerRepositoryImpl
       return const Right(unit);
     } catch (error) {
       Logger.error(error, event: 'analyzing photo snapshot', name: _tagName);
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 
@@ -111,7 +117,7 @@ class SignLanguageRecognizerRepositoryImpl
       return const Right(unit);
     } catch (error) {
       Logger.error(error, event: 'resetting snapshot', name: _tagName);
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 }

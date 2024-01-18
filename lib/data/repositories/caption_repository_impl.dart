@@ -19,7 +19,7 @@ class CaptionRepositoryImpl implements CaptionRepository {
       return const Right(unit);
     } catch (error) {
       Logger.error(error, event: 'initializing caption repository');
-      return Left(ServerFailure());
+      return Left(ServerFailure(createdAt: DateTime.now()));
     }
   }
 
@@ -43,7 +43,7 @@ class CaptionRepositoryImpl implements CaptionRepository {
       return const Right(unit);
     } catch (error) {
       Logger.error(error, event: 'disabling caption feature');
-      return Left(ServerFailure());
+      return Left(ServerFailure(createdAt: DateTime.now()));
     }
   }
 
@@ -54,7 +54,7 @@ class CaptionRepositoryImpl implements CaptionRepository {
       return const Right(unit);
     } catch (error) {
       Logger.error(error, event: 'enabling caption feature (repo)');
-      return Left(ServerFailure());
+      return Left(ServerFailure(createdAt: DateTime.now()));
     }
   }
 
@@ -65,7 +65,7 @@ class CaptionRepositoryImpl implements CaptionRepository {
       return const Right(unit);
     } catch (error) {
       Logger.error(error, event: 'uploading caption');
-      return Left(UnknownFailure());
+      return Left(UnknownFailure(createdAt: DateTime.now()));
     }
   }
 }

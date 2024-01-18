@@ -119,7 +119,7 @@ class _$StartedImpl implements _Started {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
@@ -239,7 +239,7 @@ class _$SignOutStartedImpl implements _SignOutStarted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$SignOutStartedImpl);
   }
@@ -359,7 +359,7 @@ class _$PickImageStartedImpl implements _PickImageStarted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$PickImageStartedImpl);
   }
@@ -497,7 +497,7 @@ class _$UpdateNameStartedImpl implements _UpdateNameStarted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateNameStartedImpl &&
@@ -649,7 +649,7 @@ class _$CurrentUserUpdatedImpl implements _CurrentUserUpdated {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CurrentUserUpdatedImpl &&
@@ -939,7 +939,7 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
@@ -1129,7 +1129,7 @@ class _$UpdateInProgressImpl implements _UpdateInProgress {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateInProgressImpl &&
@@ -1332,7 +1332,7 @@ class _$UpdateFailureImpl implements _UpdateFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateFailureImpl &&

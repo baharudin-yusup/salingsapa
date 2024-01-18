@@ -32,7 +32,7 @@ class ContactListBloc extends Bloc<ContactListEvent, ContactListState> {
     final checkPermission = await _hasPermission(AppPermission.accessContact);
 
     if (checkPermission.isLeft()) {
-      emit(ContactListState.loadFailure(UnknownFailure(), state.contacts));
+      emit(ContactListState.loadFailure(const UnknownFailure(), state.contacts));
       return;
     }
 
@@ -42,7 +42,7 @@ class ContactListBloc extends Bloc<ContactListEvent, ContactListState> {
 
       if (requestPermission.isLeft() ||
           !requestPermission.getOrElse(() => false)) {
-        emit(ContactListState.loadFailure(UnknownFailure(), state.contacts));
+        emit(ContactListState.loadFailure(UnknownFailure(createdAt: DateTime.now()), state.contacts));
         return;
       }
     }

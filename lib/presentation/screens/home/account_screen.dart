@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,10 +66,9 @@ class AccountScreen extends StatelessWidget {
 
   Widget buildBody(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.symmetric(
-        horizontal: IntuitiveUiConstant.normalSpace,
-        vertical: IntuitiveUiConstant.normalSpace,
-      ),
+      padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace).add(
+          EdgeInsets.only(
+              top: Platform.isIOS ? MediaQuery.of(context).padding.top : 0)),
       children: [
         showAvatar(),
         const SizedBox(height: IntuitiveUiConstant.largeSpace),

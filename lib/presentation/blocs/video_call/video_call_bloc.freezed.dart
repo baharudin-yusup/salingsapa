@@ -149,7 +149,7 @@ class _$EngineStartedImpl implements _EngineStarted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$EngineStartedImpl);
   }
@@ -299,7 +299,7 @@ class _$JoinRoomStartedImpl implements _JoinRoomStarted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$JoinRoomStartedImpl);
   }
@@ -449,7 +449,7 @@ class _$JoinRoomFailedImpl implements _JoinRoomFailed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$JoinRoomFailedImpl);
   }
@@ -599,7 +599,7 @@ class _$LeaveRoomStartedImpl implements _LeaveRoomStarted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$LeaveRoomStartedImpl);
   }
@@ -769,7 +769,7 @@ class _$UpdateUserStatusStartedImpl implements _UpdateUserStatusStarted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateUserStatusStartedImpl &&
@@ -956,7 +956,7 @@ class _$TakePhotoSnapshotFeatureStatusChangedImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TakePhotoSnapshotFeatureStatusChangedImpl &&
@@ -1129,7 +1129,7 @@ class _$DisableTakePhotoSnapshotStartedImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DisableTakePhotoSnapshotStartedImpl);
@@ -1285,7 +1285,7 @@ class _$EnableTakePhotoSnapshotStartedImpl
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnableTakePhotoSnapshotStartedImpl);
@@ -1594,7 +1594,7 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
@@ -1788,7 +1788,7 @@ class _$InitEngineInProgressImpl implements _InitEngineInProgress {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitEngineInProgressImpl &&
@@ -1992,7 +1992,7 @@ class _$InitEngineSuccessImpl implements _InitEngineSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitEngineSuccessImpl &&
@@ -2197,7 +2197,7 @@ class _$InitEngineFailureImpl implements _InitEngineFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitEngineFailureImpl &&
@@ -2402,7 +2402,7 @@ class _$JoinRoomInProgressImpl implements _JoinRoomInProgress {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$JoinRoomInProgressImpl &&
@@ -2614,7 +2614,7 @@ class _$JoinRoomFailureImpl implements _JoinRoomFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$JoinRoomFailureImpl &&
@@ -2863,7 +2863,7 @@ class _$JoinRoomSuccessImpl implements _JoinRoomSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$JoinRoomSuccessImpl &&
@@ -3089,7 +3089,7 @@ class _$LeaveRoomInProgressImpl implements _LeaveRoomInProgress {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LeaveRoomInProgressImpl &&
@@ -3296,7 +3296,7 @@ class _$LeaveRoomSuccessImpl implements _LeaveRoomSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LeaveRoomSuccessImpl &&
@@ -3502,7 +3502,7 @@ class _$LeaveRoomFailureImpl implements _LeaveRoomFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LeaveRoomFailureImpl &&

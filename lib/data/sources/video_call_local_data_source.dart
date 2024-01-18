@@ -22,6 +22,7 @@ abstract class VideoCallLocalDataSource {
 
 class VideoCallLocalDataSourceImpl implements VideoCallLocalDataSource {
   RtcEngine? _rtcEngine;
+
   RtcEngine get _engine {
     if (_rtcEngine == null) {
       throw GeneralException();
@@ -30,8 +31,8 @@ class VideoCallLocalDataSourceImpl implements VideoCallLocalDataSource {
     return _rtcEngine!;
   }
 
-  late BehaviorSubject<SalingsapaVideoFrameModel> _videoFrameController;
-  late Timer _videoFrameSendTimer;
+  BehaviorSubject<SalingsapaVideoFrameModel>? _videoFrameController;
+  Timer? _videoFrameSendTimer;
 
   @override
   Future<void> init(String appId) async {
@@ -43,14 +44,14 @@ class VideoCallLocalDataSourceImpl implements VideoCallLocalDataSource {
 
   @override
   Future<void> setObserver() async {
+    _videoFrameController = BehaviorSubject();
     _videoFrameSendTimer =
         Timer.periodic(const Duration(milliseconds: 300), (timer) {
-      if (_videoFrameController.isClosed) {
+      if (_videoFrameController?.isClosed ?? false) {
         timer.cancel();
         return;
       }
     });
-    _videoFrameController = BehaviorSubject();
 
     // _audioFrameObserver = AudioFrameObserver(
     //     onRecordAudioFrame: (String channelId, AudioFrame audioFrame) {},
@@ -100,11 +101,11 @@ class VideoCallLocalDataSourceImpl implements VideoCallLocalDataSource {
     // _engine.getMediaEngine().unregisterAudioFrameObserver(_audioFrameObserver);
     // _engine.getMediaEngine().unregisterVideoFrameObserver(_videoFrameObserver);
 
-    await _videoFrameController.close();
-    _videoFrameSendTimer.cancel();
+    await _videoFrameController?.close();
+    _videoFrameSendTimer?.cancel();
   }
 
   @override
   Stream<SalingsapaVideoFrameModel> get videoFrame =>
-      _videoFrameController.stream;
+      _videoFrameController?.stream ?? const Stream.empty();
 }

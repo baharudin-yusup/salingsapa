@@ -42,7 +42,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
 
       _authorizationStatusStreamController.sink
           .add(const Right(AuthStatus.unauthorized));
-      return Left(CacheFailure());
+      return Left(CacheFailure(createdAt: DateTime.now()));
     }
   }
 
@@ -56,7 +56,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
           .add(const Right(AuthStatus.authorized));
       return Right(model.toEntity());
     } on Exception catch (_) {
-      return Left(ServerFailure());
+      return Left(ServerFailure(createdAt: DateTime.now()));
     }
   }
 
@@ -67,7 +67,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       return const Right(unit);
     } catch (error) {
       Logger.error(error, event: '(repository) signing out');
-      return Left(UnknownFailure());
+      return Left(UnknownFailure(createdAt: DateTime.now()));
     }
   }
 
@@ -79,7 +79,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
           .add(const Right(AuthStatus.authorized));
       return Right(model.toEntity());
     } on Exception catch (_) {
-      return Left(ServerFailure());
+      return Left(ServerFailure(createdAt: DateTime.now()));
     }
   }
 
@@ -98,7 +98,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
           : AuthStatus.authorized);
     } catch (error) {
       Logger.error(error, event: '(repository) getting current user');
-      return Left(CacheFailure());
+      return Left(CacheFailure(createdAt: DateTime.now()));
     }
   }
 }

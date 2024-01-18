@@ -12,9 +12,11 @@ import 'package:uuid/uuid.dart';
 
 import '../../core/errors/exceptions.dart';
 import '../../core/utils/logger.dart';
+import '../../domain/entities/Invitation.dart';
 import '../../domain/entities/contact.dart';
 import '../../domain/entities/video_call_status.dart';
 import '../../domain/entities/video_call_user_update_info.dart';
+import '../constants/firestore_constant.dart';
 import '../extensions/extensions.dart';
 import '../models/apis/create_room_request.dart';
 import '../models/room_model.dart';
@@ -52,7 +54,7 @@ abstract class VideoCallRemoteDataSource {
 
   Stream<PhotoSnapshotModel> get photoSnapshot;
 
-  Stream<List<RoomModel>> get rooms;
+  Stream<List<Invitation>> get rooms;
 
   RtcEngine? get engine;
 }
@@ -161,8 +163,9 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
   @override
   Future<RoomModel> createRoom(Contact contact) async {
     // Create room and generate token
-    final request = CreateRoomRequest(
-        guestPhoneNumber: contact.phoneNumber.toFormattedPhoneNumber());
+    final request = CreateRoomRequest(phoneNumbers: [
+      contact.phoneNumber.toFormattedPhoneNumber(),
+    ]);
     final response = await _apiService.createRoom(request);
     return response.data.room;
   }
@@ -225,31 +228,36 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
   RtcEngine? get engine => _engine;
 
   @override
-  Stream<List<RoomModel>> get rooms {
+  Stream<List<Invitation>> get rooms {
     final user = _auth.currentUser;
 
     if (user == null) {
       return const Stream.empty();
     }
 
-    final targetPhoneNumber = user.phoneNumber!.toFormattedPhoneNumber();
-    Logger.print('guestPhoneNumber: $targetPhoneNumber');
+    final phoneNumber = user.phoneNumber!.toFormattedPhoneNumber();
     return _roomCollection
-        .where('guestPhoneNumber', isEqualTo: targetPhoneNumber)
-        .orderBy('createdAt', descending: true)
+        .where(RoomCollectionKey.invitedPhoneNumbers,
+            arrayContains: phoneNumber)
+        .orderBy(FirestoreConstant.createdAtKey, descending: true)
         .snapshots()
         .map((snapshot) {
-      final rooms = <RoomModel>[];
-
-      for (var room in snapshot.docs) {
+      // TODO: Fix this
+      final invitations = <Invitation>[];
+      for (var doc in snapshot.docs) {
         try {
-          rooms.add(RoomModel.fromJson(room.data()));
+          final room = RoomModel.fromFirebase(doc.data());
+          invitations.add(Invitation(
+            room: room.toEntity(),
+            callerContact: null,
+            shouldPlayRingtone: room.hostId != user.uid,
+          ));
         } catch (error) {
           Logger.error(error, event: 'mapping video call rooms. data: $json');
         }
       }
 
-      return rooms;
+      return invitations;
     });
   }
 

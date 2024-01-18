@@ -49,7 +49,7 @@ class NavigatorServiceImpl implements NavigatorService {
       return Right(result);
     } catch (error) {
       Logger.error(error, event: 'opening route');
-      return Left(UnknownFailure());
+      return Left(UnknownFailure(createdAt: DateTime.now()));
     }
   }
 
@@ -66,7 +66,7 @@ class NavigatorServiceImpl implements NavigatorService {
       return Right(result);
     } catch (error) {
       Logger.error(error, event: 'opening route');
-      return Left(UnknownFailure());
+      return Left(UnknownFailure(createdAt: DateTime.now()));
     }
   }
 
@@ -77,7 +77,7 @@ class NavigatorServiceImpl implements NavigatorService {
       return const Right(unit);
     } catch (error) {
       Logger.error(error, event: 'opening route');
-      return Left(UnknownFailure());
+      return Left(UnknownFailure(createdAt: DateTime.now()));
     }
   }
 
@@ -95,7 +95,7 @@ class NavigatorServiceImpl implements NavigatorService {
       return Right(result);
     } catch (error) {
       Logger.error(error, event: 'opening route');
-      return Left(UnknownFailure());
+      return Left(UnknownFailure(createdAt: DateTime.now()));
     }
   }
 }

@@ -22,7 +22,9 @@ import '../../../domain/usecases/stream_sign_language_recognition_status.dart';
 import '../../utils/toggle_usecase.dart';
 
 part 'sign_language_recognition_bloc.freezed.dart';
+
 part 'sign_language_recognition_event.dart';
+
 part 'sign_language_recognition_state.dart';
 
 const _tagName = 'SignLanguageRecognitionBloc';
@@ -110,8 +112,9 @@ class SignLanguageRecognitionBloc
 
     await toggleUseCase(
       (isNeedToEnable
-          ? _enableSignLanguageRecognition
-          : _disableSignLanguageRecognition).call,
+              ? _enableSignLanguageRecognition
+              : _disableSignLanguageRecognition)
+          .call,
       onSuccess: (_) {
         Logger.print(
           'enabling feature success',
@@ -124,6 +127,7 @@ class SignLanguageRecognitionBloc
           event: '${isNeedToEnable ? 'enabling' : 'disabling'} feature',
           name: _tagName,
         );
+        emit(state.toFailure(failure));
       },
     );
   }

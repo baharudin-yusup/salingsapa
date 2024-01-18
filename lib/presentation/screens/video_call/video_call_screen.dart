@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
+import '../../../core/utils/logger.dart';
 import '../../../domain/entities/recognition_status.dart';
 import '../../blocs/sign_language_recognition_bloc/sign_language_recognition_bloc.dart';
 import '../../blocs/speech_recognition_bloc/speech_recognition_bloc.dart';
@@ -90,6 +92,15 @@ class VideoCallScreen extends StatelessWidget {
                           state.caption));
                       break;
                   }
+                },
+                failure: (state) {
+                  state.maybeMap(
+                    failure: (state) {
+                      Logger.error(state, event: 'event123');
+                      Fluttertoast.showToast(msg: state.failure.errorMessage);
+                    },
+                    orElse: () {},
+                  );
                 },
                 orElse: () {},
               );

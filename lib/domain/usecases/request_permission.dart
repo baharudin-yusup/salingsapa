@@ -25,7 +25,7 @@ class RequestPermission extends UseCase<AppPermission, bool> {
       return Right(isGranted);
     } catch (error) {
       Logger.error(error, event: 'requesting permission $param');
-      return Left(UnknownFailure());
+      return Left(UnknownFailure(createdAt: DateTime.now()));
     }
   }
 }
