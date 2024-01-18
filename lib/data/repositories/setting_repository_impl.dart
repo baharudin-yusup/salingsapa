@@ -18,7 +18,7 @@ class SettingRepositoryImpl implements SettingRepository {
       return Right(value);
     } catch (error) {
       Logger.error(error, event: 'getting IsFirstLaunchApp local data');
-      return Left(CacheFailure());
+      return Left(CacheFailure(createdAt: DateTime.now()));
     }
   }
 
@@ -29,7 +29,7 @@ class SettingRepositoryImpl implements SettingRepository {
       return const Right(unit);
     } catch (error) {
       Logger.error(error, event: 'writing IsFirstLaunchApp local data');
-      return Left(CacheFailure());
+      return Left(CacheFailure(createdAt: DateTime.now()));
     }
   }
 }

@@ -34,7 +34,9 @@ class ApiServiceImpl implements ApiService {
     } on DioException catch (error) {
       Logger.error(error.response?.data,
           event: '(datasource) calling ${ApiConstant.createRoom()} API');
-      throw ServerException(type: ServerExceptionType.unknown);
+      throw ServerException(
+          message: error.message ?? error.response?.data['message'],
+          type: ServerExceptionType.unknown);
     } catch (error) {
       Logger.error(error,
           event: '(datasource) calling ${ApiConstant.createRoom()} API');

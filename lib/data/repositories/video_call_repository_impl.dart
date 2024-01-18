@@ -5,6 +5,7 @@ import 'package:permission_handler/permission_handler.dart';
 import '../../core/errors/failures.dart';
 import '../../core/interfaces/return_type.dart';
 import '../../core/utils/logger.dart';
+import '../../domain/entities/Invitation.dart';
 import '../../domain/entities/contact.dart';
 import '../../domain/entities/room.dart';
 import '../../domain/entities/video_call_user_update_info.dart';
@@ -34,7 +35,7 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
     final result = await [Permission.microphone, Permission.camera].request();
     if (result.containsValue(PermissionStatus.denied) ||
         result.containsValue(PermissionStatus.permanentlyDenied)) {
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
 
     if (_isInitialized) {
@@ -50,7 +51,7 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
       _remoteDataSource.setEngine(_engine!);
     } catch (error) {
       Logger.error(error, event: 'creating Agora RTC engine');
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
 
     try {
@@ -58,21 +59,21 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
       await _localDataSource.init(appId);
     } catch (error) {
       Logger.error(error, event: 'Initializing app id and local data source');
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
 
     try {
       await _remoteDataSource.init();
     } catch (error) {
       Logger.error(error, event: 'Initializing remote data source');
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
 
     try {
       _localDataSource.setObserver();
     } catch (error) {
       Logger.error(error, event: 'Initializing local data source observer');
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
 
     Logger.print('Initializing video engine success!');
@@ -87,7 +88,7 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
       return Right(room.toEntity());
     } catch (error) {
       Logger.error(error, event: '(repository) create room failed!');
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 
@@ -98,7 +99,7 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
 
       return const Right(unit);
     } catch (_) {
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 
@@ -107,7 +108,7 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
     try {
       _localDataSource.removeObserver();
     } catch (_) {
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
 
     try {
@@ -117,23 +118,24 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
       Logger.print('Leave video room success!');
       return const Right(unit);
     } catch (_) {
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 
   @override
   RepoResponse<RtcEngine> get engine {
     if (!_isInitialized) {
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
 
     return Right(_engine!);
   }
 
   @override
-  Stream<RepoResponse<List<Room>>> get invitations =>
+  Stream<RepoResponse<List<Invitation>>> get rooms =>
       _remoteDataSource.rooms.map((invitations) =>
-          Right(invitations.map((e) => e.toEntity()).toList()));
+          // TODO: Fix this
+          Right(invitations));
 
   @override
   Future<RepoResponse<Unit>> flipCamera() async {
@@ -141,7 +143,7 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
       await _remoteDataSource.flipCamera();
       return const Right(unit);
     } catch (_) {
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 
@@ -151,7 +153,7 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
       await _remoteDataSource.muteAudio(isMuted);
       return const Right(unit);
     } catch (_) {
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 
@@ -161,7 +163,7 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
       await _remoteDataSource.muteVideo(isMuted);
       return const Right(unit);
     } catch (_) {
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 
@@ -191,7 +193,7 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
         event: 'disabling take snapshot',
         name: _tagName,
       );
-      return Left(UnknownFailure());
+      return Left(UnknownFailure(createdAt: DateTime.now()));
     }
   }
 
@@ -206,7 +208,7 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
         event: 'disabling take snapshot',
         name: _tagName,
       );
-      return Left(UnknownFailure());
+      return Left(UnknownFailure(createdAt: DateTime.now()));
     }
   }
 

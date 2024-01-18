@@ -51,7 +51,7 @@ class ContactRepositoryImpl implements ContactRepository {
       return Right(entities);
     } catch (error) {
       Logger.error(error, event: 'getting contact list (repository)');
-      return Left(UnknownFailure());
+      return Left(UnknownFailure(createdAt: DateTime.now()));
     }
   }
 }

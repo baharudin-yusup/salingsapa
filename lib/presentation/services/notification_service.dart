@@ -112,7 +112,7 @@ class NotificationServiceImpl implements NotificationService {
       final status = settings.authorizationStatus;
       return Right(status);
     } catch (error) {
-      return Left(UnknownFailure());
+      return Left(UnknownFailure(createdAt: DateTime.now()));
     }
   }
 

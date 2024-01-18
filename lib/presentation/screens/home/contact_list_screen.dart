@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -38,19 +40,20 @@ class ContactListScreen extends StatelessWidget {
           appBar: IntuitiveAppBar(
             middle: Text(AppLocalizations.of(context)!.contacts),
             materialActions: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.search_rounded),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.more_vert_rounded),
-              ),
+              // TODO: Enable this later
+              // IconButton(
+              //   onPressed: () {},
+              //   icon: const Icon(Icons.search_rounded),
+              // ),
+              // IconButton(
+              //   onPressed: () {},
+              //   icon: const Icon(Icons.more_vert_rounded),
+              // ),
             ],
           ),
           child: state.maybeMap(
-            loadSuccess: (_) => buildContactList(state.contacts),
-            loadFailure: (_) => buildContactList(state.contacts),
+            loadSuccess: (_) => buildContactList(context, state.contacts),
+            loadFailure: (_) => buildContactList(context, state.contacts),
             orElse: () => buildLoadingUi(),
           ),
         );
@@ -64,12 +67,14 @@ class ContactListScreen extends StatelessWidget {
     );
   }
 
-  Widget buildContactList(List<Contact> contacts) {
+  Widget buildContactList(BuildContext context, List<Contact> contacts) {
     if (contacts.isEmpty) {
       return buildNoContactsUi();
     }
     return ListView.separated(
-      padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace),
+      padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace).add(
+          EdgeInsets.only(
+              top: Platform.isIOS ? MediaQuery.of(context).padding.top : 0)),
       itemCount: contacts.length,
       itemBuilder: (context, index) {
         return ContactCard(

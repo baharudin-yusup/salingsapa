@@ -131,7 +131,7 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
       _JoinRoomFailed event, Emitter<VideoCallState> emit) async {
     state.maybeWhen(
       joinRoomInProgress: (room, engine) {
-        emit(VideoCallState.joinRoomFailure(room, engine, UnknownFailure()));
+        emit(VideoCallState.joinRoomFailure(room, engine, const UnknownFailure()));
       },
       orElse: () {},
     );

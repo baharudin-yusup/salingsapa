@@ -24,7 +24,7 @@ class SpeechRecognitionRepositoryImpl implements SpeechRecognitionRepository {
       return const Right(unit);
     } catch (exception) {
       Logger.error(exception, event: 'disabling plugin', name: _tagName);
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 
@@ -36,7 +36,7 @@ class SpeechRecognitionRepositoryImpl implements SpeechRecognitionRepository {
       return const Right(unit);
     } catch (exception) {
       Logger.error(exception, event: 'enabling plugin', name: _tagName);
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 
@@ -48,7 +48,7 @@ class SpeechRecognitionRepositoryImpl implements SpeechRecognitionRepository {
       return const Right(unit);
     } catch (exception) {
       Logger.error(exception, event: 'initializing plugin', name: _tagName);
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 

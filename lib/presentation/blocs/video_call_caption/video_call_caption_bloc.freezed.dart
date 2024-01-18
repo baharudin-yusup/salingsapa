@@ -144,7 +144,7 @@ class _$StartedImpl implements _Started {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StartedImpl &&
@@ -284,7 +284,7 @@ class _$ToggleFeatureStartedImpl implements _ToggleFeatureStarted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ToggleFeatureStartedImpl);
@@ -448,7 +448,7 @@ class _$UpdateRemoteCaptionStartedImpl implements _UpdateRemoteCaptionStarted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateRemoteCaptionStartedImpl &&
@@ -613,7 +613,7 @@ class _$LocalCaptionReceivedImpl implements _LocalCaptionReceived {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LocalCaptionReceivedImpl &&
@@ -774,7 +774,7 @@ class _$UploadCaptionStartedImpl implements _UploadCaptionStarted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UploadCaptionStartedImpl &&
@@ -1096,7 +1096,7 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
@@ -1322,7 +1322,7 @@ class _$ToggleFeatureFailureImpl implements _ToggleFeatureFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ToggleFeatureFailureImpl &&
@@ -1562,7 +1562,7 @@ class _$UpdateRemoteCaptionFailureImpl implements _UpdateRemoteCaptionFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateRemoteCaptionFailureImpl &&
@@ -1799,7 +1799,7 @@ class _$UploadCaptionFailureImpl implements _UploadCaptionFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UploadCaptionFailureImpl &&

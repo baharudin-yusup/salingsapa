@@ -2,44 +2,39 @@ import 'package:equatable/equatable.dart';
 
 class Room extends Equatable {
   final String roomId;
+  final String hostId;
   final String hostPhoneNumber;
-  final String guestPhoneNumber;
+  final bool _isValid;
   final DateTime createdAt;
   final DateTime updatedAt;
   final Duration expirationTime;
-  final bool isValid;
-  final bool isHostJoined;
-  final bool isGuestJoined;
-  final String hostId;
-  final String guestId;
+  final List<String> invitedPhoneNumbers;
+
+  bool get isValid {
+    return _isValid && DateTime.now().isBefore(createdAt.add(expirationTime));
+  }
 
   const Room({
+    required this.createdAt,
     required this.roomId,
     required this.hostPhoneNumber,
-    required this.guestPhoneNumber,
-    required this.createdAt,
     required this.updatedAt,
     required this.expirationTime,
-    required this.isValid,
-    required this.isHostJoined,
-    required this.isGuestJoined,
+    required bool isValid,
     required this.hostId,
-    required this.guestId,
-  });
+    required this.invitedPhoneNumbers,
+  }) : _isValid = isValid;
 
   @override
   List<Object?> get props => [
+        createdAt,
         roomId,
         hostPhoneNumber,
-        guestPhoneNumber,
-        createdAt,
         updatedAt,
         expirationTime,
         isValid,
-        isHostJoined,
-        isGuestJoined,
         hostId,
-        guestId,
+        invitedPhoneNumbers,
       ];
 
   @override

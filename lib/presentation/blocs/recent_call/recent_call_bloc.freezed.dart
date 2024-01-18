@@ -107,7 +107,7 @@ class _$StartedImpl implements _Started {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$StartedImpl);
   }
@@ -215,7 +215,7 @@ class _$RefreshPulledImpl implements _RefreshPulled {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$RefreshPulledImpl);
   }
@@ -323,7 +323,7 @@ class _$NewCallTappedImpl implements _NewCallTapped {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$NewCallTappedImpl);
   }
@@ -406,53 +406,58 @@ abstract class _NewCallTapped implements RecentCallEvent {
 
 /// @nodoc
 mixin _$RecentCallState {
-  Stream<Either<Failure, List<Room>>> get invitations =>
+  Stream<Either<Failure, List<Invitation>>> get invitations =>
       throw _privateConstructorUsedError;
   List<CallInfo> get calls => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)
         initial,
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)
         refreshInProgress,
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)
         refreshSuccess,
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
-            List<CallInfo> calls, Failure failure)
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
+            List<CallInfo> calls,
+            Failure failure)
         refreshFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         initial,
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshInProgress,
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshSuccess,
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls, Failure failure)?
         refreshFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         initial,
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshInProgress,
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshSuccess,
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls, Failure failure)?
         refreshFailure,
     required TResult orElse(),
@@ -496,7 +501,8 @@ abstract class $RecentCallStateCopyWith<$Res> {
       _$RecentCallStateCopyWithImpl<$Res, RecentCallState>;
   @useResult
   $Res call(
-      {Stream<Either<Failure, List<Room>>> invitations, List<CallInfo> calls});
+      {Stream<Either<Failure, List<Invitation>>> invitations,
+      List<CallInfo> calls});
 }
 
 /// @nodoc
@@ -519,7 +525,7 @@ class _$RecentCallStateCopyWithImpl<$Res, $Val extends RecentCallState>
       invitations: null == invitations
           ? _value.invitations
           : invitations // ignore: cast_nullable_to_non_nullable
-              as Stream<Either<Failure, List<Room>>>,
+              as Stream<Either<Failure, List<Invitation>>>,
       calls: null == calls
           ? _value.calls
           : calls // ignore: cast_nullable_to_non_nullable
@@ -537,7 +543,8 @@ abstract class _$$InitialImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Stream<Either<Failure, List<Room>>> invitations, List<CallInfo> calls});
+      {Stream<Either<Failure, List<Invitation>>> invitations,
+      List<CallInfo> calls});
 }
 
 /// @nodoc
@@ -558,7 +565,7 @@ class __$$InitialImplCopyWithImpl<$Res>
       null == invitations
           ? _value.invitations
           : invitations // ignore: cast_nullable_to_non_nullable
-              as Stream<Either<Failure, List<Room>>>,
+              as Stream<Either<Failure, List<Invitation>>>,
       null == calls
           ? _value._calls
           : calls // ignore: cast_nullable_to_non_nullable
@@ -577,7 +584,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   @JsonKey()
-  final Stream<Either<Failure, List<Room>>> invitations;
+  final Stream<Either<Failure, List<Invitation>>> invitations;
   final List<CallInfo> _calls;
   @override
   @JsonKey()
@@ -593,7 +600,7 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
@@ -615,17 +622,22 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)
         initial,
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)
         refreshInProgress,
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)
         refreshSuccess,
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
-            List<CallInfo> calls, Failure failure)
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
+            List<CallInfo> calls,
+            Failure failure)
         refreshFailure,
   }) {
     return initial(invitations, calls);
@@ -634,16 +646,16 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         initial,
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshInProgress,
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshSuccess,
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls, Failure failure)?
         refreshFailure,
   }) {
@@ -653,16 +665,16 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         initial,
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshInProgress,
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshSuccess,
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls, Failure failure)?
         refreshFailure,
     required TResult orElse(),
@@ -713,11 +725,11 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements RecentCallState {
   const factory _Initial(
-      [final Stream<Either<Failure, List<Room>>> invitations,
+      [final Stream<Either<Failure, List<Invitation>>> invitations,
       final List<CallInfo> calls]) = _$InitialImpl;
 
   @override
-  Stream<Either<Failure, List<Room>>> get invitations;
+  Stream<Either<Failure, List<Invitation>>> get invitations;
   @override
   List<CallInfo> get calls;
   @override
@@ -735,7 +747,8 @@ abstract class _$$RefreshInProgressImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Stream<Either<Failure, List<Room>>> invitations, List<CallInfo> calls});
+      {Stream<Either<Failure, List<Invitation>>> invitations,
+      List<CallInfo> calls});
 }
 
 /// @nodoc
@@ -756,7 +769,7 @@ class __$$RefreshInProgressImplCopyWithImpl<$Res>
       null == invitations
           ? _value.invitations
           : invitations // ignore: cast_nullable_to_non_nullable
-              as Stream<Either<Failure, List<Room>>>,
+              as Stream<Either<Failure, List<Invitation>>>,
       null == calls
           ? _value._calls
           : calls // ignore: cast_nullable_to_non_nullable
@@ -773,7 +786,7 @@ class _$RefreshInProgressImpl implements _RefreshInProgress {
       : _calls = calls;
 
   @override
-  final Stream<Either<Failure, List<Room>>> invitations;
+  final Stream<Either<Failure, List<Invitation>>> invitations;
   final List<CallInfo> _calls;
   @override
   @JsonKey()
@@ -789,7 +802,7 @@ class _$RefreshInProgressImpl implements _RefreshInProgress {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RefreshInProgressImpl &&
@@ -812,17 +825,22 @@ class _$RefreshInProgressImpl implements _RefreshInProgress {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)
         initial,
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)
         refreshInProgress,
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)
         refreshSuccess,
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
-            List<CallInfo> calls, Failure failure)
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
+            List<CallInfo> calls,
+            Failure failure)
         refreshFailure,
   }) {
     return refreshInProgress(invitations, calls);
@@ -831,16 +849,16 @@ class _$RefreshInProgressImpl implements _RefreshInProgress {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         initial,
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshInProgress,
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshSuccess,
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls, Failure failure)?
         refreshFailure,
   }) {
@@ -850,16 +868,16 @@ class _$RefreshInProgressImpl implements _RefreshInProgress {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         initial,
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshInProgress,
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshSuccess,
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls, Failure failure)?
         refreshFailure,
     required TResult orElse(),
@@ -910,11 +928,11 @@ class _$RefreshInProgressImpl implements _RefreshInProgress {
 
 abstract class _RefreshInProgress implements RecentCallState {
   const factory _RefreshInProgress(
-      final Stream<Either<Failure, List<Room>>> invitations,
+      final Stream<Either<Failure, List<Invitation>>> invitations,
       [final List<CallInfo> calls]) = _$RefreshInProgressImpl;
 
   @override
-  Stream<Either<Failure, List<Room>>> get invitations;
+  Stream<Either<Failure, List<Invitation>>> get invitations;
   @override
   List<CallInfo> get calls;
   @override
@@ -932,7 +950,8 @@ abstract class _$$RefreshSuccessImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Stream<Either<Failure, List<Room>>> invitations, List<CallInfo> calls});
+      {Stream<Either<Failure, List<Invitation>>> invitations,
+      List<CallInfo> calls});
 }
 
 /// @nodoc
@@ -953,7 +972,7 @@ class __$$RefreshSuccessImplCopyWithImpl<$Res>
       null == invitations
           ? _value.invitations
           : invitations // ignore: cast_nullable_to_non_nullable
-              as Stream<Either<Failure, List<Room>>>,
+              as Stream<Either<Failure, List<Invitation>>>,
       null == calls
           ? _value._calls
           : calls // ignore: cast_nullable_to_non_nullable
@@ -969,7 +988,7 @@ class _$RefreshSuccessImpl implements _RefreshSuccess {
       : _calls = calls;
 
   @override
-  final Stream<Either<Failure, List<Room>>> invitations;
+  final Stream<Either<Failure, List<Invitation>>> invitations;
   final List<CallInfo> _calls;
   @override
   List<CallInfo> get calls {
@@ -984,7 +1003,7 @@ class _$RefreshSuccessImpl implements _RefreshSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RefreshSuccessImpl &&
@@ -1007,17 +1026,22 @@ class _$RefreshSuccessImpl implements _RefreshSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)
         initial,
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)
         refreshInProgress,
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)
         refreshSuccess,
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
-            List<CallInfo> calls, Failure failure)
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
+            List<CallInfo> calls,
+            Failure failure)
         refreshFailure,
   }) {
     return refreshSuccess(invitations, calls);
@@ -1026,16 +1050,16 @@ class _$RefreshSuccessImpl implements _RefreshSuccess {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         initial,
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshInProgress,
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshSuccess,
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls, Failure failure)?
         refreshFailure,
   }) {
@@ -1045,16 +1069,16 @@ class _$RefreshSuccessImpl implements _RefreshSuccess {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         initial,
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshInProgress,
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshSuccess,
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls, Failure failure)?
         refreshFailure,
     required TResult orElse(),
@@ -1105,11 +1129,11 @@ class _$RefreshSuccessImpl implements _RefreshSuccess {
 
 abstract class _RefreshSuccess implements RecentCallState {
   const factory _RefreshSuccess(
-      final Stream<Either<Failure, List<Room>>> invitations,
+      final Stream<Either<Failure, List<Invitation>>> invitations,
       final List<CallInfo> calls) = _$RefreshSuccessImpl;
 
   @override
-  Stream<Either<Failure, List<Room>>> get invitations;
+  Stream<Either<Failure, List<Invitation>>> get invitations;
   @override
   List<CallInfo> get calls;
   @override
@@ -1127,7 +1151,7 @@ abstract class _$$RefreshFailureImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Stream<Either<Failure, List<Room>>> invitations,
+      {Stream<Either<Failure, List<Invitation>>> invitations,
       List<CallInfo> calls,
       Failure failure});
 }
@@ -1151,7 +1175,7 @@ class __$$RefreshFailureImplCopyWithImpl<$Res>
       null == invitations
           ? _value.invitations
           : invitations // ignore: cast_nullable_to_non_nullable
-              as Stream<Either<Failure, List<Room>>>,
+              as Stream<Either<Failure, List<Invitation>>>,
       null == calls
           ? _value._calls
           : calls // ignore: cast_nullable_to_non_nullable
@@ -1172,7 +1196,7 @@ class _$RefreshFailureImpl implements _RefreshFailure {
       : _calls = calls;
 
   @override
-  final Stream<Either<Failure, List<Room>>> invitations;
+  final Stream<Either<Failure, List<Invitation>>> invitations;
   final List<CallInfo> _calls;
   @override
   List<CallInfo> get calls {
@@ -1190,7 +1214,7 @@ class _$RefreshFailureImpl implements _RefreshFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RefreshFailureImpl &&
@@ -1214,17 +1238,22 @@ class _$RefreshFailureImpl implements _RefreshFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)
         initial,
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)
         refreshInProgress,
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)
         refreshSuccess,
-    required TResult Function(Stream<Either<Failure, List<Room>>> invitations,
-            List<CallInfo> calls, Failure failure)
+    required TResult Function(
+            Stream<Either<Failure, List<Invitation>>> invitations,
+            List<CallInfo> calls,
+            Failure failure)
         refreshFailure,
   }) {
     return refreshFailure(invitations, calls, failure);
@@ -1233,16 +1262,16 @@ class _$RefreshFailureImpl implements _RefreshFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         initial,
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshInProgress,
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshSuccess,
-    TResult? Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult? Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls, Failure failure)?
         refreshFailure,
   }) {
@@ -1252,16 +1281,16 @@ class _$RefreshFailureImpl implements _RefreshFailure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         initial,
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshInProgress,
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls)?
         refreshSuccess,
-    TResult Function(Stream<Either<Failure, List<Room>>> invitations,
+    TResult Function(Stream<Either<Failure, List<Invitation>>> invitations,
             List<CallInfo> calls, Failure failure)?
         refreshFailure,
     required TResult orElse(),
@@ -1312,12 +1341,12 @@ class _$RefreshFailureImpl implements _RefreshFailure {
 
 abstract class _RefreshFailure implements RecentCallState {
   const factory _RefreshFailure(
-      final Stream<Either<Failure, List<Room>>> invitations,
+      final Stream<Either<Failure, List<Invitation>>> invitations,
       final List<CallInfo> calls,
       {required final Failure failure}) = _$RefreshFailureImpl;
 
   @override
-  Stream<Either<Failure, List<Room>>> get invitations;
+  Stream<Either<Failure, List<Invitation>>> get invitations;
   @override
   List<CallInfo> get calls;
   Failure get failure;

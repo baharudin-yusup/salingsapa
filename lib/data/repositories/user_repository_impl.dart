@@ -25,7 +25,7 @@ class UserRepositoryImpl extends UserRepository {
           userId: userId, fcmToken: fcmToken);
       return const Right(unit);
     } catch (error) {
-      return Left(ServerFailure());
+      return const Left(ServerFailure());
     }
   }
 
@@ -36,7 +36,7 @@ class UserRepositoryImpl extends UserRepository {
 
       return Right(name);
     } catch (_) {
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 
@@ -50,7 +50,7 @@ class UserRepositoryImpl extends UserRepository {
 
       return Right(downloadUrl);
     } catch (_) {
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 
@@ -59,7 +59,7 @@ class UserRepositoryImpl extends UserRepository {
       _remoteDataSource.onUserStateChanged.map((model) {
         if (model == null) {
           Logger.print('(repository) no current user active');
-          return Left(UnknownFailure());
+          return const Left(UnknownFailure());
         }
         try {
           Logger.print(
@@ -69,7 +69,7 @@ class UserRepositoryImpl extends UserRepository {
           Logger.error(error,
               event:
                   '(repository) converting model to entity when onUserStateChanged');
-          return Left(UnknownFailure());
+          return const Left(UnknownFailure());
         }
       });
 
@@ -80,13 +80,13 @@ class UserRepositoryImpl extends UserRepository {
 
       if (user == null) {
         Logger.print('(repository) no current user active');
-        return Left(ServerFailure());
+        return const Left(ServerFailure());
       }
 
       return Right(user.toEntity());
     } catch (error) {
       Logger.error(error, event: 'getting current user');
-      return Left(UnknownFailure());
+      return const Left(UnknownFailure());
     }
   }
 }

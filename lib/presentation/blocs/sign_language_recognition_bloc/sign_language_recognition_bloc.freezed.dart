@@ -148,7 +148,7 @@ class _$StartedImpl implements _Started {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StartedImpl &&
@@ -309,7 +309,7 @@ class _$ToggleFeatureStartedImpl implements _ToggleFeatureStarted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ToggleFeatureStartedImpl &&
@@ -474,7 +474,7 @@ class _$PhotoSnapshotReceivedImpl implements _PhotoSnapshotReceived {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PhotoSnapshotReceivedImpl &&
@@ -636,7 +636,7 @@ class _$StatusChangedImpl implements _StatusChanged {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StatusChangedImpl &&
@@ -796,7 +796,7 @@ class _$CaptionReceivedImpl implements _CaptionReceived {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CaptionReceivedImpl &&
@@ -939,7 +939,7 @@ class _$ResetDataStartedImpl implements _ResetDataStarted {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$ResetDataStartedImpl);
   }
@@ -1222,7 +1222,7 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
@@ -1417,7 +1417,7 @@ class _$FailureImpl implements _Failure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FailureImpl &&
@@ -1607,7 +1607,7 @@ class _$UpdateCaptionSuccessImpl implements _UpdateCaptionSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateCaptionSuccessImpl &&

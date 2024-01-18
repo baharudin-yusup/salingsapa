@@ -156,7 +156,6 @@ class SignLanguageRecognitionPluginImpl
   Future<void> disable() async {
     try {
       _isEnabled = false;
-      disable();
       _statusController.sink.add(RecognitionStatus.off);
       Logger.print(
         'disposing camera controller success',

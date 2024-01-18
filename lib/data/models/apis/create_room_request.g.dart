@@ -8,10 +8,12 @@ part of 'create_room_request.dart';
 
 CreateRoomRequest _$CreateRoomRequestFromJson(Map<String, dynamic> json) =>
     CreateRoomRequest(
-      guestPhoneNumber: json['guestPhoneNumber'] as String,
+      phoneNumbers: (json['phoneNumbers'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$CreateRoomRequestToJson(CreateRoomRequest instance) =>
     <String, dynamic>{
-      'guestPhoneNumber': instance.guestPhoneNumber,
+      'phoneNumbers': instance.phoneNumbers,
     };

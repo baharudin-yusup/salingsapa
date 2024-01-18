@@ -11,48 +11,52 @@ part 'room_model.g.dart';
 class RoomModel extends Equatable {
   final String roomId;
   final String hostId;
-  final String guestId;
   final String hostPhoneNumber;
-  final String guestPhoneNumber;
+  final bool isValid;
   final Timestamp createdAt;
   final Timestamp updatedAt;
-  final int roomExpirationInSecond;
-  final bool isValid;
-  final bool isHostJoined;
-  final bool isGuestJoined;
+  final int roomExpirationTimeInSecond;
+  final List<String> invitedPhoneNumbers;
 
   const RoomModel({
+    required this.createdAt,
     required this.roomId,
     required this.hostPhoneNumber,
-    required this.guestPhoneNumber,
-    required this.createdAt,
     required this.updatedAt,
-    required this.roomExpirationInSecond,
+    required this.roomExpirationTimeInSecond,
     required this.isValid,
-    required this.isHostJoined,
-    required this.isGuestJoined,
     required this.hostId,
-    required this.guestId,
+    required this.invitedPhoneNumbers,
   });
 
   factory RoomModel.fromJson(Map<String, dynamic> json) =>
       _$RoomModelFromJson(json);
 
+  factory RoomModel.fromFirebase(Map<String, dynamic> json) => RoomModel(
+        createdAt: json['createdAt'],
+        roomId: json['roomId'] as String,
+        hostPhoneNumber: json['hostPhoneNumber'] as String,
+        updatedAt: json['updatedAt'],
+        roomExpirationTimeInSecond: json['roomExpirationTimeInSecond'] as int,
+        isValid: json['isValid'] as bool,
+        hostId: json['hostId'] as String,
+        invitedPhoneNumbers: (json['invitedPhoneNumbers'] as List<dynamic>)
+            .map((e) => e as String)
+            .toList(),
+      );
+
   Map<String, dynamic> toJson() => _$RoomModelToJson(this);
 
   @override
   List<Object?> get props => [
-        roomId,
-        hostId,
-        guestId,
-        hostPhoneNumber,
-        guestPhoneNumber,
         createdAt,
+        roomId,
+        hostPhoneNumber,
         updatedAt,
-        roomExpirationInSecond,
+        roomExpirationTimeInSecond,
         isValid,
-        isHostJoined,
-        isGuestJoined,
+        hostId,
+        invitedPhoneNumbers,
       ];
 }
 
@@ -60,14 +64,11 @@ extension VideoCallInvitationModelToEntity on RoomModel {
   Room toEntity() => Room(
         roomId: roomId,
         hostPhoneNumber: hostPhoneNumber,
-        guestPhoneNumber: guestPhoneNumber,
         createdAt: createdAt.toDate(),
         updatedAt: updatedAt.toDate(),
-        expirationTime: Duration(seconds: roomExpirationInSecond),
+        expirationTime: Duration(seconds: roomExpirationTimeInSecond),
         isValid: isValid,
-        isHostJoined: isHostJoined,
-        isGuestJoined: isGuestJoined,
         hostId: hostId,
-        guestId: guestId,
+        invitedPhoneNumbers: invitedPhoneNumbers,
       );
 }

@@ -102,7 +102,7 @@ class _$RefreshPulledImpl implements _RefreshPulled {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$RefreshPulledImpl);
   }
@@ -224,7 +224,7 @@ class _$SelectedContactCalledImpl implements _SelectedContactCalled {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SelectedContactCalledImpl &&
@@ -488,7 +488,7 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
@@ -671,7 +671,7 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadInProgressImpl &&
@@ -855,7 +855,7 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadSuccessImpl &&
@@ -1047,7 +1047,7 @@ class _$LoadFailureImpl implements _LoadFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadFailureImpl &&
@@ -1250,7 +1250,7 @@ class _$StartVideoCallFailureImpl implements _StartVideoCallFailure {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StartVideoCallFailureImpl &&
@@ -1461,7 +1461,7 @@ class _$StartVideoCallSuccessImpl implements _StartVideoCallSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StartVideoCallSuccessImpl &&
