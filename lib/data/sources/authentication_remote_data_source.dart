@@ -13,6 +13,8 @@ abstract class AuthenticationRemoteDatSource {
 
   Future<UserModel> verifyOtp({required String otp});
 
+  Future<void> resendOtp();
+
   Future<void> signOut();
 }
 
@@ -146,5 +148,10 @@ class AuthenticationRemoteDatSourceImpl
     Logger.print('Verifying phone number success!');
 
     return user;
+  }
+
+  @override
+  Future<void> resendOtp() async {
+    throw FeatureException();
   }
 }

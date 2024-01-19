@@ -29,4 +29,13 @@ class SetupState with _$SetupState {
   const factory SetupState.inputOtpValidationFailure(
           String phoneNumber, String otp, Failure failure) =
       _InputOtpValidationFailure;
+
+  const factory SetupState.resendOtpInProgress(String phoneNumber, String otp) =
+      _ResendOtpInProgress;
+
+  const factory SetupState.resendOtpSuccess(String phoneNumber, String otp) =
+      _ResendOtpSuccess;
+
+  const factory SetupState.resendOtpFailure(
+      String phoneNumber, String otp, Failure failure) = _ResendOtpFailure;
 }

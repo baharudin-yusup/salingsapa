@@ -194,7 +194,7 @@ class SetupScreen extends StatelessWidget {
           text: TextSpan(
             style: DefaultTextStyle.of(context).style,
             children: [
-              TextSpan(text: 'I hereby agree to the applicable '),
+              const TextSpan(text: 'I hereby agree to the applicable '),
               TextSpan(
                 text: 'Privacy Policy',
                 style: context.textTheme().bodyLarge?.copyWith(
@@ -207,7 +207,7 @@ class SetupScreen extends StatelessWidget {
                         const OpenExternalLinkEvent.openPrivacyPolicyStarted());
                   },
               ),
-              TextSpan(text: ' and '),
+              const TextSpan(text: ' and '),
               TextSpan(
                 text: 'Terms and Conditions',
                 style: context.textTheme().bodyLarge?.copyWith(

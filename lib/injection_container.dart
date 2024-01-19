@@ -74,6 +74,7 @@ import 'domain/usecases/mute_video_call_audio.dart';
 import 'domain/usecases/mute_video_call_video.dart';
 import 'domain/usecases/refresh_contact_list.dart';
 import 'domain/usecases/request_permission.dart';
+import 'domain/usecases/resend_otp.dart';
 import 'domain/usecases/reset_sign_language_recognition.dart';
 import 'domain/usecases/set_is_first_launch_app.dart';
 import 'domain/usecases/sign_out.dart';
@@ -138,11 +139,12 @@ Future<void> setup(Env env) async {
   /// Singleton BLoC
   sl.registerLazySingleton(() => ContactListBloc(sl(), sl(), sl(), sl()));
   sl.registerLazySingleton(() => AuthorizationBloc(sl(), sl()));
-  sl.registerFactory(() => SetupBloc(sl(), sl()));
+  sl.registerFactory(() => SetupBloc(sl(), sl(), sl()));
 
   /// Use cases
   sl.registerLazySingleton(() => VerifyPhoneNumber(sl()));
   sl.registerLazySingleton(() => VerifyOtp(sl()));
+  sl.registerLazySingleton(() => ResendOtp(sl()));
   sl.registerLazySingleton(() => SignOut(sl()));
   sl.registerLazySingleton(() => GetAuthStatus(sl()));
   sl.registerLazySingleton(() => RefreshContactList(sl()));

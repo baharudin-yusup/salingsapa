@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../data/extensions/extensions.dart';
 import '../../injection_container.dart';
@@ -20,28 +21,35 @@ class VerifyOtpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SetupBloc bloc = context.read();
     return BlocConsumer<SetupBloc, SetupState>(
       listener: (context, state) {
         final NavigatorService navigatorService = sl();
         final UiService uiService = sl();
-        state.map(
-            inputPhoneNumberInitial: (_) {},
-            inputPhoneNumberVerifyInProgress: (value) {},
-            inputPhoneNumberFailure: (_) {},
-            inputPhoneNumberSuccess: (_) {},
-            inputOtpInitial: (_) {},
-            inputOtpValidationInProgress: (_) {
-              uiService.showLoading();
-            },
-            inputOtpValidationSuccess: (_) {
-              uiService.hideLoading();
-              navigatorService.pushNamedAndRemoveUntil(
-                  RootScreen.routeName, (route) => false);
-            },
-            inputOtpValidationFailure: (_) {
-              uiService.hideLoading();
-            });
+        state.maybeMap(
+          inputOtpValidationInProgress: (_) {
+            uiService.showLoading();
+          },
+          inputOtpValidationSuccess: (_) {
+            uiService.hideLoading();
+            navigatorService.pushNamedAndRemoveUntil(
+                RootScreen.routeName, (route) => false);
+          },
+          inputOtpValidationFailure: (_) {
+            uiService.hideLoading();
+          },
+          resendOtpInProgress: (_) {
+            uiService.showLoading();
+          },
+          resendOtpSuccess: (state) {
+            // TODO: Add success message
+            uiService.hideLoading();
+          },
+          resendOtpFailure: (state) {
+            uiService.hideLoading();
+            Fluttertoast.showToast(msg: state.failure.errorMessage);
+          },
+          orElse: () {},
+        );
       },
       builder: (context, state) {
         return IntuitiveScaffold(
@@ -57,7 +65,7 @@ class VerifyOtpScreen extends StatelessWidget {
                 const SizedBox(height: IntuitiveUiConstant.normalSpace),
                 IntuitiveOtp(
                   onCompleted: (otp) {
-                    bloc.add(SetupEvent.otpChanged(otp));
+                    context.read<SetupBloc>().add(SetupEvent.otpChanged(otp));
                   },
                   obscure: false,
                 ),
@@ -92,7 +100,11 @@ class VerifyOtpScreen extends StatelessWidget {
           width: IntuitiveUiConstant.normalSpace,
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            context
+                .read<SetupBloc>()
+                .add(const SetupEvent.resendOtpStarted());
+          },
           child: Text(
             AppLocalizations.of(context)!.resendCode,
             style: context.textTheme().bodyLarge?.copyWith(
