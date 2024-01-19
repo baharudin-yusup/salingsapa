@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
             ],
             tabBuilder: (_, index) => buildFragment(index),
           ),
-          child: buildFragment(state.currentIndex),
+          builder: (_) => buildFragment(state.currentIndex),
         );
       },
     );

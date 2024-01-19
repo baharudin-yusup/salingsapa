@@ -9,6 +9,7 @@ abstract class AuthenticationRepository {
       {required String phoneNumber});
 
   Future<Either<Failure, User>> verifyOtp({required String otp});
+  Future<Either<Failure, Unit>> resendOtp();
 
   Future<Either<Failure, Unit>> signOut();
 

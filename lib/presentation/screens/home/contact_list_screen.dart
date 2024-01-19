@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -51,11 +49,13 @@ class ContactListScreen extends StatelessWidget {
               // ),
             ],
           ),
-          child: state.maybeMap(
-            loadSuccess: (_) => buildContactList(context, state.contacts),
-            loadFailure: (_) => buildContactList(context, state.contacts),
-            orElse: () => buildLoadingUi(),
-          ),
+          builder: (context) {
+            return state.maybeMap(
+              loadSuccess: (_) => buildContactList(context, state.contacts),
+              loadFailure: (_) => buildContactList(context, state.contacts),
+              orElse: () => buildLoadingUi(),
+            );
+          },
         );
       },
     );
@@ -72,9 +72,8 @@ class ContactListScreen extends StatelessWidget {
       return buildNoContactsUi();
     }
     return ListView.separated(
-      padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace).add(
-          EdgeInsets.only(
-              top: Platform.isIOS ? MediaQuery.of(context).padding.top : 0)),
+      padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace)
+          .add(MediaQuery.of(context).padding),
       itemCount: contacts.length,
       itemBuilder: (context, index) {
         return ContactCard(

@@ -101,4 +101,12 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       return Left(CacheFailure(createdAt: DateTime.now()));
     }
   }
+
+  @override
+  Future<Either<Failure, Unit>> resendOtp() async {
+    return Left(FeatureFailure(
+        errorMessage:
+            'Please return to the previous page to request to send the OTP code again',
+        createdAt: DateTime.now()));
+  }
 }

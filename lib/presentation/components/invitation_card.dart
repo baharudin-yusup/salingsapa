@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../domain/entities/Invitation.dart';
+import '../../domain/entities/invitation.dart';
 import '../../domain/entities/room.dart';
 import '../services/theme_service.dart';
 import '../utils/app_localizations.dart';

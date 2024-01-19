@@ -12,8 +12,8 @@ import 'package:uuid/uuid.dart';
 
 import '../../core/errors/exceptions.dart';
 import '../../core/utils/logger.dart';
-import '../../domain/entities/Invitation.dart';
 import '../../domain/entities/contact.dart';
+import '../../domain/entities/invitation.dart';
 import '../../domain/entities/video_call_status.dart';
 import '../../domain/entities/video_call_user_update_info.dart';
 import '../constants/firestore_constant.dart';
