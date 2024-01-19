@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import '../../core/errors/failures.dart';
 import '../../core/interfaces/use_case.dart';
 import '../../core/utils/logger.dart';
-import '../entities/Invitation.dart';
+import '../entities/invitation.dart';
 import '../repositories/video_call_repository.dart';
 
 class StreamVideoCallInvitations extends NoParamUseCaseStreamSync<List<Invitation>> {

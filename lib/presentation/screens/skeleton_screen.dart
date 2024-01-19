@@ -16,6 +16,7 @@ import '../blocs/contact_list/contact_list_bloc.dart';
 import '../blocs/create_room/create_room_bloc.dart';
 import '../blocs/home/home_cubit.dart';
 import '../blocs/introduction/introduction_cubit.dart';
+import '../blocs/open_external_link/open_external_link_bloc.dart';
 import '../blocs/recent_call/recent_call_bloc.dart';
 import '../blocs/setup/setup_bloc.dart';
 import '../blocs/sign_language_recognition_bloc/sign_language_recognition_bloc.dart';
@@ -66,6 +67,7 @@ class _RootScreenState extends State<RootScreen> {
         BlocProvider<AuthorizationBloc>(create: (_) => sl()),
         BlocProvider<SetupBloc>(create: (_) => sl()),
         BlocProvider<ContactListBloc>(create: (_) => sl()),
+        BlocProvider<OpenExternalLinkBloc>(create: (_) => sl()),
       ],
       child: Platform.isIOS
           ? _IosAppScreen(routes: _routes, home: home)

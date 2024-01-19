@@ -3,8 +3,8 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/errors/failures.dart';
-import '../../../domain/entities/Invitation.dart';
 import '../../../domain/entities/call_info.dart';
+import '../../../domain/entities/invitation.dart';
 import '../../../domain/usecases/get_recent_call.dart';
 import '../../../domain/usecases/stream_video_call_invitations.dart';
 import '../../screens/home/contact_list_screen.dart';

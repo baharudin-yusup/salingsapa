@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,7 +24,7 @@ class AccountScreen extends StatelessWidget {
       },
       child: IntuitiveScaffold(
         appBar: buildAppBar(context),
-        child: buildBody(context),
+        builder: buildBody,
       ),
     );
   }
@@ -66,9 +64,8 @@ class AccountScreen extends StatelessWidget {
 
   Widget buildBody(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace).add(
-          EdgeInsets.only(
-              top: Platform.isIOS ? MediaQuery.of(context).padding.top : 0)),
+      padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace)
+          .add(MediaQuery.of(context).padding),
       children: [
         showAvatar(),
         const SizedBox(height: IntuitiveUiConstant.largeSpace),

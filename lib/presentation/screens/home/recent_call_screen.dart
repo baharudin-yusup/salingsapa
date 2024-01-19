@@ -7,8 +7,8 @@ import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 
 import '../../../core/errors/failures.dart';
 import '../../../data/extensions/to_phone_number.dart';
-import '../../../domain/entities/Invitation.dart';
 import '../../../domain/entities/contact.dart';
+import '../../../domain/entities/invitation.dart';
 import '../../blocs/contact_list/contact_list_bloc.dart';
 import '../../blocs/recent_call/recent_call_bloc.dart';
 import '../../components/intuitive_scaffold.dart';
@@ -57,7 +57,8 @@ class RecentCallScreen extends StatelessWidget {
                   .read<RecentCallBloc>()
                   .add(const RecentCallEvent.newCallTapped());
             }),
-        child: RefreshIndicator.adaptive(
+        builder: (context) => RefreshIndicator.adaptive(
+          edgeOffset: MediaQuery.of(context).padding.top,
           onRefresh: () async {},
           child: showInvitationList(context),
         ),
@@ -95,11 +96,7 @@ class RecentCallScreen extends StatelessWidget {
 
                 return ListView.separated(
                   padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace)
-                      .add(EdgeInsets.only(
-                    top:
-                        Platform.isIOS ? MediaQuery.of(context).padding.top : 0,
-                    bottom: 64,
-                  )),
+                      .add(MediaQuery.of(context).padding),
                   itemCount: invitations.length,
                   itemBuilder: (context, index) {
                     final invitation = invitations[index];
@@ -120,15 +117,11 @@ class RecentCallScreen extends StatelessWidget {
                                       .toFormattedPhoneNumber());
                         } catch (_) {}
 
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: IntuitiveUiConstant.normalSpace),
-                          child: InvitationCard(
-                            invitation.copyWith(contact),
-                            onTap: (room) => Navigator.pushNamed(
-                                context, VideoCallScreen.routeName,
-                                arguments: room),
-                          ),
+                        return InvitationCard(
+                          invitation.copyWith(contact),
+                          onTap: (room) => Navigator.pushNamed(
+                              context, VideoCallScreen.routeName,
+                              arguments: room),
                         );
                       },
                     );

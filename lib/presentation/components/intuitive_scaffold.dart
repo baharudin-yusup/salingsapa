@@ -7,14 +7,14 @@ import 'intuitive_scaffold/builder.dart';
 import 'intuitive_scaffold/intuitive_floating_action_button.dart';
 
 class IntuitiveScaffold extends StatelessWidget {
-  final Widget child;
+  final Widget Function(BuildContext context) builder;
   final IntuitiveAppBar? appBar;
   final IntuitiveBottomNavigationBar? bottomNavigationBar;
   final IntuitiveFloatingActionButton? floatingActionButton;
 
   const IntuitiveScaffold({
     super.key,
-    required this.child,
+    required this.builder,
     this.appBar,
     this.bottomNavigationBar,
     this.floatingActionButton,
@@ -56,7 +56,7 @@ class IntuitiveScaffold extends StatelessWidget {
 
     return CupertinoPageScaffold(
       navigationBar: navigationBar,
-      child: child,
+      child: Builder(builder: builder),
     );
   }
 
@@ -88,7 +88,7 @@ class IntuitiveScaffold extends StatelessWidget {
 
     return Scaffold(
       appBar: materialAppBar,
-      body: child,
+      body: Builder(builder: builder),
       bottomNavigationBar: materialNavigationBar,
       floatingActionButton: floatingActionButton?.build,
     );
