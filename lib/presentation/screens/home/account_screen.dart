@@ -26,7 +26,7 @@ class AccountScreen extends StatelessWidget {
       },
       child: IntuitiveScaffold(
         appBar: buildAppBar(context),
-        child: buildBody(context),
+        builder: buildBody,
       ),
     );
   }
@@ -66,9 +66,8 @@ class AccountScreen extends StatelessWidget {
 
   Widget buildBody(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace).add(
-          EdgeInsets.only(
-              top: Platform.isIOS ? MediaQuery.of(context).padding.top : 0)),
+      padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace)
+          .add(MediaQuery.of(context).padding),
       children: [
         showAvatar(),
         const SizedBox(height: IntuitiveUiConstant.largeSpace),

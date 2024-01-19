@@ -25,7 +25,7 @@ class VideoCallScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IntuitiveScaffold(
-      child: MultiBlocListener(
+      builder: (context) => MultiBlocListener(
         listeners: [
           BlocListener<VideoCallBloc, VideoCallState>(
             listener: (context, state) {
@@ -124,7 +124,6 @@ class VideoCallScreen extends StatelessWidget {
       ],
     );
   }
-
 
   Widget showVideoCallConfigurationButtons() {
     Widget buildCaptionButton() {

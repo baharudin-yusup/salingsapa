@@ -1,9 +1,13 @@
 import 'dart:io';
+import 'dart:js';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../injection_container.dart';
+import '../blocs/open_external_link/open_external_link_bloc.dart';
 import '../blocs/setup/setup_bloc.dart';
 import '../components/intuitive_scaffold.dart';
 import '../components/intuitive_textfield.dart';
@@ -11,6 +15,8 @@ import '../services/navigator_service.dart';
 import '../services/theme_service.dart';
 import '../services/ui_service.dart';
 import '../utils/app_localizations.dart';
+import '../utils/dimension.dart';
+import 'common/markdown_screen.dart';
 import 'verify_otp_screen.dart';
 
 class SetupScreen extends StatelessWidget {
@@ -20,76 +26,136 @@ class SetupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SetupBloc, SetupState>(
-      listener: (context, state) {
-        final UiService uiService = sl();
-        final NavigatorService service = sl();
-        state.map(
-            inputPhoneNumberInitial: (_) {},
-            inputPhoneNumberVerifyInProgress: (value) {
-              uiService.showLoading();
-            },
-            inputPhoneNumberFailure: (_) {
-              uiService.hideLoading();
-            },
-            inputPhoneNumberSuccess: (_) {
-              uiService.hideLoading();
-              service.pushNamed(VerifyOtpScreen.routeName);
-            },
-            inputOtpInitial: (_) {},
-            inputOtpValidationInProgress: (_) {},
-            inputOtpValidationSuccess: (_) {},
-            inputOtpValidationFailure: (_) {});
-      },
-      builder: (context, state) {
-        final SetupBloc bloc = context.read();
-        return IntuitiveScaffold(
-          appBar: IntuitiveAppBar(
-            middle: Text(AppLocalizations.of(context)!.enterYourPhoneNumber),
-            cupertinoTrailing: GestureDetector(
-              onTap: bloc.canSubmit()
-                  ? () {
-                      FocusManager.instance.primaryFocus?.unfocus();
-                      _onButtonDonePressed(bloc);
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<OpenExternalLinkBloc, OpenExternalLinkState>(
+          listener: (context, state) {
+            state.maybeWhen(
+              openExternalLinkInProgress: () {
+                final UiService uiService = sl();
+                uiService.showLoading();
+              },
+              openPrivacyPolicySuccess: (content) {
+                final UiService uiService = sl();
+                final NavigatorService navigatorService = sl();
+
+                uiService.hideLoading();
+                navigatorService.push((context) => MarkdownScreen(content));
+              },
+              openTnCSuccess: (content) {
+                final UiService uiService = sl();
+                final NavigatorService navigatorService = sl();
+
+                uiService.hideLoading();
+                navigatorService.push((context) => MarkdownScreen(content));
+              },
+              openExternalLinkFailure: (failure) {
+                Fluttertoast.showToast(msg: failure.errorMessage);
+              },
+              orElse: () {},
+            );
+          },
+        ),
+        BlocListener<SetupBloc, SetupState>(
+          listener: (context, state) {
+            final UiService uiService = sl();
+            final NavigatorService navigatorService = sl();
+            state.maybeMap(
+              inputPhoneNumberVerifyInProgress: (value) {
+                uiService.showLoading();
+              },
+              inputPhoneNumberFailure: (_) {
+                uiService.hideLoading();
+              },
+              inputPhoneNumberSuccess: (_) {
+                uiService.hideLoading();
+                navigatorService.pushNamed(VerifyOtpScreen.routeName);
+              },
+              orElse: () {},
+            );
+          },
+        ),
+      ],
+      child: BlocBuilder<SetupBloc, SetupState>(
+        builder: (context, state) {
+          return IntuitiveScaffold(
+            appBar: IntuitiveAppBar(
+              middle: Text(AppLocalizations.of(context)!.enterYourPhoneNumber),
+              cupertinoTrailing: GestureDetector(
+                onTap: state.maybeMap(
+                  inputPhoneNumberInitial: (state) {
+                    if (state.canSubmit) {
+                      return () {
+                        FocusManager.instance.primaryFocus?.unfocus();
+                        _onButtonDonePressed(context);
+                      };
                     }
-                  : null,
-              child: Text(
-                AppLocalizations.of(context)!.done,
-                style: TextStyle(
-                  color: bloc.canSubmit()
-                      ? context.colorScheme().primary
-                      : context.colorScheme().background.withOpacity(0.5),
+                    return null;
+                  },
+                  orElse: () {
+                    return null;
+                  },
+                ),
+                child: Text(
+                  AppLocalizations.of(context)!.done,
+                  style: TextStyle(
+                    color: state.maybeMap(
+                      inputPhoneNumberInitial: (state) {
+                        return state.canSubmit
+                            ? context.colorScheme().primary
+                            : context.colorScheme().background.withOpacity(0.5);
+                      },
+                      orElse: () {
+                        return context
+                            .colorScheme()
+                            .background
+                            .withOpacity(0.5);
+                      },
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
-          child: SafeArea(
-            child: ListView(
-              padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace),
-              children: [
-                _buildInfoText(),
-                const SizedBox(height: IntuitiveUiConstant.normalSpace),
-                IntuitiveTextField(
-                  hint: 'Phone number',
-                  textInputType: TextInputType.number,
-                  prefix: const Padding(
+            builder: (context) {
+              return Stack(
+                fit: StackFit.expand,
+                children: [
+                  ListView(
                     padding:
-                        EdgeInsets.only(right: IntuitiveUiConstant.tinySpace),
-                    child: Text('+62'),
+                        const EdgeInsets.all(IntuitiveUiConstant.normalSpace)
+                            .add(MediaQuery.of(context).padding),
+                    children: [
+                      _buildInfoText(),
+                      const SizedBox(height: IntuitiveUiConstant.normalSpace),
+                      IntuitiveTextField(
+                        hint: context.localization.phoneNumber,
+                        textInputType: TextInputType.number,
+                        prefix: const Padding(
+                          padding: EdgeInsets.only(
+                              right: IntuitiveUiConstant.tinySpace),
+                          child: Text('+62'),
+                        ),
+                        padding: const EdgeInsets.all(
+                            IntuitiveUiConstant.smallSpace),
+                        textInputAction: TextInputAction.done,
+                        onChanged: (phoneNumber) => context
+                            .read<SetupBloc>()
+                            .add(SetupEvent.phoneNumberChanged(phoneNumber)),
+                      ),
+                      const SizedBox(height: IntuitiveUiConstant.largeSpace),
+                      if (Platform.isAndroid) _buildMaterialDoneButton(),
+                    ],
                   ),
-                  padding:
-                      const EdgeInsets.all(IntuitiveUiConstant.smallSpace),
-                  textInputAction: TextInputAction.done,
-                  onChanged: (phoneNumber) =>
-                      bloc.add(SetupEvent.phoneNumberChanged(phoneNumber)),
-                ),
-                const SizedBox(height: IntuitiveUiConstant.largeSpace),
-                if (Platform.isAndroid) _buildMaterialDoneButton(),
-              ],
-            ),
-          ),
-        );
-      },
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: _buildPrivacyPolicyText(),
+                  )
+                ],
+              );
+            },
+          );
+        },
+      ),
     );
   }
 
@@ -106,7 +172,7 @@ class SetupScreen extends StatelessWidget {
         final canSubmit = bloc.canSubmit();
         return Center(
           child: ElevatedButton.icon(
-            onPressed: canSubmit ? () => _onButtonDonePressed(bloc) : null,
+            onPressed: canSubmit ? () => _onButtonDonePressed(context) : null,
             icon: Icon(Icons.adaptive.arrow_forward_rounded),
             label: Text(AppLocalizations.of(context)!.next),
           ),
@@ -115,7 +181,51 @@ class SetupScreen extends StatelessWidget {
     );
   }
 
-  void _onButtonDonePressed(SetupBloc bloc) {
-    bloc.add(const SetupEvent.buttonDonePressed());
+  void _onButtonDonePressed(BuildContext context) {
+    context.read<SetupBloc>().add(const SetupEvent.buttonDonePressed());
+  }
+
+  Widget _buildPrivacyPolicyText() {
+    return Builder(builder: (context) {
+      return Padding(
+        padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace).add(
+            const EdgeInsets.only(bottom: IntuitiveUiConstant.normalSpace)),
+        child: RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            style: DefaultTextStyle.of(context).style,
+            children: [
+              TextSpan(text: 'I hereby agree to the applicable '),
+              TextSpan(
+                text: 'Privacy Policy',
+                style: context.textTheme().bodyLarge?.copyWith(
+                      color: context.colorScheme().primary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    context.read<OpenExternalLinkBloc>().add(
+                        const OpenExternalLinkEvent.openPrivacyPolicyStarted());
+                  },
+              ),
+              TextSpan(text: ' and '),
+              TextSpan(
+                text: 'Terms and Conditions',
+                style: context.textTheme().bodyLarge?.copyWith(
+                      color: context.colorScheme().primary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    context
+                        .read<OpenExternalLinkBloc>()
+                        .add(const OpenExternalLinkEvent.openTnCStarted());
+                  },
+              ),
+            ],
+          ),
+        ),
+      );
+    });
   }
 }

@@ -2,8 +2,8 @@ import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../core/interfaces/return_type.dart';
-import '../entities/Invitation.dart';
 import '../entities/contact.dart';
+import '../entities/invitation.dart';
 import '../entities/room.dart';
 import '../entities/video_call_user_update_info.dart';
 import '../entities/video_frame.dart';

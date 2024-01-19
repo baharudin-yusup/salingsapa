@@ -25,16 +25,18 @@ class ContactListScreen extends StatelessWidget {
       listener: (context, state) {
         state.maybeWhen(
             orElse: () {},
-            startVideoCallSuccess: (_, contact, __) => Navigator.pushNamed(
-                context, CreateRoomScreen.routeName, arguments: contact),
+            startVideoCallSuccess: (_, contact, __) =>
+                Navigator.pushNamed(
+                    context, CreateRoomScreen.routeName, arguments: contact),
             startVideoCallFailure: (errorMessage, _, __) =>
                 showErrorMessage(context, errorMessage));
       },
-      buildWhen: (previousState, currentState) => currentState.maybeMap(
-        startVideoCallFailure: (_) => false,
-        startVideoCallSuccess: (_) => false,
-        orElse: () => true,
-      ),
+      buildWhen: (previousState, currentState) =>
+          currentState.maybeMap(
+            startVideoCallFailure: (_) => false,
+            startVideoCallSuccess: (_) => false,
+            orElse: () => true,
+          ),
       builder: (context, state) {
         return IntuitiveScaffold(
           appBar: IntuitiveAppBar(
@@ -51,11 +53,13 @@ class ContactListScreen extends StatelessWidget {
               // ),
             ],
           ),
-          child: state.maybeMap(
-            loadSuccess: (_) => buildContactList(context, state.contacts),
-            loadFailure: (_) => buildContactList(context, state.contacts),
-            orElse: () => buildLoadingUi(),
-          ),
+          builder: (context) {
+            return state.maybeMap(
+              loadSuccess: (_) => buildContactList(context, state.contacts),
+              loadFailure: (_) => buildContactList(context, state.contacts),
+              orElse: () => buildLoadingUi(),
+            );
+          },
         );
       },
     );
@@ -73,18 +77,21 @@ class ContactListScreen extends StatelessWidget {
     }
     return ListView.separated(
       padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace).add(
-          EdgeInsets.only(
-              top: Platform.isIOS ? MediaQuery.of(context).padding.top : 0)),
+          MediaQuery
+              .of(context)
+              .padding),
       itemCount: contacts.length,
       itemBuilder: (context, index) {
         return ContactCard(
           contacts[index],
-          onTap: (contact) => context
-              .read<ContactListBloc>()
-              .add(ContactListEvent.selectedContactCalled(contact)),
+          onTap: (contact) =>
+              context
+                  .read<ContactListBloc>()
+                  .add(ContactListEvent.selectedContactCalled(contact)),
         );
       },
-      separatorBuilder: (context, index) => const SizedBox(
+      separatorBuilder: (context, index) =>
+      const SizedBox(
         height: IntuitiveUiConstant.smallSpace,
       ),
     );

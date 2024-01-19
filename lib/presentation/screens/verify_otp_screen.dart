@@ -10,6 +10,7 @@ import '../services/navigator_service.dart';
 import '../services/theme_service.dart';
 import '../services/ui_service.dart';
 import '../utils/app_localizations.dart';
+import '../utils/dimension.dart';
 import 'skeleton_screen.dart';
 
 class VerifyOtpScreen extends StatelessWidget {
@@ -47,9 +48,10 @@ class VerifyOtpScreen extends StatelessWidget {
           appBar: IntuitiveAppBar(
             middle: Text(AppLocalizations.of(context)!.verifyYourPhoneNumber),
           ),
-          child: SafeArea(
-            child: ListView(
-              padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace),
+          builder: (context) {
+            return ListView(
+              padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace)
+                  .add(context.padding),
               children: [
                 _buildInfoText(),
                 const SizedBox(height: IntuitiveUiConstant.normalSpace),
@@ -62,8 +64,8 @@ class VerifyOtpScreen extends StatelessWidget {
                 const SizedBox(height: IntuitiveUiConstant.normalSpace),
                 _buildResendCodeText(context),
               ],
-            ),
-          ),
+            );
+          },
         );
       },
     );

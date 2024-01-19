@@ -19,6 +19,7 @@ import 'data/plugins/speech_recognition_plugin.dart';
 import 'data/repositories/authentication_repository_impl.dart';
 import 'data/repositories/caption_repository_impl.dart';
 import 'data/repositories/contact_repository_impl.dart';
+import 'data/repositories/external_link_repository_impl.dart';
 import 'data/repositories/setting_repository_impl.dart';
 import 'data/repositories/sign_language_recognition_repository_impl.dart';
 import 'data/repositories/speech_recognition_repository_impl.dart';
@@ -30,6 +31,7 @@ import 'data/sources/authentication_remote_data_source.dart';
 import 'data/sources/caption_remote_data_source.dart';
 import 'data/sources/contact_local_data_source.dart';
 import 'data/sources/contact_remote_data_source.dart';
+import 'data/sources/external_link/external_link_remote_data_source.dart';
 import 'data/sources/setting_local_data_source.dart';
 import 'data/sources/sign_language_recognition_local_data_source.dart';
 import 'data/sources/user_remote_data_source.dart';
@@ -38,6 +40,7 @@ import 'data/sources/video_call_remote_data_source.dart';
 import 'domain/repositories/authentication_repository.dart';
 import 'domain/repositories/caption_repository.dart';
 import 'domain/repositories/contact_repository.dart';
+import 'domain/repositories/external_link_repository.dart';
 import 'domain/repositories/setting_repository.dart';
 import 'domain/repositories/sign_language_recognition_repository.dart';
 import 'domain/repositories/speech_recognition_repository.dart';
@@ -54,6 +57,8 @@ import 'domain/usecases/enable_caption.dart';
 import 'domain/usecases/enable_sign_language_recognition.dart';
 import 'domain/usecases/enable_speech_recognition.dart';
 import 'domain/usecases/enable_take_photo_snapshot.dart';
+import 'domain/usecases/external_link/get_privacy_and_policy.dart';
+import 'domain/usecases/external_link/get_terms_and_condition_content.dart';
 import 'domain/usecases/flip_video_call_camera.dart';
 import 'domain/usecases/get_current_user.dart';
 import 'domain/usecases/get_recent_call.dart';
@@ -91,6 +96,7 @@ import 'presentation/blocs/account/account_bloc.dart';
 import 'presentation/blocs/authorization/authorization_bloc.dart';
 import 'presentation/blocs/contact_list/contact_list_bloc.dart';
 import 'presentation/blocs/introduction/introduction_cubit.dart';
+import 'presentation/blocs/open_external_link/open_external_link_bloc.dart';
 import 'presentation/blocs/recent_call/recent_call_bloc.dart';
 import 'presentation/blocs/setup/setup_bloc.dart';
 import 'presentation/blocs/sign_language_recognition_bloc/sign_language_recognition_bloc.dart';
@@ -127,6 +133,7 @@ Future<void> setup(Env env) async {
   sl.registerFactory(() => SignLanguageRecognitionBloc(
       sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl()));
   sl.registerFactory(() => SpeechRecognitionBloc(sl(), sl(), sl(), sl(), sl()));
+  sl.registerFactory(() => OpenExternalLinkBloc(sl(), sl()));
 
   /// Singleton BLoC
   sl.registerLazySingleton(() => ContactListBloc(sl(), sl(), sl(), sl()));
@@ -189,6 +196,10 @@ Future<void> setup(Env env) async {
   sl.registerLazySingleton(() => StreamSpeechRecognitionResult(sl()));
   sl.registerLazySingleton(() => StreamSpeechRecognitionStatus(sl()));
 
+  // Open external link use case
+  sl.registerLazySingleton(() => GetPrivacyPolicyContent(sl()));
+  sl.registerLazySingleton(() => GetTermsAndConditionContent(sl()));
+
   /// Repositories
   sl.registerLazySingleton<AuthenticationRepository>(
       () => AuthenticationRepositoryImpl(sl(), sl(), BehaviorSubject()));
@@ -205,6 +216,8 @@ Future<void> setup(Env env) async {
       () => SignLanguageRecognizerRepositoryImpl(sl(), sl()));
   sl.registerLazySingleton<SpeechRecognitionRepository>(
       () => SpeechRecognitionRepositoryImpl(sl()));
+  sl.registerLazySingleton<ExternalLinkRepository>(
+      () => ExternalLinkRepositoryImpl(sl()));
 
   /// Data sources
   sl.registerLazySingleton<AuthenticationLocalDataSource>(
@@ -227,6 +240,10 @@ Future<void> setup(Env env) async {
       () => CaptionRemoteDataSourceImpl(sl(), sl()));
   sl.registerLazySingleton<SignLanguageRecognitionLocalDataSource>(
       () => SignLanguageRecognitionLocalDataSourceImpl());
+
+  // External repository data source
+  sl.registerLazySingleton<ExternalLinkRemoteDataSource>(
+      () => ExternalLinkRemoteDataSourceImpl(sl()));
 
   /// Internal Plugins
   sl.registerLazySingleton<SpeechRecognitionPlugin>(

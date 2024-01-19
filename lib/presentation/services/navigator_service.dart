@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../core/errors/failures.dart';
@@ -6,6 +10,10 @@ import '../../core/utils/logger.dart';
 
 abstract class NavigatorService {
   GlobalKey<NavigatorState> get navigatorKey;
+
+  @optionalTypeArgs
+  Future<Either<Failure, T?>> push<T extends Object?>(
+      Widget Function(BuildContext context) builder);
 
   @optionalTypeArgs
   Future<Either<Failure, T?>> pushNamed<T extends Object?>(
@@ -36,6 +44,23 @@ class NavigatorServiceImpl implements NavigatorService {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   BuildContext? get context => navigatorKey.currentContext;
+
+  @override
+  @optionalTypeArgs
+  Future<Either<Failure, T?>> push<T extends Object?>(
+      Widget Function(BuildContext context) builder) async {
+    try {
+      final result = await Navigator.of(context!).push<T>(
+        Platform.isIOS
+            ? CupertinoPageRoute(builder: builder)
+            : MaterialPageRoute(builder: builder),
+      );
+      return Right(result);
+    } catch (error) {
+      Logger.error(error, event: 'opening route');
+      return Left(UnknownFailure(createdAt: DateTime.now()));
+    }
+  }
 
   @override
   @optionalTypeArgs
