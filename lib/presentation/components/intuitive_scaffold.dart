@@ -22,7 +22,7 @@ class IntuitiveScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS || true) {
+    if (Platform.isIOS) {
       return _buildCupertinoScaffold();
     }
 

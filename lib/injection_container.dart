@@ -243,7 +243,7 @@ Future<void> setup(Env env) async {
 
   // External repository data source
   sl.registerLazySingleton<ExternalLinkRemoteDataSource>(
-      () => ExternalLinkRemoteDataSourceImpl(sl()));
+      () => const ExternalLinkRemoteDataSourceImpl());
 
   /// Internal Plugins
   sl.registerLazySingleton<SpeechRecognitionPlugin>(

@@ -11,6 +11,6 @@ class GetTermsAndConditionContent extends NoParamUseCase<String> {
 
   @override
   Future<Either<Failure, String>> call() async {
-    return await _repository.getPrivacyPolicy();
+    return await _repository.getTnC();
   }
 }

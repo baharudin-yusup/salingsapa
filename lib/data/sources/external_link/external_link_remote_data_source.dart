@@ -1,5 +1,5 @@
 import '../../../core/errors/exceptions.dart';
-import '../../plugins/network_plugin.dart';
+import 'package:http/http.dart' as http;
 
 abstract class ExternalLinkRemoteDataSource {
   Future<String> getPrivacyPolicy();
@@ -8,17 +8,17 @@ abstract class ExternalLinkRemoteDataSource {
 }
 
 class ExternalLinkRemoteDataSourceImpl implements ExternalLinkRemoteDataSource {
-  final NetworkPlugin _networkPlugin;
 
-  const ExternalLinkRemoteDataSourceImpl(this._networkPlugin);
+
+  const ExternalLinkRemoteDataSourceImpl();
 
   @override
   Future<String> getPrivacyPolicy() async {
     // TODO: Create env for this link
     const url =
-        'https://raw.githubusercontent.com/baharudin-yusup/salingsapa/main/docs/user/PRIVACY_POLICY.md';
+        'https://raw.githubusercontent.com/baharudin-yusup/salingsapa/main/docs/PRIVACY_POLICY.md';
     try {
-      return (await _networkPlugin.get(path: url)).data;
+      return (await http.get(Uri.parse(url))).body;
     } catch (error) {
       throw ServerException();
     }
@@ -28,9 +28,9 @@ class ExternalLinkRemoteDataSourceImpl implements ExternalLinkRemoteDataSource {
   Future<String> getTnC() async {
     // TODO: Create env for this link
     const url =
-        'https://raw.githubusercontent.com/baharudin-yusup/salingsapa/main/docs/user/TERMS_AND_CONDITIONS.md';
+        'https://raw.githubusercontent.com/baharudin-yusup/salingsapa/main/docs/TERMS_AND_CONDITIONS.md';
     try {
-      return (await _networkPlugin.get(path: url)).data;
+      return (await http.get(Uri.parse(url))).body;
     } catch (error) {
       throw ServerException();
     }

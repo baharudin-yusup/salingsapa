@@ -24,11 +24,11 @@ class MarkdownScreen extends StatelessWidget {
           IntuitiveUiConstant.normalSpace + context.padding.left,
           IntuitiveUiConstant.normalSpace + context.padding.top,
           IntuitiveUiConstant.normalSpace + context.padding.right,
-          IntuitiveUiConstant.normalSpace + context.padding.bottom,
+          IntuitiveUiConstant.hugeSpace + context.padding.bottom,
         );
         return Markdown(
           padding: innerPadding,
-          data: content,
+          data: convertedContent,
         );
       },
     );
@@ -40,5 +40,10 @@ class MarkdownScreen extends StatelessWidget {
       return firstLine.substring(2).trim();
     }
     return '';
+  }
+
+  String get convertedContent {
+    final contentList = content.split('\n')..removeAt(0);
+    return contentList.reduce((value, element) => '$value\n$element');
   }
 }

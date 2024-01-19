@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -25,18 +23,16 @@ class ContactListScreen extends StatelessWidget {
       listener: (context, state) {
         state.maybeWhen(
             orElse: () {},
-            startVideoCallSuccess: (_, contact, __) =>
-                Navigator.pushNamed(
-                    context, CreateRoomScreen.routeName, arguments: contact),
+            startVideoCallSuccess: (_, contact, __) => Navigator.pushNamed(
+                context, CreateRoomScreen.routeName, arguments: contact),
             startVideoCallFailure: (errorMessage, _, __) =>
                 showErrorMessage(context, errorMessage));
       },
-      buildWhen: (previousState, currentState) =>
-          currentState.maybeMap(
-            startVideoCallFailure: (_) => false,
-            startVideoCallSuccess: (_) => false,
-            orElse: () => true,
-          ),
+      buildWhen: (previousState, currentState) => currentState.maybeMap(
+        startVideoCallFailure: (_) => false,
+        startVideoCallSuccess: (_) => false,
+        orElse: () => true,
+      ),
       builder: (context, state) {
         return IntuitiveScaffold(
           appBar: IntuitiveAppBar(
@@ -76,22 +72,18 @@ class ContactListScreen extends StatelessWidget {
       return buildNoContactsUi();
     }
     return ListView.separated(
-      padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace).add(
-          MediaQuery
-              .of(context)
-              .padding),
+      padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace)
+          .add(MediaQuery.of(context).padding),
       itemCount: contacts.length,
       itemBuilder: (context, index) {
         return ContactCard(
           contacts[index],
-          onTap: (contact) =>
-              context
-                  .read<ContactListBloc>()
-                  .add(ContactListEvent.selectedContactCalled(contact)),
+          onTap: (contact) => context
+              .read<ContactListBloc>()
+              .add(ContactListEvent.selectedContactCalled(contact)),
         );
       },
-      separatorBuilder: (context, index) =>
-      const SizedBox(
+      separatorBuilder: (context, index) => const SizedBox(
         height: IntuitiveUiConstant.smallSpace,
       ),
     );
