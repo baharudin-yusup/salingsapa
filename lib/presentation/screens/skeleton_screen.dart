@@ -62,71 +62,61 @@ class _RootScreenState extends State<RootScreen> {
           final NavigatorService navigatorService = sl();
           navigatorService.pushNamedAndRemoveUntil('/', (route) => false);
         },
-        child: DynamicColorBuilder(
-          builder: (lightDynamic, darkDynamic) {
-            lightDynamic ??= ColorScheme.fromSeed(
-                seedColor: Colors.blue, brightness: platformBrightness);
-            darkDynamic ??= ColorScheme.fromSeed(
-                seedColor: Colors.blue, brightness: platformBrightness);
-            return Platform.isIOS
-                ? Material(
-                    child: Theme(
-                      data: ThemeData(
+        child: Platform.isIOS
+            ? Builder(builder: (context) {
+                final colorScheme = ColorScheme.fromSeed(
+                  seedColor: Colors.blue,
+                  brightness: platformBrightness,
+                );
+                return Material(
+                  child: Theme(
+                    data: ThemeData(
+                      colorScheme: colorScheme,
+                      useMaterial3: true,
+                    ),
+                    child: CupertinoApp(
+                      localizationsDelegates:
+                          AppLocalizations.localizationsDelegates,
+                      supportedLocales: AppLocalizations.supportedLocales,
+                      navigatorKey: sl<NavigatorService>().navigatorKey,
+                      debugShowCheckedModeBanner: false,
+                      theme: CupertinoThemeData(
                         brightness: platformBrightness,
-                        colorScheme: platformBrightness == Brightness.light
-                            ? lightDynamic
-                            : darkDynamic,
-                        useMaterial3: true,
+                        scaffoldBackgroundColor: colorScheme.background,
+                        primaryColor: colorScheme.primary,
+                        primaryContrastingColor: colorScheme.onPrimary,
+                        applyThemeToAll: true,
                       ),
-                      child: CupertinoApp(
-                        localizationsDelegates:
-                            AppLocalizations.localizationsDelegates,
-                        supportedLocales: AppLocalizations.supportedLocales,
-                        navigatorKey: sl<NavigatorService>().navigatorKey,
-                        debugShowCheckedModeBanner: false,
-                        theme: platformBrightness == Brightness.light
-                            ? CupertinoThemeData(
-                                brightness: platformBrightness,
-                                scaffoldBackgroundColor:
-                                    lightDynamic.background,
-                                primaryColor: lightDynamic.primary,
-                                primaryContrastingColor: lightDynamic.onPrimary,
-                                applyThemeToAll: true,
-                              )
-                            : CupertinoThemeData(
-                                brightness: platformBrightness,
-                                scaffoldBackgroundColor: darkDynamic.background,
-                                primaryColor: darkDynamic.primary,
-                                primaryContrastingColor: darkDynamic.onPrimary,
-                                applyThemeToAll: true,
-                              ),
-                        routes: getRoutes(),
-                        initialRoute: '/',
-                      ),
+                      routes: getRoutes(),
+                      initialRoute: '/',
                     ),
-                  )
-                : MaterialApp(
-                    localizationsDelegates:
-                        AppLocalizations.localizationsDelegates,
-                    supportedLocales: AppLocalizations.supportedLocales,
-                    navigatorKey: sl<NavigatorService>().navigatorKey,
-                    debugShowCheckedModeBanner: false,
-                    routes: getRoutes(),
-                    theme: ThemeData(
-                      colorScheme: lightDynamic,
-                      brightness: Brightness.light,
-                      useMaterial3: true,
-                    ),
-                    darkTheme: ThemeData(
-                      colorScheme: darkDynamic,
-                      brightness: Brightness.dark,
-                      useMaterial3: true,
-                    ),
-                    themeMode: ThemeMode.system,
-                    initialRoute: '/',
-                  );
-          },
-        ),
+                  ),
+                );
+              })
+            : DynamicColorBuilder(builder: (lightDynamic, darkDynamic) {
+                lightDynamic ??= ColorScheme.fromSeed(
+                    seedColor: Colors.blue, brightness: Brightness.light);
+                darkDynamic ??= ColorScheme.fromSeed(
+                    seedColor: Colors.blue, brightness: Brightness.dark);
+                return MaterialApp(
+                  localizationsDelegates:
+                      AppLocalizations.localizationsDelegates,
+                  supportedLocales: AppLocalizations.supportedLocales,
+                  navigatorKey: sl<NavigatorService>().navigatorKey,
+                  debugShowCheckedModeBanner: false,
+                  routes: getRoutes(),
+                  theme: ThemeData(
+                    colorScheme: lightDynamic,
+                    useMaterial3: true,
+                  ),
+                  darkTheme: ThemeData(
+                    colorScheme: darkDynamic,
+                    useMaterial3: true,
+                  ),
+                  themeMode: ThemeMode.system,
+                  initialRoute: '/',
+                );
+              }),
       ),
     );
   }

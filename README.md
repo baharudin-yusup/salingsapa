@@ -1,60 +1,144 @@
-# Salingsapa Project
+![App Banner](docs/images/app-banner.png)
 
-[![Codemagic build status](https://api.codemagic.io/apps/642645586c092f62d7cd27b1/642c624515a0bb9f0fdcf443/status_badge.svg)](https://codemagic.io/apps/642645586c092f62d7cd27b1/642c624515a0bb9f0fdcf443/latest_build)
+<a href='https://play.google.com/store/apps/details?id=dev.baharudin.salingsapa&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='docs/images/google-play-badge.png' style="width: auto; height: 50px;"/></a>
 
-A video call application that allows deaf individuals to communicate with hearing individuals using sign language recognition and speech-to-text.
+# Salingsapa
 
-## Project Specifications
+[![Codemagic build status](https://api.codemagic.io/apps/642645586c092f62d7cd27b1/642c4ec2aac5ee7954a0bf2e/status_badge.svg)](https://codemagic.io/apps/642645586c092f62d7cd27b1/642c4ec2aac5ee7954a0bf2e/latest_build)
 
-1. Utilizes "Clean Architecture."
-2. Employs BLoC state management.
-3. Uses WebRTC with Agora for video calls.
-4. Backend powered by Firebase.
-5. Speech-to-Text functionality using Native Android & iOS APIs.
-6. Sign Language Recognition using TensorflowLite.
-7. CI/CD integration through Codemagic.
-8. Dataset obtained from ASL Alphanet by Akash [here](https://www.kaggle.com/datasets/grassknoted/asl-alphabet/data).
+Salingsapa is a [Flutter](https://flutter.dev) application designed to facilitate inclusive video calls with a unique focus
+on enabling communication for individuals with hearing impairments. The app incorporates advanced
+features such
+as [Sign Language Recognition](https://en.wikipedia.org/wiki/Sign_language_recognition)
+and [Speech-to-Text](https://aws.amazon.com/what-is/speech-to-text/) functionality. It follows the
+principles
+of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+and utilizes [BLoC state management](https://bloclibrary.dev/).
 
-## How to Configure?
+## 🚀 Features
 
-### Flutter Build Commands
+### Inclusive Video Calls
 
-#### Build Development
+- Conduct video calls with a unique emphasis on inclusivity.
+- [Sign Language Recognition](https://en.wikipedia.org/wiki/Sign_language_recognition)
+  and [Speech-to-Text](https://aws.amazon.com/what-is/speech-to-text/) features for enhanced
+  communication.
 
-```shell
-flutter build ios --flavor development --target=lib/main_dev.dart
-```
+### WebRTC with Agora Integration
 
-#### Build Android Appbundle Development
+- Seamless video calls powered by WebRTC with [Agora](https://www.agora.io/en/) for high-quality and
+  efficient communication.
 
-```shell
-flutter build appbundle --flavor development --target=lib/main_dev.dart
-```
+### Firebase Backend
 
-### Firebase Update Commands
+- Robust backend infrastructure provided by [Firebase](https://firebase.google.com/).
+- Features include authentication, messaging, and remote configuration.
 
-#### Development Flavor
+### Speech-to-Text Conversion
 
-```shell
-flutterfire config \
---project=salingsapa-project \
---out=lib/firebase_options_dev.dart \
---ios-bundle-id=dev.baharudin.salingsapa-dev \
---android-app-id=dev.baharudin.salingsapa.dev
-```
+- Utilizes native Android and iOS APIs for
+  real-time [Speech-to-Text](https://aws.amazon.com/what-is/speech-to-text/) conversion.
 
-#### Production Flavor
+### Sign Language Recognition
 
-```shell
-flutterfire config \
---project=salingsapa-project \
---out=lib/firebase_options_prod.dart \
---ios-bundle-id=dev.baharudin.salingsapa \
---android-package-name=dev.baharudin.salingsapa
-```
+- Employs [TensorFlowLite](https://www.tensorflow.org/lite) to recognize and interpret Sign Language
+  gestures.
 
+### Clean Architecture and BLoC State Management
 
-## Additional Information
+- Ensures maintainability and scalability
+  through [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
+- [BLoC state management](https://bloclibrary.dev/) for efficient handling of application state.
 
-- Author of the repository: Baharudin Yusup
-- LinkedIn Profile: [https://linkedin.com/in/baharudin-yusup](https://linkedin.com/in/baharudin-yusup)
+## ▶️ How to Run the App
+
+### Prerequisites
+
+Before you begin, make sure you have:
+
+- Flutter installed on your machine.
+- An emulator or a physical device connected for testing.
+
+### Steps
+
+1. **Clone the Repository**
+   ```shell
+   git clone https://github.com/baharudin-yusup/salingsapa.git
+   cd salingsapa
+   ```
+
+2. **Install Dependencies**
+   ```shell
+   flutter pub get
+   ```
+
+3. **Generate Firebase Configuration**
+    - Development:
+      ```shell
+      flutterfire config \
+      --project=salingsapa-project \
+      --out=lib/firebase_options_dev.dart \
+      --ios-bundle-id=dev.baharudin.salingsapa-dev \
+      --android-app-id=dev.baharudin.salingsapa.dev
+      ```
+    - Production:
+      ```shell
+      flutterfire config \
+      --project=salingsapa-project \
+      --out=lib/firebase_options_prod.dart \
+      --ios-bundle-id=dev.baharudin.salingsapa \
+      --android-package-name=dev.baharudin.salingsapa
+      ```
+
+4. **Run the App**
+    - Development
+      ```shell
+      flutter run --flavor dev --target=lib/main_dev.dart
+      ```
+    - Production
+      ```shell
+      flutter run --flavor prod --target=lib/main_prod.dart
+      ```
+
+## 🛠️ Technical Specifications
+
+### Dependencies
+
+Salingsapa utilizes a variety of Flutter packages and external libraries to deliver its functionalities. Here are some key dependencies:
+
+- **Firebase**
+    - Provides a robust backend infrastructure, including authentication, messaging, and remote configuration.
+    - Package: `firebase_core`, `firebase_analytics`, `firebase_auth`, `firebase_messaging`, `firebase_remote_config`, `cloud_firestore`, `firebase_app_check`, `firebase_storage`
+
+- **State Management**
+    - Ensures efficient handling of application state.
+    - Package: `bloc`, `flutter_bloc`, `freezed`, `equatable`
+
+- **UI/UX**
+    - Enhances user interface and experience.
+    - Package: `dynamic_color`, `flutter_localizations`, `intl`, `flutter_markdown`
+
+- **WebRTC**
+    - Enables seamless video calls.
+    - Package: `agora_rtc_engine`
+
+- **TensorFlowLite**
+    - Powers Sign Language Recognition.
+    - Package: `tflite`
+
+- **HTTP Requests**
+    - Manages HTTP requests for data communication.
+    - Package: `dio`
+
+- **Contacts Service**
+    - Facilitates access to device contacts.
+    - Package: `flutter_contacts`
+
+### Continuous Integration and Deployment
+
+  Automated CI/CD through [Codemagic](https://codemagic.io/) for
+  streamlined development.
+
+### Dataset
+
+The Sign Language Recognition model is trained on the [ASL Alphabet dataset by Akash](https://www.kaggle.com/datasets/grassknoted/asl-alphabet/data)

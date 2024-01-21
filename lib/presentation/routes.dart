@@ -10,7 +10,6 @@ import 'blocs/authorization/authorization_bloc.dart';
 import 'blocs/contact_list/contact_list_bloc.dart';
 import 'blocs/create_room/create_room_bloc.dart';
 import 'blocs/home/home_cubit.dart';
-import 'blocs/introduction/introduction_cubit.dart';
 import 'blocs/recent_call/recent_call_bloc.dart';
 import 'blocs/sign_language_recognition_bloc/sign_language_recognition_bloc.dart';
 import 'blocs/speech_recognition_bloc/speech_recognition_bloc.dart';
@@ -20,7 +19,6 @@ import 'blocs/video_call_control/video_call_control_bloc.dart';
 import 'screens/home/contact_list_screen.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/home/recent_call_screen.dart';
-import 'screens/onboarding_screen.dart';
 import 'screens/room/create_room_screen.dart';
 import 'screens/setting_screen.dart';
 import 'screens/setup_screen.dart';
@@ -31,10 +29,7 @@ Map<String, WidgetBuilder> getRoutes() => {
       '/': (_) => BlocBuilder<AuthorizationBloc, AuthorizationState>(
             builder: (context, state) {
               return state.when(
-                initial: (_) => BlocProvider<IntroductionCubit>(
-                  create: (_) => sl(),
-                  child: const OnboardingScreen(),
-                ),
+                initial: (_) => const SetupScreen(),
                 changeAuthStatusSuccess: (status) {
                   if (status == AuthStatus.unauthorized) {
                     return const SetupScreen();

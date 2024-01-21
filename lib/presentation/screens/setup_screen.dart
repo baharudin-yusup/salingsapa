@@ -69,6 +69,9 @@ class SetupScreen extends StatelessWidget {
               inputPhoneNumberSuccess: (_) {
                 uiService.hideLoading();
                 navigatorService.pushNamed(VerifyOtpScreen.routeName);
+                context
+                    .read<SetupBloc>()
+                    .add(const SetupEvent.inputOtpStarted());
               },
               orElse: () {},
             );
@@ -81,36 +84,18 @@ class SetupScreen extends StatelessWidget {
             appBar: IntuitiveAppBar(
               middle: Text(AppLocalizations.of(context)!.enterYourPhoneNumber),
               cupertinoTrailing: GestureDetector(
-                onTap: state.maybeMap(
-                  inputPhoneNumberInitial: (state) {
-                    if (state.canSubmit) {
-                      return () {
+                onTap: state.isAbleToSubmitPhoneNumber
+                    ? () {
                         FocusManager.instance.primaryFocus?.unfocus();
                         _onButtonDonePressed(context);
-                      };
-                    }
-                    return null;
-                  },
-                  orElse: () {
-                    return null;
-                  },
-                ),
+                      }
+                    : null,
                 child: Text(
                   AppLocalizations.of(context)!.done,
                   style: TextStyle(
-                    color: state.maybeMap(
-                      inputPhoneNumberInitial: (state) {
-                        return state.canSubmit
-                            ? context.colorScheme().primary
-                            : context.colorScheme().background.withOpacity(0.5);
-                      },
-                      orElse: () {
-                        return context
-                            .colorScheme()
-                            .background
-                            .withOpacity(0.5);
-                      },
-                    ),
+                    color: state.isAbleToSubmitPhoneNumber
+                        ? context.colorScheme().primary
+                        : context.colorScheme().onBackground.withOpacity(0.5),
                   ),
                 ),
               ),
@@ -167,11 +152,11 @@ class SetupScreen extends StatelessWidget {
   Widget _buildMaterialDoneButton() {
     return BlocBuilder<SetupBloc, SetupState>(
       builder: (context, state) {
-        final SetupBloc bloc = context.read();
-        final canSubmit = bloc.canSubmit();
         return Center(
           child: ElevatedButton.icon(
-            onPressed: canSubmit ? () => _onButtonDonePressed(context) : null,
+            onPressed: state.isAbleToSubmitPhoneNumber
+                ? () => _onButtonDonePressed(context)
+                : null,
             icon: Icon(Icons.adaptive.arrow_forward_rounded),
             label: Text(AppLocalizations.of(context)!.next),
           ),
@@ -181,7 +166,7 @@ class SetupScreen extends StatelessWidget {
   }
 
   void _onButtonDonePressed(BuildContext context) {
-    context.read<SetupBloc>().add(const SetupEvent.buttonDonePressed());
+    context.read<SetupBloc>().add(const SetupEvent.submitPhoneNumberStarted());
   }
 
   Widget _buildPrivacyPolicyText() {

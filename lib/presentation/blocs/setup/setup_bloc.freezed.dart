@@ -18,56 +18,70 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SetupEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() inputPhoneNumberStarted,
     required TResult Function(String phoneNumber) phoneNumberChanged,
-    required TResult Function() buttonDonePressed,
+    required TResult Function() submitPhoneNumberStarted,
+    required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
+    required TResult Function() submitOtpStarted,
     required TResult Function() resendOtpStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? inputPhoneNumberStarted,
     TResult? Function(String phoneNumber)? phoneNumberChanged,
-    TResult? Function()? buttonDonePressed,
+    TResult? Function()? submitPhoneNumberStarted,
+    TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
+    TResult? Function()? submitOtpStarted,
     TResult? Function()? resendOtpStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? inputPhoneNumberStarted,
     TResult Function(String phoneNumber)? phoneNumberChanged,
-    TResult Function()? buttonDonePressed,
+    TResult Function()? submitPhoneNumberStarted,
+    TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
+    TResult Function()? submitOtpStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_InputPhoneNumberStarted value)
+        inputPhoneNumberStarted,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
-    required TResult Function(_ButtonDonePressed value) buttonDonePressed,
+    required TResult Function(_ButtonDonePressed value)
+        submitPhoneNumberStarted,
+    required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
+    required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult? Function(_ButtonDonePressed value)? buttonDonePressed,
+    TResult? Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
+    TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult Function(_ButtonDonePressed value)? buttonDonePressed,
+    TResult Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
+    TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) =>
@@ -93,35 +107,38 @@ class _$SetupEventCopyWithImpl<$Res, $Val extends SetupEvent>
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
+abstract class _$$InputPhoneNumberStartedImplCopyWith<$Res> {
+  factory _$$InputPhoneNumberStartedImplCopyWith(
+          _$InputPhoneNumberStartedImpl value,
+          $Res Function(_$InputPhoneNumberStartedImpl) then) =
+      __$$InputPhoneNumberStartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$SetupEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
+class __$$InputPhoneNumberStartedImplCopyWithImpl<$Res>
+    extends _$SetupEventCopyWithImpl<$Res, _$InputPhoneNumberStartedImpl>
+    implements _$$InputPhoneNumberStartedImplCopyWith<$Res> {
+  __$$InputPhoneNumberStartedImplCopyWithImpl(
+      _$InputPhoneNumberStartedImpl _value,
+      $Res Function(_$InputPhoneNumberStartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
+class _$InputPhoneNumberStartedImpl implements _InputPhoneNumberStarted {
+  const _$InputPhoneNumberStartedImpl();
 
   @override
   String toString() {
-    return 'SetupEvent.started()';
+    return 'SetupEvent.inputPhoneNumberStarted()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$InputPhoneNumberStartedImpl);
   }
 
   @override
@@ -130,39 +147,45 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() inputPhoneNumberStarted,
     required TResult Function(String phoneNumber) phoneNumberChanged,
-    required TResult Function() buttonDonePressed,
+    required TResult Function() submitPhoneNumberStarted,
+    required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
+    required TResult Function() submitOtpStarted,
     required TResult Function() resendOtpStarted,
   }) {
-    return started();
+    return inputPhoneNumberStarted();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? inputPhoneNumberStarted,
     TResult? Function(String phoneNumber)? phoneNumberChanged,
-    TResult? Function()? buttonDonePressed,
+    TResult? Function()? submitPhoneNumberStarted,
+    TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
+    TResult? Function()? submitOtpStarted,
     TResult? Function()? resendOtpStarted,
   }) {
-    return started?.call();
+    return inputPhoneNumberStarted?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? inputPhoneNumberStarted,
     TResult Function(String phoneNumber)? phoneNumberChanged,
-    TResult Function()? buttonDonePressed,
+    TResult Function()? submitPhoneNumberStarted,
+    TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
+    TResult Function()? submitOtpStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (inputPhoneNumberStarted != null) {
+      return inputPhoneNumberStarted();
     }
     return orElse();
   }
@@ -170,46 +193,54 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_InputPhoneNumberStarted value)
+        inputPhoneNumberStarted,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
-    required TResult Function(_ButtonDonePressed value) buttonDonePressed,
+    required TResult Function(_ButtonDonePressed value)
+        submitPhoneNumberStarted,
+    required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
+    required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) {
-    return started(this);
+    return inputPhoneNumberStarted(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult? Function(_ButtonDonePressed value)? buttonDonePressed,
+    TResult? Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
+    TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) {
-    return started?.call(this);
+    return inputPhoneNumberStarted?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult Function(_ButtonDonePressed value)? buttonDonePressed,
+    TResult Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
+    TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (inputPhoneNumberStarted != null) {
+      return inputPhoneNumberStarted(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements SetupEvent {
-  const factory _Started() = _$StartedImpl;
+abstract class _InputPhoneNumberStarted implements SetupEvent {
+  const factory _InputPhoneNumberStarted() = _$InputPhoneNumberStartedImpl;
 }
 
 /// @nodoc
@@ -278,10 +309,12 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() inputPhoneNumberStarted,
     required TResult Function(String phoneNumber) phoneNumberChanged,
-    required TResult Function() buttonDonePressed,
+    required TResult Function() submitPhoneNumberStarted,
+    required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
+    required TResult Function() submitOtpStarted,
     required TResult Function() resendOtpStarted,
   }) {
     return phoneNumberChanged(phoneNumber);
@@ -290,10 +323,12 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? inputPhoneNumberStarted,
     TResult? Function(String phoneNumber)? phoneNumberChanged,
-    TResult? Function()? buttonDonePressed,
+    TResult? Function()? submitPhoneNumberStarted,
+    TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
+    TResult? Function()? submitOtpStarted,
     TResult? Function()? resendOtpStarted,
   }) {
     return phoneNumberChanged?.call(phoneNumber);
@@ -302,10 +337,12 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? inputPhoneNumberStarted,
     TResult Function(String phoneNumber)? phoneNumberChanged,
-    TResult Function()? buttonDonePressed,
+    TResult Function()? submitPhoneNumberStarted,
+    TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
+    TResult Function()? submitOtpStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -318,10 +355,14 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_InputPhoneNumberStarted value)
+        inputPhoneNumberStarted,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
-    required TResult Function(_ButtonDonePressed value) buttonDonePressed,
+    required TResult Function(_ButtonDonePressed value)
+        submitPhoneNumberStarted,
+    required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
+    required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) {
     return phoneNumberChanged(this);
@@ -330,10 +371,12 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult? Function(_ButtonDonePressed value)? buttonDonePressed,
+    TResult? Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
+    TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) {
     return phoneNumberChanged?.call(this);
@@ -342,10 +385,12 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult Function(_ButtonDonePressed value)? buttonDonePressed,
+    TResult Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
+    TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -389,7 +434,7 @@ class _$ButtonDonePressedImpl implements _ButtonDonePressed {
 
   @override
   String toString() {
-    return 'SetupEvent.buttonDonePressed()';
+    return 'SetupEvent.submitPhoneNumberStarted()';
   }
 
   @override
@@ -404,39 +449,45 @@ class _$ButtonDonePressedImpl implements _ButtonDonePressed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() inputPhoneNumberStarted,
     required TResult Function(String phoneNumber) phoneNumberChanged,
-    required TResult Function() buttonDonePressed,
+    required TResult Function() submitPhoneNumberStarted,
+    required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
+    required TResult Function() submitOtpStarted,
     required TResult Function() resendOtpStarted,
   }) {
-    return buttonDonePressed();
+    return submitPhoneNumberStarted();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? inputPhoneNumberStarted,
     TResult? Function(String phoneNumber)? phoneNumberChanged,
-    TResult? Function()? buttonDonePressed,
+    TResult? Function()? submitPhoneNumberStarted,
+    TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
+    TResult? Function()? submitOtpStarted,
     TResult? Function()? resendOtpStarted,
   }) {
-    return buttonDonePressed?.call();
+    return submitPhoneNumberStarted?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? inputPhoneNumberStarted,
     TResult Function(String phoneNumber)? phoneNumberChanged,
-    TResult Function()? buttonDonePressed,
+    TResult Function()? submitPhoneNumberStarted,
+    TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
+    TResult Function()? submitOtpStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) {
-    if (buttonDonePressed != null) {
-      return buttonDonePressed();
+    if (submitPhoneNumberStarted != null) {
+      return submitPhoneNumberStarted();
     }
     return orElse();
   }
@@ -444,39 +495,47 @@ class _$ButtonDonePressedImpl implements _ButtonDonePressed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_InputPhoneNumberStarted value)
+        inputPhoneNumberStarted,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
-    required TResult Function(_ButtonDonePressed value) buttonDonePressed,
+    required TResult Function(_ButtonDonePressed value)
+        submitPhoneNumberStarted,
+    required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
+    required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) {
-    return buttonDonePressed(this);
+    return submitPhoneNumberStarted(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult? Function(_ButtonDonePressed value)? buttonDonePressed,
+    TResult? Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
+    TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) {
-    return buttonDonePressed?.call(this);
+    return submitPhoneNumberStarted?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult Function(_ButtonDonePressed value)? buttonDonePressed,
+    TResult Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
+    TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) {
-    if (buttonDonePressed != null) {
-      return buttonDonePressed(this);
+    if (submitPhoneNumberStarted != null) {
+      return submitPhoneNumberStarted(this);
     }
     return orElse();
   }
@@ -484,6 +543,140 @@ class _$ButtonDonePressedImpl implements _ButtonDonePressed {
 
 abstract class _ButtonDonePressed implements SetupEvent {
   const factory _ButtonDonePressed() = _$ButtonDonePressedImpl;
+}
+
+/// @nodoc
+abstract class _$$InputOtpStartedImplCopyWith<$Res> {
+  factory _$$InputOtpStartedImplCopyWith(_$InputOtpStartedImpl value,
+          $Res Function(_$InputOtpStartedImpl) then) =
+      __$$InputOtpStartedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InputOtpStartedImplCopyWithImpl<$Res>
+    extends _$SetupEventCopyWithImpl<$Res, _$InputOtpStartedImpl>
+    implements _$$InputOtpStartedImplCopyWith<$Res> {
+  __$$InputOtpStartedImplCopyWithImpl(
+      _$InputOtpStartedImpl _value, $Res Function(_$InputOtpStartedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$InputOtpStartedImpl implements _InputOtpStarted {
+  const _$InputOtpStartedImpl();
+
+  @override
+  String toString() {
+    return 'SetupEvent.inputOtpStarted()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InputOtpStartedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() inputPhoneNumberStarted,
+    required TResult Function(String phoneNumber) phoneNumberChanged,
+    required TResult Function() submitPhoneNumberStarted,
+    required TResult Function() inputOtpStarted,
+    required TResult Function(String otp) otpChanged,
+    required TResult Function() submitOtpStarted,
+    required TResult Function() resendOtpStarted,
+  }) {
+    return inputOtpStarted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? inputPhoneNumberStarted,
+    TResult? Function(String phoneNumber)? phoneNumberChanged,
+    TResult? Function()? submitPhoneNumberStarted,
+    TResult? Function()? inputOtpStarted,
+    TResult? Function(String otp)? otpChanged,
+    TResult? Function()? submitOtpStarted,
+    TResult? Function()? resendOtpStarted,
+  }) {
+    return inputOtpStarted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? inputPhoneNumberStarted,
+    TResult Function(String phoneNumber)? phoneNumberChanged,
+    TResult Function()? submitPhoneNumberStarted,
+    TResult Function()? inputOtpStarted,
+    TResult Function(String otp)? otpChanged,
+    TResult Function()? submitOtpStarted,
+    TResult Function()? resendOtpStarted,
+    required TResult orElse(),
+  }) {
+    if (inputOtpStarted != null) {
+      return inputOtpStarted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InputPhoneNumberStarted value)
+        inputPhoneNumberStarted,
+    required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
+    required TResult Function(_ButtonDonePressed value)
+        submitPhoneNumberStarted,
+    required TResult Function(_InputOtpStarted value) inputOtpStarted,
+    required TResult Function(_OtpChanged value) otpChanged,
+    required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ResendOtpStarted value) resendOtpStarted,
+  }) {
+    return inputOtpStarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
+    TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
+    TResult? Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult? Function(_InputOtpStarted value)? inputOtpStarted,
+    TResult? Function(_OtpChanged value)? otpChanged,
+    TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
+  }) {
+    return inputOtpStarted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
+    TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
+    TResult Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult Function(_InputOtpStarted value)? inputOtpStarted,
+    TResult Function(_OtpChanged value)? otpChanged,
+    TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ResendOtpStarted value)? resendOtpStarted,
+    required TResult orElse(),
+  }) {
+    if (inputOtpStarted != null) {
+      return inputOtpStarted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InputOtpStarted implements SetupEvent {
+  const factory _InputOtpStarted() = _$InputOtpStartedImpl;
 }
 
 /// @nodoc
@@ -550,10 +743,12 @@ class _$OtpChangedImpl implements _OtpChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() inputPhoneNumberStarted,
     required TResult Function(String phoneNumber) phoneNumberChanged,
-    required TResult Function() buttonDonePressed,
+    required TResult Function() submitPhoneNumberStarted,
+    required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
+    required TResult Function() submitOtpStarted,
     required TResult Function() resendOtpStarted,
   }) {
     return otpChanged(otp);
@@ -562,10 +757,12 @@ class _$OtpChangedImpl implements _OtpChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? inputPhoneNumberStarted,
     TResult? Function(String phoneNumber)? phoneNumberChanged,
-    TResult? Function()? buttonDonePressed,
+    TResult? Function()? submitPhoneNumberStarted,
+    TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
+    TResult? Function()? submitOtpStarted,
     TResult? Function()? resendOtpStarted,
   }) {
     return otpChanged?.call(otp);
@@ -574,10 +771,12 @@ class _$OtpChangedImpl implements _OtpChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? inputPhoneNumberStarted,
     TResult Function(String phoneNumber)? phoneNumberChanged,
-    TResult Function()? buttonDonePressed,
+    TResult Function()? submitPhoneNumberStarted,
+    TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
+    TResult Function()? submitOtpStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -590,10 +789,14 @@ class _$OtpChangedImpl implements _OtpChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_InputPhoneNumberStarted value)
+        inputPhoneNumberStarted,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
-    required TResult Function(_ButtonDonePressed value) buttonDonePressed,
+    required TResult Function(_ButtonDonePressed value)
+        submitPhoneNumberStarted,
+    required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
+    required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) {
     return otpChanged(this);
@@ -602,10 +805,12 @@ class _$OtpChangedImpl implements _OtpChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult? Function(_ButtonDonePressed value)? buttonDonePressed,
+    TResult? Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
+    TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) {
     return otpChanged?.call(this);
@@ -614,10 +819,12 @@ class _$OtpChangedImpl implements _OtpChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult Function(_ButtonDonePressed value)? buttonDonePressed,
+    TResult Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
+    TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -635,6 +842,140 @@ abstract class _OtpChanged implements SetupEvent {
   @JsonKey(ignore: true)
   _$$OtpChangedImplCopyWith<_$OtpChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SubmitOtpStartedImplCopyWith<$Res> {
+  factory _$$SubmitOtpStartedImplCopyWith(_$SubmitOtpStartedImpl value,
+          $Res Function(_$SubmitOtpStartedImpl) then) =
+      __$$SubmitOtpStartedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SubmitOtpStartedImplCopyWithImpl<$Res>
+    extends _$SetupEventCopyWithImpl<$Res, _$SubmitOtpStartedImpl>
+    implements _$$SubmitOtpStartedImplCopyWith<$Res> {
+  __$$SubmitOtpStartedImplCopyWithImpl(_$SubmitOtpStartedImpl _value,
+      $Res Function(_$SubmitOtpStartedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SubmitOtpStartedImpl implements _SubmitOtpStarted {
+  const _$SubmitOtpStartedImpl();
+
+  @override
+  String toString() {
+    return 'SetupEvent.submitOtpStarted()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SubmitOtpStartedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() inputPhoneNumberStarted,
+    required TResult Function(String phoneNumber) phoneNumberChanged,
+    required TResult Function() submitPhoneNumberStarted,
+    required TResult Function() inputOtpStarted,
+    required TResult Function(String otp) otpChanged,
+    required TResult Function() submitOtpStarted,
+    required TResult Function() resendOtpStarted,
+  }) {
+    return submitOtpStarted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? inputPhoneNumberStarted,
+    TResult? Function(String phoneNumber)? phoneNumberChanged,
+    TResult? Function()? submitPhoneNumberStarted,
+    TResult? Function()? inputOtpStarted,
+    TResult? Function(String otp)? otpChanged,
+    TResult? Function()? submitOtpStarted,
+    TResult? Function()? resendOtpStarted,
+  }) {
+    return submitOtpStarted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? inputPhoneNumberStarted,
+    TResult Function(String phoneNumber)? phoneNumberChanged,
+    TResult Function()? submitPhoneNumberStarted,
+    TResult Function()? inputOtpStarted,
+    TResult Function(String otp)? otpChanged,
+    TResult Function()? submitOtpStarted,
+    TResult Function()? resendOtpStarted,
+    required TResult orElse(),
+  }) {
+    if (submitOtpStarted != null) {
+      return submitOtpStarted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InputPhoneNumberStarted value)
+        inputPhoneNumberStarted,
+    required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
+    required TResult Function(_ButtonDonePressed value)
+        submitPhoneNumberStarted,
+    required TResult Function(_InputOtpStarted value) inputOtpStarted,
+    required TResult Function(_OtpChanged value) otpChanged,
+    required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ResendOtpStarted value) resendOtpStarted,
+  }) {
+    return submitOtpStarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
+    TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
+    TResult? Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult? Function(_InputOtpStarted value)? inputOtpStarted,
+    TResult? Function(_OtpChanged value)? otpChanged,
+    TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
+  }) {
+    return submitOtpStarted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
+    TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
+    TResult Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult Function(_InputOtpStarted value)? inputOtpStarted,
+    TResult Function(_OtpChanged value)? otpChanged,
+    TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ResendOtpStarted value)? resendOtpStarted,
+    required TResult orElse(),
+  }) {
+    if (submitOtpStarted != null) {
+      return submitOtpStarted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SubmitOtpStarted implements SetupEvent {
+  const factory _SubmitOtpStarted() = _$SubmitOtpStartedImpl;
 }
 
 /// @nodoc
@@ -675,10 +1016,12 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() inputPhoneNumberStarted,
     required TResult Function(String phoneNumber) phoneNumberChanged,
-    required TResult Function() buttonDonePressed,
+    required TResult Function() submitPhoneNumberStarted,
+    required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
+    required TResult Function() submitOtpStarted,
     required TResult Function() resendOtpStarted,
   }) {
     return resendOtpStarted();
@@ -687,10 +1030,12 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? inputPhoneNumberStarted,
     TResult? Function(String phoneNumber)? phoneNumberChanged,
-    TResult? Function()? buttonDonePressed,
+    TResult? Function()? submitPhoneNumberStarted,
+    TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
+    TResult? Function()? submitOtpStarted,
     TResult? Function()? resendOtpStarted,
   }) {
     return resendOtpStarted?.call();
@@ -699,10 +1044,12 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? inputPhoneNumberStarted,
     TResult Function(String phoneNumber)? phoneNumberChanged,
-    TResult Function()? buttonDonePressed,
+    TResult Function()? submitPhoneNumberStarted,
+    TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
+    TResult Function()? submitOtpStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -715,10 +1062,14 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_InputPhoneNumberStarted value)
+        inputPhoneNumberStarted,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
-    required TResult Function(_ButtonDonePressed value) buttonDonePressed,
+    required TResult Function(_ButtonDonePressed value)
+        submitPhoneNumberStarted,
+    required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
+    required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) {
     return resendOtpStarted(this);
@@ -727,10 +1078,12 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
+    TResult? Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult? Function(_ButtonDonePressed value)? buttonDonePressed,
+    TResult? Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
+    TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) {
     return resendOtpStarted?.call(this);
@@ -739,10 +1092,12 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult Function(_ButtonDonePressed value)? buttonDonePressed,
+    TResult Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
+    TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -762,8 +1117,7 @@ mixin _$SetupState {
   String get phoneNumber => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phoneNumber, bool canSubmit)
-        inputPhoneNumberInitial,
+    required TResult Function(String phoneNumber) inputPhoneNumberInitial,
     required TResult Function(String phoneNumber)
         inputPhoneNumberVerifyInProgress,
     required TResult Function(String phoneNumber, Failure failure)
@@ -785,8 +1139,7 @@ mixin _$SetupState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult? Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult? Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult? Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -806,8 +1159,7 @@ mixin _$SetupState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -934,7 +1286,7 @@ abstract class _$$InputPhoneNumberInitialImplCopyWith<$Res>
       __$$InputPhoneNumberInitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String phoneNumber, bool canSubmit});
+  $Res call({String phoneNumber});
 }
 
 /// @nodoc
@@ -950,17 +1302,12 @@ class __$$InputPhoneNumberInitialImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? phoneNumber = null,
-    Object? canSubmit = null,
   }) {
     return _then(_$InputPhoneNumberInitialImpl(
       null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
-      null == canSubmit
-          ? _value.canSubmit
-          : canSubmit // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -968,19 +1315,15 @@ class __$$InputPhoneNumberInitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InputPhoneNumberInitialImpl implements InputPhoneNumberInitial {
-  const _$InputPhoneNumberInitialImpl(
-      [this.phoneNumber = '', this.canSubmit = false]);
+  const _$InputPhoneNumberInitialImpl([this.phoneNumber = '']);
 
   @override
   @JsonKey()
   final String phoneNumber;
-  @override
-  @JsonKey()
-  final bool canSubmit;
 
   @override
   String toString() {
-    return 'SetupState.inputPhoneNumberInitial(phoneNumber: $phoneNumber, canSubmit: $canSubmit)';
+    return 'SetupState.inputPhoneNumberInitial(phoneNumber: $phoneNumber)';
   }
 
   @override
@@ -989,13 +1332,11 @@ class _$InputPhoneNumberInitialImpl implements InputPhoneNumberInitial {
         (other.runtimeType == runtimeType &&
             other is _$InputPhoneNumberInitialImpl &&
             (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
-            (identical(other.canSubmit, canSubmit) ||
-                other.canSubmit == canSubmit));
+                other.phoneNumber == phoneNumber));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, phoneNumber, canSubmit);
+  int get hashCode => Object.hash(runtimeType, phoneNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -1007,8 +1348,7 @@ class _$InputPhoneNumberInitialImpl implements InputPhoneNumberInitial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phoneNumber, bool canSubmit)
-        inputPhoneNumberInitial,
+    required TResult Function(String phoneNumber) inputPhoneNumberInitial,
     required TResult Function(String phoneNumber)
         inputPhoneNumberVerifyInProgress,
     required TResult Function(String phoneNumber, Failure failure)
@@ -1027,14 +1367,13 @@ class _$InputPhoneNumberInitialImpl implements InputPhoneNumberInitial {
     required TResult Function(String phoneNumber, String otp, Failure failure)
         resendOtpFailure,
   }) {
-    return inputPhoneNumberInitial(phoneNumber, canSubmit);
+    return inputPhoneNumberInitial(phoneNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult? Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult? Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult? Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -1051,14 +1390,13 @@ class _$InputPhoneNumberInitialImpl implements InputPhoneNumberInitial {
     TResult? Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
   }) {
-    return inputPhoneNumberInitial?.call(phoneNumber, canSubmit);
+    return inputPhoneNumberInitial?.call(phoneNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -1076,7 +1414,7 @@ class _$InputPhoneNumberInitialImpl implements InputPhoneNumberInitial {
     required TResult orElse(),
   }) {
     if (inputPhoneNumberInitial != null) {
-      return inputPhoneNumberInitial(phoneNumber, canSubmit);
+      return inputPhoneNumberInitial(phoneNumber);
     }
     return orElse();
   }
@@ -1156,13 +1494,11 @@ class _$InputPhoneNumberInitialImpl implements InputPhoneNumberInitial {
 }
 
 abstract class InputPhoneNumberInitial implements SetupState {
-  const factory InputPhoneNumberInitial(
-      [final String phoneNumber,
-      final bool canSubmit]) = _$InputPhoneNumberInitialImpl;
+  const factory InputPhoneNumberInitial([final String phoneNumber]) =
+      _$InputPhoneNumberInitialImpl;
 
   @override
   String get phoneNumber;
-  bool get canSubmit;
   @override
   @JsonKey(ignore: true)
   _$$InputPhoneNumberInitialImplCopyWith<_$InputPhoneNumberInitialImpl>
@@ -1242,8 +1578,7 @@ class _$InputPhoneNumberVerifyInProgressImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phoneNumber, bool canSubmit)
-        inputPhoneNumberInitial,
+    required TResult Function(String phoneNumber) inputPhoneNumberInitial,
     required TResult Function(String phoneNumber)
         inputPhoneNumberVerifyInProgress,
     required TResult Function(String phoneNumber, Failure failure)
@@ -1268,8 +1603,7 @@ class _$InputPhoneNumberVerifyInProgressImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult? Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult? Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult? Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -1292,8 +1626,7 @@ class _$InputPhoneNumberVerifyInProgressImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -1481,8 +1814,7 @@ class _$InputPhoneNumberFailureImpl implements _InputPhoneNumberFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phoneNumber, bool canSubmit)
-        inputPhoneNumberInitial,
+    required TResult Function(String phoneNumber) inputPhoneNumberInitial,
     required TResult Function(String phoneNumber)
         inputPhoneNumberVerifyInProgress,
     required TResult Function(String phoneNumber, Failure failure)
@@ -1507,8 +1839,7 @@ class _$InputPhoneNumberFailureImpl implements _InputPhoneNumberFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult? Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult? Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult? Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -1531,8 +1862,7 @@ class _$InputPhoneNumberFailureImpl implements _InputPhoneNumberFailure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -1713,8 +2043,7 @@ class _$InputPhoneNumberSuccessImpl implements _InputPhoneNumberSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phoneNumber, bool canSubmit)
-        inputPhoneNumberInitial,
+    required TResult Function(String phoneNumber) inputPhoneNumberInitial,
     required TResult Function(String phoneNumber)
         inputPhoneNumberVerifyInProgress,
     required TResult Function(String phoneNumber, Failure failure)
@@ -1739,8 +2068,7 @@ class _$InputPhoneNumberSuccessImpl implements _InputPhoneNumberSuccess {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult? Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult? Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult? Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -1763,8 +2091,7 @@ class _$InputPhoneNumberSuccessImpl implements _InputPhoneNumberSuccess {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -1914,11 +2241,12 @@ class __$$InputOtpInitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InputOtpInitialImpl implements _InputOtpInitial {
-  const _$InputOtpInitialImpl(this.phoneNumber, this.otp);
+  const _$InputOtpInitialImpl(this.phoneNumber, [this.otp = '']);
 
   @override
   final String phoneNumber;
   @override
+  @JsonKey()
   final String otp;
 
   @override
@@ -1949,8 +2277,7 @@ class _$InputOtpInitialImpl implements _InputOtpInitial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phoneNumber, bool canSubmit)
-        inputPhoneNumberInitial,
+    required TResult Function(String phoneNumber) inputPhoneNumberInitial,
     required TResult Function(String phoneNumber)
         inputPhoneNumberVerifyInProgress,
     required TResult Function(String phoneNumber, Failure failure)
@@ -1975,8 +2302,7 @@ class _$InputOtpInitialImpl implements _InputOtpInitial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult? Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult? Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult? Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -1999,8 +2325,7 @@ class _$InputOtpInitialImpl implements _InputOtpInitial {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -2098,7 +2423,7 @@ class _$InputOtpInitialImpl implements _InputOtpInitial {
 }
 
 abstract class _InputOtpInitial implements SetupState {
-  const factory _InputOtpInitial(final String phoneNumber, final String otp) =
+  const factory _InputOtpInitial(final String phoneNumber, [final String otp]) =
       _$InputOtpInitialImpl;
 
   @override
@@ -2190,8 +2515,7 @@ class _$InputOtpValidationInProgressImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phoneNumber, bool canSubmit)
-        inputPhoneNumberInitial,
+    required TResult Function(String phoneNumber) inputPhoneNumberInitial,
     required TResult Function(String phoneNumber)
         inputPhoneNumberVerifyInProgress,
     required TResult Function(String phoneNumber, Failure failure)
@@ -2216,8 +2540,7 @@ class _$InputOtpValidationInProgressImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult? Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult? Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult? Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -2240,8 +2563,7 @@ class _$InputOtpValidationInProgressImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -2431,8 +2753,7 @@ class _$InputOtpValidationSuccessImpl implements _InputOtpValidationSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phoneNumber, bool canSubmit)
-        inputPhoneNumberInitial,
+    required TResult Function(String phoneNumber) inputPhoneNumberInitial,
     required TResult Function(String phoneNumber)
         inputPhoneNumberVerifyInProgress,
     required TResult Function(String phoneNumber, Failure failure)
@@ -2457,8 +2778,7 @@ class _$InputOtpValidationSuccessImpl implements _InputOtpValidationSuccess {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult? Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult? Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult? Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -2481,8 +2801,7 @@ class _$InputOtpValidationSuccessImpl implements _InputOtpValidationSuccess {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -2680,8 +2999,7 @@ class _$InputOtpValidationFailureImpl implements _InputOtpValidationFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phoneNumber, bool canSubmit)
-        inputPhoneNumberInitial,
+    required TResult Function(String phoneNumber) inputPhoneNumberInitial,
     required TResult Function(String phoneNumber)
         inputPhoneNumberVerifyInProgress,
     required TResult Function(String phoneNumber, Failure failure)
@@ -2706,8 +3024,7 @@ class _$InputOtpValidationFailureImpl implements _InputOtpValidationFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult? Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult? Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult? Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -2730,8 +3047,7 @@ class _$InputOtpValidationFailureImpl implements _InputOtpValidationFailure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -2919,8 +3235,7 @@ class _$ResendOtpInProgressImpl implements _ResendOtpInProgress {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phoneNumber, bool canSubmit)
-        inputPhoneNumberInitial,
+    required TResult Function(String phoneNumber) inputPhoneNumberInitial,
     required TResult Function(String phoneNumber)
         inputPhoneNumberVerifyInProgress,
     required TResult Function(String phoneNumber, Failure failure)
@@ -2945,8 +3260,7 @@ class _$ResendOtpInProgressImpl implements _ResendOtpInProgress {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult? Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult? Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult? Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -2969,8 +3283,7 @@ class _$ResendOtpInProgressImpl implements _ResendOtpInProgress {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -3156,8 +3469,7 @@ class _$ResendOtpSuccessImpl implements _ResendOtpSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phoneNumber, bool canSubmit)
-        inputPhoneNumberInitial,
+    required TResult Function(String phoneNumber) inputPhoneNumberInitial,
     required TResult Function(String phoneNumber)
         inputPhoneNumberVerifyInProgress,
     required TResult Function(String phoneNumber, Failure failure)
@@ -3182,8 +3494,7 @@ class _$ResendOtpSuccessImpl implements _ResendOtpSuccess {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult? Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult? Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult? Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -3206,8 +3517,7 @@ class _$ResendOtpSuccessImpl implements _ResendOtpSuccess {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -3401,8 +3711,7 @@ class _$ResendOtpFailureImpl implements _ResendOtpFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String phoneNumber, bool canSubmit)
-        inputPhoneNumberInitial,
+    required TResult Function(String phoneNumber) inputPhoneNumberInitial,
     required TResult Function(String phoneNumber)
         inputPhoneNumberVerifyInProgress,
     required TResult Function(String phoneNumber, Failure failure)
@@ -3427,8 +3736,7 @@ class _$ResendOtpFailureImpl implements _ResendOtpFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult? Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult? Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult? Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,
@@ -3451,8 +3759,7 @@ class _$ResendOtpFailureImpl implements _ResendOtpFailure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String phoneNumber, bool canSubmit)?
-        inputPhoneNumberInitial,
+    TResult Function(String phoneNumber)? inputPhoneNumberInitial,
     TResult Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
     TResult Function(String phoneNumber, Failure failure)?
         inputPhoneNumberFailure,

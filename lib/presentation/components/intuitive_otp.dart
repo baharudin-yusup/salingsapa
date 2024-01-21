@@ -11,7 +11,7 @@ class IntuitiveOtp extends StatefulWidget {
   final String? errorMessage;
   final void Function(String otp) onCompleted;
   final void Function(String otp)? onChanged;
-  final OtpLength? ceriaOTPType;
+  final OtpLength? length;
   final bool? obscure;
   final Color errorColor;
 
@@ -23,7 +23,7 @@ class IntuitiveOtp extends StatefulWidget {
     this.errorMessage,
     required this.onCompleted,
     this.onChanged,
-    this.ceriaOTPType,
+    this.length,
     this.errorColor = Colors.red,
   });
 
@@ -58,7 +58,7 @@ class _IntuitiveOtpState extends State<IntuitiveOtp> {
   @override
   void initState() {
     super.initState();
-    totalFields = widget.ceriaOTPType == OtpLength.otp5 ? 5 : 6;
+    totalFields = widget.length == OtpLength.otp5 ? 5 : 6;
     controllers = List<TextEditingController>.generate(
         totalFields, (_) => TextEditingController());
     focusNodes = List<FocusNode>.generate(totalFields,
@@ -146,7 +146,9 @@ class _IntuitiveOtpState extends State<IntuitiveOtp> {
         FocusScope.of(context).requestFocus(nextFocusNode);
       }
 
-      if (widget.onChanged != null) widget.onChanged!(field);
+      if (widget.onChanged != null) {
+        widget.onChanged!(controllers.map((e) => e.text.trim()).join());
+      }
 
       final currentValue = controllers.map((e) => e.text.trim()).join();
 
