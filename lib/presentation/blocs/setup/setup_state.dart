@@ -4,8 +4,7 @@ part of 'setup_bloc.dart';
 class SetupState with _$SetupState {
   /// Handle step-1
   const factory SetupState.inputPhoneNumberInitial(
-      [@Default('') String phoneNumber,
-      @Default(false) bool canSubmit]) = InputPhoneNumberInitial;
+      [@Default('') String phoneNumber]) = InputPhoneNumberInitial;
 
   const factory SetupState.inputPhoneNumberVerifyInProgress(
       String phoneNumber) = _InputPhoneNumberVerifyInProgress;
@@ -17,8 +16,8 @@ class SetupState with _$SetupState {
       _InputPhoneNumberSuccess;
 
   /// Handle step-2
-  const factory SetupState.inputOtpInitial(String phoneNumber, String otp) =
-      _InputOtpInitial;
+  const factory SetupState.inputOtpInitial(String phoneNumber,
+      [@Default('') String otp]) = _InputOtpInitial;
 
   const factory SetupState.inputOtpValidationInProgress(
       String phoneNumber, String otp) = _InputOtpValidationInProgress;
@@ -38,4 +37,24 @@ class SetupState with _$SetupState {
 
   const factory SetupState.resendOtpFailure(
       String phoneNumber, String otp, Failure failure) = _ResendOtpFailure;
+}
+
+extension SetupStateChecker on SetupState {
+  bool get isAbleToSubmitPhoneNumber {
+    return maybeWhen(
+      inputPhoneNumberInitial: (phoneNumber) {
+        return phoneNumber.length > 6;
+      },
+      orElse: () {
+        return false;
+      },
+    );
+  }
+
+  bool get isAbleToSubmitOtp {
+    return maybeMap(
+      inputOtpInitial: (state) => state.otp.length == 6,
+      orElse: () => false,
+    );
+  }
 }
