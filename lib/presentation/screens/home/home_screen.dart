@@ -11,7 +11,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocConsumer<HomeCubit, HomeState>(
+      listener: (context, state) {
+        // TODO: Add initialization here
+      },
       builder: (context, state) {
         final HomeCubit cubit = context.read();
         return IntuitiveScaffold(
