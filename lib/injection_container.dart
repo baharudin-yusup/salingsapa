@@ -96,7 +96,6 @@ import 'domain/usecases/verify_phone_number.dart';
 import 'presentation/blocs/account/account_bloc.dart';
 import 'presentation/blocs/authorization/authorization_bloc.dart';
 import 'presentation/blocs/contact_list/contact_list_bloc.dart';
-import 'presentation/blocs/introduction/introduction_cubit.dart';
 import 'presentation/blocs/open_external_link/open_external_link_bloc.dart';
 import 'presentation/blocs/recent_call/recent_call_bloc.dart';
 import 'presentation/blocs/setup/setup_bloc.dart';
@@ -126,7 +125,6 @@ Future<void> setup(Env env) async {
   sl.registerLazySingleton<UiService>(() => UiServiceImpl(sl()));
 
   /// Standard BLoC
-  sl.registerFactory(() => IntroductionCubit(sl(), sl(), sl()));
   sl.registerFactory(() => RecentCallBloc(sl(), sl(), sl()));
   sl.registerFactory(() => AccountBloc(sl(), sl(), sl(), sl(), sl()));
   sl.registerFactory(() => VideoCallControlBloc(sl(), sl(), sl()));
