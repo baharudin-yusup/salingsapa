@@ -78,9 +78,7 @@ Map<String, WidgetBuilder> getRoutes() => {
             BlocProvider<VideoCallBloc>(
                 create: (_) => VideoCallBloc(sl(), sl(), sl(), sl(), sl(), sl(),
                     room: room)),
-            BlocProvider<SpeechRecognitionBloc>(
-                create: (_) =>
-                    sl()..add(const SpeechRecognitionEvent.started())),
+            BlocProvider<SpeechRecognitionBloc>(create: (_) => sl()),
             BlocProvider<SignLanguageRecognitionBloc>(create: (_) => sl()),
             BlocProvider<VideoCallControlBloc>(create: (_) => sl()),
             BlocProvider<VideoCallCaptionBloc>(create: (_) => sl()),

@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../core/utils/logger.dart';
 import '../../../domain/entities/recognition_status.dart';
+import '../../../injection_container.dart';
 import '../../blocs/sign_language_recognition_bloc/sign_language_recognition_bloc.dart';
 import '../../blocs/speech_recognition_bloc/speech_recognition_bloc.dart';
 import '../../blocs/video_call/video_call_bloc.dart';
@@ -11,7 +12,10 @@ import '../../blocs/video_call_caption/video_call_caption_bloc.dart';
 import '../../blocs/video_call_control/video_call_control_bloc.dart';
 import '../../components/intuitive_circle_icon_button.dart';
 import '../../components/intuitive_scaffold.dart';
+import '../../services/navigator_service.dart';
 import '../../services/theme_service.dart';
+import '../../services/ui_service.dart';
+import '../../utils/dimension.dart';
 import 'recognition_buttons_fragment.dart';
 import 'video_caption/video_caption_list.dart';
 import 'video_interface/floating_video_interface.dart';
@@ -30,6 +34,22 @@ class VideoCallScreen extends StatelessWidget {
           BlocListener<VideoCallBloc, VideoCallState>(
             listener: (context, state) {
               state.maybeMap(
+                initEngineFailure: (state) async {
+                  final UiService uiService = sl();
+                  final NavigatorService navigatorService = sl();
+                  await uiService.showDialog(
+                    DialogData(
+                      description: state.failure.errorMessage,
+                      actions: [
+                        DialogActionData(
+                          title: context.localization.ok,
+                          onPressed: () => navigatorService.pop(),
+                        )
+                      ],
+                    ),
+                  );
+                  navigatorService.pop();
+                },
                 joinRoomSuccess: (state) {
                   final SignLanguageRecognitionBloc
                       signLanguageRecognitionBloc = context.read();
