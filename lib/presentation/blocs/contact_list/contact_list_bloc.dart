@@ -32,7 +32,9 @@ class ContactListBloc extends Bloc<ContactListEvent, ContactListState> {
     final checkPermission = await _hasPermission(AppPermission.accessContact);
 
     if (checkPermission.isLeft()) {
-      emit(ContactListState.loadFailure(const UnknownFailure(), state.contacts));
+      if (isClosed) return;
+      emit(
+          ContactListState.loadFailure(const UnknownFailure(), state.contacts));
       return;
     }
 
@@ -42,16 +44,24 @@ class ContactListBloc extends Bloc<ContactListEvent, ContactListState> {
 
       if (requestPermission.isLeft() ||
           !requestPermission.getOrElse(() => false)) {
-        emit(ContactListState.loadFailure(UnknownFailure(createdAt: DateTime.now()), state.contacts));
+        if (isClosed) return;
+        emit(ContactListState.loadFailure(
+            UnknownFailure(createdAt: DateTime.now()), state.contacts));
         return;
       }
     }
 
     final refreshContactListResult = await _refreshContactList();
     refreshContactListResult.fold(
-        (failure) =>
-            emit(ContactListState.loadFailure(failure, state.contacts)),
-        (contacts) => emit(ContactListState.loadSuccess(contacts)));
+      (failure) {
+        if (isClosed) return;
+        emit(ContactListState.loadFailure(failure, state.contacts));
+      },
+      (contacts) {
+        if (isClosed) return;
+        emit(ContactListState.loadSuccess(contacts));
+      },
+    );
   }
 
   void _doVideoCall(
