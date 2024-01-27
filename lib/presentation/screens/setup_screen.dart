@@ -177,15 +177,15 @@ class SetupScreen extends StatelessWidget {
         child: RichText(
           textAlign: TextAlign.center,
           text: TextSpan(
-            style: DefaultTextStyle.of(context).style,
+            style: context.textTheme().bodySmall,
             children: [
               const TextSpan(text: 'I hereby agree to the applicable '),
               TextSpan(
                 text: 'Privacy Policy',
-                style: context.textTheme().bodyLarge?.copyWith(
-                      color: context.colorScheme().primary,
-                      fontWeight: FontWeight.bold,
-                    ),
+                style: TextStyle(
+                  color: context.colorScheme().primary,
+                  fontWeight: FontWeight.bold,
+                ),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     context.read<OpenExternalLinkBloc>().add(
@@ -195,10 +195,10 @@ class SetupScreen extends StatelessWidget {
               const TextSpan(text: ' and '),
               TextSpan(
                 text: 'Terms and Conditions',
-                style: context.textTheme().bodyLarge?.copyWith(
-                      color: context.colorScheme().primary,
-                      fontWeight: FontWeight.bold,
-                    ),
+                style: TextStyle(
+                  color: context.colorScheme().primary,
+                  fontWeight: FontWeight.bold,
+                ),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     context

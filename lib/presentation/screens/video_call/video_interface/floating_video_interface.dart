@@ -18,7 +18,7 @@ class FloatingVideoInterface extends StatelessWidget {
       builder: (context, state) {
         return state.maybeMap(
           joinRoomSuccess: (state) {
-            if (state.remoteVideoUid == null || state.localVideoUid == null) {
+            if (state.remoteVideoUid == null) {
               return const SizedBox();
             }
 
@@ -40,7 +40,7 @@ class FloatingVideoInterface extends StatelessWidget {
                           child: AgoraVideoView(
                             controller: VideoViewController(
                               rtcEngine: state.engine,
-                              canvas: VideoCanvas(uid: state.localVideoUid),
+                              canvas: const VideoCanvas(uid: 0),
                             ),
                           ),
                         ),

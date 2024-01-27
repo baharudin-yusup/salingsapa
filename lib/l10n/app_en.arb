@@ -39,5 +39,9 @@
   "ok": "OK",
   "incomingVideoCall": "Join Video Call",
   "callEnded": "Call Ended",
-  "unknownCallerName": "Unknown Caller Name"
+  "unknownCallerName": "Unknown Caller Name",
+  "endVideoCallConfirmationTitle": "End Video Call Confirmation",
+  "endVideoCallConfirmationDescription": "Are you sure you want to end this video call?",
+  "yesEndCall": "Yes, end call",
+  "cancel": "Cancel"
 }

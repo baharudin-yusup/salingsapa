@@ -22,15 +22,27 @@ import '../../../domain/usecases/stream_sign_language_recognition_status.dart';
 import '../../utils/toggle_usecase.dart';
 
 part 'sign_language_recognition_bloc.freezed.dart';
-
 part 'sign_language_recognition_event.dart';
-
 part 'sign_language_recognition_state.dart';
 
 const _tagName = 'SignLanguageRecognitionBloc';
 
 class SignLanguageRecognitionBloc
     extends Bloc<SignLanguageRecognitionEvent, SignLanguageRecognitionState> {
+  final InitSignLanguageRecognition _initSignLanguageRecognition;
+  final EnableSignLanguageRecognition _enableSignLanguageRecognition;
+  final DisableSignLanguageRecognition _disableSignLanguageRecognition;
+  final CloseSignLanguageRecognition _closeSignLanguageRecognition;
+  final StreamSignLanguageRecognitionResult _signLanguageRecognitionResult;
+  final StreamSignLanguageRecognitionStatus _signLanguageRecognitionStatus;
+  final StartSignLanguageRecognition _startSignLanguageRecognition;
+  final ResetSignLanguageRecognition _resetSignLanguageRecognition;
+  final StreamPhotoSnapshot _streamPhotoSnapshot;
+
+  StreamSubscription<Either<Failure, PhotoSnapshot>>?
+      _photoSnapshotSubscription;
+  StreamSubscription<Either<Failure, Caption>>? _captionSubscription;
+
   SignLanguageRecognitionBloc(
     this._enableSignLanguageRecognition,
     this._disableSignLanguageRecognition,
@@ -60,20 +72,6 @@ class SignLanguageRecognitionBloc
       );
     });
   }
-
-  final InitSignLanguageRecognition _initSignLanguageRecognition;
-  final EnableSignLanguageRecognition _enableSignLanguageRecognition;
-  final DisableSignLanguageRecognition _disableSignLanguageRecognition;
-  final CloseSignLanguageRecognition _closeSignLanguageRecognition;
-  final StreamSignLanguageRecognitionResult _signLanguageRecognitionResult;
-  final StreamSignLanguageRecognitionStatus _signLanguageRecognitionStatus;
-  final StartSignLanguageRecognition _startSignLanguageRecognition;
-  final ResetSignLanguageRecognition _resetSignLanguageRecognition;
-  final StreamPhotoSnapshot _streamPhotoSnapshot;
-
-  StreamSubscription<Either<Failure, PhotoSnapshot>>?
-      _photoSnapshotSubscription;
-  StreamSubscription<Either<Failure, Caption>>? _captionSubscription;
 
   @override
   Future<void> close() async {

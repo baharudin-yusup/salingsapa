@@ -76,7 +76,8 @@ class SpeechRecognitionBloc
     }
 
     await toggleUseCase(
-        (isNeedToEnable ? _enableSpeechRecognition : _disableSpeechRecognition).call);
+        (isNeedToEnable ? _enableSpeechRecognition : _disableSpeechRecognition)
+            .call);
   }
 
   void _assignCaption(
@@ -89,6 +90,7 @@ class SpeechRecognitionBloc
     final status = event.status;
     switch (status) {
       case RecognitionStatus.off:
+        emit(SpeechRecognitionState.initial(isReady: state.isReady));
         await _captionResultController?.cancel();
         break;
       case RecognitionStatus.on:

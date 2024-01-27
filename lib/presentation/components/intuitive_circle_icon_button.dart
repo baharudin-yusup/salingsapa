@@ -19,14 +19,14 @@ class IntuitiveCircleIconButton extends StatelessWidget {
     this.isActive = false,
     required this.activeIconData,
     this.passiveIconData,
-    this.radius = 30,
-    double? iconSize,
+    double? radius,
+    required this.iconSize,
     required this.onTap,
     this.showColorChange = true,
     this.showBorder = false,
     this.activeColor,
     this.passiveColor,
-  })  : iconSize = iconSize ?? radius * 1.2;
+  }) : radius = radius ?? iconSize * 0.8;
 
   @override
   Widget build(BuildContext context) {

@@ -14,6 +14,7 @@ abstract class CaptionRemoteDataSource {
 
   Future<void> disable();
 
+  // Stream the guest captions
   Stream<List<CaptionModel>> stream();
 
   Future<void> upload(CaptionModel caption);
@@ -27,41 +28,45 @@ class CaptionRemoteDataSourceImpl implements CaptionRemoteDataSource {
   final FirebaseFirestore _firestore;
   final FirebaseAuth _auth;
 
-  Query<Map<String, dynamic>>? _query;
+  Query<Map<String, dynamic>>? _guestCaptionQuery;
 
-  Query<Map<String, dynamic>> get query {
-    if (_query == null) throw ServerException();
-    return _query!;
+  Query<Map<String, dynamic>> get guestCaptionQuery {
+    if (_guestCaptionQuery == null) throw ServerException();
+    return _guestCaptionQuery!;
   }
 
-  CollectionReference<Map<String, dynamic>>? _ref;
+  CollectionReference<Map<String, dynamic>>? _captionCollectionReference;
 
   CollectionReference<Map<String, dynamic>> get reference {
-    if (_ref == null) {
+    if (_captionCollectionReference == null) {
       final exception = ServerException(message: 'reference-is-null');
       throw exception;
     }
-    return _ref!;
+    return _captionCollectionReference!;
   }
 
   @override
   Future<void> init(String roomId) async {
-    final queryResult = await _firestore
-        .collection(FirestoreConstant.roomCollectionName)
-        .where(FirestoreConstant.roomIdKey, isEqualTo: roomId)
+    final roomQuerySnapshot = await _firestore
+        .collection(FirestoreRoomConstant.roomCollectionName)
+        .where(FirestoreRoomConstant.roomId, isEqualTo: roomId)
         .get();
 
-    if (queryResult.size != 1) throw ServerException();
+    /// Throw and error because the room is not found
+    /// or the room is not unique
+    if (roomQuerySnapshot.size != 1) throw ServerException();
 
-    _ref = queryResult.docs[0].reference
-        .collection(FirestoreConstant.captionCollectionName);
+    // Create the caption collection reference
+    _captionCollectionReference = roomQuerySnapshot.docs[0].reference
+        .collection(FirestoreCaptionConstant.captionCollectionName);
   }
 
   @override
   Future<void> enable() async {
     try {
       final userId = _auth.userId;
-      _query = reference.where(FirestoreConstant.userIdKey, isNotEqualTo: userId);
+      _guestCaptionQuery = reference.where(FirestoreCaptionConstant.userIdKey,
+          isNotEqualTo: userId);
     } on ServerException {
       rethrow;
     } catch (error) {
@@ -72,12 +77,12 @@ class CaptionRemoteDataSourceImpl implements CaptionRemoteDataSource {
 
   @override
   Future<void> disable() async {
-    _query = null;
+    _guestCaptionQuery = null;
   }
 
   @override
   Stream<List<CaptionModel>> stream() {
-    return query.snapshots().map((snapshot) {
+    return guestCaptionQuery.snapshots().map((snapshot) {
       final captions = <CaptionModel>[];
 
       for (final doc in snapshot.docs) {
@@ -96,36 +101,42 @@ class CaptionRemoteDataSourceImpl implements CaptionRemoteDataSource {
 
   @override
   Future<void> upload(CaptionModel caption) async {
+    /// Check whether is current local caption or not.
+    /// If this is local caption then assign the
+    /// user id before we uploading
     if (caption.isSelfCaption) {
-      caption = caption.addUserId(_auth.userId);
+      caption = caption.copyWith(userId: _auth.userId);
     }
 
     Logger.print('userId (${caption.isSelfCaption}): ${caption.userId}',
         name: _tagName);
 
-    final snapshot =
-        await reference.where('captionId', isEqualTo: caption.captionId).get();
-
+    // Handle upload the caption
+    final snapshot = await reference
+        .where(FirestoreCaptionConstant.captionId, isEqualTo: caption.captionId)
+        .get();
+    // Create new caption
     if (snapshot.docs.isEmpty) {
       await reference.add(caption.toJson());
       return;
     }
-
+    // Update the caption
     if (snapshot.size == 1) {
       await snapshot.docs[0].reference.update(caption.toJson());
       return;
     }
 
+    /// Show error because the caption id is not unique
+    /// and delete all this non-unique caption
+    /// and create the unique caption
     Logger.error(
       'data is not unique, start deleting first',
       event: 'uploading caption',
       name: _tagName,
     );
-
     for (var doc in snapshot.docs) {
       await doc.reference.delete();
     }
-
     await reference.add(caption.toJson());
   }
 }

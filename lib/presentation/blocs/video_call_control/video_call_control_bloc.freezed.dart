@@ -545,54 +545,39 @@ abstract class _MuteVideoStarted implements VideoCallControlEvent {
 
 /// @nodoc
 mixin _$VideoCallControlState {
-  bool get isAudioMuted => throw _privateConstructorUsedError;
-  bool get isVideoMuted => throw _privateConstructorUsedError;
-  bool get isUsingFrontCamera => throw _privateConstructorUsedError;
+  State<bool> get isAudioMuted => throw _privateConstructorUsedError;
+  State<bool> get isVideoMuted => throw _privateConstructorUsedError;
+  State<bool> get isUsingFrontCamera => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)
+    required TResult Function(State<bool> isAudioMuted,
+            State<bool> isVideoMuted, State<bool> isUsingFrontCamera)
         initial,
     required TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)
-        changeControlInProgress,
-    required TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)
-        changeControlSuccess,
-    required TResult Function(bool isAudioMuted, bool isVideoMuted,
-            bool isUsingFrontCamera, String errorMessage)
+            State<bool> isAudioMuted,
+            State<bool> isVideoMuted,
+            State<bool> isUsingFrontCamera,
+            Failure failure)
         changeControlFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
+    TResult? Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
+            State<bool> isUsingFrontCamera)?
         initial,
-    TResult? Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlInProgress,
-    TResult? Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlSuccess,
-    TResult? Function(bool isAudioMuted, bool isVideoMuted,
-            bool isUsingFrontCamera, String errorMessage)?
+    TResult? Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
+            State<bool> isUsingFrontCamera, Failure failure)?
         changeControlFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
+    TResult Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
+            State<bool> isUsingFrontCamera)?
         initial,
-    TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlInProgress,
-    TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlSuccess,
-    TResult Function(bool isAudioMuted, bool isVideoMuted,
-            bool isUsingFrontCamera, String errorMessage)?
+    TResult Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
+            State<bool> isUsingFrontCamera, Failure failure)?
         changeControlFailure,
     required TResult orElse(),
   }) =>
@@ -600,25 +585,18 @@ mixin _$VideoCallControlState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_ChangeControlInProgress value)
-        changeControlInProgress,
-    required TResult Function(_ChangeControlSuccess value) changeControlSuccess,
     required TResult Function(_ChangeControlFailure value) changeControlFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_ChangeControlInProgress value)? changeControlInProgress,
-    TResult? Function(_ChangeControlSuccess value)? changeControlSuccess,
     TResult? Function(_ChangeControlFailure value)? changeControlFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_ChangeControlInProgress value)? changeControlInProgress,
-    TResult Function(_ChangeControlSuccess value)? changeControlSuccess,
     TResult Function(_ChangeControlFailure value)? changeControlFailure,
     required TResult orElse(),
   }) =>
@@ -635,7 +613,10 @@ abstract class $VideoCallControlStateCopyWith<$Res> {
           $Res Function(VideoCallControlState) then) =
       _$VideoCallControlStateCopyWithImpl<$Res, VideoCallControlState>;
   @useResult
-  $Res call({bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera});
+  $Res call(
+      {State<bool> isAudioMuted,
+      State<bool> isVideoMuted,
+      State<bool> isUsingFrontCamera});
 }
 
 /// @nodoc
@@ -660,15 +641,15 @@ class _$VideoCallControlStateCopyWithImpl<$Res,
       isAudioMuted: null == isAudioMuted
           ? _value.isAudioMuted
           : isAudioMuted // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as State<bool>,
       isVideoMuted: null == isVideoMuted
           ? _value.isVideoMuted
           : isVideoMuted // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as State<bool>,
       isUsingFrontCamera: null == isUsingFrontCamera
           ? _value.isUsingFrontCamera
           : isUsingFrontCamera // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as State<bool>,
     ) as $Val);
   }
 }
@@ -681,7 +662,10 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera});
+  $Res call(
+      {State<bool> isAudioMuted,
+      State<bool> isVideoMuted,
+      State<bool> isUsingFrontCamera});
 }
 
 /// @nodoc
@@ -700,18 +684,18 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? isUsingFrontCamera = null,
   }) {
     return _then(_$InitialImpl(
-      null == isAudioMuted
+      isAudioMuted: null == isAudioMuted
           ? _value.isAudioMuted
           : isAudioMuted // ignore: cast_nullable_to_non_nullable
-              as bool,
-      null == isVideoMuted
+              as State<bool>,
+      isVideoMuted: null == isVideoMuted
           ? _value.isVideoMuted
           : isVideoMuted // ignore: cast_nullable_to_non_nullable
-              as bool,
-      null == isUsingFrontCamera
+              as State<bool>,
+      isUsingFrontCamera: null == isUsingFrontCamera
           ? _value.isUsingFrontCamera
           : isUsingFrontCamera // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as State<bool>,
     ));
   }
 }
@@ -720,19 +704,19 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 class _$InitialImpl implements _Initial {
   const _$InitialImpl(
-      [this.isAudioMuted = false,
-      this.isVideoMuted = false,
-      this.isUsingFrontCamera = true]);
+      {this.isAudioMuted = const State(true),
+      this.isVideoMuted = const State(false),
+      this.isUsingFrontCamera = const State(false)});
 
   @override
   @JsonKey()
-  final bool isAudioMuted;
+  final State<bool> isAudioMuted;
   @override
   @JsonKey()
-  final bool isVideoMuted;
+  final State<bool> isVideoMuted;
   @override
   @JsonKey()
-  final bool isUsingFrontCamera;
+  final State<bool> isUsingFrontCamera;
 
   @override
   String toString() {
@@ -765,17 +749,14 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)
+    required TResult Function(State<bool> isAudioMuted,
+            State<bool> isVideoMuted, State<bool> isUsingFrontCamera)
         initial,
     required TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)
-        changeControlInProgress,
-    required TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)
-        changeControlSuccess,
-    required TResult Function(bool isAudioMuted, bool isVideoMuted,
-            bool isUsingFrontCamera, String errorMessage)
+            State<bool> isAudioMuted,
+            State<bool> isVideoMuted,
+            State<bool> isUsingFrontCamera,
+            Failure failure)
         changeControlFailure,
   }) {
     return initial(isAudioMuted, isVideoMuted, isUsingFrontCamera);
@@ -784,17 +765,11 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
+    TResult? Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
+            State<bool> isUsingFrontCamera)?
         initial,
-    TResult? Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlInProgress,
-    TResult? Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlSuccess,
-    TResult? Function(bool isAudioMuted, bool isVideoMuted,
-            bool isUsingFrontCamera, String errorMessage)?
+    TResult? Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
+            State<bool> isUsingFrontCamera, Failure failure)?
         changeControlFailure,
   }) {
     return initial?.call(isAudioMuted, isVideoMuted, isUsingFrontCamera);
@@ -803,17 +778,11 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
+    TResult Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
+            State<bool> isUsingFrontCamera)?
         initial,
-    TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlInProgress,
-    TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlSuccess,
-    TResult Function(bool isAudioMuted, bool isVideoMuted,
-            bool isUsingFrontCamera, String errorMessage)?
+    TResult Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
+            State<bool> isUsingFrontCamera, Failure failure)?
         changeControlFailure,
     required TResult orElse(),
   }) {
@@ -827,9 +796,6 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_ChangeControlInProgress value)
-        changeControlInProgress,
-    required TResult Function(_ChangeControlSuccess value) changeControlSuccess,
     required TResult Function(_ChangeControlFailure value) changeControlFailure,
   }) {
     return initial(this);
@@ -839,8 +805,6 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_ChangeControlInProgress value)? changeControlInProgress,
-    TResult? Function(_ChangeControlSuccess value)? changeControlSuccess,
     TResult? Function(_ChangeControlFailure value)? changeControlFailure,
   }) {
     return initial?.call(this);
@@ -850,8 +814,6 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_ChangeControlInProgress value)? changeControlInProgress,
-    TResult Function(_ChangeControlSuccess value)? changeControlSuccess,
     TResult Function(_ChangeControlFailure value)? changeControlFailure,
     required TResult orElse(),
   }) {
@@ -864,440 +826,20 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements VideoCallControlState {
   const factory _Initial(
-      [final bool isAudioMuted,
-      final bool isVideoMuted,
-      final bool isUsingFrontCamera]) = _$InitialImpl;
+      {final State<bool> isAudioMuted,
+      final State<bool> isVideoMuted,
+      final State<bool> isUsingFrontCamera}) = _$InitialImpl;
 
   @override
-  bool get isAudioMuted;
+  State<bool> get isAudioMuted;
   @override
-  bool get isVideoMuted;
+  State<bool> get isVideoMuted;
   @override
-  bool get isUsingFrontCamera;
+  State<bool> get isUsingFrontCamera;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ChangeControlInProgressImplCopyWith<$Res>
-    implements $VideoCallControlStateCopyWith<$Res> {
-  factory _$$ChangeControlInProgressImplCopyWith(
-          _$ChangeControlInProgressImpl value,
-          $Res Function(_$ChangeControlInProgressImpl) then) =
-      __$$ChangeControlInProgressImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera});
-}
-
-/// @nodoc
-class __$$ChangeControlInProgressImplCopyWithImpl<$Res>
-    extends _$VideoCallControlStateCopyWithImpl<$Res,
-        _$ChangeControlInProgressImpl>
-    implements _$$ChangeControlInProgressImplCopyWith<$Res> {
-  __$$ChangeControlInProgressImplCopyWithImpl(
-      _$ChangeControlInProgressImpl _value,
-      $Res Function(_$ChangeControlInProgressImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isAudioMuted = null,
-    Object? isVideoMuted = null,
-    Object? isUsingFrontCamera = null,
-  }) {
-    return _then(_$ChangeControlInProgressImpl(
-      isAudioMuted: null == isAudioMuted
-          ? _value.isAudioMuted
-          : isAudioMuted // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isVideoMuted: null == isVideoMuted
-          ? _value.isVideoMuted
-          : isVideoMuted // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isUsingFrontCamera: null == isUsingFrontCamera
-          ? _value.isUsingFrontCamera
-          : isUsingFrontCamera // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ChangeControlInProgressImpl implements _ChangeControlInProgress {
-  const _$ChangeControlInProgressImpl(
-      {required this.isAudioMuted,
-      required this.isVideoMuted,
-      required this.isUsingFrontCamera});
-
-  @override
-  final bool isAudioMuted;
-  @override
-  final bool isVideoMuted;
-  @override
-  final bool isUsingFrontCamera;
-
-  @override
-  String toString() {
-    return 'VideoCallControlState.changeControlInProgress(isAudioMuted: $isAudioMuted, isVideoMuted: $isVideoMuted, isUsingFrontCamera: $isUsingFrontCamera)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ChangeControlInProgressImpl &&
-            (identical(other.isAudioMuted, isAudioMuted) ||
-                other.isAudioMuted == isAudioMuted) &&
-            (identical(other.isVideoMuted, isVideoMuted) ||
-                other.isVideoMuted == isVideoMuted) &&
-            (identical(other.isUsingFrontCamera, isUsingFrontCamera) ||
-                other.isUsingFrontCamera == isUsingFrontCamera));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, isAudioMuted, isVideoMuted, isUsingFrontCamera);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ChangeControlInProgressImplCopyWith<_$ChangeControlInProgressImpl>
-      get copyWith => __$$ChangeControlInProgressImplCopyWithImpl<
-          _$ChangeControlInProgressImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)
-        initial,
-    required TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)
-        changeControlInProgress,
-    required TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)
-        changeControlSuccess,
-    required TResult Function(bool isAudioMuted, bool isVideoMuted,
-            bool isUsingFrontCamera, String errorMessage)
-        changeControlFailure,
-  }) {
-    return changeControlInProgress(
-        isAudioMuted, isVideoMuted, isUsingFrontCamera);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        initial,
-    TResult? Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlInProgress,
-    TResult? Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlSuccess,
-    TResult? Function(bool isAudioMuted, bool isVideoMuted,
-            bool isUsingFrontCamera, String errorMessage)?
-        changeControlFailure,
-  }) {
-    return changeControlInProgress?.call(
-        isAudioMuted, isVideoMuted, isUsingFrontCamera);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        initial,
-    TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlInProgress,
-    TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlSuccess,
-    TResult Function(bool isAudioMuted, bool isVideoMuted,
-            bool isUsingFrontCamera, String errorMessage)?
-        changeControlFailure,
-    required TResult orElse(),
-  }) {
-    if (changeControlInProgress != null) {
-      return changeControlInProgress(
-          isAudioMuted, isVideoMuted, isUsingFrontCamera);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_ChangeControlInProgress value)
-        changeControlInProgress,
-    required TResult Function(_ChangeControlSuccess value) changeControlSuccess,
-    required TResult Function(_ChangeControlFailure value) changeControlFailure,
-  }) {
-    return changeControlInProgress(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_ChangeControlInProgress value)? changeControlInProgress,
-    TResult? Function(_ChangeControlSuccess value)? changeControlSuccess,
-    TResult? Function(_ChangeControlFailure value)? changeControlFailure,
-  }) {
-    return changeControlInProgress?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ChangeControlInProgress value)? changeControlInProgress,
-    TResult Function(_ChangeControlSuccess value)? changeControlSuccess,
-    TResult Function(_ChangeControlFailure value)? changeControlFailure,
-    required TResult orElse(),
-  }) {
-    if (changeControlInProgress != null) {
-      return changeControlInProgress(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ChangeControlInProgress implements VideoCallControlState {
-  const factory _ChangeControlInProgress(
-      {required final bool isAudioMuted,
-      required final bool isVideoMuted,
-      required final bool isUsingFrontCamera}) = _$ChangeControlInProgressImpl;
-
-  @override
-  bool get isAudioMuted;
-  @override
-  bool get isVideoMuted;
-  @override
-  bool get isUsingFrontCamera;
-  @override
-  @JsonKey(ignore: true)
-  _$$ChangeControlInProgressImplCopyWith<_$ChangeControlInProgressImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ChangeControlSuccessImplCopyWith<$Res>
-    implements $VideoCallControlStateCopyWith<$Res> {
-  factory _$$ChangeControlSuccessImplCopyWith(_$ChangeControlSuccessImpl value,
-          $Res Function(_$ChangeControlSuccessImpl) then) =
-      __$$ChangeControlSuccessImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera});
-}
-
-/// @nodoc
-class __$$ChangeControlSuccessImplCopyWithImpl<$Res>
-    extends _$VideoCallControlStateCopyWithImpl<$Res,
-        _$ChangeControlSuccessImpl>
-    implements _$$ChangeControlSuccessImplCopyWith<$Res> {
-  __$$ChangeControlSuccessImplCopyWithImpl(_$ChangeControlSuccessImpl _value,
-      $Res Function(_$ChangeControlSuccessImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? isAudioMuted = null,
-    Object? isVideoMuted = null,
-    Object? isUsingFrontCamera = null,
-  }) {
-    return _then(_$ChangeControlSuccessImpl(
-      isAudioMuted: null == isAudioMuted
-          ? _value.isAudioMuted
-          : isAudioMuted // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isVideoMuted: null == isVideoMuted
-          ? _value.isVideoMuted
-          : isVideoMuted // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isUsingFrontCamera: null == isUsingFrontCamera
-          ? _value.isUsingFrontCamera
-          : isUsingFrontCamera // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ChangeControlSuccessImpl implements _ChangeControlSuccess {
-  const _$ChangeControlSuccessImpl(
-      {required this.isAudioMuted,
-      required this.isVideoMuted,
-      required this.isUsingFrontCamera});
-
-  @override
-  final bool isAudioMuted;
-  @override
-  final bool isVideoMuted;
-  @override
-  final bool isUsingFrontCamera;
-
-  @override
-  String toString() {
-    return 'VideoCallControlState.changeControlSuccess(isAudioMuted: $isAudioMuted, isVideoMuted: $isVideoMuted, isUsingFrontCamera: $isUsingFrontCamera)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ChangeControlSuccessImpl &&
-            (identical(other.isAudioMuted, isAudioMuted) ||
-                other.isAudioMuted == isAudioMuted) &&
-            (identical(other.isVideoMuted, isVideoMuted) ||
-                other.isVideoMuted == isVideoMuted) &&
-            (identical(other.isUsingFrontCamera, isUsingFrontCamera) ||
-                other.isUsingFrontCamera == isUsingFrontCamera));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, isAudioMuted, isVideoMuted, isUsingFrontCamera);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ChangeControlSuccessImplCopyWith<_$ChangeControlSuccessImpl>
-      get copyWith =>
-          __$$ChangeControlSuccessImplCopyWithImpl<_$ChangeControlSuccessImpl>(
-              this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)
-        initial,
-    required TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)
-        changeControlInProgress,
-    required TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)
-        changeControlSuccess,
-    required TResult Function(bool isAudioMuted, bool isVideoMuted,
-            bool isUsingFrontCamera, String errorMessage)
-        changeControlFailure,
-  }) {
-    return changeControlSuccess(isAudioMuted, isVideoMuted, isUsingFrontCamera);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        initial,
-    TResult? Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlInProgress,
-    TResult? Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlSuccess,
-    TResult? Function(bool isAudioMuted, bool isVideoMuted,
-            bool isUsingFrontCamera, String errorMessage)?
-        changeControlFailure,
-  }) {
-    return changeControlSuccess?.call(
-        isAudioMuted, isVideoMuted, isUsingFrontCamera);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        initial,
-    TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlInProgress,
-    TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlSuccess,
-    TResult Function(bool isAudioMuted, bool isVideoMuted,
-            bool isUsingFrontCamera, String errorMessage)?
-        changeControlFailure,
-    required TResult orElse(),
-  }) {
-    if (changeControlSuccess != null) {
-      return changeControlSuccess(
-          isAudioMuted, isVideoMuted, isUsingFrontCamera);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_ChangeControlInProgress value)
-        changeControlInProgress,
-    required TResult Function(_ChangeControlSuccess value) changeControlSuccess,
-    required TResult Function(_ChangeControlFailure value) changeControlFailure,
-  }) {
-    return changeControlSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_ChangeControlInProgress value)? changeControlInProgress,
-    TResult? Function(_ChangeControlSuccess value)? changeControlSuccess,
-    TResult? Function(_ChangeControlFailure value)? changeControlFailure,
-  }) {
-    return changeControlSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_ChangeControlInProgress value)? changeControlInProgress,
-    TResult Function(_ChangeControlSuccess value)? changeControlSuccess,
-    TResult Function(_ChangeControlFailure value)? changeControlFailure,
-    required TResult orElse(),
-  }) {
-    if (changeControlSuccess != null) {
-      return changeControlSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ChangeControlSuccess implements VideoCallControlState {
-  const factory _ChangeControlSuccess(
-      {required final bool isAudioMuted,
-      required final bool isVideoMuted,
-      required final bool isUsingFrontCamera}) = _$ChangeControlSuccessImpl;
-
-  @override
-  bool get isAudioMuted;
-  @override
-  bool get isVideoMuted;
-  @override
-  bool get isUsingFrontCamera;
-  @override
-  @JsonKey(ignore: true)
-  _$$ChangeControlSuccessImplCopyWith<_$ChangeControlSuccessImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1309,10 +851,10 @@ abstract class _$$ChangeControlFailureImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool isAudioMuted,
-      bool isVideoMuted,
-      bool isUsingFrontCamera,
-      String errorMessage});
+      {State<bool> isAudioMuted,
+      State<bool> isVideoMuted,
+      State<bool> isUsingFrontCamera,
+      Failure failure});
 }
 
 /// @nodoc
@@ -1330,25 +872,25 @@ class __$$ChangeControlFailureImplCopyWithImpl<$Res>
     Object? isAudioMuted = null,
     Object? isVideoMuted = null,
     Object? isUsingFrontCamera = null,
-    Object? errorMessage = null,
+    Object? failure = null,
   }) {
     return _then(_$ChangeControlFailureImpl(
       isAudioMuted: null == isAudioMuted
           ? _value.isAudioMuted
           : isAudioMuted // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as State<bool>,
       isVideoMuted: null == isVideoMuted
           ? _value.isVideoMuted
           : isVideoMuted // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as State<bool>,
       isUsingFrontCamera: null == isUsingFrontCamera
           ? _value.isUsingFrontCamera
           : isUsingFrontCamera // ignore: cast_nullable_to_non_nullable
-              as bool,
-      errorMessage: null == errorMessage
-          ? _value.errorMessage
-          : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String,
+              as State<bool>,
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
     ));
   }
 }
@@ -1360,20 +902,20 @@ class _$ChangeControlFailureImpl implements _ChangeControlFailure {
       {required this.isAudioMuted,
       required this.isVideoMuted,
       required this.isUsingFrontCamera,
-      required this.errorMessage});
+      required this.failure});
 
   @override
-  final bool isAudioMuted;
+  final State<bool> isAudioMuted;
   @override
-  final bool isVideoMuted;
+  final State<bool> isVideoMuted;
   @override
-  final bool isUsingFrontCamera;
+  final State<bool> isUsingFrontCamera;
   @override
-  final String errorMessage;
+  final Failure failure;
 
   @override
   String toString() {
-    return 'VideoCallControlState.changeControlFailure(isAudioMuted: $isAudioMuted, isVideoMuted: $isVideoMuted, isUsingFrontCamera: $isUsingFrontCamera, errorMessage: $errorMessage)';
+    return 'VideoCallControlState.changeControlFailure(isAudioMuted: $isAudioMuted, isVideoMuted: $isVideoMuted, isUsingFrontCamera: $isUsingFrontCamera, failure: $failure)';
   }
 
   @override
@@ -1387,13 +929,12 @@ class _$ChangeControlFailureImpl implements _ChangeControlFailure {
                 other.isVideoMuted == isVideoMuted) &&
             (identical(other.isUsingFrontCamera, isUsingFrontCamera) ||
                 other.isUsingFrontCamera == isUsingFrontCamera) &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isAudioMuted, isVideoMuted,
-      isUsingFrontCamera, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType, isAudioMuted, isVideoMuted, isUsingFrontCamera, failure);
 
   @JsonKey(ignore: true)
   @override
@@ -1406,63 +947,48 @@ class _$ChangeControlFailureImpl implements _ChangeControlFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)
+    required TResult Function(State<bool> isAudioMuted,
+            State<bool> isVideoMuted, State<bool> isUsingFrontCamera)
         initial,
     required TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)
-        changeControlInProgress,
-    required TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)
-        changeControlSuccess,
-    required TResult Function(bool isAudioMuted, bool isVideoMuted,
-            bool isUsingFrontCamera, String errorMessage)
+            State<bool> isAudioMuted,
+            State<bool> isVideoMuted,
+            State<bool> isUsingFrontCamera,
+            Failure failure)
         changeControlFailure,
   }) {
     return changeControlFailure(
-        isAudioMuted, isVideoMuted, isUsingFrontCamera, errorMessage);
+        isAudioMuted, isVideoMuted, isUsingFrontCamera, failure);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
+    TResult? Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
+            State<bool> isUsingFrontCamera)?
         initial,
-    TResult? Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlInProgress,
-    TResult? Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlSuccess,
-    TResult? Function(bool isAudioMuted, bool isVideoMuted,
-            bool isUsingFrontCamera, String errorMessage)?
+    TResult? Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
+            State<bool> isUsingFrontCamera, Failure failure)?
         changeControlFailure,
   }) {
     return changeControlFailure?.call(
-        isAudioMuted, isVideoMuted, isUsingFrontCamera, errorMessage);
+        isAudioMuted, isVideoMuted, isUsingFrontCamera, failure);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
+    TResult Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
+            State<bool> isUsingFrontCamera)?
         initial,
-    TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlInProgress,
-    TResult Function(
-            bool isAudioMuted, bool isVideoMuted, bool isUsingFrontCamera)?
-        changeControlSuccess,
-    TResult Function(bool isAudioMuted, bool isVideoMuted,
-            bool isUsingFrontCamera, String errorMessage)?
+    TResult Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
+            State<bool> isUsingFrontCamera, Failure failure)?
         changeControlFailure,
     required TResult orElse(),
   }) {
     if (changeControlFailure != null) {
       return changeControlFailure(
-          isAudioMuted, isVideoMuted, isUsingFrontCamera, errorMessage);
+          isAudioMuted, isVideoMuted, isUsingFrontCamera, failure);
     }
     return orElse();
   }
@@ -1471,9 +997,6 @@ class _$ChangeControlFailureImpl implements _ChangeControlFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_ChangeControlInProgress value)
-        changeControlInProgress,
-    required TResult Function(_ChangeControlSuccess value) changeControlSuccess,
     required TResult Function(_ChangeControlFailure value) changeControlFailure,
   }) {
     return changeControlFailure(this);
@@ -1483,8 +1006,6 @@ class _$ChangeControlFailureImpl implements _ChangeControlFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_ChangeControlInProgress value)? changeControlInProgress,
-    TResult? Function(_ChangeControlSuccess value)? changeControlSuccess,
     TResult? Function(_ChangeControlFailure value)? changeControlFailure,
   }) {
     return changeControlFailure?.call(this);
@@ -1494,8 +1015,6 @@ class _$ChangeControlFailureImpl implements _ChangeControlFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_ChangeControlInProgress value)? changeControlInProgress,
-    TResult Function(_ChangeControlSuccess value)? changeControlSuccess,
     TResult Function(_ChangeControlFailure value)? changeControlFailure,
     required TResult orElse(),
   }) {
@@ -1508,18 +1027,18 @@ class _$ChangeControlFailureImpl implements _ChangeControlFailure {
 
 abstract class _ChangeControlFailure implements VideoCallControlState {
   const factory _ChangeControlFailure(
-      {required final bool isAudioMuted,
-      required final bool isVideoMuted,
-      required final bool isUsingFrontCamera,
-      required final String errorMessage}) = _$ChangeControlFailureImpl;
+      {required final State<bool> isAudioMuted,
+      required final State<bool> isVideoMuted,
+      required final State<bool> isUsingFrontCamera,
+      required final Failure failure}) = _$ChangeControlFailureImpl;
 
   @override
-  bool get isAudioMuted;
+  State<bool> get isAudioMuted;
   @override
-  bool get isVideoMuted;
+  State<bool> get isVideoMuted;
   @override
-  bool get isUsingFrontCamera;
-  String get errorMessage;
+  State<bool> get isUsingFrontCamera;
+  Failure get failure;
   @override
   @JsonKey(ignore: true)
   _$$ChangeControlFailureImplCopyWith<_$ChangeControlFailureImpl>

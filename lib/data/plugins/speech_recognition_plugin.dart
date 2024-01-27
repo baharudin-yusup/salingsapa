@@ -37,28 +37,66 @@ class SpeechRecognitionPluginImpl implements SpeechRecognitionPlugin {
 
   @override
   Future<void> init() async {
-    final available = await _speechToText.initialize();
+    final available = await _speechToText.initialize(onStatus: _listenStatus);
     if (!available) {
       throw FeatureException();
     }
+
     _currentUuid = _generateUuid();
   }
 
   @override
   Future<void> start() async {
-    await _speechToText.listen(
-      onResult: _onResult,
-      pauseFor: const Duration(seconds: 5),
-      listenFor: const Duration(seconds: 30),
-      listenMode: ListenMode.dictation,
-    );
+    if (_speechToText.isNotListening) {
+      await _speechToText.listen(
+        onResult: _onResult,
+        pauseFor: const Duration(seconds: 5),
+        listenFor: const Duration(seconds: 30),
+        listenMode: ListenMode.dictation,
+      );
+    }
     _statusController.sink.add(RecognitionStatus.on);
   }
 
   @override
   Future<void> stop() async {
-    await _speechToText.stop();
+    if (_speechToText.isListening) {
+      await _speechToText.stop();
+    }
     _statusController.sink.add(RecognitionStatus.off);
+  }
+
+  @override
+  Stream<SpeechRecognitionCaptionModel> get result => _resultController.stream;
+
+  @override
+  Stream<RecognitionStatus> get status => _statusController.stream;
+
+  String _generateUuid() {
+    return _uuid.v1();
+  }
+
+  void _listenStatus(String status) {
+    /// * `listening` when speech recognition begins after calling the [listen]
+    /// method.
+    /// * `notListening` when speech recognition is no longer listening to the
+    /// microphone after a timeout, [cancel] or [stop] call.
+    /// * `done` when all results have been delivered.
+    ///
+    switch (status) {
+      case 'listening':
+        Logger.print('speech status is: $status', name: _tagName);
+        break;
+      case 'notListening':
+        Logger.print('speech status is: $status', name: _tagName);
+        break;
+      case 'done':
+        Logger.print('speech status is: $status', name: _tagName);
+        break;
+      default:
+        Logger.print('speech status is: $status (unknown)', name: _tagName);
+        break;
+    }
   }
 
   void _onResult(SpeechRecognitionResult result) {
@@ -88,14 +126,4 @@ class SpeechRecognitionPluginImpl implements SpeechRecognitionPlugin {
       _currentUuid = _generateUuid();
     }
   }
-
-  @override
-  Stream<SpeechRecognitionCaptionModel> get result => _resultController.stream;
-
-  String _generateUuid() {
-    return _uuid.v1();
-  }
-
-  @override
-  Stream<RecognitionStatus> get status => _statusController.stream;
 }

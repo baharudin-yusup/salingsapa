@@ -18,8 +18,6 @@ class ContactListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ContactListBloc, ContactListState>(
-      bloc: context.read<ContactListBloc>()
-        ..add(const ContactListEvent.refreshPulled()),
       listener: (context, state) {
         state.maybeWhen(
             orElse: () {},

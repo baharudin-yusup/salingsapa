@@ -1,14 +1,17 @@
 class FirestoreConstant {
-  static const roomCollectionName = 'rooms';
-  static const roomIdKey = 'roomId';
-  static const userIdKey = 'userId';
-  static const captionCollectionName = 'captions';
   static const createdAtKey = 'createdAt';
   static const hostIdKey = 'hostId';
   static const guestPhoneNumberKey = 'guestPhoneNumber';
 }
 
-class RoomCollectionKey {
+class FirestoreRoomConstant {
+  static const roomCollectionName = 'rooms';
   static const roomId = 'roomId';
   static const invitedPhoneNumbers = 'invitedPhoneNumbers';
+}
+
+class FirestoreCaptionConstant {
+  static const captionCollectionName = 'captions';
+  static const captionId = 'captionId';
+  static const userIdKey = 'userId';
 }
