@@ -11,11 +11,11 @@ enum ServerExceptionType {
 }
 
 class ServerException extends Exception {
-  final String? message;
+  final String message;
   final ServerExceptionType type;
 
   ServerException({
-    this.message,
+    this.message = 'Unknown error',
     this.type = ServerExceptionType.unknown,
   });
 

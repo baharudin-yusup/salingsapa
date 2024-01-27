@@ -9,12 +9,11 @@ import '../../injection_container.dart';
 import '../blocs/setup/setup_bloc.dart';
 import '../components/intuitive_otp.dart';
 import '../components/intuitive_scaffold.dart';
-import '../services/navigator_service.dart';
 import '../services/theme_service.dart';
 import '../services/ui_service.dart';
 import '../utils/app_localizations.dart';
 import '../utils/dimension.dart';
-import 'skeleton_screen.dart';
+import '../utils/failure_translation.dart';
 
 class VerifyOtpScreen extends StatelessWidget {
   static const routeName = '/verify-otp';
@@ -25,16 +24,13 @@ class VerifyOtpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<SetupBloc, SetupState>(
       listener: (context, state) {
-        final NavigatorService navigatorService = sl();
         final UiService uiService = sl();
         state.maybeMap(
           inputOtpValidationInProgress: (_) {
             uiService.showLoading();
           },
           inputOtpValidationSuccess: (_) {
-            uiService.hideLoading();
-            navigatorService.pushNamedAndRemoveUntil(
-                RootScreen.routeName, (route) => false);
+            // Handled by root screen
           },
           inputOtpValidationFailure: (_) {
             uiService.hideLoading();
@@ -100,7 +96,7 @@ class VerifyOtpScreen extends StatelessWidget {
                     obscure: false,
                     errorMessage: state.maybeMap(
                       inputOtpValidationFailure: (state) =>
-                          state.failure.errorMessage,
+                          state.failure.code.translate(context),
                       orElse: () => null,
                     ),
                     errorColor: context.colorScheme().error,

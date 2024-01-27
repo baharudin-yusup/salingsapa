@@ -43,5 +43,8 @@
   "endVideoCallConfirmationTitle": "End Video Call Confirmation",
   "endVideoCallConfirmationDescription": "Are you sure you want to end this video call?",
   "yesEndCall": "Yes, end call",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "errorMessageInvalidOtpCode": "Invalid OTP code",
+  "errorMessageUnknown": "Unknown error",
+  "errorMessagePhoneNumberBlocked": "Please use another phone number or another device."
 }
