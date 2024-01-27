@@ -142,9 +142,12 @@ class VideoCallCaptionBloc
       name: _tagName,
     );
 
+    // Handle new caption
     if (currentCaptionIndex < 0) {
       captions.add(newCaption);
-    } else {
+    }
+    // Handle update caption
+    else {
       captions[currentCaptionIndex] = newCaption;
     }
 
@@ -154,7 +157,7 @@ class VideoCallCaptionBloc
   void _startUploadCaption(
       _UploadCaptionStarted event, Emitter<VideoCallCaptionState> emit) async {
     Logger.print(
-      'upload caption started...',
+      'upload caption "${event.caption.rawData}" started...',
       name: _tagName,
     );
     final uploadCaptionResult = await _uploadCaption(event.caption);
@@ -172,6 +175,8 @@ class VideoCallCaptionBloc
         }
 
         emit(state.copyWith(localCaptions: captions));
+
+        Logger.print('new local caption = ${captions.combine()?.rawData}');
       },
     );
 

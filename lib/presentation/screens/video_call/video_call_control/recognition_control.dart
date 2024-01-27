@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../blocs/sign_language_recognition_bloc/sign_language_recognition_bloc.dart';
-import '../../blocs/speech_recognition_bloc/speech_recognition_bloc.dart';
-import '../../blocs/video_call/video_call_bloc.dart';
-import '../../blocs/video_call_caption/video_call_caption_bloc.dart';
-import '../../components/intuitive_circle_icon_button.dart';
-import '../../services/theme_service.dart';
+import '../../../../domain/entities/recognition_status.dart';
+import '../../../blocs/sign_language_recognition_bloc/sign_language_recognition_bloc.dart';
+import '../../../blocs/speech_recognition_bloc/speech_recognition_bloc.dart';
+import '../../../blocs/video_call/video_call_bloc.dart';
+import '../../../blocs/video_call_caption/video_call_caption_bloc.dart';
+import '../../../blocs/video_call_control/video_call_control_bloc.dart';
+import '../../../components/intuitive_circle_icon_button.dart';
+import '../../../services/theme_service.dart';
 
 class RecognitionButtonsFragmentStyle {
   final double iconSize;
@@ -16,10 +18,10 @@ class RecognitionButtonsFragmentStyle {
   });
 }
 
-class RecognitionButtonsFragment extends StatelessWidget {
+class RecognitionControl extends StatelessWidget {
   final RecognitionButtonsFragmentStyle style;
 
-  const RecognitionButtonsFragment({
+  const RecognitionControl({
     super.key,
     this.style = const RecognitionButtonsFragmentStyle(),
   });
@@ -39,9 +41,9 @@ class RecognitionButtonsFragment extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           _buildSpeechRecognitionButton(),
-          const SizedBox(height: IntuitiveUiConstant.tinySpace),
+          const SizedBox(height: IntuitiveUiConstant.smallSpace),
           _buildSignLanguageRecognitionButton(),
-          const SizedBox(height: IntuitiveUiConstant.tinySpace),
+          const SizedBox(height: IntuitiveUiConstant.smallSpace),
           _buildDisableRecognitionButton(),
         ],
       ),
@@ -55,6 +57,7 @@ class RecognitionButtonsFragment extends StatelessWidget {
         return IntuitiveCircleIconButton(
           showBorder: false,
           isActive: state.isReady && state.isEnabled,
+          isLoading: state.status.isLoading,
           activeIconData: Icons.spatial_audio_off_outlined,
           iconSize: style.iconSize,
           onTap: () =>
@@ -82,9 +85,9 @@ class RecognitionButtonsFragment extends StatelessWidget {
 
   Widget _buildDisableRecognitionButton() {
     return BlocBuilder<SpeechRecognitionBloc, SpeechRecognitionState>(
-      buildWhen: (a, b) => a.isReady != b.isReady || a.isEnabled != b.isEnabled,
-      builder: (context, state) {
-        final isSpeechRecognitionEnabled = state.isReady && state.isEnabled;
+      builder: (context, speechRecognitionState) {
+        final isSpeechRecognitionEnabled =
+            speechRecognitionState.isReady && speechRecognitionState.isEnabled;
         return BlocBuilder<SignLanguageRecognitionBloc,
             SignLanguageRecognitionState>(
           buildWhen: (a, b) =>
@@ -96,6 +99,11 @@ class RecognitionButtonsFragment extends StatelessWidget {
               showBorder: false,
               isActive: !isSpeechRecognitionEnabled &&
                   !isSignLanguageRecognitionEnabled,
+              isLoading: ((speechRecognitionState.status.data ==
+                          RecognitionStatus.on ||
+                      speechRecognitionState.status.data ==
+                          RecognitionStatus.listening) &&
+                  speechRecognitionState.status.isLoading),
               activeIconData: Icons.not_interested_outlined,
               iconSize: style.iconSize,
               onTap: () => _toggleFeature(context),
@@ -111,16 +119,21 @@ class RecognitionButtonsFragment extends StatelessWidget {
     bool isSpeechRecognitionEnabled = false,
     bool isSignLanguageEnabled = false,
   }) {
+    final VideoCallControlBloc videoCallControlBloc = context.read();
+    final VideoCallBloc videoCallBloc = context.read();
     final SpeechRecognitionBloc speechRecognitionBloc = context.read();
     final SignLanguageRecognitionBloc signLanguageRecognitionBloc =
         context.read();
-    final VideoCallBloc videoCallBloc = context.read();
+
+    videoCallControlBloc.add(VideoCallControlEvent.changeAudioFeatureStarted(
+        isDisabled: isSpeechRecognitionEnabled));
+    // Mute audio when speech recognition feature enabled
+    videoCallBloc.add(VideoCallEvent.takePhotoSnapshotFeatureStatusChanged(
+        isSignLanguageEnabled));
 
     speechRecognitionBloc.add(SpeechRecognitionEvent.toggleFeatureStarted(
         isSpeechRecognitionEnabled));
 
-    videoCallBloc.add(VideoCallEvent.takePhotoSnapshotFeatureStatusChanged(
-        isSignLanguageEnabled));
     signLanguageRecognitionBloc.add(
         SignLanguageRecognitionEvent.toggleFeatureStarted(
             isSignLanguageEnabled));

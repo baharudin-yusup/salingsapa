@@ -647,34 +647,41 @@ abstract class _CaptionReceived implements SpeechRecognitionEvent {
 /// @nodoc
 mixin _$SpeechRecognitionState {
   bool get isReady => throw _privateConstructorUsedError;
-  RecognitionStatus get status => throw _privateConstructorUsedError;
+  DataState<RecognitionStatus> get status => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isReady, RecognitionStatus status) initial,
+    required TResult Function(bool isReady, DataState<RecognitionStatus> status)
+        initial,
     required TResult Function(
-            bool isReady, RecognitionStatus status, Failure failure)
+            bool isReady, DataState<RecognitionStatus> status, Failure failure)
         failure,
     required TResult Function(
-            bool isReady, RecognitionStatus status, Caption caption)
-        caption,
+            bool isReady, DataState<RecognitionStatus> status, Caption caption)
+        captionReceiveSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isReady, RecognitionStatus status)? initial,
-    TResult? Function(bool isReady, RecognitionStatus status, Failure failure)?
+    TResult? Function(bool isReady, DataState<RecognitionStatus> status)?
+        initial,
+    TResult? Function(
+            bool isReady, DataState<RecognitionStatus> status, Failure failure)?
         failure,
-    TResult? Function(bool isReady, RecognitionStatus status, Caption caption)?
-        caption,
+    TResult? Function(
+            bool isReady, DataState<RecognitionStatus> status, Caption caption)?
+        captionReceiveSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isReady, RecognitionStatus status)? initial,
-    TResult Function(bool isReady, RecognitionStatus status, Failure failure)?
+    TResult Function(bool isReady, DataState<RecognitionStatus> status)?
+        initial,
+    TResult Function(
+            bool isReady, DataState<RecognitionStatus> status, Failure failure)?
         failure,
-    TResult Function(bool isReady, RecognitionStatus status, Caption caption)?
-        caption,
+    TResult Function(
+            bool isReady, DataState<RecognitionStatus> status, Caption caption)?
+        captionReceiveSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -682,21 +689,22 @@ mixin _$SpeechRecognitionState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Failure value) failure,
-    required TResult Function(_Caption value) caption,
+    required TResult Function(_CaptionReceiveSuccess value)
+        captionReceiveSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Failure value)? failure,
-    TResult? Function(_Caption value)? caption,
+    TResult? Function(_CaptionReceiveSuccess value)? captionReceiveSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Failure value)? failure,
-    TResult Function(_Caption value)? caption,
+    TResult Function(_CaptionReceiveSuccess value)? captionReceiveSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -712,7 +720,7 @@ abstract class $SpeechRecognitionStateCopyWith<$Res> {
           $Res Function(SpeechRecognitionState) then) =
       _$SpeechRecognitionStateCopyWithImpl<$Res, SpeechRecognitionState>;
   @useResult
-  $Res call({bool isReady, RecognitionStatus status});
+  $Res call({bool isReady, DataState<RecognitionStatus> status});
 }
 
 /// @nodoc
@@ -740,7 +748,7 @@ class _$SpeechRecognitionStateCopyWithImpl<$Res,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as RecognitionStatus,
+              as DataState<RecognitionStatus>,
     ) as $Val);
   }
 }
@@ -753,7 +761,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isReady, RecognitionStatus status});
+  $Res call({bool isReady, DataState<RecognitionStatus> status});
 }
 
 /// @nodoc
@@ -778,7 +786,7 @@ class __$$InitialImplCopyWithImpl<$Res>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as RecognitionStatus,
+              as DataState<RecognitionStatus>,
     ));
   }
 }
@@ -787,14 +795,15 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 class _$InitialImpl implements _Initial {
   const _$InitialImpl(
-      {this.isReady = false, this.status = RecognitionStatus.off});
+      {this.isReady = false,
+      this.status = const DataState(RecognitionStatus.off)});
 
   @override
   @JsonKey()
   final bool isReady;
   @override
   @JsonKey()
-  final RecognitionStatus status;
+  final DataState<RecognitionStatus> status;
 
   @override
   String toString() {
@@ -822,13 +831,14 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isReady, RecognitionStatus status) initial,
+    required TResult Function(bool isReady, DataState<RecognitionStatus> status)
+        initial,
     required TResult Function(
-            bool isReady, RecognitionStatus status, Failure failure)
+            bool isReady, DataState<RecognitionStatus> status, Failure failure)
         failure,
     required TResult Function(
-            bool isReady, RecognitionStatus status, Caption caption)
-        caption,
+            bool isReady, DataState<RecognitionStatus> status, Caption caption)
+        captionReceiveSuccess,
   }) {
     return initial(isReady, status);
   }
@@ -836,11 +846,14 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isReady, RecognitionStatus status)? initial,
-    TResult? Function(bool isReady, RecognitionStatus status, Failure failure)?
+    TResult? Function(bool isReady, DataState<RecognitionStatus> status)?
+        initial,
+    TResult? Function(
+            bool isReady, DataState<RecognitionStatus> status, Failure failure)?
         failure,
-    TResult? Function(bool isReady, RecognitionStatus status, Caption caption)?
-        caption,
+    TResult? Function(
+            bool isReady, DataState<RecognitionStatus> status, Caption caption)?
+        captionReceiveSuccess,
   }) {
     return initial?.call(isReady, status);
   }
@@ -848,11 +861,14 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isReady, RecognitionStatus status)? initial,
-    TResult Function(bool isReady, RecognitionStatus status, Failure failure)?
+    TResult Function(bool isReady, DataState<RecognitionStatus> status)?
+        initial,
+    TResult Function(
+            bool isReady, DataState<RecognitionStatus> status, Failure failure)?
         failure,
-    TResult Function(bool isReady, RecognitionStatus status, Caption caption)?
-        caption,
+    TResult Function(
+            bool isReady, DataState<RecognitionStatus> status, Caption caption)?
+        captionReceiveSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -866,7 +882,8 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Failure value) failure,
-    required TResult Function(_Caption value) caption,
+    required TResult Function(_CaptionReceiveSuccess value)
+        captionReceiveSuccess,
   }) {
     return initial(this);
   }
@@ -876,7 +893,7 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Failure value)? failure,
-    TResult? Function(_Caption value)? caption,
+    TResult? Function(_CaptionReceiveSuccess value)? captionReceiveSuccess,
   }) {
     return initial?.call(this);
   }
@@ -886,7 +903,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Failure value)? failure,
-    TResult Function(_Caption value)? caption,
+    TResult Function(_CaptionReceiveSuccess value)? captionReceiveSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -897,13 +914,14 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements SpeechRecognitionState {
-  const factory _Initial({final bool isReady, final RecognitionStatus status}) =
-      _$InitialImpl;
+  const factory _Initial(
+      {final bool isReady,
+      final DataState<RecognitionStatus> status}) = _$InitialImpl;
 
   @override
   bool get isReady;
   @override
-  RecognitionStatus get status;
+  DataState<RecognitionStatus> get status;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
@@ -918,7 +936,8 @@ abstract class _$$FailureImplCopyWith<$Res>
       __$$FailureImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isReady, RecognitionStatus status, Failure failure});
+  $Res call(
+      {bool isReady, DataState<RecognitionStatus> status, Failure failure});
 }
 
 /// @nodoc
@@ -944,7 +963,7 @@ class __$$FailureImplCopyWithImpl<$Res>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as RecognitionStatus,
+              as DataState<RecognitionStatus>,
       failure: null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -962,7 +981,7 @@ class _$FailureImpl implements _Failure {
   @override
   final bool isReady;
   @override
-  final RecognitionStatus status;
+  final DataState<RecognitionStatus> status;
   @override
   final Failure failure;
 
@@ -993,13 +1012,14 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isReady, RecognitionStatus status) initial,
+    required TResult Function(bool isReady, DataState<RecognitionStatus> status)
+        initial,
     required TResult Function(
-            bool isReady, RecognitionStatus status, Failure failure)
+            bool isReady, DataState<RecognitionStatus> status, Failure failure)
         failure,
     required TResult Function(
-            bool isReady, RecognitionStatus status, Caption caption)
-        caption,
+            bool isReady, DataState<RecognitionStatus> status, Caption caption)
+        captionReceiveSuccess,
   }) {
     return failure(isReady, status, this.failure);
   }
@@ -1007,11 +1027,14 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isReady, RecognitionStatus status)? initial,
-    TResult? Function(bool isReady, RecognitionStatus status, Failure failure)?
+    TResult? Function(bool isReady, DataState<RecognitionStatus> status)?
+        initial,
+    TResult? Function(
+            bool isReady, DataState<RecognitionStatus> status, Failure failure)?
         failure,
-    TResult? Function(bool isReady, RecognitionStatus status, Caption caption)?
-        caption,
+    TResult? Function(
+            bool isReady, DataState<RecognitionStatus> status, Caption caption)?
+        captionReceiveSuccess,
   }) {
     return failure?.call(isReady, status, this.failure);
   }
@@ -1019,11 +1042,14 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isReady, RecognitionStatus status)? initial,
-    TResult Function(bool isReady, RecognitionStatus status, Failure failure)?
+    TResult Function(bool isReady, DataState<RecognitionStatus> status)?
+        initial,
+    TResult Function(
+            bool isReady, DataState<RecognitionStatus> status, Failure failure)?
         failure,
-    TResult Function(bool isReady, RecognitionStatus status, Caption caption)?
-        caption,
+    TResult Function(
+            bool isReady, DataState<RecognitionStatus> status, Caption caption)?
+        captionReceiveSuccess,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -1037,7 +1063,8 @@ class _$FailureImpl implements _Failure {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Failure value) failure,
-    required TResult Function(_Caption value) caption,
+    required TResult Function(_CaptionReceiveSuccess value)
+        captionReceiveSuccess,
   }) {
     return failure(this);
   }
@@ -1047,7 +1074,7 @@ class _$FailureImpl implements _Failure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Failure value)? failure,
-    TResult? Function(_Caption value)? caption,
+    TResult? Function(_CaptionReceiveSuccess value)? captionReceiveSuccess,
   }) {
     return failure?.call(this);
   }
@@ -1057,7 +1084,7 @@ class _$FailureImpl implements _Failure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Failure value)? failure,
-    TResult Function(_Caption value)? caption,
+    TResult Function(_CaptionReceiveSuccess value)? captionReceiveSuccess,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -1070,13 +1097,13 @@ class _$FailureImpl implements _Failure {
 abstract class _Failure implements SpeechRecognitionState {
   const factory _Failure(
       {required final bool isReady,
-      required final RecognitionStatus status,
+      required final DataState<RecognitionStatus> status,
       required final Failure failure}) = _$FailureImpl;
 
   @override
   bool get isReady;
   @override
-  RecognitionStatus get status;
+  DataState<RecognitionStatus> get status;
   Failure get failure;
   @override
   @JsonKey(ignore: true)
@@ -1085,22 +1112,25 @@ abstract class _Failure implements SpeechRecognitionState {
 }
 
 /// @nodoc
-abstract class _$$CaptionImplCopyWith<$Res>
+abstract class _$$CaptionReceiveSuccessImplCopyWith<$Res>
     implements $SpeechRecognitionStateCopyWith<$Res> {
-  factory _$$CaptionImplCopyWith(
-          _$CaptionImpl value, $Res Function(_$CaptionImpl) then) =
-      __$$CaptionImplCopyWithImpl<$Res>;
+  factory _$$CaptionReceiveSuccessImplCopyWith(
+          _$CaptionReceiveSuccessImpl value,
+          $Res Function(_$CaptionReceiveSuccessImpl) then) =
+      __$$CaptionReceiveSuccessImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isReady, RecognitionStatus status, Caption caption});
+  $Res call(
+      {bool isReady, DataState<RecognitionStatus> status, Caption caption});
 }
 
 /// @nodoc
-class __$$CaptionImplCopyWithImpl<$Res>
-    extends _$SpeechRecognitionStateCopyWithImpl<$Res, _$CaptionImpl>
-    implements _$$CaptionImplCopyWith<$Res> {
-  __$$CaptionImplCopyWithImpl(
-      _$CaptionImpl _value, $Res Function(_$CaptionImpl) _then)
+class __$$CaptionReceiveSuccessImplCopyWithImpl<$Res>
+    extends _$SpeechRecognitionStateCopyWithImpl<$Res,
+        _$CaptionReceiveSuccessImpl>
+    implements _$$CaptionReceiveSuccessImplCopyWith<$Res> {
+  __$$CaptionReceiveSuccessImplCopyWithImpl(_$CaptionReceiveSuccessImpl _value,
+      $Res Function(_$CaptionReceiveSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1110,7 +1140,7 @@ class __$$CaptionImplCopyWithImpl<$Res>
     Object? status = null,
     Object? caption = null,
   }) {
-    return _then(_$CaptionImpl(
+    return _then(_$CaptionReceiveSuccessImpl(
       isReady: null == isReady
           ? _value.isReady
           : isReady // ignore: cast_nullable_to_non_nullable
@@ -1118,7 +1148,7 @@ class __$$CaptionImplCopyWithImpl<$Res>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as RecognitionStatus,
+              as DataState<RecognitionStatus>,
       caption: null == caption
           ? _value.caption
           : caption // ignore: cast_nullable_to_non_nullable
@@ -1129,27 +1159,27 @@ class __$$CaptionImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CaptionImpl implements _Caption {
-  const _$CaptionImpl(
+class _$CaptionReceiveSuccessImpl implements _CaptionReceiveSuccess {
+  const _$CaptionReceiveSuccessImpl(
       {required this.isReady, required this.status, required this.caption});
 
   @override
   final bool isReady;
   @override
-  final RecognitionStatus status;
+  final DataState<RecognitionStatus> status;
   @override
   final Caption caption;
 
   @override
   String toString() {
-    return 'SpeechRecognitionState.caption(isReady: $isReady, status: $status, caption: $caption)';
+    return 'SpeechRecognitionState.captionReceiveSuccess(isReady: $isReady, status: $status, caption: $caption)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CaptionImpl &&
+            other is _$CaptionReceiveSuccessImpl &&
             (identical(other.isReady, isReady) || other.isReady == isReady) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.caption, caption) || other.caption == caption));
@@ -1161,47 +1191,55 @@ class _$CaptionImpl implements _Caption {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$CaptionImplCopyWith<_$CaptionImpl> get copyWith =>
-      __$$CaptionImplCopyWithImpl<_$CaptionImpl>(this, _$identity);
+  _$$CaptionReceiveSuccessImplCopyWith<_$CaptionReceiveSuccessImpl>
+      get copyWith => __$$CaptionReceiveSuccessImplCopyWithImpl<
+          _$CaptionReceiveSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isReady, RecognitionStatus status) initial,
+    required TResult Function(bool isReady, DataState<RecognitionStatus> status)
+        initial,
     required TResult Function(
-            bool isReady, RecognitionStatus status, Failure failure)
+            bool isReady, DataState<RecognitionStatus> status, Failure failure)
         failure,
     required TResult Function(
-            bool isReady, RecognitionStatus status, Caption caption)
-        caption,
+            bool isReady, DataState<RecognitionStatus> status, Caption caption)
+        captionReceiveSuccess,
   }) {
-    return caption(isReady, status, this.caption);
+    return captionReceiveSuccess(isReady, status, caption);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool isReady, RecognitionStatus status)? initial,
-    TResult? Function(bool isReady, RecognitionStatus status, Failure failure)?
+    TResult? Function(bool isReady, DataState<RecognitionStatus> status)?
+        initial,
+    TResult? Function(
+            bool isReady, DataState<RecognitionStatus> status, Failure failure)?
         failure,
-    TResult? Function(bool isReady, RecognitionStatus status, Caption caption)?
-        caption,
+    TResult? Function(
+            bool isReady, DataState<RecognitionStatus> status, Caption caption)?
+        captionReceiveSuccess,
   }) {
-    return caption?.call(isReady, status, this.caption);
+    return captionReceiveSuccess?.call(isReady, status, caption);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isReady, RecognitionStatus status)? initial,
-    TResult Function(bool isReady, RecognitionStatus status, Failure failure)?
+    TResult Function(bool isReady, DataState<RecognitionStatus> status)?
+        initial,
+    TResult Function(
+            bool isReady, DataState<RecognitionStatus> status, Failure failure)?
         failure,
-    TResult Function(bool isReady, RecognitionStatus status, Caption caption)?
-        caption,
+    TResult Function(
+            bool isReady, DataState<RecognitionStatus> status, Caption caption)?
+        captionReceiveSuccess,
     required TResult orElse(),
   }) {
-    if (caption != null) {
-      return caption(isReady, status, this.caption);
+    if (captionReceiveSuccess != null) {
+      return captionReceiveSuccess(isReady, status, caption);
     }
     return orElse();
   }
@@ -1211,9 +1249,10 @@ class _$CaptionImpl implements _Caption {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Failure value) failure,
-    required TResult Function(_Caption value) caption,
+    required TResult Function(_CaptionReceiveSuccess value)
+        captionReceiveSuccess,
   }) {
-    return caption(this);
+    return captionReceiveSuccess(this);
   }
 
   @override
@@ -1221,9 +1260,9 @@ class _$CaptionImpl implements _Caption {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Failure value)? failure,
-    TResult? Function(_Caption value)? caption,
+    TResult? Function(_CaptionReceiveSuccess value)? captionReceiveSuccess,
   }) {
-    return caption?.call(this);
+    return captionReceiveSuccess?.call(this);
   }
 
   @override
@@ -1231,29 +1270,29 @@ class _$CaptionImpl implements _Caption {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Failure value)? failure,
-    TResult Function(_Caption value)? caption,
+    TResult Function(_CaptionReceiveSuccess value)? captionReceiveSuccess,
     required TResult orElse(),
   }) {
-    if (caption != null) {
-      return caption(this);
+    if (captionReceiveSuccess != null) {
+      return captionReceiveSuccess(this);
     }
     return orElse();
   }
 }
 
-abstract class _Caption implements SpeechRecognitionState {
-  const factory _Caption(
+abstract class _CaptionReceiveSuccess implements SpeechRecognitionState {
+  const factory _CaptionReceiveSuccess(
       {required final bool isReady,
-      required final RecognitionStatus status,
-      required final Caption caption}) = _$CaptionImpl;
+      required final DataState<RecognitionStatus> status,
+      required final Caption caption}) = _$CaptionReceiveSuccessImpl;
 
   @override
   bool get isReady;
   @override
-  RecognitionStatus get status;
+  DataState<RecognitionStatus> get status;
   Caption get caption;
   @override
   @JsonKey(ignore: true)
-  _$$CaptionImplCopyWith<_$CaptionImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$CaptionReceiveSuccessImplCopyWith<_$CaptionReceiveSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

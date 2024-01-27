@@ -51,7 +51,7 @@ class VideoCallControl extends StatelessWidget {
                   onTap: () =>
                       bloc.add(const VideoCallControlEvent.flipCameraStarted()),
                 ),
-                const SizedBox(width: IntuitiveUiConstant.tinySpace),
+                const SizedBox(width: IntuitiveUiConstant.smallSpace),
                 IntuitiveCircleIconButton(
                   showBorder: false,
                   isActive: state.isVideoMuted.data,
@@ -60,18 +60,9 @@ class VideoCallControl extends StatelessWidget {
                   onTap: () =>
                       bloc.add(const VideoCallControlEvent.muteVideoStarted()),
                 ),
-                const SizedBox(width: IntuitiveUiConstant.tinySpace),
-                IntuitiveCircleIconButton(
-                  showBorder: false,
-                  isActive: state.isAudioMuted.data,
-                  activeIconData: Icons.mic_off_outlined,
-                  iconSize: style.iconSize,
-                  onTap: () =>
-                      bloc.add(const VideoCallControlEvent.muteAudioStarted()),
-                ),
-                const SizedBox(width: IntuitiveUiConstant.tinySpace),
+                const SizedBox(width: IntuitiveUiConstant.smallSpace),
                 _buildCaptionButton(),
-                const SizedBox(width: IntuitiveUiConstant.tinySpace),
+                const SizedBox(width: IntuitiveUiConstant.smallSpace),
                 IntuitiveCircleIconButton(
                   showBorder: false,
                   isActive: false,

@@ -184,9 +184,7 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
         channelProfile: ChannelProfileType.channelProfileCommunication,
       );
 
-      /// TODO: Remove this
-      await _engine.disableAudio();
-      // await _rtcEngine.enableAudio();
+      await _engine.enableAudio();
       await _engine.enableVideo();
       await _engine.joinChannelWithUserAccount(
         token: token,

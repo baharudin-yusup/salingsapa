@@ -9,15 +9,15 @@ enum VideoCallControlFeature {
 @freezed
 class VideoCallControlState with _$VideoCallControlState {
   const factory VideoCallControlState.initial({
-    @Default(State(true)) State<bool> isAudioMuted,
-    @Default(State(false)) State<bool> isVideoMuted,
-    @Default(State(false)) State<bool> isUsingFrontCamera,
+    @Default(DataState(true)) DataState<bool> isAudioMuted,
+    @Default(DataState(false)) DataState<bool> isVideoMuted,
+    @Default(DataState(false)) DataState<bool> isUsingFrontCamera,
   }) = _Initial;
 
   const factory VideoCallControlState.changeControlFailure({
-    required State<bool> isAudioMuted,
-    required State<bool> isVideoMuted,
-    required State<bool> isUsingFrontCamera,
+    required DataState<bool> isAudioMuted,
+    required DataState<bool> isVideoMuted,
+    required DataState<bool> isUsingFrontCamera,
     required Failure failure,
   }) = _ChangeControlFailure;
 }
