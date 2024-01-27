@@ -30,6 +30,10 @@ class InvitationCard extends StatelessWidget {
       leading: showProfilePicture(),
       subtitle: showDescription(context),
       trailing: isValid ? showCallIcon() : null,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: IntuitiveUiConstant.normalSpace,
+        vertical: IntuitiveUiConstant.tinySpace,
+      ),
       tileColor: context.colorScheme().tertiary.withOpacity(0.1),
       textColor: context.colorScheme().onTertiaryContainer,
       iconColor: context.colorScheme().onTertiaryContainer,
