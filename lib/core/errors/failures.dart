@@ -2,13 +2,17 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../../data/constants/firebase_exception_code.dart';
+
 abstract class Failure extends Equatable {
   final String errorMessage;
   final DateTime? createdAt;
+  final AppFailureCode code;
 
   const Failure({
     this.errorMessage = 'Unknown Error',
     this.createdAt,
+    this.code = AppFailureCode.unknown,
   });
 
   @override
@@ -23,7 +27,11 @@ class UnknownFailure extends Failure {
 }
 
 class ServerFailure extends Failure {
-  const ServerFailure({super.createdAt});
+  const ServerFailure({
+    super.errorMessage,
+    super.code,
+    super.createdAt,
+  });
 }
 
 class UnAuthorizedFailure extends ServerFailure {

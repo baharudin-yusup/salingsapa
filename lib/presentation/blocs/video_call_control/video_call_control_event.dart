@@ -6,7 +6,9 @@ class VideoCallControlEvent with _$VideoCallControlEvent {
 
   const factory VideoCallControlEvent.flipCameraStarted() = _FlipCameraStarted;
 
-  const factory VideoCallControlEvent.muteAudioStarted() = _MuteAudioStarted;
+  const factory VideoCallControlEvent.changeAudioFeatureStarted({
+    bool? isDisabled,
+  }) = _ChangeAudioFeatureStarted;
 
   const factory VideoCallControlEvent.muteVideoStarted() = _MuteVideoStarted;
 }

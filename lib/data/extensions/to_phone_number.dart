@@ -1,11 +1,14 @@
+import '../../core/utils/logger.dart';
+
 extension ToPhoneNumber on String {
   String toFormattedPhoneNumber({String countryCode = '+62'}) {
     var phoneNumber = replaceAll('-', '').replaceAll(' ', '');
 
+    Logger.print(this);
     if (phoneNumber.startsWith('0')) {
       phoneNumber = '$countryCode${phoneNumber.substring(1)}';
     } else if (!phoneNumber.startsWith('+')) {
-      phoneNumber = '+$phoneNumber';
+      phoneNumber = '$countryCode$phoneNumber';
     }
 
     return phoneNumber;

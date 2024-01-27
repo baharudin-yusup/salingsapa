@@ -12,7 +12,7 @@ import '../../components/intuitive_scaffold.dart';
 import '../../services/navigator_service.dart';
 import '../../services/ui_service.dart';
 import '../../utils/dimension.dart';
-import 'recognition_buttons_fragment.dart';
+import 'video_call_control/recognition_control.dart';
 import 'video_call_control/video_call_control.dart';
 import 'video_caption/video_caption_list.dart';
 import 'video_interface/floating_video_interface.dart';
@@ -28,7 +28,9 @@ class VideoCallScreen extends StatelessWidget {
     return PopScope(
       canPop: false,
       onPopInvoked: (didPop) {
-        _showExitConfirmation(context);
+        if (!didPop) {
+          _showExitConfirmation(context);
+        }
       },
       child: IntuitiveScaffold(
         builder: (context) => MultiBlocListener(
@@ -96,21 +98,28 @@ class VideoCallScreen extends StatelessWidget {
             BlocListener<SpeechRecognitionBloc, SpeechRecognitionState>(
               listener: (context, state) {
                 state.maybeMap(
-                  initial: (value) {
+                  initial: (state) {
                     final VideoCallCaptionBloc bloc = context.read();
-                    bloc.add(
-                        const VideoCallCaptionEvent.localCaptionReceived(null));
+                    if (state.status.data == RecognitionStatus.on) {
+                      bloc.add(const VideoCallCaptionEvent.localCaptionReceived(
+                          null));
+                    }
                   },
-                  caption: (state) {
+                  captionReceiveSuccess: (state) {
                     final VideoCallCaptionBloc bloc = context.read();
 
-                    switch (state.status) {
+                    if (state.status.isLoading) {
+                      return;
+                    }
+                    switch (state.status.data) {
                       case RecognitionStatus.off:
+                        // Upload the final local caption
                         bloc.add(VideoCallCaptionEvent.uploadCaptionStarted(
                             state.caption));
                         break;
                       case RecognitionStatus.on:
                       case RecognitionStatus.listening:
+                        // Just update the local caption
                         bloc.add(VideoCallCaptionEvent.localCaptionReceived(
                             state.caption));
                         break;
@@ -179,7 +188,7 @@ class VideoCallScreen extends StatelessWidget {
     return const SafeArea(
       child: Align(
         alignment: Alignment.topLeft,
-        child: RecognitionButtonsFragment(),
+        child: RecognitionControl(),
       ),
     );
   }

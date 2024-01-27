@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../core/errors/exceptions.dart';
 import '../../core/utils/logger.dart';
+import '../constants/firebase_exception_code.dart';
 import '../models/user_model.dart';
 import '../plugins/network_plugin.dart';
 
@@ -50,7 +51,7 @@ class AuthenticationRemoteDatSourceImpl
 
   @override
   Future<UserModel> verifyPhoneNumber({required String phoneNumber}) async {
-    PhoneAuthCredential? phoneAuthCredential;
+    PhoneAuthCredential? autoSignInCredential;
     FirebaseAuthException? firebaseAuthException;
 
     Logger.print('Verifying phone number $phoneNumber started...');
@@ -58,7 +59,7 @@ class AuthenticationRemoteDatSourceImpl
       await _auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
         verificationCompleted: (credential) {
-          phoneAuthCredential = credential;
+          autoSignInCredential = credential;
         },
         verificationFailed: (error) {
           firebaseAuthException = error;
@@ -80,17 +81,22 @@ class AuthenticationRemoteDatSourceImpl
       throw ServerException();
     }
 
-    if (phoneAuthCredential == null) {
-      Logger.error('phoneAuthCredential is null!',
-          event: 'verifying phone number');
-      throw ServerException();
+    if (_verificationId.isEmpty) {
+      Logger.error('verification id is empty', event: 'verifying phone number');
+      throw AppFailureCode.phoneNumberBlocked;
     }
 
-    final user = (await _auth.signInWithCredential(phoneAuthCredential!)).user;
+    if (autoSignInCredential == null) {
+      Logger.error('autoSignInCredential is null',
+          event: 'verifying phone number');
+      throw AppFailureCode.autoSignInFailed;
+    }
+
+    final user = (await _auth.signInWithCredential(autoSignInCredential!)).user;
 
     if (user == null) {
       Logger.error('user is null!', event: 'verifying phone number');
-      throw ServerException();
+      throw AppFailureCode.autoSignInFailed;
     }
 
     return await _updateInitialData(user);
@@ -110,14 +116,21 @@ class AuthenticationRemoteDatSourceImpl
   @override
   Future<UserModel> verifyOtp({required String otp}) async {
     if (_verificationId.isEmpty) {
+      Logger.error('_verificationId is empty', event: 'verifying OTP');
       throw BadDataException();
     }
 
     final credential = PhoneAuthProvider.credential(
         verificationId: _verificationId, smsCode: otp);
 
-    final user = (await _auth.signInWithCredential(credential)).user;
+    late final User? user;
 
+    try {
+      user = (await _auth.signInWithCredential(credential)).user;
+    } catch (error) {
+      Logger.error(error, event: 'verifying otp');
+      rethrow;
+    }
     if (user == null) {
       throw ServerException();
     }

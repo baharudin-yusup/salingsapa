@@ -20,7 +20,7 @@ mixin _$VideoCallControlEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() flipCameraStarted,
-    required TResult Function() muteAudioStarted,
+    required TResult Function(bool? isDisabled) changeAudioFeatureStarted,
     required TResult Function() muteVideoStarted,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$VideoCallControlEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? flipCameraStarted,
-    TResult? Function()? muteAudioStarted,
+    TResult? Function(bool? isDisabled)? changeAudioFeatureStarted,
     TResult? Function()? muteVideoStarted,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$VideoCallControlEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? flipCameraStarted,
-    TResult Function()? muteAudioStarted,
+    TResult Function(bool? isDisabled)? changeAudioFeatureStarted,
     TResult Function()? muteVideoStarted,
     required TResult orElse(),
   }) =>
@@ -45,7 +45,8 @@ mixin _$VideoCallControlEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_FlipCameraStarted value) flipCameraStarted,
-    required TResult Function(_MuteAudioStarted value) muteAudioStarted,
+    required TResult Function(_ChangeAudioFeatureStarted value)
+        changeAudioFeatureStarted,
     required TResult Function(_MuteVideoStarted value) muteVideoStarted,
   }) =>
       throw _privateConstructorUsedError;
@@ -53,7 +54,8 @@ mixin _$VideoCallControlEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_FlipCameraStarted value)? flipCameraStarted,
-    TResult? Function(_MuteAudioStarted value)? muteAudioStarted,
+    TResult? Function(_ChangeAudioFeatureStarted value)?
+        changeAudioFeatureStarted,
     TResult? Function(_MuteVideoStarted value)? muteVideoStarted,
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +63,8 @@ mixin _$VideoCallControlEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_FlipCameraStarted value)? flipCameraStarted,
-    TResult Function(_MuteAudioStarted value)? muteAudioStarted,
+    TResult Function(_ChangeAudioFeatureStarted value)?
+        changeAudioFeatureStarted,
     TResult Function(_MuteVideoStarted value)? muteVideoStarted,
     required TResult orElse(),
   }) =>
@@ -127,7 +130,7 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() flipCameraStarted,
-    required TResult Function() muteAudioStarted,
+    required TResult Function(bool? isDisabled) changeAudioFeatureStarted,
     required TResult Function() muteVideoStarted,
   }) {
     return started();
@@ -138,7 +141,7 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? flipCameraStarted,
-    TResult? Function()? muteAudioStarted,
+    TResult? Function(bool? isDisabled)? changeAudioFeatureStarted,
     TResult? Function()? muteVideoStarted,
   }) {
     return started?.call();
@@ -149,7 +152,7 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? flipCameraStarted,
-    TResult Function()? muteAudioStarted,
+    TResult Function(bool? isDisabled)? changeAudioFeatureStarted,
     TResult Function()? muteVideoStarted,
     required TResult orElse(),
   }) {
@@ -164,7 +167,8 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_FlipCameraStarted value) flipCameraStarted,
-    required TResult Function(_MuteAudioStarted value) muteAudioStarted,
+    required TResult Function(_ChangeAudioFeatureStarted value)
+        changeAudioFeatureStarted,
     required TResult Function(_MuteVideoStarted value) muteVideoStarted,
   }) {
     return started(this);
@@ -175,7 +179,8 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_FlipCameraStarted value)? flipCameraStarted,
-    TResult? Function(_MuteAudioStarted value)? muteAudioStarted,
+    TResult? Function(_ChangeAudioFeatureStarted value)?
+        changeAudioFeatureStarted,
     TResult? Function(_MuteVideoStarted value)? muteVideoStarted,
   }) {
     return started?.call(this);
@@ -186,7 +191,8 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_FlipCameraStarted value)? flipCameraStarted,
-    TResult Function(_MuteAudioStarted value)? muteAudioStarted,
+    TResult Function(_ChangeAudioFeatureStarted value)?
+        changeAudioFeatureStarted,
     TResult Function(_MuteVideoStarted value)? muteVideoStarted,
     required TResult orElse(),
   }) {
@@ -241,7 +247,7 @@ class _$FlipCameraStartedImpl implements _FlipCameraStarted {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() flipCameraStarted,
-    required TResult Function() muteAudioStarted,
+    required TResult Function(bool? isDisabled) changeAudioFeatureStarted,
     required TResult Function() muteVideoStarted,
   }) {
     return flipCameraStarted();
@@ -252,7 +258,7 @@ class _$FlipCameraStartedImpl implements _FlipCameraStarted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? flipCameraStarted,
-    TResult? Function()? muteAudioStarted,
+    TResult? Function(bool? isDisabled)? changeAudioFeatureStarted,
     TResult? Function()? muteVideoStarted,
   }) {
     return flipCameraStarted?.call();
@@ -263,7 +269,7 @@ class _$FlipCameraStartedImpl implements _FlipCameraStarted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? flipCameraStarted,
-    TResult Function()? muteAudioStarted,
+    TResult Function(bool? isDisabled)? changeAudioFeatureStarted,
     TResult Function()? muteVideoStarted,
     required TResult orElse(),
   }) {
@@ -278,7 +284,8 @@ class _$FlipCameraStartedImpl implements _FlipCameraStarted {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_FlipCameraStarted value) flipCameraStarted,
-    required TResult Function(_MuteAudioStarted value) muteAudioStarted,
+    required TResult Function(_ChangeAudioFeatureStarted value)
+        changeAudioFeatureStarted,
     required TResult Function(_MuteVideoStarted value) muteVideoStarted,
   }) {
     return flipCameraStarted(this);
@@ -289,7 +296,8 @@ class _$FlipCameraStartedImpl implements _FlipCameraStarted {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_FlipCameraStarted value)? flipCameraStarted,
-    TResult? Function(_MuteAudioStarted value)? muteAudioStarted,
+    TResult? Function(_ChangeAudioFeatureStarted value)?
+        changeAudioFeatureStarted,
     TResult? Function(_MuteVideoStarted value)? muteVideoStarted,
   }) {
     return flipCameraStarted?.call(this);
@@ -300,7 +308,8 @@ class _$FlipCameraStartedImpl implements _FlipCameraStarted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_FlipCameraStarted value)? flipCameraStarted,
-    TResult Function(_MuteAudioStarted value)? muteAudioStarted,
+    TResult Function(_ChangeAudioFeatureStarted value)?
+        changeAudioFeatureStarted,
     TResult Function(_MuteVideoStarted value)? muteVideoStarted,
     required TResult orElse(),
   }) {
@@ -316,49 +325,80 @@ abstract class _FlipCameraStarted implements VideoCallControlEvent {
 }
 
 /// @nodoc
-abstract class _$$MuteAudioStartedImplCopyWith<$Res> {
-  factory _$$MuteAudioStartedImplCopyWith(_$MuteAudioStartedImpl value,
-          $Res Function(_$MuteAudioStartedImpl) then) =
-      __$$MuteAudioStartedImplCopyWithImpl<$Res>;
+abstract class _$$ChangeAudioFeatureStartedImplCopyWith<$Res> {
+  factory _$$ChangeAudioFeatureStartedImplCopyWith(
+          _$ChangeAudioFeatureStartedImpl value,
+          $Res Function(_$ChangeAudioFeatureStartedImpl) then) =
+      __$$ChangeAudioFeatureStartedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool? isDisabled});
 }
 
 /// @nodoc
-class __$$MuteAudioStartedImplCopyWithImpl<$Res>
-    extends _$VideoCallControlEventCopyWithImpl<$Res, _$MuteAudioStartedImpl>
-    implements _$$MuteAudioStartedImplCopyWith<$Res> {
-  __$$MuteAudioStartedImplCopyWithImpl(_$MuteAudioStartedImpl _value,
-      $Res Function(_$MuteAudioStartedImpl) _then)
+class __$$ChangeAudioFeatureStartedImplCopyWithImpl<$Res>
+    extends _$VideoCallControlEventCopyWithImpl<$Res,
+        _$ChangeAudioFeatureStartedImpl>
+    implements _$$ChangeAudioFeatureStartedImplCopyWith<$Res> {
+  __$$ChangeAudioFeatureStartedImplCopyWithImpl(
+      _$ChangeAudioFeatureStartedImpl _value,
+      $Res Function(_$ChangeAudioFeatureStartedImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isDisabled = freezed,
+  }) {
+    return _then(_$ChangeAudioFeatureStartedImpl(
+      isDisabled: freezed == isDisabled
+          ? _value.isDisabled
+          : isDisabled // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$MuteAudioStartedImpl implements _MuteAudioStarted {
-  const _$MuteAudioStartedImpl();
+class _$ChangeAudioFeatureStartedImpl implements _ChangeAudioFeatureStarted {
+  const _$ChangeAudioFeatureStartedImpl({this.isDisabled});
+
+  @override
+  final bool? isDisabled;
 
   @override
   String toString() {
-    return 'VideoCallControlEvent.muteAudioStarted()';
+    return 'VideoCallControlEvent.changeAudioFeatureStarted(isDisabled: $isDisabled)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$MuteAudioStartedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeAudioFeatureStartedImpl &&
+            (identical(other.isDisabled, isDisabled) ||
+                other.isDisabled == isDisabled));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isDisabled);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeAudioFeatureStartedImplCopyWith<_$ChangeAudioFeatureStartedImpl>
+      get copyWith => __$$ChangeAudioFeatureStartedImplCopyWithImpl<
+          _$ChangeAudioFeatureStartedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() flipCameraStarted,
-    required TResult Function() muteAudioStarted,
+    required TResult Function(bool? isDisabled) changeAudioFeatureStarted,
     required TResult Function() muteVideoStarted,
   }) {
-    return muteAudioStarted();
+    return changeAudioFeatureStarted(isDisabled);
   }
 
   @override
@@ -366,10 +406,10 @@ class _$MuteAudioStartedImpl implements _MuteAudioStarted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? flipCameraStarted,
-    TResult? Function()? muteAudioStarted,
+    TResult? Function(bool? isDisabled)? changeAudioFeatureStarted,
     TResult? Function()? muteVideoStarted,
   }) {
-    return muteAudioStarted?.call();
+    return changeAudioFeatureStarted?.call(isDisabled);
   }
 
   @override
@@ -377,12 +417,12 @@ class _$MuteAudioStartedImpl implements _MuteAudioStarted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? flipCameraStarted,
-    TResult Function()? muteAudioStarted,
+    TResult Function(bool? isDisabled)? changeAudioFeatureStarted,
     TResult Function()? muteVideoStarted,
     required TResult orElse(),
   }) {
-    if (muteAudioStarted != null) {
-      return muteAudioStarted();
+    if (changeAudioFeatureStarted != null) {
+      return changeAudioFeatureStarted(isDisabled);
     }
     return orElse();
   }
@@ -392,10 +432,11 @@ class _$MuteAudioStartedImpl implements _MuteAudioStarted {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_FlipCameraStarted value) flipCameraStarted,
-    required TResult Function(_MuteAudioStarted value) muteAudioStarted,
+    required TResult Function(_ChangeAudioFeatureStarted value)
+        changeAudioFeatureStarted,
     required TResult Function(_MuteVideoStarted value) muteVideoStarted,
   }) {
-    return muteAudioStarted(this);
+    return changeAudioFeatureStarted(this);
   }
 
   @override
@@ -403,10 +444,11 @@ class _$MuteAudioStartedImpl implements _MuteAudioStarted {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_FlipCameraStarted value)? flipCameraStarted,
-    TResult? Function(_MuteAudioStarted value)? muteAudioStarted,
+    TResult? Function(_ChangeAudioFeatureStarted value)?
+        changeAudioFeatureStarted,
     TResult? Function(_MuteVideoStarted value)? muteVideoStarted,
   }) {
-    return muteAudioStarted?.call(this);
+    return changeAudioFeatureStarted?.call(this);
   }
 
   @override
@@ -414,19 +456,26 @@ class _$MuteAudioStartedImpl implements _MuteAudioStarted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_FlipCameraStarted value)? flipCameraStarted,
-    TResult Function(_MuteAudioStarted value)? muteAudioStarted,
+    TResult Function(_ChangeAudioFeatureStarted value)?
+        changeAudioFeatureStarted,
     TResult Function(_MuteVideoStarted value)? muteVideoStarted,
     required TResult orElse(),
   }) {
-    if (muteAudioStarted != null) {
-      return muteAudioStarted(this);
+    if (changeAudioFeatureStarted != null) {
+      return changeAudioFeatureStarted(this);
     }
     return orElse();
   }
 }
 
-abstract class _MuteAudioStarted implements VideoCallControlEvent {
-  const factory _MuteAudioStarted() = _$MuteAudioStartedImpl;
+abstract class _ChangeAudioFeatureStarted implements VideoCallControlEvent {
+  const factory _ChangeAudioFeatureStarted({final bool? isDisabled}) =
+      _$ChangeAudioFeatureStartedImpl;
+
+  bool? get isDisabled;
+  @JsonKey(ignore: true)
+  _$$ChangeAudioFeatureStartedImplCopyWith<_$ChangeAudioFeatureStartedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -469,7 +518,7 @@ class _$MuteVideoStartedImpl implements _MuteVideoStarted {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() flipCameraStarted,
-    required TResult Function() muteAudioStarted,
+    required TResult Function(bool? isDisabled) changeAudioFeatureStarted,
     required TResult Function() muteVideoStarted,
   }) {
     return muteVideoStarted();
@@ -480,7 +529,7 @@ class _$MuteVideoStartedImpl implements _MuteVideoStarted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? flipCameraStarted,
-    TResult? Function()? muteAudioStarted,
+    TResult? Function(bool? isDisabled)? changeAudioFeatureStarted,
     TResult? Function()? muteVideoStarted,
   }) {
     return muteVideoStarted?.call();
@@ -491,7 +540,7 @@ class _$MuteVideoStartedImpl implements _MuteVideoStarted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? flipCameraStarted,
-    TResult Function()? muteAudioStarted,
+    TResult Function(bool? isDisabled)? changeAudioFeatureStarted,
     TResult Function()? muteVideoStarted,
     required TResult orElse(),
   }) {
@@ -506,7 +555,8 @@ class _$MuteVideoStartedImpl implements _MuteVideoStarted {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_FlipCameraStarted value) flipCameraStarted,
-    required TResult Function(_MuteAudioStarted value) muteAudioStarted,
+    required TResult Function(_ChangeAudioFeatureStarted value)
+        changeAudioFeatureStarted,
     required TResult Function(_MuteVideoStarted value) muteVideoStarted,
   }) {
     return muteVideoStarted(this);
@@ -517,7 +567,8 @@ class _$MuteVideoStartedImpl implements _MuteVideoStarted {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_FlipCameraStarted value)? flipCameraStarted,
-    TResult? Function(_MuteAudioStarted value)? muteAudioStarted,
+    TResult? Function(_ChangeAudioFeatureStarted value)?
+        changeAudioFeatureStarted,
     TResult? Function(_MuteVideoStarted value)? muteVideoStarted,
   }) {
     return muteVideoStarted?.call(this);
@@ -528,7 +579,8 @@ class _$MuteVideoStartedImpl implements _MuteVideoStarted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_FlipCameraStarted value)? flipCameraStarted,
-    TResult Function(_MuteAudioStarted value)? muteAudioStarted,
+    TResult Function(_ChangeAudioFeatureStarted value)?
+        changeAudioFeatureStarted,
     TResult Function(_MuteVideoStarted value)? muteVideoStarted,
     required TResult orElse(),
   }) {
@@ -545,39 +597,42 @@ abstract class _MuteVideoStarted implements VideoCallControlEvent {
 
 /// @nodoc
 mixin _$VideoCallControlState {
-  State<bool> get isAudioMuted => throw _privateConstructorUsedError;
-  State<bool> get isVideoMuted => throw _privateConstructorUsedError;
-  State<bool> get isUsingFrontCamera => throw _privateConstructorUsedError;
+  DataState<bool> get isAudioMuted => throw _privateConstructorUsedError;
+  DataState<bool> get isVideoMuted => throw _privateConstructorUsedError;
+  DataState<bool> get isUsingFrontCamera => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(State<bool> isAudioMuted,
-            State<bool> isVideoMuted, State<bool> isUsingFrontCamera)
+    required TResult Function(DataState<bool> isAudioMuted,
+            DataState<bool> isVideoMuted, DataState<bool> isUsingFrontCamera)
         initial,
     required TResult Function(
-            State<bool> isAudioMuted,
-            State<bool> isVideoMuted,
-            State<bool> isUsingFrontCamera,
+            DataState<bool> isAudioMuted,
+            DataState<bool> isVideoMuted,
+            DataState<bool> isUsingFrontCamera,
             Failure failure)
         changeControlFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
-            State<bool> isUsingFrontCamera)?
+    TResult? Function(DataState<bool> isAudioMuted,
+            DataState<bool> isVideoMuted, DataState<bool> isUsingFrontCamera)?
         initial,
-    TResult? Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
-            State<bool> isUsingFrontCamera, Failure failure)?
+    TResult? Function(
+            DataState<bool> isAudioMuted,
+            DataState<bool> isVideoMuted,
+            DataState<bool> isUsingFrontCamera,
+            Failure failure)?
         changeControlFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
-            State<bool> isUsingFrontCamera)?
+    TResult Function(DataState<bool> isAudioMuted, DataState<bool> isVideoMuted,
+            DataState<bool> isUsingFrontCamera)?
         initial,
-    TResult Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
-            State<bool> isUsingFrontCamera, Failure failure)?
+    TResult Function(DataState<bool> isAudioMuted, DataState<bool> isVideoMuted,
+            DataState<bool> isUsingFrontCamera, Failure failure)?
         changeControlFailure,
     required TResult orElse(),
   }) =>
@@ -614,9 +669,9 @@ abstract class $VideoCallControlStateCopyWith<$Res> {
       _$VideoCallControlStateCopyWithImpl<$Res, VideoCallControlState>;
   @useResult
   $Res call(
-      {State<bool> isAudioMuted,
-      State<bool> isVideoMuted,
-      State<bool> isUsingFrontCamera});
+      {DataState<bool> isAudioMuted,
+      DataState<bool> isVideoMuted,
+      DataState<bool> isUsingFrontCamera});
 }
 
 /// @nodoc
@@ -641,15 +696,15 @@ class _$VideoCallControlStateCopyWithImpl<$Res,
       isAudioMuted: null == isAudioMuted
           ? _value.isAudioMuted
           : isAudioMuted // ignore: cast_nullable_to_non_nullable
-              as State<bool>,
+              as DataState<bool>,
       isVideoMuted: null == isVideoMuted
           ? _value.isVideoMuted
           : isVideoMuted // ignore: cast_nullable_to_non_nullable
-              as State<bool>,
+              as DataState<bool>,
       isUsingFrontCamera: null == isUsingFrontCamera
           ? _value.isUsingFrontCamera
           : isUsingFrontCamera // ignore: cast_nullable_to_non_nullable
-              as State<bool>,
+              as DataState<bool>,
     ) as $Val);
   }
 }
@@ -663,9 +718,9 @@ abstract class _$$InitialImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {State<bool> isAudioMuted,
-      State<bool> isVideoMuted,
-      State<bool> isUsingFrontCamera});
+      {DataState<bool> isAudioMuted,
+      DataState<bool> isVideoMuted,
+      DataState<bool> isUsingFrontCamera});
 }
 
 /// @nodoc
@@ -687,15 +742,15 @@ class __$$InitialImplCopyWithImpl<$Res>
       isAudioMuted: null == isAudioMuted
           ? _value.isAudioMuted
           : isAudioMuted // ignore: cast_nullable_to_non_nullable
-              as State<bool>,
+              as DataState<bool>,
       isVideoMuted: null == isVideoMuted
           ? _value.isVideoMuted
           : isVideoMuted // ignore: cast_nullable_to_non_nullable
-              as State<bool>,
+              as DataState<bool>,
       isUsingFrontCamera: null == isUsingFrontCamera
           ? _value.isUsingFrontCamera
           : isUsingFrontCamera // ignore: cast_nullable_to_non_nullable
-              as State<bool>,
+              as DataState<bool>,
     ));
   }
 }
@@ -704,19 +759,19 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 class _$InitialImpl implements _Initial {
   const _$InitialImpl(
-      {this.isAudioMuted = const State(true),
-      this.isVideoMuted = const State(false),
-      this.isUsingFrontCamera = const State(false)});
+      {this.isAudioMuted = const DataState(true),
+      this.isVideoMuted = const DataState(false),
+      this.isUsingFrontCamera = const DataState(false)});
 
   @override
   @JsonKey()
-  final State<bool> isAudioMuted;
+  final DataState<bool> isAudioMuted;
   @override
   @JsonKey()
-  final State<bool> isVideoMuted;
+  final DataState<bool> isVideoMuted;
   @override
   @JsonKey()
-  final State<bool> isUsingFrontCamera;
+  final DataState<bool> isUsingFrontCamera;
 
   @override
   String toString() {
@@ -749,13 +804,13 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(State<bool> isAudioMuted,
-            State<bool> isVideoMuted, State<bool> isUsingFrontCamera)
+    required TResult Function(DataState<bool> isAudioMuted,
+            DataState<bool> isVideoMuted, DataState<bool> isUsingFrontCamera)
         initial,
     required TResult Function(
-            State<bool> isAudioMuted,
-            State<bool> isVideoMuted,
-            State<bool> isUsingFrontCamera,
+            DataState<bool> isAudioMuted,
+            DataState<bool> isVideoMuted,
+            DataState<bool> isUsingFrontCamera,
             Failure failure)
         changeControlFailure,
   }) {
@@ -765,11 +820,14 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
-            State<bool> isUsingFrontCamera)?
+    TResult? Function(DataState<bool> isAudioMuted,
+            DataState<bool> isVideoMuted, DataState<bool> isUsingFrontCamera)?
         initial,
-    TResult? Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
-            State<bool> isUsingFrontCamera, Failure failure)?
+    TResult? Function(
+            DataState<bool> isAudioMuted,
+            DataState<bool> isVideoMuted,
+            DataState<bool> isUsingFrontCamera,
+            Failure failure)?
         changeControlFailure,
   }) {
     return initial?.call(isAudioMuted, isVideoMuted, isUsingFrontCamera);
@@ -778,11 +836,11 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
-            State<bool> isUsingFrontCamera)?
+    TResult Function(DataState<bool> isAudioMuted, DataState<bool> isVideoMuted,
+            DataState<bool> isUsingFrontCamera)?
         initial,
-    TResult Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
-            State<bool> isUsingFrontCamera, Failure failure)?
+    TResult Function(DataState<bool> isAudioMuted, DataState<bool> isVideoMuted,
+            DataState<bool> isUsingFrontCamera, Failure failure)?
         changeControlFailure,
     required TResult orElse(),
   }) {
@@ -826,16 +884,16 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements VideoCallControlState {
   const factory _Initial(
-      {final State<bool> isAudioMuted,
-      final State<bool> isVideoMuted,
-      final State<bool> isUsingFrontCamera}) = _$InitialImpl;
+      {final DataState<bool> isAudioMuted,
+      final DataState<bool> isVideoMuted,
+      final DataState<bool> isUsingFrontCamera}) = _$InitialImpl;
 
   @override
-  State<bool> get isAudioMuted;
+  DataState<bool> get isAudioMuted;
   @override
-  State<bool> get isVideoMuted;
+  DataState<bool> get isVideoMuted;
   @override
-  State<bool> get isUsingFrontCamera;
+  DataState<bool> get isUsingFrontCamera;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
@@ -851,9 +909,9 @@ abstract class _$$ChangeControlFailureImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {State<bool> isAudioMuted,
-      State<bool> isVideoMuted,
-      State<bool> isUsingFrontCamera,
+      {DataState<bool> isAudioMuted,
+      DataState<bool> isVideoMuted,
+      DataState<bool> isUsingFrontCamera,
       Failure failure});
 }
 
@@ -878,15 +936,15 @@ class __$$ChangeControlFailureImplCopyWithImpl<$Res>
       isAudioMuted: null == isAudioMuted
           ? _value.isAudioMuted
           : isAudioMuted // ignore: cast_nullable_to_non_nullable
-              as State<bool>,
+              as DataState<bool>,
       isVideoMuted: null == isVideoMuted
           ? _value.isVideoMuted
           : isVideoMuted // ignore: cast_nullable_to_non_nullable
-              as State<bool>,
+              as DataState<bool>,
       isUsingFrontCamera: null == isUsingFrontCamera
           ? _value.isUsingFrontCamera
           : isUsingFrontCamera // ignore: cast_nullable_to_non_nullable
-              as State<bool>,
+              as DataState<bool>,
       failure: null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -905,11 +963,11 @@ class _$ChangeControlFailureImpl implements _ChangeControlFailure {
       required this.failure});
 
   @override
-  final State<bool> isAudioMuted;
+  final DataState<bool> isAudioMuted;
   @override
-  final State<bool> isVideoMuted;
+  final DataState<bool> isVideoMuted;
   @override
-  final State<bool> isUsingFrontCamera;
+  final DataState<bool> isUsingFrontCamera;
   @override
   final Failure failure;
 
@@ -947,13 +1005,13 @@ class _$ChangeControlFailureImpl implements _ChangeControlFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(State<bool> isAudioMuted,
-            State<bool> isVideoMuted, State<bool> isUsingFrontCamera)
+    required TResult Function(DataState<bool> isAudioMuted,
+            DataState<bool> isVideoMuted, DataState<bool> isUsingFrontCamera)
         initial,
     required TResult Function(
-            State<bool> isAudioMuted,
-            State<bool> isVideoMuted,
-            State<bool> isUsingFrontCamera,
+            DataState<bool> isAudioMuted,
+            DataState<bool> isVideoMuted,
+            DataState<bool> isUsingFrontCamera,
             Failure failure)
         changeControlFailure,
   }) {
@@ -964,11 +1022,14 @@ class _$ChangeControlFailureImpl implements _ChangeControlFailure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
-            State<bool> isUsingFrontCamera)?
+    TResult? Function(DataState<bool> isAudioMuted,
+            DataState<bool> isVideoMuted, DataState<bool> isUsingFrontCamera)?
         initial,
-    TResult? Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
-            State<bool> isUsingFrontCamera, Failure failure)?
+    TResult? Function(
+            DataState<bool> isAudioMuted,
+            DataState<bool> isVideoMuted,
+            DataState<bool> isUsingFrontCamera,
+            Failure failure)?
         changeControlFailure,
   }) {
     return changeControlFailure?.call(
@@ -978,11 +1039,11 @@ class _$ChangeControlFailureImpl implements _ChangeControlFailure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
-            State<bool> isUsingFrontCamera)?
+    TResult Function(DataState<bool> isAudioMuted, DataState<bool> isVideoMuted,
+            DataState<bool> isUsingFrontCamera)?
         initial,
-    TResult Function(State<bool> isAudioMuted, State<bool> isVideoMuted,
-            State<bool> isUsingFrontCamera, Failure failure)?
+    TResult Function(DataState<bool> isAudioMuted, DataState<bool> isVideoMuted,
+            DataState<bool> isUsingFrontCamera, Failure failure)?
         changeControlFailure,
     required TResult orElse(),
   }) {
@@ -1027,17 +1088,17 @@ class _$ChangeControlFailureImpl implements _ChangeControlFailure {
 
 abstract class _ChangeControlFailure implements VideoCallControlState {
   const factory _ChangeControlFailure(
-      {required final State<bool> isAudioMuted,
-      required final State<bool> isVideoMuted,
-      required final State<bool> isUsingFrontCamera,
+      {required final DataState<bool> isAudioMuted,
+      required final DataState<bool> isVideoMuted,
+      required final DataState<bool> isUsingFrontCamera,
       required final Failure failure}) = _$ChangeControlFailureImpl;
 
   @override
-  State<bool> get isAudioMuted;
+  DataState<bool> get isAudioMuted;
   @override
-  State<bool> get isVideoMuted;
+  DataState<bool> get isVideoMuted;
   @override
-  State<bool> get isUsingFrontCamera;
+  DataState<bool> get isUsingFrontCamera;
   Failure get failure;
   @override
   @JsonKey(ignore: true)

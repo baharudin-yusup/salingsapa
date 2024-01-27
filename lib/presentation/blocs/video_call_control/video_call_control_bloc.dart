@@ -5,7 +5,7 @@ import '../../../core/errors/failures.dart';
 import '../../../domain/usecases/flip_video_call_camera.dart';
 import '../../../domain/usecases/mute_video_call_audio.dart';
 import '../../../domain/usecases/mute_video_call_video.dart';
-import '../../common/state.dart';
+import '../../common/data_state.dart';
 
 part 'video_call_control_bloc.freezed.dart';
 part 'video_call_control_event.dart';
@@ -19,7 +19,7 @@ class VideoCallControlBloc
     this._muteVideoCallVideo,
   ) : super(const VideoCallControlState.initial()) {
     on<_FlipCameraStarted>(_onFlipCamera);
-    on<_MuteAudioStarted>(_onMuteAudio);
+    on<_ChangeAudioFeatureStarted>(_onChangeAudioFeature);
     on<_MuteVideoStarted>(_onMuteVideo);
   }
 
@@ -99,7 +99,7 @@ class VideoCallControlBloc
               VideoCallControlState.initial(
                 isAudioMuted: isAudioMuted,
                 isVideoMuted: isVideoMuted,
-                isUsingFrontCamera: State(!state.isUsingFrontCamera.data),
+                isUsingFrontCamera: DataState(!state.isUsingFrontCamera.data),
               ),
             );
           },
@@ -109,7 +109,7 @@ class VideoCallControlBloc
               VideoCallControlState.initial(
                 isAudioMuted: isAudioMuted,
                 isVideoMuted: isVideoMuted,
-                isUsingFrontCamera: State(!state.isUsingFrontCamera.data),
+                isUsingFrontCamera: DataState(!state.isUsingFrontCamera.data),
               ),
             );
           },
@@ -118,8 +118,8 @@ class VideoCallControlBloc
     );
   }
 
-  void _onMuteAudio(
-      _MuteAudioStarted event, Emitter<VideoCallControlState> emit) async {
+  void _onChangeAudioFeature(_ChangeAudioFeatureStarted event,
+      Emitter<VideoCallControlState> emit) async {
     final isPreConditionValid = state.when(
       initial: (isAudioMuted, isVideoMuted, isUsingFrontCamera) {
         if (isAudioMuted.isLoading) {
@@ -155,7 +155,7 @@ class VideoCallControlBloc
     }
 
     final toggleAudioMuteFeature =
-        await _muteVideoCallAudio(!state.isAudioMuted.data);
+        await _muteVideoCallAudio(event.isDisabled ?? !state.isAudioMuted.data);
     toggleAudioMuteFeature.fold(
       (failure) {
         state.when(
@@ -187,7 +187,7 @@ class VideoCallControlBloc
           initial: (isAudioMuted, isVideoMuted, isUsingFrontCamera) {
             emit(
               VideoCallControlState.initial(
-                isAudioMuted: State(!isAudioMuted.data),
+                isAudioMuted: DataState(!isAudioMuted.data),
                 isVideoMuted: isVideoMuted,
                 isUsingFrontCamera: isUsingFrontCamera,
               ),
@@ -197,7 +197,7 @@ class VideoCallControlBloc
               (isAudioMuted, isVideoMuted, isUsingFrontCamera, _) {
             emit(
               VideoCallControlState.initial(
-                isAudioMuted: State(!isAudioMuted.data),
+                isAudioMuted: DataState(!isAudioMuted.data),
                 isVideoMuted: isVideoMuted,
                 isUsingFrontCamera: isUsingFrontCamera,
               ),
@@ -278,7 +278,7 @@ class VideoCallControlBloc
             emit(
               VideoCallControlState.initial(
                 isAudioMuted: isAudioMuted,
-                isVideoMuted: State(!isVideoMuted.data),
+                isVideoMuted: DataState(!isVideoMuted.data),
                 isUsingFrontCamera: isUsingFrontCamera,
               ),
             );
@@ -288,7 +288,7 @@ class VideoCallControlBloc
             emit(
               VideoCallControlState.initial(
                 isAudioMuted: isAudioMuted,
-                isVideoMuted: State(!isVideoMuted.data),
+                isVideoMuted: DataState(!isVideoMuted.data),
                 isUsingFrontCamera: isUsingFrontCamera,
               ),
             );

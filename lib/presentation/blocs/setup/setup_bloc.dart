@@ -3,6 +3,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/errors/failures.dart';
 import '../../../core/utils/logger.dart';
+import '../../../data/constants/firebase_exception_code.dart';
+import '../../../data/extensions/extensions.dart';
 import '../../../domain/usecases/resend_otp.dart';
 import '../../../domain/usecases/verify_otp.dart';
 import '../../../domain/usecases/verify_phone_number.dart';
@@ -23,7 +25,7 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
   ) : super(const SetupState.inputPhoneNumberInitial()) {
     on<_InputPhoneNumberStarted>(_onStartInputPhoneNumber);
     on<_PhoneNumberChanged>(_onPhoneNumberChanged);
-    on<_ButtonDonePressed>(_onButtonDonePressed);
+    on<_SubmitPhoneNumberStarted>(_startSubmitPhoneNumber);
 
     // Handle OTP events
     on<_InputOtpStarted>(_onStartInputOtp);
@@ -42,15 +44,26 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
     emit(SetupState.inputPhoneNumberInitial(event.phoneNumber));
   }
 
-  void _onButtonDonePressed(
-      _ButtonDonePressed event, Emitter<SetupState> emit) async {
+  void _startSubmitPhoneNumber(
+      _SubmitPhoneNumberStarted event, Emitter<SetupState> emit) async {
     emit(SetupState.inputPhoneNumberVerifyInProgress(state.phoneNumber));
-    await _verifyPhoneNumber('+62${state.phoneNumber}');
-    emit(SetupState.inputPhoneNumberSuccess('+62${state.phoneNumber}'));
+    final verifyPhoneNumberResult =
+        await _verifyPhoneNumber(state.phoneNumber.toFormattedPhoneNumber());
+    verifyPhoneNumberResult.fold(
+      (failure) =>
+          emit(SetupState.inputPhoneNumberFailure(state.phoneNumber, failure)),
+      (_) => emit(SetupState.inputPhoneNumberSuccess(state.phoneNumber)),
+    );
   }
 
   void _onStartInputOtp(_InputOtpStarted event, Emitter<SetupState> emit) {
     state.maybeWhen(
+      inputPhoneNumberFailure: (phoneNumber, failure) {
+        if (failure.code != AppFailureCode.autoSignInFailed) {
+          return;
+        }
+        emit(SetupState.inputOtpInitial(phoneNumber));
+      },
       inputPhoneNumberSuccess: (phoneNumber) {
         emit(SetupState.inputOtpInitial(phoneNumber));
       },
@@ -59,11 +72,17 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
   }
 
   void _inputOtp(_OtpChanged event, Emitter<SetupState> emit) async {
+    Logger.print('change OTP input started...');
+    Logger.print('current state = ${state.runtimeType}');
     final newOtp = event.otp;
     state.maybeWhen(
+      resendOtpFailure: (phoneNumber, _, failure) {
+        emit(SetupState.inputOtpInitial(phoneNumber, newOtp));
+      },
       inputOtpInitial: (phoneNumber, _) {
         emit(SetupState.inputOtpInitial(phoneNumber, newOtp));
         if (newOtp.length == 6) {
+          Logger.print('submitting OTP code started...');
           add(const SetupEvent.submitOtpStarted());
         }
       },
@@ -105,6 +124,9 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
       (failure) {
         Logger.error(failure, event: 'resending OTP');
         state.maybeWhen(
+          inputPhoneNumberFailure: (phoneNumber, _) {
+            emit(SetupState.resendOtpFailure(phoneNumber, '', failure));
+          },
           inputOtpInitial: (phoneNumber, otp) {
             emit(SetupState.resendOtpFailure(phoneNumber, otp, failure));
           },
@@ -115,6 +137,9 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
             emit(SetupState.resendOtpFailure(phoneNumber, otp, failure));
           },
           resendOtpInProgress: (phoneNumber, otp) {
+            emit(SetupState.resendOtpFailure(phoneNumber, otp, failure));
+          },
+          resendOtpFailure: (phoneNumber, otp, _) {
             emit(SetupState.resendOtpFailure(phoneNumber, otp, failure));
           },
           orElse: () {},
@@ -140,6 +165,7 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
 
   void _onStartSubmitOtp(
       _SubmitOtpStarted event, Emitter<SetupState> emit) async {
+    Logger.print('submit otp code started...');
     final validOtp = state.maybeWhen(
       inputOtpInitial: (phoneNumber, otp) {
         if (otp.length != 6) {
@@ -157,9 +183,12 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
     );
 
     if (validOtp == null) {
+      Logger.print('otp code is invalid!');
       return;
     }
 
+    Logger.print('verifying otp started...');
+    Logger.print('valid otp code = $validOtp');
     final result = await _verifyOtp(validOtp);
     result.fold(
       (failure) {

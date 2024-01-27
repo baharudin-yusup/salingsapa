@@ -55,7 +55,7 @@ mixin _$SetupEvent {
     required TResult Function(_InputPhoneNumberStarted value)
         inputPhoneNumberStarted,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
-    required TResult Function(_ButtonDonePressed value)
+    required TResult Function(_SubmitPhoneNumberStarted value)
         submitPhoneNumberStarted,
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
@@ -67,7 +67,8 @@ mixin _$SetupEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult? Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult? Function(_SubmitPhoneNumberStarted value)?
+        submitPhoneNumberStarted,
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
@@ -78,7 +79,7 @@ mixin _$SetupEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult Function(_SubmitPhoneNumberStarted value)? submitPhoneNumberStarted,
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
@@ -196,7 +197,7 @@ class _$InputPhoneNumberStartedImpl implements _InputPhoneNumberStarted {
     required TResult Function(_InputPhoneNumberStarted value)
         inputPhoneNumberStarted,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
-    required TResult Function(_ButtonDonePressed value)
+    required TResult Function(_SubmitPhoneNumberStarted value)
         submitPhoneNumberStarted,
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
@@ -211,7 +212,8 @@ class _$InputPhoneNumberStartedImpl implements _InputPhoneNumberStarted {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult? Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult? Function(_SubmitPhoneNumberStarted value)?
+        submitPhoneNumberStarted,
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
@@ -225,7 +227,7 @@ class _$InputPhoneNumberStartedImpl implements _InputPhoneNumberStarted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult Function(_SubmitPhoneNumberStarted value)? submitPhoneNumberStarted,
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
@@ -358,7 +360,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
     required TResult Function(_InputPhoneNumberStarted value)
         inputPhoneNumberStarted,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
-    required TResult Function(_ButtonDonePressed value)
+    required TResult Function(_SubmitPhoneNumberStarted value)
         submitPhoneNumberStarted,
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
@@ -373,7 +375,8 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult? Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult? Function(_SubmitPhoneNumberStarted value)?
+        submitPhoneNumberStarted,
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
@@ -387,7 +390,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult Function(_SubmitPhoneNumberStarted value)? submitPhoneNumberStarted,
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
@@ -412,25 +415,27 @@ abstract class _PhoneNumberChanged implements SetupEvent {
 }
 
 /// @nodoc
-abstract class _$$ButtonDonePressedImplCopyWith<$Res> {
-  factory _$$ButtonDonePressedImplCopyWith(_$ButtonDonePressedImpl value,
-          $Res Function(_$ButtonDonePressedImpl) then) =
-      __$$ButtonDonePressedImplCopyWithImpl<$Res>;
+abstract class _$$SubmitPhoneNumberStartedImplCopyWith<$Res> {
+  factory _$$SubmitPhoneNumberStartedImplCopyWith(
+          _$SubmitPhoneNumberStartedImpl value,
+          $Res Function(_$SubmitPhoneNumberStartedImpl) then) =
+      __$$SubmitPhoneNumberStartedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ButtonDonePressedImplCopyWithImpl<$Res>
-    extends _$SetupEventCopyWithImpl<$Res, _$ButtonDonePressedImpl>
-    implements _$$ButtonDonePressedImplCopyWith<$Res> {
-  __$$ButtonDonePressedImplCopyWithImpl(_$ButtonDonePressedImpl _value,
-      $Res Function(_$ButtonDonePressedImpl) _then)
+class __$$SubmitPhoneNumberStartedImplCopyWithImpl<$Res>
+    extends _$SetupEventCopyWithImpl<$Res, _$SubmitPhoneNumberStartedImpl>
+    implements _$$SubmitPhoneNumberStartedImplCopyWith<$Res> {
+  __$$SubmitPhoneNumberStartedImplCopyWithImpl(
+      _$SubmitPhoneNumberStartedImpl _value,
+      $Res Function(_$SubmitPhoneNumberStartedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ButtonDonePressedImpl implements _ButtonDonePressed {
-  const _$ButtonDonePressedImpl();
+class _$SubmitPhoneNumberStartedImpl implements _SubmitPhoneNumberStarted {
+  const _$SubmitPhoneNumberStartedImpl();
 
   @override
   String toString() {
@@ -440,7 +445,8 @@ class _$ButtonDonePressedImpl implements _ButtonDonePressed {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ButtonDonePressedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SubmitPhoneNumberStartedImpl);
   }
 
   @override
@@ -498,7 +504,7 @@ class _$ButtonDonePressedImpl implements _ButtonDonePressed {
     required TResult Function(_InputPhoneNumberStarted value)
         inputPhoneNumberStarted,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
-    required TResult Function(_ButtonDonePressed value)
+    required TResult Function(_SubmitPhoneNumberStarted value)
         submitPhoneNumberStarted,
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
@@ -513,7 +519,8 @@ class _$ButtonDonePressedImpl implements _ButtonDonePressed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult? Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult? Function(_SubmitPhoneNumberStarted value)?
+        submitPhoneNumberStarted,
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
@@ -527,7 +534,7 @@ class _$ButtonDonePressedImpl implements _ButtonDonePressed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult Function(_SubmitPhoneNumberStarted value)? submitPhoneNumberStarted,
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
@@ -541,8 +548,8 @@ class _$ButtonDonePressedImpl implements _ButtonDonePressed {
   }
 }
 
-abstract class _ButtonDonePressed implements SetupEvent {
-  const factory _ButtonDonePressed() = _$ButtonDonePressedImpl;
+abstract class _SubmitPhoneNumberStarted implements SetupEvent {
+  const factory _SubmitPhoneNumberStarted() = _$SubmitPhoneNumberStartedImpl;
 }
 
 /// @nodoc
@@ -632,7 +639,7 @@ class _$InputOtpStartedImpl implements _InputOtpStarted {
     required TResult Function(_InputPhoneNumberStarted value)
         inputPhoneNumberStarted,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
-    required TResult Function(_ButtonDonePressed value)
+    required TResult Function(_SubmitPhoneNumberStarted value)
         submitPhoneNumberStarted,
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
@@ -647,7 +654,8 @@ class _$InputOtpStartedImpl implements _InputOtpStarted {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult? Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult? Function(_SubmitPhoneNumberStarted value)?
+        submitPhoneNumberStarted,
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
@@ -661,7 +669,7 @@ class _$InputOtpStartedImpl implements _InputOtpStarted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult Function(_SubmitPhoneNumberStarted value)? submitPhoneNumberStarted,
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
@@ -792,7 +800,7 @@ class _$OtpChangedImpl implements _OtpChanged {
     required TResult Function(_InputPhoneNumberStarted value)
         inputPhoneNumberStarted,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
-    required TResult Function(_ButtonDonePressed value)
+    required TResult Function(_SubmitPhoneNumberStarted value)
         submitPhoneNumberStarted,
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
@@ -807,7 +815,8 @@ class _$OtpChangedImpl implements _OtpChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult? Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult? Function(_SubmitPhoneNumberStarted value)?
+        submitPhoneNumberStarted,
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
@@ -821,7 +830,7 @@ class _$OtpChangedImpl implements _OtpChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult Function(_SubmitPhoneNumberStarted value)? submitPhoneNumberStarted,
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
@@ -931,7 +940,7 @@ class _$SubmitOtpStartedImpl implements _SubmitOtpStarted {
     required TResult Function(_InputPhoneNumberStarted value)
         inputPhoneNumberStarted,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
-    required TResult Function(_ButtonDonePressed value)
+    required TResult Function(_SubmitPhoneNumberStarted value)
         submitPhoneNumberStarted,
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
@@ -946,7 +955,8 @@ class _$SubmitOtpStartedImpl implements _SubmitOtpStarted {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult? Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult? Function(_SubmitPhoneNumberStarted value)?
+        submitPhoneNumberStarted,
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
@@ -960,7 +970,7 @@ class _$SubmitOtpStartedImpl implements _SubmitOtpStarted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult Function(_SubmitPhoneNumberStarted value)? submitPhoneNumberStarted,
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
@@ -1065,7 +1075,7 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
     required TResult Function(_InputPhoneNumberStarted value)
         inputPhoneNumberStarted,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
-    required TResult Function(_ButtonDonePressed value)
+    required TResult Function(_SubmitPhoneNumberStarted value)
         submitPhoneNumberStarted,
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
@@ -1080,7 +1090,8 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult? Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult? Function(_SubmitPhoneNumberStarted value)?
+        submitPhoneNumberStarted,
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
@@ -1094,7 +1105,7 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
-    TResult Function(_ButtonDonePressed value)? submitPhoneNumberStarted,
+    TResult Function(_SubmitPhoneNumberStarted value)? submitPhoneNumberStarted,
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,

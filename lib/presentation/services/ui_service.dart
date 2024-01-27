@@ -55,18 +55,21 @@ class UiServiceImpl implements UiService {
         barrierDismissible: false,
         context: context,
         builder: (context) {
-          return Stack(
-            alignment: Alignment.center,
-            children: [
-              // Background blur effect
-              BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
-                child: Container(
-                  color: context.colorScheme().background.withOpacity(0.6),
+          return PopScope(
+            canPop: false,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                // Background blur effect
+                BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+                  child: Container(
+                    color: context.colorScheme().background.withOpacity(0.6),
+                  ),
                 ),
-              ),
-              const cupertino.CupertinoActivityIndicator(),
-            ],
+                const cupertino.CupertinoActivityIndicator(),
+              ],
+            ),
           );
         },
       );
@@ -76,18 +79,21 @@ class UiServiceImpl implements UiService {
         useSafeArea: true,
         context: context,
         builder: (context) {
-          return Center(
-            child: Container(
-              decoration: BoxDecoration(
-                color: context.colorScheme().background,
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(IntuitiveUiConstant.normalRadius),
+          return PopScope(
+            canPop: false,
+            child: Center(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: context.colorScheme().background,
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(IntuitiveUiConstant.normalRadius),
+                  ),
                 ),
-              ),
-              padding: const EdgeInsets.all(IntuitiveUiConstant.hugeSpace),
-              child: const SizedBox.square(
-                dimension: IntuitiveUiConstant.hugeSpace,
-                child: material.CircularProgressIndicator.adaptive(),
+                padding: const EdgeInsets.all(IntuitiveUiConstant.hugeSpace),
+                child: const SizedBox.square(
+                  dimension: IntuitiveUiConstant.hugeSpace,
+                  child: material.CircularProgressIndicator.adaptive(),
+                ),
               ),
             ),
           );

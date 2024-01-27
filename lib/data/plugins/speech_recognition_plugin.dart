@@ -118,12 +118,12 @@ class SpeechRecognitionPluginImpl implements SpeechRecognitionPlugin {
       createdAt: DateTime.now(),
     );
 
-    _statusController.sink
-        .add(isFinal ? RecognitionStatus.off : RecognitionStatus.listening);
-    _resultController.sink.add(caption);
-
     if (isFinal) {
       _currentUuid = _generateUuid();
     }
+
+    _statusController.sink
+        .add(isFinal ? RecognitionStatus.off : RecognitionStatus.listening);
+    _resultController.sink.add(caption);
   }
 }

@@ -13,19 +13,9 @@ class AccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AccountBloc, AccountState>(
-      listener: (context, state) {},
-      listenWhen: (previousState, currentState) {
-        return currentState.map(
-          initial: (_) => true,
-          updateInProgress: (_) => previousState.name == currentState.name,
-          updateFailure: (_) => true,
-        );
-      },
-      child: IntuitiveScaffold(
-        appBar: buildAppBar(context),
-        builder: buildBody,
-      ),
+    return IntuitiveScaffold(
+      appBar: buildAppBar(context),
+      builder: buildBody,
     );
   }
 

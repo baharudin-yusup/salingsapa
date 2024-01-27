@@ -146,10 +146,6 @@ class _IntuitiveOtpState extends State<IntuitiveOtp> {
         FocusScope.of(context).requestFocus(nextFocusNode);
       }
 
-      if (widget.onChanged != null) {
-        widget.onChanged!(controllers.map((e) => e.text.trim()).join());
-      }
-
       final currentValue = controllers.map((e) => e.text.trim()).join();
 
       /// Valid condition for calling onResult method:
@@ -157,6 +153,8 @@ class _IntuitiveOtpState extends State<IntuitiveOtp> {
       /// 2. first time value (previous value != current value)
       if (isAllFieldFilled && previousValue != currentValue) {
         widget.onCompleted(currentValue);
+      } else if (widget.onChanged != null) {
+        widget.onChanged!(controllers.map((e) => e.text.trim()).join());
       }
       previousValue = currentValue;
 

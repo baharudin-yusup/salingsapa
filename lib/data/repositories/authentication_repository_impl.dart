@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuthException;
 import 'package:rxdart/rxdart.dart';
 
 import '../../core/errors/exceptions.dart';
@@ -7,6 +8,7 @@ import '../../core/utils/logger.dart';
 import '../../domain/entities/auth_status.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/authentication_repository.dart';
+import '../constants/firebase_exception_code.dart';
 import '../models/user_model.dart';
 import '../sources/authentication_local_data_source.dart';
 import '../sources/authentication_remote_data_source.dart';
@@ -55,6 +57,8 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       _authorizationStatusStreamController.sink
           .add(const Right(AuthStatus.authorized));
       return Right(model.toEntity());
+    } on AppFailureCode catch (code) {
+      return Left(ServerFailure(code: code, createdAt: DateTime.now()));
     } on Exception catch (_) {
       return Left(ServerFailure(createdAt: DateTime.now()));
     }
@@ -78,7 +82,16 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       _authorizationStatusStreamController.sink
           .add(const Right(AuthStatus.authorized));
       return Right(model.toEntity());
-    } on Exception catch (_) {
+    } on FirebaseAuthException catch (exception) {
+      switch (exception.type) {
+        case FirebaseExceptionCode.invalidVerificationCode:
+          return const Left(ServerFailure(code: AppFailureCode.invalidOtp));
+        default:
+          return Left(ServerFailure(createdAt: DateTime.now()));
+      }
+    } on AppFailureCode catch (code) {
+      return Left(ServerFailure(code: code, createdAt: DateTime.now()));
+    } catch (exception) {
       return Left(ServerFailure(createdAt: DateTime.now()));
     }
   }
