@@ -96,6 +96,7 @@ android {
         }
         prod {
             dimension "default"
+            resValue "string", "app_name", "Salingsapa"
         }
     }
 
