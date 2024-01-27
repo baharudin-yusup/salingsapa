@@ -15,15 +15,23 @@ import '../../../domain/usecases/stream_caption.dart';
 import '../../../domain/usecases/upload_caption.dart';
 
 part 'video_call_caption_bloc.freezed.dart';
-
 part 'video_call_caption_event.dart';
-
 part 'video_call_caption_state.dart';
 
 const _tagName = 'VideoCallCaptionBloc';
 
 class VideoCallCaptionBloc
     extends Bloc<VideoCallCaptionEvent, VideoCallCaptionState> {
+  final InitCaption _initCaption;
+  final EnableCaption _enableCaption;
+  final DisableCaption _disableCaption;
+  final StreamCaption _streamCaption;
+  final UploadCaption _uploadCaption;
+
+  StreamSubscription<Either<Failure, List<Caption>>>? _streamSubscription;
+  Timer? _updateRemoteCaptionTimer;
+  Timer? _updateLocalCaptionTimer;
+
   VideoCallCaptionBloc(
     this._initCaption,
     this._enableCaption,
@@ -42,18 +50,9 @@ class VideoCallCaptionBloc
   Future<void> close() async {
     await _streamSubscription?.cancel();
     _updateRemoteCaptionTimer?.cancel();
+    _updateLocalCaptionTimer?.cancel();
     return await super.close();
   }
-
-  final InitCaption _initCaption;
-  final EnableCaption _enableCaption;
-  final DisableCaption _disableCaption;
-  final StreamCaption _streamCaption;
-  final UploadCaption _uploadCaption;
-
-  StreamSubscription<Either<Failure, List<Caption>>>? _streamSubscription;
-  Timer? _updateRemoteCaptionTimer;
-  Timer? _updateLocalCaptionTimer;
 
   void _startInitCaption(
       _Started event, Emitter<VideoCallCaptionState> emit) async {

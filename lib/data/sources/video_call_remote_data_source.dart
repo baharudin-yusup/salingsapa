@@ -237,7 +237,7 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
 
     final phoneNumber = user.phoneNumber!.toFormattedPhoneNumber();
     return _roomCollection
-        .where(RoomCollectionKey.invitedPhoneNumbers,
+        .where(FirestoreRoomConstant.invitedPhoneNumbers,
             arrayContains: phoneNumber)
         .orderBy(FirestoreConstant.createdAtKey, descending: true)
         .snapshots()
@@ -275,8 +275,10 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
     try {
       if (mute) {
         await _engine.disableAudio();
+        Logger.print('mute audio success!');
       } else {
         await _engine.enableAudio();
+        Logger.print('enable audio success!');
       }
       await _engine.muteLocalAudioStream(mute);
     } catch (_) {

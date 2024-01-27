@@ -56,12 +56,12 @@ extension CaptionModelToEntity on CaptionModel {
     );
   }
 
-  CaptionModel addUserId(String id) {
+  CaptionModel copyWith({String? userId}) {
     return CaptionModel(
       captionId: captionId,
       rawData: rawData,
       createdAt: createdAt,
-      userId: id,
+      userId: userId ?? this.userId,
     );
   }
 
