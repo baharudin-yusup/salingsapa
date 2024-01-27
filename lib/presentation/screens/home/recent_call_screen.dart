@@ -132,7 +132,7 @@ class RecentCallScreen extends StatelessWidget {
                     }
 
                     return const SizedBox(
-                      height: IntuitiveUiConstant.normalSpace,
+                      height: IntuitiveUiConstant.smallSpace,
                     );
                   },
                 );
