@@ -42,7 +42,6 @@ class UiServiceImpl implements UiService {
 
     if (context == null) {
       Logger.error('Context is null!', event: 'showing loading');
-
       return;
     }
 
@@ -53,61 +52,49 @@ class UiServiceImpl implements UiService {
 
     if (Platform.isIOS) {
       cupertino.showCupertinoDialog(
+        barrierDismissible: false,
         context: context,
-        builder: _uiLoading,
+        builder: (context) {
+          return Stack(
+            alignment: Alignment.center,
+            children: [
+              // Background blur effect
+              BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+                child: Container(
+                  color: context.colorScheme().background.withOpacity(0.6),
+                ),
+              ),
+              const cupertino.CupertinoActivityIndicator(),
+            ],
+          );
+        },
       );
     } else {
-      material
-          .showDialog(
-            barrierDismissible: true,
-            useSafeArea: true,
-            context: context,
-            builder: _materialUiLoading,
-          )
-          .then((_) => _isLoading = false);
+      material.showDialog(
+        barrierDismissible: false,
+        useSafeArea: true,
+        context: context,
+        builder: (context) {
+          return Center(
+            child: Container(
+              decoration: BoxDecoration(
+                color: context.colorScheme().background,
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(IntuitiveUiConstant.normalRadius),
+                ),
+              ),
+              padding: const EdgeInsets.all(IntuitiveUiConstant.hugeSpace),
+              child: const SizedBox.square(
+                dimension: IntuitiveUiConstant.hugeSpace,
+                child: material.CircularProgressIndicator.adaptive(),
+              ),
+            ),
+          );
+        },
+      );
     }
     Logger.print('Show loading finished!');
-  }
-
-  Widget _uiLoading(BuildContext context) {
-    return material.Dialog(
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-        child: Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(IntuitiveUiConstant.largeSpace),
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(16)),
-            color: material.Theme.of(context)
-                .colorScheme
-                .background
-                .withOpacity(0.2),
-          ),
-          child: const SizedBox.square(
-            dimension: 20,
-            child: material.CircularProgressIndicator.adaptive(),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _materialUiLoading(BuildContext context) {
-    return Center(
-      child: Container(
-        decoration: BoxDecoration(
-          color: context.colorScheme().background,
-          borderRadius: const BorderRadius.all(
-            Radius.circular(IntuitiveUiConstant.normalRadius),
-          ),
-        ),
-        padding: const EdgeInsets.all(IntuitiveUiConstant.hugeSpace),
-        child: const SizedBox.square(
-          dimension: IntuitiveUiConstant.hugeSpace,
-          child: material.CircularProgressIndicator.adaptive(),
-        ),
-      ),
-    );
   }
 
   @override
@@ -200,17 +187,12 @@ class DialogActionData {
   final String title;
   final bool isNegative;
   final bool isPositive;
-  final bool hasDefaultOnPressed;
-  final void Function()? _onPressed;
-
-  void Function()? get onPressed =>
-      _onPressed ?? (hasDefaultOnPressed ? () {} : null);
+  final void Function()? onPressed;
 
   const DialogActionData({
     required this.title,
-    void Function()? onPressed,
+    required this.onPressed,
     this.isNegative = false,
     this.isPositive = false,
-    this.hasDefaultOnPressed = true,
-  }) : _onPressed = onPressed;
+  });
 }
