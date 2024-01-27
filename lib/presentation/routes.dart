@@ -35,10 +35,6 @@ Map<String, WidgetBuilder> getRoutes() => {
                     return const SetupScreen();
                   }
 
-                  context
-                      .read<ContactListBloc>()
-                      .add(const ContactListEvent.refreshPulled());
-
                   return MultiBlocProvider(
                     providers: [
                       BlocProvider<HomeCubit>(create: (_) => HomeCubit()),
@@ -51,9 +47,6 @@ Map<String, WidgetBuilder> getRoutes() => {
                       BlocProvider<AccountBloc>(
                           create: (_) =>
                               sl()..add(const AccountEvent.started())),
-                      BlocProvider<ContactListBloc>(
-                          create: (_) => sl()
-                            ..add(const ContactListEvent.refreshPulled())),
                     ],
                     child: const HomeScreen(),
                   );
@@ -78,9 +71,7 @@ Map<String, WidgetBuilder> getRoutes() => {
             BlocProvider<VideoCallBloc>(
                 create: (_) => VideoCallBloc(sl(), sl(), sl(), sl(), sl(), sl(),
                     room: room)),
-            BlocProvider<SpeechRecognitionBloc>(
-                create: (_) =>
-                    sl()..add(const SpeechRecognitionEvent.started())),
+            BlocProvider<SpeechRecognitionBloc>(create: (_) => sl()),
             BlocProvider<SignLanguageRecognitionBloc>(create: (_) => sl()),
             BlocProvider<VideoCallControlBloc>(create: (_) => sl()),
             BlocProvider<VideoCallCaptionBloc>(create: (_) => sl()),
@@ -90,5 +81,8 @@ Map<String, WidgetBuilder> getRoutes() => {
       },
       VerifyOtpScreen.routeName: (_) => const VerifyOtpScreen(),
       SetupScreen.routeName: (_) => const SetupScreen(),
-      ContactListScreen.routeName: (_) => const ContactListScreen(),
+      ContactListScreen.routeName: (_) => BlocProvider<ContactListBloc>(
+            create: (_) => sl()..add(const ContactListEvent.refreshPulled()),
+            child: const ContactListScreen(),
+          ),
     };

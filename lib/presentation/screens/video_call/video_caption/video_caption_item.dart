@@ -13,22 +13,32 @@ enum VideoCaptionAlignment {
   right,
 }
 
+class VideoCaptionItemStyle {
+  final VideoCaptionSendButtonLocation sendButtonLocation;
+  final VideoCaptionAlignment alignment;
+  final bool showSendButton;
+  final double sendIconSize;
+
+  const VideoCaptionItemStyle({
+    this.sendButtonLocation = VideoCaptionSendButtonLocation.right,
+    this.showSendButton = true,
+    this.alignment = VideoCaptionAlignment.left,
+    this.sendIconSize = 28,
+  });
+}
+
 class VideoCaptionItem extends StatelessWidget {
   final String? title;
   final String? caption;
+  final VideoCaptionItemStyle style;
   final VoidCallback? onSendButtonPressed;
-  final bool showSendButton;
-  final VideoCaptionSendButtonLocation sendButtonLocation;
-  final VideoCaptionAlignment alignment;
 
   const VideoCaptionItem(
     this.caption, {
     super.key,
     this.onSendButtonPressed,
-    this.sendButtonLocation = VideoCaptionSendButtonLocation.right,
-    this.showSendButton = true,
     this.title,
-    this.alignment = VideoCaptionAlignment.left,
+    this.style = const VideoCaptionItemStyle(),
   });
 
   @override
@@ -52,8 +62,8 @@ class VideoCaptionItem extends StatelessWidget {
       widgets.add(Flexible(child: buildCaption()));
     }
 
-    if (showSendButton && caption != null) {
-      switch (sendButtonLocation) {
+    if (style.showSendButton && caption != null) {
+      switch (style.sendButtonLocation) {
         case VideoCaptionSendButtonLocation.left:
           widgets.insertAll(0, [
             buildUploadCaptionButton(),
@@ -70,7 +80,7 @@ class VideoCaptionItem extends StatelessWidget {
     }
 
     MainAxisAlignment alignment;
-    switch (this.alignment) {
+    switch (style.alignment) {
       case VideoCaptionAlignment.left:
         alignment = MainAxisAlignment.start;
         break;
@@ -141,7 +151,7 @@ class VideoCaptionItem extends StatelessWidget {
 
   Widget buildUploadCaptionButton() {
     return IntuitiveCircleIconButton(
-      radius: 20,
+      iconSize: style.sendIconSize,
       activeIconData: Icons.send_rounded,
       onTap: onSendButtonPressed,
     );

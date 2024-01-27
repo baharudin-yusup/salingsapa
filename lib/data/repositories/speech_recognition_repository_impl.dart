@@ -20,10 +20,12 @@ class SpeechRecognitionRepositoryImpl implements SpeechRecognitionRepository {
   Future<RepoResponse<Unit>> disable() async {
     try {
       await _speechRecognitionPlugin.stop();
-      Logger.print('disabling plugin success', name: _tagName);
+      Logger.print('disabling speech recognition feature success!',
+          name: _tagName);
       return const Right(unit);
     } catch (exception) {
-      Logger.error(exception, event: 'disabling plugin', name: _tagName);
+      Logger.error(exception,
+          event: 'disabling speech recognition feature', name: _tagName);
       return const Left(UnknownFailure());
     }
   }
@@ -32,10 +34,12 @@ class SpeechRecognitionRepositoryImpl implements SpeechRecognitionRepository {
   Future<RepoResponse<Unit>> enable() async {
     try {
       await _speechRecognitionPlugin.start();
-      Logger.print('enabling plugin success', name: _tagName);
+      Logger.print('enabling speech recognition feature success!',
+          name: _tagName);
       return const Right(unit);
     } catch (exception) {
-      Logger.error(exception, event: 'enabling plugin', name: _tagName);
+      Logger.error(exception,
+          event: 'enabling speech recognition feature', name: _tagName);
       return const Left(UnknownFailure());
     }
   }
@@ -44,10 +48,12 @@ class SpeechRecognitionRepositoryImpl implements SpeechRecognitionRepository {
   Future<RepoResponse<Unit>> init() async {
     try {
       await _speechRecognitionPlugin.init();
-      Logger.print('initializing plugin success', name: _tagName);
+      Logger.print('initializing speech recognition feature success!',
+          name: _tagName);
       return const Right(unit);
     } catch (exception) {
-      Logger.error(exception, event: 'initializing plugin', name: _tagName);
+      Logger.error(exception,
+          event: 'initializing speech recognition feature', name: _tagName);
       return const Left(UnknownFailure());
     }
   }

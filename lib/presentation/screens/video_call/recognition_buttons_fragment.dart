@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../blocs/sign_language_recognition_bloc/sign_language_recognition_bloc.dart';
 import '../../blocs/speech_recognition_bloc/speech_recognition_bloc.dart';
@@ -9,51 +8,42 @@ import '../../blocs/video_call_caption/video_call_caption_bloc.dart';
 import '../../components/intuitive_circle_icon_button.dart';
 import '../../services/theme_service.dart';
 
+class RecognitionButtonsFragmentStyle {
+  final double iconSize;
+
+  const RecognitionButtonsFragmentStyle({
+    this.iconSize = 30,
+  });
+}
+
 class RecognitionButtonsFragment extends StatelessWidget {
-  final double radius;
+  final RecognitionButtonsFragmentStyle style;
 
   const RecognitionButtonsFragment({
     super.key,
-    this.radius = 25,
+    this.style = const RecognitionButtonsFragmentStyle(),
   });
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocListener(
-      listeners: [
-        BlocListener<SignLanguageRecognitionBloc, SignLanguageRecognitionState>(
-          listener: (context, state) {
-            state.maybeMap(
-              failure: (state) {
-                Fluttertoast.showToast(
-                  msg: state.failure.errorMessage,
-                  toastLength: Toast.LENGTH_SHORT,
-                );
-              },
-              orElse: () {},
-            );
-          },
+    return Container(
+      decoration: BoxDecoration(
+        color: context.colorScheme().background.withOpacity(0.5),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(IntuitiveUiConstant.normalRadius),
         ),
-      ],
-      child: Container(
-        decoration: BoxDecoration(
-          color: context.colorScheme().background.withOpacity(0.5),
-          borderRadius: const BorderRadius.all(
-            Radius.circular(IntuitiveUiConstant.normalRadius),
-          ),
-        ),
-        padding: const EdgeInsets.all(IntuitiveUiConstant.smallSpace),
-        margin: const EdgeInsets.all(IntuitiveUiConstant.normalSpace),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _buildSpeechRecognitionButton(),
-            const SizedBox(height: IntuitiveUiConstant.tinySpace),
-            _buildSignLanguageRecognitionButton(),
-            const SizedBox(height: IntuitiveUiConstant.tinySpace),
-            _buildDisableRecognitionButton(),
-          ],
-        ),
+      ),
+      padding: const EdgeInsets.all(IntuitiveUiConstant.smallSpace),
+      margin: const EdgeInsets.all(IntuitiveUiConstant.normalSpace),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _buildSpeechRecognitionButton(),
+          const SizedBox(height: IntuitiveUiConstant.tinySpace),
+          _buildSignLanguageRecognitionButton(),
+          const SizedBox(height: IntuitiveUiConstant.tinySpace),
+          _buildDisableRecognitionButton(),
+        ],
       ),
     );
   }
@@ -66,7 +56,7 @@ class RecognitionButtonsFragment extends StatelessWidget {
           showBorder: false,
           isActive: state.isReady && state.isEnabled,
           activeIconData: Icons.spatial_audio_off_outlined,
-          radius: radius,
+          iconSize: style.iconSize,
           onTap: () =>
               _toggleFeature(context, isSpeechRecognitionEnabled: true),
         );
@@ -84,7 +74,7 @@ class RecognitionButtonsFragment extends StatelessWidget {
             showBorder: false,
             isActive: state.isEnabled,
             activeIconData: Icons.sign_language_outlined,
-            radius: radius,
+            iconSize: style.iconSize,
             onTap: () => _toggleFeature(context, isSignLanguageEnabled: true),
           );
         });
@@ -107,7 +97,7 @@ class RecognitionButtonsFragment extends StatelessWidget {
               isActive: !isSpeechRecognitionEnabled &&
                   !isSignLanguageRecognitionEnabled,
               activeIconData: Icons.not_interested_outlined,
-              radius: radius,
+              iconSize: style.iconSize,
               onTap: () => _toggleFeature(context),
             );
           },

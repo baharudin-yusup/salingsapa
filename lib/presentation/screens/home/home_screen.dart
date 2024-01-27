@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../blocs/home/home_cubit.dart';
 import '../../components/intuitive_scaffold.dart';
+import '../../utils/dimension.dart';
 import 'account_screen.dart';
 import 'recent_call_screen.dart';
 
@@ -28,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                       ? Icons.video_call_rounded
                       : Icons.video_call_outlined,
                 ),
-                label: 'Calls',
+                label: context.localization.recentCalls,
               ),
               IntuitiveBottomNavigationBarItem(
                 icon: Icon(
@@ -36,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                       ? Icons.account_circle_rounded
                       : Icons.account_circle_outlined,
                 ),
-                label: 'Account',
+                label: context.localization.account,
               ),
             ],
             tabBuilder: (_, index) => buildFragment(index),

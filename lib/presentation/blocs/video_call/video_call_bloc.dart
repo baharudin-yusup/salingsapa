@@ -17,9 +17,7 @@ import '../../../domain/usecases/leave_room.dart';
 import '../../../domain/usecases/stream_video_call_status.dart';
 
 part 'video_call_bloc.freezed.dart';
-
 part 'video_call_event.dart';
-
 part 'video_call_state.dart';
 
 class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
@@ -94,12 +92,21 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
 
   void _onStartJoinRoom(
       _JoinRoomStarted event, Emitter<VideoCallState> emit) async {
-    state.maybeWhen(
+    final isInitialConditionValid = state.maybeWhen(
       initEngineSuccess: (room, engine) {
         emit(VideoCallState.joinRoomInProgress(room, engine));
+        return true;
       },
-      orElse: () {},
+      orElse: () {
+        return false;
+      },
     );
+
+    if (!isInitialConditionValid) {
+      emit(
+          VideoCallState.initEngineFailure(state.room, const FeatureFailure()));
+      return;
+    }
 
     final joinVideoCallResult = await _joinRoom(state.room);
     joinVideoCallResult.fold(
@@ -131,7 +138,13 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
       _JoinRoomFailed event, Emitter<VideoCallState> emit) async {
     state.maybeWhen(
       joinRoomInProgress: (room, engine) {
-        emit(VideoCallState.joinRoomFailure(room, engine, const UnknownFailure()));
+        emit(
+          VideoCallState.joinRoomFailure(
+            room,
+            engine,
+            const UnknownFailure(),
+          ),
+        );
       },
       orElse: () {},
     );
@@ -185,7 +198,8 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
       _UpdateUserStatusStarted event, Emitter<VideoCallState> emit) {
     final info = event.info;
 
-    Logger.print('Update user status (${info.runtimeType} ${info.status}), current state: ${state.runtimeType}');
+    Logger.print(
+        'Update user status (${info.runtimeType} ${info.status}), current state: ${state.runtimeType}');
 
     switch (info.status) {
       case VideoCallStatus.joined:

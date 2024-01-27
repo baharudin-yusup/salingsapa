@@ -26,19 +26,23 @@ class VideoCaptionList extends StatelessWidget {
           final remoteCaption = videoCallCaptionState.remoteCaptions;
           final widgets = <Widget>[];
           if (remoteCaption != null) {
-            widgets.add(VideoCaptionItem(
-              remoteCaption,
-              title: 'He / She',
-              showSendButton: false,
-            ));
+            widgets.add(
+              VideoCaptionItem(
+                remoteCaption,
+                title: 'He / She',
+                style: const VideoCaptionItemStyle(showSendButton: false),
+              ),
+            );
           }
 
           widgets.add(
             VideoCaptionItem(
               localCaption?.rawData,
               title: 'You',
-              alignment: VideoCaptionAlignment.right,
-              showSendButton: localCaption != null,
+              style: const VideoCaptionItemStyle(
+                alignment: VideoCaptionAlignment.right,
+                showSendButton: false,
+              ),
               onSendButtonPressed: () {
                 if (localCaption != null) {
                   videoCallCaptionBloc.add(
