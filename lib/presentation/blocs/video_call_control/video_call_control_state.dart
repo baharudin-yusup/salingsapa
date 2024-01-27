@@ -1,29 +1,23 @@
 part of 'video_call_control_bloc.dart';
 
+enum VideoCallControlFeature {
+  muteAudio,
+  muteVideo,
+  useFrontCamera,
+}
+
 @freezed
 class VideoCallControlState with _$VideoCallControlState {
-  const factory VideoCallControlState.initial([
-    @Default(false) bool isAudioMuted,
-    @Default(false) bool isVideoMuted,
-    @Default(true) bool isUsingFrontCamera,
-  ]) = _Initial;
-
-  const factory VideoCallControlState.changeControlInProgress({
-    required bool isAudioMuted,
-    required bool isVideoMuted,
-    required bool isUsingFrontCamera,
-  }) = _ChangeControlInProgress;
-
-  const factory VideoCallControlState.changeControlSuccess({
-    required bool isAudioMuted,
-    required bool isVideoMuted,
-    required bool isUsingFrontCamera,
-  }) = _ChangeControlSuccess;
+  const factory VideoCallControlState.initial({
+    @Default(State(true)) State<bool> isAudioMuted,
+    @Default(State(false)) State<bool> isVideoMuted,
+    @Default(State(false)) State<bool> isUsingFrontCamera,
+  }) = _Initial;
 
   const factory VideoCallControlState.changeControlFailure({
-    required bool isAudioMuted,
-    required bool isVideoMuted,
-    required bool isUsingFrontCamera,
-    required String errorMessage,
+    required State<bool> isAudioMuted,
+    required State<bool> isVideoMuted,
+    required State<bool> isUsingFrontCamera,
+    required Failure failure,
   }) = _ChangeControlFailure;
 }
