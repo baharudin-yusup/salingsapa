@@ -102,9 +102,8 @@ class VerifyOtpScreen extends StatelessWidget {
                     errorColor: context.colorScheme().error,
                   ),
                   if (Platform.isAndroid) ...[
-                    const SizedBox(height: IntuitiveUiConstant.normalSpace),
+                    const SizedBox(height: IntuitiveUiConstant.smallSpace),
                     _buildSendButton(),
-                    const SizedBox(height: IntuitiveUiConstant.normalSpace),
                   ],
                   const SizedBox(height: IntuitiveUiConstant.normalSpace),
                   _buildResendCodeText(context),
