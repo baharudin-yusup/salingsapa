@@ -68,76 +68,77 @@ class RecentCallScreen extends StatelessWidget {
 
   Widget showInvitationList(BuildContext context) {
     return BlocConsumer<RecentCallBloc, RecentCallState>(
-        listener: (context, state) {},
-        buildWhen: (previous, current) =>
-            previous.invitations != current.invitations,
-        builder: (context, state) {
-          return StreamBuilder<Either<Failure, List<Invitation>>>(
-              stream: state.invitations,
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return buildEmptyUi();
-                }
+      listener: (context, state) {},
+      buildWhen: (previous, current) =>
+          previous.invitations != current.invitations,
+      builder: (context, state) {
+        return StreamBuilder<Either<Failure, List<Invitation>>>(
+          stream: state.invitations,
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return buildEmptyUi();
+            }
 
-                final data = snapshot.data!;
+            final data = snapshot.data!;
 
-                if (data.isLeft()) {
-                  return buildEmptyUi();
-                }
+            if (data.isLeft()) {
+              return buildEmptyUi();
+            }
 
-                final invitations = data.getOrElse(() => []);
-                // TODO: Fix this
-                for (var i in invitations) {
-                  if (i.shouldPlayRingtone && i.room.isValid) {
-                    playSound();
-                    break;
-                  }
-                }
+            final invitations = data.getOrElse(() => []);
+            // TODO: Fix this
+            for (var i in invitations) {
+              if (i.shouldPlayRingtone && i.room.isValid) {
+                playSound();
+                break;
+              }
+            }
 
-                return ListView.separated(
-                  padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace)
-                      .add(MediaQuery.of(context).padding),
-                  itemCount: invitations.length,
-                  itemBuilder: (context, index) {
-                    final invitation = invitations[index];
+            return ListView.separated(
+              padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace)
+                  .add(MediaQuery.of(context).padding),
+              itemCount: invitations.length,
+              itemBuilder: (context, index) {
+                final invitation = invitations[index];
 
-                    return BlocBuilder<ContactListBloc, ContactListState>(
-                      buildWhen: (_, currentState) => currentState.maybeMap(
-                        loadSuccess: (_) => true,
-                        orElse: () => false,
-                      ),
-                      builder: (context, contactListState) {
-                        Contact? contact;
-                        try {
-                          contact = contactListState.contacts.firstWhere(
-                              (contact) =>
-                                  contact.phoneNumber
-                                      .toFormattedPhoneNumber() ==
-                                  invitation.room.hostPhoneNumber
-                                      .toFormattedPhoneNumber());
-                        } catch (_) {}
+                return BlocBuilder<ContactListBloc, ContactListState>(
+                  buildWhen: (_, currentState) => currentState.maybeMap(
+                    loadSuccess: (_) => true,
+                    orElse: () => false,
+                  ),
+                  builder: (context, contactListState) {
+                    Contact? contact;
+                    try {
+                      contact = contactListState.contacts.firstWhere(
+                          (contact) =>
+                              contact.phoneNumber.toFormattedPhoneNumber() ==
+                              invitation.room.hostPhoneNumber
+                                  .toFormattedPhoneNumber());
+                    } catch (_) {}
 
-                        return InvitationCard(
-                          invitation.copyWith(contact),
-                          onTap: (room) => Navigator.pushNamed(
-                              context, VideoCallScreen.routeName,
-                              arguments: room),
-                        );
-                      },
-                    );
-                  },
-                  separatorBuilder: (_, __) {
-                    if (Platform.isIOS) {
-                      return const Divider(height: 0);
-                    }
-
-                    return const SizedBox(
-                      height: IntuitiveUiConstant.smallSpace,
+                    return InvitationCard(
+                      invitation.copyWith(contact),
+                      onTap: (room) => Navigator.pushNamed(
+                          context, VideoCallScreen.routeName,
+                          arguments: room),
                     );
                   },
                 );
-              });
-        });
+              },
+              separatorBuilder: (_, __) {
+                if (Platform.isIOS) {
+                  return const Divider(height: 0);
+                }
+
+                return const SizedBox(
+                  height: IntuitiveUiConstant.smallSpace,
+                );
+              },
+            );
+          },
+        );
+      },
+    );
   }
 
   Widget buildEmptyUi() {

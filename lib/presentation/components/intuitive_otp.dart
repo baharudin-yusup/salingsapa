@@ -116,21 +116,22 @@ class _IntuitiveOtpState extends State<IntuitiveOtp> {
   }
 
   Widget _buildErrorMessage() {
-    return Container(
-      height: IntuitiveUiConstant.largeSpace,
-      padding: const EdgeInsets.only(top: 8.0),
-      child: AnimatedSize(
-        duration: const Duration(milliseconds: 250),
-        child: hasError && isAllFieldFilled
-            ? Text(
+    return AnimatedSize(
+      duration: const Duration(milliseconds: 100),
+      child: hasError && isAllFieldFilled
+          ? Padding(
+              padding:
+                  const EdgeInsets.only(top: IntuitiveUiConstant.smallSpace),
+              child: Text(
                 errorMessage,
-                style: Theme.of(context)
-                    .primaryTextTheme
-                    .bodySmall
-                    ?.copyWith(color: Colors.red),
-              )
-            : null,
-      ),
+                style: context.textTheme().bodySmall?.copyWith(
+                      color: context.colorScheme().error,
+                    ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            )
+          : const SizedBox(),
     );
   }
 

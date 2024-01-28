@@ -152,31 +152,51 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
 
   void _onStartLeaveRoom(
       _LeaveRoomStarted event, Emitter<VideoCallState> emit) async {
-    state.maybeWhen(
+    final isPreConditionValid = state.when(
       initial: (room) {
         emit(VideoCallState.leaveRoomInProgress(room: room));
+        return true;
       },
       initEngineInProgress: (room) {
         emit(VideoCallState.leaveRoomInProgress(room: room));
+        return true;
       },
       initEngineSuccess: (room, engine) {
         emit(VideoCallState.leaveRoomInProgress(room: room, engine: engine));
+        return true;
       },
       initEngineFailure: (room, failure) {
         emit(VideoCallState.leaveRoomInProgress(room: room));
+        return true;
       },
       joinRoomInProgress: (room, engine) {
         emit(VideoCallState.leaveRoomInProgress(room: room, engine: engine));
+        return true;
       },
       joinRoomSuccess:
           (room, engine, remoteUserStatus, isTakePhotoEnabled, _, __) {
         emit(VideoCallState.leaveRoomInProgress(room: room, engine: engine));
+        return true;
       },
       joinRoomFailure: (room, engine, failure) {
         emit(VideoCallState.leaveRoomInProgress(room: room, engine: engine));
+        return true;
       },
-      orElse: () {},
+      leaveRoomInProgress: (room, engine) {
+        return false;
+      },
+      leaveRoomFailure: (room, _) {
+        emit(VideoCallState.leaveRoomInProgress(room: room));
+        return true;
+      },
+      leaveRoomSuccess: (room, engine) {
+        return false;
+      },
     );
+
+    if (!isPreConditionValid) {
+      return;
+    }
 
     final startVideoCallResult = await _leaveRoom(state.room);
     startVideoCallResult.fold(

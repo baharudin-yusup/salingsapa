@@ -6,6 +6,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../core/errors/exceptions.dart';
+import '../../core/utils/logger.dart';
 import '../models/video_frame_model.dart';
 
 abstract class VideoCallLocalDataSource {
@@ -90,9 +91,17 @@ class VideoCallLocalDataSourceImpl implements VideoCallLocalDataSource {
             appDocumentsDir.substring(0, appDocumentsDir.length - 1);
       }
 
-      const uuid = Uuid();
-      final filePath = '$appDocumentsDir/${uuid.v1()}.jpg';
-      await _engine.takeSnapshot(uid: 0, filePath: filePath);
+      try {
+        Logger.print('taking photo snapshot started...');
+        const uuid = Uuid();
+        final filePath = '$appDocumentsDir/${uuid.v1()}.jpg';
+        await _engine.takeSnapshot(uid: 0, filePath: filePath);
+        Logger.print('take photo snapshot success!');
+      } on AgoraRtcException catch (exception) {
+        Logger.error(exception, event: 'taking photo snapshot');
+      } catch (error) {
+        Logger.error(error, event: 'taking photo snapshot');
+      }
     });
   }
 

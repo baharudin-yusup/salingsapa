@@ -22,6 +22,7 @@ Future<void> main() async {
   );
   FirebaseMessaging.onBackgroundMessage(handleBackgroundNotification);
 
-  await di.setup(DevEnv());
-  createApp();
+  final env = DevEnv();
+  await di.setup(env);
+  createApp(env);
 }

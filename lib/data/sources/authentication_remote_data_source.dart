@@ -55,6 +55,10 @@ class AuthenticationRemoteDatSourceImpl
     FirebaseAuthException? firebaseAuthException;
 
     Logger.print('Verifying phone number $phoneNumber started...');
+
+    // Remove previous verification id
+    _verificationId = '';
+
     try {
       await _auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
@@ -65,9 +69,13 @@ class AuthenticationRemoteDatSourceImpl
           firebaseAuthException = error;
         },
         codeSent: (verificationId, _) {
+          Logger.print(
+              'code sent verification id for phone number $phoneNumber is $verificationId');
           _verificationId = verificationId;
         },
         codeAutoRetrievalTimeout: (verificationId) {
+          Logger.print(
+              'code auto retrieval timeout verification id for phone number $phoneNumber is $verificationId');
           _verificationId = verificationId;
         },
       );
@@ -79,11 +87,6 @@ class AuthenticationRemoteDatSourceImpl
     if (firebaseAuthException != null) {
       Logger.error(firebaseAuthException!, event: 'verifying phone number');
       throw ServerException();
-    }
-
-    if (_verificationId.isEmpty) {
-      Logger.error('verification id is empty', event: 'verifying phone number');
-      throw AppFailureCode.phoneNumberBlocked;
     }
 
     if (autoSignInCredential == null) {
@@ -116,8 +119,8 @@ class AuthenticationRemoteDatSourceImpl
   @override
   Future<UserModel> verifyOtp({required String otp}) async {
     if (_verificationId.isEmpty) {
-      Logger.error('_verificationId is empty', event: 'verifying OTP');
-      throw BadDataException();
+      Logger.error('verification id is empty', event: 'verifying otp');
+      throw AppFailureCode.phoneNumberBlocked;
     }
 
     final credential = PhoneAuthProvider.credential(

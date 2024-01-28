@@ -67,6 +67,8 @@ class SpeechRecognitionRepositoryImpl implements SpeechRecognitionRepository {
           createdAt: result.createdAt,
         );
 
+        Logger.print('speech recognition result = ${model.rawData}',
+            name: _tagName);
         return Right(model.toEntity());
       });
 
