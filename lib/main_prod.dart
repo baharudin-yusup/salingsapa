@@ -14,7 +14,7 @@ Future<void> main() async {
   await setupFirebase(options: DefaultFirebaseOptions.currentPlatform);
   FirebaseMessaging.onBackgroundMessage(handleBackgroundNotification);
 
-  await di.setup(ProdEnv());
-
-  createApp();
+  final env = ProdEnv();
+  await di.setup(env);
+  createApp(env);
 }

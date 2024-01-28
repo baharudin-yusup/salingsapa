@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../core/envs/dev_env_impl.dart';
+import '../../core/envs/env.dart';
 import '../../injection_container.dart';
 import '../blocs/authorization/authorization_bloc.dart';
 import '../blocs/contact_list/contact_list_bloc.dart';
@@ -15,14 +17,22 @@ import '../routes.dart';
 import '../services/navigator_service.dart';
 import '../services/notification_service.dart';
 
-void createApp() {
-  runApp(const RootScreen());
+void createApp(Env env) {
+  runApp(
+    RootScreen(
+      showDebugBanner: env is DevEnv,
+    ),
+  );
 }
 
 class RootScreen extends StatefulWidget {
   static const routeName = '/';
+  final bool showDebugBanner;
 
-  const RootScreen({super.key});
+  const RootScreen({
+    super.key,
+    this.showDebugBanner = false,
+  });
 
   @override
   State<RootScreen> createState() => _RootScreenState();
@@ -79,7 +89,7 @@ class _RootScreenState extends State<RootScreen> {
                           AppLocalizations.localizationsDelegates,
                       supportedLocales: AppLocalizations.supportedLocales,
                       navigatorKey: sl<NavigatorService>().navigatorKey,
-                      debugShowCheckedModeBanner: false,
+                      debugShowCheckedModeBanner: widget.showDebugBanner,
                       theme: CupertinoThemeData(
                         brightness: platformBrightness,
                         scaffoldBackgroundColor: colorScheme.background,
@@ -103,7 +113,7 @@ class _RootScreenState extends State<RootScreen> {
                       AppLocalizations.localizationsDelegates,
                   supportedLocales: AppLocalizations.supportedLocales,
                   navigatorKey: sl<NavigatorService>().navigatorKey,
-                  debugShowCheckedModeBanner: false,
+                  debugShowCheckedModeBanner: widget.showDebugBanner,
                   routes: getRoutes(),
                   theme: ThemeData(
                     colorScheme: lightDynamic,
