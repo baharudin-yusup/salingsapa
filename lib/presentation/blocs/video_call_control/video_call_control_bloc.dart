@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/errors/failures.dart';
+import '../../../core/utils/logger.dart';
 import '../../../domain/usecases/flip_video_call_camera.dart';
 import '../../../domain/usecases/mute_video_call_audio.dart';
 import '../../../domain/usecases/mute_video_call_video.dart';
@@ -120,11 +121,14 @@ class VideoCallControlBloc
 
   void _onChangeAudioFeature(_ChangeAudioFeatureStarted event,
       Emitter<VideoCallControlState> emit) async {
+    Logger.print('changing audio feature started...');
     final isPreConditionValid = state.when(
       initial: (isAudioMuted, isVideoMuted, isUsingFrontCamera) {
         if (isAudioMuted.isLoading) {
+          Logger.print('changing audio feature is in progress!');
           return false;
         }
+        Logger.print('changing audio feature from idle to in progress');
         emit(
           VideoCallControlState.initial(
             isAudioMuted: isAudioMuted.copyWith(isLoading: true),
@@ -137,8 +141,10 @@ class VideoCallControlBloc
       changeControlFailure:
           (isAudioMuted, isVideoMuted, isUsingFrontCamera, _) {
         if (isAudioMuted.isLoading) {
+          Logger.print('changing audio feature is in progress!');
           return false;
         }
+        Logger.print('changing audio feature from idle to in progress');
         emit(
           VideoCallControlState.initial(
             isAudioMuted: isAudioMuted.copyWith(isLoading: true),
@@ -151,13 +157,17 @@ class VideoCallControlBloc
     );
 
     if (!isPreConditionValid) {
+      Logger.error(
+          'pre condition is not valid, current state is ${state.runtimeType} and current status is ${state.isAudioMuted.isLoading ? 'is loading' : 'is idle'}',
+          event: 'changing audio feature');
       return;
     }
 
-    final toggleAudioMuteFeature =
-        await _muteVideoCallAudio(event.isDisabled ?? !state.isAudioMuted.data);
+    final isDisabled = event.isDisabled ?? !state.isAudioMuted.data;
+    final toggleAudioMuteFeature = await _muteVideoCallAudio(isDisabled);
     toggleAudioMuteFeature.fold(
       (failure) {
+        Logger.error(failure, event: 'changing audio feature');
         state.when(
           initial: (isAudioMuted, isVideoMuted, isUsingFrontCamera) {
             emit(
@@ -171,6 +181,8 @@ class VideoCallControlBloc
           },
           changeControlFailure:
               (isAudioMuted, isVideoMuted, isUsingFrontCamera, _) {
+            Logger.print(
+                'changing audio feature to ${isDisabled ? 'disabled' : 'enabled'} success!');
             emit(
               VideoCallControlState.changeControlFailure(
                 isAudioMuted: isAudioMuted.copyWith(isLoading: false),

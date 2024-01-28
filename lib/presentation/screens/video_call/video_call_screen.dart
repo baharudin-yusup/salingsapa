@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../../../core/utils/logger.dart';
 import '../../../domain/entities/recognition_status.dart';
 import '../../../injection_container.dart';
 import '../../blocs/sign_language_recognition_bloc/sign_language_recognition_bloc.dart';
 import '../../blocs/speech_recognition_bloc/speech_recognition_bloc.dart';
 import '../../blocs/video_call/video_call_bloc.dart';
 import '../../blocs/video_call_caption/video_call_caption_bloc.dart';
+import '../../blocs/video_call_control/video_call_control_bloc.dart';
 import '../../components/intuitive_scaffold.dart';
 import '../../services/navigator_service.dart';
 import '../../services/ui_service.dart';
@@ -99,10 +101,24 @@ class VideoCallScreen extends StatelessWidget {
               listener: (context, state) {
                 state.maybeMap(
                   initial: (state) {
-                    final VideoCallCaptionBloc bloc = context.read();
                     if (state.status.data == RecognitionStatus.on) {
+                      final VideoCallCaptionBloc bloc = context.read();
                       bloc.add(const VideoCallCaptionEvent.localCaptionReceived(
                           null));
+                    }
+
+                    // Toggle enable/disable audio
+                    if ((state.status.data == RecognitionStatus.off ||
+                            state.status.data == RecognitionStatus.on) &&
+                        state.status.isLoading) {
+                      Logger.print(
+                          'toggle audio feature started, current speech recognition state is ${state.runtimeType}, recognition status is ${state.status.data}, and currently ${state.status.isLoading ? 'is loading' : 'is idle'}');
+                      final VideoCallControlBloc videoCallBloc = context.read();
+                      videoCallBloc.add(
+                        VideoCallControlEvent.changeAudioFeatureStarted(
+                          isDisabled: state.status.data == RecognitionStatus.on,
+                        ),
+                      );
                     }
                   },
                   captionReceiveSuccess: (state) {
