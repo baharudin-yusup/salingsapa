@@ -67,8 +67,6 @@ class RecentCallScreen extends StatelessWidget {
                   );
                 }
 
-                print(contactListState.isPermissionValid);
-
                 if (!(contactListState.isPermissionValid ?? false)) {
                   final ContactListBloc contactListBloc = context.read();
                   return NoContactAccessUi(
