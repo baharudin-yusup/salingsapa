@@ -109,8 +109,10 @@ class ContactListBloc extends Bloc<ContactListEvent, ContactListState> {
     requestPermissionResult.fold(
       (failure) => emit(ContactListState.loadFailure(failure,
           contacts: state.contacts, isPermissionValid: false)),
-      (_) {
-        emit(ContactListState.initial(state.contacts, true));
+      (isGranted) {
+        if (isGranted ?? false) {
+          return;
+        }
         add(const ContactListEvent.refreshPulled());
       },
     );

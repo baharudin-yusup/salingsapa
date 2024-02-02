@@ -6,11 +6,11 @@ import '../../core/interfaces/use_case.dart';
 import '../../core/utils/logger.dart';
 import '../entities/app_permission.dart';
 
-class RequestPermission extends UseCase<AppPermission, bool> {
+class RequestPermission extends UseCase<AppPermission, bool?> {
   const RequestPermission();
 
   @override
-  Future<Either<Failure, bool>> call(AppPermission param) async {
+  Future<Either<Failure, bool?>> call(AppPermission param) async {
     try {
       late final Permission permission;
       switch (param) {
@@ -19,8 +19,16 @@ class RequestPermission extends UseCase<AppPermission, bool> {
           break;
       }
 
+      if (await permission.isPermanentlyDenied) {
+        await openAppSettings();
+        return const Right(null);
+      }
+
       final status = await permission.request();
       final isGranted = status.isGranted;
+      if (!isGranted) {
+        return Left(PermissionFailure(param, createdAt: DateTime.now()));
+      }
 
       return Right(isGranted);
     } catch (error) {

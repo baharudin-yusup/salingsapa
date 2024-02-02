@@ -46,7 +46,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>We require access to your camera to facilitate video calls, allowing you to engage in face-to-face conversations with your contacts within the app.</string>
 	<key>NSContactsUsageDescription</key>
-	<string>Calls in-app require access to your contacts for seamless functionality. We use this information solely for in-app communication, particularly for video calls. Your data is only accessed with consent and remains private.</string>
+	<string>Calls in-app require access to your contacts, we use this information for video calls. Your data is only accessed with consent and remains private.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Access to your microphone is needed for high-quality audio during video calls, ensuring clear and smooth communication with your contacts within the app.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

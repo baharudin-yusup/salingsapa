@@ -1,14 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../blocs/contact_list/contact_list_bloc.dart';
 import '../../blocs/home/home_cubit.dart';
 import '../../components/intuitive_scaffold.dart';
 import '../../utils/dimension.dart';
 import 'account_screen.dart';
 import 'recent_call_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    if (state == AppLifecycleState.resumed) {
+      context
+          .read<ContactListBloc>()
+          .add(const ContactListEvent.refreshPulled());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

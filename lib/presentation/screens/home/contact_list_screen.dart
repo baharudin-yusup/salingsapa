@@ -12,10 +12,38 @@ import '../../components/show_error_message.dart';
 import '../../services/theme_service.dart';
 import '../room/create_room_screen.dart';
 
-class ContactListScreen extends StatelessWidget {
+class ContactListScreen extends StatefulWidget {
   static const routeName = '/contacts';
 
   const ContactListScreen({super.key});
+
+  @override
+  State<ContactListScreen> createState() => _ContactListScreenState();
+}
+
+class _ContactListScreenState extends State<ContactListScreen>
+    with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    if (state == AppLifecycleState.resumed) {
+      context
+          .read<ContactListBloc>()
+          .add(const ContactListEvent.refreshPulled());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
