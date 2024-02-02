@@ -19,18 +19,21 @@ mixin _$ContactListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() refreshPulled,
+    required TResult Function() requestPermissionStarted,
     required TResult Function(Contact contact) selectedContactCalled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? refreshPulled,
+    TResult? Function()? requestPermissionStarted,
     TResult? Function(Contact contact)? selectedContactCalled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? refreshPulled,
+    TResult Function()? requestPermissionStarted,
     TResult Function(Contact contact)? selectedContactCalled,
     required TResult orElse(),
   }) =>
@@ -38,6 +41,8 @@ mixin _$ContactListEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_RefreshPulled value) refreshPulled,
+    required TResult Function(_RequestPermissionStarted value)
+        requestPermissionStarted,
     required TResult Function(_SelectedContactCalled value)
         selectedContactCalled,
   }) =>
@@ -45,12 +50,15 @@ mixin _$ContactListEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_RefreshPulled value)? refreshPulled,
+    TResult? Function(_RequestPermissionStarted value)?
+        requestPermissionStarted,
     TResult? Function(_SelectedContactCalled value)? selectedContactCalled,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_RefreshPulled value)? refreshPulled,
+    TResult Function(_RequestPermissionStarted value)? requestPermissionStarted,
     TResult Function(_SelectedContactCalled value)? selectedContactCalled,
     required TResult orElse(),
   }) =>
@@ -114,6 +122,7 @@ class _$RefreshPulledImpl implements _RefreshPulled {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() refreshPulled,
+    required TResult Function() requestPermissionStarted,
     required TResult Function(Contact contact) selectedContactCalled,
   }) {
     return refreshPulled();
@@ -123,6 +132,7 @@ class _$RefreshPulledImpl implements _RefreshPulled {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? refreshPulled,
+    TResult? Function()? requestPermissionStarted,
     TResult? Function(Contact contact)? selectedContactCalled,
   }) {
     return refreshPulled?.call();
@@ -132,6 +142,7 @@ class _$RefreshPulledImpl implements _RefreshPulled {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? refreshPulled,
+    TResult Function()? requestPermissionStarted,
     TResult Function(Contact contact)? selectedContactCalled,
     required TResult orElse(),
   }) {
@@ -145,6 +156,8 @@ class _$RefreshPulledImpl implements _RefreshPulled {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_RefreshPulled value) refreshPulled,
+    required TResult Function(_RequestPermissionStarted value)
+        requestPermissionStarted,
     required TResult Function(_SelectedContactCalled value)
         selectedContactCalled,
   }) {
@@ -155,6 +168,8 @@ class _$RefreshPulledImpl implements _RefreshPulled {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_RefreshPulled value)? refreshPulled,
+    TResult? Function(_RequestPermissionStarted value)?
+        requestPermissionStarted,
     TResult? Function(_SelectedContactCalled value)? selectedContactCalled,
   }) {
     return refreshPulled?.call(this);
@@ -164,6 +179,7 @@ class _$RefreshPulledImpl implements _RefreshPulled {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_RefreshPulled value)? refreshPulled,
+    TResult Function(_RequestPermissionStarted value)? requestPermissionStarted,
     TResult Function(_SelectedContactCalled value)? selectedContactCalled,
     required TResult orElse(),
   }) {
@@ -176,6 +192,120 @@ class _$RefreshPulledImpl implements _RefreshPulled {
 
 abstract class _RefreshPulled implements ContactListEvent {
   const factory _RefreshPulled() = _$RefreshPulledImpl;
+}
+
+/// @nodoc
+abstract class _$$RequestPermissionStartedImplCopyWith<$Res> {
+  factory _$$RequestPermissionStartedImplCopyWith(
+          _$RequestPermissionStartedImpl value,
+          $Res Function(_$RequestPermissionStartedImpl) then) =
+      __$$RequestPermissionStartedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RequestPermissionStartedImplCopyWithImpl<$Res>
+    extends _$ContactListEventCopyWithImpl<$Res, _$RequestPermissionStartedImpl>
+    implements _$$RequestPermissionStartedImplCopyWith<$Res> {
+  __$$RequestPermissionStartedImplCopyWithImpl(
+      _$RequestPermissionStartedImpl _value,
+      $Res Function(_$RequestPermissionStartedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RequestPermissionStartedImpl implements _RequestPermissionStarted {
+  const _$RequestPermissionStartedImpl();
+
+  @override
+  String toString() {
+    return 'ContactListEvent.requestPermissionStarted()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RequestPermissionStartedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() refreshPulled,
+    required TResult Function() requestPermissionStarted,
+    required TResult Function(Contact contact) selectedContactCalled,
+  }) {
+    return requestPermissionStarted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? refreshPulled,
+    TResult? Function()? requestPermissionStarted,
+    TResult? Function(Contact contact)? selectedContactCalled,
+  }) {
+    return requestPermissionStarted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? refreshPulled,
+    TResult Function()? requestPermissionStarted,
+    TResult Function(Contact contact)? selectedContactCalled,
+    required TResult orElse(),
+  }) {
+    if (requestPermissionStarted != null) {
+      return requestPermissionStarted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_RefreshPulled value) refreshPulled,
+    required TResult Function(_RequestPermissionStarted value)
+        requestPermissionStarted,
+    required TResult Function(_SelectedContactCalled value)
+        selectedContactCalled,
+  }) {
+    return requestPermissionStarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_RefreshPulled value)? refreshPulled,
+    TResult? Function(_RequestPermissionStarted value)?
+        requestPermissionStarted,
+    TResult? Function(_SelectedContactCalled value)? selectedContactCalled,
+  }) {
+    return requestPermissionStarted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_RefreshPulled value)? refreshPulled,
+    TResult Function(_RequestPermissionStarted value)? requestPermissionStarted,
+    TResult Function(_SelectedContactCalled value)? selectedContactCalled,
+    required TResult orElse(),
+  }) {
+    if (requestPermissionStarted != null) {
+      return requestPermissionStarted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RequestPermissionStarted implements ContactListEvent {
+  const factory _RequestPermissionStarted() = _$RequestPermissionStartedImpl;
 }
 
 /// @nodoc
@@ -245,6 +375,7 @@ class _$SelectedContactCalledImpl implements _SelectedContactCalled {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() refreshPulled,
+    required TResult Function() requestPermissionStarted,
     required TResult Function(Contact contact) selectedContactCalled,
   }) {
     return selectedContactCalled(contact);
@@ -254,6 +385,7 @@ class _$SelectedContactCalledImpl implements _SelectedContactCalled {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? refreshPulled,
+    TResult? Function()? requestPermissionStarted,
     TResult? Function(Contact contact)? selectedContactCalled,
   }) {
     return selectedContactCalled?.call(contact);
@@ -263,6 +395,7 @@ class _$SelectedContactCalledImpl implements _SelectedContactCalled {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? refreshPulled,
+    TResult Function()? requestPermissionStarted,
     TResult Function(Contact contact)? selectedContactCalled,
     required TResult orElse(),
   }) {
@@ -276,6 +409,8 @@ class _$SelectedContactCalledImpl implements _SelectedContactCalled {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_RefreshPulled value) refreshPulled,
+    required TResult Function(_RequestPermissionStarted value)
+        requestPermissionStarted,
     required TResult Function(_SelectedContactCalled value)
         selectedContactCalled,
   }) {
@@ -286,6 +421,8 @@ class _$SelectedContactCalledImpl implements _SelectedContactCalled {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_RefreshPulled value)? refreshPulled,
+    TResult? Function(_RequestPermissionStarted value)?
+        requestPermissionStarted,
     TResult? Function(_SelectedContactCalled value)? selectedContactCalled,
   }) {
     return selectedContactCalled?.call(this);
@@ -295,6 +432,7 @@ class _$SelectedContactCalledImpl implements _SelectedContactCalled {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_RefreshPulled value)? refreshPulled,
+    TResult Function(_RequestPermissionStarted value)? requestPermissionStarted,
     TResult Function(_SelectedContactCalled value)? selectedContactCalled,
     required TResult orElse(),
   }) {
@@ -318,46 +456,59 @@ abstract class _SelectedContactCalled implements ContactListEvent {
 /// @nodoc
 mixin _$ContactListState {
   List<Contact> get contacts => throw _privateConstructorUsedError;
+  bool? get isPermissionValid => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Contact> contacts) initial,
-    required TResult Function(List<Contact> contacts) loadInProgress,
-    required TResult Function(List<Contact> contacts) loadSuccess,
-    required TResult Function(Failure failure, List<Contact> contacts)
+    required TResult Function(List<Contact> contacts, bool? isPermissionValid)
+        initial,
+    required TResult Function(List<Contact> contacts, bool isPermissionValid)
+        loadInProgress,
+    required TResult Function(List<Contact> contacts, bool isPermissionValid)
+        loadSuccess,
+    required TResult Function(
+            Failure failure, List<Contact> contacts, bool isPermissionValid)
         loadFailure,
-    required TResult Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)
+    required TResult Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)
         startVideoCallFailure,
-    required TResult Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)
+    required TResult Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)
         startVideoCallSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Contact> contacts)? initial,
-    TResult? Function(List<Contact> contacts)? loadInProgress,
-    TResult? Function(List<Contact> contacts)? loadSuccess,
-    TResult? Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult? Function(List<Contact> contacts, bool? isPermissionValid)? initial,
+    TResult? Function(List<Contact> contacts, bool isPermissionValid)?
+        loadInProgress,
+    TResult? Function(List<Contact> contacts, bool isPermissionValid)?
+        loadSuccess,
     TResult? Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+            Failure failure, List<Contact> contacts, bool isPermissionValid)?
+        loadFailure,
+    TResult? Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)?
         startVideoCallFailure,
-    TResult? Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)?
+    TResult? Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)?
         startVideoCallSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Contact> contacts)? initial,
-    TResult Function(List<Contact> contacts)? loadInProgress,
-    TResult Function(List<Contact> contacts)? loadSuccess,
-    TResult Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult Function(List<Contact> contacts, bool? isPermissionValid)? initial,
+    TResult Function(List<Contact> contacts, bool isPermissionValid)?
+        loadInProgress,
+    TResult Function(List<Contact> contacts, bool isPermissionValid)?
+        loadSuccess,
     TResult Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+            Failure failure, List<Contact> contacts, bool isPermissionValid)?
+        loadFailure,
+    TResult Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)?
         startVideoCallFailure,
-    TResult Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)?
+    TResult Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)?
         startVideoCallSuccess,
     required TResult orElse(),
   }) =>
@@ -407,7 +558,7 @@ abstract class $ContactListStateCopyWith<$Res> {
           ContactListState value, $Res Function(ContactListState) then) =
       _$ContactListStateCopyWithImpl<$Res, ContactListState>;
   @useResult
-  $Res call({List<Contact> contacts});
+  $Res call({List<Contact> contacts, bool isPermissionValid});
 }
 
 /// @nodoc
@@ -424,12 +575,17 @@ class _$ContactListStateCopyWithImpl<$Res, $Val extends ContactListState>
   @override
   $Res call({
     Object? contacts = null,
+    Object? isPermissionValid = null,
   }) {
     return _then(_value.copyWith(
       contacts: null == contacts
           ? _value.contacts
           : contacts // ignore: cast_nullable_to_non_nullable
               as List<Contact>,
+      isPermissionValid: null == isPermissionValid
+          ? _value.isPermissionValid!
+          : isPermissionValid // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -442,7 +598,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Contact> contacts});
+  $Res call({List<Contact> contacts, bool? isPermissionValid});
 }
 
 /// @nodoc
@@ -457,12 +613,17 @@ class __$$InitialImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? contacts = null,
+    Object? isPermissionValid = freezed,
   }) {
     return _then(_$InitialImpl(
       null == contacts
           ? _value._contacts
           : contacts // ignore: cast_nullable_to_non_nullable
               as List<Contact>,
+      freezed == isPermissionValid
+          ? _value.isPermissionValid
+          : isPermissionValid // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -470,7 +631,8 @@ class __$$InitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl([final List<Contact> contacts = const []])
+  const _$InitialImpl(
+      [final List<Contact> contacts = const [], this.isPermissionValid = null])
       : _contacts = contacts;
 
   final List<Contact> _contacts;
@@ -483,8 +645,12 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
+  @JsonKey()
+  final bool? isPermissionValid;
+
+  @override
   String toString() {
-    return 'ContactListState.initial(contacts: $contacts)';
+    return 'ContactListState.initial(contacts: $contacts, isPermissionValid: $isPermissionValid)';
   }
 
   @override
@@ -492,12 +658,14 @@ class _$InitialImpl implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
-            const DeepCollectionEquality().equals(other._contacts, _contacts));
+            const DeepCollectionEquality().equals(other._contacts, _contacts) &&
+            (identical(other.isPermissionValid, isPermissionValid) ||
+                other.isPermissionValid == isPermissionValid));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_contacts));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_contacts), isPermissionValid);
 
   @JsonKey(ignore: true)
   @override
@@ -508,55 +676,67 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Contact> contacts) initial,
-    required TResult Function(List<Contact> contacts) loadInProgress,
-    required TResult Function(List<Contact> contacts) loadSuccess,
-    required TResult Function(Failure failure, List<Contact> contacts)
+    required TResult Function(List<Contact> contacts, bool? isPermissionValid)
+        initial,
+    required TResult Function(List<Contact> contacts, bool isPermissionValid)
+        loadInProgress,
+    required TResult Function(List<Contact> contacts, bool isPermissionValid)
+        loadSuccess,
+    required TResult Function(
+            Failure failure, List<Contact> contacts, bool isPermissionValid)
         loadFailure,
-    required TResult Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)
+    required TResult Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)
         startVideoCallFailure,
-    required TResult Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)
+    required TResult Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)
         startVideoCallSuccess,
   }) {
-    return initial(contacts);
+    return initial(contacts, isPermissionValid);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Contact> contacts)? initial,
-    TResult? Function(List<Contact> contacts)? loadInProgress,
-    TResult? Function(List<Contact> contacts)? loadSuccess,
-    TResult? Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult? Function(List<Contact> contacts, bool? isPermissionValid)? initial,
+    TResult? Function(List<Contact> contacts, bool isPermissionValid)?
+        loadInProgress,
+    TResult? Function(List<Contact> contacts, bool isPermissionValid)?
+        loadSuccess,
     TResult? Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+            Failure failure, List<Contact> contacts, bool isPermissionValid)?
+        loadFailure,
+    TResult? Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)?
         startVideoCallFailure,
-    TResult? Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)?
+    TResult? Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)?
         startVideoCallSuccess,
   }) {
-    return initial?.call(contacts);
+    return initial?.call(contacts, isPermissionValid);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Contact> contacts)? initial,
-    TResult Function(List<Contact> contacts)? loadInProgress,
-    TResult Function(List<Contact> contacts)? loadSuccess,
-    TResult Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult Function(List<Contact> contacts, bool? isPermissionValid)? initial,
+    TResult Function(List<Contact> contacts, bool isPermissionValid)?
+        loadInProgress,
+    TResult Function(List<Contact> contacts, bool isPermissionValid)?
+        loadSuccess,
     TResult Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+            Failure failure, List<Contact> contacts, bool isPermissionValid)?
+        loadFailure,
+    TResult Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)?
         startVideoCallFailure,
-    TResult Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)?
+    TResult Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)?
         startVideoCallSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(contacts);
+      return initial(contacts, isPermissionValid);
     }
     return orElse();
   }
@@ -608,10 +788,14 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements ContactListState {
-  const factory _Initial([final List<Contact> contacts]) = _$InitialImpl;
+  const factory _Initial(
+      [final List<Contact> contacts,
+      final bool? isPermissionValid]) = _$InitialImpl;
 
   @override
   List<Contact> get contacts;
+  @override
+  bool? get isPermissionValid;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
@@ -626,7 +810,7 @@ abstract class _$$LoadInProgressImplCopyWith<$Res>
       __$$LoadInProgressImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Contact> contacts});
+  $Res call({List<Contact> contacts, bool isPermissionValid});
 }
 
 /// @nodoc
@@ -641,12 +825,17 @@ class __$$LoadInProgressImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? contacts = null,
+    Object? isPermissionValid = null,
   }) {
     return _then(_$LoadInProgressImpl(
       null == contacts
           ? _value._contacts
           : contacts // ignore: cast_nullable_to_non_nullable
               as List<Contact>,
+      null == isPermissionValid
+          ? _value.isPermissionValid
+          : isPermissionValid // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -654,7 +843,8 @@ class __$$LoadInProgressImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadInProgressImpl implements _LoadInProgress {
-  const _$LoadInProgressImpl(final List<Contact> contacts)
+  const _$LoadInProgressImpl(
+      final List<Contact> contacts, this.isPermissionValid)
       : _contacts = contacts;
 
   final List<Contact> _contacts;
@@ -666,8 +856,11 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   }
 
   @override
+  final bool isPermissionValid;
+
+  @override
   String toString() {
-    return 'ContactListState.loadInProgress(contacts: $contacts)';
+    return 'ContactListState.loadInProgress(contacts: $contacts, isPermissionValid: $isPermissionValid)';
   }
 
   @override
@@ -675,12 +868,14 @@ class _$LoadInProgressImpl implements _LoadInProgress {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadInProgressImpl &&
-            const DeepCollectionEquality().equals(other._contacts, _contacts));
+            const DeepCollectionEquality().equals(other._contacts, _contacts) &&
+            (identical(other.isPermissionValid, isPermissionValid) ||
+                other.isPermissionValid == isPermissionValid));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_contacts));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_contacts), isPermissionValid);
 
   @JsonKey(ignore: true)
   @override
@@ -692,55 +887,67 @@ class _$LoadInProgressImpl implements _LoadInProgress {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Contact> contacts) initial,
-    required TResult Function(List<Contact> contacts) loadInProgress,
-    required TResult Function(List<Contact> contacts) loadSuccess,
-    required TResult Function(Failure failure, List<Contact> contacts)
+    required TResult Function(List<Contact> contacts, bool? isPermissionValid)
+        initial,
+    required TResult Function(List<Contact> contacts, bool isPermissionValid)
+        loadInProgress,
+    required TResult Function(List<Contact> contacts, bool isPermissionValid)
+        loadSuccess,
+    required TResult Function(
+            Failure failure, List<Contact> contacts, bool isPermissionValid)
         loadFailure,
-    required TResult Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)
+    required TResult Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)
         startVideoCallFailure,
-    required TResult Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)
+    required TResult Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)
         startVideoCallSuccess,
   }) {
-    return loadInProgress(contacts);
+    return loadInProgress(contacts, isPermissionValid);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Contact> contacts)? initial,
-    TResult? Function(List<Contact> contacts)? loadInProgress,
-    TResult? Function(List<Contact> contacts)? loadSuccess,
-    TResult? Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult? Function(List<Contact> contacts, bool? isPermissionValid)? initial,
+    TResult? Function(List<Contact> contacts, bool isPermissionValid)?
+        loadInProgress,
+    TResult? Function(List<Contact> contacts, bool isPermissionValid)?
+        loadSuccess,
     TResult? Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+            Failure failure, List<Contact> contacts, bool isPermissionValid)?
+        loadFailure,
+    TResult? Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)?
         startVideoCallFailure,
-    TResult? Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)?
+    TResult? Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)?
         startVideoCallSuccess,
   }) {
-    return loadInProgress?.call(contacts);
+    return loadInProgress?.call(contacts, isPermissionValid);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Contact> contacts)? initial,
-    TResult Function(List<Contact> contacts)? loadInProgress,
-    TResult Function(List<Contact> contacts)? loadSuccess,
-    TResult Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult Function(List<Contact> contacts, bool? isPermissionValid)? initial,
+    TResult Function(List<Contact> contacts, bool isPermissionValid)?
+        loadInProgress,
+    TResult Function(List<Contact> contacts, bool isPermissionValid)?
+        loadSuccess,
     TResult Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+            Failure failure, List<Contact> contacts, bool isPermissionValid)?
+        loadFailure,
+    TResult Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)?
         startVideoCallFailure,
-    TResult Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)?
+    TResult Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)?
         startVideoCallSuccess,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
-      return loadInProgress(contacts);
+      return loadInProgress(contacts, isPermissionValid);
     }
     return orElse();
   }
@@ -792,11 +999,14 @@ class _$LoadInProgressImpl implements _LoadInProgress {
 }
 
 abstract class _LoadInProgress implements ContactListState {
-  const factory _LoadInProgress(final List<Contact> contacts) =
+  const factory _LoadInProgress(
+          final List<Contact> contacts, final bool isPermissionValid) =
       _$LoadInProgressImpl;
 
   @override
   List<Contact> get contacts;
+  @override
+  bool get isPermissionValid;
   @override
   @JsonKey(ignore: true)
   _$$LoadInProgressImplCopyWith<_$LoadInProgressImpl> get copyWith =>
@@ -811,7 +1021,7 @@ abstract class _$$LoadSuccessImplCopyWith<$Res>
       __$$LoadSuccessImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Contact> contacts});
+  $Res call({List<Contact> contacts, bool isPermissionValid});
 }
 
 /// @nodoc
@@ -826,12 +1036,17 @@ class __$$LoadSuccessImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? contacts = null,
+    Object? isPermissionValid = null,
   }) {
     return _then(_$LoadSuccessImpl(
       null == contacts
           ? _value._contacts
           : contacts // ignore: cast_nullable_to_non_nullable
               as List<Contact>,
+      null == isPermissionValid
+          ? _value.isPermissionValid
+          : isPermissionValid // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -839,7 +1054,8 @@ class __$$LoadSuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadSuccessImpl implements _LoadSuccess {
-  const _$LoadSuccessImpl(final List<Contact> contacts) : _contacts = contacts;
+  const _$LoadSuccessImpl(final List<Contact> contacts, this.isPermissionValid)
+      : _contacts = contacts;
 
   final List<Contact> _contacts;
   @override
@@ -850,8 +1066,11 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   }
 
   @override
+  final bool isPermissionValid;
+
+  @override
   String toString() {
-    return 'ContactListState.loadSuccess(contacts: $contacts)';
+    return 'ContactListState.loadSuccess(contacts: $contacts, isPermissionValid: $isPermissionValid)';
   }
 
   @override
@@ -859,12 +1078,14 @@ class _$LoadSuccessImpl implements _LoadSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadSuccessImpl &&
-            const DeepCollectionEquality().equals(other._contacts, _contacts));
+            const DeepCollectionEquality().equals(other._contacts, _contacts) &&
+            (identical(other.isPermissionValid, isPermissionValid) ||
+                other.isPermissionValid == isPermissionValid));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_contacts));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_contacts), isPermissionValid);
 
   @JsonKey(ignore: true)
   @override
@@ -875,55 +1096,67 @@ class _$LoadSuccessImpl implements _LoadSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Contact> contacts) initial,
-    required TResult Function(List<Contact> contacts) loadInProgress,
-    required TResult Function(List<Contact> contacts) loadSuccess,
-    required TResult Function(Failure failure, List<Contact> contacts)
+    required TResult Function(List<Contact> contacts, bool? isPermissionValid)
+        initial,
+    required TResult Function(List<Contact> contacts, bool isPermissionValid)
+        loadInProgress,
+    required TResult Function(List<Contact> contacts, bool isPermissionValid)
+        loadSuccess,
+    required TResult Function(
+            Failure failure, List<Contact> contacts, bool isPermissionValid)
         loadFailure,
-    required TResult Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)
+    required TResult Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)
         startVideoCallFailure,
-    required TResult Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)
+    required TResult Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)
         startVideoCallSuccess,
   }) {
-    return loadSuccess(contacts);
+    return loadSuccess(contacts, isPermissionValid);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Contact> contacts)? initial,
-    TResult? Function(List<Contact> contacts)? loadInProgress,
-    TResult? Function(List<Contact> contacts)? loadSuccess,
-    TResult? Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult? Function(List<Contact> contacts, bool? isPermissionValid)? initial,
+    TResult? Function(List<Contact> contacts, bool isPermissionValid)?
+        loadInProgress,
+    TResult? Function(List<Contact> contacts, bool isPermissionValid)?
+        loadSuccess,
     TResult? Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+            Failure failure, List<Contact> contacts, bool isPermissionValid)?
+        loadFailure,
+    TResult? Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)?
         startVideoCallFailure,
-    TResult? Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)?
+    TResult? Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)?
         startVideoCallSuccess,
   }) {
-    return loadSuccess?.call(contacts);
+    return loadSuccess?.call(contacts, isPermissionValid);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Contact> contacts)? initial,
-    TResult Function(List<Contact> contacts)? loadInProgress,
-    TResult Function(List<Contact> contacts)? loadSuccess,
-    TResult Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult Function(List<Contact> contacts, bool? isPermissionValid)? initial,
+    TResult Function(List<Contact> contacts, bool isPermissionValid)?
+        loadInProgress,
+    TResult Function(List<Contact> contacts, bool isPermissionValid)?
+        loadSuccess,
     TResult Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+            Failure failure, List<Contact> contacts, bool isPermissionValid)?
+        loadFailure,
+    TResult Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)?
         startVideoCallFailure,
-    TResult Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)?
+    TResult Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)?
         startVideoCallSuccess,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
-      return loadSuccess(contacts);
+      return loadSuccess(contacts, isPermissionValid);
     }
     return orElse();
   }
@@ -975,10 +1208,14 @@ class _$LoadSuccessImpl implements _LoadSuccess {
 }
 
 abstract class _LoadSuccess implements ContactListState {
-  const factory _LoadSuccess(final List<Contact> contacts) = _$LoadSuccessImpl;
+  const factory _LoadSuccess(
+          final List<Contact> contacts, final bool isPermissionValid) =
+      _$LoadSuccessImpl;
 
   @override
   List<Contact> get contacts;
+  @override
+  bool get isPermissionValid;
   @override
   @JsonKey(ignore: true)
   _$$LoadSuccessImplCopyWith<_$LoadSuccessImpl> get copyWith =>
@@ -993,7 +1230,7 @@ abstract class _$$LoadFailureImplCopyWith<$Res>
       __$$LoadFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Failure failure, List<Contact> contacts});
+  $Res call({Failure failure, List<Contact> contacts, bool isPermissionValid});
 }
 
 /// @nodoc
@@ -1009,16 +1246,21 @@ class __$$LoadFailureImplCopyWithImpl<$Res>
   $Res call({
     Object? failure = null,
     Object? contacts = null,
+    Object? isPermissionValid = null,
   }) {
     return _then(_$LoadFailureImpl(
       null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
               as Failure,
-      null == contacts
+      contacts: null == contacts
           ? _value._contacts
           : contacts // ignore: cast_nullable_to_non_nullable
               as List<Contact>,
+      isPermissionValid: null == isPermissionValid
+          ? _value.isPermissionValid
+          : isPermissionValid // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1027,14 +1269,13 @@ class __$$LoadFailureImplCopyWithImpl<$Res>
 
 class _$LoadFailureImpl implements _LoadFailure {
   const _$LoadFailureImpl(this.failure,
-      [final List<Contact> contacts = const []])
+      {required final List<Contact> contacts, required this.isPermissionValid})
       : _contacts = contacts;
 
   @override
   final Failure failure;
   final List<Contact> _contacts;
   @override
-  @JsonKey()
   List<Contact> get contacts {
     if (_contacts is EqualUnmodifiableListView) return _contacts;
     // ignore: implicit_dynamic_type
@@ -1042,8 +1283,11 @@ class _$LoadFailureImpl implements _LoadFailure {
   }
 
   @override
+  final bool isPermissionValid;
+
+  @override
   String toString() {
-    return 'ContactListState.loadFailure(failure: $failure, contacts: $contacts)';
+    return 'ContactListState.loadFailure(failure: $failure, contacts: $contacts, isPermissionValid: $isPermissionValid)';
   }
 
   @override
@@ -1052,12 +1296,14 @@ class _$LoadFailureImpl implements _LoadFailure {
         (other.runtimeType == runtimeType &&
             other is _$LoadFailureImpl &&
             (identical(other.failure, failure) || other.failure == failure) &&
-            const DeepCollectionEquality().equals(other._contacts, _contacts));
+            const DeepCollectionEquality().equals(other._contacts, _contacts) &&
+            (identical(other.isPermissionValid, isPermissionValid) ||
+                other.isPermissionValid == isPermissionValid));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, failure, const DeepCollectionEquality().hash(_contacts));
+  int get hashCode => Object.hash(runtimeType, failure,
+      const DeepCollectionEquality().hash(_contacts), isPermissionValid);
 
   @JsonKey(ignore: true)
   @override
@@ -1068,55 +1314,67 @@ class _$LoadFailureImpl implements _LoadFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Contact> contacts) initial,
-    required TResult Function(List<Contact> contacts) loadInProgress,
-    required TResult Function(List<Contact> contacts) loadSuccess,
-    required TResult Function(Failure failure, List<Contact> contacts)
+    required TResult Function(List<Contact> contacts, bool? isPermissionValid)
+        initial,
+    required TResult Function(List<Contact> contacts, bool isPermissionValid)
+        loadInProgress,
+    required TResult Function(List<Contact> contacts, bool isPermissionValid)
+        loadSuccess,
+    required TResult Function(
+            Failure failure, List<Contact> contacts, bool isPermissionValid)
         loadFailure,
-    required TResult Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)
+    required TResult Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)
         startVideoCallFailure,
-    required TResult Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)
+    required TResult Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)
         startVideoCallSuccess,
   }) {
-    return loadFailure(failure, contacts);
+    return loadFailure(failure, contacts, isPermissionValid);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Contact> contacts)? initial,
-    TResult? Function(List<Contact> contacts)? loadInProgress,
-    TResult? Function(List<Contact> contacts)? loadSuccess,
-    TResult? Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult? Function(List<Contact> contacts, bool? isPermissionValid)? initial,
+    TResult? Function(List<Contact> contacts, bool isPermissionValid)?
+        loadInProgress,
+    TResult? Function(List<Contact> contacts, bool isPermissionValid)?
+        loadSuccess,
     TResult? Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+            Failure failure, List<Contact> contacts, bool isPermissionValid)?
+        loadFailure,
+    TResult? Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)?
         startVideoCallFailure,
-    TResult? Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)?
+    TResult? Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)?
         startVideoCallSuccess,
   }) {
-    return loadFailure?.call(failure, contacts);
+    return loadFailure?.call(failure, contacts, isPermissionValid);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Contact> contacts)? initial,
-    TResult Function(List<Contact> contacts)? loadInProgress,
-    TResult Function(List<Contact> contacts)? loadSuccess,
-    TResult Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult Function(List<Contact> contacts, bool? isPermissionValid)? initial,
+    TResult Function(List<Contact> contacts, bool isPermissionValid)?
+        loadInProgress,
+    TResult Function(List<Contact> contacts, bool isPermissionValid)?
+        loadSuccess,
     TResult Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+            Failure failure, List<Contact> contacts, bool isPermissionValid)?
+        loadFailure,
+    TResult Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)?
         startVideoCallFailure,
-    TResult Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)?
+    TResult Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)?
         startVideoCallSuccess,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
-      return loadFailure(failure, contacts);
+      return loadFailure(failure, contacts, isPermissionValid);
     }
     return orElse();
   }
@@ -1169,11 +1427,14 @@ class _$LoadFailureImpl implements _LoadFailure {
 
 abstract class _LoadFailure implements ContactListState {
   const factory _LoadFailure(final Failure failure,
-      [final List<Contact> contacts]) = _$LoadFailureImpl;
+      {required final List<Contact> contacts,
+      required final bool isPermissionValid}) = _$LoadFailureImpl;
 
   Failure get failure;
   @override
   List<Contact> get contacts;
+  @override
+  bool get isPermissionValid;
   @override
   @JsonKey(ignore: true)
   _$$LoadFailureImplCopyWith<_$LoadFailureImpl> get copyWith =>
@@ -1190,7 +1451,10 @@ abstract class _$$StartVideoCallFailureImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String errorMessage, DateTime lastTryDate, List<Contact> contacts});
+      {String errorMessage,
+      DateTime lastTryDate,
+      List<Contact> contacts,
+      bool isPermissionValid});
 }
 
 /// @nodoc
@@ -1207,20 +1471,25 @@ class __$$StartVideoCallFailureImplCopyWithImpl<$Res>
     Object? errorMessage = null,
     Object? lastTryDate = null,
     Object? contacts = null,
+    Object? isPermissionValid = null,
   }) {
     return _then(_$StartVideoCallFailureImpl(
-      null == errorMessage
+      errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
-      null == lastTryDate
+      lastTryDate: null == lastTryDate
           ? _value.lastTryDate
           : lastTryDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      null == contacts
+      contacts: null == contacts
           ? _value._contacts
           : contacts // ignore: cast_nullable_to_non_nullable
               as List<Contact>,
+      isPermissionValid: null == isPermissionValid
+          ? _value.isPermissionValid
+          : isPermissionValid // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1229,7 +1498,10 @@ class __$$StartVideoCallFailureImplCopyWithImpl<$Res>
 
 class _$StartVideoCallFailureImpl implements _StartVideoCallFailure {
   const _$StartVideoCallFailureImpl(
-      this.errorMessage, this.lastTryDate, final List<Contact> contacts)
+      {required this.errorMessage,
+      required this.lastTryDate,
+      required final List<Contact> contacts,
+      required this.isPermissionValid})
       : _contacts = contacts;
 
   @override
@@ -1245,8 +1517,11 @@ class _$StartVideoCallFailureImpl implements _StartVideoCallFailure {
   }
 
   @override
+  final bool isPermissionValid;
+
+  @override
   String toString() {
-    return 'ContactListState.startVideoCallFailure(errorMessage: $errorMessage, lastTryDate: $lastTryDate, contacts: $contacts)';
+    return 'ContactListState.startVideoCallFailure(errorMessage: $errorMessage, lastTryDate: $lastTryDate, contacts: $contacts, isPermissionValid: $isPermissionValid)';
   }
 
   @override
@@ -1258,12 +1533,14 @@ class _$StartVideoCallFailureImpl implements _StartVideoCallFailure {
                 other.errorMessage == errorMessage) &&
             (identical(other.lastTryDate, lastTryDate) ||
                 other.lastTryDate == lastTryDate) &&
-            const DeepCollectionEquality().equals(other._contacts, _contacts));
+            const DeepCollectionEquality().equals(other._contacts, _contacts) &&
+            (identical(other.isPermissionValid, isPermissionValid) ||
+                other.isPermissionValid == isPermissionValid));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, errorMessage, lastTryDate,
-      const DeepCollectionEquality().hash(_contacts));
+      const DeepCollectionEquality().hash(_contacts), isPermissionValid);
 
   @JsonKey(ignore: true)
   @override
@@ -1275,55 +1552,70 @@ class _$StartVideoCallFailureImpl implements _StartVideoCallFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Contact> contacts) initial,
-    required TResult Function(List<Contact> contacts) loadInProgress,
-    required TResult Function(List<Contact> contacts) loadSuccess,
-    required TResult Function(Failure failure, List<Contact> contacts)
+    required TResult Function(List<Contact> contacts, bool? isPermissionValid)
+        initial,
+    required TResult Function(List<Contact> contacts, bool isPermissionValid)
+        loadInProgress,
+    required TResult Function(List<Contact> contacts, bool isPermissionValid)
+        loadSuccess,
+    required TResult Function(
+            Failure failure, List<Contact> contacts, bool isPermissionValid)
         loadFailure,
-    required TResult Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)
+    required TResult Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)
         startVideoCallFailure,
-    required TResult Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)
+    required TResult Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)
         startVideoCallSuccess,
   }) {
-    return startVideoCallFailure(errorMessage, lastTryDate, contacts);
+    return startVideoCallFailure(
+        errorMessage, lastTryDate, contacts, isPermissionValid);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Contact> contacts)? initial,
-    TResult? Function(List<Contact> contacts)? loadInProgress,
-    TResult? Function(List<Contact> contacts)? loadSuccess,
-    TResult? Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult? Function(List<Contact> contacts, bool? isPermissionValid)? initial,
+    TResult? Function(List<Contact> contacts, bool isPermissionValid)?
+        loadInProgress,
+    TResult? Function(List<Contact> contacts, bool isPermissionValid)?
+        loadSuccess,
     TResult? Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+            Failure failure, List<Contact> contacts, bool isPermissionValid)?
+        loadFailure,
+    TResult? Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)?
         startVideoCallFailure,
-    TResult? Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)?
+    TResult? Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)?
         startVideoCallSuccess,
   }) {
-    return startVideoCallFailure?.call(errorMessage, lastTryDate, contacts);
+    return startVideoCallFailure?.call(
+        errorMessage, lastTryDate, contacts, isPermissionValid);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Contact> contacts)? initial,
-    TResult Function(List<Contact> contacts)? loadInProgress,
-    TResult Function(List<Contact> contacts)? loadSuccess,
-    TResult Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult Function(List<Contact> contacts, bool? isPermissionValid)? initial,
+    TResult Function(List<Contact> contacts, bool isPermissionValid)?
+        loadInProgress,
+    TResult Function(List<Contact> contacts, bool isPermissionValid)?
+        loadSuccess,
     TResult Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+            Failure failure, List<Contact> contacts, bool isPermissionValid)?
+        loadFailure,
+    TResult Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)?
         startVideoCallFailure,
-    TResult Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)?
+    TResult Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)?
         startVideoCallSuccess,
     required TResult orElse(),
   }) {
     if (startVideoCallFailure != null) {
-      return startVideoCallFailure(errorMessage, lastTryDate, contacts);
+      return startVideoCallFailure(
+          errorMessage, lastTryDate, contacts, isPermissionValid);
     }
     return orElse();
   }
@@ -1376,14 +1668,17 @@ class _$StartVideoCallFailureImpl implements _StartVideoCallFailure {
 
 abstract class _StartVideoCallFailure implements ContactListState {
   const factory _StartVideoCallFailure(
-      final String errorMessage,
-      final DateTime lastTryDate,
-      final List<Contact> contacts) = _$StartVideoCallFailureImpl;
+      {required final String errorMessage,
+      required final DateTime lastTryDate,
+      required final List<Contact> contacts,
+      required final bool isPermissionValid}) = _$StartVideoCallFailureImpl;
 
   String get errorMessage;
   DateTime get lastTryDate;
   @override
   List<Contact> get contacts;
+  @override
+  bool get isPermissionValid;
   @override
   @JsonKey(ignore: true)
   _$$StartVideoCallFailureImplCopyWith<_$StartVideoCallFailureImpl>
@@ -1400,7 +1695,10 @@ abstract class _$$StartVideoCallSuccessImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<Contact> contacts, Contact selectedContact, DateTime calledAt});
+      {List<Contact> contacts,
+      Contact selectedContact,
+      DateTime calledAt,
+      bool isPermissionValid});
 }
 
 /// @nodoc
@@ -1417,6 +1715,7 @@ class __$$StartVideoCallSuccessImplCopyWithImpl<$Res>
     Object? contacts = null,
     Object? selectedContact = null,
     Object? calledAt = null,
+    Object? isPermissionValid = null,
   }) {
     return _then(_$StartVideoCallSuccessImpl(
       null == contacts
@@ -1431,6 +1730,10 @@ class __$$StartVideoCallSuccessImplCopyWithImpl<$Res>
           ? _value.calledAt
           : calledAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      isPermissionValid: null == isPermissionValid
+          ? _value.isPermissionValid
+          : isPermissionValid // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -1439,7 +1742,9 @@ class __$$StartVideoCallSuccessImplCopyWithImpl<$Res>
 
 class _$StartVideoCallSuccessImpl implements _StartVideoCallSuccess {
   const _$StartVideoCallSuccessImpl(final List<Contact> contacts,
-      {required this.selectedContact, required this.calledAt})
+      {required this.selectedContact,
+      required this.calledAt,
+      required this.isPermissionValid})
       : _contacts = contacts;
 
   final List<Contact> _contacts;
@@ -1454,10 +1759,12 @@ class _$StartVideoCallSuccessImpl implements _StartVideoCallSuccess {
   final Contact selectedContact;
   @override
   final DateTime calledAt;
+  @override
+  final bool isPermissionValid;
 
   @override
   String toString() {
-    return 'ContactListState.startVideoCallSuccess(contacts: $contacts, selectedContact: $selectedContact, calledAt: $calledAt)';
+    return 'ContactListState.startVideoCallSuccess(contacts: $contacts, selectedContact: $selectedContact, calledAt: $calledAt, isPermissionValid: $isPermissionValid)';
   }
 
   @override
@@ -1469,7 +1776,9 @@ class _$StartVideoCallSuccessImpl implements _StartVideoCallSuccess {
             (identical(other.selectedContact, selectedContact) ||
                 other.selectedContact == selectedContact) &&
             (identical(other.calledAt, calledAt) ||
-                other.calledAt == calledAt));
+                other.calledAt == calledAt) &&
+            (identical(other.isPermissionValid, isPermissionValid) ||
+                other.isPermissionValid == isPermissionValid));
   }
 
   @override
@@ -1477,7 +1786,8 @@ class _$StartVideoCallSuccessImpl implements _StartVideoCallSuccess {
       runtimeType,
       const DeepCollectionEquality().hash(_contacts),
       selectedContact,
-      calledAt);
+      calledAt,
+      isPermissionValid);
 
   @JsonKey(ignore: true)
   @override
@@ -1489,55 +1799,70 @@ class _$StartVideoCallSuccessImpl implements _StartVideoCallSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Contact> contacts) initial,
-    required TResult Function(List<Contact> contacts) loadInProgress,
-    required TResult Function(List<Contact> contacts) loadSuccess,
-    required TResult Function(Failure failure, List<Contact> contacts)
+    required TResult Function(List<Contact> contacts, bool? isPermissionValid)
+        initial,
+    required TResult Function(List<Contact> contacts, bool isPermissionValid)
+        loadInProgress,
+    required TResult Function(List<Contact> contacts, bool isPermissionValid)
+        loadSuccess,
+    required TResult Function(
+            Failure failure, List<Contact> contacts, bool isPermissionValid)
         loadFailure,
-    required TResult Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)
+    required TResult Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)
         startVideoCallFailure,
-    required TResult Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)
+    required TResult Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)
         startVideoCallSuccess,
   }) {
-    return startVideoCallSuccess(contacts, selectedContact, calledAt);
+    return startVideoCallSuccess(
+        contacts, selectedContact, calledAt, isPermissionValid);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Contact> contacts)? initial,
-    TResult? Function(List<Contact> contacts)? loadInProgress,
-    TResult? Function(List<Contact> contacts)? loadSuccess,
-    TResult? Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult? Function(List<Contact> contacts, bool? isPermissionValid)? initial,
+    TResult? Function(List<Contact> contacts, bool isPermissionValid)?
+        loadInProgress,
+    TResult? Function(List<Contact> contacts, bool isPermissionValid)?
+        loadSuccess,
     TResult? Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+            Failure failure, List<Contact> contacts, bool isPermissionValid)?
+        loadFailure,
+    TResult? Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)?
         startVideoCallFailure,
-    TResult? Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)?
+    TResult? Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)?
         startVideoCallSuccess,
   }) {
-    return startVideoCallSuccess?.call(contacts, selectedContact, calledAt);
+    return startVideoCallSuccess?.call(
+        contacts, selectedContact, calledAt, isPermissionValid);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Contact> contacts)? initial,
-    TResult Function(List<Contact> contacts)? loadInProgress,
-    TResult Function(List<Contact> contacts)? loadSuccess,
-    TResult Function(Failure failure, List<Contact> contacts)? loadFailure,
+    TResult Function(List<Contact> contacts, bool? isPermissionValid)? initial,
+    TResult Function(List<Contact> contacts, bool isPermissionValid)?
+        loadInProgress,
+    TResult Function(List<Contact> contacts, bool isPermissionValid)?
+        loadSuccess,
     TResult Function(
-            String errorMessage, DateTime lastTryDate, List<Contact> contacts)?
+            Failure failure, List<Contact> contacts, bool isPermissionValid)?
+        loadFailure,
+    TResult Function(String errorMessage, DateTime lastTryDate,
+            List<Contact> contacts, bool isPermissionValid)?
         startVideoCallFailure,
-    TResult Function(
-            List<Contact> contacts, Contact selectedContact, DateTime calledAt)?
+    TResult Function(List<Contact> contacts, Contact selectedContact,
+            DateTime calledAt, bool isPermissionValid)?
         startVideoCallSuccess,
     required TResult orElse(),
   }) {
     if (startVideoCallSuccess != null) {
-      return startVideoCallSuccess(contacts, selectedContact, calledAt);
+      return startVideoCallSuccess(
+          contacts, selectedContact, calledAt, isPermissionValid);
     }
     return orElse();
   }
@@ -1591,12 +1916,15 @@ class _$StartVideoCallSuccessImpl implements _StartVideoCallSuccess {
 abstract class _StartVideoCallSuccess implements ContactListState {
   const factory _StartVideoCallSuccess(final List<Contact> contacts,
       {required final Contact selectedContact,
-      required final DateTime calledAt}) = _$StartVideoCallSuccessImpl;
+      required final DateTime calledAt,
+      required final bool isPermissionValid}) = _$StartVideoCallSuccessImpl;
 
   @override
   List<Contact> get contacts;
   Contact get selectedContact;
   DateTime get calledAt;
+  @override
+  bool get isPermissionValid;
   @override
   @JsonKey(ignore: true)
   _$$StartVideoCallSuccessImplCopyWith<_$StartVideoCallSuccessImpl>

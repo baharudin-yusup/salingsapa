@@ -18,6 +18,9 @@ class HasPermission extends UseCase<AppPermission, bool> {
     }
 
     final isGranted = await permission.isGranted;
+    if (!isGranted) {
+      return Left(PermissionFailure(param, createdAt: DateTime.now()));
+    }
 
     return Right(isGranted);
   }

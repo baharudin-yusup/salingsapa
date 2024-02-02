@@ -133,11 +133,11 @@ Future<void> setup(Env env) async {
       sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl()));
   sl.registerFactory(() => SpeechRecognitionBloc(sl(), sl(), sl(), sl(), sl()));
   sl.registerFactory(() => OpenExternalLinkBloc(sl(), sl()));
-  sl.registerFactory(() => ContactListBloc(sl(), sl(), sl(), sl()));
 
   /// Singleton BLoC
   sl.registerLazySingleton(() => AuthorizationBloc(sl(), sl()));
   sl.registerFactory(() => SetupBloc(sl(), sl(), sl()));
+  sl.registerLazySingleton(() => ContactListBloc(sl(), sl(), sl(), sl()));
 
   /// Use cases
   sl.registerLazySingleton(() => VerifyPhoneNumber(sl()));

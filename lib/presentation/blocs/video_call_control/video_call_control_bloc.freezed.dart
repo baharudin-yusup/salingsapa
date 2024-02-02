@@ -759,7 +759,7 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 class _$InitialImpl implements _Initial {
   const _$InitialImpl(
-      {this.isAudioMuted = const DataState(true),
+      {this.isAudioMuted = const DataState(false),
       this.isVideoMuted = const DataState(false),
       this.isUsingFrontCamera = const DataState(false)});
 
