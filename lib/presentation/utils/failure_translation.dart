@@ -8,11 +8,13 @@ extension AppFailureCodeTranslation on AppFailureCode {
     switch (this) {
       case AppFailureCode.invalidOtp:
         return context.localization.errorMessageInvalidOtpCode;
+      case AppFailureCode.permissionFailure:
+        return context.localization.errorMessagePermissionDenied;
+      case AppFailureCode.phoneNumberBlocked:
+        return context.localization.errorMessagePhoneNumberBlocked;
       case AppFailureCode.unknown:
       case AppFailureCode.autoSignInFailed:
         return context.localization.errorMessageUnknown;
-      case AppFailureCode.phoneNumberBlocked:
-        return context.localization.errorMessagePhoneNumberBlocked;
     }
   }
 }

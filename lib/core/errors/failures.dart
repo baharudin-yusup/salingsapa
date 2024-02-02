@@ -1,8 +1,7 @@
-import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 import '../../data/constants/firebase_exception_code.dart';
+import '../../domain/entities/app_permission.dart';
 
 abstract class Failure extends Equatable {
   final String errorMessage;
@@ -47,10 +46,10 @@ class FeatureFailure extends Failure {
 }
 
 class PermissionFailure extends Failure {
-  final Either<Permission, List<Permission>> permission;
+  final AppPermission permission;
 
   const PermissionFailure(
     this.permission, {
     super.createdAt,
-  });
+  }) : super(code: AppFailureCode.permissionFailure);
 }

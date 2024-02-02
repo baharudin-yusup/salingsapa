@@ -21,4 +21,5 @@ enum AppFailureCode {
   phoneNumberBlocked,
   autoSignInFailed,
   unknown,
+  permissionFailure,
 }

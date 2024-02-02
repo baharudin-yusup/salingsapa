@@ -14,6 +14,7 @@ import '../../blocs/recent_call/recent_call_bloc.dart';
 import '../../components/intuitive_scaffold.dart';
 import '../../components/intuitive_scaffold/intuitive_floating_action_button.dart';
 import '../../components/invitation_card.dart';
+import '../../components/no_contact_access_ui.dart';
 import '../../services/theme_service.dart';
 import '../../utils/app_localizations.dart';
 import '../video_call/video_call_screen.dart';
@@ -26,44 +27,75 @@ class RecentCallScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<RecentCallBloc, RecentCallState>(
-        builder: (context, state) {
-      return IntuitiveScaffold(
-        appBar: IntuitiveAppBar(
-          middle: Text(AppLocalizations.of(context)!.recentCalls),
-          materialActions: [
-            // TODO: Add this later
-            // IconButton(
-            //   onPressed: () {},
-            //   icon: const Icon(Icons.search_rounded),
-            // ),
-            // IconButton(
-            //   onPressed: () {},
-            //   icon: const Icon(Icons.more_vert_rounded),
-            // ),
-          ],
-          cupertinoTrailing: TextButton(
-            child: Text(AppLocalizations.of(context)!.newCall),
-            onPressed: () => context
-                .read<RecentCallBloc>()
-                .add(const RecentCallEvent.newCallTapped()),
-          ),
-        ),
-        floatingActionButton: IntuitiveFloatingActionButton(
-            label: AppLocalizations.of(context)!.newCall,
-            size: IntuitiveFloatingActionButtonSize.extended,
-            icon: const Icon(Icons.video_call_outlined),
-            onPressed: () {
-              context
+      builder: (context, state) {
+        return IntuitiveScaffold(
+          appBar: IntuitiveAppBar(
+            middle: Text(AppLocalizations.of(context)!.recentCalls),
+            materialActions: [
+              // TODO: Add this later
+              // IconButton(
+              //   onPressed: () {},
+              //   icon: const Icon(Icons.search_rounded),
+              // ),
+              // IconButton(
+              //   onPressed: () {},
+              //   icon: const Icon(Icons.more_vert_rounded),
+              // ),
+            ],
+            cupertinoTrailing: TextButton(
+              child: Text(AppLocalizations.of(context)!.newCall),
+              onPressed: () => context
                   .read<RecentCallBloc>()
-                  .add(const RecentCallEvent.newCallTapped());
-            }),
-        builder: (context) => RefreshIndicator.adaptive(
-          edgeOffset: MediaQuery.of(context).padding.top,
-          onRefresh: () async {},
-          child: showInvitationList(context),
-        ),
-      );
-    });
+                  .add(const RecentCallEvent.newCallTapped()),
+            ),
+          ),
+          floatingActionButton: IntuitiveFloatingActionButton(
+              label: AppLocalizations.of(context)!.newCall,
+              size: IntuitiveFloatingActionButtonSize.extended,
+              icon: const Icon(Icons.video_call_outlined),
+              onPressed: () {
+                context
+                    .read<RecentCallBloc>()
+                    .add(const RecentCallEvent.newCallTapped());
+              }),
+          builder: (context) {
+            return BlocBuilder<ContactListBloc, ContactListState>(
+              builder: (_, contactListState) {
+                if (contactListState.isPermissionValid == null) {
+                  return const Center(
+                    child: CircularProgressIndicator.adaptive(),
+                  );
+                }
+
+                print(contactListState.isPermissionValid);
+
+                if (!(contactListState.isPermissionValid ?? false)) {
+                  final ContactListBloc contactListBloc = context.read();
+                  return NoContactAccessUi(
+                    onRequest: () {
+                      contactListBloc.add(
+                          const ContactListEvent.requestPermissionStarted());
+                    },
+                    onPermissionGranted: () {
+                      // Do nothing for now
+                    },
+                    onPermissionDenied: () {
+                      // Do nothing for now
+                    },
+                  );
+                }
+
+                return RefreshIndicator.adaptive(
+                  edgeOffset: MediaQuery.of(context).padding.top,
+                  onRefresh: () async {},
+                  child: showInvitationList(context),
+                );
+              },
+            );
+          },
+        );
+      },
+    );
   }
 
   Widget showInvitationList(BuildContext context) {
@@ -102,10 +134,6 @@ class RecentCallScreen extends StatelessWidget {
                 final invitation = invitations[index];
 
                 return BlocBuilder<ContactListBloc, ContactListState>(
-                  buildWhen: (_, currentState) => currentState.maybeMap(
-                    loadSuccess: (_) => true,
-                    orElse: () => false,
-                  ),
                   builder: (context, contactListState) {
                     Contact? contact;
                     try {

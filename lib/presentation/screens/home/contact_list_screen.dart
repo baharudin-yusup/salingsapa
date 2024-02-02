@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../core/errors/failures.dart';
 import '../../../domain/entities/contact.dart';
 import '../../blocs/contact_list/contact_list_bloc.dart';
 import '../../components/contact_card.dart';
 import '../../components/intuitive_scaffold.dart';
+import '../../components/no_contact_access_ui.dart';
 import '../../components/show_error_message.dart';
 import '../../services/theme_service.dart';
 import '../room/create_room_screen.dart';
@@ -21,9 +23,9 @@ class ContactListScreen extends StatelessWidget {
       listener: (context, state) {
         state.maybeWhen(
             orElse: () {},
-            startVideoCallSuccess: (_, contact, __) => Navigator.pushNamed(
+            startVideoCallSuccess: (_, contact, __, ___) => Navigator.pushNamed(
                 context, CreateRoomScreen.routeName, arguments: contact),
-            startVideoCallFailure: (errorMessage, _, __) =>
+            startVideoCallFailure: (errorMessage, _, __, ___) =>
                 showErrorMessage(context, errorMessage));
       },
       buildWhen: (previousState, currentState) => currentState.maybeMap(
@@ -50,7 +52,24 @@ class ContactListScreen extends StatelessWidget {
           builder: (context) {
             return state.maybeMap(
               loadSuccess: (_) => buildContactList(context, state.contacts),
-              loadFailure: (_) => buildContactList(context, state.contacts),
+              loadFailure: (state) {
+                if (state.failure is PermissionFailure) {
+                  final ContactListBloc contactListBloc = context.read();
+                  return NoContactAccessUi(
+                    onRequest: () {
+                      contactListBloc.add(
+                          const ContactListEvent.requestPermissionStarted());
+                    },
+                    onPermissionGranted: () {
+                      // Do nothing for now
+                    },
+                    onPermissionDenied: () {
+                      // Do nothing for now
+                    },
+                  );
+                }
+                return buildContactList(context, state.contacts);
+              },
               orElse: () => buildLoadingUi(),
             );
           },

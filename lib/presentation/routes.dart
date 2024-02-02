@@ -35,15 +35,16 @@ Map<String, WidgetBuilder> getRoutes() => {
                     return const SetupScreen();
                   }
 
+                  context
+                      .read<ContactListBloc>()
+                      .add(const ContactListEvent.refreshPulled());
+
                   return MultiBlocProvider(
                     providers: [
                       BlocProvider<HomeCubit>(create: (_) => HomeCubit()),
                       BlocProvider<RecentCallBloc>(
                           create: (_) =>
                               sl()..add(const RecentCallEvent.started())),
-                      BlocProvider<ContactListBloc>(
-                          create: (_) => sl()
-                            ..add(const ContactListEvent.refreshPulled())),
                       BlocProvider<AccountBloc>(
                           create: (_) =>
                               sl()..add(const AccountEvent.started())),
@@ -81,8 +82,10 @@ Map<String, WidgetBuilder> getRoutes() => {
       },
       VerifyOtpScreen.routeName: (_) => const VerifyOtpScreen(),
       SetupScreen.routeName: (_) => const SetupScreen(),
-      ContactListScreen.routeName: (_) => BlocProvider<ContactListBloc>(
-            create: (_) => sl()..add(const ContactListEvent.refreshPulled()),
-            child: const ContactListScreen(),
-          ),
+      ContactListScreen.routeName: (context) {
+        context
+            .read<ContactListBloc>()
+            .add(const ContactListEvent.refreshPulled());
+        return const ContactListScreen();
+      },
     };
