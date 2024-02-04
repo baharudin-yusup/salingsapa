@@ -24,6 +24,7 @@ mixin _$SetupEvent {
     required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
     required TResult Function() submitOtpStarted,
+    required TResult Function() clearSetupStarted,
     required TResult Function() resendOtpStarted,
   }) =>
       throw _privateConstructorUsedError;
@@ -35,6 +36,7 @@ mixin _$SetupEvent {
     TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
     TResult? Function()? submitOtpStarted,
+    TResult? Function()? clearSetupStarted,
     TResult? Function()? resendOtpStarted,
   }) =>
       throw _privateConstructorUsedError;
@@ -46,6 +48,7 @@ mixin _$SetupEvent {
     TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
     TResult Function()? submitOtpStarted,
+    TResult Function()? clearSetupStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) =>
@@ -60,6 +63,7 @@ mixin _$SetupEvent {
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
     required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ClearSetupStarted value) clearSetupStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) =>
       throw _privateConstructorUsedError;
@@ -72,6 +76,7 @@ mixin _$SetupEvent {
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) =>
       throw _privateConstructorUsedError;
@@ -83,6 +88,7 @@ mixin _$SetupEvent {
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) =>
@@ -154,6 +160,7 @@ class _$InputPhoneNumberStartedImpl implements _InputPhoneNumberStarted {
     required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
     required TResult Function() submitOtpStarted,
+    required TResult Function() clearSetupStarted,
     required TResult Function() resendOtpStarted,
   }) {
     return inputPhoneNumberStarted();
@@ -168,6 +175,7 @@ class _$InputPhoneNumberStartedImpl implements _InputPhoneNumberStarted {
     TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
     TResult? Function()? submitOtpStarted,
+    TResult? Function()? clearSetupStarted,
     TResult? Function()? resendOtpStarted,
   }) {
     return inputPhoneNumberStarted?.call();
@@ -182,6 +190,7 @@ class _$InputPhoneNumberStartedImpl implements _InputPhoneNumberStarted {
     TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
     TResult Function()? submitOtpStarted,
+    TResult Function()? clearSetupStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -202,6 +211,7 @@ class _$InputPhoneNumberStartedImpl implements _InputPhoneNumberStarted {
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
     required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ClearSetupStarted value) clearSetupStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) {
     return inputPhoneNumberStarted(this);
@@ -217,6 +227,7 @@ class _$InputPhoneNumberStartedImpl implements _InputPhoneNumberStarted {
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) {
     return inputPhoneNumberStarted?.call(this);
@@ -231,6 +242,7 @@ class _$InputPhoneNumberStartedImpl implements _InputPhoneNumberStarted {
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -317,6 +329,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
     required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
     required TResult Function() submitOtpStarted,
+    required TResult Function() clearSetupStarted,
     required TResult Function() resendOtpStarted,
   }) {
     return phoneNumberChanged(phoneNumber);
@@ -331,6 +344,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
     TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
     TResult? Function()? submitOtpStarted,
+    TResult? Function()? clearSetupStarted,
     TResult? Function()? resendOtpStarted,
   }) {
     return phoneNumberChanged?.call(phoneNumber);
@@ -345,6 +359,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
     TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
     TResult Function()? submitOtpStarted,
+    TResult Function()? clearSetupStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -365,6 +380,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
     required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ClearSetupStarted value) clearSetupStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) {
     return phoneNumberChanged(this);
@@ -380,6 +396,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) {
     return phoneNumberChanged?.call(this);
@@ -394,6 +411,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -461,6 +479,7 @@ class _$SubmitPhoneNumberStartedImpl implements _SubmitPhoneNumberStarted {
     required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
     required TResult Function() submitOtpStarted,
+    required TResult Function() clearSetupStarted,
     required TResult Function() resendOtpStarted,
   }) {
     return submitPhoneNumberStarted();
@@ -475,6 +494,7 @@ class _$SubmitPhoneNumberStartedImpl implements _SubmitPhoneNumberStarted {
     TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
     TResult? Function()? submitOtpStarted,
+    TResult? Function()? clearSetupStarted,
     TResult? Function()? resendOtpStarted,
   }) {
     return submitPhoneNumberStarted?.call();
@@ -489,6 +509,7 @@ class _$SubmitPhoneNumberStartedImpl implements _SubmitPhoneNumberStarted {
     TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
     TResult Function()? submitOtpStarted,
+    TResult Function()? clearSetupStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -509,6 +530,7 @@ class _$SubmitPhoneNumberStartedImpl implements _SubmitPhoneNumberStarted {
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
     required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ClearSetupStarted value) clearSetupStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) {
     return submitPhoneNumberStarted(this);
@@ -524,6 +546,7 @@ class _$SubmitPhoneNumberStartedImpl implements _SubmitPhoneNumberStarted {
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) {
     return submitPhoneNumberStarted?.call(this);
@@ -538,6 +561,7 @@ class _$SubmitPhoneNumberStartedImpl implements _SubmitPhoneNumberStarted {
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -596,6 +620,7 @@ class _$InputOtpStartedImpl implements _InputOtpStarted {
     required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
     required TResult Function() submitOtpStarted,
+    required TResult Function() clearSetupStarted,
     required TResult Function() resendOtpStarted,
   }) {
     return inputOtpStarted();
@@ -610,6 +635,7 @@ class _$InputOtpStartedImpl implements _InputOtpStarted {
     TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
     TResult? Function()? submitOtpStarted,
+    TResult? Function()? clearSetupStarted,
     TResult? Function()? resendOtpStarted,
   }) {
     return inputOtpStarted?.call();
@@ -624,6 +650,7 @@ class _$InputOtpStartedImpl implements _InputOtpStarted {
     TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
     TResult Function()? submitOtpStarted,
+    TResult Function()? clearSetupStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -644,6 +671,7 @@ class _$InputOtpStartedImpl implements _InputOtpStarted {
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
     required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ClearSetupStarted value) clearSetupStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) {
     return inputOtpStarted(this);
@@ -659,6 +687,7 @@ class _$InputOtpStartedImpl implements _InputOtpStarted {
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) {
     return inputOtpStarted?.call(this);
@@ -673,6 +702,7 @@ class _$InputOtpStartedImpl implements _InputOtpStarted {
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -757,6 +787,7 @@ class _$OtpChangedImpl implements _OtpChanged {
     required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
     required TResult Function() submitOtpStarted,
+    required TResult Function() clearSetupStarted,
     required TResult Function() resendOtpStarted,
   }) {
     return otpChanged(otp);
@@ -771,6 +802,7 @@ class _$OtpChangedImpl implements _OtpChanged {
     TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
     TResult? Function()? submitOtpStarted,
+    TResult? Function()? clearSetupStarted,
     TResult? Function()? resendOtpStarted,
   }) {
     return otpChanged?.call(otp);
@@ -785,6 +817,7 @@ class _$OtpChangedImpl implements _OtpChanged {
     TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
     TResult Function()? submitOtpStarted,
+    TResult Function()? clearSetupStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -805,6 +838,7 @@ class _$OtpChangedImpl implements _OtpChanged {
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
     required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ClearSetupStarted value) clearSetupStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) {
     return otpChanged(this);
@@ -820,6 +854,7 @@ class _$OtpChangedImpl implements _OtpChanged {
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) {
     return otpChanged?.call(this);
@@ -834,6 +869,7 @@ class _$OtpChangedImpl implements _OtpChanged {
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -897,6 +933,7 @@ class _$SubmitOtpStartedImpl implements _SubmitOtpStarted {
     required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
     required TResult Function() submitOtpStarted,
+    required TResult Function() clearSetupStarted,
     required TResult Function() resendOtpStarted,
   }) {
     return submitOtpStarted();
@@ -911,6 +948,7 @@ class _$SubmitOtpStartedImpl implements _SubmitOtpStarted {
     TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
     TResult? Function()? submitOtpStarted,
+    TResult? Function()? clearSetupStarted,
     TResult? Function()? resendOtpStarted,
   }) {
     return submitOtpStarted?.call();
@@ -925,6 +963,7 @@ class _$SubmitOtpStartedImpl implements _SubmitOtpStarted {
     TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
     TResult Function()? submitOtpStarted,
+    TResult Function()? clearSetupStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -945,6 +984,7 @@ class _$SubmitOtpStartedImpl implements _SubmitOtpStarted {
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
     required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ClearSetupStarted value) clearSetupStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) {
     return submitOtpStarted(this);
@@ -960,6 +1000,7 @@ class _$SubmitOtpStartedImpl implements _SubmitOtpStarted {
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) {
     return submitOtpStarted?.call(this);
@@ -974,6 +1015,7 @@ class _$SubmitOtpStartedImpl implements _SubmitOtpStarted {
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -986,6 +1028,147 @@ class _$SubmitOtpStartedImpl implements _SubmitOtpStarted {
 
 abstract class _SubmitOtpStarted implements SetupEvent {
   const factory _SubmitOtpStarted() = _$SubmitOtpStartedImpl;
+}
+
+/// @nodoc
+abstract class _$$ClearSetupStartedImplCopyWith<$Res> {
+  factory _$$ClearSetupStartedImplCopyWith(_$ClearSetupStartedImpl value,
+          $Res Function(_$ClearSetupStartedImpl) then) =
+      __$$ClearSetupStartedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearSetupStartedImplCopyWithImpl<$Res>
+    extends _$SetupEventCopyWithImpl<$Res, _$ClearSetupStartedImpl>
+    implements _$$ClearSetupStartedImplCopyWith<$Res> {
+  __$$ClearSetupStartedImplCopyWithImpl(_$ClearSetupStartedImpl _value,
+      $Res Function(_$ClearSetupStartedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ClearSetupStartedImpl implements _ClearSetupStarted {
+  const _$ClearSetupStartedImpl();
+
+  @override
+  String toString() {
+    return 'SetupEvent.clearSetupStarted()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ClearSetupStartedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() inputPhoneNumberStarted,
+    required TResult Function(String phoneNumber) phoneNumberChanged,
+    required TResult Function() submitPhoneNumberStarted,
+    required TResult Function() inputOtpStarted,
+    required TResult Function(String otp) otpChanged,
+    required TResult Function() submitOtpStarted,
+    required TResult Function() clearSetupStarted,
+    required TResult Function() resendOtpStarted,
+  }) {
+    return clearSetupStarted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? inputPhoneNumberStarted,
+    TResult? Function(String phoneNumber)? phoneNumberChanged,
+    TResult? Function()? submitPhoneNumberStarted,
+    TResult? Function()? inputOtpStarted,
+    TResult? Function(String otp)? otpChanged,
+    TResult? Function()? submitOtpStarted,
+    TResult? Function()? clearSetupStarted,
+    TResult? Function()? resendOtpStarted,
+  }) {
+    return clearSetupStarted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? inputPhoneNumberStarted,
+    TResult Function(String phoneNumber)? phoneNumberChanged,
+    TResult Function()? submitPhoneNumberStarted,
+    TResult Function()? inputOtpStarted,
+    TResult Function(String otp)? otpChanged,
+    TResult Function()? submitOtpStarted,
+    TResult Function()? clearSetupStarted,
+    TResult Function()? resendOtpStarted,
+    required TResult orElse(),
+  }) {
+    if (clearSetupStarted != null) {
+      return clearSetupStarted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InputPhoneNumberStarted value)
+        inputPhoneNumberStarted,
+    required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
+    required TResult Function(_SubmitPhoneNumberStarted value)
+        submitPhoneNumberStarted,
+    required TResult Function(_InputOtpStarted value) inputOtpStarted,
+    required TResult Function(_OtpChanged value) otpChanged,
+    required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ClearSetupStarted value) clearSetupStarted,
+    required TResult Function(_ResendOtpStarted value) resendOtpStarted,
+  }) {
+    return clearSetupStarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
+    TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
+    TResult? Function(_SubmitPhoneNumberStarted value)?
+        submitPhoneNumberStarted,
+    TResult? Function(_InputOtpStarted value)? inputOtpStarted,
+    TResult? Function(_OtpChanged value)? otpChanged,
+    TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ClearSetupStarted value)? clearSetupStarted,
+    TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
+  }) {
+    return clearSetupStarted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
+    TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
+    TResult Function(_SubmitPhoneNumberStarted value)? submitPhoneNumberStarted,
+    TResult Function(_InputOtpStarted value)? inputOtpStarted,
+    TResult Function(_OtpChanged value)? otpChanged,
+    TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ClearSetupStarted value)? clearSetupStarted,
+    TResult Function(_ResendOtpStarted value)? resendOtpStarted,
+    required TResult orElse(),
+  }) {
+    if (clearSetupStarted != null) {
+      return clearSetupStarted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ClearSetupStarted implements SetupEvent {
+  const factory _ClearSetupStarted() = _$ClearSetupStartedImpl;
 }
 
 /// @nodoc
@@ -1032,6 +1215,7 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
     required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
     required TResult Function() submitOtpStarted,
+    required TResult Function() clearSetupStarted,
     required TResult Function() resendOtpStarted,
   }) {
     return resendOtpStarted();
@@ -1046,6 +1230,7 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
     TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
     TResult? Function()? submitOtpStarted,
+    TResult? Function()? clearSetupStarted,
     TResult? Function()? resendOtpStarted,
   }) {
     return resendOtpStarted?.call();
@@ -1060,6 +1245,7 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
     TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
     TResult Function()? submitOtpStarted,
+    TResult Function()? clearSetupStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -1080,6 +1266,7 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
     required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ClearSetupStarted value) clearSetupStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) {
     return resendOtpStarted(this);
@@ -1095,6 +1282,7 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) {
     return resendOtpStarted?.call(this);
@@ -1109,6 +1297,7 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -1339,11 +1528,6 @@ class _$InputPhoneNumberInitialImpl implements InputPhoneNumberInitial {
   final String phoneNumber;
 
   @override
-  String toString() {
-    return 'SetupState.inputPhoneNumberInitial(phoneNumber: $phoneNumber)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -1572,11 +1756,6 @@ class _$InputPhoneNumberVerifyInProgressImpl
 
   @override
   final String phoneNumber;
-
-  @override
-  String toString() {
-    return 'SetupState.inputPhoneNumberVerifyInProgress(phoneNumber: $phoneNumber)';
-  }
 
   @override
   bool operator ==(Object other) {
@@ -1816,11 +1995,6 @@ class _$InputPhoneNumberFailureImpl implements _InputPhoneNumberFailure {
   final Failure failure;
 
   @override
-  String toString() {
-    return 'SetupState.inputPhoneNumberFailure(phoneNumber: $phoneNumber, failure: $failure)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -2050,11 +2224,6 @@ class _$InputPhoneNumberSuccessImpl implements _InputPhoneNumberSuccess {
 
   @override
   final String phoneNumber;
-
-  @override
-  String toString() {
-    return 'SetupState.inputPhoneNumberSuccess(phoneNumber: $phoneNumber)';
-  }
 
   @override
   bool operator ==(Object other) {
@@ -2289,11 +2458,6 @@ class _$InputOtpInitialImpl implements _InputOtpInitial {
   @override
   @JsonKey()
   final String otp;
-
-  @override
-  String toString() {
-    return 'SetupState.inputOtpInitial(phoneNumber: $phoneNumber, otp: $otp)';
-  }
 
   @override
   bool operator ==(Object other) {
@@ -2534,11 +2698,6 @@ class _$InputOtpValidationInProgressImpl
   final String otp;
 
   @override
-  String toString() {
-    return 'SetupState.inputOtpValidationInProgress(phoneNumber: $phoneNumber, otp: $otp)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -2777,11 +2936,6 @@ class _$InputOtpValidationSuccessImpl implements _InputOtpValidationSuccess {
   final String phoneNumber;
   @override
   final String otp;
-
-  @override
-  String toString() {
-    return 'SetupState.inputOtpValidationSuccess(phoneNumber: $phoneNumber, otp: $otp)';
-  }
 
   @override
   bool operator ==(Object other) {
@@ -3030,11 +3184,6 @@ class _$InputOtpValidationFailureImpl implements _InputOtpValidationFailure {
   final Failure failure;
 
   @override
-  String toString() {
-    return 'SetupState.inputOtpValidationFailure(phoneNumber: $phoneNumber, otp: $otp, failure: $failure)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -3273,11 +3422,6 @@ class _$ResendOtpInProgressImpl implements _ResendOtpInProgress {
   final String otp;
 
   @override
-  String toString() {
-    return 'SetupState.resendOtpInProgress(phoneNumber: $phoneNumber, otp: $otp)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -3511,11 +3655,6 @@ class _$ResendOtpSuccessImpl implements _ResendOtpSuccess {
   final String phoneNumber;
   @override
   final String otp;
-
-  @override
-  String toString() {
-    return 'SetupState.resendOtpSuccess(phoneNumber: $phoneNumber, otp: $otp)';
-  }
 
   @override
   bool operator ==(Object other) {
@@ -3760,11 +3899,6 @@ class _$ResendOtpFailureImpl implements _ResendOtpFailure {
   final Failure failure;
 
   @override
-  String toString() {
-    return 'SetupState.resendOtpFailure(phoneNumber: $phoneNumber, otp: $otp, failure: $failure)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -3977,14 +4111,14 @@ class __$$AutoSignInSuccessImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? phoneNumber = null,
-    Object? user = freezed,
+    Object? user = null,
   }) {
     return _then(_$AutoSignInSuccessImpl(
       null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
-      freezed == user
+      null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User,
@@ -4003,23 +4137,17 @@ class _$AutoSignInSuccessImpl implements _AutoSignInSuccess {
   final User user;
 
   @override
-  String toString() {
-    return 'SetupState.autoSignInSuccess(phoneNumber: $phoneNumber, user: $user)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AutoSignInSuccessImpl &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
-            const DeepCollectionEquality().equals(other.user, user));
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, phoneNumber, const DeepCollectionEquality().hash(user));
+  int get hashCode => Object.hash(runtimeType, phoneNumber, user);
 
   @JsonKey(ignore: true)
   @override

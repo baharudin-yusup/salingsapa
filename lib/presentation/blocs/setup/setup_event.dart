@@ -18,5 +18,9 @@ class SetupEvent with _$SetupEvent {
 
   const factory SetupEvent.submitOtpStarted() = _SubmitOtpStarted;
 
+  // Handle setup init
+  const factory SetupEvent.clearSetupStarted() = _ClearSetupStarted;
+
+  // Handle resend otp
   const factory SetupEvent.resendOtpStarted() = _ResendOtpStarted;
 }

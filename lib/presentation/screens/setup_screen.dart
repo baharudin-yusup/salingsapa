@@ -71,10 +71,10 @@ class SetupScreen extends StatelessWidget {
               },
               inputPhoneNumberSuccess: (_) {
                 uiService.hideLoading();
-                navigatorService.pushNamed(VerifyOtpScreen.routeName);
                 context
                     .read<SetupBloc>()
                     .add(const SetupEvent.inputOtpStarted());
+                navigatorService.pushNamed(VerifyOtpScreen.routeName);
               },
               orElse: () {},
             );

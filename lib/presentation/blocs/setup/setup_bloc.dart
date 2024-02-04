@@ -34,11 +34,23 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
     on<_OtpChanged>(_inputOtp);
     on<_ResendOtpStarted>(_onStartResendOtp);
     on<_SubmitOtpStarted>(_onStartSubmitOtp);
+
+    // Handle clear data
+    on<_ClearSetupStarted>(_onStartClearData);
+  }
+
+  void _onStartClearData(_ClearSetupStarted event, Emitter<SetupState> emit) {
+    Logger.print('clear all setup data success!');
+    emit(SetupState.inputPhoneNumberInitial(state.phoneNumber));
   }
 
   void _onStartInputPhoneNumber(
       _InputPhoneNumberStarted event, Emitter<SetupState> emit) {
-    emit(SetupState.inputPhoneNumberInitial(state.phoneNumber));
+    Logger.print('input phone number started...');
+    final newState = SetupState.inputPhoneNumberInitial(state.phoneNumber);
+
+    Logger.print('change state to ${state.toString()}');
+    emit(newState);
   }
 
   void _onPhoneNumberChanged(
@@ -65,39 +77,47 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
   }
 
   void _onStartInputOtp(_InputOtpStarted event, Emitter<SetupState> emit) {
+    Logger.print('input otp started...');
     state.maybeWhen(
-      inputPhoneNumberFailure: (phoneNumber, failure) {
-        if (failure.code != AppFailureCode.autoSignInFailed) {
-          return;
-        }
-        emit(SetupState.inputOtpInitial(phoneNumber));
-      },
       inputPhoneNumberSuccess: (phoneNumber) {
-        emit(SetupState.inputOtpInitial(phoneNumber));
+        final newState = SetupState.inputOtpInitial(phoneNumber);
+        Logger.print('change state to ${newState.toString()}');
+        emit(newState);
       },
-      orElse: () {},
+      orElse: () {
+        Logger.print('unknown valid state: ${state.toString()}');
+      },
     );
   }
 
   void _inputOtp(_OtpChanged event, Emitter<SetupState> emit) async {
     Logger.print('change OTP input started...');
-    Logger.print('current state = ${state.runtimeType}');
     final newOtp = event.otp;
     state.maybeWhen(
       resendOtpFailure: (phoneNumber, _, failure) {
         emit(SetupState.inputOtpInitial(phoneNumber, newOtp));
       },
       inputOtpInitial: (phoneNumber, _) {
-        emit(SetupState.inputOtpInitial(phoneNumber, newOtp));
+        final newState = SetupState.inputOtpInitial(phoneNumber, newOtp);
+        Logger.print('Change state to ${newState.toString()}');
+        emit(newState);
         if (newOtp.length == 6) {
           Logger.print('submitting OTP code started...');
           add(const SetupEvent.submitOtpStarted());
         }
       },
       inputOtpValidationFailure: (phoneNumber, otp, failure) {
-        emit(SetupState.inputOtpInitial(phoneNumber, newOtp));
+        final newState = SetupState.inputOtpInitial(phoneNumber, newOtp);
+        Logger.print('Change state to ${newState.toString()}');
+        emit(newState);
+        if (newOtp.length == 6) {
+          Logger.print('submitting OTP code started...');
+          add(const SetupEvent.submitOtpStarted());
+        }
       },
-      orElse: () {},
+      orElse: () {
+        Logger.print('Unknown valid state = ${state.toString()}');
+      },
     );
   }
 
