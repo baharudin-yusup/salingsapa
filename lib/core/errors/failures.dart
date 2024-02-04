@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../../data/constants/firebase_exception_code.dart';
+import '../../data/constants/exception_code.dart';
 import '../../domain/entities/app_permission.dart';
 
 abstract class Failure extends Equatable {

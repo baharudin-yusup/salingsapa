@@ -3,8 +3,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/errors/failures.dart';
 import '../../../core/utils/logger.dart';
-import '../../../data/constants/firebase_exception_code.dart';
+import '../../../data/constants/exception_code.dart';
 import '../../../data/extensions/extensions.dart';
+import '../../../domain/entities/user.dart';
 import '../../../domain/usecases/resend_otp.dart';
 import '../../../domain/usecases/verify_otp.dart';
 import '../../../domain/usecases/verify_phone_number.dart';
@@ -23,6 +24,7 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
     this._verifyOtp,
     this._resendOtp,
   ) : super(const SetupState.inputPhoneNumberInitial()) {
+    // Handle phone number events
     on<_InputPhoneNumberStarted>(_onStartInputPhoneNumber);
     on<_PhoneNumberChanged>(_onPhoneNumberChanged);
     on<_SubmitPhoneNumberStarted>(_startSubmitPhoneNumber);
@@ -50,9 +52,15 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
     final verifyPhoneNumberResult =
         await _verifyPhoneNumber(state.phoneNumber.toFormattedPhoneNumber());
     verifyPhoneNumberResult.fold(
-      (failure) =>
-          emit(SetupState.inputPhoneNumberFailure(state.phoneNumber, failure)),
-      (_) => emit(SetupState.inputPhoneNumberSuccess(state.phoneNumber)),
+      (failure) {
+        if (failure.code == AppFailureCode.autoSignInFailed) {
+          emit(SetupState.inputPhoneNumberSuccess(state.phoneNumber));
+          add(const SetupEvent.inputOtpStarted());
+        } else {
+          emit(SetupState.inputPhoneNumberFailure(state.phoneNumber, failure));
+        }
+      },
+      (user) => emit(SetupState.autoSignInSuccess(state.phoneNumber, user)),
     );
   }
 

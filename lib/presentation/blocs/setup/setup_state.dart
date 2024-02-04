@@ -37,13 +37,17 @@ class SetupState with _$SetupState {
 
   const factory SetupState.resendOtpFailure(
       String phoneNumber, String otp, Failure failure) = _ResendOtpFailure;
+
+  /// Handle auto sign in
+  const factory SetupState.autoSignInSuccess(String phoneNumber, User user) =
+      _AutoSignInSuccess;
 }
 
 extension SetupStateChecker on SetupState {
   bool get isAbleToSubmitPhoneNumber {
     return maybeWhen(
       inputPhoneNumberInitial: (phoneNumber) {
-        return phoneNumber.length > 6;
+        return phoneNumber.length >= 9;
       },
       orElse: () {
         return false;
