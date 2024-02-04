@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../data/constants/firebase_exception_code.dart';
+import '../../data/constants/exception_code.dart';
 import 'dimension.dart';
 
 extension AppFailureCodeTranslation on AppFailureCode {
@@ -15,6 +15,8 @@ extension AppFailureCodeTranslation on AppFailureCode {
       case AppFailureCode.unknown:
       case AppFailureCode.autoSignInFailed:
         return context.localization.errorMessageUnknown;
+      case AppFailureCode.submitPhoneNumberNoResponse:
+        return context.localization.errorMessageSubmitPhoneNumber;
     }
   }
 }

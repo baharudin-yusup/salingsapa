@@ -63,7 +63,7 @@ class UserRepositoryImpl extends UserRepository {
         }
         try {
           Logger.print(
-              '(repository) current user number: ${model.phoneNumber}');
+              '(repository) current user phone number: ${model.phoneNumber}');
           return Right(model.toEntity());
         } catch (error) {
           Logger.error(error,

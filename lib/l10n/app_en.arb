@@ -48,6 +48,7 @@
   "errorMessageUnknown": "Unknown error",
   "errorMessagePhoneNumberBlocked": "Please use another phone number or another device.",
   "errorMessagePermissionDenied": "Permission Denied",
+  "errorMessageSubmitPhoneNumber": "Please check your internet connection or your phone number and try again.",
   "requestPermissionContactDescription": "We require access to your contacts to enable seamless calling features, such as making video calls to your contacts.",
   "requestPermission": "Request Permission",
   "grantPermission": "Grant Permission"

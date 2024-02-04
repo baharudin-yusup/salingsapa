@@ -433,11 +433,6 @@ class _$InitialImpl implements _Initial {
   final AuthStatus status;
 
   @override
-  String toString() {
-    return 'AuthorizationState.initial(status: $status)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -575,11 +570,6 @@ class _$ChangeAuthStatusSuccessImpl implements _ChangeAuthStatusSuccess {
 
   @override
   final AuthStatus status;
-
-  @override
-  String toString() {
-    return 'AuthorizationState.changeAuthStatusSuccess(status: $status)';
-  }
 
   @override
   bool operator ==(Object other) {
@@ -721,11 +711,6 @@ class _$ChangeAuthStatusFailureImpl implements _ChangeAuthStatusFailure {
 
   @override
   final Failure failure;
-
-  @override
-  String toString() {
-    return 'AuthorizationState.changeAuthStatusFailure(failure: $failure)';
-  }
 
   @override
   bool operator ==(Object other) {

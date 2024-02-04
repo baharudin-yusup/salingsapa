@@ -29,6 +29,7 @@ class SetupState with _$SetupState {
           String phoneNumber, String otp, Failure failure) =
       _InputOtpValidationFailure;
 
+  // Handle resend otp
   const factory SetupState.resendOtpInProgress(String phoneNumber, String otp) =
       _ResendOtpInProgress;
 
@@ -37,13 +38,62 @@ class SetupState with _$SetupState {
 
   const factory SetupState.resendOtpFailure(
       String phoneNumber, String otp, Failure failure) = _ResendOtpFailure;
+
+  /// Handle auto sign in
+  const factory SetupState.autoSignInSuccess(String phoneNumber, User user) =
+      _AutoSignInSuccess;
+
+  @override
+  String toString() {
+    return when(
+      inputPhoneNumberInitial: (phoneNumber) {
+        return '$runtimeType\t phone number: $phoneNumber\t can submit? ${isAbleToSubmitPhoneNumber ? 'yes' : 'no'}';
+      },
+      inputPhoneNumberVerifyInProgress: (phoneNumber) {
+        return '$runtimeType\t phone number: $phoneNumber';
+      },
+      inputPhoneNumberFailure: (phoneNumber, failure) {
+        return '$runtimeType\t phone number: $phoneNumber\t failure: $failure\t can submit? ${isAbleToSubmitPhoneNumber ? 'yes' : 'no'}';
+      },
+      inputPhoneNumberSuccess: (phoneNumber) {
+        return '$runtimeType\t phone number: $phoneNumber';
+      },
+      inputOtpInitial: (phoneNumber, otp) {
+        return '$runtimeType\t phone number: $phoneNumber\t otp: $otp\t can submit? ${isAbleToSubmitOtp ? 'yes' : 'no'}';
+      },
+      inputOtpValidationInProgress: (phoneNumber, otp) {
+        return '$runtimeType\t phone number: $phoneNumber\t otp: $otp';
+      },
+      inputOtpValidationSuccess: (phoneNumber, otp) {
+        return '$runtimeType\t phone number: $phoneNumber\t otp: $otp';
+      },
+      inputOtpValidationFailure: (phoneNumber, otp, failure) {
+        return '$runtimeType\t phone number: $phoneNumber\t otp: $otp\t failure: $failure';
+      },
+      resendOtpInProgress: (phoneNumber, otp) {
+        return '$runtimeType\t phone number: $phoneNumber\t otp: $otp';
+      },
+      resendOtpSuccess: (phoneNumber, otp) {
+        return '$runtimeType\t phone number: $phoneNumber\t otp: $otp';
+      },
+      resendOtpFailure: (phoneNumber, otp, failure) {
+        return '$runtimeType\t phone number: $phoneNumber\t otp: $otp';
+      },
+      autoSignInSuccess: (phoneNumber, user) {
+        return '$runtimeType\t phone number: $phoneNumber';
+      },
+    );
+  }
 }
 
 extension SetupStateChecker on SetupState {
   bool get isAbleToSubmitPhoneNumber {
     return maybeWhen(
       inputPhoneNumberInitial: (phoneNumber) {
-        return phoneNumber.length > 6;
+        return phoneNumber.length >= 9;
+      },
+      inputPhoneNumberFailure: (phoneNumber, failure) {
+        return phoneNumber.length >= 9;
       },
       orElse: () {
         return false;

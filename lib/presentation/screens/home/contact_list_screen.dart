@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/errors/failures.dart';
 import '../../../domain/entities/contact.dart';
+import '../../../injection_container.dart';
 import '../../blocs/contact_list/contact_list_bloc.dart';
 import '../../components/contact_card.dart';
 import '../../components/intuitive_scaffold.dart';
@@ -27,6 +28,8 @@ class _ContactListScreenState extends State<ContactListScreen>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+
+    sl<ContactListBloc>().add(const ContactListEvent.refreshPulled());
   }
 
   @override

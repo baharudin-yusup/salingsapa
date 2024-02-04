@@ -24,6 +24,7 @@ mixin _$SetupEvent {
     required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
     required TResult Function() submitOtpStarted,
+    required TResult Function() clearSetupStarted,
     required TResult Function() resendOtpStarted,
   }) =>
       throw _privateConstructorUsedError;
@@ -35,6 +36,7 @@ mixin _$SetupEvent {
     TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
     TResult? Function()? submitOtpStarted,
+    TResult? Function()? clearSetupStarted,
     TResult? Function()? resendOtpStarted,
   }) =>
       throw _privateConstructorUsedError;
@@ -46,6 +48,7 @@ mixin _$SetupEvent {
     TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
     TResult Function()? submitOtpStarted,
+    TResult Function()? clearSetupStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) =>
@@ -60,6 +63,7 @@ mixin _$SetupEvent {
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
     required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ClearSetupStarted value) clearSetupStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) =>
       throw _privateConstructorUsedError;
@@ -72,6 +76,7 @@ mixin _$SetupEvent {
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) =>
       throw _privateConstructorUsedError;
@@ -83,6 +88,7 @@ mixin _$SetupEvent {
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) =>
@@ -154,6 +160,7 @@ class _$InputPhoneNumberStartedImpl implements _InputPhoneNumberStarted {
     required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
     required TResult Function() submitOtpStarted,
+    required TResult Function() clearSetupStarted,
     required TResult Function() resendOtpStarted,
   }) {
     return inputPhoneNumberStarted();
@@ -168,6 +175,7 @@ class _$InputPhoneNumberStartedImpl implements _InputPhoneNumberStarted {
     TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
     TResult? Function()? submitOtpStarted,
+    TResult? Function()? clearSetupStarted,
     TResult? Function()? resendOtpStarted,
   }) {
     return inputPhoneNumberStarted?.call();
@@ -182,6 +190,7 @@ class _$InputPhoneNumberStartedImpl implements _InputPhoneNumberStarted {
     TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
     TResult Function()? submitOtpStarted,
+    TResult Function()? clearSetupStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -202,6 +211,7 @@ class _$InputPhoneNumberStartedImpl implements _InputPhoneNumberStarted {
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
     required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ClearSetupStarted value) clearSetupStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) {
     return inputPhoneNumberStarted(this);
@@ -217,6 +227,7 @@ class _$InputPhoneNumberStartedImpl implements _InputPhoneNumberStarted {
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) {
     return inputPhoneNumberStarted?.call(this);
@@ -231,6 +242,7 @@ class _$InputPhoneNumberStartedImpl implements _InputPhoneNumberStarted {
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -317,6 +329,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
     required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
     required TResult Function() submitOtpStarted,
+    required TResult Function() clearSetupStarted,
     required TResult Function() resendOtpStarted,
   }) {
     return phoneNumberChanged(phoneNumber);
@@ -331,6 +344,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
     TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
     TResult? Function()? submitOtpStarted,
+    TResult? Function()? clearSetupStarted,
     TResult? Function()? resendOtpStarted,
   }) {
     return phoneNumberChanged?.call(phoneNumber);
@@ -345,6 +359,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
     TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
     TResult Function()? submitOtpStarted,
+    TResult Function()? clearSetupStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -365,6 +380,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
     required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ClearSetupStarted value) clearSetupStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) {
     return phoneNumberChanged(this);
@@ -380,6 +396,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) {
     return phoneNumberChanged?.call(this);
@@ -394,6 +411,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -461,6 +479,7 @@ class _$SubmitPhoneNumberStartedImpl implements _SubmitPhoneNumberStarted {
     required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
     required TResult Function() submitOtpStarted,
+    required TResult Function() clearSetupStarted,
     required TResult Function() resendOtpStarted,
   }) {
     return submitPhoneNumberStarted();
@@ -475,6 +494,7 @@ class _$SubmitPhoneNumberStartedImpl implements _SubmitPhoneNumberStarted {
     TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
     TResult? Function()? submitOtpStarted,
+    TResult? Function()? clearSetupStarted,
     TResult? Function()? resendOtpStarted,
   }) {
     return submitPhoneNumberStarted?.call();
@@ -489,6 +509,7 @@ class _$SubmitPhoneNumberStartedImpl implements _SubmitPhoneNumberStarted {
     TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
     TResult Function()? submitOtpStarted,
+    TResult Function()? clearSetupStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -509,6 +530,7 @@ class _$SubmitPhoneNumberStartedImpl implements _SubmitPhoneNumberStarted {
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
     required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ClearSetupStarted value) clearSetupStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) {
     return submitPhoneNumberStarted(this);
@@ -524,6 +546,7 @@ class _$SubmitPhoneNumberStartedImpl implements _SubmitPhoneNumberStarted {
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) {
     return submitPhoneNumberStarted?.call(this);
@@ -538,6 +561,7 @@ class _$SubmitPhoneNumberStartedImpl implements _SubmitPhoneNumberStarted {
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -596,6 +620,7 @@ class _$InputOtpStartedImpl implements _InputOtpStarted {
     required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
     required TResult Function() submitOtpStarted,
+    required TResult Function() clearSetupStarted,
     required TResult Function() resendOtpStarted,
   }) {
     return inputOtpStarted();
@@ -610,6 +635,7 @@ class _$InputOtpStartedImpl implements _InputOtpStarted {
     TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
     TResult? Function()? submitOtpStarted,
+    TResult? Function()? clearSetupStarted,
     TResult? Function()? resendOtpStarted,
   }) {
     return inputOtpStarted?.call();
@@ -624,6 +650,7 @@ class _$InputOtpStartedImpl implements _InputOtpStarted {
     TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
     TResult Function()? submitOtpStarted,
+    TResult Function()? clearSetupStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -644,6 +671,7 @@ class _$InputOtpStartedImpl implements _InputOtpStarted {
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
     required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ClearSetupStarted value) clearSetupStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) {
     return inputOtpStarted(this);
@@ -659,6 +687,7 @@ class _$InputOtpStartedImpl implements _InputOtpStarted {
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) {
     return inputOtpStarted?.call(this);
@@ -673,6 +702,7 @@ class _$InputOtpStartedImpl implements _InputOtpStarted {
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -757,6 +787,7 @@ class _$OtpChangedImpl implements _OtpChanged {
     required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
     required TResult Function() submitOtpStarted,
+    required TResult Function() clearSetupStarted,
     required TResult Function() resendOtpStarted,
   }) {
     return otpChanged(otp);
@@ -771,6 +802,7 @@ class _$OtpChangedImpl implements _OtpChanged {
     TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
     TResult? Function()? submitOtpStarted,
+    TResult? Function()? clearSetupStarted,
     TResult? Function()? resendOtpStarted,
   }) {
     return otpChanged?.call(otp);
@@ -785,6 +817,7 @@ class _$OtpChangedImpl implements _OtpChanged {
     TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
     TResult Function()? submitOtpStarted,
+    TResult Function()? clearSetupStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -805,6 +838,7 @@ class _$OtpChangedImpl implements _OtpChanged {
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
     required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ClearSetupStarted value) clearSetupStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) {
     return otpChanged(this);
@@ -820,6 +854,7 @@ class _$OtpChangedImpl implements _OtpChanged {
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) {
     return otpChanged?.call(this);
@@ -834,6 +869,7 @@ class _$OtpChangedImpl implements _OtpChanged {
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -897,6 +933,7 @@ class _$SubmitOtpStartedImpl implements _SubmitOtpStarted {
     required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
     required TResult Function() submitOtpStarted,
+    required TResult Function() clearSetupStarted,
     required TResult Function() resendOtpStarted,
   }) {
     return submitOtpStarted();
@@ -911,6 +948,7 @@ class _$SubmitOtpStartedImpl implements _SubmitOtpStarted {
     TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
     TResult? Function()? submitOtpStarted,
+    TResult? Function()? clearSetupStarted,
     TResult? Function()? resendOtpStarted,
   }) {
     return submitOtpStarted?.call();
@@ -925,6 +963,7 @@ class _$SubmitOtpStartedImpl implements _SubmitOtpStarted {
     TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
     TResult Function()? submitOtpStarted,
+    TResult Function()? clearSetupStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -945,6 +984,7 @@ class _$SubmitOtpStartedImpl implements _SubmitOtpStarted {
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
     required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ClearSetupStarted value) clearSetupStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) {
     return submitOtpStarted(this);
@@ -960,6 +1000,7 @@ class _$SubmitOtpStartedImpl implements _SubmitOtpStarted {
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) {
     return submitOtpStarted?.call(this);
@@ -974,6 +1015,7 @@ class _$SubmitOtpStartedImpl implements _SubmitOtpStarted {
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -986,6 +1028,147 @@ class _$SubmitOtpStartedImpl implements _SubmitOtpStarted {
 
 abstract class _SubmitOtpStarted implements SetupEvent {
   const factory _SubmitOtpStarted() = _$SubmitOtpStartedImpl;
+}
+
+/// @nodoc
+abstract class _$$ClearSetupStartedImplCopyWith<$Res> {
+  factory _$$ClearSetupStartedImplCopyWith(_$ClearSetupStartedImpl value,
+          $Res Function(_$ClearSetupStartedImpl) then) =
+      __$$ClearSetupStartedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearSetupStartedImplCopyWithImpl<$Res>
+    extends _$SetupEventCopyWithImpl<$Res, _$ClearSetupStartedImpl>
+    implements _$$ClearSetupStartedImplCopyWith<$Res> {
+  __$$ClearSetupStartedImplCopyWithImpl(_$ClearSetupStartedImpl _value,
+      $Res Function(_$ClearSetupStartedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ClearSetupStartedImpl implements _ClearSetupStarted {
+  const _$ClearSetupStartedImpl();
+
+  @override
+  String toString() {
+    return 'SetupEvent.clearSetupStarted()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ClearSetupStartedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() inputPhoneNumberStarted,
+    required TResult Function(String phoneNumber) phoneNumberChanged,
+    required TResult Function() submitPhoneNumberStarted,
+    required TResult Function() inputOtpStarted,
+    required TResult Function(String otp) otpChanged,
+    required TResult Function() submitOtpStarted,
+    required TResult Function() clearSetupStarted,
+    required TResult Function() resendOtpStarted,
+  }) {
+    return clearSetupStarted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? inputPhoneNumberStarted,
+    TResult? Function(String phoneNumber)? phoneNumberChanged,
+    TResult? Function()? submitPhoneNumberStarted,
+    TResult? Function()? inputOtpStarted,
+    TResult? Function(String otp)? otpChanged,
+    TResult? Function()? submitOtpStarted,
+    TResult? Function()? clearSetupStarted,
+    TResult? Function()? resendOtpStarted,
+  }) {
+    return clearSetupStarted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? inputPhoneNumberStarted,
+    TResult Function(String phoneNumber)? phoneNumberChanged,
+    TResult Function()? submitPhoneNumberStarted,
+    TResult Function()? inputOtpStarted,
+    TResult Function(String otp)? otpChanged,
+    TResult Function()? submitOtpStarted,
+    TResult Function()? clearSetupStarted,
+    TResult Function()? resendOtpStarted,
+    required TResult orElse(),
+  }) {
+    if (clearSetupStarted != null) {
+      return clearSetupStarted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InputPhoneNumberStarted value)
+        inputPhoneNumberStarted,
+    required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
+    required TResult Function(_SubmitPhoneNumberStarted value)
+        submitPhoneNumberStarted,
+    required TResult Function(_InputOtpStarted value) inputOtpStarted,
+    required TResult Function(_OtpChanged value) otpChanged,
+    required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ClearSetupStarted value) clearSetupStarted,
+    required TResult Function(_ResendOtpStarted value) resendOtpStarted,
+  }) {
+    return clearSetupStarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
+    TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
+    TResult? Function(_SubmitPhoneNumberStarted value)?
+        submitPhoneNumberStarted,
+    TResult? Function(_InputOtpStarted value)? inputOtpStarted,
+    TResult? Function(_OtpChanged value)? otpChanged,
+    TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ClearSetupStarted value)? clearSetupStarted,
+    TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
+  }) {
+    return clearSetupStarted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InputPhoneNumberStarted value)? inputPhoneNumberStarted,
+    TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
+    TResult Function(_SubmitPhoneNumberStarted value)? submitPhoneNumberStarted,
+    TResult Function(_InputOtpStarted value)? inputOtpStarted,
+    TResult Function(_OtpChanged value)? otpChanged,
+    TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ClearSetupStarted value)? clearSetupStarted,
+    TResult Function(_ResendOtpStarted value)? resendOtpStarted,
+    required TResult orElse(),
+  }) {
+    if (clearSetupStarted != null) {
+      return clearSetupStarted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ClearSetupStarted implements SetupEvent {
+  const factory _ClearSetupStarted() = _$ClearSetupStartedImpl;
 }
 
 /// @nodoc
@@ -1032,6 +1215,7 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
     required TResult Function() inputOtpStarted,
     required TResult Function(String otp) otpChanged,
     required TResult Function() submitOtpStarted,
+    required TResult Function() clearSetupStarted,
     required TResult Function() resendOtpStarted,
   }) {
     return resendOtpStarted();
@@ -1046,6 +1230,7 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
     TResult? Function()? inputOtpStarted,
     TResult? Function(String otp)? otpChanged,
     TResult? Function()? submitOtpStarted,
+    TResult? Function()? clearSetupStarted,
     TResult? Function()? resendOtpStarted,
   }) {
     return resendOtpStarted?.call();
@@ -1060,6 +1245,7 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
     TResult Function()? inputOtpStarted,
     TResult Function(String otp)? otpChanged,
     TResult Function()? submitOtpStarted,
+    TResult Function()? clearSetupStarted,
     TResult Function()? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -1080,6 +1266,7 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
     required TResult Function(_InputOtpStarted value) inputOtpStarted,
     required TResult Function(_OtpChanged value) otpChanged,
     required TResult Function(_SubmitOtpStarted value) submitOtpStarted,
+    required TResult Function(_ClearSetupStarted value) clearSetupStarted,
     required TResult Function(_ResendOtpStarted value) resendOtpStarted,
   }) {
     return resendOtpStarted(this);
@@ -1095,6 +1282,7 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
     TResult? Function(_InputOtpStarted value)? inputOtpStarted,
     TResult? Function(_OtpChanged value)? otpChanged,
     TResult? Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult? Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult? Function(_ResendOtpStarted value)? resendOtpStarted,
   }) {
     return resendOtpStarted?.call(this);
@@ -1109,6 +1297,7 @@ class _$ResendOtpStartedImpl implements _ResendOtpStarted {
     TResult Function(_InputOtpStarted value)? inputOtpStarted,
     TResult Function(_OtpChanged value)? otpChanged,
     TResult Function(_SubmitOtpStarted value)? submitOtpStarted,
+    TResult Function(_ClearSetupStarted value)? clearSetupStarted,
     TResult Function(_ResendOtpStarted value)? resendOtpStarted,
     required TResult orElse(),
   }) {
@@ -1146,6 +1335,7 @@ mixin _$SetupState {
     required TResult Function(String phoneNumber, String otp) resendOtpSuccess,
     required TResult Function(String phoneNumber, String otp, Failure failure)
         resendOtpFailure,
+    required TResult Function(String phoneNumber, User user) autoSignInSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1166,6 +1356,7 @@ mixin _$SetupState {
     TResult? Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult? Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult? Function(String phoneNumber, User user)? autoSignInSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1185,6 +1376,7 @@ mixin _$SetupState {
     TResult Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult Function(String phoneNumber, User user)? autoSignInSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1208,6 +1400,7 @@ mixin _$SetupState {
     required TResult Function(_ResendOtpInProgress value) resendOtpInProgress,
     required TResult Function(_ResendOtpSuccess value) resendOtpSuccess,
     required TResult Function(_ResendOtpFailure value) resendOtpFailure,
+    required TResult Function(_AutoSignInSuccess value) autoSignInSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1227,6 +1420,7 @@ mixin _$SetupState {
     TResult? Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult? Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult? Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult? Function(_AutoSignInSuccess value)? autoSignInSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -1246,6 +1440,7 @@ mixin _$SetupState {
     TResult Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult Function(_AutoSignInSuccess value)? autoSignInSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1333,11 +1528,6 @@ class _$InputPhoneNumberInitialImpl implements InputPhoneNumberInitial {
   final String phoneNumber;
 
   @override
-  String toString() {
-    return 'SetupState.inputPhoneNumberInitial(phoneNumber: $phoneNumber)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -1377,6 +1567,7 @@ class _$InputPhoneNumberInitialImpl implements InputPhoneNumberInitial {
     required TResult Function(String phoneNumber, String otp) resendOtpSuccess,
     required TResult Function(String phoneNumber, String otp, Failure failure)
         resendOtpFailure,
+    required TResult Function(String phoneNumber, User user) autoSignInSuccess,
   }) {
     return inputPhoneNumberInitial(phoneNumber);
   }
@@ -1400,6 +1591,7 @@ class _$InputPhoneNumberInitialImpl implements InputPhoneNumberInitial {
     TResult? Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult? Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult? Function(String phoneNumber, User user)? autoSignInSuccess,
   }) {
     return inputPhoneNumberInitial?.call(phoneNumber);
   }
@@ -1422,6 +1614,7 @@ class _$InputPhoneNumberInitialImpl implements InputPhoneNumberInitial {
     TResult Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult Function(String phoneNumber, User user)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (inputPhoneNumberInitial != null) {
@@ -1451,6 +1644,7 @@ class _$InputPhoneNumberInitialImpl implements InputPhoneNumberInitial {
     required TResult Function(_ResendOtpInProgress value) resendOtpInProgress,
     required TResult Function(_ResendOtpSuccess value) resendOtpSuccess,
     required TResult Function(_ResendOtpFailure value) resendOtpFailure,
+    required TResult Function(_AutoSignInSuccess value) autoSignInSuccess,
   }) {
     return inputPhoneNumberInitial(this);
   }
@@ -1473,6 +1667,7 @@ class _$InputPhoneNumberInitialImpl implements InputPhoneNumberInitial {
     TResult? Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult? Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult? Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult? Function(_AutoSignInSuccess value)? autoSignInSuccess,
   }) {
     return inputPhoneNumberInitial?.call(this);
   }
@@ -1495,6 +1690,7 @@ class _$InputPhoneNumberInitialImpl implements InputPhoneNumberInitial {
     TResult Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult Function(_AutoSignInSuccess value)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (inputPhoneNumberInitial != null) {
@@ -1562,11 +1758,6 @@ class _$InputPhoneNumberVerifyInProgressImpl
   final String phoneNumber;
 
   @override
-  String toString() {
-    return 'SetupState.inputPhoneNumberVerifyInProgress(phoneNumber: $phoneNumber)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -1607,6 +1798,7 @@ class _$InputPhoneNumberVerifyInProgressImpl
     required TResult Function(String phoneNumber, String otp) resendOtpSuccess,
     required TResult Function(String phoneNumber, String otp, Failure failure)
         resendOtpFailure,
+    required TResult Function(String phoneNumber, User user) autoSignInSuccess,
   }) {
     return inputPhoneNumberVerifyInProgress(phoneNumber);
   }
@@ -1630,6 +1822,7 @@ class _$InputPhoneNumberVerifyInProgressImpl
     TResult? Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult? Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult? Function(String phoneNumber, User user)? autoSignInSuccess,
   }) {
     return inputPhoneNumberVerifyInProgress?.call(phoneNumber);
   }
@@ -1652,6 +1845,7 @@ class _$InputPhoneNumberVerifyInProgressImpl
     TResult Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult Function(String phoneNumber, User user)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (inputPhoneNumberVerifyInProgress != null) {
@@ -1681,6 +1875,7 @@ class _$InputPhoneNumberVerifyInProgressImpl
     required TResult Function(_ResendOtpInProgress value) resendOtpInProgress,
     required TResult Function(_ResendOtpSuccess value) resendOtpSuccess,
     required TResult Function(_ResendOtpFailure value) resendOtpFailure,
+    required TResult Function(_AutoSignInSuccess value) autoSignInSuccess,
   }) {
     return inputPhoneNumberVerifyInProgress(this);
   }
@@ -1703,6 +1898,7 @@ class _$InputPhoneNumberVerifyInProgressImpl
     TResult? Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult? Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult? Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult? Function(_AutoSignInSuccess value)? autoSignInSuccess,
   }) {
     return inputPhoneNumberVerifyInProgress?.call(this);
   }
@@ -1725,6 +1921,7 @@ class _$InputPhoneNumberVerifyInProgressImpl
     TResult Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult Function(_AutoSignInSuccess value)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (inputPhoneNumberVerifyInProgress != null) {
@@ -1798,11 +1995,6 @@ class _$InputPhoneNumberFailureImpl implements _InputPhoneNumberFailure {
   final Failure failure;
 
   @override
-  String toString() {
-    return 'SetupState.inputPhoneNumberFailure(phoneNumber: $phoneNumber, failure: $failure)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -1843,6 +2035,7 @@ class _$InputPhoneNumberFailureImpl implements _InputPhoneNumberFailure {
     required TResult Function(String phoneNumber, String otp) resendOtpSuccess,
     required TResult Function(String phoneNumber, String otp, Failure failure)
         resendOtpFailure,
+    required TResult Function(String phoneNumber, User user) autoSignInSuccess,
   }) {
     return inputPhoneNumberFailure(phoneNumber, failure);
   }
@@ -1866,6 +2059,7 @@ class _$InputPhoneNumberFailureImpl implements _InputPhoneNumberFailure {
     TResult? Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult? Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult? Function(String phoneNumber, User user)? autoSignInSuccess,
   }) {
     return inputPhoneNumberFailure?.call(phoneNumber, failure);
   }
@@ -1888,6 +2082,7 @@ class _$InputPhoneNumberFailureImpl implements _InputPhoneNumberFailure {
     TResult Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult Function(String phoneNumber, User user)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (inputPhoneNumberFailure != null) {
@@ -1917,6 +2112,7 @@ class _$InputPhoneNumberFailureImpl implements _InputPhoneNumberFailure {
     required TResult Function(_ResendOtpInProgress value) resendOtpInProgress,
     required TResult Function(_ResendOtpSuccess value) resendOtpSuccess,
     required TResult Function(_ResendOtpFailure value) resendOtpFailure,
+    required TResult Function(_AutoSignInSuccess value) autoSignInSuccess,
   }) {
     return inputPhoneNumberFailure(this);
   }
@@ -1939,6 +2135,7 @@ class _$InputPhoneNumberFailureImpl implements _InputPhoneNumberFailure {
     TResult? Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult? Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult? Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult? Function(_AutoSignInSuccess value)? autoSignInSuccess,
   }) {
     return inputPhoneNumberFailure?.call(this);
   }
@@ -1961,6 +2158,7 @@ class _$InputPhoneNumberFailureImpl implements _InputPhoneNumberFailure {
     TResult Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult Function(_AutoSignInSuccess value)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (inputPhoneNumberFailure != null) {
@@ -2028,11 +2226,6 @@ class _$InputPhoneNumberSuccessImpl implements _InputPhoneNumberSuccess {
   final String phoneNumber;
 
   @override
-  String toString() {
-    return 'SetupState.inputPhoneNumberSuccess(phoneNumber: $phoneNumber)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -2072,6 +2265,7 @@ class _$InputPhoneNumberSuccessImpl implements _InputPhoneNumberSuccess {
     required TResult Function(String phoneNumber, String otp) resendOtpSuccess,
     required TResult Function(String phoneNumber, String otp, Failure failure)
         resendOtpFailure,
+    required TResult Function(String phoneNumber, User user) autoSignInSuccess,
   }) {
     return inputPhoneNumberSuccess(phoneNumber);
   }
@@ -2095,6 +2289,7 @@ class _$InputPhoneNumberSuccessImpl implements _InputPhoneNumberSuccess {
     TResult? Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult? Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult? Function(String phoneNumber, User user)? autoSignInSuccess,
   }) {
     return inputPhoneNumberSuccess?.call(phoneNumber);
   }
@@ -2117,6 +2312,7 @@ class _$InputPhoneNumberSuccessImpl implements _InputPhoneNumberSuccess {
     TResult Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult Function(String phoneNumber, User user)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (inputPhoneNumberSuccess != null) {
@@ -2146,6 +2342,7 @@ class _$InputPhoneNumberSuccessImpl implements _InputPhoneNumberSuccess {
     required TResult Function(_ResendOtpInProgress value) resendOtpInProgress,
     required TResult Function(_ResendOtpSuccess value) resendOtpSuccess,
     required TResult Function(_ResendOtpFailure value) resendOtpFailure,
+    required TResult Function(_AutoSignInSuccess value) autoSignInSuccess,
   }) {
     return inputPhoneNumberSuccess(this);
   }
@@ -2168,6 +2365,7 @@ class _$InputPhoneNumberSuccessImpl implements _InputPhoneNumberSuccess {
     TResult? Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult? Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult? Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult? Function(_AutoSignInSuccess value)? autoSignInSuccess,
   }) {
     return inputPhoneNumberSuccess?.call(this);
   }
@@ -2190,6 +2388,7 @@ class _$InputPhoneNumberSuccessImpl implements _InputPhoneNumberSuccess {
     TResult Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult Function(_AutoSignInSuccess value)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (inputPhoneNumberSuccess != null) {
@@ -2261,11 +2460,6 @@ class _$InputOtpInitialImpl implements _InputOtpInitial {
   final String otp;
 
   @override
-  String toString() {
-    return 'SetupState.inputOtpInitial(phoneNumber: $phoneNumber, otp: $otp)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -2306,6 +2500,7 @@ class _$InputOtpInitialImpl implements _InputOtpInitial {
     required TResult Function(String phoneNumber, String otp) resendOtpSuccess,
     required TResult Function(String phoneNumber, String otp, Failure failure)
         resendOtpFailure,
+    required TResult Function(String phoneNumber, User user) autoSignInSuccess,
   }) {
     return inputOtpInitial(phoneNumber, otp);
   }
@@ -2329,6 +2524,7 @@ class _$InputOtpInitialImpl implements _InputOtpInitial {
     TResult? Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult? Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult? Function(String phoneNumber, User user)? autoSignInSuccess,
   }) {
     return inputOtpInitial?.call(phoneNumber, otp);
   }
@@ -2351,6 +2547,7 @@ class _$InputOtpInitialImpl implements _InputOtpInitial {
     TResult Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult Function(String phoneNumber, User user)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (inputOtpInitial != null) {
@@ -2380,6 +2577,7 @@ class _$InputOtpInitialImpl implements _InputOtpInitial {
     required TResult Function(_ResendOtpInProgress value) resendOtpInProgress,
     required TResult Function(_ResendOtpSuccess value) resendOtpSuccess,
     required TResult Function(_ResendOtpFailure value) resendOtpFailure,
+    required TResult Function(_AutoSignInSuccess value) autoSignInSuccess,
   }) {
     return inputOtpInitial(this);
   }
@@ -2402,6 +2600,7 @@ class _$InputOtpInitialImpl implements _InputOtpInitial {
     TResult? Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult? Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult? Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult? Function(_AutoSignInSuccess value)? autoSignInSuccess,
   }) {
     return inputOtpInitial?.call(this);
   }
@@ -2424,6 +2623,7 @@ class _$InputOtpInitialImpl implements _InputOtpInitial {
     TResult Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult Function(_AutoSignInSuccess value)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (inputOtpInitial != null) {
@@ -2498,11 +2698,6 @@ class _$InputOtpValidationInProgressImpl
   final String otp;
 
   @override
-  String toString() {
-    return 'SetupState.inputOtpValidationInProgress(phoneNumber: $phoneNumber, otp: $otp)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -2544,6 +2739,7 @@ class _$InputOtpValidationInProgressImpl
     required TResult Function(String phoneNumber, String otp) resendOtpSuccess,
     required TResult Function(String phoneNumber, String otp, Failure failure)
         resendOtpFailure,
+    required TResult Function(String phoneNumber, User user) autoSignInSuccess,
   }) {
     return inputOtpValidationInProgress(phoneNumber, otp);
   }
@@ -2567,6 +2763,7 @@ class _$InputOtpValidationInProgressImpl
     TResult? Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult? Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult? Function(String phoneNumber, User user)? autoSignInSuccess,
   }) {
     return inputOtpValidationInProgress?.call(phoneNumber, otp);
   }
@@ -2589,6 +2786,7 @@ class _$InputOtpValidationInProgressImpl
     TResult Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult Function(String phoneNumber, User user)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (inputOtpValidationInProgress != null) {
@@ -2618,6 +2816,7 @@ class _$InputOtpValidationInProgressImpl
     required TResult Function(_ResendOtpInProgress value) resendOtpInProgress,
     required TResult Function(_ResendOtpSuccess value) resendOtpSuccess,
     required TResult Function(_ResendOtpFailure value) resendOtpFailure,
+    required TResult Function(_AutoSignInSuccess value) autoSignInSuccess,
   }) {
     return inputOtpValidationInProgress(this);
   }
@@ -2640,6 +2839,7 @@ class _$InputOtpValidationInProgressImpl
     TResult? Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult? Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult? Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult? Function(_AutoSignInSuccess value)? autoSignInSuccess,
   }) {
     return inputOtpValidationInProgress?.call(this);
   }
@@ -2662,6 +2862,7 @@ class _$InputOtpValidationInProgressImpl
     TResult Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult Function(_AutoSignInSuccess value)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (inputOtpValidationInProgress != null) {
@@ -2737,11 +2938,6 @@ class _$InputOtpValidationSuccessImpl implements _InputOtpValidationSuccess {
   final String otp;
 
   @override
-  String toString() {
-    return 'SetupState.inputOtpValidationSuccess(phoneNumber: $phoneNumber, otp: $otp)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -2782,6 +2978,7 @@ class _$InputOtpValidationSuccessImpl implements _InputOtpValidationSuccess {
     required TResult Function(String phoneNumber, String otp) resendOtpSuccess,
     required TResult Function(String phoneNumber, String otp, Failure failure)
         resendOtpFailure,
+    required TResult Function(String phoneNumber, User user) autoSignInSuccess,
   }) {
     return inputOtpValidationSuccess(phoneNumber, otp);
   }
@@ -2805,6 +3002,7 @@ class _$InputOtpValidationSuccessImpl implements _InputOtpValidationSuccess {
     TResult? Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult? Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult? Function(String phoneNumber, User user)? autoSignInSuccess,
   }) {
     return inputOtpValidationSuccess?.call(phoneNumber, otp);
   }
@@ -2827,6 +3025,7 @@ class _$InputOtpValidationSuccessImpl implements _InputOtpValidationSuccess {
     TResult Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult Function(String phoneNumber, User user)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (inputOtpValidationSuccess != null) {
@@ -2856,6 +3055,7 @@ class _$InputOtpValidationSuccessImpl implements _InputOtpValidationSuccess {
     required TResult Function(_ResendOtpInProgress value) resendOtpInProgress,
     required TResult Function(_ResendOtpSuccess value) resendOtpSuccess,
     required TResult Function(_ResendOtpFailure value) resendOtpFailure,
+    required TResult Function(_AutoSignInSuccess value) autoSignInSuccess,
   }) {
     return inputOtpValidationSuccess(this);
   }
@@ -2878,6 +3078,7 @@ class _$InputOtpValidationSuccessImpl implements _InputOtpValidationSuccess {
     TResult? Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult? Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult? Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult? Function(_AutoSignInSuccess value)? autoSignInSuccess,
   }) {
     return inputOtpValidationSuccess?.call(this);
   }
@@ -2900,6 +3101,7 @@ class _$InputOtpValidationSuccessImpl implements _InputOtpValidationSuccess {
     TResult Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult Function(_AutoSignInSuccess value)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (inputOtpValidationSuccess != null) {
@@ -2982,11 +3184,6 @@ class _$InputOtpValidationFailureImpl implements _InputOtpValidationFailure {
   final Failure failure;
 
   @override
-  String toString() {
-    return 'SetupState.inputOtpValidationFailure(phoneNumber: $phoneNumber, otp: $otp, failure: $failure)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -3028,6 +3225,7 @@ class _$InputOtpValidationFailureImpl implements _InputOtpValidationFailure {
     required TResult Function(String phoneNumber, String otp) resendOtpSuccess,
     required TResult Function(String phoneNumber, String otp, Failure failure)
         resendOtpFailure,
+    required TResult Function(String phoneNumber, User user) autoSignInSuccess,
   }) {
     return inputOtpValidationFailure(phoneNumber, otp, failure);
   }
@@ -3051,6 +3249,7 @@ class _$InputOtpValidationFailureImpl implements _InputOtpValidationFailure {
     TResult? Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult? Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult? Function(String phoneNumber, User user)? autoSignInSuccess,
   }) {
     return inputOtpValidationFailure?.call(phoneNumber, otp, failure);
   }
@@ -3073,6 +3272,7 @@ class _$InputOtpValidationFailureImpl implements _InputOtpValidationFailure {
     TResult Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult Function(String phoneNumber, User user)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (inputOtpValidationFailure != null) {
@@ -3102,6 +3302,7 @@ class _$InputOtpValidationFailureImpl implements _InputOtpValidationFailure {
     required TResult Function(_ResendOtpInProgress value) resendOtpInProgress,
     required TResult Function(_ResendOtpSuccess value) resendOtpSuccess,
     required TResult Function(_ResendOtpFailure value) resendOtpFailure,
+    required TResult Function(_AutoSignInSuccess value) autoSignInSuccess,
   }) {
     return inputOtpValidationFailure(this);
   }
@@ -3124,6 +3325,7 @@ class _$InputOtpValidationFailureImpl implements _InputOtpValidationFailure {
     TResult? Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult? Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult? Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult? Function(_AutoSignInSuccess value)? autoSignInSuccess,
   }) {
     return inputOtpValidationFailure?.call(this);
   }
@@ -3146,6 +3348,7 @@ class _$InputOtpValidationFailureImpl implements _InputOtpValidationFailure {
     TResult Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult Function(_AutoSignInSuccess value)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (inputOtpValidationFailure != null) {
@@ -3219,11 +3422,6 @@ class _$ResendOtpInProgressImpl implements _ResendOtpInProgress {
   final String otp;
 
   @override
-  String toString() {
-    return 'SetupState.resendOtpInProgress(phoneNumber: $phoneNumber, otp: $otp)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -3264,6 +3462,7 @@ class _$ResendOtpInProgressImpl implements _ResendOtpInProgress {
     required TResult Function(String phoneNumber, String otp) resendOtpSuccess,
     required TResult Function(String phoneNumber, String otp, Failure failure)
         resendOtpFailure,
+    required TResult Function(String phoneNumber, User user) autoSignInSuccess,
   }) {
     return resendOtpInProgress(phoneNumber, otp);
   }
@@ -3287,6 +3486,7 @@ class _$ResendOtpInProgressImpl implements _ResendOtpInProgress {
     TResult? Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult? Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult? Function(String phoneNumber, User user)? autoSignInSuccess,
   }) {
     return resendOtpInProgress?.call(phoneNumber, otp);
   }
@@ -3309,6 +3509,7 @@ class _$ResendOtpInProgressImpl implements _ResendOtpInProgress {
     TResult Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult Function(String phoneNumber, User user)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (resendOtpInProgress != null) {
@@ -3338,6 +3539,7 @@ class _$ResendOtpInProgressImpl implements _ResendOtpInProgress {
     required TResult Function(_ResendOtpInProgress value) resendOtpInProgress,
     required TResult Function(_ResendOtpSuccess value) resendOtpSuccess,
     required TResult Function(_ResendOtpFailure value) resendOtpFailure,
+    required TResult Function(_AutoSignInSuccess value) autoSignInSuccess,
   }) {
     return resendOtpInProgress(this);
   }
@@ -3360,6 +3562,7 @@ class _$ResendOtpInProgressImpl implements _ResendOtpInProgress {
     TResult? Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult? Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult? Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult? Function(_AutoSignInSuccess value)? autoSignInSuccess,
   }) {
     return resendOtpInProgress?.call(this);
   }
@@ -3382,6 +3585,7 @@ class _$ResendOtpInProgressImpl implements _ResendOtpInProgress {
     TResult Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult Function(_AutoSignInSuccess value)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (resendOtpInProgress != null) {
@@ -3453,11 +3657,6 @@ class _$ResendOtpSuccessImpl implements _ResendOtpSuccess {
   final String otp;
 
   @override
-  String toString() {
-    return 'SetupState.resendOtpSuccess(phoneNumber: $phoneNumber, otp: $otp)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -3498,6 +3697,7 @@ class _$ResendOtpSuccessImpl implements _ResendOtpSuccess {
     required TResult Function(String phoneNumber, String otp) resendOtpSuccess,
     required TResult Function(String phoneNumber, String otp, Failure failure)
         resendOtpFailure,
+    required TResult Function(String phoneNumber, User user) autoSignInSuccess,
   }) {
     return resendOtpSuccess(phoneNumber, otp);
   }
@@ -3521,6 +3721,7 @@ class _$ResendOtpSuccessImpl implements _ResendOtpSuccess {
     TResult? Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult? Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult? Function(String phoneNumber, User user)? autoSignInSuccess,
   }) {
     return resendOtpSuccess?.call(phoneNumber, otp);
   }
@@ -3543,6 +3744,7 @@ class _$ResendOtpSuccessImpl implements _ResendOtpSuccess {
     TResult Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult Function(String phoneNumber, User user)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (resendOtpSuccess != null) {
@@ -3572,6 +3774,7 @@ class _$ResendOtpSuccessImpl implements _ResendOtpSuccess {
     required TResult Function(_ResendOtpInProgress value) resendOtpInProgress,
     required TResult Function(_ResendOtpSuccess value) resendOtpSuccess,
     required TResult Function(_ResendOtpFailure value) resendOtpFailure,
+    required TResult Function(_AutoSignInSuccess value) autoSignInSuccess,
   }) {
     return resendOtpSuccess(this);
   }
@@ -3594,6 +3797,7 @@ class _$ResendOtpSuccessImpl implements _ResendOtpSuccess {
     TResult? Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult? Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult? Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult? Function(_AutoSignInSuccess value)? autoSignInSuccess,
   }) {
     return resendOtpSuccess?.call(this);
   }
@@ -3616,6 +3820,7 @@ class _$ResendOtpSuccessImpl implements _ResendOtpSuccess {
     TResult Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult Function(_AutoSignInSuccess value)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (resendOtpSuccess != null) {
@@ -3694,11 +3899,6 @@ class _$ResendOtpFailureImpl implements _ResendOtpFailure {
   final Failure failure;
 
   @override
-  String toString() {
-    return 'SetupState.resendOtpFailure(phoneNumber: $phoneNumber, otp: $otp, failure: $failure)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
@@ -3740,6 +3940,7 @@ class _$ResendOtpFailureImpl implements _ResendOtpFailure {
     required TResult Function(String phoneNumber, String otp) resendOtpSuccess,
     required TResult Function(String phoneNumber, String otp, Failure failure)
         resendOtpFailure,
+    required TResult Function(String phoneNumber, User user) autoSignInSuccess,
   }) {
     return resendOtpFailure(phoneNumber, otp, failure);
   }
@@ -3763,6 +3964,7 @@ class _$ResendOtpFailureImpl implements _ResendOtpFailure {
     TResult? Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult? Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult? Function(String phoneNumber, User user)? autoSignInSuccess,
   }) {
     return resendOtpFailure?.call(phoneNumber, otp, failure);
   }
@@ -3785,6 +3987,7 @@ class _$ResendOtpFailureImpl implements _ResendOtpFailure {
     TResult Function(String phoneNumber, String otp)? resendOtpSuccess,
     TResult Function(String phoneNumber, String otp, Failure failure)?
         resendOtpFailure,
+    TResult Function(String phoneNumber, User user)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (resendOtpFailure != null) {
@@ -3814,6 +4017,7 @@ class _$ResendOtpFailureImpl implements _ResendOtpFailure {
     required TResult Function(_ResendOtpInProgress value) resendOtpInProgress,
     required TResult Function(_ResendOtpSuccess value) resendOtpSuccess,
     required TResult Function(_ResendOtpFailure value) resendOtpFailure,
+    required TResult Function(_AutoSignInSuccess value) autoSignInSuccess,
   }) {
     return resendOtpFailure(this);
   }
@@ -3836,6 +4040,7 @@ class _$ResendOtpFailureImpl implements _ResendOtpFailure {
     TResult? Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult? Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult? Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult? Function(_AutoSignInSuccess value)? autoSignInSuccess,
   }) {
     return resendOtpFailure?.call(this);
   }
@@ -3858,6 +4063,7 @@ class _$ResendOtpFailureImpl implements _ResendOtpFailure {
     TResult Function(_ResendOtpInProgress value)? resendOtpInProgress,
     TResult Function(_ResendOtpSuccess value)? resendOtpSuccess,
     TResult Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult Function(_AutoSignInSuccess value)? autoSignInSuccess,
     required TResult orElse(),
   }) {
     if (resendOtpFailure != null) {
@@ -3879,5 +4085,240 @@ abstract class _ResendOtpFailure implements SetupState {
   @override
   @JsonKey(ignore: true)
   _$$ResendOtpFailureImplCopyWith<_$ResendOtpFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AutoSignInSuccessImplCopyWith<$Res>
+    implements $SetupStateCopyWith<$Res> {
+  factory _$$AutoSignInSuccessImplCopyWith(_$AutoSignInSuccessImpl value,
+          $Res Function(_$AutoSignInSuccessImpl) then) =
+      __$$AutoSignInSuccessImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String phoneNumber, User user});
+}
+
+/// @nodoc
+class __$$AutoSignInSuccessImplCopyWithImpl<$Res>
+    extends _$SetupStateCopyWithImpl<$Res, _$AutoSignInSuccessImpl>
+    implements _$$AutoSignInSuccessImplCopyWith<$Res> {
+  __$$AutoSignInSuccessImplCopyWithImpl(_$AutoSignInSuccessImpl _value,
+      $Res Function(_$AutoSignInSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phoneNumber = null,
+    Object? user = null,
+  }) {
+    return _then(_$AutoSignInSuccessImpl(
+      null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AutoSignInSuccessImpl implements _AutoSignInSuccess {
+  const _$AutoSignInSuccessImpl(this.phoneNumber, this.user);
+
+  @override
+  final String phoneNumber;
+  @override
+  final User user;
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AutoSignInSuccessImpl &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, phoneNumber, user);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AutoSignInSuccessImplCopyWith<_$AutoSignInSuccessImpl> get copyWith =>
+      __$$AutoSignInSuccessImplCopyWithImpl<_$AutoSignInSuccessImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String phoneNumber) inputPhoneNumberInitial,
+    required TResult Function(String phoneNumber)
+        inputPhoneNumberVerifyInProgress,
+    required TResult Function(String phoneNumber, Failure failure)
+        inputPhoneNumberFailure,
+    required TResult Function(String phoneNumber) inputPhoneNumberSuccess,
+    required TResult Function(String phoneNumber, String otp) inputOtpInitial,
+    required TResult Function(String phoneNumber, String otp)
+        inputOtpValidationInProgress,
+    required TResult Function(String phoneNumber, String otp)
+        inputOtpValidationSuccess,
+    required TResult Function(String phoneNumber, String otp, Failure failure)
+        inputOtpValidationFailure,
+    required TResult Function(String phoneNumber, String otp)
+        resendOtpInProgress,
+    required TResult Function(String phoneNumber, String otp) resendOtpSuccess,
+    required TResult Function(String phoneNumber, String otp, Failure failure)
+        resendOtpFailure,
+    required TResult Function(String phoneNumber, User user) autoSignInSuccess,
+  }) {
+    return autoSignInSuccess(phoneNumber, user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String phoneNumber)? inputPhoneNumberInitial,
+    TResult? Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
+    TResult? Function(String phoneNumber, Failure failure)?
+        inputPhoneNumberFailure,
+    TResult? Function(String phoneNumber)? inputPhoneNumberSuccess,
+    TResult? Function(String phoneNumber, String otp)? inputOtpInitial,
+    TResult? Function(String phoneNumber, String otp)?
+        inputOtpValidationInProgress,
+    TResult? Function(String phoneNumber, String otp)?
+        inputOtpValidationSuccess,
+    TResult? Function(String phoneNumber, String otp, Failure failure)?
+        inputOtpValidationFailure,
+    TResult? Function(String phoneNumber, String otp)? resendOtpInProgress,
+    TResult? Function(String phoneNumber, String otp)? resendOtpSuccess,
+    TResult? Function(String phoneNumber, String otp, Failure failure)?
+        resendOtpFailure,
+    TResult? Function(String phoneNumber, User user)? autoSignInSuccess,
+  }) {
+    return autoSignInSuccess?.call(phoneNumber, user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String phoneNumber)? inputPhoneNumberInitial,
+    TResult Function(String phoneNumber)? inputPhoneNumberVerifyInProgress,
+    TResult Function(String phoneNumber, Failure failure)?
+        inputPhoneNumberFailure,
+    TResult Function(String phoneNumber)? inputPhoneNumberSuccess,
+    TResult Function(String phoneNumber, String otp)? inputOtpInitial,
+    TResult Function(String phoneNumber, String otp)?
+        inputOtpValidationInProgress,
+    TResult Function(String phoneNumber, String otp)? inputOtpValidationSuccess,
+    TResult Function(String phoneNumber, String otp, Failure failure)?
+        inputOtpValidationFailure,
+    TResult Function(String phoneNumber, String otp)? resendOtpInProgress,
+    TResult Function(String phoneNumber, String otp)? resendOtpSuccess,
+    TResult Function(String phoneNumber, String otp, Failure failure)?
+        resendOtpFailure,
+    TResult Function(String phoneNumber, User user)? autoSignInSuccess,
+    required TResult orElse(),
+  }) {
+    if (autoSignInSuccess != null) {
+      return autoSignInSuccess(phoneNumber, user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InputPhoneNumberInitial value)
+        inputPhoneNumberInitial,
+    required TResult Function(_InputPhoneNumberVerifyInProgress value)
+        inputPhoneNumberVerifyInProgress,
+    required TResult Function(_InputPhoneNumberFailure value)
+        inputPhoneNumberFailure,
+    required TResult Function(_InputPhoneNumberSuccess value)
+        inputPhoneNumberSuccess,
+    required TResult Function(_InputOtpInitial value) inputOtpInitial,
+    required TResult Function(_InputOtpValidationInProgress value)
+        inputOtpValidationInProgress,
+    required TResult Function(_InputOtpValidationSuccess value)
+        inputOtpValidationSuccess,
+    required TResult Function(_InputOtpValidationFailure value)
+        inputOtpValidationFailure,
+    required TResult Function(_ResendOtpInProgress value) resendOtpInProgress,
+    required TResult Function(_ResendOtpSuccess value) resendOtpSuccess,
+    required TResult Function(_ResendOtpFailure value) resendOtpFailure,
+    required TResult Function(_AutoSignInSuccess value) autoSignInSuccess,
+  }) {
+    return autoSignInSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InputPhoneNumberInitial value)? inputPhoneNumberInitial,
+    TResult? Function(_InputPhoneNumberVerifyInProgress value)?
+        inputPhoneNumberVerifyInProgress,
+    TResult? Function(_InputPhoneNumberFailure value)? inputPhoneNumberFailure,
+    TResult? Function(_InputPhoneNumberSuccess value)? inputPhoneNumberSuccess,
+    TResult? Function(_InputOtpInitial value)? inputOtpInitial,
+    TResult? Function(_InputOtpValidationInProgress value)?
+        inputOtpValidationInProgress,
+    TResult? Function(_InputOtpValidationSuccess value)?
+        inputOtpValidationSuccess,
+    TResult? Function(_InputOtpValidationFailure value)?
+        inputOtpValidationFailure,
+    TResult? Function(_ResendOtpInProgress value)? resendOtpInProgress,
+    TResult? Function(_ResendOtpSuccess value)? resendOtpSuccess,
+    TResult? Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult? Function(_AutoSignInSuccess value)? autoSignInSuccess,
+  }) {
+    return autoSignInSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InputPhoneNumberInitial value)? inputPhoneNumberInitial,
+    TResult Function(_InputPhoneNumberVerifyInProgress value)?
+        inputPhoneNumberVerifyInProgress,
+    TResult Function(_InputPhoneNumberFailure value)? inputPhoneNumberFailure,
+    TResult Function(_InputPhoneNumberSuccess value)? inputPhoneNumberSuccess,
+    TResult Function(_InputOtpInitial value)? inputOtpInitial,
+    TResult Function(_InputOtpValidationInProgress value)?
+        inputOtpValidationInProgress,
+    TResult Function(_InputOtpValidationSuccess value)?
+        inputOtpValidationSuccess,
+    TResult Function(_InputOtpValidationFailure value)?
+        inputOtpValidationFailure,
+    TResult Function(_ResendOtpInProgress value)? resendOtpInProgress,
+    TResult Function(_ResendOtpSuccess value)? resendOtpSuccess,
+    TResult Function(_ResendOtpFailure value)? resendOtpFailure,
+    TResult Function(_AutoSignInSuccess value)? autoSignInSuccess,
+    required TResult orElse(),
+  }) {
+    if (autoSignInSuccess != null) {
+      return autoSignInSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AutoSignInSuccess implements SetupState {
+  const factory _AutoSignInSuccess(final String phoneNumber, final User user) =
+      _$AutoSignInSuccessImpl;
+
+  @override
+  String get phoneNumber;
+  User get user;
+  @override
+  @JsonKey(ignore: true)
+  _$$AutoSignInSuccessImplCopyWith<_$AutoSignInSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

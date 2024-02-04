@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../../data/constants/firebase_exception_code.dart';
 import '../../injection_container.dart';
 import '../blocs/open_external_link/open_external_link_bloc.dart';
 import '../blocs/setup/setup_bloc.dart';
@@ -67,23 +66,15 @@ class SetupScreen extends StatelessWidget {
               },
               inputPhoneNumberFailure: (state) {
                 uiService.hideLoading();
-
-                if (state.failure.code == AppFailureCode.autoSignInFailed) {
-                  navigatorService.pushNamed(VerifyOtpScreen.routeName);
-                  context
-                      .read<SetupBloc>()
-                      .add(const SetupEvent.inputOtpStarted());
-                } else {
-                  Fluttertoast.showToast(
-                      msg: state.failure.code.translate(context));
-                }
+                Fluttertoast.showToast(
+                    msg: state.failure.code.translate(context));
               },
               inputPhoneNumberSuccess: (_) {
                 uiService.hideLoading();
-                navigatorService.pushNamed(VerifyOtpScreen.routeName);
                 context
                     .read<SetupBloc>()
                     .add(const SetupEvent.inputOtpStarted());
+                navigatorService.pushNamed(VerifyOtpScreen.routeName);
               },
               orElse: () {},
             );

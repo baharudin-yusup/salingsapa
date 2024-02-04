@@ -1,22 +1,28 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:rxdart/rxdart.dart';
 
 import '../../core/errors/exceptions.dart';
 import '../../core/utils/logger.dart';
-import '../constants/firebase_exception_code.dart';
+import '../constants/exception_code.dart';
+import '../models/submit_phone_number_status.dart';
 import '../models/user_model.dart';
 import '../plugins/network_plugin.dart';
 
 abstract class AuthenticationRemoteDatSource {
   Future<UserModel?> currentUser();
 
-  Future<UserModel> verifyPhoneNumber({required String phoneNumber});
+  Future<void> verifyPhoneNumber({required String phoneNumber});
 
   Future<UserModel> verifyOtp({required String otp});
 
   Future<void> resendOtp();
 
   Future<void> signOut();
+
+  Stream<SubmitPhoneNumberStatus> get streamSubmitPhoneNumberStatus;
 }
 
 class AuthenticationRemoteDatSourceImpl
@@ -25,6 +31,9 @@ class AuthenticationRemoteDatSourceImpl
   final FirebaseFirestore _firestore;
   final NetworkPlugin _networkPlugin;
   String _verificationId;
+
+  Timer? _verificationPhoneNumberTimer;
+  StreamController<SubmitPhoneNumberStatus>? _submitPhoneNumberStatusController;
 
   AuthenticationRemoteDatSourceImpl(
       this._auth, this._firestore, this._networkPlugin)
@@ -50,59 +59,79 @@ class AuthenticationRemoteDatSourceImpl
   }
 
   @override
-  Future<UserModel> verifyPhoneNumber({required String phoneNumber}) async {
-    PhoneAuthCredential? autoSignInCredential;
-    FirebaseAuthException? firebaseAuthException;
-
+  Future<void> verifyPhoneNumber({
+    required String phoneNumber,
+  }) async {
     Logger.print('Verifying phone number $phoneNumber started...');
 
     // Remove previous verification id
     _verificationId = '';
+    _submitPhoneNumberStatusController = BehaviorSubject();
+    _verificationPhoneNumberTimer =
+        Timer(const Duration(seconds: 10), () async {
+      _submitPhoneNumberStatusController?.sink
+          .add(SubmitPhoneNumberStatusNoResponse(phoneNumber));
+      await _submitPhoneNumberStatusController?.close();
+    });
+
+    // TODO: Remove this delay
+    await Future.delayed(const Duration(milliseconds: 200));
 
     try {
       await _auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
-        verificationCompleted: (credential) {
-          autoSignInCredential = credential;
+        verificationCompleted: (credential) async {
+          _verificationPhoneNumberTimer?.cancel();
+          final user = (await _auth.signInWithCredential(credential)).user;
+          if (user == null) {
+            _submitPhoneNumberStatusController?.sink.add(
+              _verificationId.isEmpty
+                  ? SubmitPhoneNumberError(null, phoneNumber: phoneNumber)
+                  : CodeSent(phoneNumber),
+            );
+            await _submitPhoneNumberStatusController?.close();
+            return;
+          }
+          final verifiedUser = await _updateInitialData(user);
+          if (!(_submitPhoneNumberStatusController?.isClosed ?? true)) {
+            _submitPhoneNumberStatusController?.sink
+                .add(AutoSignIn(verifiedUser, phoneNumber: phoneNumber));
+            await _submitPhoneNumberStatusController?.close();
+          }
         },
-        verificationFailed: (error) {
-          firebaseAuthException = error;
+        verificationFailed: (error) async {
+          _verificationPhoneNumberTimer?.cancel();
+          if (!(_submitPhoneNumberStatusController?.isClosed ?? true)) {
+            _submitPhoneNumberStatusController?.sink
+                .add(SubmitPhoneNumberError(error, phoneNumber: phoneNumber));
+            await _submitPhoneNumberStatusController?.close();
+          }
         },
-        codeSent: (verificationId, _) {
+        codeSent: (verificationId, _) async {
+          _verificationPhoneNumberTimer?.cancel();
           Logger.print(
               'code sent verification id for phone number $phoneNumber is $verificationId');
           _verificationId = verificationId;
+          if (!(_submitPhoneNumberStatusController?.isClosed ?? true)) {
+            _submitPhoneNumberStatusController?.sink.add(CodeSent(phoneNumber));
+            await _submitPhoneNumberStatusController?.close();
+          }
         },
-        codeAutoRetrievalTimeout: (verificationId) {
+        codeAutoRetrievalTimeout: (verificationId) async {
+          _verificationPhoneNumberTimer?.cancel();
           Logger.print(
               'code auto retrieval timeout verification id for phone number $phoneNumber is $verificationId');
           _verificationId = verificationId;
+          if (!(_submitPhoneNumberStatusController?.isClosed ?? true)) {
+            _submitPhoneNumberStatusController?.sink.add(CodeSent(phoneNumber));
+            await _submitPhoneNumberStatusController?.close();
+          }
         },
       );
     } catch (error) {
       Logger.error(error, event: 'verifying phone number');
       throw ServerException();
     }
-
-    if (firebaseAuthException != null) {
-      Logger.error(firebaseAuthException!, event: 'verifying phone number');
-      throw ServerException();
-    }
-
-    if (autoSignInCredential == null) {
-      Logger.error('autoSignInCredential is null',
-          event: 'verifying phone number');
-      throw AppFailureCode.autoSignInFailed;
-    }
-
-    final user = (await _auth.signInWithCredential(autoSignInCredential!)).user;
-
-    if (user == null) {
-      Logger.error('user is null!', event: 'verifying phone number');
-      throw AppFailureCode.autoSignInFailed;
-    }
-
-    return await _updateInitialData(user);
   }
 
   @override
@@ -169,5 +198,14 @@ class AuthenticationRemoteDatSourceImpl
   @override
   Future<void> resendOtp() async {
     throw FeatureException();
+  }
+
+  @override
+  Stream<SubmitPhoneNumberStatus> get streamSubmitPhoneNumberStatus {
+    if (_submitPhoneNumberStatusController == null) {
+      // TODO: Handle this
+      throw ServerException();
+    }
+    return _submitPhoneNumberStatusController!.stream;
   }
 }
