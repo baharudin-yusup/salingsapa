@@ -14,6 +14,8 @@ abstract class UiService {
 
   void hideLoading();
 
+  void resetLoading();
+
   Future<T?> showDialog<T>(DialogData data);
 }
 
@@ -174,6 +176,11 @@ class UiServiceImpl implements UiService {
       );
     }
     return null;
+  }
+
+  @override
+  void resetLoading() {
+    _isLoading = false;
   }
 }
 
