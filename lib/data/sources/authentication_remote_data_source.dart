@@ -67,7 +67,8 @@ class AuthenticationRemoteDatSourceImpl
     // Remove previous verification id
     _verificationId = '';
     _submitPhoneNumberStatusController = BehaviorSubject();
-    _verificationPhoneNumberTimer = Timer(const Duration(seconds: 3), () async {
+    _verificationPhoneNumberTimer =
+        Timer(const Duration(seconds: 10), () async {
       _submitPhoneNumberStatusController?.sink
           .add(SubmitPhoneNumberStatusNoResponse(phoneNumber));
       await _submitPhoneNumberStatusController?.close();
