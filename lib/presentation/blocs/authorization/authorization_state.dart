@@ -10,4 +10,19 @@ class AuthorizationState with _$AuthorizationState {
 
   const factory AuthorizationState.changeAuthStatusFailure(Failure failure) =
       _ChangeAuthStatusFailure;
+
+  @override
+  String toString() {
+    return when(
+      initial: (status) {
+        return '${super.toString()} $status';
+      },
+      changeAuthStatusSuccess: (status) {
+        return '${super.toString()} $status';
+      },
+      changeAuthStatusFailure: (failure) {
+        return '${super.toString()} failure: $failure';
+      },
+    );
+  }
 }
