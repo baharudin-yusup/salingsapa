@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../domain/entities/auth_status.dart';
 import '../domain/entities/contact.dart';
 import '../domain/entities/room.dart';
 import '../injection_container.dart';
 import 'blocs/account/account_bloc.dart';
-import 'blocs/authorization/authorization_bloc.dart';
 import 'blocs/contact_list/contact_list_bloc.dart';
 import 'blocs/create_room/create_room_bloc.dart';
 import 'blocs/home/home_cubit.dart';
@@ -26,36 +24,24 @@ import 'screens/verify_otp_screen.dart';
 import 'screens/video_call/video_call_screen.dart';
 
 Map<String, WidgetBuilder> getRoutes() => {
-      '/': (_) => BlocBuilder<AuthorizationBloc, AuthorizationState>(
-            builder: (context, state) {
-              return state.when(
-                initial: (_) => const SetupScreen(),
-                changeAuthStatusSuccess: (status) {
-                  if (status == AuthStatus.unauthorized) {
-                    return const SetupScreen();
-                  }
+      SetupScreen.routeName: (_) => const SetupScreen(),
+      VerifyOtpScreen.routeName: (_) => const VerifyOtpScreen(),
+      HomeScreen.routeName: (context) {
+        context
+            .read<ContactListBloc>()
+            .add(const ContactListEvent.refreshPulled());
 
-                  context
-                      .read<ContactListBloc>()
-                      .add(const ContactListEvent.refreshPulled());
-
-                  return MultiBlocProvider(
-                    providers: [
-                      BlocProvider<HomeCubit>(create: (_) => HomeCubit()),
-                      BlocProvider<RecentCallBloc>(
-                          create: (_) =>
-                              sl()..add(const RecentCallEvent.started())),
-                      BlocProvider<AccountBloc>(
-                          create: (_) =>
-                              sl()..add(const AccountEvent.started())),
-                    ],
-                    child: const HomeScreen(),
-                  );
-                },
-                changeAuthStatusFailure: (_) => const SetupScreen(),
-              );
-            },
-          ),
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider<HomeCubit>(create: (_) => HomeCubit()),
+            BlocProvider<RecentCallBloc>(
+                create: (_) => sl()..add(const RecentCallEvent.started())),
+            BlocProvider<AccountBloc>(
+                create: (_) => sl()..add(const AccountEvent.started())),
+          ],
+          child: const HomeScreen(),
+        );
+      },
       RecentCallScreen.routeName: (_) => const RecentCallScreen(),
       SettingScreen.routeName: (_) => const SettingScreen(),
       CreateRoomScreen.routeName: (context) {
@@ -80,12 +66,5 @@ Map<String, WidgetBuilder> getRoutes() => {
           child: const VideoCallScreen(),
         );
       },
-      VerifyOtpScreen.routeName: (_) => const VerifyOtpScreen(),
-      SetupScreen.routeName: (_) => const SetupScreen(),
-      ContactListScreen.routeName: (context) {
-        context
-            .read<ContactListBloc>()
-            .add(const ContactListEvent.refreshPulled());
-        return const ContactListScreen();
-      },
+      ContactListScreen.routeName: (_) => const ContactListScreen(),
     };
