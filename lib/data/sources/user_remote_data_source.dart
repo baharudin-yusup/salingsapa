@@ -6,6 +6,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 
 import '../../core/errors/exceptions.dart';
 import '../../core/utils/logger.dart';
+import '../constants/firestore_constant.dart';
 import '../models/user_model.dart';
 
 abstract class UserRemoteDataSource {
@@ -25,6 +26,8 @@ abstract class UserRemoteDataSource {
   Stream<UserModel?> get onUserStateChanged;
 
   Future<UserModel?> getCurrentUser();
+
+  Future<bool> deleteAccount();
 }
 
 class UserRemoteDataSourceImpl implements UserRemoteDataSource {
@@ -136,5 +139,40 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     }
 
     return user;
+  }
+
+  @override
+  Future<bool> deleteAccount() async {
+    final user = _auth.currentUser;
+
+    if (user == null) {
+      throw ServerException();
+    }
+
+    final userId = user.uid;
+
+    final userQueryDocumentSnapshot = (await _firestore
+            .collection(FirestoreUserConstant.userCollectionName)
+            .where(FirestoreUserConstant.userId, isEqualTo: userId)
+            .get())
+        .docs;
+
+    if (userQueryDocumentSnapshot.isEmpty) {
+      Logger.print('user document snapshot is empty!');
+      throw ServerException();
+    }
+
+    if (userQueryDocumentSnapshot.length != 1) {
+      Logger.print('user document snapshot is not unique!');
+      throw ServerException();
+    }
+
+    final documentReference = userQueryDocumentSnapshot[0].reference;
+
+    await documentReference.delete();
+
+    await user.delete();
+
+    return true;
   }
 }

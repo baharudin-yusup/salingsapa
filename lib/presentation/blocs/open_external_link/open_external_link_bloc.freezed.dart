@@ -20,18 +20,21 @@ mixin _$OpenExternalLinkEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() openPrivacyPolicyStarted,
     required TResult Function() openTnCStarted,
+    required TResult Function() openSupportStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? openPrivacyPolicyStarted,
     TResult? Function()? openTnCStarted,
+    TResult? Function()? openSupportStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? openPrivacyPolicyStarted,
     TResult Function()? openTnCStarted,
+    TResult Function()? openSupportStarted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,6 +43,7 @@ mixin _$OpenExternalLinkEvent {
     required TResult Function(_OpenPrivacyPolicyStarted value)
         openPrivacyPolicyStarted,
     required TResult Function(_OpenTnCStarted value) openTnCStarted,
+    required TResult Function(_OpenSupportStarted value) openSupportStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,12 +51,14 @@ mixin _$OpenExternalLinkEvent {
     TResult? Function(_OpenPrivacyPolicyStarted value)?
         openPrivacyPolicyStarted,
     TResult? Function(_OpenTnCStarted value)? openTnCStarted,
+    TResult? Function(_OpenSupportStarted value)? openSupportStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_OpenPrivacyPolicyStarted value)? openPrivacyPolicyStarted,
     TResult Function(_OpenTnCStarted value)? openTnCStarted,
+    TResult Function(_OpenSupportStarted value)? openSupportStarted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +127,7 @@ class _$OpenPrivacyPolicyStartedImpl implements _OpenPrivacyPolicyStarted {
   TResult when<TResult extends Object?>({
     required TResult Function() openPrivacyPolicyStarted,
     required TResult Function() openTnCStarted,
+    required TResult Function() openSupportStarted,
   }) {
     return openPrivacyPolicyStarted();
   }
@@ -130,6 +137,7 @@ class _$OpenPrivacyPolicyStartedImpl implements _OpenPrivacyPolicyStarted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? openPrivacyPolicyStarted,
     TResult? Function()? openTnCStarted,
+    TResult? Function()? openSupportStarted,
   }) {
     return openPrivacyPolicyStarted?.call();
   }
@@ -139,6 +147,7 @@ class _$OpenPrivacyPolicyStartedImpl implements _OpenPrivacyPolicyStarted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? openPrivacyPolicyStarted,
     TResult Function()? openTnCStarted,
+    TResult Function()? openSupportStarted,
     required TResult orElse(),
   }) {
     if (openPrivacyPolicyStarted != null) {
@@ -153,6 +162,7 @@ class _$OpenPrivacyPolicyStartedImpl implements _OpenPrivacyPolicyStarted {
     required TResult Function(_OpenPrivacyPolicyStarted value)
         openPrivacyPolicyStarted,
     required TResult Function(_OpenTnCStarted value) openTnCStarted,
+    required TResult Function(_OpenSupportStarted value) openSupportStarted,
   }) {
     return openPrivacyPolicyStarted(this);
   }
@@ -163,6 +173,7 @@ class _$OpenPrivacyPolicyStartedImpl implements _OpenPrivacyPolicyStarted {
     TResult? Function(_OpenPrivacyPolicyStarted value)?
         openPrivacyPolicyStarted,
     TResult? Function(_OpenTnCStarted value)? openTnCStarted,
+    TResult? Function(_OpenSupportStarted value)? openSupportStarted,
   }) {
     return openPrivacyPolicyStarted?.call(this);
   }
@@ -172,6 +183,7 @@ class _$OpenPrivacyPolicyStartedImpl implements _OpenPrivacyPolicyStarted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_OpenPrivacyPolicyStarted value)? openPrivacyPolicyStarted,
     TResult Function(_OpenTnCStarted value)? openTnCStarted,
+    TResult Function(_OpenSupportStarted value)? openSupportStarted,
     required TResult orElse(),
   }) {
     if (openPrivacyPolicyStarted != null) {
@@ -225,6 +237,7 @@ class _$OpenTnCStartedImpl implements _OpenTnCStarted {
   TResult when<TResult extends Object?>({
     required TResult Function() openPrivacyPolicyStarted,
     required TResult Function() openTnCStarted,
+    required TResult Function() openSupportStarted,
   }) {
     return openTnCStarted();
   }
@@ -234,6 +247,7 @@ class _$OpenTnCStartedImpl implements _OpenTnCStarted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? openPrivacyPolicyStarted,
     TResult? Function()? openTnCStarted,
+    TResult? Function()? openSupportStarted,
   }) {
     return openTnCStarted?.call();
   }
@@ -243,6 +257,7 @@ class _$OpenTnCStartedImpl implements _OpenTnCStarted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? openPrivacyPolicyStarted,
     TResult Function()? openTnCStarted,
+    TResult Function()? openSupportStarted,
     required TResult orElse(),
   }) {
     if (openTnCStarted != null) {
@@ -257,6 +272,7 @@ class _$OpenTnCStartedImpl implements _OpenTnCStarted {
     required TResult Function(_OpenPrivacyPolicyStarted value)
         openPrivacyPolicyStarted,
     required TResult Function(_OpenTnCStarted value) openTnCStarted,
+    required TResult Function(_OpenSupportStarted value) openSupportStarted,
   }) {
     return openTnCStarted(this);
   }
@@ -267,6 +283,7 @@ class _$OpenTnCStartedImpl implements _OpenTnCStarted {
     TResult? Function(_OpenPrivacyPolicyStarted value)?
         openPrivacyPolicyStarted,
     TResult? Function(_OpenTnCStarted value)? openTnCStarted,
+    TResult? Function(_OpenSupportStarted value)? openSupportStarted,
   }) {
     return openTnCStarted?.call(this);
   }
@@ -276,6 +293,7 @@ class _$OpenTnCStartedImpl implements _OpenTnCStarted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_OpenPrivacyPolicyStarted value)? openPrivacyPolicyStarted,
     TResult Function(_OpenTnCStarted value)? openTnCStarted,
+    TResult Function(_OpenSupportStarted value)? openSupportStarted,
     required TResult orElse(),
   }) {
     if (openTnCStarted != null) {
@@ -290,32 +308,145 @@ abstract class _OpenTnCStarted implements OpenExternalLinkEvent {
 }
 
 /// @nodoc
+abstract class _$$OpenSupportStartedImplCopyWith<$Res> {
+  factory _$$OpenSupportStartedImplCopyWith(_$OpenSupportStartedImpl value,
+          $Res Function(_$OpenSupportStartedImpl) then) =
+      __$$OpenSupportStartedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OpenSupportStartedImplCopyWithImpl<$Res>
+    extends _$OpenExternalLinkEventCopyWithImpl<$Res, _$OpenSupportStartedImpl>
+    implements _$$OpenSupportStartedImplCopyWith<$Res> {
+  __$$OpenSupportStartedImplCopyWithImpl(_$OpenSupportStartedImpl _value,
+      $Res Function(_$OpenSupportStartedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$OpenSupportStartedImpl implements _OpenSupportStarted {
+  const _$OpenSupportStartedImpl();
+
+  @override
+  String toString() {
+    return 'OpenExternalLinkEvent.openSupportStarted()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$OpenSupportStartedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() openPrivacyPolicyStarted,
+    required TResult Function() openTnCStarted,
+    required TResult Function() openSupportStarted,
+  }) {
+    return openSupportStarted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? openPrivacyPolicyStarted,
+    TResult? Function()? openTnCStarted,
+    TResult? Function()? openSupportStarted,
+  }) {
+    return openSupportStarted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? openPrivacyPolicyStarted,
+    TResult Function()? openTnCStarted,
+    TResult Function()? openSupportStarted,
+    required TResult orElse(),
+  }) {
+    if (openSupportStarted != null) {
+      return openSupportStarted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OpenPrivacyPolicyStarted value)
+        openPrivacyPolicyStarted,
+    required TResult Function(_OpenTnCStarted value) openTnCStarted,
+    required TResult Function(_OpenSupportStarted value) openSupportStarted,
+  }) {
+    return openSupportStarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OpenPrivacyPolicyStarted value)?
+        openPrivacyPolicyStarted,
+    TResult? Function(_OpenTnCStarted value)? openTnCStarted,
+    TResult? Function(_OpenSupportStarted value)? openSupportStarted,
+  }) {
+    return openSupportStarted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OpenPrivacyPolicyStarted value)? openPrivacyPolicyStarted,
+    TResult Function(_OpenTnCStarted value)? openTnCStarted,
+    TResult Function(_OpenSupportStarted value)? openSupportStarted,
+    required TResult orElse(),
+  }) {
+    if (openSupportStarted != null) {
+      return openSupportStarted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OpenSupportStarted implements OpenExternalLinkEvent {
+  const factory _OpenSupportStarted() = _$OpenSupportStartedImpl;
+}
+
+/// @nodoc
 mixin _$OpenExternalLinkState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() openExternalLinkInProgress,
+    required TResult Function(Failure failure) openExternalLinkFailure,
     required TResult Function(String content) openPrivacyPolicySuccess,
     required TResult Function(String content) openTnCSuccess,
-    required TResult Function(Failure failure) openExternalLinkFailure,
+    required TResult Function(String content) openSupportSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? openExternalLinkInProgress,
+    TResult? Function(Failure failure)? openExternalLinkFailure,
     TResult? Function(String content)? openPrivacyPolicySuccess,
     TResult? Function(String content)? openTnCSuccess,
-    TResult? Function(Failure failure)? openExternalLinkFailure,
+    TResult? Function(String content)? openSupportSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? openExternalLinkInProgress,
+    TResult Function(Failure failure)? openExternalLinkFailure,
     TResult Function(String content)? openPrivacyPolicySuccess,
     TResult Function(String content)? openTnCSuccess,
-    TResult Function(Failure failure)? openExternalLinkFailure,
+    TResult Function(String content)? openSupportSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -324,11 +455,12 @@ mixin _$OpenExternalLinkState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_OpenExternalLinkInProgress value)
         openExternalLinkInProgress,
+    required TResult Function(_OpenExternalLinkFailure value)
+        openExternalLinkFailure,
     required TResult Function(_OpenPrivacyPolicySuccess value)
         openPrivacyPolicySuccess,
     required TResult Function(_OpenTnCSuccess value) openTnCSuccess,
-    required TResult Function(_OpenExternalLinkFailure value)
-        openExternalLinkFailure,
+    required TResult Function(_OpenSupportSuccess value) openSupportSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -336,10 +468,11 @@ mixin _$OpenExternalLinkState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_OpenExternalLinkInProgress value)?
         openExternalLinkInProgress,
+    TResult? Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
     TResult? Function(_OpenPrivacyPolicySuccess value)?
         openPrivacyPolicySuccess,
     TResult? Function(_OpenTnCSuccess value)? openTnCSuccess,
-    TResult? Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
+    TResult? Function(_OpenSupportSuccess value)? openSupportSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -347,9 +480,10 @@ mixin _$OpenExternalLinkState {
     TResult Function(_Initial value)? initial,
     TResult Function(_OpenExternalLinkInProgress value)?
         openExternalLinkInProgress,
+    TResult Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
     TResult Function(_OpenPrivacyPolicySuccess value)? openPrivacyPolicySuccess,
     TResult Function(_OpenTnCSuccess value)? openTnCSuccess,
-    TResult Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
+    TResult Function(_OpenSupportSuccess value)? openSupportSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -414,9 +548,10 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() openExternalLinkInProgress,
+    required TResult Function(Failure failure) openExternalLinkFailure,
     required TResult Function(String content) openPrivacyPolicySuccess,
     required TResult Function(String content) openTnCSuccess,
-    required TResult Function(Failure failure) openExternalLinkFailure,
+    required TResult Function(String content) openSupportSuccess,
   }) {
     return initial();
   }
@@ -426,9 +561,10 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? openExternalLinkInProgress,
+    TResult? Function(Failure failure)? openExternalLinkFailure,
     TResult? Function(String content)? openPrivacyPolicySuccess,
     TResult? Function(String content)? openTnCSuccess,
-    TResult? Function(Failure failure)? openExternalLinkFailure,
+    TResult? Function(String content)? openSupportSuccess,
   }) {
     return initial?.call();
   }
@@ -438,9 +574,10 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? openExternalLinkInProgress,
+    TResult Function(Failure failure)? openExternalLinkFailure,
     TResult Function(String content)? openPrivacyPolicySuccess,
     TResult Function(String content)? openTnCSuccess,
-    TResult Function(Failure failure)? openExternalLinkFailure,
+    TResult Function(String content)? openSupportSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -455,11 +592,12 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_OpenExternalLinkInProgress value)
         openExternalLinkInProgress,
+    required TResult Function(_OpenExternalLinkFailure value)
+        openExternalLinkFailure,
     required TResult Function(_OpenPrivacyPolicySuccess value)
         openPrivacyPolicySuccess,
     required TResult Function(_OpenTnCSuccess value) openTnCSuccess,
-    required TResult Function(_OpenExternalLinkFailure value)
-        openExternalLinkFailure,
+    required TResult Function(_OpenSupportSuccess value) openSupportSuccess,
   }) {
     return initial(this);
   }
@@ -470,10 +608,11 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_OpenExternalLinkInProgress value)?
         openExternalLinkInProgress,
+    TResult? Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
     TResult? Function(_OpenPrivacyPolicySuccess value)?
         openPrivacyPolicySuccess,
     TResult? Function(_OpenTnCSuccess value)? openTnCSuccess,
-    TResult? Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
+    TResult? Function(_OpenSupportSuccess value)? openSupportSuccess,
   }) {
     return initial?.call(this);
   }
@@ -484,9 +623,10 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_OpenExternalLinkInProgress value)?
         openExternalLinkInProgress,
+    TResult Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
     TResult Function(_OpenPrivacyPolicySuccess value)? openPrivacyPolicySuccess,
     TResult Function(_OpenTnCSuccess value)? openTnCSuccess,
-    TResult Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
+    TResult Function(_OpenSupportSuccess value)? openSupportSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -544,9 +684,10 @@ class _$OpenExternalLinkInProgressImpl implements _OpenExternalLinkInProgress {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() openExternalLinkInProgress,
+    required TResult Function(Failure failure) openExternalLinkFailure,
     required TResult Function(String content) openPrivacyPolicySuccess,
     required TResult Function(String content) openTnCSuccess,
-    required TResult Function(Failure failure) openExternalLinkFailure,
+    required TResult Function(String content) openSupportSuccess,
   }) {
     return openExternalLinkInProgress();
   }
@@ -556,9 +697,10 @@ class _$OpenExternalLinkInProgressImpl implements _OpenExternalLinkInProgress {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? openExternalLinkInProgress,
+    TResult? Function(Failure failure)? openExternalLinkFailure,
     TResult? Function(String content)? openPrivacyPolicySuccess,
     TResult? Function(String content)? openTnCSuccess,
-    TResult? Function(Failure failure)? openExternalLinkFailure,
+    TResult? Function(String content)? openSupportSuccess,
   }) {
     return openExternalLinkInProgress?.call();
   }
@@ -568,9 +710,10 @@ class _$OpenExternalLinkInProgressImpl implements _OpenExternalLinkInProgress {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? openExternalLinkInProgress,
+    TResult Function(Failure failure)? openExternalLinkFailure,
     TResult Function(String content)? openPrivacyPolicySuccess,
     TResult Function(String content)? openTnCSuccess,
-    TResult Function(Failure failure)? openExternalLinkFailure,
+    TResult Function(String content)? openSupportSuccess,
     required TResult orElse(),
   }) {
     if (openExternalLinkInProgress != null) {
@@ -585,11 +728,12 @@ class _$OpenExternalLinkInProgressImpl implements _OpenExternalLinkInProgress {
     required TResult Function(_Initial value) initial,
     required TResult Function(_OpenExternalLinkInProgress value)
         openExternalLinkInProgress,
+    required TResult Function(_OpenExternalLinkFailure value)
+        openExternalLinkFailure,
     required TResult Function(_OpenPrivacyPolicySuccess value)
         openPrivacyPolicySuccess,
     required TResult Function(_OpenTnCSuccess value) openTnCSuccess,
-    required TResult Function(_OpenExternalLinkFailure value)
-        openExternalLinkFailure,
+    required TResult Function(_OpenSupportSuccess value) openSupportSuccess,
   }) {
     return openExternalLinkInProgress(this);
   }
@@ -600,10 +744,11 @@ class _$OpenExternalLinkInProgressImpl implements _OpenExternalLinkInProgress {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_OpenExternalLinkInProgress value)?
         openExternalLinkInProgress,
+    TResult? Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
     TResult? Function(_OpenPrivacyPolicySuccess value)?
         openPrivacyPolicySuccess,
     TResult? Function(_OpenTnCSuccess value)? openTnCSuccess,
-    TResult? Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
+    TResult? Function(_OpenSupportSuccess value)? openSupportSuccess,
   }) {
     return openExternalLinkInProgress?.call(this);
   }
@@ -614,9 +759,10 @@ class _$OpenExternalLinkInProgressImpl implements _OpenExternalLinkInProgress {
     TResult Function(_Initial value)? initial,
     TResult Function(_OpenExternalLinkInProgress value)?
         openExternalLinkInProgress,
+    TResult Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
     TResult Function(_OpenPrivacyPolicySuccess value)? openPrivacyPolicySuccess,
     TResult Function(_OpenTnCSuccess value)? openTnCSuccess,
-    TResult Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
+    TResult Function(_OpenSupportSuccess value)? openSupportSuccess,
     required TResult orElse(),
   }) {
     if (openExternalLinkInProgress != null) {
@@ -629,6 +775,174 @@ class _$OpenExternalLinkInProgressImpl implements _OpenExternalLinkInProgress {
 abstract class _OpenExternalLinkInProgress implements OpenExternalLinkState {
   const factory _OpenExternalLinkInProgress() =
       _$OpenExternalLinkInProgressImpl;
+}
+
+/// @nodoc
+abstract class _$$OpenExternalLinkFailureImplCopyWith<$Res> {
+  factory _$$OpenExternalLinkFailureImplCopyWith(
+          _$OpenExternalLinkFailureImpl value,
+          $Res Function(_$OpenExternalLinkFailureImpl) then) =
+      __$$OpenExternalLinkFailureImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Failure failure});
+}
+
+/// @nodoc
+class __$$OpenExternalLinkFailureImplCopyWithImpl<$Res>
+    extends _$OpenExternalLinkStateCopyWithImpl<$Res,
+        _$OpenExternalLinkFailureImpl>
+    implements _$$OpenExternalLinkFailureImplCopyWith<$Res> {
+  __$$OpenExternalLinkFailureImplCopyWithImpl(
+      _$OpenExternalLinkFailureImpl _value,
+      $Res Function(_$OpenExternalLinkFailureImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failure = null,
+  }) {
+    return _then(_$OpenExternalLinkFailureImpl(
+      null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OpenExternalLinkFailureImpl implements _OpenExternalLinkFailure {
+  const _$OpenExternalLinkFailureImpl(this.failure);
+
+  @override
+  final Failure failure;
+
+  @override
+  String toString() {
+    return 'OpenExternalLinkState.openExternalLinkFailure(failure: $failure)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OpenExternalLinkFailureImpl &&
+            (identical(other.failure, failure) || other.failure == failure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, failure);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OpenExternalLinkFailureImplCopyWith<_$OpenExternalLinkFailureImpl>
+      get copyWith => __$$OpenExternalLinkFailureImplCopyWithImpl<
+          _$OpenExternalLinkFailureImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() openExternalLinkInProgress,
+    required TResult Function(Failure failure) openExternalLinkFailure,
+    required TResult Function(String content) openPrivacyPolicySuccess,
+    required TResult Function(String content) openTnCSuccess,
+    required TResult Function(String content) openSupportSuccess,
+  }) {
+    return openExternalLinkFailure(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? openExternalLinkInProgress,
+    TResult? Function(Failure failure)? openExternalLinkFailure,
+    TResult? Function(String content)? openPrivacyPolicySuccess,
+    TResult? Function(String content)? openTnCSuccess,
+    TResult? Function(String content)? openSupportSuccess,
+  }) {
+    return openExternalLinkFailure?.call(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? openExternalLinkInProgress,
+    TResult Function(Failure failure)? openExternalLinkFailure,
+    TResult Function(String content)? openPrivacyPolicySuccess,
+    TResult Function(String content)? openTnCSuccess,
+    TResult Function(String content)? openSupportSuccess,
+    required TResult orElse(),
+  }) {
+    if (openExternalLinkFailure != null) {
+      return openExternalLinkFailure(failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OpenExternalLinkInProgress value)
+        openExternalLinkInProgress,
+    required TResult Function(_OpenExternalLinkFailure value)
+        openExternalLinkFailure,
+    required TResult Function(_OpenPrivacyPolicySuccess value)
+        openPrivacyPolicySuccess,
+    required TResult Function(_OpenTnCSuccess value) openTnCSuccess,
+    required TResult Function(_OpenSupportSuccess value) openSupportSuccess,
+  }) {
+    return openExternalLinkFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_OpenExternalLinkInProgress value)?
+        openExternalLinkInProgress,
+    TResult? Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
+    TResult? Function(_OpenPrivacyPolicySuccess value)?
+        openPrivacyPolicySuccess,
+    TResult? Function(_OpenTnCSuccess value)? openTnCSuccess,
+    TResult? Function(_OpenSupportSuccess value)? openSupportSuccess,
+  }) {
+    return openExternalLinkFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OpenExternalLinkInProgress value)?
+        openExternalLinkInProgress,
+    TResult Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
+    TResult Function(_OpenPrivacyPolicySuccess value)? openPrivacyPolicySuccess,
+    TResult Function(_OpenTnCSuccess value)? openTnCSuccess,
+    TResult Function(_OpenSupportSuccess value)? openSupportSuccess,
+    required TResult orElse(),
+  }) {
+    if (openExternalLinkFailure != null) {
+      return openExternalLinkFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OpenExternalLinkFailure implements OpenExternalLinkState {
+  const factory _OpenExternalLinkFailure(final Failure failure) =
+      _$OpenExternalLinkFailureImpl;
+
+  Failure get failure;
+  @JsonKey(ignore: true)
+  _$$OpenExternalLinkFailureImplCopyWith<_$OpenExternalLinkFailureImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -701,9 +1015,10 @@ class _$OpenPrivacyPolicySuccessImpl implements _OpenPrivacyPolicySuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() openExternalLinkInProgress,
+    required TResult Function(Failure failure) openExternalLinkFailure,
     required TResult Function(String content) openPrivacyPolicySuccess,
     required TResult Function(String content) openTnCSuccess,
-    required TResult Function(Failure failure) openExternalLinkFailure,
+    required TResult Function(String content) openSupportSuccess,
   }) {
     return openPrivacyPolicySuccess(content);
   }
@@ -713,9 +1028,10 @@ class _$OpenPrivacyPolicySuccessImpl implements _OpenPrivacyPolicySuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? openExternalLinkInProgress,
+    TResult? Function(Failure failure)? openExternalLinkFailure,
     TResult? Function(String content)? openPrivacyPolicySuccess,
     TResult? Function(String content)? openTnCSuccess,
-    TResult? Function(Failure failure)? openExternalLinkFailure,
+    TResult? Function(String content)? openSupportSuccess,
   }) {
     return openPrivacyPolicySuccess?.call(content);
   }
@@ -725,9 +1041,10 @@ class _$OpenPrivacyPolicySuccessImpl implements _OpenPrivacyPolicySuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? openExternalLinkInProgress,
+    TResult Function(Failure failure)? openExternalLinkFailure,
     TResult Function(String content)? openPrivacyPolicySuccess,
     TResult Function(String content)? openTnCSuccess,
-    TResult Function(Failure failure)? openExternalLinkFailure,
+    TResult Function(String content)? openSupportSuccess,
     required TResult orElse(),
   }) {
     if (openPrivacyPolicySuccess != null) {
@@ -742,11 +1059,12 @@ class _$OpenPrivacyPolicySuccessImpl implements _OpenPrivacyPolicySuccess {
     required TResult Function(_Initial value) initial,
     required TResult Function(_OpenExternalLinkInProgress value)
         openExternalLinkInProgress,
+    required TResult Function(_OpenExternalLinkFailure value)
+        openExternalLinkFailure,
     required TResult Function(_OpenPrivacyPolicySuccess value)
         openPrivacyPolicySuccess,
     required TResult Function(_OpenTnCSuccess value) openTnCSuccess,
-    required TResult Function(_OpenExternalLinkFailure value)
-        openExternalLinkFailure,
+    required TResult Function(_OpenSupportSuccess value) openSupportSuccess,
   }) {
     return openPrivacyPolicySuccess(this);
   }
@@ -757,10 +1075,11 @@ class _$OpenPrivacyPolicySuccessImpl implements _OpenPrivacyPolicySuccess {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_OpenExternalLinkInProgress value)?
         openExternalLinkInProgress,
+    TResult? Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
     TResult? Function(_OpenPrivacyPolicySuccess value)?
         openPrivacyPolicySuccess,
     TResult? Function(_OpenTnCSuccess value)? openTnCSuccess,
-    TResult? Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
+    TResult? Function(_OpenSupportSuccess value)? openSupportSuccess,
   }) {
     return openPrivacyPolicySuccess?.call(this);
   }
@@ -771,9 +1090,10 @@ class _$OpenPrivacyPolicySuccessImpl implements _OpenPrivacyPolicySuccess {
     TResult Function(_Initial value)? initial,
     TResult Function(_OpenExternalLinkInProgress value)?
         openExternalLinkInProgress,
+    TResult Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
     TResult Function(_OpenPrivacyPolicySuccess value)? openPrivacyPolicySuccess,
     TResult Function(_OpenTnCSuccess value)? openTnCSuccess,
-    TResult Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
+    TResult Function(_OpenSupportSuccess value)? openSupportSuccess,
     required TResult orElse(),
   }) {
     if (openPrivacyPolicySuccess != null) {
@@ -860,9 +1180,10 @@ class _$OpenTnCSuccessImpl implements _OpenTnCSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() openExternalLinkInProgress,
+    required TResult Function(Failure failure) openExternalLinkFailure,
     required TResult Function(String content) openPrivacyPolicySuccess,
     required TResult Function(String content) openTnCSuccess,
-    required TResult Function(Failure failure) openExternalLinkFailure,
+    required TResult Function(String content) openSupportSuccess,
   }) {
     return openTnCSuccess(content);
   }
@@ -872,9 +1193,10 @@ class _$OpenTnCSuccessImpl implements _OpenTnCSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? openExternalLinkInProgress,
+    TResult? Function(Failure failure)? openExternalLinkFailure,
     TResult? Function(String content)? openPrivacyPolicySuccess,
     TResult? Function(String content)? openTnCSuccess,
-    TResult? Function(Failure failure)? openExternalLinkFailure,
+    TResult? Function(String content)? openSupportSuccess,
   }) {
     return openTnCSuccess?.call(content);
   }
@@ -884,9 +1206,10 @@ class _$OpenTnCSuccessImpl implements _OpenTnCSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? openExternalLinkInProgress,
+    TResult Function(Failure failure)? openExternalLinkFailure,
     TResult Function(String content)? openPrivacyPolicySuccess,
     TResult Function(String content)? openTnCSuccess,
-    TResult Function(Failure failure)? openExternalLinkFailure,
+    TResult Function(String content)? openSupportSuccess,
     required TResult orElse(),
   }) {
     if (openTnCSuccess != null) {
@@ -901,11 +1224,12 @@ class _$OpenTnCSuccessImpl implements _OpenTnCSuccess {
     required TResult Function(_Initial value) initial,
     required TResult Function(_OpenExternalLinkInProgress value)
         openExternalLinkInProgress,
+    required TResult Function(_OpenExternalLinkFailure value)
+        openExternalLinkFailure,
     required TResult Function(_OpenPrivacyPolicySuccess value)
         openPrivacyPolicySuccess,
     required TResult Function(_OpenTnCSuccess value) openTnCSuccess,
-    required TResult Function(_OpenExternalLinkFailure value)
-        openExternalLinkFailure,
+    required TResult Function(_OpenSupportSuccess value) openSupportSuccess,
   }) {
     return openTnCSuccess(this);
   }
@@ -916,10 +1240,11 @@ class _$OpenTnCSuccessImpl implements _OpenTnCSuccess {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_OpenExternalLinkInProgress value)?
         openExternalLinkInProgress,
+    TResult? Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
     TResult? Function(_OpenPrivacyPolicySuccess value)?
         openPrivacyPolicySuccess,
     TResult? Function(_OpenTnCSuccess value)? openTnCSuccess,
-    TResult? Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
+    TResult? Function(_OpenSupportSuccess value)? openSupportSuccess,
   }) {
     return openTnCSuccess?.call(this);
   }
@@ -930,9 +1255,10 @@ class _$OpenTnCSuccessImpl implements _OpenTnCSuccess {
     TResult Function(_Initial value)? initial,
     TResult Function(_OpenExternalLinkInProgress value)?
         openExternalLinkInProgress,
+    TResult Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
     TResult Function(_OpenPrivacyPolicySuccess value)? openPrivacyPolicySuccess,
     TResult Function(_OpenTnCSuccess value)? openTnCSuccess,
-    TResult Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
+    TResult Function(_OpenSupportSuccess value)? openSupportSuccess,
     required TResult orElse(),
   }) {
     if (openTnCSuccess != null) {
@@ -952,80 +1278,78 @@ abstract class _OpenTnCSuccess implements OpenExternalLinkState {
 }
 
 /// @nodoc
-abstract class _$$OpenExternalLinkFailureImplCopyWith<$Res> {
-  factory _$$OpenExternalLinkFailureImplCopyWith(
-          _$OpenExternalLinkFailureImpl value,
-          $Res Function(_$OpenExternalLinkFailureImpl) then) =
-      __$$OpenExternalLinkFailureImplCopyWithImpl<$Res>;
+abstract class _$$OpenSupportSuccessImplCopyWith<$Res> {
+  factory _$$OpenSupportSuccessImplCopyWith(_$OpenSupportSuccessImpl value,
+          $Res Function(_$OpenSupportSuccessImpl) then) =
+      __$$OpenSupportSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Failure failure});
+  $Res call({String content});
 }
 
 /// @nodoc
-class __$$OpenExternalLinkFailureImplCopyWithImpl<$Res>
-    extends _$OpenExternalLinkStateCopyWithImpl<$Res,
-        _$OpenExternalLinkFailureImpl>
-    implements _$$OpenExternalLinkFailureImplCopyWith<$Res> {
-  __$$OpenExternalLinkFailureImplCopyWithImpl(
-      _$OpenExternalLinkFailureImpl _value,
-      $Res Function(_$OpenExternalLinkFailureImpl) _then)
+class __$$OpenSupportSuccessImplCopyWithImpl<$Res>
+    extends _$OpenExternalLinkStateCopyWithImpl<$Res, _$OpenSupportSuccessImpl>
+    implements _$$OpenSupportSuccessImplCopyWith<$Res> {
+  __$$OpenSupportSuccessImplCopyWithImpl(_$OpenSupportSuccessImpl _value,
+      $Res Function(_$OpenSupportSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? failure = null,
+    Object? content = null,
   }) {
-    return _then(_$OpenExternalLinkFailureImpl(
-      null == failure
-          ? _value.failure
-          : failure // ignore: cast_nullable_to_non_nullable
-              as Failure,
+    return _then(_$OpenSupportSuccessImpl(
+      null == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$OpenExternalLinkFailureImpl implements _OpenExternalLinkFailure {
-  const _$OpenExternalLinkFailureImpl(this.failure);
+class _$OpenSupportSuccessImpl implements _OpenSupportSuccess {
+  const _$OpenSupportSuccessImpl(this.content);
 
   @override
-  final Failure failure;
+  final String content;
 
   @override
   String toString() {
-    return 'OpenExternalLinkState.openExternalLinkFailure(failure: $failure)';
+    return 'OpenExternalLinkState.openSupportSuccess(content: $content)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OpenExternalLinkFailureImpl &&
-            (identical(other.failure, failure) || other.failure == failure));
+            other is _$OpenSupportSuccessImpl &&
+            (identical(other.content, content) || other.content == content));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, failure);
+  int get hashCode => Object.hash(runtimeType, content);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$OpenExternalLinkFailureImplCopyWith<_$OpenExternalLinkFailureImpl>
-      get copyWith => __$$OpenExternalLinkFailureImplCopyWithImpl<
-          _$OpenExternalLinkFailureImpl>(this, _$identity);
+  _$$OpenSupportSuccessImplCopyWith<_$OpenSupportSuccessImpl> get copyWith =>
+      __$$OpenSupportSuccessImplCopyWithImpl<_$OpenSupportSuccessImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() openExternalLinkInProgress,
+    required TResult Function(Failure failure) openExternalLinkFailure,
     required TResult Function(String content) openPrivacyPolicySuccess,
     required TResult Function(String content) openTnCSuccess,
-    required TResult Function(Failure failure) openExternalLinkFailure,
+    required TResult Function(String content) openSupportSuccess,
   }) {
-    return openExternalLinkFailure(failure);
+    return openSupportSuccess(content);
   }
 
   @override
@@ -1033,11 +1357,12 @@ class _$OpenExternalLinkFailureImpl implements _OpenExternalLinkFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? openExternalLinkInProgress,
+    TResult? Function(Failure failure)? openExternalLinkFailure,
     TResult? Function(String content)? openPrivacyPolicySuccess,
     TResult? Function(String content)? openTnCSuccess,
-    TResult? Function(Failure failure)? openExternalLinkFailure,
+    TResult? Function(String content)? openSupportSuccess,
   }) {
-    return openExternalLinkFailure?.call(failure);
+    return openSupportSuccess?.call(content);
   }
 
   @override
@@ -1045,13 +1370,14 @@ class _$OpenExternalLinkFailureImpl implements _OpenExternalLinkFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? openExternalLinkInProgress,
+    TResult Function(Failure failure)? openExternalLinkFailure,
     TResult Function(String content)? openPrivacyPolicySuccess,
     TResult Function(String content)? openTnCSuccess,
-    TResult Function(Failure failure)? openExternalLinkFailure,
+    TResult Function(String content)? openSupportSuccess,
     required TResult orElse(),
   }) {
-    if (openExternalLinkFailure != null) {
-      return openExternalLinkFailure(failure);
+    if (openSupportSuccess != null) {
+      return openSupportSuccess(content);
     }
     return orElse();
   }
@@ -1062,13 +1388,14 @@ class _$OpenExternalLinkFailureImpl implements _OpenExternalLinkFailure {
     required TResult Function(_Initial value) initial,
     required TResult Function(_OpenExternalLinkInProgress value)
         openExternalLinkInProgress,
+    required TResult Function(_OpenExternalLinkFailure value)
+        openExternalLinkFailure,
     required TResult Function(_OpenPrivacyPolicySuccess value)
         openPrivacyPolicySuccess,
     required TResult Function(_OpenTnCSuccess value) openTnCSuccess,
-    required TResult Function(_OpenExternalLinkFailure value)
-        openExternalLinkFailure,
+    required TResult Function(_OpenSupportSuccess value) openSupportSuccess,
   }) {
-    return openExternalLinkFailure(this);
+    return openSupportSuccess(this);
   }
 
   @override
@@ -1077,12 +1404,13 @@ class _$OpenExternalLinkFailureImpl implements _OpenExternalLinkFailure {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_OpenExternalLinkInProgress value)?
         openExternalLinkInProgress,
+    TResult? Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
     TResult? Function(_OpenPrivacyPolicySuccess value)?
         openPrivacyPolicySuccess,
     TResult? Function(_OpenTnCSuccess value)? openTnCSuccess,
-    TResult? Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
+    TResult? Function(_OpenSupportSuccess value)? openSupportSuccess,
   }) {
-    return openExternalLinkFailure?.call(this);
+    return openSupportSuccess?.call(this);
   }
 
   @override
@@ -1091,24 +1419,25 @@ class _$OpenExternalLinkFailureImpl implements _OpenExternalLinkFailure {
     TResult Function(_Initial value)? initial,
     TResult Function(_OpenExternalLinkInProgress value)?
         openExternalLinkInProgress,
+    TResult Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
     TResult Function(_OpenPrivacyPolicySuccess value)? openPrivacyPolicySuccess,
     TResult Function(_OpenTnCSuccess value)? openTnCSuccess,
-    TResult Function(_OpenExternalLinkFailure value)? openExternalLinkFailure,
+    TResult Function(_OpenSupportSuccess value)? openSupportSuccess,
     required TResult orElse(),
   }) {
-    if (openExternalLinkFailure != null) {
-      return openExternalLinkFailure(this);
+    if (openSupportSuccess != null) {
+      return openSupportSuccess(this);
     }
     return orElse();
   }
 }
 
-abstract class _OpenExternalLinkFailure implements OpenExternalLinkState {
-  const factory _OpenExternalLinkFailure(final Failure failure) =
-      _$OpenExternalLinkFailureImpl;
+abstract class _OpenSupportSuccess implements OpenExternalLinkState {
+  const factory _OpenSupportSuccess(final String content) =
+      _$OpenSupportSuccessImpl;
 
-  Failure get failure;
+  String get content;
   @JsonKey(ignore: true)
-  _$$OpenExternalLinkFailureImplCopyWith<_$OpenExternalLinkFailureImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$OpenSupportSuccessImplCopyWith<_$OpenSupportSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

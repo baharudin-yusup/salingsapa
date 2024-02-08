@@ -1,16 +1,17 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'intuitive_scaffold/builder.dart';
-import 'intuitive_scaffold/intuitive_floating_action_button.dart';
+import '../../../injection_container.dart';
+import '../../services/platform_service.dart';
+import 'builder.dart';
+import 'intuitive_floating_action_button.dart';
 
 class IntuitiveScaffold extends StatelessWidget {
   final Widget Function(BuildContext context) builder;
   final IntuitiveAppBar? appBar;
   final IntuitiveBottomNavigationBar? bottomNavigationBar;
   final IntuitiveFloatingActionButton? floatingActionButton;
+  final IntuitivePageConfiguration? pageConfiguration;
 
   const IntuitiveScaffold({
     super.key,
@@ -18,15 +19,17 @@ class IntuitiveScaffold extends StatelessWidget {
     this.appBar,
     this.bottomNavigationBar,
     this.floatingActionButton,
+    this.pageConfiguration,
   });
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS) {
-      return _buildCupertinoScaffold();
+    switch (sl<PlatformService>().os) {
+      case PlatformOS.iOS:
+        return _buildCupertinoScaffold();
+      default:
+        return _buildMaterialScaffold();
     }
-
-    return _buildMaterialScaffold();
   }
 
   Widget _buildCupertinoScaffold() {
@@ -56,6 +59,7 @@ class IntuitiveScaffold extends StatelessWidget {
 
     return CupertinoPageScaffold(
       navigationBar: navigationBar,
+      backgroundColor: pageConfiguration?.backgroundColor,
       child: Builder(builder: builder),
     );
   }
@@ -131,4 +135,10 @@ class IntuitiveBottomNavigationBarItem {
     required this.icon,
     required this.label,
   });
+}
+
+class IntuitivePageConfiguration {
+  final Color? backgroundColor;
+
+  const IntuitivePageConfiguration({required this.backgroundColor});
 }

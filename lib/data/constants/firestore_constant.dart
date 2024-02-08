@@ -15,3 +15,8 @@ class FirestoreCaptionConstant {
   static const captionId = 'captionId';
   static const userIdKey = 'userId';
 }
+
+class FirestoreUserConstant {
+  static const userCollectionName = 'users';
+  static const userId = 'userId';
+}

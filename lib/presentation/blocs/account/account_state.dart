@@ -20,4 +20,6 @@ class AccountState with _$AccountState {
     required String? profilePictureUrl,
     required String errorMessage,
   }) = _UpdateFailure;
+
+  const factory AccountState.deleteAccountSuccess() = _DeleteAccountSuccess;
 }
