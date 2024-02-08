@@ -1,12 +1,14 @@
-import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart' as cupertino;
 import 'package:flutter/material.dart' as material;
 import 'package:flutter/widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../core/utils/logger.dart';
+import '../utils/dimension.dart';
 import 'navigator_service.dart';
+import 'platform_service.dart';
 import 'theme_service.dart';
 
 abstract class UiService {
@@ -16,15 +18,20 @@ abstract class UiService {
 
   void resetLoading();
 
+  void showErrorMessage(ErrorData errorData);
+
   Future<T?> showDialog<T>(DialogData data);
+
+  void showBottomSheet();
 }
 
 class UiServiceImpl implements UiService {
   final NavigatorService _navigatorService;
+  final PlatformService _platformService;
 
   bool _isLoading = false;
 
-  UiServiceImpl(this._navigatorService);
+  UiServiceImpl(this._navigatorService, this._platformService);
 
   @override
   void hideLoading() {
@@ -52,57 +59,68 @@ class UiServiceImpl implements UiService {
     }
     _isLoading = true;
 
-    if (Platform.isIOS) {
-      cupertino.showCupertinoDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (context) {
-          return PopScope(
-            canPop: false,
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                // Background blur effect
-                BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
-                  child: Container(
-                    color: context.colorScheme().background.withOpacity(0.6),
-                  ),
-                ),
-                const cupertino.CupertinoActivityIndicator(),
-              ],
-            ),
-          );
-        },
-      );
-    } else {
-      material.showDialog(
-        barrierDismissible: false,
-        useSafeArea: true,
-        context: context,
-        builder: (context) {
-          return PopScope(
-            canPop: false,
-            child: Center(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: context.colorScheme().background,
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(IntuitiveUiConstant.normalRadius),
-                  ),
-                ),
-                padding: const EdgeInsets.all(IntuitiveUiConstant.hugeSpace),
-                child: const SizedBox.square(
-                  dimension: IntuitiveUiConstant.hugeSpace,
-                  child: material.CircularProgressIndicator.adaptive(),
-                ),
-              ),
-            ),
-          );
-        },
-      );
+    switch (_platformService.os) {
+      case PlatformOS.iOS:
+        _showIosLoading(context);
+        break;
+      default:
+        _showAndroidLoading(context);
+        break;
     }
     Logger.print('Show loading finished!');
+  }
+
+  void _showIosLoading(BuildContext context) {
+    cupertino.showCupertinoDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return PopScope(
+          canPop: false,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              // Background blur effect
+              BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+                child: Container(
+                  color: context.colorScheme().background.withOpacity(0.6),
+                ),
+              ),
+              const cupertino.CupertinoActivityIndicator(),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  void _showAndroidLoading(BuildContext context) {
+    material.showDialog(
+      barrierDismissible: false,
+      useSafeArea: true,
+      context: context,
+      builder: (context) {
+        return PopScope(
+          canPop: false,
+          child: Center(
+            child: Container(
+              decoration: BoxDecoration(
+                color: context.colorScheme().background,
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(IntuitiveUiConstant.normalRadius),
+                ),
+              ),
+              padding: const EdgeInsets.all(IntuitiveUiConstant.hugeSpace),
+              child: const SizedBox.square(
+                dimension: IntuitiveUiConstant.hugeSpace,
+                child: material.CircularProgressIndicator.adaptive(),
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -113,6 +131,41 @@ class UiServiceImpl implements UiService {
       return null;
     }
 
+    switch (_platformService.os) {
+      case PlatformOS.iOS:
+        return await _showCupertinoDialog(context, data);
+      default:
+        return await _showMaterialDialog(context, data);
+    }
+  }
+
+  Future<T?> _showCupertinoDialog<T>(
+      BuildContext context, DialogData data) async {
+    Widget generateCupertinoButton(DialogActionData data) {
+      return cupertino.CupertinoDialogAction(
+        isDefaultAction: data.isPositive,
+        isDestructiveAction: data.isNegative,
+        onPressed: data.onPressed,
+        child: Text(data.title),
+      );
+    }
+
+    return await cupertino.showCupertinoDialog<T>(
+      context: context,
+      builder: (BuildContext context) {
+        return cupertino.CupertinoAlertDialog(
+          title: data.title != null ? Text(data.title!) : null,
+          content: data.description != null ? Text(data.description!) : null,
+          actions: [
+            for (var action in data.actions) generateCupertinoButton(action)
+          ],
+        );
+      },
+    );
+  }
+
+  Future<T?> _showMaterialDialog<T>(
+      BuildContext context, DialogData data) async {
     Widget generateMaterialButton(DialogActionData data) {
       if (data.isNegative) {
         return material.TextButton(
@@ -136,51 +189,62 @@ class UiServiceImpl implements UiService {
       );
     }
 
-    Widget generateCupertinoButton(DialogActionData data) {
-      return cupertino.CupertinoDialogAction(
-        isDefaultAction: data.isPositive,
-        isDestructiveAction: data.isNegative,
-        onPressed: data.onPressed,
-        child: Text(data.title),
-      );
-    }
-
-    if (Platform.isAndroid) {
-      // Android specific dialog
-      return await material.showDialog<T>(
-        context: context,
-        barrierDismissible: false,
-        builder: (BuildContext context) {
-          return material.AlertDialog(
-            title: data.title != null ? Text(data.title!) : null,
-            content: data.description != null ? Text(data.description!) : null,
-            actions: [
-              for (var action in data.actions) generateMaterialButton(action)
-            ],
-          );
-        },
-      );
-    } else if (Platform.isIOS) {
-      // iOS specific dialog
-      return await cupertino.showCupertinoDialog<T>(
-        context: context,
-        builder: (BuildContext context) {
-          return cupertino.CupertinoAlertDialog(
-            title: data.title != null ? Text(data.title!) : null,
-            content: data.description != null ? Text(data.description!) : null,
-            actions: [
-              for (var action in data.actions) generateCupertinoButton(action)
-            ],
-          );
-        },
-      );
-    }
-    return null;
+    return await material.showDialog<T>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return material.AlertDialog(
+          title: data.title != null ? Text(data.title!) : null,
+          content: data.description != null ? Text(data.description!) : null,
+          actions: [
+            for (var action in data.actions) generateMaterialButton(action)
+          ],
+        );
+      },
+    );
   }
 
   @override
   void resetLoading() {
     _isLoading = false;
+  }
+
+  @override
+  void showErrorMessage(ErrorData errorData) {
+    final context = _navigatorService.navigatorKey.currentContext;
+    if (context == null) {
+      Logger.error('Context is null!', event: 'showing dialog');
+      return;
+    }
+
+    switch (errorData.type) {
+      case ShowErrorType.toast:
+        Fluttertoast.showToast(msg: errorData.message);
+        return;
+      case ShowErrorType.dialog:
+        final data = DialogData(
+          title:
+              errorData.title ?? context.localization.errorMessageDefaultTitle,
+          description: errorData.message,
+          actions: [
+            DialogActionData(
+              title: context.localization.ok,
+              onPressed: () => _navigatorService.pop(),
+            ),
+          ],
+        );
+        showDialog(data);
+        break;
+    }
+  }
+
+  @override
+  void showBottomSheet() {
+    final context = _navigatorService.navigatorKey.currentContext;
+    if (context == null) {
+      Logger.error('Context is null!', event: 'showing dialog');
+      return;
+    }
   }
 }
 
@@ -208,4 +272,21 @@ class DialogActionData {
     this.isNegative = false,
     this.isPositive = false,
   });
+}
+
+class ErrorData {
+  final String? title;
+  final String message;
+  final ShowErrorType type;
+
+  const ErrorData({
+    this.title,
+    required this.message,
+    this.type = ShowErrorType.toast,
+  });
+}
+
+enum ShowErrorType {
+  toast,
+  dialog,
 }

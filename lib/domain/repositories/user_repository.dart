@@ -23,4 +23,6 @@ abstract class UserRepository {
   Stream<RepoResponse<User>> get onUserStateChanged;
 
   Future<RepoResponse<User>> getCurrentUser();
+
+  Future<RepoResponse<bool>> deleteAccount();
 }

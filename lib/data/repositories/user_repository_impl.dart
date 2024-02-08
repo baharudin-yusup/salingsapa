@@ -89,4 +89,14 @@ class UserRepositoryImpl extends UserRepository {
       return const Left(UnknownFailure());
     }
   }
+
+  @override
+  Future<RepoResponse<bool>> deleteAccount() async {
+    try {
+      final result = await _remoteDataSource.deleteAccount();
+      return Right(result);
+    } catch (exception) {
+      return const Left(UnknownFailure());
+    }
+  }
 }

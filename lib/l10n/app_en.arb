@@ -1,6 +1,9 @@
 {
   "contacts": "Contacts",
   "account": "Account",
+  "accountSettings": "Account Settings",
+  "settings": "Settings",
+  "deleteMyAccount": "Delete My Account",
   "noContactsFound": "No Contacts Found",
   "skip": "Skip",
   "done": "Done",
@@ -44,6 +47,7 @@
   "endVideoCallConfirmationDescription": "Are you sure you want to end this video call?",
   "yesEndCall": "Yes, end call",
   "cancel": "Cancel",
+  "errorMessageDefaultTitle": "An Error Occurred",
   "errorMessageInvalidOtpCode": "Invalid OTP code",
   "errorMessageUnknown": "Unknown error",
   "errorMessagePhoneNumberBlocked": "Please use another phone number or another device.",

@@ -1,8 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../injection_container.dart';
+import '../services/platform_service.dart';
 import '../services/theme_service.dart';
 
 class IntuitiveTextField extends StatelessWidget {
@@ -33,10 +33,12 @@ class IntuitiveTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS) {
-      return _buildCupertinoTextField();
+    switch (sl<PlatformService>().os) {
+      case PlatformOS.iOS:
+        return _buildCupertinoTextField();
+      default:
+        return _buildMaterialTextField();
     }
-    return _buildMaterialTextField();
   }
 
   Widget _buildCupertinoTextField() {
