@@ -23,6 +23,7 @@ mixin _$AccountEvent {
     required TResult Function() pickImageStarted,
     required TResult Function(String name) updateNameStarted,
     required TResult Function(User user) currentUserUpdated,
+    required TResult Function() deleteAccountStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$AccountEvent {
     TResult? Function()? pickImageStarted,
     TResult? Function(String name)? updateNameStarted,
     TResult? Function(User user)? currentUserUpdated,
+    TResult? Function()? deleteAccountStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$AccountEvent {
     TResult Function()? pickImageStarted,
     TResult Function(String name)? updateNameStarted,
     TResult Function(User user)? currentUserUpdated,
+    TResult Function()? deleteAccountStarted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$AccountEvent {
     required TResult Function(_PickImageStarted value) pickImageStarted,
     required TResult Function(_UpdateNameStarted value) updateNameStarted,
     required TResult Function(_CurrentUserUpdated value) currentUserUpdated,
+    required TResult Function(_DeleteAccountStarted value) deleteAccountStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$AccountEvent {
     TResult? Function(_PickImageStarted value)? pickImageStarted,
     TResult? Function(_UpdateNameStarted value)? updateNameStarted,
     TResult? Function(_CurrentUserUpdated value)? currentUserUpdated,
+    TResult? Function(_DeleteAccountStarted value)? deleteAccountStarted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$AccountEvent {
     TResult Function(_PickImageStarted value)? pickImageStarted,
     TResult Function(_UpdateNameStarted value)? updateNameStarted,
     TResult Function(_CurrentUserUpdated value)? currentUserUpdated,
+    TResult Function(_DeleteAccountStarted value)? deleteAccountStarted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,6 +141,7 @@ class _$StartedImpl implements _Started {
     required TResult Function() pickImageStarted,
     required TResult Function(String name) updateNameStarted,
     required TResult Function(User user) currentUserUpdated,
+    required TResult Function() deleteAccountStarted,
   }) {
     return started();
   }
@@ -147,6 +154,7 @@ class _$StartedImpl implements _Started {
     TResult? Function()? pickImageStarted,
     TResult? Function(String name)? updateNameStarted,
     TResult? Function(User user)? currentUserUpdated,
+    TResult? Function()? deleteAccountStarted,
   }) {
     return started?.call();
   }
@@ -159,6 +167,7 @@ class _$StartedImpl implements _Started {
     TResult Function()? pickImageStarted,
     TResult Function(String name)? updateNameStarted,
     TResult Function(User user)? currentUserUpdated,
+    TResult Function()? deleteAccountStarted,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -175,6 +184,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_PickImageStarted value) pickImageStarted,
     required TResult Function(_UpdateNameStarted value) updateNameStarted,
     required TResult Function(_CurrentUserUpdated value) currentUserUpdated,
+    required TResult Function(_DeleteAccountStarted value) deleteAccountStarted,
   }) {
     return started(this);
   }
@@ -187,6 +197,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_PickImageStarted value)? pickImageStarted,
     TResult? Function(_UpdateNameStarted value)? updateNameStarted,
     TResult? Function(_CurrentUserUpdated value)? currentUserUpdated,
+    TResult? Function(_DeleteAccountStarted value)? deleteAccountStarted,
   }) {
     return started?.call(this);
   }
@@ -199,6 +210,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_PickImageStarted value)? pickImageStarted,
     TResult Function(_UpdateNameStarted value)? updateNameStarted,
     TResult Function(_CurrentUserUpdated value)? currentUserUpdated,
+    TResult Function(_DeleteAccountStarted value)? deleteAccountStarted,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -255,6 +267,7 @@ class _$SignOutStartedImpl implements _SignOutStarted {
     required TResult Function() pickImageStarted,
     required TResult Function(String name) updateNameStarted,
     required TResult Function(User user) currentUserUpdated,
+    required TResult Function() deleteAccountStarted,
   }) {
     return signOutStarted();
   }
@@ -267,6 +280,7 @@ class _$SignOutStartedImpl implements _SignOutStarted {
     TResult? Function()? pickImageStarted,
     TResult? Function(String name)? updateNameStarted,
     TResult? Function(User user)? currentUserUpdated,
+    TResult? Function()? deleteAccountStarted,
   }) {
     return signOutStarted?.call();
   }
@@ -279,6 +293,7 @@ class _$SignOutStartedImpl implements _SignOutStarted {
     TResult Function()? pickImageStarted,
     TResult Function(String name)? updateNameStarted,
     TResult Function(User user)? currentUserUpdated,
+    TResult Function()? deleteAccountStarted,
     required TResult orElse(),
   }) {
     if (signOutStarted != null) {
@@ -295,6 +310,7 @@ class _$SignOutStartedImpl implements _SignOutStarted {
     required TResult Function(_PickImageStarted value) pickImageStarted,
     required TResult Function(_UpdateNameStarted value) updateNameStarted,
     required TResult Function(_CurrentUserUpdated value) currentUserUpdated,
+    required TResult Function(_DeleteAccountStarted value) deleteAccountStarted,
   }) {
     return signOutStarted(this);
   }
@@ -307,6 +323,7 @@ class _$SignOutStartedImpl implements _SignOutStarted {
     TResult? Function(_PickImageStarted value)? pickImageStarted,
     TResult? Function(_UpdateNameStarted value)? updateNameStarted,
     TResult? Function(_CurrentUserUpdated value)? currentUserUpdated,
+    TResult? Function(_DeleteAccountStarted value)? deleteAccountStarted,
   }) {
     return signOutStarted?.call(this);
   }
@@ -319,6 +336,7 @@ class _$SignOutStartedImpl implements _SignOutStarted {
     TResult Function(_PickImageStarted value)? pickImageStarted,
     TResult Function(_UpdateNameStarted value)? updateNameStarted,
     TResult Function(_CurrentUserUpdated value)? currentUserUpdated,
+    TResult Function(_DeleteAccountStarted value)? deleteAccountStarted,
     required TResult orElse(),
   }) {
     if (signOutStarted != null) {
@@ -375,6 +393,7 @@ class _$PickImageStartedImpl implements _PickImageStarted {
     required TResult Function() pickImageStarted,
     required TResult Function(String name) updateNameStarted,
     required TResult Function(User user) currentUserUpdated,
+    required TResult Function() deleteAccountStarted,
   }) {
     return pickImageStarted();
   }
@@ -387,6 +406,7 @@ class _$PickImageStartedImpl implements _PickImageStarted {
     TResult? Function()? pickImageStarted,
     TResult? Function(String name)? updateNameStarted,
     TResult? Function(User user)? currentUserUpdated,
+    TResult? Function()? deleteAccountStarted,
   }) {
     return pickImageStarted?.call();
   }
@@ -399,6 +419,7 @@ class _$PickImageStartedImpl implements _PickImageStarted {
     TResult Function()? pickImageStarted,
     TResult Function(String name)? updateNameStarted,
     TResult Function(User user)? currentUserUpdated,
+    TResult Function()? deleteAccountStarted,
     required TResult orElse(),
   }) {
     if (pickImageStarted != null) {
@@ -415,6 +436,7 @@ class _$PickImageStartedImpl implements _PickImageStarted {
     required TResult Function(_PickImageStarted value) pickImageStarted,
     required TResult Function(_UpdateNameStarted value) updateNameStarted,
     required TResult Function(_CurrentUserUpdated value) currentUserUpdated,
+    required TResult Function(_DeleteAccountStarted value) deleteAccountStarted,
   }) {
     return pickImageStarted(this);
   }
@@ -427,6 +449,7 @@ class _$PickImageStartedImpl implements _PickImageStarted {
     TResult? Function(_PickImageStarted value)? pickImageStarted,
     TResult? Function(_UpdateNameStarted value)? updateNameStarted,
     TResult? Function(_CurrentUserUpdated value)? currentUserUpdated,
+    TResult? Function(_DeleteAccountStarted value)? deleteAccountStarted,
   }) {
     return pickImageStarted?.call(this);
   }
@@ -439,6 +462,7 @@ class _$PickImageStartedImpl implements _PickImageStarted {
     TResult Function(_PickImageStarted value)? pickImageStarted,
     TResult Function(_UpdateNameStarted value)? updateNameStarted,
     TResult Function(_CurrentUserUpdated value)? currentUserUpdated,
+    TResult Function(_DeleteAccountStarted value)? deleteAccountStarted,
     required TResult orElse(),
   }) {
     if (pickImageStarted != null) {
@@ -522,6 +546,7 @@ class _$UpdateNameStartedImpl implements _UpdateNameStarted {
     required TResult Function() pickImageStarted,
     required TResult Function(String name) updateNameStarted,
     required TResult Function(User user) currentUserUpdated,
+    required TResult Function() deleteAccountStarted,
   }) {
     return updateNameStarted(name);
   }
@@ -534,6 +559,7 @@ class _$UpdateNameStartedImpl implements _UpdateNameStarted {
     TResult? Function()? pickImageStarted,
     TResult? Function(String name)? updateNameStarted,
     TResult? Function(User user)? currentUserUpdated,
+    TResult? Function()? deleteAccountStarted,
   }) {
     return updateNameStarted?.call(name);
   }
@@ -546,6 +572,7 @@ class _$UpdateNameStartedImpl implements _UpdateNameStarted {
     TResult Function()? pickImageStarted,
     TResult Function(String name)? updateNameStarted,
     TResult Function(User user)? currentUserUpdated,
+    TResult Function()? deleteAccountStarted,
     required TResult orElse(),
   }) {
     if (updateNameStarted != null) {
@@ -562,6 +589,7 @@ class _$UpdateNameStartedImpl implements _UpdateNameStarted {
     required TResult Function(_PickImageStarted value) pickImageStarted,
     required TResult Function(_UpdateNameStarted value) updateNameStarted,
     required TResult Function(_CurrentUserUpdated value) currentUserUpdated,
+    required TResult Function(_DeleteAccountStarted value) deleteAccountStarted,
   }) {
     return updateNameStarted(this);
   }
@@ -574,6 +602,7 @@ class _$UpdateNameStartedImpl implements _UpdateNameStarted {
     TResult? Function(_PickImageStarted value)? pickImageStarted,
     TResult? Function(_UpdateNameStarted value)? updateNameStarted,
     TResult? Function(_CurrentUserUpdated value)? currentUserUpdated,
+    TResult? Function(_DeleteAccountStarted value)? deleteAccountStarted,
   }) {
     return updateNameStarted?.call(this);
   }
@@ -586,6 +615,7 @@ class _$UpdateNameStartedImpl implements _UpdateNameStarted {
     TResult Function(_PickImageStarted value)? pickImageStarted,
     TResult Function(_UpdateNameStarted value)? updateNameStarted,
     TResult Function(_CurrentUserUpdated value)? currentUserUpdated,
+    TResult Function(_DeleteAccountStarted value)? deleteAccountStarted,
     required TResult orElse(),
   }) {
     if (updateNameStarted != null) {
@@ -674,6 +704,7 @@ class _$CurrentUserUpdatedImpl implements _CurrentUserUpdated {
     required TResult Function() pickImageStarted,
     required TResult Function(String name) updateNameStarted,
     required TResult Function(User user) currentUserUpdated,
+    required TResult Function() deleteAccountStarted,
   }) {
     return currentUserUpdated(user);
   }
@@ -686,6 +717,7 @@ class _$CurrentUserUpdatedImpl implements _CurrentUserUpdated {
     TResult? Function()? pickImageStarted,
     TResult? Function(String name)? updateNameStarted,
     TResult? Function(User user)? currentUserUpdated,
+    TResult? Function()? deleteAccountStarted,
   }) {
     return currentUserUpdated?.call(user);
   }
@@ -698,6 +730,7 @@ class _$CurrentUserUpdatedImpl implements _CurrentUserUpdated {
     TResult Function()? pickImageStarted,
     TResult Function(String name)? updateNameStarted,
     TResult Function(User user)? currentUserUpdated,
+    TResult Function()? deleteAccountStarted,
     required TResult orElse(),
   }) {
     if (currentUserUpdated != null) {
@@ -714,6 +747,7 @@ class _$CurrentUserUpdatedImpl implements _CurrentUserUpdated {
     required TResult Function(_PickImageStarted value) pickImageStarted,
     required TResult Function(_UpdateNameStarted value) updateNameStarted,
     required TResult Function(_CurrentUserUpdated value) currentUserUpdated,
+    required TResult Function(_DeleteAccountStarted value) deleteAccountStarted,
   }) {
     return currentUserUpdated(this);
   }
@@ -726,6 +760,7 @@ class _$CurrentUserUpdatedImpl implements _CurrentUserUpdated {
     TResult? Function(_PickImageStarted value)? pickImageStarted,
     TResult? Function(_UpdateNameStarted value)? updateNameStarted,
     TResult? Function(_CurrentUserUpdated value)? currentUserUpdated,
+    TResult? Function(_DeleteAccountStarted value)? deleteAccountStarted,
   }) {
     return currentUserUpdated?.call(this);
   }
@@ -738,6 +773,7 @@ class _$CurrentUserUpdatedImpl implements _CurrentUserUpdated {
     TResult Function(_PickImageStarted value)? pickImageStarted,
     TResult Function(_UpdateNameStarted value)? updateNameStarted,
     TResult Function(_CurrentUserUpdated value)? currentUserUpdated,
+    TResult Function(_DeleteAccountStarted value)? deleteAccountStarted,
     required TResult orElse(),
   }) {
     if (currentUserUpdated != null) {
@@ -757,10 +793,134 @@ abstract class _CurrentUserUpdated implements AccountEvent {
 }
 
 /// @nodoc
+abstract class _$$DeleteAccountStartedImplCopyWith<$Res> {
+  factory _$$DeleteAccountStartedImplCopyWith(_$DeleteAccountStartedImpl value,
+          $Res Function(_$DeleteAccountStartedImpl) then) =
+      __$$DeleteAccountStartedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteAccountStartedImplCopyWithImpl<$Res>
+    extends _$AccountEventCopyWithImpl<$Res, _$DeleteAccountStartedImpl>
+    implements _$$DeleteAccountStartedImplCopyWith<$Res> {
+  __$$DeleteAccountStartedImplCopyWithImpl(_$DeleteAccountStartedImpl _value,
+      $Res Function(_$DeleteAccountStartedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DeleteAccountStartedImpl implements _DeleteAccountStarted {
+  const _$DeleteAccountStartedImpl();
+
+  @override
+  String toString() {
+    return 'AccountEvent.deleteAccountStarted()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteAccountStartedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() signOutStarted,
+    required TResult Function() pickImageStarted,
+    required TResult Function(String name) updateNameStarted,
+    required TResult Function(User user) currentUserUpdated,
+    required TResult Function() deleteAccountStarted,
+  }) {
+    return deleteAccountStarted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? signOutStarted,
+    TResult? Function()? pickImageStarted,
+    TResult? Function(String name)? updateNameStarted,
+    TResult? Function(User user)? currentUserUpdated,
+    TResult? Function()? deleteAccountStarted,
+  }) {
+    return deleteAccountStarted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? signOutStarted,
+    TResult Function()? pickImageStarted,
+    TResult Function(String name)? updateNameStarted,
+    TResult Function(User user)? currentUserUpdated,
+    TResult Function()? deleteAccountStarted,
+    required TResult orElse(),
+  }) {
+    if (deleteAccountStarted != null) {
+      return deleteAccountStarted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_SignOutStarted value) signOutStarted,
+    required TResult Function(_PickImageStarted value) pickImageStarted,
+    required TResult Function(_UpdateNameStarted value) updateNameStarted,
+    required TResult Function(_CurrentUserUpdated value) currentUserUpdated,
+    required TResult Function(_DeleteAccountStarted value) deleteAccountStarted,
+  }) {
+    return deleteAccountStarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_SignOutStarted value)? signOutStarted,
+    TResult? Function(_PickImageStarted value)? pickImageStarted,
+    TResult? Function(_UpdateNameStarted value)? updateNameStarted,
+    TResult? Function(_CurrentUserUpdated value)? currentUserUpdated,
+    TResult? Function(_DeleteAccountStarted value)? deleteAccountStarted,
+  }) {
+    return deleteAccountStarted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_SignOutStarted value)? signOutStarted,
+    TResult Function(_PickImageStarted value)? pickImageStarted,
+    TResult Function(_UpdateNameStarted value)? updateNameStarted,
+    TResult Function(_CurrentUserUpdated value)? currentUserUpdated,
+    TResult Function(_DeleteAccountStarted value)? deleteAccountStarted,
+    required TResult orElse(),
+  }) {
+    if (deleteAccountStarted != null) {
+      return deleteAccountStarted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteAccountStarted implements AccountEvent {
+  const factory _DeleteAccountStarted() = _$DeleteAccountStartedImpl;
+}
+
+/// @nodoc
 mixin _$AccountState {
-  String? get name => throw _privateConstructorUsedError;
-  String? get phoneNumber => throw _privateConstructorUsedError;
-  String? get profilePictureUrl => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
@@ -772,6 +932,7 @@ mixin _$AccountState {
     required TResult Function(String? name, String? phoneNumber,
             String? profilePictureUrl, String errorMessage)
         updateFailure,
+    required TResult Function() deleteAccountSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -785,6 +946,7 @@ mixin _$AccountState {
     TResult? Function(String? name, String? phoneNumber,
             String? profilePictureUrl, String errorMessage)?
         updateFailure,
+    TResult? Function()? deleteAccountSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -798,6 +960,7 @@ mixin _$AccountState {
     TResult Function(String? name, String? phoneNumber,
             String? profilePictureUrl, String errorMessage)?
         updateFailure,
+    TResult Function()? deleteAccountSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -806,6 +969,7 @@ mixin _$AccountState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_UpdateInProgress value) updateInProgress,
     required TResult Function(_UpdateFailure value) updateFailure,
+    required TResult Function(_DeleteAccountSuccess value) deleteAccountSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -813,6 +977,7 @@ mixin _$AccountState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_UpdateInProgress value)? updateInProgress,
     TResult? Function(_UpdateFailure value)? updateFailure,
+    TResult? Function(_DeleteAccountSuccess value)? deleteAccountSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -820,12 +985,9 @@ mixin _$AccountState {
     TResult Function(_Initial value)? initial,
     TResult Function(_UpdateInProgress value)? updateInProgress,
     TResult Function(_UpdateFailure value)? updateFailure,
+    TResult Function(_DeleteAccountSuccess value)? deleteAccountSuccess,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $AccountStateCopyWith<AccountState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -834,8 +996,6 @@ abstract class $AccountStateCopyWith<$Res> {
   factory $AccountStateCopyWith(
           AccountState value, $Res Function(AccountState) then) =
       _$AccountStateCopyWithImpl<$Res, AccountState>;
-  @useResult
-  $Res call({String? name, String? phoneNumber, String? profilePictureUrl});
 }
 
 /// @nodoc
@@ -847,38 +1007,13 @@ class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = freezed,
-    Object? phoneNumber = freezed,
-    Object? profilePictureUrl = freezed,
-  }) {
-    return _then(_value.copyWith(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phoneNumber: freezed == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      profilePictureUrl: freezed == profilePictureUrl
-          ? _value.profilePictureUrl
-          : profilePictureUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res>
-    implements $AccountStateCopyWith<$Res> {
+abstract class _$$InitialImplCopyWith<$Res> {
   factory _$$InitialImplCopyWith(
           _$InitialImpl value, $Res Function(_$InitialImpl) then) =
       __$$InitialImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String? name, String? phoneNumber, String? profilePictureUrl});
 }
@@ -972,6 +1107,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(String? name, String? phoneNumber,
             String? profilePictureUrl, String errorMessage)
         updateFailure,
+    required TResult Function() deleteAccountSuccess,
   }) {
     return initial(name, phoneNumber, profilePictureUrl);
   }
@@ -988,6 +1124,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(String? name, String? phoneNumber,
             String? profilePictureUrl, String errorMessage)?
         updateFailure,
+    TResult? Function()? deleteAccountSuccess,
   }) {
     return initial?.call(name, phoneNumber, profilePictureUrl);
   }
@@ -1004,6 +1141,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(String? name, String? phoneNumber,
             String? profilePictureUrl, String errorMessage)?
         updateFailure,
+    TResult Function()? deleteAccountSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1018,6 +1156,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_UpdateInProgress value) updateInProgress,
     required TResult Function(_UpdateFailure value) updateFailure,
+    required TResult Function(_DeleteAccountSuccess value) deleteAccountSuccess,
   }) {
     return initial(this);
   }
@@ -1028,6 +1167,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_UpdateInProgress value)? updateInProgress,
     TResult? Function(_UpdateFailure value)? updateFailure,
+    TResult? Function(_DeleteAccountSuccess value)? deleteAccountSuccess,
   }) {
     return initial?.call(this);
   }
@@ -1038,6 +1178,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_UpdateInProgress value)? updateInProgress,
     TResult Function(_UpdateFailure value)? updateFailure,
+    TResult Function(_DeleteAccountSuccess value)? deleteAccountSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1053,25 +1194,19 @@ abstract class _Initial implements AccountState {
       final String? phoneNumber,
       final String? profilePictureUrl}) = _$InitialImpl;
 
-  @override
   String? get name;
-  @override
   String? get phoneNumber;
-  @override
   String? get profilePictureUrl;
-  @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$UpdateInProgressImplCopyWith<$Res>
-    implements $AccountStateCopyWith<$Res> {
+abstract class _$$UpdateInProgressImplCopyWith<$Res> {
   factory _$$UpdateInProgressImplCopyWith(_$UpdateInProgressImpl value,
           $Res Function(_$UpdateInProgressImpl) then) =
       __$$UpdateInProgressImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String? name, String? phoneNumber, String? profilePictureUrl});
 }
@@ -1163,6 +1298,7 @@ class _$UpdateInProgressImpl implements _UpdateInProgress {
     required TResult Function(String? name, String? phoneNumber,
             String? profilePictureUrl, String errorMessage)
         updateFailure,
+    required TResult Function() deleteAccountSuccess,
   }) {
     return updateInProgress(name, phoneNumber, profilePictureUrl);
   }
@@ -1179,6 +1315,7 @@ class _$UpdateInProgressImpl implements _UpdateInProgress {
     TResult? Function(String? name, String? phoneNumber,
             String? profilePictureUrl, String errorMessage)?
         updateFailure,
+    TResult? Function()? deleteAccountSuccess,
   }) {
     return updateInProgress?.call(name, phoneNumber, profilePictureUrl);
   }
@@ -1195,6 +1332,7 @@ class _$UpdateInProgressImpl implements _UpdateInProgress {
     TResult Function(String? name, String? phoneNumber,
             String? profilePictureUrl, String errorMessage)?
         updateFailure,
+    TResult Function()? deleteAccountSuccess,
     required TResult orElse(),
   }) {
     if (updateInProgress != null) {
@@ -1209,6 +1347,7 @@ class _$UpdateInProgressImpl implements _UpdateInProgress {
     required TResult Function(_Initial value) initial,
     required TResult Function(_UpdateInProgress value) updateInProgress,
     required TResult Function(_UpdateFailure value) updateFailure,
+    required TResult Function(_DeleteAccountSuccess value) deleteAccountSuccess,
   }) {
     return updateInProgress(this);
   }
@@ -1219,6 +1358,7 @@ class _$UpdateInProgressImpl implements _UpdateInProgress {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_UpdateInProgress value)? updateInProgress,
     TResult? Function(_UpdateFailure value)? updateFailure,
+    TResult? Function(_DeleteAccountSuccess value)? deleteAccountSuccess,
   }) {
     return updateInProgress?.call(this);
   }
@@ -1229,6 +1369,7 @@ class _$UpdateInProgressImpl implements _UpdateInProgress {
     TResult Function(_Initial value)? initial,
     TResult Function(_UpdateInProgress value)? updateInProgress,
     TResult Function(_UpdateFailure value)? updateFailure,
+    TResult Function(_DeleteAccountSuccess value)? deleteAccountSuccess,
     required TResult orElse(),
   }) {
     if (updateInProgress != null) {
@@ -1244,25 +1385,19 @@ abstract class _UpdateInProgress implements AccountState {
       required final String? phoneNumber,
       required final String? profilePictureUrl}) = _$UpdateInProgressImpl;
 
-  @override
   String? get name;
-  @override
   String? get phoneNumber;
-  @override
   String? get profilePictureUrl;
-  @override
   @JsonKey(ignore: true)
   _$$UpdateInProgressImplCopyWith<_$UpdateInProgressImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$UpdateFailureImplCopyWith<$Res>
-    implements $AccountStateCopyWith<$Res> {
+abstract class _$$UpdateFailureImplCopyWith<$Res> {
   factory _$$UpdateFailureImplCopyWith(
           _$UpdateFailureImpl value, $Res Function(_$UpdateFailureImpl) then) =
       __$$UpdateFailureImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call(
       {String? name,
@@ -1367,6 +1502,7 @@ class _$UpdateFailureImpl implements _UpdateFailure {
     required TResult Function(String? name, String? phoneNumber,
             String? profilePictureUrl, String errorMessage)
         updateFailure,
+    required TResult Function() deleteAccountSuccess,
   }) {
     return updateFailure(name, phoneNumber, profilePictureUrl, errorMessage);
   }
@@ -1383,6 +1519,7 @@ class _$UpdateFailureImpl implements _UpdateFailure {
     TResult? Function(String? name, String? phoneNumber,
             String? profilePictureUrl, String errorMessage)?
         updateFailure,
+    TResult? Function()? deleteAccountSuccess,
   }) {
     return updateFailure?.call(
         name, phoneNumber, profilePictureUrl, errorMessage);
@@ -1400,6 +1537,7 @@ class _$UpdateFailureImpl implements _UpdateFailure {
     TResult Function(String? name, String? phoneNumber,
             String? profilePictureUrl, String errorMessage)?
         updateFailure,
+    TResult Function()? deleteAccountSuccess,
     required TResult orElse(),
   }) {
     if (updateFailure != null) {
@@ -1414,6 +1552,7 @@ class _$UpdateFailureImpl implements _UpdateFailure {
     required TResult Function(_Initial value) initial,
     required TResult Function(_UpdateInProgress value) updateInProgress,
     required TResult Function(_UpdateFailure value) updateFailure,
+    required TResult Function(_DeleteAccountSuccess value) deleteAccountSuccess,
   }) {
     return updateFailure(this);
   }
@@ -1424,6 +1563,7 @@ class _$UpdateFailureImpl implements _UpdateFailure {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_UpdateInProgress value)? updateInProgress,
     TResult? Function(_UpdateFailure value)? updateFailure,
+    TResult? Function(_DeleteAccountSuccess value)? deleteAccountSuccess,
   }) {
     return updateFailure?.call(this);
   }
@@ -1434,6 +1574,7 @@ class _$UpdateFailureImpl implements _UpdateFailure {
     TResult Function(_Initial value)? initial,
     TResult Function(_UpdateInProgress value)? updateInProgress,
     TResult Function(_UpdateFailure value)? updateFailure,
+    TResult Function(_DeleteAccountSuccess value)? deleteAccountSuccess,
     required TResult orElse(),
   }) {
     if (updateFailure != null) {
@@ -1450,15 +1591,144 @@ abstract class _UpdateFailure implements AccountState {
       required final String? profilePictureUrl,
       required final String errorMessage}) = _$UpdateFailureImpl;
 
-  @override
   String? get name;
-  @override
   String? get phoneNumber;
-  @override
   String? get profilePictureUrl;
   String get errorMessage;
-  @override
   @JsonKey(ignore: true)
   _$$UpdateFailureImplCopyWith<_$UpdateFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteAccountSuccessImplCopyWith<$Res> {
+  factory _$$DeleteAccountSuccessImplCopyWith(_$DeleteAccountSuccessImpl value,
+          $Res Function(_$DeleteAccountSuccessImpl) then) =
+      __$$DeleteAccountSuccessImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteAccountSuccessImplCopyWithImpl<$Res>
+    extends _$AccountStateCopyWithImpl<$Res, _$DeleteAccountSuccessImpl>
+    implements _$$DeleteAccountSuccessImplCopyWith<$Res> {
+  __$$DeleteAccountSuccessImplCopyWithImpl(_$DeleteAccountSuccessImpl _value,
+      $Res Function(_$DeleteAccountSuccessImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DeleteAccountSuccessImpl implements _DeleteAccountSuccess {
+  const _$DeleteAccountSuccessImpl();
+
+  @override
+  String toString() {
+    return 'AccountState.deleteAccountSuccess()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteAccountSuccessImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String? name, String? phoneNumber, String? profilePictureUrl)
+        initial,
+    required TResult Function(
+            String? name, String? phoneNumber, String? profilePictureUrl)
+        updateInProgress,
+    required TResult Function(String? name, String? phoneNumber,
+            String? profilePictureUrl, String errorMessage)
+        updateFailure,
+    required TResult Function() deleteAccountSuccess,
+  }) {
+    return deleteAccountSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String? name, String? phoneNumber, String? profilePictureUrl)?
+        initial,
+    TResult? Function(
+            String? name, String? phoneNumber, String? profilePictureUrl)?
+        updateInProgress,
+    TResult? Function(String? name, String? phoneNumber,
+            String? profilePictureUrl, String errorMessage)?
+        updateFailure,
+    TResult? Function()? deleteAccountSuccess,
+  }) {
+    return deleteAccountSuccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String? name, String? phoneNumber, String? profilePictureUrl)?
+        initial,
+    TResult Function(
+            String? name, String? phoneNumber, String? profilePictureUrl)?
+        updateInProgress,
+    TResult Function(String? name, String? phoneNumber,
+            String? profilePictureUrl, String errorMessage)?
+        updateFailure,
+    TResult Function()? deleteAccountSuccess,
+    required TResult orElse(),
+  }) {
+    if (deleteAccountSuccess != null) {
+      return deleteAccountSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_UpdateInProgress value) updateInProgress,
+    required TResult Function(_UpdateFailure value) updateFailure,
+    required TResult Function(_DeleteAccountSuccess value) deleteAccountSuccess,
+  }) {
+    return deleteAccountSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_UpdateInProgress value)? updateInProgress,
+    TResult? Function(_UpdateFailure value)? updateFailure,
+    TResult? Function(_DeleteAccountSuccess value)? deleteAccountSuccess,
+  }) {
+    return deleteAccountSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_UpdateInProgress value)? updateInProgress,
+    TResult Function(_UpdateFailure value)? updateFailure,
+    TResult Function(_DeleteAccountSuccess value)? deleteAccountSuccess,
+    required TResult orElse(),
+  }) {
+    if (deleteAccountSuccess != null) {
+      return deleteAccountSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteAccountSuccess implements AccountState {
+  const factory _DeleteAccountSuccess() = _$DeleteAccountSuccessImpl;
 }

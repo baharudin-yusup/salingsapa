@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../domain/entities/auth_status.dart';
 import '../domain/entities/contact.dart';
 import '../domain/entities/room.dart';
 import '../injection_container.dart';
 import 'blocs/account/account_bloc.dart';
+import 'blocs/authorization/authorization_bloc.dart';
 import 'blocs/contact_list/contact_list_bloc.dart';
 import 'blocs/create_room/create_room_bloc.dart';
 import 'blocs/home/home_cubit.dart';
@@ -14,34 +16,52 @@ import 'blocs/speech_recognition_bloc/speech_recognition_bloc.dart';
 import 'blocs/video_call/video_call_bloc.dart';
 import 'blocs/video_call_caption/video_call_caption_bloc.dart';
 import 'blocs/video_call_control/video_call_control_bloc.dart';
+import 'screens/account/account_setting.dart';
+import 'screens/account/delete_account_screen.dart';
 import 'screens/home/contact_list_screen.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/home/recent_call_screen.dart';
 import 'screens/room/create_room_screen.dart';
 import 'screens/setting_screen.dart';
 import 'screens/setup_screen.dart';
+import 'screens/skeleton_screen.dart';
 import 'screens/verify_otp_screen.dart';
 import 'screens/video_call/video_call_screen.dart';
 
 Map<String, WidgetBuilder> getRoutes() => {
-      SetupScreen.routeName: (_) => const SetupScreen(),
-      VerifyOtpScreen.routeName: (_) => const VerifyOtpScreen(),
-      HomeScreen.routeName: (context) {
-        context
-            .read<ContactListBloc>()
-            .add(const ContactListEvent.refreshPulled());
+      RootScreen.routeName: (context) {
+        final arguments = ModalRoute.of(context)?.settings.arguments;
+        late final bool isLoggedIn;
+        if (arguments != null) {
+          isLoggedIn = arguments as bool;
+        } else {
+          isLoggedIn = context.read<AuthorizationBloc>().state.when(
+                initial: (status) => status == AuthStatus.authorized,
+                changeAuthStatusSuccess: (status) =>
+                    status == AuthStatus.authorized,
+                changeAuthStatusFailure: (_) => false,
+              );
+        }
 
-        return MultiBlocProvider(
-          providers: [
-            BlocProvider<HomeCubit>(create: (_) => HomeCubit()),
-            BlocProvider<RecentCallBloc>(
-                create: (_) => sl()..add(const RecentCallEvent.started())),
-            BlocProvider<AccountBloc>(
-                create: (_) => sl()..add(const AccountEvent.started())),
-          ],
-          child: const HomeScreen(),
-        );
+        if (isLoggedIn) {
+          context
+              .read<ContactListBloc>()
+              .add(const ContactListEvent.refreshPulled());
+          context.read<AccountBloc>().add(const AccountEvent.started());
+
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider<HomeCubit>(create: (_) => HomeCubit()),
+              BlocProvider<RecentCallBloc>(
+                  create: (_) => sl()..add(const RecentCallEvent.started())),
+            ],
+            child: const HomeScreen(),
+          );
+        }
+
+        return const SetupScreen();
       },
+      VerifyOtpScreen.routeName: (_) => const VerifyOtpScreen(),
       RecentCallScreen.routeName: (_) => const RecentCallScreen(),
       SettingScreen.routeName: (_) => const SettingScreen(),
       CreateRoomScreen.routeName: (context) {
@@ -67,4 +87,6 @@ Map<String, WidgetBuilder> getRoutes() => {
         );
       },
       ContactListScreen.routeName: (_) => const ContactListScreen(),
+      AccountSettingScreen.routeName: (_) => const AccountSettingScreen(),
+      DeleteAccountScreen.routeName: (_) => const DeleteAccountScreen(),
     };

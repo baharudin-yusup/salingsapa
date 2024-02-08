@@ -10,7 +10,7 @@ import '../../blocs/speech_recognition_bloc/speech_recognition_bloc.dart';
 import '../../blocs/video_call/video_call_bloc.dart';
 import '../../blocs/video_call_caption/video_call_caption_bloc.dart';
 import '../../blocs/video_call_control/video_call_control_bloc.dart';
-import '../../components/intuitive_scaffold.dart';
+import '../../components/intuitive_scaffold/intuitive_scaffold.dart';
 import '../../services/navigator_service.dart';
 import '../../services/ui_service.dart';
 import '../../utils/dimension.dart';

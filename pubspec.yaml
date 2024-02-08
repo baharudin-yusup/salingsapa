@@ -52,6 +52,8 @@ dependencies:
   dio: ^5.4.0
   fluttertoast: ^8.2.4
   flutter_markdown: ^0.6.18+3
+  modal_bottom_sheet: ^3.0.0-pre
+  url_launcher: ^6.2.4
 
 dev_dependencies:
   flutter_test:

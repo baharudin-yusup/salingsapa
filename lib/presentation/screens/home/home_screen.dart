@@ -3,14 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../blocs/contact_list/contact_list_bloc.dart';
 import '../../blocs/home/home_cubit.dart';
-import '../../components/intuitive_scaffold.dart';
+import '../../components/intuitive_scaffold/intuitive_scaffold.dart';
 import '../../utils/dimension.dart';
-import 'account_screen.dart';
+import '../account/account_screen.dart';
 import 'recent_call_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  static const routeName = '/home';
-
   const HomeScreen({super.key});
 
   @override

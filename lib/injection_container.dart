@@ -49,6 +49,7 @@ import 'domain/repositories/video_call_repository.dart';
 import 'domain/usecases/authorization_status.dart';
 import 'domain/usecases/close_sign_language_recognition.dart';
 import 'domain/usecases/create_room.dart';
+import 'domain/usecases/delete_account.dart';
 import 'domain/usecases/disable_caption.dart';
 import 'domain/usecases/disable_sign_language_recognition.dart';
 import 'domain/usecases/disable_speech_recognition.dart';
@@ -58,6 +59,7 @@ import 'domain/usecases/enable_sign_language_recognition.dart';
 import 'domain/usecases/enable_speech_recognition.dart';
 import 'domain/usecases/enable_take_photo_snapshot.dart';
 import 'domain/usecases/external_link/get_privacy_and_policy.dart';
+import 'domain/usecases/external_link/get_support_content.dart';
 import 'domain/usecases/external_link/get_terms_and_condition_content.dart';
 import 'domain/usecases/flip_video_call_camera.dart';
 import 'domain/usecases/get_current_user.dart';
@@ -105,6 +107,7 @@ import 'presentation/blocs/video_call_caption/video_call_caption_bloc.dart';
 import 'presentation/blocs/video_call_control/video_call_control_bloc.dart';
 import 'presentation/services/navigator_service.dart';
 import 'presentation/services/notification_service.dart';
+import 'presentation/services/platform_service.dart';
 import 'presentation/services/ui_service.dart';
 
 final sl = GetIt.instance;
@@ -119,25 +122,27 @@ Future<void> setup(Env env) async {
   }
 
   /// Services
+  sl.registerLazySingleton<PlatformService>(() => PlatformServiceImpl());
   sl.registerLazySingleton<NavigatorService>(() => NavigatorServiceImpl());
   sl.registerLazySingleton<NotificationService>(() => NotificationServiceImpl(
       FirebaseMessaging.instance, FlutterLocalNotificationsPlugin()));
-  sl.registerLazySingleton<UiService>(() => UiServiceImpl(sl()));
+  sl.registerLazySingleton<UiService>(() => UiServiceImpl(sl(), sl()));
 
   /// Standard BLoC
   sl.registerFactory(() => RecentCallBloc(sl(), sl(), sl()));
-  sl.registerFactory(() => AccountBloc(sl(), sl(), sl(), sl(), sl()));
   sl.registerFactory(() => VideoCallControlBloc(sl(), sl(), sl()));
   sl.registerFactory(() => VideoCallCaptionBloc(sl(), sl(), sl(), sl(), sl()));
   sl.registerFactory(() => SignLanguageRecognitionBloc(
       sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl()));
   sl.registerFactory(() => SpeechRecognitionBloc(sl(), sl(), sl(), sl(), sl()));
-  sl.registerFactory(() => OpenExternalLinkBloc(sl(), sl()));
+  sl.registerFactory(() => OpenExternalLinkBloc(sl(), sl(), sl()));
 
   /// Singleton BLoC
   sl.registerLazySingleton(() => AuthorizationBloc(sl(), sl()));
   sl.registerFactory(() => SetupBloc(sl(), sl(), sl()));
   sl.registerLazySingleton(() => ContactListBloc(sl(), sl(), sl(), sl()));
+  sl.registerLazySingleton(
+      () => AccountBloc(sl(), sl(), sl(), sl(), sl(), sl()));
 
   /// Use cases
   sl.registerLazySingleton(() => VerifyPhoneNumber(sl()));
@@ -170,6 +175,7 @@ Future<void> setup(Env env) async {
   sl.registerLazySingleton(() => StreamCurrentUser(sl()));
   sl.registerLazySingleton(() => UpdateProfilePicture(sl()));
   sl.registerLazySingleton(() => GetCurrentUser(sl()));
+  sl.registerLazySingleton(() => DeleteAccount(sl()));
 
   /// Caption usecase
   sl.registerLazySingleton(() => InitCaption(sl()));
@@ -199,6 +205,7 @@ Future<void> setup(Env env) async {
   // Open external link use case
   sl.registerLazySingleton(() => GetPrivacyPolicyContent(sl()));
   sl.registerLazySingleton(() => GetTermsAndConditionContent(sl()));
+  sl.registerLazySingleton(() => GetSupportContent(sl()));
 
   /// Repositories
   sl.registerLazySingleton<AuthenticationRepository>(
@@ -280,7 +287,6 @@ Future<void> setup(Env env) async {
 
   /// Post Creation
   final authorizationBloc = sl<AuthorizationBloc>();
-  final settingRepository = sl<SettingRepository>();
   final authenticationRepository = sl<AuthenticationRepository>();
 
   await remoteConfig.setConfigSettings(RemoteConfigSettings(
@@ -289,16 +295,11 @@ Future<void> setup(Env env) async {
   ));
   await authenticationRepository.init();
 
-  final isFirstLaunchApp =
-      (await settingRepository.getIsFirstLaunchApp()).getOrElse(() => true);
-  if (!isFirstLaunchApp) {
-    final latestAuthStatus =
-        await authenticationRepository.getLatestAuthStatus();
-    latestAuthStatus.fold(
-      (failure) => authorizationBloc
-          .add(AuthorizationEvent.authStatusChanged(failure: failure)),
-      (status) => authorizationBloc
-          .add(AuthorizationEvent.authStatusChanged(status: status)),
-    );
-  }
+  final latestAuthStatus = await authenticationRepository.getLatestAuthStatus();
+  latestAuthStatus.fold(
+    (failure) => authorizationBloc
+        .add(AuthorizationEvent.authStatusChanged(failure: failure)),
+    (status) => authorizationBloc
+        .add(AuthorizationEvent.authStatusChanged(status: status)),
+  );
 }

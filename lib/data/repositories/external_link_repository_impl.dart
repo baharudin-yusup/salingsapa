@@ -28,4 +28,14 @@ class ExternalLinkRepositoryImpl implements ExternalLinkRepository {
       return const Left(UnknownFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, String>> getSupportContent() async {
+    try {
+      final content = await _remoteDataSource.getSupport();
+      return Right(content);
+    } catch (error) {
+      return const Left(UnknownFailure());
+    }
+  }
 }

@@ -8,7 +8,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import '../../injection_container.dart';
 import '../blocs/open_external_link/open_external_link_bloc.dart';
 import '../blocs/setup/setup_bloc.dart';
-import '../components/intuitive_scaffold.dart';
+import '../components/intuitive_scaffold/intuitive_scaffold.dart';
 import '../components/intuitive_textfield.dart';
 import '../services/navigator_service.dart';
 import '../services/theme_service.dart';
@@ -20,8 +20,6 @@ import 'common/markdown_screen.dart';
 import 'verify_otp_screen.dart';
 
 class SetupScreen extends StatelessWidget {
-  static const routeName = '/setup';
-
   const SetupScreen({super.key});
 
   @override

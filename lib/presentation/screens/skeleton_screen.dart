@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +10,7 @@ import '../../core/envs/env.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/auth_status.dart';
 import '../../injection_container.dart';
+import '../blocs/account/account_bloc.dart';
 import '../blocs/authorization/authorization_bloc.dart';
 import '../blocs/contact_list/contact_list_bloc.dart';
 import '../blocs/open_external_link/open_external_link_bloc.dart';
@@ -19,10 +18,9 @@ import '../blocs/setup/setup_bloc.dart';
 import '../routes.dart';
 import '../services/navigator_service.dart';
 import '../services/notification_service.dart';
+import '../services/platform_service.dart';
 import '../services/ui_service.dart';
 import '../utils/failure_translation.dart';
-import 'home/home_screen.dart';
-import 'setup_screen.dart';
 
 void createApp(Env env) {
   runApp(
@@ -33,6 +31,7 @@ void createApp(Env env) {
 }
 
 class RootScreen extends StatefulWidget {
+  static const routeName = '/';
   final bool showDebugBanner;
 
   const RootScreen({
@@ -72,6 +71,7 @@ class _RootScreenState extends State<RootScreen> {
         BlocProvider<SetupBloc>(create: (_) => sl()),
         BlocProvider<ContactListBloc>(create: (_) => sl()),
         BlocProvider<OpenExternalLinkBloc>(create: (_) => sl()),
+        BlocProvider<AccountBloc>(create: (_) => sl()),
       ],
       child: BlocListener<AuthorizationBloc, AuthorizationState>(
         listenWhen: (previous, current) {
@@ -121,7 +121,10 @@ class _RootScreenState extends State<RootScreen> {
                       .add(const SetupEvent.clearSetupStarted());
                   uiService.resetLoading();
                   navigatorService.pushNamedAndRemoveUntil(
-                      SetupScreen.routeName, (route) => false);
+                    RootScreen.routeName,
+                    (route) => false,
+                    arguments: false,
+                  );
                   break;
                 case AuthStatus.authorized:
                   Logger.print('open home screen started...');
@@ -130,7 +133,10 @@ class _RootScreenState extends State<RootScreen> {
                       .add(const SetupEvent.clearSetupStarted());
                   uiService.resetLoading();
                   navigatorService.pushNamedAndRemoveUntil(
-                      HomeScreen.routeName, (route) => false);
+                    RootScreen.routeName,
+                    (route) => false,
+                    arguments: true,
+                  );
                   break;
               }
             },
@@ -138,11 +144,11 @@ class _RootScreenState extends State<RootScreen> {
               Fluttertoast.showToast(
                   msg: state.failure.code.translate(context));
               navigatorService.pushNamedAndRemoveUntil(
-                  SetupScreen.routeName, (route) => false);
+                  RootScreen.routeName, (route) => false);
             },
           );
         },
-        child: Platform.isIOS
+        child: sl<PlatformService>().os == PlatformOS.iOS
             ? Builder(
                 builder: (context) {
                   final colorScheme = ColorScheme.fromSeed(
@@ -169,18 +175,6 @@ class _RootScreenState extends State<RootScreen> {
                           applyThemeToAll: true,
                         ),
                         routes: getRoutes(),
-                        initialRoute: sl<AuthorizationBloc>().state.map(
-                              initial: (state) =>
-                                  state.status == AuthStatus.authorized
-                                      ? HomeScreen.routeName
-                                      : SetupScreen.routeName,
-                              changeAuthStatusSuccess: (state) =>
-                                  state.status == AuthStatus.authorized
-                                      ? HomeScreen.routeName
-                                      : SetupScreen.routeName,
-                              changeAuthStatusFailure: (_) =>
-                                  SetupScreen.routeName,
-                            ),
                       ),
                     ),
                   );
@@ -208,17 +202,6 @@ class _RootScreenState extends State<RootScreen> {
                       useMaterial3: true,
                     ),
                     themeMode: ThemeMode.system,
-                    initialRoute: sl<AuthorizationBloc>().state.map(
-                          initial: (state) =>
-                              state.status == AuthStatus.authorized
-                                  ? HomeScreen.routeName
-                                  : SetupScreen.routeName,
-                          changeAuthStatusSuccess: (state) =>
-                              state.status == AuthStatus.authorized
-                                  ? HomeScreen.routeName
-                                  : SetupScreen.routeName,
-                          changeAuthStatusFailure: (_) => SetupScreen.routeName,
-                        ),
                   );
                 },
               ),

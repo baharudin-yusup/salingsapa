@@ -7,10 +7,11 @@ import '../../../domain/entities/contact.dart';
 import '../../../injection_container.dart';
 import '../../blocs/contact_list/contact_list_bloc.dart';
 import '../../components/contact_card.dart';
-import '../../components/intuitive_scaffold.dart';
+import '../../components/intuitive_scaffold/intuitive_scaffold.dart';
 import '../../components/no_contact_access_ui.dart';
-import '../../components/show_error_message.dart';
+import '../../services/navigator_service.dart';
 import '../../services/theme_service.dart';
+import '../../services/ui_service.dart';
 import '../room/create_room_screen.dart';
 
 class ContactListScreen extends StatefulWidget {
@@ -52,12 +53,24 @@ class _ContactListScreenState extends State<ContactListScreen>
   Widget build(BuildContext context) {
     return BlocConsumer<ContactListBloc, ContactListState>(
       listener: (context, state) {
-        state.maybeWhen(
-            orElse: () {},
-            startVideoCallSuccess: (_, contact, __, ___) => Navigator.pushNamed(
-                context, CreateRoomScreen.routeName, arguments: contact),
-            startVideoCallFailure: (errorMessage, _, __, ___) =>
-                showErrorMessage(context, errorMessage));
+        state.maybeMap(
+          orElse: () {},
+          startVideoCallSuccess: (state) {
+            final NavigatorService navigatorService = sl();
+            navigatorService.pushNamed(
+              CreateRoomScreen.routeName,
+              arguments: state.contacts,
+            );
+          },
+          startVideoCallFailure: (state) {
+            final UiService uiService = sl();
+            uiService.showErrorMessage(
+              ErrorData(
+                message: state.errorMessage,
+              ),
+            );
+          },
+        );
       },
       buildWhen: (previousState, currentState) => currentState.maybeMap(
         startVideoCallFailure: (_) => false,

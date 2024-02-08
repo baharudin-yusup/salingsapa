@@ -8,7 +8,7 @@ import '../../data/extensions/extensions.dart';
 import '../../injection_container.dart';
 import '../blocs/setup/setup_bloc.dart';
 import '../components/intuitive_otp.dart';
-import '../components/intuitive_scaffold.dart';
+import '../components/intuitive_scaffold/intuitive_scaffold.dart';
 import '../services/theme_service.dart';
 import '../services/ui_service.dart';
 import '../utils/app_localizations.dart';

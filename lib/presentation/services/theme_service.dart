@@ -10,6 +10,13 @@ class IntuitiveUiConstant {
   static const smallRadius = 8.0;
   static const normalRadius = 16.0;
   static const largeRadius = 32.0;
+
+  static const listPadding = EdgeInsets.fromLTRB(
+    normalSpace,
+    hugeSpace,
+    normalSpace,
+    largeSpace,
+  );
 }
 
 extension ThemeContext on BuildContext {
