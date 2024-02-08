@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-import '../../components/intuitive_scaffold.dart';
+import '../../../core/utils/logger.dart';
+import '../../components/intuitive_scaffold/intuitive_scaffold.dart';
 import '../../services/theme_service.dart';
 import '../../utils/dimension.dart';
 
@@ -29,6 +31,23 @@ class MarkdownScreen extends StatelessWidget {
         return Markdown(
           padding: innerPadding,
           data: convertedContent,
+          styleSheetTheme: MarkdownStyleSheetBaseTheme.platform,
+          onTapLink: (text, href, title) async {
+            if (href == null) {
+              return;
+            }
+            final uri = Uri.parse(href);
+            Logger.print('open link $href started...');
+            if (!await canLaunchUrl(uri)) {
+              Logger.error('cannot launch $href', event: 'opening link');
+            }
+
+            try {
+              await launchUrl(uri);
+            } catch (error) {
+              Logger.error(error, event: 'opening link');
+            }
+          },
         );
       },
     );
