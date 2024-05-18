@@ -138,7 +138,7 @@ class AccountScreen extends StatelessWidget {
                           Container(
                             color: context
                                 .colorScheme()
-                                .background
+                                .surface
                                 .withOpacity(0.5),
                             width: radius * 2,
                             height: radius / 2,

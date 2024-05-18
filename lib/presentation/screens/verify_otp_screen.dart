@@ -74,7 +74,7 @@ class VerifyOtpScreen extends StatelessWidget {
                   style: TextStyle(
                     color: state.isAbleToSubmitOtp
                         ? context.colorScheme().primary
-                        : context.colorScheme().onBackground.withOpacity(0.5),
+                        : context.colorScheme().onSurface.withOpacity(0.5),
                   ),
                 ),
               ),

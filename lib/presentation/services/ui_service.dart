@@ -84,7 +84,7 @@ class UiServiceImpl implements UiService {
               BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
                 child: Container(
-                  color: context.colorScheme().background.withOpacity(0.6),
+                  color: context.colorScheme().surface.withOpacity(0.6),
                 ),
               ),
               const cupertino.CupertinoActivityIndicator(),
@@ -106,7 +106,7 @@ class UiServiceImpl implements UiService {
           child: Center(
             child: Container(
               decoration: BoxDecoration(
-                color: context.colorScheme().background,
+                color: context.colorScheme().surface,
                 borderRadius: const BorderRadius.all(
                   Radius.circular(IntuitiveUiConstant.normalRadius),
                 ),

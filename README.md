@@ -1,12 +1,14 @@
 ![App Banner](docs/images/app-banner.png)
 
-<a href='https://play.google.com/store/apps/details?id=dev.baharudin.salingsapa&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='docs/images/google-play-badge.png' style="width: auto; height: 50px;"/></a>
+<a href='https://apps.apple.com/app/salingsapa/id6447261524'><img alt='Get it on Google Play' src='docs/icons/app-store-badge.svg' style="width: auto; height: 50px;"/></a>
+<a href='https://play.google.com/store/apps/details?id=dev.baharudin.salingsapa&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='docs/icons/google-play-badge.svg' style="width: auto; height: 50px;"/></a>
 
 # Salingsapa
 
 [![Codemagic build status](https://api.codemagic.io/apps/642645586c092f62d7cd27b1/642c4ec2aac5ee7954a0bf2e/status_badge.svg)](https://codemagic.io/apps/642645586c092f62d7cd27b1/642c4ec2aac5ee7954a0bf2e/latest_build)
 
-Salingsapa is a [Flutter](https://flutter.dev) application designed to facilitate inclusive video calls with a unique focus
+Salingsapa is a [Flutter](https://flutter.dev) application designed to facilitate inclusive video
+calls with a unique focus
 on enabling communication for individuals with hearing impairments. The app incorporates advanced
 features such
 as [Sign Language Recognition](https://en.wikipedia.org/wiki/Sign_language_recognition)
@@ -104,11 +106,14 @@ Before you begin, make sure you have:
 
 ### Dependencies
 
-Salingsapa utilizes a variety of Flutter packages and external libraries to deliver its functionalities. Here are some key dependencies:
+Salingsapa utilizes a variety of Flutter packages and external libraries to deliver its
+functionalities. Here are some key dependencies:
 
 - **Firebase**
-    - Provides a robust backend infrastructure, including authentication, messaging, and remote configuration.
-    - Package: `firebase_core`, `firebase_analytics`, `firebase_auth`, `firebase_messaging`, `firebase_remote_config`, `cloud_firestore`, `firebase_app_check`, `firebase_storage`
+    - Provides a robust backend infrastructure, including authentication, messaging, and remote
+      configuration.
+    -
+  Package: `firebase_core`, `firebase_analytics`, `firebase_auth`, `firebase_messaging`, `firebase_remote_config`, `cloud_firestore`, `firebase_app_check`, `firebase_storage`
 
 - **State Management**
     - Ensures efficient handling of application state.
@@ -136,9 +141,10 @@ Salingsapa utilizes a variety of Flutter packages and external libraries to deli
 
 ### Continuous Integration and Deployment
 
-  Automated CI/CD through [Codemagic](https://codemagic.io/) for
-  streamlined development.
+Automated CI/CD through [Codemagic](https://codemagic.io/) for
+streamlined development.
 
 ### Dataset
 
-The Sign Language Recognition model is trained on the [ASL Alphabet dataset by Akash](https://www.kaggle.com/datasets/grassknoted/asl-alphabet/data)
+The Sign Language Recognition model is trained on
+the [ASL Alphabet dataset by Akash](https://www.kaggle.com/datasets/grassknoted/asl-alphabet/data)

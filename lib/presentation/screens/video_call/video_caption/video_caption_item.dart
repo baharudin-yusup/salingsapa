@@ -107,7 +107,7 @@ class VideoCaptionItem extends StatelessWidget {
             horizontal: IntuitiveUiConstant.smallSpace,
           ),
           decoration: BoxDecoration(
-            color: context.colorScheme().background,
+            color: context.colorScheme().surface,
             borderRadius: const BorderRadius.all(
                 Radius.circular(IntuitiveUiConstant.normalRadius)),
           ),
@@ -133,7 +133,7 @@ class VideoCaptionItem extends StatelessWidget {
             horizontal: IntuitiveUiConstant.normalSpace,
           ),
           decoration: BoxDecoration(
-            color: context.colorScheme().background.withOpacity(0.7),
+            color: context.colorScheme().surface.withOpacity(0.7),
             borderRadius: const BorderRadius.all(
                 Radius.circular(IntuitiveUiConstant.normalRadius)),
           ),
