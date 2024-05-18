@@ -1,0 +1,182 @@
+{
+  "project_info": {
+    "project_number": "721041824886",
+    "project_id": "salingsapa-project",
+    "storage_bucket": "salingsapa-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721041824886:android:a080189fe11a56348a5357",
+        "android_client_info": {
+          "package_name": "dev.baharudin.salingsapa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "721041824886-6t68qu64fnv6bv39je2g3evp0lpsr9ar.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.baharudin.salingsapa",
+            "certificate_hash": "74934a3d3f24fb31a4ba6b4b7e48b819b8a720ed"
+          }
+        },
+        {
+          "client_id": "721041824886-7966ijpkdphtejtu65ha6a9jva7snnmg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.baharudin.salingsapa",
+            "certificate_hash": "c28dc84ba890cb83ee869ba60ff4512be77ee068"
+          }
+        },
+        {
+          "client_id": "721041824886-413cii6ih42mdvumse9sg0mgipj9cl5m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfazNdjjuj3XnclxdyVhJdMueY-6fm_No"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "721041824886-413cii6ih42mdvumse9sg0mgipj9cl5m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "721041824886-77aee81ehgcrff08mo61bf168fgp4a7q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.baharudin.salingsapa"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721041824886:android:02fa4f202301d0cd8a5357",
+        "android_client_info": {
+          "package_name": "dev.baharudin.salingsapa.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "721041824886-ei0jb0gn8hc7epb0jvnnc31n00dlne06.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.baharudin.salingsapa.dev",
+            "certificate_hash": "ffa1da7ce38c1954a34bbb6b40328fbf1731f0b3"
+          }
+        },
+        {
+          "client_id": "721041824886-erfvv87fq8euf9009t6v74dkn7qtp5u7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.baharudin.salingsapa.dev",
+            "certificate_hash": "55c1dc746496ffbaab9a47687b95263fc83ec31b"
+          }
+        },
+        {
+          "client_id": "721041824886-i70727oifmv1uc19jj3shqumj4us0ecn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.baharudin.salingsapa.dev",
+            "certificate_hash": "546c75312363550552f1c737f7150980e18108bc"
+          }
+        },
+        {
+          "client_id": "721041824886-413cii6ih42mdvumse9sg0mgipj9cl5m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfazNdjjuj3XnclxdyVhJdMueY-6fm_No"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "721041824886-413cii6ih42mdvumse9sg0mgipj9cl5m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "721041824886-77aee81ehgcrff08mo61bf168fgp4a7q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.baharudin.salingsapa"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721041824886:android:085b5e2e994279648a5357",
+        "android_client_info": {
+          "package_name": "dev.baharudin.salingsapa.stg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "721041824886-dllq4nr2268mg09kvif9cqhsu0mqg4lh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.baharudin.salingsapa.stg",
+            "certificate_hash": "ffa1da7ce38c1954a34bbb6b40328fbf1731f0b3"
+          }
+        },
+        {
+          "client_id": "721041824886-kfnj4mvit61ra22lv8ft0umsir21fqni.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.baharudin.salingsapa.stg",
+            "certificate_hash": "546c75312363550552f1c737f7150980e18108bc"
+          }
+        },
+        {
+          "client_id": "721041824886-l1r4o1vg7ustsglgp6278gedpfdm7d49.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.baharudin.salingsapa.stg",
+            "certificate_hash": "55c1dc746496ffbaab9a47687b95263fc83ec31b"
+          }
+        },
+        {
+          "client_id": "721041824886-413cii6ih42mdvumse9sg0mgipj9cl5m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfazNdjjuj3XnclxdyVhJdMueY-6fm_No"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "721041824886-413cii6ih42mdvumse9sg0mgipj9cl5m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "721041824886-77aee81ehgcrff08mo61bf168fgp4a7q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dev.baharudin.salingsapa"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
