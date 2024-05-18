@@ -32,7 +32,7 @@ class VideoCallControl extends StatelessWidget {
           final VideoCallControlBloc bloc = context.read();
           return Container(
             decoration: BoxDecoration(
-              color: context.colorScheme().background.withOpacity(0.2),
+              color: context.colorScheme().surface.withOpacity(0.2),
               borderRadius: const BorderRadius.all(
                 Radius.circular(IntuitiveUiConstant.normalRadius),
               ),

@@ -96,7 +96,7 @@ class SetupScreen extends StatelessWidget {
                   style: TextStyle(
                     color: state.isAbleToSubmitPhoneNumber
                         ? context.colorScheme().primary
-                        : context.colorScheme().onBackground.withOpacity(0.5),
+                        : context.colorScheme().onSurface.withOpacity(0.5),
                   ),
                 ),
               ),

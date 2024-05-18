@@ -52,9 +52,12 @@ class SpeechRecognitionPluginImpl implements SpeechRecognitionPlugin {
         onResult: _onResult,
         pauseFor: const Duration(seconds: 5),
         listenFor: const Duration(seconds: 30),
-        listenMode: ListenMode.dictation,
+        listenOptions: SpeechListenOptions(
+          listenMode: ListenMode.dictation,
+        ),
       );
     }
+
     _statusController.sink.add(RecognitionStatus.on);
   }
 

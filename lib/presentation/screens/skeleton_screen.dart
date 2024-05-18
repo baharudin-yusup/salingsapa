@@ -169,7 +169,7 @@ class _RootScreenState extends State<RootScreen> {
                         debugShowCheckedModeBanner: widget.showDebugBanner,
                         theme: CupertinoThemeData(
                           brightness: platformBrightness,
-                          scaffoldBackgroundColor: colorScheme.background,
+                          scaffoldBackgroundColor: colorScheme.surface,
                           primaryColor: colorScheme.primary,
                           primaryContrastingColor: colorScheme.onPrimary,
                           applyThemeToAll: true,

@@ -168,7 +168,7 @@ class _IntuitiveOtpState extends State<IntuitiveOtp> {
       child: Container(
         width: double.maxFinite,
         decoration: BoxDecoration(
-          color: context.colorScheme().background,
+          color: context.colorScheme().surface,
           border: Border.all(
             color: hasError && isAllFieldFilled
                 ? widget.errorColor

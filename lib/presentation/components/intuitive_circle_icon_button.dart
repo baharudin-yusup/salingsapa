@@ -33,7 +33,7 @@ class IntuitiveCircleIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final primaryColor = activeColor ?? context.colorScheme().primary;
-    final onPrimaryColor = passiveColor ?? context.colorScheme().background;
+    final onPrimaryColor = passiveColor ?? context.colorScheme().surface;
 
     final backgroundColor = isActive ? primaryColor : onPrimaryColor;
     final foregroundColor = isActive ? onPrimaryColor : primaryColor;
