@@ -21,7 +21,7 @@ dependencies:
   cloud_firestore: ^4.3.2
   firebase_app_check: ^0.2.0+1
   get_it: ^7.2.0
-  flutter_local_notifications: ^16.1.0
+  flutter_local_notifications: ^17.1.2
   rxdart: ^0.27.7
   json_annotation: ^4.8.0
   flutter_secure_storage: ^9.0.0
@@ -34,7 +34,7 @@ dependencies:
   permission_handler: ^11.0.1
   flutter_localizations:
     sdk: flutter
-  intl: ^0.18.1
+  intl: any
   agora_rtc_engine: ^6.2.6
   uuid: ^4.1.0
   firebase_storage: ^11.0.16
@@ -42,16 +42,16 @@ dependencies:
   cached_network_image: ^3.2.3
   flutter_ringtone_player: ^4.0.0+2
   http: ^1.1.0
-  camera: ^0.10.5+2
+  camera: ^0.11.0
   speech_to_text: ^6.1.1
   tflite:
     git:
-      url: https://github.com/baharudin-yusup/flutter_tflite
+      url: https://github.com/baharudin-yusup/flutter_tflite.git
       ref: master
   path_provider: ^2.1.2
   dio: ^5.4.0
   fluttertoast: ^8.2.4
-  flutter_markdown: ^0.6.18+3
+  flutter_markdown: ^0.7.1
   modal_bottom_sheet: ^3.0.0-pre
   url_launcher: ^6.2.4
 
