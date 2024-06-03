@@ -59,7 +59,7 @@ class _ContactListScreenState extends State<ContactListScreen>
             final NavigatorService navigatorService = sl();
             navigatorService.pushNamed(
               CreateRoomScreen.routeName,
-              arguments: state.contacts,
+              arguments: state.selectedContact,
             );
           },
           startVideoCallFailure: (state) {

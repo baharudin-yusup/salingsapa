@@ -29,7 +29,7 @@ class RecognitionControl extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: context.colorScheme().background.withOpacity(0.5),
+        color: context.colorScheme().surface.withOpacity(0.5),
         borderRadius: const BorderRadius.all(
           Radius.circular(IntuitiveUiConstant.normalRadius),
         ),
