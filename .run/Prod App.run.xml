@@ -1,9 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Production" type="FlutterRunConfigurationType" factoryName="Flutter">
+  <configuration default="false" name="Prod App" type="FlutterRunConfigurationType" factoryName="Flutter">
     <option name="buildFlavor" value="prod" />
-    <option name="envs">
-      <entry key="ENV" value="prod" />
-    </option>
     <option name="filePath" value="$PROJECT_DIR$/lib/main_prod.dart" />
     <method v="2">
       <option name="RunConfigurationTask" enabled="false" run_configuration_name="(PowerShell) Initialize Env" run_configuration_type="ShConfigurationType" />
