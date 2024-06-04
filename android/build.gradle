@@ -17,3 +17,7 @@ subprojects {
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
+
+configurations.configureEach {
+    exclude group: "io.agora.rtc", module: "full-screen-sharing"
+}
