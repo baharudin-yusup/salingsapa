@@ -3,15 +3,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/widgets.dart';
 
-import 'firebase_options_dev.dart' as firebase_dev;
+import 'firebase_options.dart';
 import 'injection_container.dart' as di;
 import 'presentation/screens/skeleton_screen.dart';
 import 'presentation/services/notification_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-      options: firebase_dev.DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await FirebaseAppCheck.instance.activate(
     // Default provider for Android is the Play Integrity provider. You can use the "AndroidProvider" enum to choose
     // your preferred provider. Choose from:
