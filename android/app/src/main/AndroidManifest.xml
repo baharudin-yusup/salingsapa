@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="dev.baharudin.salingsapa">
 
     <uses-feature android:name="android.hardware.camera" />
@@ -18,6 +19,9 @@
     <!-- For Android 12.0 or higher, the following permissions are also required -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+
+    <!-- Remove unused permissions -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" tools:node="remove"/>
 
     <queries>
         <intent>
