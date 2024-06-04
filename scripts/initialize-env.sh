@@ -5,6 +5,8 @@ fileName="ENV"
 sourceFile="../configs/$ENV/.env"
 destinationFolder="../"
 
+echo "Current directory is: $(pwd)"
+
 echo "Initialize $ENV $fileName started..."
 
 # Check if environment variable is set
