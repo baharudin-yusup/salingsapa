@@ -2,10 +2,8 @@
 
 # Source and destination variables
 fileName="ENV"
-sourceFile="../configs/$ENV/.env"
-destinationFolder="../"
-
-echo "Current directory is: $(pwd)"
+sourceFile="./configs/$ENV/.env"
+destinationFolder="./"
 
 echo "Initialize $ENV $fileName started..."
 

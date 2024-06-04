@@ -1,7 +1,7 @@
 # Source and destination variables
 $fileName = "ENV"
-$sourceFile = "..\\configs\\$env:ENV\\.env"
-$destinationFolder = "..\\"
+$sourceFile = ".\\configs\\$env:ENV\\.env"
+$destinationFolder = ".\\"
 
 Write-Host "Initialize $env:ENV $fileName started..."
 

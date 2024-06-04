@@ -1,7 +1,7 @@
 # Source and destination variables
 $fileName = "Firebase option"
-$sourceFile = "..\\configs\\$env:ENV\\firebase_options.dart"
-$destinationFolder = "..\\lib"
+$sourceFile = ".\\configs\\$env:ENV\\firebase_options.dart"
+$destinationFolder = ".\\lib"
 
 Write-Host "Initialize $env:ENV $fileName started..."
 
