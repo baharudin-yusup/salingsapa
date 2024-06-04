@@ -1,8 +1,5 @@
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-
-import 'presentation/services/notification_service.dart';
 
 Future<void> setupFirebase({FirebaseOptions? options}) async {
   await Firebase.initializeApp(options: options);
@@ -14,5 +11,4 @@ Future<void> setupFirebase({FirebaseOptions? options}) async {
     // 3. play integrity provider
     androidProvider: AndroidProvider.playIntegrity,
   );
-  FirebaseMessaging.onBackgroundMessage(handleBackgroundNotification);
 }

@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart'
 ///
 /// Example:
 /// ```dart
-/// import 'firebase_options.dart';
+/// import 'firebase_options_dev.dart';
 /// // ...
 /// await Firebase.initializeApp(
 ///   options: DefaultFirebaseOptions.currentPlatform,
@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCfazNdjjuj3XnclxdyVhJdMueY-6fm_No',
-    appId: '1:721041824886:android:a080189fe11a56348a5357',
+    appId: '1:721041824886:android:02fa4f202301d0cd8a5357',
     messagingSenderId: '721041824886',
     projectId: 'salingsapa-project',
     storageBucket: 'salingsapa-project.appspot.com',
@@ -59,14 +59,13 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAfqDip5zDNjPB7Zd6QUQ7QlDNT4ZtYRf0',
-    appId: '1:721041824886:ios:cfe9716a608fe6c58a5357',
+    appId: '1:721041824886:ios:1e3137bbbedd1fe08a5357',
     messagingSenderId: '721041824886',
     projectId: 'salingsapa-project',
     storageBucket: 'salingsapa-project.appspot.com',
-    androidClientId:
-        '721041824886-1otshq0alnsu8mr5cnrr7i01mklnfar6.apps.googleusercontent.com',
-    iosClientId:
-        '721041824886-77aee81ehgcrff08mo61bf168fgp4a7q.apps.googleusercontent.com',
-    iosBundleId: 'dev.baharudin.salingsapa',
+    androidClientId: '721041824886-1otshq0alnsu8mr5cnrr7i01mklnfar6.apps.googleusercontent.com',
+    iosClientId: '721041824886-km6ghttcsjjbsqq4o2s1mbrcoai6ibvc.apps.googleusercontent.com',
+    iosBundleId: 'dev.baharudin.salingsapa-dev',
   );
+
 }

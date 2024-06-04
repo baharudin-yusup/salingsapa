@@ -67,7 +67,11 @@ class DeleteAccountScreen extends StatelessWidget {
                 uiService.hideLoading();
                 uiService.resetLoading();
 
-                navigatorService.pushReplacementNamed(RootScreen.routeName);
+                navigatorService.pushNamedAndRemoveUntil(
+                  RootScreen.routeName,
+                  (route) => false,
+                  arguments: false,
+                );
               },
             );
           },
