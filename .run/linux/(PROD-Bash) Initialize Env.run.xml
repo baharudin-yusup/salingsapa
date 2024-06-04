@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="(PROD-Bash) Initialize Env" type="ShConfigurationType">
+  <configuration default="false" name="(PROD-Bash) Initialize Env" type="ShConfigurationType" activateToolWindowBeforeRun="false">
     <option name="SCRIPT_TEXT" value="" />
     <option name="INDEPENDENT_SCRIPT_PATH" value="false" />
     <option name="SCRIPT_PATH" value="$PROJECT_DIR$/scripts/initialize-env.sh" />

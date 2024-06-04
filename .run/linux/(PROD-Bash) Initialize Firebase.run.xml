@@ -1,13 +1,13 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="(PROD-PowerShell) Initialize Firebase" type="ShConfigurationType" activateToolWindowBeforeRun="false">
+  <configuration default="false" name="(PROD-Bash) Initialize Firebase" type="ShConfigurationType" activateToolWindowBeforeRun="false">
     <option name="SCRIPT_TEXT" value="" />
     <option name="INDEPENDENT_SCRIPT_PATH" value="false" />
-    <option name="SCRIPT_PATH" value="$PROJECT_DIR$/scripts/initialize-firebase-option.ps1" />
+    <option name="SCRIPT_PATH" value="$PROJECT_DIR$/scripts/initialize-firebase-option.sh" />
     <option name="SCRIPT_OPTIONS" value="" />
     <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="false" />
     <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/scripts" />
     <option name="INDEPENDENT_INTERPRETER_PATH" value="false" />
-    <option name="INTERPRETER_PATH" value="$PROJECT_DIR$/../../../../../../Program Files/PowerShell/7/pwsh.exe" />
+    <option name="INTERPRETER_PATH" value="$PROJECT_DIR$/../../../../../../Program Files/Git/git-bash.exe" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="EXECUTE_IN_TERMINAL" value="false" />
     <option name="EXECUTE_SCRIPT_FILE" value="true" />
