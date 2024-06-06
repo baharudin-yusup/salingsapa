@@ -44,14 +44,14 @@ Widget _buildScreen({
     case SettingScreen.routeName:
       return const SettingScreen();
     case CreateRoomScreen.routeName:
-      final contact = ModalRoute.of(context)!.settings.arguments as Contact;
+      final contact = arguments as Contact;
       return BlocProvider<CreateRoomBloc>(
         create: (_) => CreateRoomBloc(sl(), contact: contact),
         child: const CreateRoomScreen(),
       );
 
     case VideoCallScreen.routeName:
-      final room = ModalRoute.of(context)!.settings.arguments as Room;
+      final room = arguments as Room;
       return MultiBlocProvider(
         providers: [
           BlocProvider<VideoCallBloc>(
