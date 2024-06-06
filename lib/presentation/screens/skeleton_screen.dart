@@ -2,13 +2,11 @@ import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../../core/envs/dev_env_impl.dart';
-import '../../core/envs/env.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/auth_status.dart';
+import '../../env.dart';
 import '../../injection_container.dart';
 import '../blocs/account/account_bloc.dart';
 import '../blocs/authorization/authorization_bloc.dart';
@@ -20,12 +18,13 @@ import '../services/navigator_service.dart';
 import '../services/notification_service.dart';
 import '../services/platform_service.dart';
 import '../services/ui_service.dart';
+import '../utils/app_localizations.dart';
 import '../utils/failure_translation.dart';
 
-void createApp(Env env) {
+void createApp() {
   runApp(
     RootScreen(
-      showDebugBanner: env is DevEnv,
+      showDebugBanner: Env.environment != EnvironmentState.prod,
     ),
   );
 }
@@ -112,14 +111,15 @@ class _RootScreenState extends State<RootScreen> {
           state.map(
             initial: (state) {},
             changeAuthStatusSuccess: (state) {
+              context
+                  .read<SetupBloc>()
+                  .add(const SetupEvent.clearSetupStarted());
+              uiService.resetLoading();
+
               switch (state.status) {
                 case AuthStatus.unknown:
                 case AuthStatus.unauthorized:
                   Logger.print('open setup screen started...');
-                  context
-                      .read<SetupBloc>()
-                      .add(const SetupEvent.clearSetupStarted());
-                  uiService.resetLoading();
                   navigatorService.pushNamedAndRemoveUntil(
                     RootScreen.routeName,
                     (route) => false,
@@ -128,10 +128,6 @@ class _RootScreenState extends State<RootScreen> {
                   break;
                 case AuthStatus.authorized:
                   Logger.print('open home screen started...');
-                  context
-                      .read<SetupBloc>()
-                      .add(const SetupEvent.clearSetupStarted());
-                  uiService.resetLoading();
                   navigatorService.pushNamedAndRemoveUntil(
                     RootScreen.routeName,
                     (route) => false,
@@ -143,6 +139,11 @@ class _RootScreenState extends State<RootScreen> {
             changeAuthStatusFailure: (state) {
               Fluttertoast.showToast(
                   msg: state.failure.code.translate(context));
+              context
+                  .read<SetupBloc>()
+                  .add(const SetupEvent.clearSetupStarted());
+              uiService.resetLoading();
+
               navigatorService.pushNamedAndRemoveUntil(
                   RootScreen.routeName, (route) => false);
             },
@@ -174,7 +175,7 @@ class _RootScreenState extends State<RootScreen> {
                           primaryContrastingColor: colorScheme.onPrimary,
                           applyThemeToAll: true,
                         ),
-                        routes: getRoutes(),
+                        onGenerateRoute: onGenerateRoute,
                       ),
                     ),
                   );
@@ -192,7 +193,7 @@ class _RootScreenState extends State<RootScreen> {
                     supportedLocales: AppLocalizations.supportedLocales,
                     navigatorKey: sl<NavigatorService>().navigatorKey,
                     debugShowCheckedModeBanner: widget.showDebugBanner,
-                    routes: getRoutes(),
+                    onGenerateRoute: onGenerateRoute,
                     theme: ThemeData(
                       colorScheme: lightDynamic,
                       useMaterial3: true,

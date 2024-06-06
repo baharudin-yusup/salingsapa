@@ -20,10 +20,11 @@ packages:
   agora_rtc_engine:
     dependency: "direct main"
     description:
-      name: agora_rtc_engine
-      sha256: "4e620fe6db19ab15f35336b76e1fd61e88b627507e6da8efa2e42ed59ca23b8a"
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: main
+      resolved-ref: "96367bb6b6a085c4ddc2e481cf40520788a4dcda"
+      url: "https://github.com/baharudin-yusup/Agora-Flutter-SDK"
+    source: git
     version: "6.3.1"
   analyzer:
     dependency: transitive
@@ -101,18 +102,18 @@ packages:
     dependency: "direct dev"
     description:
       name: build_runner
-      sha256: "1414d6d733a85d8ad2f1dfcb3ea7945759e35a123cb99ccfac75d0758f75edfa"
+      sha256: "644dc98a0f179b872f612d3eb627924b578897c629788e858157fa5e704ca0c7"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.10"
+    version: "2.4.11"
   build_runner_core:
     dependency: transitive
     description:
       name: build_runner_core
-      sha256: "4ae8ffe5ac758da294ecf1802f2aff01558d8b1b00616aa7538ea9a8a5d50799"
+      sha256: e3c79f69a64bdfcd8a776a3c28db4eb6e3fb5356d013ae5eb2e52007706d5dbe
       url: "https://pub.dev"
     source: hosted
-    version: "7.3.0"
+    version: "7.3.1"
   built_collection:
     dependency: transitive
     description:
@@ -329,6 +330,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.7.0"
+  envied:
+    dependency: "direct main"
+    description:
+      name: envied
+      sha256: bbff9c76120e4dc5e2e36a46690cf0a26feb65e7765633f4e8d916bcd173a450
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.4+1"
+  envied_generator:
+    dependency: "direct dev"
+    description:
+      name: envied_generator
+      sha256: "517b70de08d13dcd40e97b4e5347e216a0b1c75c99e704f3c85c0474a392d14a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.4+1"
   equatable:
     dependency: "direct main"
     description:
@@ -485,10 +502,10 @@ packages:
     dependency: transitive
     description:
       name: firebase_core_web
-      sha256: "43d9e951ac52b87ae9cc38ecdcca1e8fa7b52a1dd26a96085ba41ce5108db8e9"
+      sha256: "22fcb352744908224fc7be3caae254836099786acfe5df6e9fe901e9c2575a41"
       url: "https://pub.dev"
     source: hosted
-    version: "2.17.0"
+    version: "2.17.1"
   firebase_messaging:
     dependency: "direct main"
     description:
@@ -590,6 +607,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.3.2"
+  flutter_callkit_incoming:
+    dependency: "direct main"
+    description:
+      name: flutter_callkit_incoming
+      sha256: "911978c1db30d2cf886daf80c874ac0beac8482682769b397c0dc3190f3f6cef"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.4+1"
   flutter_contacts:
     dependency: "direct main"
     description:
@@ -878,12 +903,13 @@ packages:
     source: hosted
     version: "1.0.4"
   iris_method_channel:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: iris_method_channel
-      sha256: "131d0a40ba646ba8fd4bf76e24d4ebd4aa3174ee39aa5fe8240c3b827979052c"
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: main
+      resolved-ref: "5dd3a4b4d4f1eaba62845fc422f339e303520f5c"
+      url: "https://github.com/baharudin-yusup/iris_method_channel_flutter"
+    source: git
     version: "2.1.1"
   js:
     dependency: transitive
@@ -1105,10 +1131,10 @@ packages:
     dependency: transitive
     description:
       name: permission_handler_apple
-      sha256: e9ad66020b89ff1b63908f247c2c6f931c6e62699b756ef8b3c4569350cd8662
+      sha256: e6f6d73b12438ef13e648c4ae56bd106ec60d17e90a59c4545db6781229082a0
       url: "https://pub.dev"
     source: hosted
-    version: "9.4.4"
+    version: "9.4.5"
   permission_handler_html:
     dependency: transitive
     description:
@@ -1189,6 +1215,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.0"
+  recase:
+    dependency: transitive
+    description:
+      name: recase
+      sha256: e4eb4ec2dcdee52dcf99cb4ceabaffc631d7424ee55e56f280bc039737f89213
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.0"
   rxdart:
     dependency: "direct main"
     description:
@@ -1351,8 +1385,8 @@ packages:
     description:
       path: "."
       ref: master
-      resolved-ref: "3e78c65d3d6ffd923d455a983889d7231a61b000"
-      url: "https://github.com/baharudin-yusup/flutter_tflite.git"
+      resolved-ref: e58e59b6baaa0895a63f69157b4c1b087893f295
+      url: "https://github.com/baharudin-yusup/flutter_tflite"
     source: git
     version: "1.1.2"
   timezone:

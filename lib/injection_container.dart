@@ -12,7 +12,6 @@ import 'package:rxdart/rxdart.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:uuid/uuid.dart';
 
-import 'core/envs/env.dart';
 import 'data/plugins/network_plugin.dart';
 import 'data/plugins/sign_language_recognition_plugin.dart';
 import 'data/plugins/speech_recognition_plugin.dart';
@@ -95,6 +94,7 @@ import 'domain/usecases/update_profile_picture.dart';
 import 'domain/usecases/upload_caption.dart';
 import 'domain/usecases/verify_otp.dart';
 import 'domain/usecases/verify_phone_number.dart';
+import 'env.dart';
 import 'presentation/blocs/account/account_bloc.dart';
 import 'presentation/blocs/authorization/authorization_bloc.dart';
 import 'presentation/blocs/contact_list/contact_list_bloc.dart';
@@ -114,7 +114,7 @@ final sl = GetIt.instance;
 
 bool _isInitialized = false;
 
-Future<void> setup(Env env) async {
+Future<void> setup() async {
   if (_isInitialized) {
     return;
   } else {
@@ -259,7 +259,7 @@ Future<void> setup(Env env) async {
       () => SignLanguageRecognitionPluginImpl(sl()));
   sl.registerLazySingleton<ApiService>(() => ApiServiceImpl(sl()));
   sl.registerLazySingleton<NetworkPlugin>(
-      () => NetworkPluginImpl(sl(), env.baseUrl));
+      () => NetworkPluginImpl(sl(), Env.baseUrl));
 
   /// External plugin
   final auth = FirebaseAuth.instance;
@@ -275,7 +275,7 @@ Future<void> setup(Env env) async {
   sl.registerLazySingleton(() => secureStorage);
   // sl.registerLazySingleton(() => FirebaseMessaging.instance);
   // sl.registerLazySingleton(() => FlutterLocalNotificationsPlugin());
-  sl.registerLazySingleton(() => env);
+  sl.registerLazySingleton<EnvironmentState>(() => Env.environment);
   sl.registerLazySingleton(() => auth);
   sl.registerLazySingleton(() => firestore);
   sl.registerLazySingleton(() => storage);

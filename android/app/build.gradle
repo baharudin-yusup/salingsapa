@@ -32,8 +32,8 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    compileSdkVersion flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    compileSdkVersion 34
+    ndkVersion "26.1.10909125"
 
     compileOptions {
         // Flag to enable support for the new language APIs
@@ -53,8 +53,8 @@ android {
 
     defaultConfig {
         applicationId "dev.baharudin.salingsapa"
-        minSdkVersion 28
-        targetSdkVersion flutter.targetSdkVersion
+        minSdkVersion 24
+        targetSdkVersion 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
 
@@ -97,7 +97,6 @@ android {
         }
     }
 
-
     buildTypes {
         release {
             signingConfig signingConfigs.release
@@ -108,6 +107,7 @@ android {
         noCompress 'tflite'
         noCompress 'lite'
     }
+    namespace 'dev.baharudin.salingsapa'
 }
 
 flutter {
@@ -115,7 +115,7 @@ flutter {
 }
 
 dependencies {
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
-    implementation 'androidx.window:window:1.0.0'
-    implementation 'androidx.window:window-java:1.0.0'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
+    implementation 'androidx.window:window:1.3.0'
+    implementation 'androidx.window:window-java:1.3.0'
 }

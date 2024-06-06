@@ -1,14 +1,21 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import '../../core/errors/failures.dart';
 import '../../core/utils/logger.dart';
+import '../../firebase_options.dart';
 
 @pragma('vm:entry-point')
 Future<void> handleBackgroundNotification(RemoteMessage message) async {
+  try {
+    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  } catch (error) {
+    Logger.error(error, event: 'initializing firebase');
+  }
   Logger.print('Handling a background message');
   Logger.print('Message data: ${message.data}');
   Logger.print('Notification data: ${message.notification?.toMap()}');
