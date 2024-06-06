@@ -2,21 +2,24 @@ name: salingsapa
 description: A Final Exam Project
 publish_to: 'none'
 
-version: 0.9.6+3
+version: 0.10.0+3
 
 environment:
-  sdk: '>=2.19.2 <3.0.0'
+  sdk: '>=3.4.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
   cupertino_icons: ^1.0.2
   equatable: ^2.0.5
   dartz: ^0.10.1
   firebase_core: ^2.5.0
   firebase_analytics: ^10.1.1
   firebase_auth: ^4.2.6
-  firebase_messaging: ^14.2.2
+  firebase_messaging: ^14.9.4
   firebase_remote_config: ^4.2.2
   cloud_firestore: ^4.3.2
   firebase_app_check: ^0.2.0+1
@@ -32,10 +35,10 @@ dependencies:
   dynamic_color: ^1.6.2
   flutter_contacts: ^1.1.6
   permission_handler: ^11.0.1
-  flutter_localizations:
-    sdk: flutter
-  intl: any
-  agora_rtc_engine: ^6.2.6
+  agora_rtc_engine:
+    git:
+      url: https://github.com/baharudin-yusup/Agora-Flutter-SDK
+      ref: main
   uuid: ^4.1.0
   firebase_storage: ^11.0.16
   image_picker: ^1.0.4
@@ -46,7 +49,7 @@ dependencies:
   speech_to_text: ^6.1.1
   tflite:
     git:
-      url: https://github.com/baharudin-yusup/flutter_tflite.git
+      url: https://github.com/baharudin-yusup/flutter_tflite
       ref: master
   path_provider: ^2.1.2
   dio: ^5.4.0
@@ -54,13 +57,22 @@ dependencies:
   flutter_markdown: ^0.7.1
   modal_bottom_sheet: ^3.0.0-pre
   url_launcher: ^6.2.4
+  flutter_callkit_incoming: ^2.0.4+1
+  envied: ^0.5.4+1
+
+dependency_overrides:
+  iris_method_channel:
+    git:
+      url: https://github.com/baharudin-yusup/iris_method_channel_flutter
+      ref: main
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.1
-  build_runner: ^2.3.3
+  build_runner: ^2.4.10
   json_serializable: ^6.6.1
+  envied_generator: ^0.5.4+1
 
 flutter:
   generate: true

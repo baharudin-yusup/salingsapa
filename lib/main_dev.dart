@@ -3,8 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/widgets.dart';
 
-import 'core/envs/dev_env_impl.dart';
-import 'firebase_options_dev.dart';
+import 'firebase_options.dart';
 import 'injection_container.dart' as di;
 import 'presentation/screens/skeleton_screen.dart';
 import 'presentation/services/notification_service.dart';
@@ -22,7 +21,6 @@ Future<void> main() async {
   );
   FirebaseMessaging.onBackgroundMessage(handleBackgroundNotification);
 
-  final env = DevEnv();
-  await di.setup(env);
-  createApp(env);
+  await di.setup();
+  createApp();
 }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/errors/failures.dart';
+import '../../../core/utils/logger.dart';
 import '../../../domain/entities/contact.dart';
 import '../../../injection_container.dart';
 import '../../blocs/contact_list/contact_list_bloc.dart';
@@ -57,6 +58,7 @@ class _ContactListScreenState extends State<ContactListScreen>
           orElse: () {},
           startVideoCallSuccess: (state) {
             final NavigatorService navigatorService = sl();
+            Logger.print('Selected contact: ${state.selectedContact.toString()}');
             navigatorService.pushNamed(
               CreateRoomScreen.routeName,
               arguments: state.selectedContact,

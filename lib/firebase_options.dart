@@ -63,9 +63,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '721041824886',
     projectId: 'salingsapa-project',
     storageBucket: 'salingsapa-project.appspot.com',
-    androidClientId: '721041824886-1otshq0alnsu8mr5cnrr7i01mklnfar6.apps.googleusercontent.com',
-    iosClientId: '721041824886-77aee81ehgcrff08mo61bf168fgp4a7q.apps.googleusercontent.com',
+    androidClientId:
+        '721041824886-1otshq0alnsu8mr5cnrr7i01mklnfar6.apps.googleusercontent.com',
+    iosClientId:
+        '721041824886-77aee81ehgcrff08mo61bf168fgp4a7q.apps.googleusercontent.com',
     iosBundleId: 'dev.baharudin.salingsapa',
   );
-
 }

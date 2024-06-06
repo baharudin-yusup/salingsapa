@@ -46,3 +46,7 @@ app.*.map.json
 # FVM configuration
 .fvm/
 .fvmrc
+
+/.env
+
+*.g.dart
