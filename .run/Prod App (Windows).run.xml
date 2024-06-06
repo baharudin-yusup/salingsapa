@@ -3,9 +3,9 @@
     <option name="buildFlavor" value="prod" />
     <option name="filePath" value="$PROJECT_DIR$/lib/main_prod.dart" />
     <method v="2">
-      <option name="RunConfigurationTask" enabled="false" run_configuration_name="(PowerShell) Initialize Env" run_configuration_type="ShConfigurationType" />
-      <option name="RunConfigurationTask" enabled="true" run_configuration_name="(PowerShell) Initialize Firebase Option" run_configuration_type="ShConfigurationType" />
-      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Run Build Runner" run_configuration_type="ShConfigurationType" />
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="(PROD-PS) Initialize Env" run_configuration_type="ShConfigurationType" />
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="(PROD-PS) Initialize Firebase" run_configuration_type="ShConfigurationType" />
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Build Runner" run_configuration_type="ShConfigurationType" />
       <option name="RunConfigurationTask" enabled="true" run_configuration_name="Get Packages" run_configuration_type="ShConfigurationType" />
     </method>
   </configuration>
