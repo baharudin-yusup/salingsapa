@@ -35,7 +35,10 @@ dependencies:
   dynamic_color: ^1.6.2
   flutter_contacts: ^1.1.6
   permission_handler: ^11.0.1
-  agora_rtc_engine: ^6.2.6
+  agora_rtc_engine:
+    git:
+      url: https://github.com/baharudin-yusup/Agora-Flutter-SDK
+      ref: main
   uuid: ^4.1.0
   firebase_storage: ^11.0.16
   image_picker: ^1.0.4
@@ -46,7 +49,7 @@ dependencies:
   speech_to_text: ^6.1.1
   tflite:
     git:
-      url: https://github.com/baharudin-yusup/flutter_tflite.git
+      url: https://github.com/baharudin-yusup/flutter_tflite
       ref: master
   path_provider: ^2.1.2
   dio: ^5.4.0
@@ -56,6 +59,12 @@ dependencies:
   url_launcher: ^6.2.4
   flutter_callkit_incoming: ^2.0.4+1
   envied: ^0.5.4+1
+
+dependency_overrides:
+  iris_method_channel:
+    git:
+      url: https://github.com/baharudin-yusup/iris_method_channel_flutter
+      ref: main
 
 dev_dependencies:
   flutter_test:
