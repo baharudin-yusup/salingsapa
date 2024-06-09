@@ -48,7 +48,7 @@ class CaptionRemoteDataSourceImpl implements CaptionRemoteDataSource {
   @override
   Future<void> init(String roomId) async {
     final roomQuerySnapshot = await _firestore
-        .collection(FirestoreRoomConstant.roomCollectionName)
+        .collection(FirestoreRoomConstant.collectionName)
         .where(FirestoreRoomConstant.roomId, isEqualTo: roomId)
         .get();
 

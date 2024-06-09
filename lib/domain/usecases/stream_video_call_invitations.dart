@@ -14,6 +14,6 @@ class StreamVideoCallInvitations extends NoParamUseCaseStreamSync<List<Invitatio
   @override
   Stream<Either<Failure, List<Invitation>>> call() {
     Logger.print('(usecase) get stream video call invitations started...');
-    return _repository.rooms;
+    return _repository.invitations;
   }
 }

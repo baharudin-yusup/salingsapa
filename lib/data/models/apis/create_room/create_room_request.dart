@@ -5,10 +5,10 @@ part 'create_room_request.g.dart';
 
 @JsonSerializable()
 class CreateRoomRequest extends Equatable {
-  final List<String> phoneNumbers;
+  final List<String> invitedPhoneNumbers;
 
   const CreateRoomRequest({
-    required this.phoneNumbers,
+    required this.invitedPhoneNumbers,
   });
 
   factory CreateRoomRequest.fromJson(Map<String, dynamic> json) =>
@@ -17,5 +17,5 @@ class CreateRoomRequest extends Equatable {
   Map<String, dynamic> toJson() => _$CreateRoomRequestToJson(this);
 
   @override
-  List<Object?> get props => [phoneNumbers];
+  List<Object?> get props => [invitedPhoneNumbers];
 }

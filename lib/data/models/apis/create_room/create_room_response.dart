@@ -1,12 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../room_model.dart';
-import 'base_api_response.dart';
+import '../../room_model.dart';
+import '../base_api_response.dart';
 
 part 'create_room_response.g.dart';
 
-@JsonSerializable()
-class CreateRoomResponse extends BaseApiResponse<CreateRoomResponseData> {
+@JsonSerializable(explicitToJson: true)
+class CreateRoomResponse extends BaseApiResponseWithData<CreateRoomResponseData> {
   const CreateRoomResponse({
     required super.message,
     required super.data,
@@ -15,10 +15,11 @@ class CreateRoomResponse extends BaseApiResponse<CreateRoomResponseData> {
   factory CreateRoomResponse.fromJson(Map<String, dynamic> json) =>
       _$CreateRoomResponseFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$CreateRoomResponseToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class CreateRoomResponseData {
   final RoomModel room;
 

@@ -1,11 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'base_api_response.dart';
+import '../../base_api_response.dart';
 
 part 'join_room_response.g.dart';
 
-@JsonSerializable()
-class JoinRoomResponse extends BaseApiResponse<JoinRoomResponseData> {
+@JsonSerializable(explicitToJson: true)
+class JoinRoomResponse extends BaseApiResponseWithData<JoinRoomResponseData> {
   const JoinRoomResponse({
     required super.message,
     required super.data,
@@ -14,6 +14,7 @@ class JoinRoomResponse extends BaseApiResponse<JoinRoomResponseData> {
   factory JoinRoomResponse.fromJson(Map<String, dynamic> json) =>
       _$JoinRoomResponseFromJson(json);
 
+  @override
   Map<String, dynamic> toJson() => _$JoinRoomResponseToJson(this);
 }
 

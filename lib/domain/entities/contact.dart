@@ -1,9 +1,11 @@
 import 'package:equatable/equatable.dart';
 
+import 'phone_number.dart';
+
 class Contact extends Equatable {
   final String? profilePictureUrl;
   final String name;
-  final String phoneNumber;
+  final PhoneNumber phoneNumber;
   final bool isRegistered;
 
   const Contact({
@@ -20,4 +22,9 @@ class Contact extends Equatable {
         profilePictureUrl,
         isRegistered,
       ];
+
+  @override
+  String toString() {
+    return '${phoneNumber.raw} ($name)';
+  }
 }

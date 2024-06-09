@@ -13,6 +13,7 @@ import 'package:speech_to_text/speech_to_text.dart';
 import 'package:uuid/uuid.dart';
 
 import 'data/plugins/network_plugin.dart';
+import 'data/plugins/phone_number_formatter_plugin.dart';
 import 'data/plugins/sign_language_recognition_plugin.dart';
 import 'data/plugins/speech_recognition_plugin.dart';
 import 'data/repositories/authentication_repository_impl.dart';
@@ -45,6 +46,7 @@ import 'domain/repositories/sign_language_recognition_repository.dart';
 import 'domain/repositories/speech_recognition_repository.dart';
 import 'domain/repositories/user_repository.dart';
 import 'domain/repositories/video_call_repository.dart';
+import 'domain/usecases/accept_invitation.dart';
 import 'domain/usecases/authorization_status.dart';
 import 'domain/usecases/close_sign_language_recognition.dart';
 import 'domain/usecases/create_room.dart';
@@ -65,6 +67,7 @@ import 'domain/usecases/get_current_user.dart';
 import 'domain/usecases/get_recent_call.dart';
 import 'domain/usecases/has_permission.dart';
 import 'domain/usecases/init_caption.dart';
+import 'domain/usecases/init_contact.dart';
 import 'domain/usecases/init_sign_language_recognition.dart';
 import 'domain/usecases/init_speech_recognition.dart';
 import 'domain/usecases/init_video_call.dart';
@@ -129,7 +132,7 @@ Future<void> setup() async {
   sl.registerLazySingleton<UiService>(() => UiServiceImpl(sl(), sl()));
 
   /// Standard BLoC
-  sl.registerFactory(() => RecentCallBloc(sl(), sl(), sl()));
+  sl.registerFactory(() => RecentCallBloc(sl(), sl(), sl(), sl()));
   sl.registerFactory(() => VideoCallControlBloc(sl(), sl(), sl()));
   sl.registerFactory(() => VideoCallCaptionBloc(sl(), sl(), sl(), sl(), sl()));
   sl.registerFactory(() => SignLanguageRecognitionBloc(
@@ -140,7 +143,7 @@ Future<void> setup() async {
   /// Singleton BLoC
   sl.registerLazySingleton(() => AuthorizationBloc(sl(), sl()));
   sl.registerFactory(() => SetupBloc(sl(), sl(), sl()));
-  sl.registerLazySingleton(() => ContactListBloc(sl(), sl(), sl(), sl()));
+  sl.registerLazySingleton(() => ContactListBloc(sl(), sl(), sl(), sl(), sl()));
   sl.registerLazySingleton(
       () => AccountBloc(sl(), sl(), sl(), sl(), sl(), sl()));
 
@@ -202,10 +205,16 @@ Future<void> setup() async {
   sl.registerLazySingleton(() => StreamSpeechRecognitionResult(sl()));
   sl.registerLazySingleton(() => StreamSpeechRecognitionStatus(sl()));
 
+  /// Contact use cases
+  sl.registerLazySingleton(() => InitContact(sl()));
+
   // Open external link use case
   sl.registerLazySingleton(() => GetPrivacyPolicyContent(sl()));
   sl.registerLazySingleton(() => GetTermsAndConditionContent(sl()));
   sl.registerLazySingleton(() => GetSupportContent(sl()));
+
+  /// Invitation use cases
+  sl.registerLazySingleton(() => AcceptInvitation(sl()));
 
   /// Repositories
   sl.registerLazySingleton<AuthenticationRepository>(
@@ -232,7 +241,7 @@ Future<void> setup() async {
   sl.registerLazySingleton<AuthenticationRemoteDatSource>(
       () => AuthenticationRemoteDatSourceImpl(sl(), sl(), sl()));
   sl.registerLazySingleton<ContactLocalDataSource>(
-      () => ContactLocalDataSourceImpl());
+      () => ContactLocalDataSourceImpl(sl()));
   sl.registerLazySingleton<SettingLocalDataSource>(
       () => SettingLocalDataSourceImpl(sl()));
   sl.registerLazySingleton<UserRemoteDataSource>(
@@ -260,6 +269,8 @@ Future<void> setup() async {
   sl.registerLazySingleton<ApiService>(() => ApiServiceImpl(sl()));
   sl.registerLazySingleton<NetworkPlugin>(
       () => NetworkPluginImpl(sl(), Env.baseUrl));
+  sl.registerLazySingleton<PhoneNumberFormatterPlugin>(
+      () => PhoneNumberFormatterPluginImpl());
 
   /// External plugin
   final auth = FirebaseAuth.instance;
