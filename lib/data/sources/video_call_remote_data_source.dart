@@ -13,12 +13,11 @@ import 'package:uuid/uuid.dart';
 import '../../core/errors/exceptions.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/contact.dart';
-import '../../domain/entities/invitation.dart';
 import '../../domain/entities/video_call_status.dart';
 import '../../domain/entities/video_call_user_update_info.dart';
 import '../constants/firestore_constant.dart';
-import '../extensions/extensions.dart';
-import '../models/apis/create_room_request.dart';
+import '../models/apis/create_room/create_room_request.dart';
+import '../models/invitation_model.dart';
 import '../models/room_model.dart';
 import '../models/video_frame_model.dart';
 import 'api_service.dart';
@@ -38,6 +37,10 @@ abstract class VideoCallRemoteDataSource {
 
   Future<void> leaveRoom(String roomId);
 
+  Future<RoomModel> acceptInvitation(String invitationId);
+
+  Future<void> rejectInvitation(String invitationId);
+
   Future<String> getAppId();
 
   Future<void> flipCamera();
@@ -54,7 +57,7 @@ abstract class VideoCallRemoteDataSource {
 
   Stream<PhotoSnapshotModel> get photoSnapshot;
 
-  Stream<List<Invitation>> get rooms;
+  Stream<List<InvitationModel>> get invitations;
 
   RtcEngine? get engine;
 }
@@ -163,8 +166,8 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
   @override
   Future<RoomModel> createRoom(Contact contact) async {
     // Create room and generate token
-    final request = CreateRoomRequest(phoneNumbers: [
-      contact.phoneNumber.toFormattedPhoneNumber(),
+    final request = CreateRoomRequest(invitedPhoneNumbers: [
+      contact.phoneNumber.raw,
     ]);
     final response = await _apiService.createRoom(request);
     return response.data.room;
@@ -227,30 +230,24 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
   RtcEngine? get engine => _engine;
 
   @override
-  Stream<List<Invitation>> get rooms {
-    final user = _auth.currentUser;
+  Stream<List<InvitationModel>> get invitations {
+    final fbAuthUser = _auth.currentUser;
 
-    if (user == null) {
+    if (fbAuthUser == null) {
+      Logger.print('Current user is not logged in');
       return const Stream.empty();
     }
 
-    final phoneNumber = user.phoneNumber!.toFormattedPhoneNumber();
-    return _roomCollection
-        .where(FirestoreRoomConstant.invitedPhoneNumbers,
-            arrayContains: phoneNumber)
-        .orderBy(FirestoreConstant.createdAtKey, descending: true)
+    return _invitationsCollection
+        .where(FirestoreInvitationConstant.receiverUserId,
+            isEqualTo: fbAuthUser.uid)
+        .orderBy(FirestoreGeneralConstant.updatedAtKey, descending: true)
         .snapshots()
         .map((snapshot) {
-      // TODO: Fix this
-      final invitations = <Invitation>[];
+      final invitations = <InvitationModel>[];
       for (var doc in snapshot.docs) {
         try {
-          final room = RoomModel.fromFirebase(doc.data());
-          invitations.add(Invitation(
-            room: room.toEntity(),
-            callerContact: null,
-            shouldPlayRingtone: room.hostId != user.uid,
-          ));
+          invitations.add(InvitationModel.fromJson(doc.data()));
         } catch (error) {
           Logger.error(error, event: 'mapping video call rooms. data: $json');
         }
@@ -294,8 +291,8 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
     }
   }
 
-  CollectionReference<Map<String, dynamic>> get _roomCollection =>
-      _firestore.collection('rooms');
+  CollectionReference<Map<String, dynamic>> get _invitationsCollection =>
+      _firestore.collection(FirestoreInvitationConstant.collectionName);
 
   @override
   void setEngine(RtcEngine engine) => _rtcEngine = engine;
@@ -364,4 +361,14 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
   @override
   Stream<PhotoSnapshotModel> get photoSnapshot =>
       _photoSnapshotController.stream;
+
+  @override
+  Future<RoomModel> acceptInvitation(String invitationId) async {
+    return (await _apiService.acceptInvitation(invitationId)).data.room;
+  }
+
+  @override
+  Future<void> rejectInvitation(String invitationId) async {
+    await _apiService.rejectInvitation(invitationId);
+  }
 }

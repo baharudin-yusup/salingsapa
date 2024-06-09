@@ -11,6 +11,7 @@ import '../../domain/entities/room.dart';
 import '../../domain/entities/video_call_user_update_info.dart';
 import '../../domain/entities/video_frame.dart';
 import '../../domain/repositories/video_call_repository.dart';
+import '../models/invitation_model.dart';
 import '../models/room_model.dart';
 import '../sources/video_call_local_data_source.dart';
 import '../sources/video_call_remote_data_source.dart';
@@ -105,6 +106,11 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
 
   @override
   Future<RepoResponse<Unit>> leaveRoom({required Room room}) async {
+    if (!_isInitialized) {
+      Logger.print('Already leave room, no need redo');
+      return const Right(unit);
+    }
+
     try {
       _localDataSource.removeObserver();
     } catch (_) {
@@ -132,10 +138,9 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
   }
 
   @override
-  Stream<RepoResponse<List<Invitation>>> get rooms =>
-      _remoteDataSource.rooms.map((invitations) =>
-          // TODO: Fix this
-          Right(invitations));
+  Stream<RepoResponse<List<Invitation>>> get invitations =>
+      _remoteDataSource.invitations.map((invitations) => Right(
+          invitations.map((invitation) => invitation.toEntity()).toList()));
 
   @override
   Future<RepoResponse<Unit>> flipCamera() async {
@@ -215,4 +220,39 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
   @override
   Stream<RepoResponse<PhotoSnapshot>> get photoSnapshot =>
       _remoteDataSource.photoSnapshot.map((model) => Right(model.toEntity()));
+
+  @override
+  Future<RepoResponse<Room>> acceptInvitation({
+    required Invitation invitation,
+  }) async {
+    try {
+      final model =
+          await _remoteDataSource.acceptInvitation(invitation.invitationId);
+      return Right(model.toEntity());
+    } catch (error) {
+      Logger.error(
+        error,
+        event: 'accepting invitation',
+        name: _tagName,
+      );
+      return Left(UnknownFailure(createdAt: DateTime.now()));
+    }
+  }
+
+  @override
+  Future<RepoResponse<Unit>> rejectInvitation({
+    required Invitation invitation,
+  }) async {
+    try {
+      await _remoteDataSource.rejectInvitation(invitation.invitationId);
+      return const Right(unit);
+    } catch (error) {
+      Logger.error(
+        error,
+        event: 'rejecting invitation',
+        name: _tagName,
+      );
+      return Left(UnknownFailure(createdAt: DateTime.now()));
+    }
+  }
 }

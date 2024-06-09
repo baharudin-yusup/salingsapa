@@ -18,6 +18,12 @@ abstract class NetworkPlugin {
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? body,
   });
+
+  Future<Response> put({
+    required String path,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? body,
+  });
 }
 
 class NetworkPluginImpl implements NetworkPlugin {
@@ -69,7 +75,32 @@ class NetworkPluginImpl implements NetworkPlugin {
   }
 
   @override
+  Future<Response> put({
+    required String path,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? body,
+  }) async {
+    try {
+      final response = await _dio.put(
+        path,
+        queryParameters: queryParameters,
+        data: body,
+      );
+
+      if (response.statusCode != null && response.statusCode! < 300) {
+        Logger.print(response.data, name: 'NetworkPlugin');
+        return response;
+      }
+
+      throw ApiServerException.fromJson(response.data);
+    } catch (error) {
+      rethrow;
+    }
+  }
+
+  @override
   void setAuthToken(String? authorization) {
+    Logger.print('Set Authorization token: $authorization');
     if (authorization == null) {
       _dio.options.headers.remove(HttpHeaders.authorizationHeader);
       return;

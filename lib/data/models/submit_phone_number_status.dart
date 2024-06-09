@@ -1,4 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
+
+import 'user_model.dart';
 
 abstract class SubmitPhoneNumberStatus {
   final String phoneNumber;
@@ -26,7 +28,7 @@ class CodeSent extends SubmitPhoneNumberStatus {
 }
 
 class SubmitPhoneNumberError extends SubmitPhoneNumberStatus {
-  final FirebaseAuthException? exception;
+  final auth.FirebaseAuthException? exception;
 
   SubmitPhoneNumberError(this.exception, {required super.phoneNumber});
 
@@ -37,7 +39,7 @@ class SubmitPhoneNumberError extends SubmitPhoneNumberStatus {
 }
 
 class AutoSignIn extends SubmitPhoneNumberStatus {
-  final User user;
+  final UserModel user;
 
   AutoSignIn(this.user, {required super.phoneNumber});
 

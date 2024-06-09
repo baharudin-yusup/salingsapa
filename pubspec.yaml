@@ -59,6 +59,8 @@ dependencies:
   url_launcher: ^6.2.4
   flutter_callkit_incoming: ^2.0.4+1
   envied: ^0.5.4+1
+  country_codes: ^3.1.0+2
+  flutter_libphonenumber: ^2.2.2
 
 dependency_overrides:
   iris_method_channel:

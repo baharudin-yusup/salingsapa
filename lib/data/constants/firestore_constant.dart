@@ -4,10 +4,14 @@ class FirestoreConstant {
   static const guestPhoneNumberKey = 'guestPhoneNumber';
 }
 
+class FirestoreGeneralConstant {
+  static const createdAtKey = 'createdAt';
+  static const updatedAtKey = 'updatedAt';
+}
+
 class FirestoreRoomConstant {
-  static const roomCollectionName = 'rooms';
+  static const collectionName = 'rooms';
   static const roomId = 'roomId';
-  static const invitedPhoneNumbers = 'invitedPhoneNumbers';
 }
 
 class FirestoreCaptionConstant {
@@ -19,4 +23,9 @@ class FirestoreCaptionConstant {
 class FirestoreUserConstant {
   static const userCollectionName = 'users';
   static const userId = 'userId';
+}
+
+class FirestoreInvitationConstant {
+  static const collectionName = 'invitations';
+  static const receiverUserId = 'receiverUserId';
 }

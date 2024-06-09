@@ -17,6 +17,10 @@ abstract class VideoCallRepository {
 
   Future<RepoResponse<Unit>> leaveRoom({required Room room});
 
+  Future<RepoResponse<Room>> acceptInvitation({required Invitation invitation});
+
+  Future<RepoResponse<Unit>> rejectInvitation({required Invitation invitation});
+
   Future<RepoResponse<Unit>> flipCamera();
 
   Future<RepoResponse<Unit>> muteAudio({required bool isMuted});
@@ -25,7 +29,7 @@ abstract class VideoCallRepository {
 
   Stream<RepoResponse<VideoCallUserUpdateInfo>> get videoCallStatus;
 
-  Stream<RepoResponse<List<Invitation>>> get rooms;
+  Stream<RepoResponse<List<Invitation>>> get invitations;
 
   RepoResponse<RtcEngine> get engine;
 
