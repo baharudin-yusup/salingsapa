@@ -1002,6 +1002,9 @@ PODS:
     - Firebase/Firestore (= 10.25.0)
     - firebase_core
     - Flutter
+  - country_codes (0.0.1):
+    - Flutter
+  - CryptoSwift (1.8.2)
   - Firebase/Analytics (10.25.0):
     - Firebase/Core
   - Firebase/Auth (10.25.0):
@@ -1148,8 +1151,14 @@ PODS:
     - GoogleUtilities/Environment (~> 7.12)
     - GTMSessionFetcher/Core (< 4.0, >= 2.1)
   - Flutter (1.0.0)
+  - flutter_callkit_incoming (0.0.1):
+    - CryptoSwift
+    - Flutter
   - flutter_contacts (0.0.1):
     - Flutter
+  - flutter_libphonenumber_ios (1.1.4):
+    - Flutter
+    - PhoneNumberKit/PhoneNumberKitCore (= 3.7.9)
   - flutter_local_notifications (0.0.1):
     - Flutter
   - flutter_ringtone_player (0.0.1):
@@ -1305,6 +1314,7 @@ PODS:
     - FlutterMacOS
   - permission_handler_apple (9.3.0):
     - Flutter
+  - PhoneNumberKit/PhoneNumberKitCore (3.7.9)
   - PromisesObjC (2.4.0)
   - RecaptchaInterop (100.0.0)
   - speech_to_text (0.0.1):
@@ -1326,6 +1336,7 @@ DEPENDENCIES:
   - agora_rtc_engine (from `.symlinks/plugins/agora_rtc_engine/ios`)
   - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
+  - country_codes (from `.symlinks/plugins/country_codes/ios`)
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
   - firebase_app_check (from `.symlinks/plugins/firebase_app_check/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
@@ -1334,7 +1345,9 @@ DEPENDENCIES:
   - firebase_remote_config (from `.symlinks/plugins/firebase_remote_config/ios`)
   - firebase_storage (from `.symlinks/plugins/firebase_storage/ios`)
   - Flutter (from `Flutter`)
+  - flutter_callkit_incoming (from `.symlinks/plugins/flutter_callkit_incoming/ios`)
   - flutter_contacts (from `.symlinks/plugins/flutter_contacts/ios`)
+  - flutter_libphonenumber_ios (from `.symlinks/plugins/flutter_libphonenumber_ios/ios`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
   - flutter_ringtone_player (from `.symlinks/plugins/flutter_ringtone_player/ios`)
   - flutter_secure_storage (from `.symlinks/plugins/flutter_secure_storage/ios`)
@@ -1356,6 +1369,7 @@ SPEC REPOS:
     - AgoraRtcEngine_iOS
     - AppCheckCore
     - BoringSSL-GRPC
+    - CryptoSwift
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
@@ -1382,6 +1396,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - PhoneNumberKit
     - PromisesObjC
     - RecaptchaInterop
     - TensorFlowLiteC
@@ -1395,6 +1410,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/camera_avfoundation/ios"
   cloud_firestore:
     :path: ".symlinks/plugins/cloud_firestore/ios"
+  country_codes:
+    :path: ".symlinks/plugins/country_codes/ios"
   firebase_analytics:
     :path: ".symlinks/plugins/firebase_analytics/ios"
   firebase_app_check:
@@ -1411,8 +1428,12 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_storage/ios"
   Flutter:
     :path: Flutter
+  flutter_callkit_incoming:
+    :path: ".symlinks/plugins/flutter_callkit_incoming/ios"
   flutter_contacts:
     :path: ".symlinks/plugins/flutter_contacts/ios"
+  flutter_libphonenumber_ios:
+    :path: ".symlinks/plugins/flutter_libphonenumber_ios/ios"
   flutter_local_notifications:
     :path: ".symlinks/plugins/flutter_local_notifications/ios"
   flutter_ringtone_player:
@@ -1447,6 +1468,8 @@ SPEC CHECKSUMS:
   BoringSSL-GRPC: 1e2348957acdbcad360b80a264a90799984b2ba6
   camera_avfoundation: 759172d1a77ae7be0de08fc104cfb79738b8a59e
   cloud_firestore: 003d53b6b8b392600b7769acf9421cc4f23e5911
+  country_codes: b0900f46ad686281d5dab438e354e44ad10f5941
+  CryptoSwift: c63a805d8bb5e5538e88af4e44bb537776af11ea
   Firebase: 0312a2352584f782ea56f66d91606891d4607f06
   firebase_analytics: cc06e24d6a2343c44f845b3112143db72d10ef78
   firebase_app_check: 717089a2df93747620263dd6c8e444bde5699b7e
@@ -1473,7 +1496,9 @@ SPEC CHECKSUMS:
   FirebaseSharedSwift: a03fe7a59ee646fef71099a887f774fe25d745b8
   FirebaseStorage: 44f4e25073f6fa0d4d8c09f5bec299ee9e4eb985
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  flutter_callkit_incoming: 417dd1b46541cdd5d855ad795ccbe97d1c18155e
   flutter_contacts: edb1c5ce76aa433e20e6cb14c615f4c0b66e0983
+  flutter_libphonenumber_ios: eb22e6f6e97c9604805f00bff961ca397071dfdc
   flutter_local_notifications: 4cde75091f6327eb8517fa068a0a5950212d2086
   flutter_ringtone_player: 15eba85187230b87b2512f0e1b92225618bc03e7
   flutter_secure_storage: d33dac7ae2ea08509be337e775f6b59f1ff45f12
@@ -1490,6 +1515,7 @@ SPEC CHECKSUMS:
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
   permission_handler_apple: 9878588469a2b0d0fc1e048d9f43605f92e6cec2
+  PhoneNumberKit: 9c8d546d65c3784721d575a29e712ae8b992fe79
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
   speech_to_text: b43a7d99aef037bd758ed8e45d79bbac035d2dfe
