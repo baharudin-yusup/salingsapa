@@ -7,20 +7,21 @@ import 'package:firebase_storage/firebase_storage.dart';
 import '../../core/errors/exceptions.dart';
 import '../../core/utils/logger.dart';
 import '../constants/firestore_constant.dart';
+import '../models/apis/update_user_profile/update_user_profile_request.dart';
 import '../models/user_model.dart';
+import 'api_service.dart';
 
 abstract class UserRemoteDataSource {
-  Future<void> updateInitialData({
-    required String userId,
-    required String fcmToken,
-  });
-
   Future<String> updateName({
     required String name,
   });
 
   Future<String> updateProfilePicture({
     required Uint8List imageBytes,
+  });
+
+  Future<void> updateFcmToken({
+    required String token,
   });
 
   Stream<UserModel?> get onUserStateChanged;
@@ -34,20 +35,14 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   final FirebaseFirestore _firestore;
   final FirebaseAuth _auth;
   final FirebaseStorage _storage;
+  final ApiService _apiService;
 
-  UserRemoteDataSourceImpl(this._firestore, this._auth, this._storage);
-
-  @override
-  Future<void> updateInitialData(
-      {required String userId, required String fcmToken}) async {
-    final documentSnapshot = await _getUserDocumentSnapshot(userId);
-
-    final data = {
-      ...documentSnapshot.data(),
-      'fcmToken': fcmToken,
-    };
-    await documentSnapshot.reference.update(data);
-  }
+  UserRemoteDataSourceImpl(
+    this._firestore,
+    this._auth,
+    this._storage,
+    this._apiService,
+  );
 
   @override
   Future<String> updateName({required String name}) async {
@@ -83,7 +78,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       // Create a storage reference from our app
       final storageRef = _storage.ref();
       final profilePictureRef =
-      storageRef.child('${currentUser.uid}/profile-picture.jpeg');
+          storageRef.child('${currentUser.uid}/profile-picture.jpeg');
 
       final metadata = SettableMetadata(contentType: 'image/jpeg');
       final uploadTask = await profilePictureRef.putData(imageBytes, metadata);
@@ -129,9 +124,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
 
   @override
   Stream<UserModel?> get onUserStateChanged =>
-      _auth
-          .userChanges()
-          .map((fbAuthUser) {
+      _auth.userChanges().map((fbAuthUser) {
         if (fbAuthUser != null) {
           return UserModel.fromFirebaseAuth(fbAuthUser);
         }
@@ -160,9 +153,9 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     final userId = user.uid;
 
     final userQueryDocumentSnapshot = (await _firestore
-        .collection(FirestoreUserConstant.userCollectionName)
-        .where(FirestoreUserConstant.userId, isEqualTo: userId)
-        .get())
+            .collection(FirestoreUserConstant.userCollectionName)
+            .where(FirestoreUserConstant.userId, isEqualTo: userId)
+            .get())
         .docs;
 
     if (userQueryDocumentSnapshot.isEmpty) {
@@ -182,5 +175,21 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     await user.delete();
 
     return true;
+  }
+
+  @override
+  Future<void> updateFcmToken({required String token}) async {
+    if (_auth.currentUser == null) {
+      throw ServerException();
+    }
+
+    try {
+      final requestBody = UpdateUserProfileRequest(
+          data: UpdateUserProfileRequestData(fcmToken: token));
+      await _apiService.updateUserProfile(requestBody);
+    } catch (error) {
+      Logger.error(error, event: 'updating fcm token');
+      throw ServerException();
+    }
   }
 }

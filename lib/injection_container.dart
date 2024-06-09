@@ -9,6 +9,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:uuid/uuid.dart';
 
@@ -28,12 +29,14 @@ import 'data/repositories/video_call_repository_impl.dart';
 import 'data/sources/api_service.dart';
 import 'data/sources/authentication_local_data_source.dart';
 import 'data/sources/authentication_remote_data_source.dart';
+import 'data/sources/cache_service/cache_service.dart';
 import 'data/sources/caption_remote_data_source.dart';
 import 'data/sources/contact_local_data_source.dart';
 import 'data/sources/contact_remote_data_source.dart';
 import 'data/sources/external_link/external_link_remote_data_source.dart';
 import 'data/sources/setting_local_data_source.dart';
 import 'data/sources/sign_language_recognition_local_data_source.dart';
+import 'data/sources/user_local_data_source.dart';
 import 'data/sources/user_remote_data_source.dart';
 import 'data/sources/video_call_local_data_source.dart';
 import 'data/sources/video_call_remote_data_source.dart';
@@ -92,6 +95,7 @@ import 'domain/usecases/stream_speech_recognition_result.dart';
 import 'domain/usecases/stream_speech_recognition_status.dart';
 import 'domain/usecases/stream_video_call_invitations.dart';
 import 'domain/usecases/stream_video_call_status.dart';
+import 'domain/usecases/udate_fcm_token.dart';
 import 'domain/usecases/update_name.dart';
 import 'domain/usecases/update_profile_picture.dart';
 import 'domain/usecases/upload_caption.dart';
@@ -145,7 +149,7 @@ Future<void> setup() async {
   sl.registerFactory(() => SetupBloc(sl(), sl(), sl()));
   sl.registerLazySingleton(() => ContactListBloc(sl(), sl(), sl(), sl(), sl()));
   sl.registerLazySingleton(
-      () => AccountBloc(sl(), sl(), sl(), sl(), sl(), sl()));
+      () => AccountBloc(sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl()));
 
   /// Use cases
   sl.registerLazySingleton(() => VerifyPhoneNumber(sl()));
@@ -175,6 +179,7 @@ Future<void> setup() async {
   sl.registerLazySingleton(() => SetIsFirstLaunchApp(sl()));
   sl.registerLazySingleton(() => GetRecentCall());
   sl.registerLazySingleton(() => UpdateName(sl()));
+  sl.registerLazySingleton(() => UpdateFcmToken(sl()));
   sl.registerLazySingleton(() => StreamCurrentUser(sl()));
   sl.registerLazySingleton(() => UpdateProfilePicture(sl()));
   sl.registerLazySingleton(() => GetCurrentUser(sl()));
@@ -223,7 +228,8 @@ Future<void> setup() async {
       () => ContactRepositoryImpl(sl(), sl()));
   sl.registerLazySingleton<SettingRepository>(
       () => SettingRepositoryImpl(sl()));
-  sl.registerLazySingleton<UserRepository>(() => UserRepositoryImpl(sl()));
+  sl.registerLazySingleton<UserRepository>(
+      () => UserRepositoryImpl(sl(), sl()));
   sl.registerLazySingleton<VideoCallRepository>(
       () => VideoCallRepositoryImpl(sl(), sl()));
   sl.registerLazySingleton<CaptionRepository>(
@@ -237,15 +243,17 @@ Future<void> setup() async {
 
   /// Data sources
   sl.registerLazySingleton<AuthenticationLocalDataSource>(
-      () => AuthenticationLocalDataSourceImpl(sl()));
+      () => AuthenticationLocalDataSourceImpl(sl(), sl()));
   sl.registerLazySingleton<AuthenticationRemoteDatSource>(
       () => AuthenticationRemoteDatSourceImpl(sl(), sl(), sl()));
   sl.registerLazySingleton<ContactLocalDataSource>(
-      () => ContactLocalDataSourceImpl(sl()));
+      () => ContactLocalDataSourceImpl(sl(), sl()));
   sl.registerLazySingleton<SettingLocalDataSource>(
       () => SettingLocalDataSourceImpl(sl()));
   sl.registerLazySingleton<UserRemoteDataSource>(
-      () => UserRemoteDataSourceImpl(sl(), sl(), sl()));
+      () => UserRemoteDataSourceImpl(sl(), sl(), sl(), sl()));
+  sl.registerLazySingleton<UserLocalDataSource>(
+      () => UserLocalDataSourceImpl(sl()));
   sl.registerLazySingleton<ContactRemoteDataSource>(
       () => ContactRemoteDataSourceImpl(sl()));
   sl.registerLazySingleton<VideoCallLocalDataSource>(
@@ -267,6 +275,7 @@ Future<void> setup() async {
   sl.registerLazySingleton<SignLanguageRecognitionPlugin>(
       () => SignLanguageRecognitionPluginImpl(sl()));
   sl.registerLazySingleton<ApiService>(() => ApiServiceImpl(sl()));
+  sl.registerLazySingleton<CacheService>(() => CacheServiceImpl(sl()));
   sl.registerLazySingleton<NetworkPlugin>(
       () => NetworkPluginImpl(sl(), Env.baseUrl));
   sl.registerLazySingleton<PhoneNumberFormatterPlugin>(
@@ -282,6 +291,7 @@ Future<void> setup() async {
   const secureStorage = FlutterSecureStorage();
   final speechToText = SpeechToText();
   final dio = Dio();
+  final sharedPreferences = await SharedPreferences.getInstance();
 
   sl.registerLazySingleton(() => secureStorage);
   // sl.registerLazySingleton(() => FirebaseMessaging.instance);
@@ -295,6 +305,7 @@ Future<void> setup() async {
   sl.registerLazySingleton(() => uuid);
   sl.registerLazySingleton(() => speechToText);
   sl.registerLazySingleton(() => dio);
+  sl.registerLazySingleton(() => sharedPreferences);
 
   /// Post Creation
   final authorizationBloc = sl<AuthorizationBloc>();

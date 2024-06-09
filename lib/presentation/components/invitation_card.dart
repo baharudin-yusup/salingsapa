@@ -8,25 +8,26 @@ import '../utils/app_localizations.dart';
 
 class InvitationCard extends StatelessWidget {
   final Invitation invitation;
-  final void Function(Invitation invitation)? onTap;
+  final void Function(Invitation invitation) onTap;
 
   const InvitationCard(
     this.invitation, {
     super.key,
-    this.onTap,
+    required this.onTap,
   });
 
   bool get isValid =>
       DateTime.now().isBefore(invitation.validUntil) &&
-      invitation.senderUserInformation.userId != invitation.receiverUserId;
+      invitation.senderUserInformation.userId != invitation.receiverUserId &&
+      !invitation.isRejected &&
+      !invitation.isAccepted;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: onTap != null && isValid ? () => onTap!(invitation) : null,
-      selected: isValid,
-      enabled: true,
-      dense: true,
+      onTap: () => onTap(invitation),
+      enabled: isValid,
+      dense: false,
       title: showCallerName(context),
       leading: showProfilePicture(),
       subtitle: showDescription(context),
@@ -81,7 +82,6 @@ class InvitationCard extends StatelessWidget {
         .join(',');
 
     return Text(senderName);
-    // return Text(AppLocalizations.of(context)!.unknownCallerName);
   }
 
   Widget showCallIcon() {

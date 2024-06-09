@@ -78,6 +78,9 @@ class RecentCallBloc extends Bloc<RecentCallEvent, RecentCallState> {
       acceptInvitationSuccess: (invitations, calls, _) {
         emit(RecentCallState.actionInProgress(invitations, calls));
       },
+      refreshSuccess: (invitations, calls) {
+        emit(RecentCallState.actionInProgress(invitations, calls));
+      },
       actionFailure: (invitations, calls, _) {
         emit(RecentCallState.actionInProgress(invitations, calls));
       },

@@ -8,8 +8,7 @@ import '../entities/user.dart';
 
 abstract class UserRepository {
   Future<Either<Failure, Unit>> updateFcmToken({
-    required String userId,
-    required String fcmToken,
+    required String token,
   });
 
   Future<RepoResponse<String>> updateName({

@@ -139,6 +139,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   Future<Either<Failure, Unit>> signOut() async {
     try {
       await _remoteDatSource.signOut();
+      await _localDataSource.clearUserData();
       return const Right(unit);
     } catch (error) {
       Logger.error(error, event: '(repository) signing out');

@@ -34,17 +34,36 @@ class ContactRepositoryImpl implements ContactRepository {
         return const Right([]);
       }
 
-      final profilePictureUrls =
-          await _remoteDataSource.getProfilePictureUrls();
+      Logger.print('get unknown contacts profile cache...');
+      final unknownContactsProfileCache =
+          _localDataSource.getUnknownContactsProfileCache(contactModels);
+
+      Logger.print('total unknown contacts profile cache: ${unknownContactsProfileCache.length}');
+      if (unknownContactsProfileCache.isNotEmpty) {
+        final unknownRemoteContactsProfile = await _remoteDataSource
+            .getRemoteContacts(unknownContactsProfileCache);
+        await _localDataSource
+            .updateCacheContactsProfile(unknownRemoteContactsProfile);
+      }
+
+      final remoteContactsProfileNumber =
+          (await _remoteDataSource.getRemoteContacts(contactModels))
+              .map((c) => c.phoneNumber);
+
+      final cacheContactProfileMap =
+          _localDataSource.getCacheContactsProfileMap();
 
       final entities = contactModels.map((model) {
         final phoneNumber = model.phoneNumber;
         return Contact(
-            name: model.name,
+            name: cacheContactProfileMap[phoneNumber.raw]?.name?.value ??
+                model.name,
             phoneNumber: phoneNumber.toEntity(),
-            profilePictureUrl: profilePictureUrls[phoneNumber.raw],
+            profilePictureUrl: cacheContactProfileMap[phoneNumber.raw]
+                ?.profilePictureUrl
+                ?.value,
             isRegistered:
-                profilePictureUrls.containsKey(phoneNumber.raw));
+                remoteContactsProfileNumber.contains(phoneNumber.raw));
       }).toList();
       entities.sort((a, b) {
         if (a.isRegistered && b.isRegistered) {
