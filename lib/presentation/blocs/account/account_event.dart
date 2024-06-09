@@ -15,4 +15,5 @@ class AccountEvent with _$AccountEvent {
       _CurrentUserUpdated;
 
   const factory AccountEvent.deleteAccountStarted() = _DeleteAccountStarted;
+  const factory AccountEvent.updateFcmTokenStarted(String token) = _UpdateFcmTokenStarted;
 }

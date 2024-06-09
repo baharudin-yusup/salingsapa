@@ -196,10 +196,14 @@ class AuthenticationRemoteDatSourceImpl
       return UserModel.fromJson(userDoc);
     }
 
-    final model = UserModel.fromFirebaseAuth(user);
+    final model = UserModel.fromFirebaseAuth(user, isNewAccount: true);
 
     Logger.print('Add new data for user id: ${user.uid} started...');
-    await collectionRef.doc(model.userId).set(model.toJson());
+    await collectionRef.doc(model.userId).set({
+      ...model.toJson(),
+      'createdAt': model.createdAt,
+      'updatedAt': model.updatedAt,
+    });
     Logger.print('Add new data for user id: ${user.uid} success!');
 
     Logger.print('Verifying phone number success!');

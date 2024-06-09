@@ -9,7 +9,9 @@ class ApiConstant {
 
   static String updateUserProfile() => '/users/me';
 
-  static String acceptInvitation(String invitationId) => '/rooms/$invitationId/accept';
-  static String rejectInvitation(String invitationId) => '/rooms/$invitationId/reject';
+  static String acceptInvitation(String invitationId) =>
+      '/invitations/$invitationId/accept';
 
+  static String rejectInvitation(String invitationId) =>
+      '/invitations/$invitationId/reject';
 }

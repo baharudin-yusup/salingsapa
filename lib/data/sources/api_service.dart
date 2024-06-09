@@ -8,6 +8,7 @@ import '../models/apis/base_api_response.dart';
 import '../models/apis/create_room/create_room_request.dart';
 import '../models/apis/create_room/create_room_response.dart';
 import '../models/apis/update_room/join_room/join_room_response.dart';
+import '../models/apis/update_user_profile/update_user_profile_request.dart';
 import '../plugins/network_plugin.dart';
 
 abstract class ApiService {
@@ -21,7 +22,7 @@ abstract class ApiService {
 
   Future<BaseApiResponse> rejectInvitation(String invitationId);
 
-  Future<void> updateUserProfile(String token);
+  Future<BaseApiResponse> updateUserProfile(UpdateUserProfileRequest request);
 }
 
 class ApiServiceImpl implements ApiService {
@@ -86,9 +87,25 @@ class ApiServiceImpl implements ApiService {
   }
 
   @override
-  Future<void> updateUserProfile(String token) {
-    // TODO: implement updateFcmToken
-    throw UnimplementedError();
+  Future<BaseApiResponse> updateUserProfile(
+      UpdateUserProfileRequest request) async {
+    Logger.print('(api service) update user profile started...');
+    final url = ApiConstant.updateUserProfile();
+    try {
+      final response = await _networkPlugin.put(
+        path: url,
+        body: request.toJson(),
+      );
+      Logger.print('(api service) update user profile success!');
+      return BaseApiResponse.fromJson(response.data);
+    } on DioException catch (error) {
+      Logger.error(error.response?.data,
+          event: '(datasource) calling $url API');
+      throw ServerException(type: ServerExceptionType.unknown);
+    } catch (error) {
+      Logger.error(error, event: '(datasource) calling $url API');
+      throw ServerException(type: ServerExceptionType.unknown);
+    }
   }
 
   @override
@@ -112,14 +129,14 @@ class ApiServiceImpl implements ApiService {
     final url = ApiConstant.acceptInvitation(invitationId);
     try {
       final json = (await _networkPlugin.put(path: url)).data;
-    return BaseApiResponse.fromJson(json);
+      return BaseApiResponse.fromJson(json);
     } on DioException catch (error) {
-    Logger.error(error.response?.data,
-    event: '(datasource) calling $url API');
-    throw ServerException(type: ServerExceptionType.unknown);
+      Logger.error(error.response?.data,
+          event: '(datasource) calling $url API');
+      throw ServerException(type: ServerExceptionType.unknown);
     } catch (error) {
-    Logger.error(error, event: '(datasource) calling $url API');
-    throw ServerException(type: ServerExceptionType.unknown);
+      Logger.error(error, event: '(datasource) calling $url API');
+      throw ServerException(type: ServerExceptionType.unknown);
     }
   }
 }

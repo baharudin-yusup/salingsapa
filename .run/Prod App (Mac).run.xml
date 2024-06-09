@@ -1,10 +1,10 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Prod App (Mac/Linux)" type="FlutterRunConfigurationType" factoryName="Flutter">
+  <configuration default="false" name="Prod App (Mac)" type="FlutterRunConfigurationType" factoryName="Flutter">
     <option name="buildFlavor" value="prod" />
     <option name="filePath" value="$PROJECT_DIR$/lib/main_prod.dart" />
     <method v="2">
-      <option name="RunConfigurationTask" enabled="true" run_configuration_name="(PROD-Bash) Initialize Env" run_configuration_type="ShConfigurationType" />
-      <option name="RunConfigurationTask" enabled="true" run_configuration_name="(PROD-Bash) Initialize Firebase" run_configuration_type="ShConfigurationType" />
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="(PROD-Zsh) Initialize Env" run_configuration_type="ShConfigurationType" />
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="(PROD-Zsh) Initialize Firebase" run_configuration_type="ShConfigurationType" />
       <option name="RunConfigurationTask" enabled="true" run_configuration_name="Build Runner" run_configuration_type="ShConfigurationType" />
       <option name="RunConfigurationTask" enabled="false" run_configuration_name="Get Packages" run_configuration_type="ShConfigurationType" />
     </method>
