@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:rxdart/rxdart.dart';
 
 import '../../core/errors/exceptions.dart';
@@ -27,7 +27,7 @@ abstract class AuthenticationRemoteDatSource {
 
 class AuthenticationRemoteDatSourceImpl
     implements AuthenticationRemoteDatSource {
-  final FirebaseAuth _auth;
+  final auth.FirebaseAuth _auth;
   final FirebaseFirestore _firestore;
   final NetworkPlugin _networkPlugin;
   String _verificationId;
@@ -38,6 +38,7 @@ class AuthenticationRemoteDatSourceImpl
   AuthenticationRemoteDatSourceImpl(
       this._auth, this._firestore, this._networkPlugin)
       : _verificationId = '' {
+    Logger.print('Start initializing AuthenticationRemoteDatSourceImpl');
     _auth.idTokenChanges().listen((user) async {
       try {
         final token = await user?.getIdToken();
@@ -47,7 +48,9 @@ class AuthenticationRemoteDatSourceImpl
       }
     });
 
-    _auth.currentUser
+    final currentUser = _auth.currentUser;
+    Logger.print('Current user ID: ${currentUser?.uid}');
+    currentUser
         ?.getIdToken()
         .then((token) => _networkPlugin.setAuthToken(token));
   }
@@ -55,7 +58,12 @@ class AuthenticationRemoteDatSourceImpl
   @override
   Future<UserModel?> currentUser() async {
     final currentUser = _auth.currentUser;
-    return currentUser;
+
+    if (currentUser != null) {
+      return UserModel.fromFirebaseAuth(currentUser);
+    }
+
+    return null;
   }
 
   @override
@@ -82,8 +90,9 @@ class AuthenticationRemoteDatSourceImpl
         phoneNumber: phoneNumber,
         verificationCompleted: (credential) async {
           _verificationPhoneNumberTimer?.cancel();
-          final user = (await _auth.signInWithCredential(credential)).user;
-          if (user == null) {
+          final fbAuthUser =
+              (await _auth.signInWithCredential(credential)).user;
+          if (fbAuthUser == null) {
             _submitPhoneNumberStatusController?.sink.add(
               _verificationId.isEmpty
                   ? SubmitPhoneNumberError(null, phoneNumber: phoneNumber)
@@ -92,7 +101,7 @@ class AuthenticationRemoteDatSourceImpl
             await _submitPhoneNumberStatusController?.close();
             return;
           }
-          final verifiedUser = await _updateInitialData(user);
+          final verifiedUser = await _updateInitialData(fbAuthUser);
           if (!(_submitPhoneNumberStatusController?.isClosed ?? true)) {
             _submitPhoneNumberStatusController?.sink
                 .add(AutoSignIn(verifiedUser, phoneNumber: phoneNumber));
@@ -152,25 +161,25 @@ class AuthenticationRemoteDatSourceImpl
       throw AppFailureCode.phoneNumberBlocked;
     }
 
-    final credential = PhoneAuthProvider.credential(
+    final credential = auth.PhoneAuthProvider.credential(
         verificationId: _verificationId, smsCode: otp);
 
-    late final User? user;
+    late final auth.User? fbAuthUser;
 
     try {
-      user = (await _auth.signInWithCredential(credential)).user;
+      fbAuthUser = (await _auth.signInWithCredential(credential)).user;
     } catch (error) {
       Logger.error(error, event: 'verifying otp');
       rethrow;
     }
-    if (user == null) {
+    if (fbAuthUser == null) {
       throw ServerException();
     }
 
-    return await _updateInitialData(user);
+    return await _updateInitialData(fbAuthUser);
   }
 
-  Future<User> _updateInitialData(UserModel user) async {
+  Future<UserModel> _updateInitialData(auth.User user) async {
     final collectionRef = _firestore.collection('users');
     final snapshot =
         await collectionRef.where('userId', isEqualTo: user.uid).get();
@@ -183,16 +192,19 @@ class AuthenticationRemoteDatSourceImpl
 
     if (snapshot.size == 1) {
       Logger.print('User already registered on firestore database');
-      return user;
+      final userDoc = snapshot.docs[0].data();
+      return UserModel.fromJson(userDoc);
     }
 
+    final model = UserModel.fromFirebaseAuth(user);
+
     Logger.print('Add new data for user id: ${user.uid} started...');
-    await collectionRef.add(user.toJson());
+    await collectionRef.doc(model.userId).set(model.toJson());
     Logger.print('Add new data for user id: ${user.uid} success!');
 
     Logger.print('Verifying phone number success!');
 
-    return user;
+    return model;
   }
 
   @override

@@ -1,7 +1,9 @@
+import 'phone_number_model.dart';
+
 class ContactModel {
   final String? profilePictureUrl;
   final String name;
-  final String phoneNumber;
+  final PhoneNumberModel phoneNumber;
   final bool isRegistered;
 
   ContactModel({

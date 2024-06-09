@@ -85,9 +85,9 @@ Widget _buildScreen({
       }
 
       if (isLoggedIn) {
-        context
-            .read<ContactListBloc>()
-            .add(const ContactListEvent.refreshPulled());
+        context.read<ContactListBloc>()
+          ..add(const ContactListEvent.initStarted())
+          ..add(const ContactListEvent.refreshPulled());
         context.read<AccountBloc>().add(const AccountEvent.started());
 
         Logger.print('Show HomeScreen');

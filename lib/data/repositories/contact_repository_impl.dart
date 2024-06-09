@@ -4,7 +4,7 @@ import '../../core/errors/failures.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/contact.dart';
 import '../../domain/repositories/contact_repository.dart';
-import '../extensions/extensions.dart';
+import '../models/phone_number_model.dart';
 import '../sources/contact_local_data_source.dart';
 import '../sources/contact_remote_data_source.dart';
 
@@ -13,6 +13,18 @@ class ContactRepositoryImpl implements ContactRepository {
   final ContactRemoteDataSource _remoteDataSource;
 
   ContactRepositoryImpl(this._localDataSource, this._remoteDataSource);
+
+  @override
+  Future<Either<Failure, Unit>> init() async {
+    try {
+      await _localDataSource.init();
+
+      return const Right(unit);
+    } catch (error) {
+      Logger.error(error, event: 'initializing contact repository');
+      return const Left(UnknownFailure());
+    }
+  }
 
   @override
   Future<Either<Failure, List<Contact>>> getContactList() async {
@@ -26,12 +38,13 @@ class ContactRepositoryImpl implements ContactRepository {
           await _remoteDataSource.getProfilePictureUrls();
 
       final entities = contactModels.map((model) {
-        final phoneNumber = model.phoneNumber.toFormattedPhoneNumber();
+        final phoneNumber = model.phoneNumber;
         return Contact(
             name: model.name,
-            phoneNumber: model.phoneNumber,
-            profilePictureUrl: profilePictureUrls[phoneNumber],
-            isRegistered: profilePictureUrls.containsKey(phoneNumber));
+            phoneNumber: phoneNumber.toEntity(),
+            profilePictureUrl: profilePictureUrls[phoneNumber.raw],
+            isRegistered:
+                profilePictureUrls.containsKey(phoneNumber.raw));
       }).toList();
       entities.sort((a, b) {
         if (a.isRegistered && b.isRegistered) {

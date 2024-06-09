@@ -2,16 +2,18 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/errors/failures.dart';
-import '../../../data/extensions/to_phone_number.dart';
 import '../../../domain/entities/app_permission.dart';
 import '../../../domain/entities/contact.dart';
 import '../../../domain/usecases/get_current_user.dart';
 import '../../../domain/usecases/has_permission.dart';
+import '../../../domain/usecases/init_contact.dart';
 import '../../../domain/usecases/refresh_contact_list.dart';
 import '../../../domain/usecases/request_permission.dart';
 
 part 'contact_list_bloc.freezed.dart';
+
 part 'contact_list_event.dart';
+
 part 'contact_list_state.dart';
 
 class ContactListBloc extends Bloc<ContactListEvent, ContactListState> {
@@ -19,13 +21,24 @@ class ContactListBloc extends Bloc<ContactListEvent, ContactListState> {
   final HasPermission _hasPermission;
   final RequestPermission _requestPermission;
   final GetCurrentUser _getCurrentUser;
+  final InitContact _initContact;
 
-  ContactListBloc(this._refreshContactList, this._hasPermission,
-      this._requestPermission, this._getCurrentUser)
-      : super(const ContactListState.initial()) {
+  ContactListBloc(
+    this._refreshContactList,
+    this._hasPermission,
+    this._requestPermission,
+    this._getCurrentUser,
+    this._initContact,
+  ) : super(const ContactListState.initial()) {
+    on<_InitStarted>(_initializeContactFeature);
     on<_RefreshPulled>(_doRefreshContactList);
     on<_RequestPermissionStarted>(_onStartRequestPermission);
     on<_SelectedContactCalled>(_doVideoCall);
+  }
+
+  void _initializeContactFeature(
+      _InitStarted event, Emitter<ContactListState> emit) async {
+    await _initContact();
   }
 
   void _doRefreshContactList(
@@ -139,8 +152,7 @@ class ContactListBloc extends Bloc<ContactListEvent, ContactListState> {
           contacts: state.contacts,
           isPermissionValid: state.isPermissionValid ?? false)),
       (user) {
-        if (user.phoneNumber.toFormattedPhoneNumber() ==
-            contact.phoneNumber.toFormattedPhoneNumber()) {
+        if (user.phoneNumber == contact.phoneNumber.raw) {
           emit(
             ContactListState.startVideoCallFailure(
                 errorMessage: 'You cannot call yourself',

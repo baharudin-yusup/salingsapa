@@ -19,7 +19,9 @@ class ContactCard extends StatelessWidget {
     return ListTile(
       onTap: onTap != null ? () => onTap!(contact) : null,
       title: Text(contact.name),
-      subtitle: Text(contact.phoneNumber),
+      subtitle: Text(contact.phoneNumber.international ??
+          contact.phoneNumber.national ??
+          contact.phoneNumber.raw),
       leading: showProfilePicture(),
       trailing: showCallIcon(),
       tileColor: context.colorScheme().tertiary.withOpacity(0.05),

@@ -1,29 +1,41 @@
 import 'package:equatable/equatable.dart';
 
-import 'contact.dart';
-import 'room.dart';
+import 'room_participant.dart';
+import 'user.dart';
 
 class Invitation extends Equatable {
-  final Room room;
-  final Contact? callerContact;
-  final bool shouldPlayRingtone;
+  final String invitationId;
+  final String roomId;
+  final DateTime createdAt;
+  final DateTime validUntil;
+  final BasicUser senderUserInformation;
+  final List<RoomParticipant> participants;
+  final String receiverUserId;
+  final bool isAccepted;
+  final bool isRejected;
 
   const Invitation({
-    required this.room,
-    required this.callerContact,
-    required this.shouldPlayRingtone,
+    required this.invitationId,
+    required this.roomId,
+    required this.createdAt,
+    required this.validUntil,
+    required this.senderUserInformation,
+    required this.participants,
+    required this.receiverUserId,
+    required this.isAccepted,
+    required this.isRejected,
   });
 
   @override
   List<Object?> get props => [
-        room,
-        callerContact,
-        shouldPlayRingtone,
+        invitationId,
+        roomId,
+        createdAt,
+        validUntil,
+        senderUserInformation,
+        participants,
+        receiverUserId,
+        isAccepted,
+        isRejected,
       ];
-
-  Invitation copyWith(Contact? contact) => Invitation(
-        room: room,
-        callerContact: contact,
-        shouldPlayRingtone: shouldPlayRingtone,
-      );
 }

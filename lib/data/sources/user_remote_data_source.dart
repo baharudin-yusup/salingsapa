@@ -83,7 +83,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       // Create a storage reference from our app
       final storageRef = _storage.ref();
       final profilePictureRef =
-          storageRef.child('${currentUser.uid}/profile-picture.jpeg');
+      storageRef.child('${currentUser.uid}/profile-picture.jpeg');
 
       final metadata = SettableMetadata(contentType: 'image/jpeg');
       final uploadTask = await profilePictureRef.putData(imageBytes, metadata);
@@ -128,17 +128,25 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   }
 
   @override
-  Stream<UserModel?> get onUserStateChanged => _auth.userChanges();
+  Stream<UserModel?> get onUserStateChanged =>
+      _auth
+          .userChanges()
+          .map((fbAuthUser) {
+        if (fbAuthUser != null) {
+          return UserModel.fromFirebaseAuth(fbAuthUser);
+        }
+        return null;
+      });
 
   @override
   Future<UserModel?> getCurrentUser() async {
-    final user = _auth.currentUser;
+    final fbAuthUser = _auth.currentUser;
 
-    if (user == null) {
+    if (fbAuthUser == null) {
       return null;
     }
 
-    return user;
+    return UserModel.fromFirebaseAuth(fbAuthUser);
   }
 
   @override
@@ -152,9 +160,9 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     final userId = user.uid;
 
     final userQueryDocumentSnapshot = (await _firestore
-            .collection(FirestoreUserConstant.userCollectionName)
-            .where(FirestoreUserConstant.userId, isEqualTo: userId)
-            .get())
+        .collection(FirestoreUserConstant.userCollectionName)
+        .where(FirestoreUserConstant.userId, isEqualTo: userId)
+        .get())
         .docs;
 
     if (userQueryDocumentSnapshot.isEmpty) {

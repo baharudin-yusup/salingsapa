@@ -7,7 +7,6 @@ import '../../core/interfaces/return_type.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/user_repository.dart';
-import '../models/user_model.dart';
 import '../sources/user_remote_data_source.dart';
 
 class UserRepositoryImpl extends UserRepository {

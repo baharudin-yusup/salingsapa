@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../domain/entities/invitation.dart';
-import '../../domain/entities/room.dart';
 import '../services/theme_service.dart';
 import '../utils/app_localizations.dart';
 
 class InvitationCard extends StatelessWidget {
   final Invitation invitation;
-  final void Function(Room room)? onTap;
+  final void Function(Invitation invitation)? onTap;
 
   const InvitationCard(
     this.invitation, {
@@ -17,12 +16,14 @@ class InvitationCard extends StatelessWidget {
     this.onTap,
   });
 
-  bool get isValid => invitation.room.isValid;
+  bool get isValid =>
+      DateTime.now().isBefore(invitation.validUntil) &&
+      invitation.senderUserInformation.userId != invitation.receiverUserId;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: onTap != null && isValid ? () => onTap!(invitation.room) : null,
+      onTap: onTap != null && isValid ? () => onTap!(invitation) : null,
       selected: isValid,
       enabled: true,
       dense: true,
@@ -47,9 +48,15 @@ class InvitationCard extends StatelessWidget {
 
   Widget? showProfilePicture() {
     CachedNetworkImageProvider? profilePicture;
-    if (invitation.callerContact?.profilePictureUrl != null) {
-      profilePicture = CachedNetworkImageProvider(
-          invitation.callerContact!.profilePictureUrl!);
+    // TODO: Enhance this
+    final profilePictureUrl = invitation.participants
+        .where((participant) =>
+            participant.userId != invitation.receiverUserId &&
+            participant.profilePictureUrl != null)
+        .firstOrNull
+        ?.profilePictureUrl;
+    if (profilePictureUrl != null) {
+      profilePicture = CachedNetworkImageProvider(profilePictureUrl);
     }
 
     return LayoutBuilder(builder: (context, constraints) {
@@ -67,11 +74,14 @@ class InvitationCard extends StatelessWidget {
   }
 
   Widget showCallerName(BuildContext context) {
-    if (invitation.callerContact != null) {
-      return Text(invitation.callerContact!.name);
-    }
+    // TODO: Enhance this
+    final senderName = invitation.participants
+        .where((participant) => participant.userId != invitation.receiverUserId)
+        .map((participant) => participant.name ?? participant.phoneNumber)
+        .join(',');
 
-    return Text(AppLocalizations.of(context)!.unknownCallerName);
+    return Text(senderName);
+    // return Text(AppLocalizations.of(context)!.unknownCallerName);
   }
 
   Widget showCallIcon() {
@@ -79,8 +89,8 @@ class InvitationCard extends StatelessWidget {
   }
 
   Widget showDescription(BuildContext context) {
-    final difference = DateTime.now().difference(invitation.room.createdAt);
-    final isDaySame = DateTime.now().day == invitation.room.createdAt.day;
+    final difference = DateTime.now().difference(invitation.createdAt);
+    final isDaySame = DateTime.now().day == invitation.createdAt.day;
     final daysDifference = difference.inDays;
     late final DateFormat dateFormat;
     if (daysDifference < 1 && isDaySame) {
@@ -91,7 +101,7 @@ class InvitationCard extends StatelessWidget {
       dateFormat = DateFormat('dd/MM/yyyy');
     }
 
-    final createdAt = dateFormat.format(invitation.room.createdAt.toLocal());
+    final createdAt = dateFormat.format(invitation.createdAt.toLocal());
     if (isValid) {
       return Row(
         children: [

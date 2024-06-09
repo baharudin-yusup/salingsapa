@@ -6,16 +6,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 
 import '../../../core/errors/failures.dart';
-import '../../../data/extensions/to_phone_number.dart';
-import '../../../domain/entities/contact.dart';
 import '../../../domain/entities/invitation.dart';
+import '../../../injection_container.dart';
 import '../../blocs/contact_list/contact_list_bloc.dart';
 import '../../blocs/recent_call/recent_call_bloc.dart';
 import '../../components/intuitive_scaffold/intuitive_floating_action_button.dart';
 import '../../components/intuitive_scaffold/intuitive_scaffold.dart';
 import '../../components/invitation_card.dart';
 import '../../components/no_contact_access_ui.dart';
+import '../../services/navigator_service.dart';
 import '../../services/theme_service.dart';
+import '../../services/ui_service.dart';
 import '../../utils/app_localizations.dart';
 import '../video_call/video_call_screen.dart';
 
@@ -26,7 +27,24 @@ class RecentCallScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RecentCallBloc, RecentCallState>(
+    return BlocConsumer<RecentCallBloc, RecentCallState>(
+      listener: (context, state) {
+        final uiService = sl<UiService>();
+        state.maybeWhen(
+          actionInProgress: (invitations, calls) {
+            uiService.showLoading();
+          },
+          acceptInvitationSuccess: (_, __, room) {
+            uiService.hideLoading();
+            final navigatorService = sl<NavigatorService>();
+            navigatorService.pushNamed(VideoCallScreen.routeName,
+                arguments: room);
+          },
+          orElse: () {
+            uiService.hideLoading();
+          },
+        );
+      },
       builder: (context, state) {
         return IntuitiveScaffold(
           appBar: IntuitiveAppBar(
@@ -97,8 +115,7 @@ class RecentCallScreen extends StatelessWidget {
   }
 
   Widget showInvitationList(BuildContext context) {
-    return BlocConsumer<RecentCallBloc, RecentCallState>(
-      listener: (context, state) {},
+    return BlocBuilder<RecentCallBloc, RecentCallState>(
       buildWhen: (previous, current) =>
           previous.invitations != current.invitations,
       builder: (context, state) {
@@ -116,13 +133,6 @@ class RecentCallScreen extends StatelessWidget {
             }
 
             final invitations = data.getOrElse(() => []);
-            // TODO: Fix this
-            for (var i in invitations) {
-              if (i.shouldPlayRingtone && i.room.isValid) {
-                playSound();
-                break;
-              }
-            }
 
             return ListView.separated(
               padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace)
@@ -133,20 +143,11 @@ class RecentCallScreen extends StatelessWidget {
 
                 return BlocBuilder<ContactListBloc, ContactListState>(
                   builder: (context, contactListState) {
-                    Contact? contact;
-                    try {
-                      contact = contactListState.contacts.firstWhere(
-                          (contact) =>
-                              contact.phoneNumber.toFormattedPhoneNumber() ==
-                              invitation.room.hostPhoneNumber
-                                  .toFormattedPhoneNumber());
-                    } catch (_) {}
-
                     return InvitationCard(
-                      invitation.copyWith(contact),
-                      onTap: (room) => Navigator.pushNamed(
-                          context, VideoCallScreen.routeName,
-                          arguments: room),
+                      invitation,
+                      onTap: (selectedInvitation) => context
+                          .read<RecentCallBloc>()
+                          .add(RecentCallEvent.invitationAccepted(invitation)),
                     );
                   },
                 );
