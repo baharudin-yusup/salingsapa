@@ -61,6 +61,7 @@ dependencies:
   envied: ^0.5.4+1
   country_codes: ^3.1.0+2
   flutter_libphonenumber: ^2.2.2
+  shared_preferences: ^2.2.3
 
 dependency_overrides:
   iris_method_channel:

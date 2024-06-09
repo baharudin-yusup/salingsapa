@@ -1,7 +1,3 @@
-// abstract class Env {
-//   String get baseUrl;
-// }
-
 import 'package:envied/envied.dart';
 
 part 'env.g.dart';

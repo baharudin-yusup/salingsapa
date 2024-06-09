@@ -2,15 +2,20 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../core/utils/logger.dart';
 import '../../../domain/entities/user.dart';
 import '../../../domain/usecases/delete_account.dart';
 import '../../../domain/usecases/sign_out.dart';
 import '../../../domain/usecases/stream_current_user.dart';
+import '../../../domain/usecases/udate_fcm_token.dart';
 import '../../../domain/usecases/update_name.dart';
 import '../../../domain/usecases/update_profile_picture.dart';
+import '../../services/notification_service.dart';
 
 part 'account_bloc.freezed.dart';
+
 part 'account_event.dart';
+
 part 'account_state.dart';
 
 class AccountBloc extends Bloc<AccountEvent, AccountState> {
@@ -20,6 +25,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
   final SignOut _signOut;
   final ImagePicker _imagePicker;
   final DeleteAccount _deleteAccount;
+  final NotificationService _notificationService;
+  final UpdateFcmToken _updateFcmToken;
 
   AccountBloc(
     this._updateName,
@@ -28,6 +35,8 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     this._imagePicker,
     this._updateProfilePicture,
     this._deleteAccount,
+    this._notificationService,
+    this._updateFcmToken,
   ) : super(const AccountState.initial()) {
     on<_UpdateNameStarted>(_startUpdateName);
     on<_CurrentUserUpdated>(_updateUserData);
@@ -35,6 +44,7 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     on<_SignOutStarted>(_startSignOut);
     on<_PickImageStarted>(_editProfilePicture);
     on<_DeleteAccountStarted>(_startDeleteAccount);
+    on<_UpdateFcmTokenStarted>(_startUpdateFcmToken);
 
     _streamCurrentUser().listen((userResult) {
       userResult.fold(
@@ -44,9 +54,25 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
             return;
           }
           add(AccountEvent.currentUserUpdated(user));
+          _notificationService.getToken().then((token) {
+            if (token == null || isClosed) {
+              return;
+            }
+
+            add(AccountEvent.updateFcmTokenStarted(token));
+          });
         },
       );
     });
+
+    _notificationService.onTokenChanges.listen(
+      (token) {
+        if (isClosed) {
+          return;
+        }
+        add(AccountEvent.updateFcmTokenStarted(token));
+      },
+    );
   }
 
   void _getLatestData(_Started event, Emitter<AccountState> emit) async {
@@ -172,11 +198,13 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
 
   void _updateUserData(_CurrentUserUpdated event, Emitter<AccountState> emit) {
     final user = event.user;
-    emit(AccountState.initial(
-      name: user.name,
-      phoneNumber: user.phoneNumber,
-      profilePictureUrl: user.profilePictureUrl,
-    ));
+    emit(
+      AccountState.initial(
+        name: user.name,
+        phoneNumber: user.phoneNumber,
+        profilePictureUrl: user.profilePictureUrl,
+      ),
+    );
   }
 
   void _startSignOut(_SignOutStarted event, Emitter<AccountState> emit) async {
@@ -298,5 +326,11 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
       ),
       (_) => emit(const AccountState.deleteAccountSuccess()),
     );
+  }
+
+  void _startUpdateFcmToken(
+      _UpdateFcmTokenStarted event, Emitter<AccountState> emit) {
+    Logger.print('Start checking FCM token: ${event.token}');
+    _updateFcmToken(event.token);
   }
 }

@@ -4,12 +4,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../models/auth_token_model.dart';
+import 'cache_service/cache_key.dart';
+import 'cache_service/cache_service.dart';
 
 abstract class AuthenticationLocalDataSource {
   Future<void> init();
+
   Future<bool> isAuthTokenValid();
 
   Future<void> setAuthToken(AuthTokenModel authTokenModel);
+
+  Future<void> clearUserData();
 }
 
 @visibleForTesting
@@ -18,8 +23,9 @@ const kAuthToken = 'kAuthToken';
 class AuthenticationLocalDataSourceImpl
     implements AuthenticationLocalDataSource {
   final FlutterSecureStorage _plugin;
+  final CacheService _cacheService;
 
-  AuthenticationLocalDataSourceImpl(this._plugin);
+  AuthenticationLocalDataSourceImpl(this._plugin, this._cacheService);
 
   @override
   Future<bool> isAuthTokenValid() async {
@@ -44,4 +50,9 @@ class AuthenticationLocalDataSourceImpl
 
   @override
   Future<void> init() async {}
+
+  @override
+  Future<void> clearUserData() async {
+    await _cacheService.remove(CacheKey.currentUserProfile);
+  }
 }
