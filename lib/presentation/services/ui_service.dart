@@ -6,7 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../core/utils/logger.dart';
-import '../utils/dimension.dart';
+import '../utils/context_shortcut.dart';
 import 'navigator_service.dart';
 import 'platform_service.dart';
 import 'theme_service.dart';

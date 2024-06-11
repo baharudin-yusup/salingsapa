@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
+import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/caption.dart';
 import '../../domain/repositories/caption_repository.dart';
+import '../datasources/remote/caption_remote_data_source.dart';
 import '../models/caption_model.dart';
-import '../sources/caption_remote_data_source.dart';
 
 class CaptionRepositoryImpl implements CaptionRepository {
   final CaptionRemoteDataSource _remoteDataSource;

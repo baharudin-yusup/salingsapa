@@ -2,16 +2,16 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../../injection_container.dart';
+import '../../core/injection_container.dart';
 import '../blocs/setup/setup_bloc.dart';
 import '../components/intuitive_otp.dart';
-import '../components/intuitive_scaffold/intuitive_scaffold.dart';
+import '../components/intuitive_scaffold.dart';
 import '../services/theme_service.dart';
 import '../services/ui_service.dart';
-import '../utils/app_localizations.dart';
-import '../utils/dimension.dart';
+import '../utils/context_shortcut.dart';
 import '../utils/failure_translation.dart';
 
 class VerifyOtpScreen extends StatelessWidget {

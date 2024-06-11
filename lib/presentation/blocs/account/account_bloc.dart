@@ -7,7 +7,7 @@ import '../../../domain/entities/user.dart';
 import '../../../domain/usecases/delete_account.dart';
 import '../../../domain/usecases/sign_out.dart';
 import '../../../domain/usecases/stream_current_user.dart';
-import '../../../domain/usecases/udate_fcm_token.dart';
+import '../../../domain/usecases/update_fcm_token.dart';
 import '../../../domain/usecases/update_name.dart';
 import '../../../domain/usecases/update_profile_picture.dart';
 import '../../services/notification_service.dart';

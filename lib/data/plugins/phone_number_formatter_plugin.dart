@@ -4,7 +4,7 @@ import 'package:country_codes/country_codes.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_libphonenumber/flutter_libphonenumber.dart' as lp;
 
-import '../../core/errors/exceptions.dart';
+import '../../core/errors/exception.dart';
 import '../../core/utils/logger.dart';
 import '../models/phone_number_model.dart';
 

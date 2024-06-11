@@ -1,17 +1,17 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/interfaces/return_type.dart';
 import '../entities/caption.dart';
 import '../entities/recognition_status.dart';
+import 'repo_outcome.dart';
 
 abstract class SpeechRecognitionRepository {
-  Future<RepoResponse<Unit>> init();
+  Future<RepoOutcome<Unit>> init();
 
-  Future<RepoResponse<Unit>> enable();
+  Future<RepoOutcome<Unit>> enable();
 
-  Future<RepoResponse<Unit>> disable();
+  Future<RepoOutcome<Unit>> disable();
 
-  Stream<RepoResponse<Caption>> get result;
+  Stream<RepoOutcome<Caption>> get result;
 
-  Stream<RepoResponse<RecognitionStatus>> get status;
+  Stream<RepoOutcome<RecognitionStatus>> get status;
 }

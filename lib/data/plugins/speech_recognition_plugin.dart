@@ -5,7 +5,7 @@ import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../core/errors/exceptions.dart';
+import '../../core/errors/exception.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/recognition_status.dart';
 import '../models/speech_recognition_caption_model.dart';

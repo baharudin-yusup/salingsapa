@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/errors/failures.dart';
+import '../../../core/errors/failure.dart';
 import '../../../domain/entities/call_info.dart';
 import '../../../domain/entities/invitation.dart';
 import '../../../domain/entities/room.dart';

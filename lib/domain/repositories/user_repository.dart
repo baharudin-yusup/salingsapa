@@ -2,26 +2,26 @@ import 'dart:typed_data';
 
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/return_type.dart';
+import '../../core/errors/failure.dart';
 import '../entities/user.dart';
+import 'repo_outcome.dart';
 
 abstract class UserRepository {
   Future<Either<Failure, Unit>> updateFcmToken({
     required String token,
   });
 
-  Future<RepoResponse<String>> updateName({
+  Future<RepoOutcome<String>> updateName({
     required String name,
   });
 
-  Future<RepoResponse<String>> updateProfilePicture({
+  Future<RepoOutcome<String>> updateProfilePicture({
     required Uint8List imageBytes,
   });
 
-  Stream<RepoResponse<User>> get onUserStateChanged;
+  Stream<RepoOutcome<User>> get onUserStateChanged;
 
-  Future<RepoResponse<User>> getCurrentUser();
+  Future<RepoOutcome<User>> getCurrentUser();
 
-  Future<RepoResponse<bool>> deleteAccount();
+  Future<RepoOutcome<bool>> deleteAccount();
 }

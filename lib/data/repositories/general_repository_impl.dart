@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
 
-import '../../core/errors/failures.dart';
+import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/phone_number.dart';
 import '../../domain/repositories/general_repository.dart';

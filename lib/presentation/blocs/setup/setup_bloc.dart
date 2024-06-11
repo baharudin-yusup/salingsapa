@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/errors/failures.dart';
+import '../../../core/errors/failure.dart';
 import '../../../core/utils/logger.dart';
 import '../../../data/constants/exception_code.dart';
 import '../../../domain/entities/phone_number.dart';

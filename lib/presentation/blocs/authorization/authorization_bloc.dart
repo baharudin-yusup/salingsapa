@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/errors/failures.dart';
+import '../../../core/errors/failure.dart';
 import '../../../core/utils/logger.dart';
 import '../../../domain/entities/auth_status.dart';
 import '../../../domain/usecases/authorization_status.dart';

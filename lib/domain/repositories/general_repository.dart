@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
+import '../../core/errors/failure.dart';
 import '../entities/phone_number.dart';
 
 abstract class GeneralRepository {

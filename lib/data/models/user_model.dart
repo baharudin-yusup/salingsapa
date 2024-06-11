@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart' as fb;
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../domain/entities/user.dart';
-import 'converter/timestamp_converter.dart';
+import '../utils/timestamp_converter.dart';
 
 part 'user_model.g.dart';
 

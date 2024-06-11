@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../domain/entities/recognition_status.dart';
-import '../../../blocs/sign_language_recognition_bloc/sign_language_recognition_bloc.dart';
-import '../../../blocs/speech_recognition_bloc/speech_recognition_bloc.dart';
+import '../../../blocs/sign_language_recognition/sign_language_recognition_bloc.dart';
+import '../../../blocs/speech_recognition/speech_recognition_bloc.dart';
 import '../../../blocs/video_call_caption/video_call_caption_bloc.dart';
 import '../../../blocs/video_call_control/video_call_control_bloc.dart';
 import '../../../components/intuitive_circle_icon_button.dart';

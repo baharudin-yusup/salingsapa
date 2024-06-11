@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/use_case.dart';
+import '../../core/errors/failure.dart';
 import '../repositories/contact_repository.dart';
+import 'use_case.dart';
 
 class InitContact extends NoParamUseCase<Unit> {
   final ContactRepository _repository;
