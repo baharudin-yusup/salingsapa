@@ -21,6 +21,7 @@ import 'data/repositories/authentication_repository_impl.dart';
 import 'data/repositories/caption_repository_impl.dart';
 import 'data/repositories/contact_repository_impl.dart';
 import 'data/repositories/external_link_repository_impl.dart';
+import 'data/repositories/general_repository_impl.dart';
 import 'data/repositories/setting_repository_impl.dart';
 import 'data/repositories/sign_language_recognition_repository_impl.dart';
 import 'data/repositories/speech_recognition_repository_impl.dart';
@@ -44,6 +45,7 @@ import 'domain/repositories/authentication_repository.dart';
 import 'domain/repositories/caption_repository.dart';
 import 'domain/repositories/contact_repository.dart';
 import 'domain/repositories/external_link_repository.dart';
+import 'domain/repositories/general_repository.dart';
 import 'domain/repositories/setting_repository.dart';
 import 'domain/repositories/sign_language_recognition_repository.dart';
 import 'domain/repositories/speech_recognition_repository.dart';
@@ -66,7 +68,9 @@ import 'domain/usecases/external_link/get_privacy_and_policy.dart';
 import 'domain/usecases/external_link/get_support_content.dart';
 import 'domain/usecases/external_link/get_terms_and_condition_content.dart';
 import 'domain/usecases/flip_video_call_camera.dart';
+import 'domain/usecases/format_phone_number.dart';
 import 'domain/usecases/get_current_user.dart';
+import 'domain/usecases/get_device_locale.dart';
 import 'domain/usecases/get_recent_call.dart';
 import 'domain/usecases/has_permission.dart';
 import 'domain/usecases/init_caption.dart';
@@ -75,6 +79,7 @@ import 'domain/usecases/init_sign_language_recognition.dart';
 import 'domain/usecases/init_speech_recognition.dart';
 import 'domain/usecases/init_video_call.dart';
 import 'domain/usecases/is_first_launch_app.dart';
+import 'domain/usecases/is_phone_number_valid.dart';
 import 'domain/usecases/join_room.dart';
 import 'domain/usecases/leave_room.dart';
 import 'domain/usecases/mute_video_call_audio.dart';
@@ -146,7 +151,7 @@ Future<void> setup() async {
 
   /// Singleton BLoC
   sl.registerLazySingleton(() => AuthorizationBloc(sl(), sl()));
-  sl.registerFactory(() => SetupBloc(sl(), sl(), sl()));
+  sl.registerFactory(() => SetupBloc(sl(), sl(), sl(), sl(), sl(), sl()));
   sl.registerLazySingleton(() => ContactListBloc(sl(), sl(), sl(), sl(), sl()));
   sl.registerLazySingleton(
       () => AccountBloc(sl(), sl(), sl(), sl(), sl(), sl(), sl(), sl()));
@@ -221,6 +226,11 @@ Future<void> setup() async {
   /// Invitation use cases
   sl.registerLazySingleton(() => AcceptInvitation(sl()));
 
+  /// General use cases
+  sl.registerLazySingleton(() => FormatPhoneNumber(sl()));
+  sl.registerLazySingleton(() => IsPhoneNumberValid(sl()));
+  sl.registerLazySingleton(() => GetDeviceLocale(sl()));
+
   /// Repositories
   sl.registerLazySingleton<AuthenticationRepository>(
       () => AuthenticationRepositoryImpl(sl(), sl(), BehaviorSubject()));
@@ -240,6 +250,8 @@ Future<void> setup() async {
       () => SpeechRecognitionRepositoryImpl(sl()));
   sl.registerLazySingleton<ExternalLinkRepository>(
       () => ExternalLinkRepositoryImpl(sl()));
+  sl.registerLazySingleton<GeneralRepository>(
+      () => GeneralRepositoryImpl(sl()));
 
   /// Data sources
   sl.registerLazySingleton<AuthenticationLocalDataSource>(
@@ -310,6 +322,7 @@ Future<void> setup() async {
   /// Post Creation
   final authorizationBloc = sl<AuthorizationBloc>();
   final authenticationRepository = sl<AuthenticationRepository>();
+  final generalRepository = sl<GeneralRepository>();
 
   await remoteConfig.setConfigSettings(RemoteConfigSettings(
     fetchTimeout: const Duration(minutes: 1),
@@ -324,4 +337,6 @@ Future<void> setup() async {
     (status) => authorizationBloc
         .add(AuthorizationEvent.authStatusChanged(status: status)),
   );
+
+  await generalRepository.init();
 }

@@ -4,55 +4,67 @@ part of 'setup_bloc.dart';
 class SetupState with _$SetupState {
   /// Handle step-1
   const factory SetupState.inputPhoneNumberInitial(
-      [@Default('') String phoneNumber]) = InputPhoneNumberInitial;
+      [@Default('') String phoneNumber,
+      @Default(null) CountryCode? countryCode]) = InputPhoneNumberInitial;
+
+  const factory SetupState.pickCountrySuccess(
+      String phoneNumber, CountryCode countryCode) = PickCountrySuccess;
 
   const factory SetupState.inputPhoneNumberVerifyInProgress(
-      String phoneNumber) = _InputPhoneNumberVerifyInProgress;
+    String phoneNumber,
+    CountryCode countryCode,
+  ) = _InputPhoneNumberVerifyInProgress;
 
   const factory SetupState.inputPhoneNumberFailure(
-      String phoneNumber, Failure failure) = _InputPhoneNumberFailure;
+    String phoneNumber,
+    CountryCode countryCode,
+    Failure failure,
+  ) = _InputPhoneNumberFailure;
 
-  const factory SetupState.inputPhoneNumberSuccess(String phoneNumber) =
+  const factory SetupState.inputPhoneNumberSuccess(PhoneNumber phoneNumber) =
       _InputPhoneNumberSuccess;
 
   /// Handle step-2
-  const factory SetupState.inputOtpInitial(String phoneNumber,
+  const factory SetupState.inputOtpInitial(PhoneNumber phoneNumber,
       [@Default('') String otp]) = _InputOtpInitial;
 
   const factory SetupState.inputOtpValidationInProgress(
-      String phoneNumber, String otp) = _InputOtpValidationInProgress;
+      PhoneNumber phoneNumber, String otp) = _InputOtpValidationInProgress;
 
   const factory SetupState.inputOtpValidationSuccess(
-      String phoneNumber, String otp) = _InputOtpValidationSuccess;
+      PhoneNumber phoneNumber, String otp) = _InputOtpValidationSuccess;
 
   const factory SetupState.inputOtpValidationFailure(
-          String phoneNumber, String otp, Failure failure) =
+          PhoneNumber phoneNumber, String otp, Failure failure) =
       _InputOtpValidationFailure;
 
   // Handle resend otp
-  const factory SetupState.resendOtpInProgress(String phoneNumber, String otp) =
-      _ResendOtpInProgress;
+  const factory SetupState.resendOtpInProgress(
+      PhoneNumber phoneNumber, String otp) = _ResendOtpInProgress;
 
-  const factory SetupState.resendOtpSuccess(String phoneNumber, String otp) =
-      _ResendOtpSuccess;
+  const factory SetupState.resendOtpSuccess(
+      PhoneNumber phoneNumber, String otp) = _ResendOtpSuccess;
 
   const factory SetupState.resendOtpFailure(
-      String phoneNumber, String otp, Failure failure) = _ResendOtpFailure;
+      PhoneNumber phoneNumber, String otp, Failure failure) = _ResendOtpFailure;
 
   /// Handle auto sign in
-  const factory SetupState.autoSignInSuccess(String phoneNumber, User user) =
-      _AutoSignInSuccess;
+  const factory SetupState.autoSignInSuccess(
+      PhoneNumber phoneNumber, User user) = _AutoSignInSuccess;
 
   @override
   String toString() {
     return when(
-      inputPhoneNumberInitial: (phoneNumber) {
+      inputPhoneNumberInitial: (phoneNumber, _) {
         return '$runtimeType\t phone number: $phoneNumber\t can submit? ${isAbleToSubmitPhoneNumber ? 'yes' : 'no'}';
       },
-      inputPhoneNumberVerifyInProgress: (phoneNumber) {
+      pickCountrySuccess: (phoneNumber, _) {
+        return '$runtimeType\t phone number: $phoneNumber\t can submit? ${isAbleToSubmitPhoneNumber ? 'yes' : 'no'}';
+      },
+      inputPhoneNumberVerifyInProgress: (phoneNumber, _) {
         return '$runtimeType\t phone number: $phoneNumber';
       },
-      inputPhoneNumberFailure: (phoneNumber, failure) {
+      inputPhoneNumberFailure: (phoneNumber, _, failure) {
         return '$runtimeType\t phone number: $phoneNumber\t failure: $failure\t can submit? ${isAbleToSubmitPhoneNumber ? 'yes' : 'no'}';
       },
       inputPhoneNumberSuccess: (phoneNumber) {
@@ -68,7 +80,8 @@ class SetupState with _$SetupState {
         return '$runtimeType\t phone number: $phoneNumber\t otp: $otp';
       },
       inputOtpValidationFailure: (phoneNumber, otp, failure) {
-        return '$runtimeType\t phone number: $phoneNumber\t otp: $otp\t failure: $failure';
+        return '$runtimeType\t phone number: $phoneNumber\t otp: $otp'
+            '\t failure: $failure';
       },
       resendOtpInProgress: (phoneNumber, otp) {
         return '$runtimeType\t phone number: $phoneNumber\t otp: $otp';
@@ -89,11 +102,11 @@ class SetupState with _$SetupState {
 extension SetupStateChecker on SetupState {
   bool get isAbleToSubmitPhoneNumber {
     return maybeWhen(
-      inputPhoneNumberInitial: (phoneNumber) {
-        return phoneNumber.length >= 9;
+      inputPhoneNumberInitial: (phoneNumber, countryCode) {
+        return (phoneNumber.length >= 5) && countryCode != null;
       },
-      inputPhoneNumberFailure: (phoneNumber, failure) {
-        return phoneNumber.length >= 9;
+      inputPhoneNumberFailure: (phoneNumber, countryCode, _) {
+        return (phoneNumber.length >= 5);
       },
       orElse: () {
         return false;

@@ -62,10 +62,10 @@ class ApiServiceImpl implements ApiService {
     } on DioException catch (error) {
       Logger.error(error.response?.data,
           event: '(datasource) calling $url API');
-      throw ServerException(type: ServerExceptionType.unknown);
+      throw const ServerException(type: ServerExceptionType.unknown);
     } catch (error) {
       Logger.error(error, event: '(datasource) calling $url API');
-      throw ServerException(type: ServerExceptionType.unknown);
+      throw const ServerException(type: ServerExceptionType.unknown);
     }
   }
 
@@ -79,10 +79,10 @@ class ApiServiceImpl implements ApiService {
     } on DioException catch (error) {
       Logger.error(error.response?.data,
           event: '(datasource) calling $url API');
-      throw ServerException(type: ServerExceptionType.unknown);
+      throw const ServerException(type: ServerExceptionType.unknown);
     } catch (error) {
       Logger.error(error, event: '(datasource) calling $url API');
-      throw ServerException(type: ServerExceptionType.unknown);
+      throw const ServerException(type: ServerExceptionType.unknown);
     }
   }
 
@@ -101,10 +101,10 @@ class ApiServiceImpl implements ApiService {
     } on DioException catch (error) {
       Logger.error(error.response?.data,
           event: '(datasource) calling $url API');
-      throw ServerException(type: ServerExceptionType.unknown);
+      throw const ServerException(type: ServerExceptionType.unknown);
     } catch (error) {
       Logger.error(error, event: '(datasource) calling $url API');
-      throw ServerException(type: ServerExceptionType.unknown);
+      throw const ServerException(type: ServerExceptionType.unknown);
     }
   }
 
@@ -117,10 +117,10 @@ class ApiServiceImpl implements ApiService {
     } on DioException catch (error) {
       Logger.error(error.response?.data,
           event: '(datasource) calling $url API');
-      throw ServerException(type: ServerExceptionType.unknown);
+      throw const ServerException(type: ServerExceptionType.unknown);
     } catch (error) {
       Logger.error(error, event: '(datasource) calling $url API');
-      throw ServerException(type: ServerExceptionType.unknown);
+      throw const ServerException(type: ServerExceptionType.unknown);
     }
   }
 
@@ -133,10 +133,10 @@ class ApiServiceImpl implements ApiService {
     } on DioException catch (error) {
       Logger.error(error.response?.data,
           event: '(datasource) calling $url API');
-      throw ServerException(type: ServerExceptionType.unknown);
+      throw const ServerException(type: ServerExceptionType.unknown);
     } catch (error) {
       Logger.error(error, event: '(datasource) calling $url API');
-      throw ServerException(type: ServerExceptionType.unknown);
+      throw const ServerException(type: ServerExceptionType.unknown);
     }
   }
 }

@@ -8,6 +8,12 @@ class SetupEvent with _$SetupEvent {
   const factory SetupEvent.phoneNumberChanged(String phoneNumber) =
       _PhoneNumberChanged;
 
+  const factory SetupEvent.dialCodeChanged(String dialCode) =
+  _DialCodeChanged;
+
+  const factory SetupEvent.countryPickerSelected(CountryCode countryCode) =
+  _CountryPickerSelected;
+
   const factory SetupEvent.submitPhoneNumberStarted() =
       _SubmitPhoneNumberStarted;
 

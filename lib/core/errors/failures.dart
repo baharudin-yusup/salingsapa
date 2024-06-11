@@ -42,7 +42,10 @@ class CacheFailure extends Failure {
 }
 
 class FeatureFailure extends Failure {
-  const FeatureFailure({super.errorMessage, super.createdAt});
+  const FeatureFailure({
+    String? errorMessage,
+    super.createdAt,
+  }) : super(errorMessage: errorMessage ?? 'Unknown error');
 }
 
 class PermissionFailure extends Failure {

@@ -25,8 +25,8 @@ class InvitationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () => onTap(invitation),
-      enabled: isValid,
+      onTap: isValid ? () => onTap(invitation) : null,
+      selected: isValid,
       dense: false,
       title: showCallerName(context),
       leading: showProfilePicture(),
@@ -37,13 +37,17 @@ class InvitationCard extends StatelessWidget {
         vertical: IntuitiveUiConstant.tinySpace,
       ),
       tileColor: context.colorScheme().tertiary.withOpacity(0.1),
-      textColor: context.colorScheme().onTertiaryContainer,
       iconColor: context.colorScheme().onTertiaryContainer,
       selectedTileColor: context.colorScheme().primaryContainer,
       selectedColor: context.colorScheme().onPrimaryContainer,
       shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-              Radius.circular(IntuitiveUiConstant.normalRadius))),
+        borderRadius: BorderRadius.all(
+          Radius.circular(
+            IntuitiveUiConstant.normalRadius,
+          ),
+        ),
+      ),
+      style: ListTileStyle.list,
     );
   }
 

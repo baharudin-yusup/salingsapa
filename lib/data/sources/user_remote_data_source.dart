@@ -49,7 +49,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     try {
       final currentUser = _auth.currentUser;
       if (currentUser == null) {
-        throw ServerException(type: ServerExceptionType.unauthorized);
+        throw const ServerException(type: ServerExceptionType.unauthorized);
       }
       await currentUser.updateDisplayName(name);
       final documentSnapshot = await _getUserDocumentSnapshot(currentUser.uid);
@@ -61,7 +61,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
         rethrow;
       }
 
-      throw ServerException();
+      throw const ServerException();
     }
   }
 
@@ -72,7 +72,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     try {
       final currentUser = _auth.currentUser;
       if (currentUser == null) {
-        throw ServerException(type: ServerExceptionType.unauthorized);
+        throw const ServerException(type: ServerExceptionType.unauthorized);
       }
 
       // Create a storage reference from our app
@@ -84,7 +84,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       final uploadTask = await profilePictureRef.putData(imageBytes, metadata);
 
       if (uploadTask.state != TaskState.success) {
-        throw ServerException();
+        throw const ServerException();
       }
 
       final profilePictureUrl = await profilePictureRef.getDownloadURL();
@@ -99,7 +99,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
         rethrow;
       }
 
-      throw ServerException();
+      throw const ServerException();
     }
   }
 
@@ -147,7 +147,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     final user = _auth.currentUser;
 
     if (user == null) {
-      throw ServerException();
+      throw const ServerException();
     }
 
     final userId = user.uid;
@@ -160,12 +160,12 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
 
     if (userQueryDocumentSnapshot.isEmpty) {
       Logger.print('user document snapshot is empty!');
-      throw ServerException();
+      throw const ServerException();
     }
 
     if (userQueryDocumentSnapshot.length != 1) {
       Logger.print('user document snapshot is not unique!');
-      throw ServerException();
+      throw const ServerException();
     }
 
     final documentReference = userQueryDocumentSnapshot[0].reference;
@@ -180,7 +180,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   @override
   Future<void> updateFcmToken({required String token}) async {
     if (_auth.currentUser == null) {
-      throw ServerException();
+      throw const ServerException();
     }
 
     try {
@@ -189,7 +189,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       await _apiService.updateUserProfile(requestBody);
     } catch (error) {
       Logger.error(error, event: 'updating fcm token');
-      throw ServerException();
+      throw const ServerException();
     }
   }
 }

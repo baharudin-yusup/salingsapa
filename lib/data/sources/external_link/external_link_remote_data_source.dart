@@ -21,7 +21,7 @@ class ExternalLinkRemoteDataSourceImpl implements ExternalLinkRemoteDataSource {
     try {
       return (await http.get(Uri.parse(url))).body;
     } catch (error) {
-      throw ServerException();
+      throw const ServerException();
     }
   }
 
@@ -33,7 +33,7 @@ class ExternalLinkRemoteDataSourceImpl implements ExternalLinkRemoteDataSource {
     try {
       return (await http.get(Uri.parse(url))).body;
     } catch (error) {
-      throw ServerException();
+      throw const ServerException();
     }
   }
 
@@ -45,7 +45,7 @@ class ExternalLinkRemoteDataSourceImpl implements ExternalLinkRemoteDataSource {
     try {
       return (await http.get(Uri.parse(url))).body;
     } catch (error) {
-      throw ServerException();
+      throw const ServerException();
     }
   }
 }
