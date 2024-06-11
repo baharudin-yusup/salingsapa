@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/use_case.dart';
+import '../../core/errors/failure.dart';
 import '../entities/phone_number.dart';
 import '../repositories/general_repository.dart';
+import 'use_case.dart';
 
 class RawPhoneNumber {
   final String phoneNumber;

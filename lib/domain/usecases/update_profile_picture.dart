@@ -2,9 +2,9 @@ import 'dart:typed_data';
 
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/use_case.dart';
+import '../../core/errors/failure.dart';
 import '../repositories/user_repository.dart';
+import 'use_case.dart';
 
 class UpdateProfilePicture extends UseCase<Uint8List, String> {
   final UserRepository _repository;

@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
+import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/repositories/setting_repository.dart';
-import '../sources/setting_local_data_source.dart';
+import '../datasources/local/setting_local_data_source.dart';
 
 class SettingRepositoryImpl implements SettingRepository {
   final SettingLocalDataSource _localDataSource;

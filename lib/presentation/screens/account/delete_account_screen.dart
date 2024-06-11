@@ -2,17 +2,17 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../injection_container.dart';
+import '../../../core/injection_container.dart';
 import '../../blocs/account/account_bloc.dart';
 import '../../blocs/open_external_link/open_external_link_bloc.dart';
-import '../../components/intuitive_scaffold/intuitive_scaffold.dart';
+import '../../components/intuitive_scaffold.dart';
 import '../../services/navigator_service.dart';
 import '../../services/platform_service.dart';
 import '../../services/theme_service.dart';
 import '../../services/ui_service.dart';
-import '../../utils/dimension.dart';
+import '../../utils/context_shortcut.dart';
 import '../../utils/failure_translation.dart';
-import '../common/markdown_screen.dart';
+import '../markdown_screen.dart';
 import '../skeleton_screen.dart';
 
 class DeleteAccountScreen extends StatelessWidget {

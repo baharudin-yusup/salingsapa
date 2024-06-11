@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
+import '../../core/errors/failure.dart';
 import '../../domain/repositories/external_link_repository.dart';
-import '../sources/external_link/external_link_remote_data_source.dart';
+import '../datasources/remote/external_link_remote_data_source.dart';
 
 class ExternalLinkRepositoryImpl implements ExternalLinkRepository {
   final ExternalLinkRemoteDataSource _remoteDataSource;

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../core/errors/failures.dart';
+import '../../../core/errors/failure.dart';
+import '../../../core/injection_container.dart';
 import '../../../core/utils/logger.dart';
 import '../../../domain/entities/contact.dart';
-import '../../../injection_container.dart';
 import '../../blocs/contact_list/contact_list_bloc.dart';
 import '../../components/contact_card.dart';
-import '../../components/intuitive_scaffold/intuitive_scaffold.dart';
-import '../../components/no_contact_access_ui.dart';
+import '../../components/intuitive_scaffold.dart';
+import '../../components/no_contact_access_button.dart';
 import '../../services/navigator_service.dart';
 import '../../services/theme_service.dart';
 import '../../services/ui_service.dart';
@@ -101,7 +101,7 @@ class _ContactListScreenState extends State<ContactListScreen>
               loadFailure: (state) {
                 if (state.failure is PermissionFailure) {
                   final ContactListBloc contactListBloc = context.read();
-                  return NoContactAccessUi(
+                  return NoContactAccessButton(
                     onRequest: () {
                       contactListBloc.add(
                           const ContactListEvent.requestPermissionStarted());

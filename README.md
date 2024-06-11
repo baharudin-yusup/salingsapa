@@ -52,6 +52,69 @@ and utilizes [BLoC state management](https://bloclibrary.dev/).
   through [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
 - [BLoC state management](https://bloclibrary.dev/) for efficient handling of application state.
 
+## 🗂️ Project Structure
+
+The project follows a well-structured directory layout to ensure scalability and maintainability.
+
+```text
+configs/
+scripts/
+lib/
+├── core/
+├── data/
+├── domain/
+├── presentation/
+```
+
+For more details, please refer to the [PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md).
+
+## 🛠️ Technical Specifications
+
+### Dependencies
+
+Salingsapa utilizes a variety of Flutter packages and external libraries to deliver its
+functionalities. Here are some key dependencies:
+
+- **Firebase**
+    - Provides a robust backend infrastructure, including authentication, messaging, and remote
+      configuration.
+    -
+  Package: `firebase_core`, `firebase_analytics`, `firebase_auth`, `firebase_messaging`, `firebase_remote_config`, `cloud_firestore`, `firebase_app_check`, `firebase_storage`
+
+- **State Management**
+    - Ensures efficient handling of application state.
+    - Package: `bloc`, `flutter_bloc`, `freezed`, `equatable`
+
+- **UI/UX**
+    - Enhances user interface and experience.
+    - Package: `dynamic_color`, `flutter_localizations`, `intl`, `flutter_markdown`
+
+- **WebRTC**
+    - Enables seamless video calls.
+    - Package: `agora_rtc_engine`
+
+- **TensorFlowLite**
+    - Powers Sign Language Recognition.
+    - Package: `tflite`
+
+- **HTTP Requests**
+    - Manages HTTP requests for data communication.
+    - Package: `dio`
+
+- **Contacts Service**
+    - Facilitates access to device contacts.
+    - Package: `flutter_contacts`
+
+### Continuous Integration and Deployment
+
+Automated CI/CD through [Codemagic](https://codemagic.io/) for
+streamlined development.
+
+### Dataset
+
+The Sign Language Recognition model is trained on
+the [ASL Alphabet dataset by Akash](https://www.kaggle.com/datasets/grassknoted/asl-alphabet/data)
+
 ## ▶️ How to Run the App
 
 ### Prerequisites
@@ -102,49 +165,8 @@ Before you begin, make sure you have:
       flutter run --flavor prod --target=lib/main_prod.dart
       ```
 
-## 🛠️ Technical Specifications
+---
 
-### Dependencies
-
-Salingsapa utilizes a variety of Flutter packages and external libraries to deliver its
-functionalities. Here are some key dependencies:
-
-- **Firebase**
-    - Provides a robust backend infrastructure, including authentication, messaging, and remote
-      configuration.
-    -
-  Package: `firebase_core`, `firebase_analytics`, `firebase_auth`, `firebase_messaging`, `firebase_remote_config`, `cloud_firestore`, `firebase_app_check`, `firebase_storage`
-
-- **State Management**
-    - Ensures efficient handling of application state.
-    - Package: `bloc`, `flutter_bloc`, `freezed`, `equatable`
-
-- **UI/UX**
-    - Enhances user interface and experience.
-    - Package: `dynamic_color`, `flutter_localizations`, `intl`, `flutter_markdown`
-
-- **WebRTC**
-    - Enables seamless video calls.
-    - Package: `agora_rtc_engine`
-
-- **TensorFlowLite**
-    - Powers Sign Language Recognition.
-    - Package: `tflite`
-
-- **HTTP Requests**
-    - Manages HTTP requests for data communication.
-    - Package: `dio`
-
-- **Contacts Service**
-    - Facilitates access to device contacts.
-    - Package: `flutter_contacts`
-
-### Continuous Integration and Deployment
-
-Automated CI/CD through [Codemagic](https://codemagic.io/) for
-streamlined development.
-
-### Dataset
-
-The Sign Language Recognition model is trained on
-the [ASL Alphabet dataset by Akash](https://www.kaggle.com/datasets/grassknoted/asl-alphabet/data)
+We hope you find Salingsapa useful and enjoyable to use. If you have any questions, suggestions, or
+issues, please feel free to open an issue on
+our [GitHub repository](https://github.com/baharudin-yusup/salingsapa/issues).

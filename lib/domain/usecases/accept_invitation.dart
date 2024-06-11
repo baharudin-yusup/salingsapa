@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/use_case.dart';
+import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../entities/invitation.dart';
 import '../entities/room.dart';
 import '../repositories/video_call_repository.dart';
+import 'use_case.dart';
 
 class AcceptInvitation extends UseCase<Invitation, Room> {
   final VideoCallRepository _repository;

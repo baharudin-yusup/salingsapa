@@ -3,7 +3,7 @@
 # Source and destination variables
 fileName="Firebase option"
 sourceFile="./configs/$ENV/firebase_options.dart"
-destinationFolder="./lib"
+destinationFolder="./lib/core"
 
 echo "Initialize $ENV $fileName started..."
 

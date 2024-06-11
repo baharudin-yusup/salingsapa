@@ -4,17 +4,17 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuthException;
 import 'package:rxdart/rxdart.dart';
 
-import '../../core/errors/exceptions.dart';
-import '../../core/errors/failures.dart';
+import '../../core/errors/exception.dart';
+import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/auth_status.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/authentication_repository.dart';
 import '../constants/exception_code.dart';
+import '../datasources/local/authentication_local_data_source.dart';
+import '../datasources/remote/authentication_remote_data_source.dart';
 import '../models/submit_phone_number_status.dart';
 import '../models/user_model.dart';
-import '../sources/authentication_local_data_source.dart';
-import '../sources/authentication_remote_data_source.dart';
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository {
   final BehaviorSubject<Either<Failure, AuthStatus>>

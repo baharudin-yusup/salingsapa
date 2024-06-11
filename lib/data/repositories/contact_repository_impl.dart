@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
+import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/contact.dart';
 import '../../domain/repositories/contact_repository.dart';
+import '../datasources/local/contact_local_data_source.dart';
+import '../datasources/remote/contact_remote_data_source.dart';
 import '../models/phone_number_model.dart';
-import '../sources/contact_local_data_source.dart';
-import '../sources/contact_remote_data_source.dart';
 
 class ContactRepositoryImpl implements ContactRepository {
   final ContactLocalDataSource _localDataSource;
