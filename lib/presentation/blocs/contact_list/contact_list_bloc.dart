@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/errors/failures.dart';
+import '../../../core/errors/failure.dart';
 import '../../../domain/entities/app_permission.dart';
 import '../../../domain/entities/contact.dart';
 import '../../../domain/usecases/get_current_user.dart';

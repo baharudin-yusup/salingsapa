@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/return_type.dart';
+import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/caption.dart';
 import '../../domain/entities/recognition_status.dart';
+import '../../domain/repositories/repo_outcome.dart';
 import '../../domain/repositories/speech_recognition_repository.dart';
 import '../models/caption_model.dart';
 import '../plugins/speech_recognition_plugin.dart';
@@ -17,7 +17,7 @@ class SpeechRecognitionRepositoryImpl implements SpeechRecognitionRepository {
   SpeechRecognitionRepositoryImpl(this._speechRecognitionPlugin);
 
   @override
-  Future<RepoResponse<Unit>> disable() async {
+  Future<RepoOutcome<Unit>> disable() async {
     try {
       await _speechRecognitionPlugin.stop();
       Logger.print('disabling speech recognition feature success!',
@@ -31,7 +31,7 @@ class SpeechRecognitionRepositoryImpl implements SpeechRecognitionRepository {
   }
 
   @override
-  Future<RepoResponse<Unit>> enable() async {
+  Future<RepoOutcome<Unit>> enable() async {
     try {
       await _speechRecognitionPlugin.start();
       Logger.print('enabling speech recognition feature success!',
@@ -45,7 +45,7 @@ class SpeechRecognitionRepositoryImpl implements SpeechRecognitionRepository {
   }
 
   @override
-  Future<RepoResponse<Unit>> init() async {
+  Future<RepoOutcome<Unit>> init() async {
     try {
       await _speechRecognitionPlugin.init();
       Logger.print('initializing speech recognition feature success!',
@@ -59,7 +59,7 @@ class SpeechRecognitionRepositoryImpl implements SpeechRecognitionRepository {
   }
 
   @override
-  Stream<RepoResponse<Caption>> get result =>
+  Stream<RepoOutcome<Caption>> get result =>
       _speechRecognitionPlugin.result.map((result) {
         final model = CaptionModel.self(
           captionId: result.id,
@@ -73,6 +73,6 @@ class SpeechRecognitionRepositoryImpl implements SpeechRecognitionRepository {
       });
 
   @override
-  Stream<RepoResponse<RecognitionStatus>> get status =>
+  Stream<RepoOutcome<RecognitionStatus>> get status =>
       _speechRecognitionPlugin.status.map((status) => Right(status));
 }

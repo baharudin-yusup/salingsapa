@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/use_case.dart';
+import '../../core/errors/failure.dart';
 import '../entities/video_frame.dart';
 import '../repositories/sign_language_recognition_repository.dart';
+import 'use_case.dart';
 
 class AnalyzeVideoFrame extends UseCase<SalingsapaVideoFrame, String> {
   final SignLanguageRecognitionRepository _repository;

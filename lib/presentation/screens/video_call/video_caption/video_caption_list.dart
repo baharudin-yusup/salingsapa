@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../blocs/sign_language_recognition_bloc/sign_language_recognition_bloc.dart';
+import '../../../blocs/sign_language_recognition/sign_language_recognition_bloc.dart';
 import '../../../blocs/video_call_caption/video_call_caption_bloc.dart';
 import '../../../services/theme_service.dart';
-import '../../../utils/dimension.dart';
+import '../../../utils/context_shortcut.dart';
 import 'video_caption_item.dart';
 
 class VideoCaptionList extends StatelessWidget {

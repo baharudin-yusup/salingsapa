@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../injection_container.dart';
+import '../../core/injection_container.dart';
 import '../services/platform_service.dart';
 import '../services/theme_service.dart';
 

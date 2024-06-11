@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/use_case.dart';
+import '../../core/errors/failure.dart';
 import '../entities/video_frame.dart';
 import '../repositories/video_call_repository.dart';
+import 'use_case.dart';
 
 class StreamPhotoSnapshot extends NoParamUseCaseStreamSync<PhotoSnapshot> {
   final VideoCallRepository _repository;

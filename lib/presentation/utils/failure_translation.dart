@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../data/constants/exception_code.dart';
-import 'dimension.dart';
+import 'context_shortcut.dart';
 
 extension AppFailureCodeTranslation on AppFailureCode {
   String translate(BuildContext context) {

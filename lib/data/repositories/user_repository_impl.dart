@@ -2,13 +2,13 @@ import 'dart:typed_data';
 
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/return_type.dart';
+import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/user.dart';
+import '../../domain/repositories/repo_outcome.dart';
 import '../../domain/repositories/user_repository.dart';
-import '../sources/user_local_data_source.dart';
-import '../sources/user_remote_data_source.dart';
+import '../datasources/local/user_local_data_source.dart';
+import '../datasources/remote/user_remote_data_source.dart';
 
 class UserRepositoryImpl extends UserRepository {
   final UserLocalDataSource _localDataSource;
@@ -50,7 +50,7 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Future<RepoResponse<String>> updateName({required String name}) async {
+  Future<RepoOutcome<String>> updateName({required String name}) async {
     if (await _remoteDataSource.getCurrentUser() == null) {
       Logger.print('user is not logged in, so skip the next flow');
       return const Left(UnknownFailure());
@@ -79,7 +79,7 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Future<RepoResponse<String>> updateProfilePicture({
+  Future<RepoOutcome<String>> updateProfilePicture({
     required Uint8List imageBytes,
   }) async {
     try {
@@ -112,7 +112,7 @@ class UserRepositoryImpl extends UserRepository {
       });
 
   @override
-  Future<RepoResponse<User>> getCurrentUser() async {
+  Future<RepoOutcome<User>> getCurrentUser() async {
     try {
       final user = await _remoteDataSource.getCurrentUser();
 
@@ -129,7 +129,7 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Future<RepoResponse<bool>> deleteAccount() async {
+  Future<RepoOutcome<bool>> deleteAccount() async {
     try {
       final result = await _remoteDataSource.deleteAccount();
       return Right(result);

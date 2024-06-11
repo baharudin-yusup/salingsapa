@@ -1,15 +1,15 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
+import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/caption.dart';
 import '../../domain/entities/recognition_status.dart';
 import '../../domain/entities/video_frame.dart';
 import '../../domain/repositories/sign_language_recognition_repository.dart';
+import '../datasources/local/sign_language_recognition_local_data_source.dart';
 import '../models/caption_model.dart';
 import '../models/video_frame_model.dart';
 import '../plugins/sign_language_recognition_plugin.dart';
-import '../sources/sign_language_recognition_local_data_source.dart';
 
 const _tagName = 'SignLanguageRecognizerRepository';
 

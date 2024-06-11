@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
+import '../../core/errors/failure.dart';
 
 abstract class ExternalLinkRepository {
   Future<Either<Failure, String>> getPrivacyPolicy();

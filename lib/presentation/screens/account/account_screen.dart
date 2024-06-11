@@ -3,15 +3,15 @@ import 'dart:math';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../injection_container.dart';
+import '../../../core/injection_container.dart';
 import '../../blocs/account/account_bloc.dart';
-import '../../components/intuitive_scaffold/intuitive_scaffold.dart';
+import '../../components/intuitive_scaffold.dart';
 import '../../components/intuitive_textfield.dart';
 import '../../services/navigator_service.dart';
 import '../../services/platform_service.dart';
 import '../../services/theme_service.dart';
-import '../../utils/app_localizations.dart';
 import 'account_setting.dart';
 
 class AccountScreen extends StatelessWidget {

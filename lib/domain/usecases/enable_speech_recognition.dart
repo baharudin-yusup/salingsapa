@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/use_case.dart';
+import '../../core/errors/failure.dart';
 import '../repositories/speech_recognition_repository.dart';
+import 'use_case.dart';
 
 class EnableSpeechRecognition extends NoParamUseCase<Unit> {
   final SpeechRecognitionRepository _repository;

@@ -3,23 +3,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../../core/env.dart';
+import '../../core/injection_container.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/auth_status.dart';
-import '../../env.dart';
-import '../../injection_container.dart';
 import '../blocs/account/account_bloc.dart';
 import '../blocs/authorization/authorization_bloc.dart';
 import '../blocs/contact_list/contact_list_bloc.dart';
 import '../blocs/open_external_link/open_external_link_bloc.dart';
 import '../blocs/setup/setup_bloc.dart';
-import '../routes.dart';
+import '../routes/app_routes.dart';
 import '../services/navigator_service.dart';
 import '../services/notification_service.dart';
 import '../services/platform_service.dart';
 import '../services/ui_service.dart';
-import '../utils/app_localizations.dart';
 import '../utils/failure_translation.dart';
 
 void createApp() {
