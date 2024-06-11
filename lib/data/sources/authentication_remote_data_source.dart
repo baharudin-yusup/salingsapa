@@ -139,7 +139,7 @@ class AuthenticationRemoteDatSourceImpl
       );
     } catch (error) {
       Logger.error(error, event: 'verifying phone number');
-      throw ServerException();
+      throw const ServerException();
     }
   }
 
@@ -150,7 +150,7 @@ class AuthenticationRemoteDatSourceImpl
       Logger.print('Sign out success!');
     } catch (error) {
       Logger.error(error, event: '(data source) signing out');
-      throw ServerException();
+      throw const ServerException();
     }
   }
 
@@ -173,7 +173,7 @@ class AuthenticationRemoteDatSourceImpl
       rethrow;
     }
     if (fbAuthUser == null) {
-      throw ServerException();
+      throw const ServerException();
     }
 
     return await _updateInitialData(fbAuthUser);
@@ -187,7 +187,7 @@ class AuthenticationRemoteDatSourceImpl
     if (snapshot.size > 1) {
       Logger.error('User id: ${user.uid} have more than 1 data in firestore',
           event: 'verifying phone number');
-      throw ServerException();
+      throw const ServerException();
     }
 
     if (snapshot.size == 1) {
@@ -213,14 +213,14 @@ class AuthenticationRemoteDatSourceImpl
 
   @override
   Future<void> resendOtp() async {
-    throw FeatureException();
+    throw const FeatureException();
   }
 
   @override
   Stream<SubmitPhoneNumberStatus> get streamSubmitPhoneNumberStatus {
     if (_submitPhoneNumberStatusController == null) {
       // TODO: Handle this
-      throw ServerException();
+      throw const ServerException();
     }
     return _submitPhoneNumberStatusController!.stream;
   }

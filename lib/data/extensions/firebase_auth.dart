@@ -7,7 +7,7 @@ extension FirebaseAuthSpecialMethod on FirebaseAuth {
   String get userId {
     final currentUser = this.currentUser;
     if (currentUser == null) {
-      final exception = ServerException(message: 'current-user-is-null');
+      const exception = ServerException(message: 'current-user-is-null');
       Logger.error(exception, event: 'getting user id');
       throw exception;
     }

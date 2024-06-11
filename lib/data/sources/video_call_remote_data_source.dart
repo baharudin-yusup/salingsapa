@@ -145,7 +145,7 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
         name: _tagName,
       );
     } catch (_) {
-      throw ServerException();
+      throw const ServerException();
     }
   }
 
@@ -155,7 +155,7 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
     try {
       final currentUser = _auth.currentUser;
       if (currentUser == null) {
-        throw ServerException(type: ServerExceptionType.unauthorized);
+        throw const ServerException(type: ServerExceptionType.unauthorized);
       }
       return currentUser.uid;
     } catch (error) {
@@ -219,7 +219,7 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
     } on ServerException {
       rethrow;
     } catch (_) {
-      throw ServerException();
+      throw const ServerException();
     }
   }
 
@@ -262,7 +262,7 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
     try {
       await _engine.switchCamera();
     } catch (_) {
-      throw ServerException();
+      throw const ServerException();
     }
   }
 
@@ -278,7 +278,7 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
       }
       await _engine.muteLocalAudioStream(mute);
     } catch (_) {
-      throw ServerException();
+      throw const ServerException();
     }
   }
 
@@ -287,7 +287,7 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
     try {
       await _engine.muteLocalVideoStream(mute);
     } catch (_) {
-      throw ServerException();
+      throw const ServerException();
     }
   }
 
@@ -305,7 +305,7 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
       return appId;
     } catch (error) {
       Logger.error(error, event: 'getting agora token');
-      throw ServerException();
+      throw const ServerException();
     }
   }
 
@@ -351,7 +351,7 @@ class VideoCallRemoteDataSourceImpl implements VideoCallRemoteDataSource {
   String _generateSnapshotFilePath() {
     final snapshotDir = _snapshotDir;
     if (snapshotDir == null) {
-      throw FeatureException();
+      throw const FeatureException();
     }
     const imgExtension = 'jpg';
     final imgName = _uuid.v1();

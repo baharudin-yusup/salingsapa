@@ -1,8 +1,14 @@
 import 'package:equatable/equatable.dart';
 
 abstract class Exception extends Equatable {
+  final String? message;
+
+  const Exception({this.message});
+
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [
+        message,
+      ];
 }
 
 enum ServerExceptionType {
@@ -11,11 +17,10 @@ enum ServerExceptionType {
 }
 
 class ServerException extends Exception {
-  final String message;
   final ServerExceptionType type;
 
-  ServerException({
-    this.message = 'Unknown error',
+  const ServerException({
+    super.message = 'Unknown error',
     this.type = ServerExceptionType.unknown,
   });
 
@@ -30,14 +35,16 @@ class BadDataException extends Exception {}
 
 class CacheException extends Exception {}
 
-class FeatureException extends Exception {}
+class FeatureException extends Exception {
+  const FeatureException({super.message});
+}
 
 class GeneralException extends Exception {}
 
 class ApiServerException extends ServerException {
   final dynamic data;
 
-  ApiServerException._({
+  const ApiServerException._({
     required super.message,
     required this.data,
   });

@@ -40,6 +40,12 @@ class RecentCallScreen extends StatelessWidget {
             navigatorService.pushNamed(VideoCallScreen.routeName,
                 arguments: room);
           },
+          actionFailure: (_, __, failure) {
+            uiService.hideLoading();
+            uiService.showErrorMessage(
+              ErrorData(message: failure.errorMessage),
+            );
+          },
           orElse: () {
             uiService.hideLoading();
           },
@@ -136,7 +142,14 @@ class RecentCallScreen extends StatelessWidget {
 
             return ListView.separated(
               padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace)
-                  .add(MediaQuery.of(context).padding),
+                  .add(MediaQuery.of(context).padding)
+                  .add(
+                    EdgeInsets.only(
+                      bottom: Platform.isAndroid
+                          ? IntuitiveUiConstant.hugeSpace
+                          : 0,
+                    ),
+                  ),
               itemCount: invitations.length,
               itemBuilder: (context, index) {
                 final invitation = invitations[index];

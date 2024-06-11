@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -95,7 +97,8 @@ class AccountScreen extends StatelessWidget {
     return SafeArea(
       child: LayoutBuilder(
         builder: (context, constraints) {
-          final radius = (constraints.maxWidth / 2) * 0.5;
+          final radius =
+              min((constraints.maxWidth / 5).toInt(), 100).toDouble();
           return BlocBuilder<AccountBloc, AccountState>(
             builder: (context, state) {
               final profilePicture = state.maybeMap(
@@ -136,10 +139,8 @@ class AccountScreen extends StatelessWidget {
                         children: [
                           const Spacer(),
                           Container(
-                            color: context
-                                .colorScheme()
-                                .surface
-                                .withOpacity(0.5),
+                            color:
+                                context.colorScheme().surface.withOpacity(0.5),
                             width: radius * 2,
                             height: radius / 2,
                             child: Row(

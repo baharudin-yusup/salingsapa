@@ -12,6 +12,7 @@ class IntuitiveScaffold extends StatelessWidget {
   final IntuitiveBottomNavigationBar? bottomNavigationBar;
   final IntuitiveFloatingActionButton? floatingActionButton;
   final IntuitivePageConfiguration? pageConfiguration;
+  final bool? resizeToAvoidBottomInset;
 
   const IntuitiveScaffold({
     super.key,
@@ -20,6 +21,7 @@ class IntuitiveScaffold extends StatelessWidget {
     this.bottomNavigationBar,
     this.floatingActionButton,
     this.pageConfiguration,
+    this.resizeToAvoidBottomInset,
   });
 
   @override
@@ -58,6 +60,7 @@ class IntuitiveScaffold extends StatelessWidget {
     }
 
     return CupertinoPageScaffold(
+      resizeToAvoidBottomInset: resizeToAvoidBottomInset ?? true,
       navigationBar: navigationBar,
       backgroundColor: pageConfiguration?.backgroundColor,
       child: Builder(builder: builder),
@@ -82,8 +85,12 @@ class IntuitiveScaffold extends StatelessWidget {
         selectedIndex: bottomNavigationBar!.currentIndex,
         onDestinationSelected: bottomNavigationBar!.onChanged,
         destinations: bottomNavigationBar!.items
-            .map((item) =>
-                NavigationDestination(icon: item.icon, label: item.label))
+            .map(
+              (item) => NavigationDestination(
+                icon: item.icon,
+                label: item.label,
+              ),
+            )
             .toList(),
       );
     } else {
@@ -91,6 +98,7 @@ class IntuitiveScaffold extends StatelessWidget {
     }
 
     return Scaffold(
+      resizeToAvoidBottomInset: resizeToAvoidBottomInset,
       appBar: materialAppBar,
       body: Builder(builder: builder),
       bottomNavigationBar: materialNavigationBar,

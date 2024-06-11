@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class IntuitiveUiConstant {
+  static const veryTinySpace = 3.0;
   static const tinySpace = 6.0;
   static const smallSpace = 10.0;
   static const normalSpace = NavigationToolbar.kMiddleSpacing;
