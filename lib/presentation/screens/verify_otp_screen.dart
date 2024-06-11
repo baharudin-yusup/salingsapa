@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../../data/extensions/extensions.dart';
 import '../../injection_container.dart';
 import '../blocs/setup/setup_bloc.dart';
 import '../components/intuitive_otp.dart';
@@ -139,8 +138,33 @@ class VerifyOtpScreen extends StatelessWidget {
   Widget _buildInfoText() {
     return BlocBuilder<SetupBloc, SetupState>(
       builder: (context, state) {
-        return Text(AppLocalizations.of(context)!
-            .otpSendToInfo(state.phoneNumber.toFormattedPhoneNumber()));
+        return Text(
+          AppLocalizations.of(context)!.otpSendToInfo(
+            state.maybeWhen(
+              inputOtpInitial: (phoneNumber, _) {
+                return phoneNumber.toString();
+              },
+              inputOtpValidationInProgress: (phoneNumber, _) {
+                return phoneNumber.toString();
+              },
+              inputOtpValidationFailure: (phoneNumber, _, __) {
+                return phoneNumber.toString();
+              },
+              resendOtpInProgress: (phoneNumber, _) {
+                return phoneNumber.toString();
+              },
+              resendOtpSuccess: (phoneNumber, _) {
+                return phoneNumber.toString();
+              },
+              resendOtpFailure: (phoneNumber, _, __) {
+                return phoneNumber.toString();
+              },
+              orElse: () {
+                return '';
+              },
+            ),
+          ),
+        );
       },
     );
   }

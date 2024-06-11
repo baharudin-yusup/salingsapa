@@ -8,12 +8,14 @@ part 'phone_number_model.g.dart';
 @JsonSerializable()
 class PhoneNumberModel extends Equatable {
   final String? regionCode;
+  final String? dialCode;
   final String? national;
   final String? international;
   final String raw;
 
   const PhoneNumberModel({
     required this.regionCode,
+    required this.dialCode,
     required this.national,
     required this.international,
     required this.raw,
@@ -36,6 +38,7 @@ class PhoneNumberModel extends Equatable {
 extension PhoneNumberModelToEntity on PhoneNumberModel {
   PhoneNumber toEntity() => PhoneNumber(
         regionCode: regionCode,
+        dialCode: dialCode,
         national: national,
         international: international,
         raw: raw,

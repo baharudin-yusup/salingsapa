@@ -31,7 +31,7 @@ class CaptionRemoteDataSourceImpl implements CaptionRemoteDataSource {
   Query<Map<String, dynamic>>? _guestCaptionQuery;
 
   Query<Map<String, dynamic>> get guestCaptionQuery {
-    if (_guestCaptionQuery == null) throw ServerException();
+    if (_guestCaptionQuery == null) throw const ServerException();
     return _guestCaptionQuery!;
   }
 
@@ -39,7 +39,7 @@ class CaptionRemoteDataSourceImpl implements CaptionRemoteDataSource {
 
   CollectionReference<Map<String, dynamic>> get reference {
     if (_captionCollectionReference == null) {
-      final exception = ServerException(message: 'reference-is-null');
+      const exception = ServerException(message: 'reference-is-null');
       throw exception;
     }
     return _captionCollectionReference!;
@@ -54,7 +54,7 @@ class CaptionRemoteDataSourceImpl implements CaptionRemoteDataSource {
 
     /// Throw and error because the room is not found
     /// or the room is not unique
-    if (roomQuerySnapshot.size != 1) throw ServerException();
+    if (roomQuerySnapshot.size != 1) throw const ServerException();
 
     // Create the caption collection reference
     _captionCollectionReference = roomQuerySnapshot.docs[0].reference
@@ -71,7 +71,7 @@ class CaptionRemoteDataSourceImpl implements CaptionRemoteDataSource {
       rethrow;
     } catch (error) {
       Logger.error(error, event: 'enabling caption feature (data source)');
-      throw ServerException();
+      throw const ServerException();
     }
   }
 

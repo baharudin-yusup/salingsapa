@@ -34,7 +34,7 @@ class ContactRemoteDataSourceImpl implements ContactRemoteDataSource {
       return result;
     } catch (error) {
       Logger.error(error, event: 'getting profile picture urls');
-      throw ServerException();
+      throw const ServerException();
     }
   }
 

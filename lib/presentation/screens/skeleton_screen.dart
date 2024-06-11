@@ -1,6 +1,7 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -47,19 +48,18 @@ class _RootScreenState extends State<RootScreen> {
 
   @override
   void initState() {
+    var dispatcher = SchedulerBinding.instance.platformDispatcher;
+
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final NotificationService notificationService = sl();
       await notificationService.requestPermission();
       await notificationService.init();
     });
     super.initState();
-  }
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    platformBrightness = MediaQuery.of(context).platformBrightness;
+    dispatcher.onPlatformBrightnessChanged = () {
+      platformBrightness = dispatcher.platformBrightness;
+    };
   }
 
   @override

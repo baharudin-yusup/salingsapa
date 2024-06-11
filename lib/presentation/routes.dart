@@ -36,6 +36,7 @@ Widget _buildScreen({
   Object? arguments,
   required BuildContext context,
 }) {
+  Logger.print('Render route $routeName with $arguments arguments');
   switch (routeName) {
     case VerifyOtpScreen.routeName:
       return const VerifyOtpScreen();

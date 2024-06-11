@@ -39,7 +39,7 @@ class SpeechRecognitionPluginImpl implements SpeechRecognitionPlugin {
   Future<void> init() async {
     final available = await _speechToText.initialize(onStatus: _listenStatus);
     if (!available) {
-      throw FeatureException();
+      throw const FeatureException();
     }
 
     _currentUuid = _generateUuid();
