@@ -1,15 +1,20 @@
+import 'dart:async';
+
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuthException;
 import 'package:rxdart/rxdart.dart';
 
-import '../../core/errors/exceptions.dart';
-import '../../core/errors/failures.dart';
+import '../../core/errors/exception.dart';
+import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/auth_status.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/authentication_repository.dart';
+import '../constants/exception_code.dart';
+import '../datasources/local/authentication_local_data_source.dart';
+import '../datasources/remote/authentication_remote_data_source.dart';
+import '../models/submit_phone_number_status.dart';
 import '../models/user_model.dart';
-import '../sources/authentication_local_data_source.dart';
-import '../sources/authentication_remote_data_source.dart';
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository {
   final BehaviorSubject<Either<Failure, AuthStatus>>
@@ -26,7 +31,8 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     late final UserModel? currentUser;
     try {
       currentUser = await _remoteDatSource.currentUser();
-      Logger.print('(repository) getCurrentUser() value: $currentUser');
+      Logger.print(
+          '(repository) getCurrentUser() value phone number: ${currentUser?.phoneNumber}');
 
       if (currentUser == null) {
         _authorizationStatusStreamController.sink
@@ -47,23 +53,93 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<Either<Failure, User>> verifyPhoneNumber(
-      {required String phoneNumber}) async {
+  Future<Either<Failure, User>> verifyPhoneNumber({
+    required String phoneNumber,
+  }) async {
+    Logger.print('verifying phone number $phoneNumber started...');
     try {
-      final model =
-          await _remoteDatSource.verifyPhoneNumber(phoneNumber: phoneNumber);
-      _authorizationStatusStreamController.sink
-          .add(const Right(AuthStatus.authorized));
-      return Right(model.toEntity());
+      _remoteDatSource.verifyPhoneNumber(phoneNumber: phoneNumber);
+
+      final latestValue = await _getLatestSubmitPhoneNumberStatus();
+
+      // TODO: Remove this delay
+      // This delay is to make sure the stream controller is closed
+      await Future.delayed(const Duration(milliseconds: 100));
+
+      Logger.print('latest verify phone number status: $latestValue');
+
+      if (latestValue is SubmitPhoneNumberStatusNoResponse) {
+        return Left(
+          ServerFailure(
+            code: AppFailureCode.submitPhoneNumberNoResponse,
+            createdAt: DateTime.now(),
+          ),
+        );
+      }
+
+      if (latestValue is CodeSent) {
+        return Left(
+          ServerFailure(
+            code: AppFailureCode.autoSignInFailed,
+            createdAt: DateTime.now(),
+          ),
+        );
+      }
+
+      if (latestValue is SubmitPhoneNumberError) {
+        Logger.error(latestValue.exception?.message,
+            event: 'verifying phone number');
+        return Left(
+          ServerFailure(
+            code: AppFailureCode.phoneNumberBlocked,
+            createdAt: DateTime.now(),
+          ),
+        );
+      }
+
+      if (latestValue is AutoSignIn) {
+        return Right(latestValue.user.toEntity());
+      }
+
+      return Left(
+        ServerFailure(
+          createdAt: DateTime.now(),
+        ),
+      );
+    } on AppFailureCode catch (code) {
+      return Left(ServerFailure(code: code, createdAt: DateTime.now()));
     } on Exception catch (_) {
       return Left(ServerFailure(createdAt: DateTime.now()));
     }
+  }
+
+  Future<SubmitPhoneNumberStatus> _getLatestSubmitPhoneNumberStatus() async {
+    Completer<SubmitPhoneNumberStatus> completer =
+        Completer<SubmitPhoneNumberStatus>();
+
+    // Listener for the stream
+    late StreamSubscription<SubmitPhoneNumberStatus> subscription;
+    subscription = _remoteDatSource.streamSubmitPhoneNumberStatus.listen(
+      (status) {
+        completer.complete(status); // Fill the completer with the latest value
+        subscription
+            .cancel(); // Cancel the subscription after getting the latest value
+      },
+      onError: (error) {
+        completer.completeError(
+            error); // Fill the completer with an error if one occurs
+      },
+      cancelOnError: true, // Cancel the subscription if an error occurs
+    );
+
+    return completer.future;
   }
 
   @override
   Future<Either<Failure, Unit>> signOut() async {
     try {
       await _remoteDatSource.signOut();
+      await _localDataSource.clearUserData();
       return const Right(unit);
     } catch (error) {
       Logger.error(error, event: '(repository) signing out');
@@ -72,13 +148,24 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<Either<Failure, User>> verifyOtp({required String otp}) async {
+  Future<Either<Failure, User>> verifyOtp({
+    required String otp,
+  }) async {
     try {
       final model = await _remoteDatSource.verifyOtp(otp: otp);
       _authorizationStatusStreamController.sink
           .add(const Right(AuthStatus.authorized));
       return Right(model.toEntity());
-    } on Exception catch (_) {
+    } on FirebaseAuthException catch (exception) {
+      switch (exception.type) {
+        case FirebaseExceptionCode.invalidVerificationCode:
+          return const Left(ServerFailure(code: AppFailureCode.invalidOtp));
+        default:
+          return Left(ServerFailure(createdAt: DateTime.now()));
+      }
+    } on AppFailureCode catch (code) {
+      return Left(ServerFailure(code: code, createdAt: DateTime.now()));
+    } catch (exception) {
       return Left(ServerFailure(createdAt: DateTime.now()));
     }
   }

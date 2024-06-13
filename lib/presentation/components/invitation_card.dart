@@ -1,51 +1,67 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 
 import '../../domain/entities/invitation.dart';
-import '../../domain/entities/room.dart';
 import '../services/theme_service.dart';
-import '../utils/app_localizations.dart';
 
 class InvitationCard extends StatelessWidget {
   final Invitation invitation;
-  final void Function(Room room)? onTap;
+  final void Function(Invitation invitation) onTap;
 
   const InvitationCard(
     this.invitation, {
     super.key,
-    this.onTap,
+    required this.onTap,
   });
 
-  bool get isValid => invitation.room.isValid;
+  bool get isValid =>
+      DateTime.now().isBefore(invitation.validUntil) &&
+      invitation.senderUserInformation.userId != invitation.receiverUserId &&
+      !invitation.isRejected &&
+      !invitation.isAccepted;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: onTap != null && isValid ? () => onTap!(invitation.room) : null,
+      onTap: isValid ? () => onTap(invitation) : null,
       selected: isValid,
-      enabled: true,
-      dense: true,
+      dense: false,
       title: showCallerName(context),
       leading: showProfilePicture(),
       subtitle: showDescription(context),
       trailing: isValid ? showCallIcon() : null,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: IntuitiveUiConstant.normalSpace,
+        vertical: IntuitiveUiConstant.tinySpace,
+      ),
       tileColor: context.colorScheme().tertiary.withOpacity(0.1),
-      textColor: context.colorScheme().onTertiaryContainer,
       iconColor: context.colorScheme().onTertiaryContainer,
       selectedTileColor: context.colorScheme().primaryContainer,
       selectedColor: context.colorScheme().onPrimaryContainer,
       shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-              Radius.circular(IntuitiveUiConstant.normalRadius))),
+        borderRadius: BorderRadius.all(
+          Radius.circular(
+            IntuitiveUiConstant.normalRadius,
+          ),
+        ),
+      ),
+      style: ListTileStyle.list,
     );
   }
 
   Widget? showProfilePicture() {
     CachedNetworkImageProvider? profilePicture;
-    if (invitation.callerContact?.profilePictureUrl != null) {
-      profilePicture = CachedNetworkImageProvider(
-          invitation.callerContact!.profilePictureUrl!);
+    // TODO: Enhance this
+    final profilePictureUrl = invitation.participants
+        .where((participant) =>
+            participant.userId != invitation.receiverUserId &&
+            participant.profilePictureUrl != null)
+        .firstOrNull
+        ?.profilePictureUrl;
+    if (profilePictureUrl != null) {
+      profilePicture = CachedNetworkImageProvider(profilePictureUrl);
     }
 
     return LayoutBuilder(builder: (context, constraints) {
@@ -63,11 +79,13 @@ class InvitationCard extends StatelessWidget {
   }
 
   Widget showCallerName(BuildContext context) {
-    if (invitation.callerContact != null) {
-      return Text(invitation.callerContact!.name);
-    }
+    // TODO: Enhance this
+    final senderName = invitation.participants
+        .where((participant) => participant.userId != invitation.receiverUserId)
+        .map((participant) => participant.name ?? participant.phoneNumber)
+        .join(',');
 
-    return Text(AppLocalizations.of(context)!.unknownCallerName);
+    return Text(senderName);
   }
 
   Widget showCallIcon() {
@@ -75,8 +93,8 @@ class InvitationCard extends StatelessWidget {
   }
 
   Widget showDescription(BuildContext context) {
-    final difference = DateTime.now().difference(invitation.room.createdAt);
-    final isDaySame = DateTime.now().day == invitation.room.createdAt.day;
+    final difference = DateTime.now().difference(invitation.createdAt);
+    final isDaySame = DateTime.now().day == invitation.createdAt.day;
     final daysDifference = difference.inDays;
     late final DateFormat dateFormat;
     if (daysDifference < 1 && isDaySame) {
@@ -87,7 +105,7 @@ class InvitationCard extends StatelessWidget {
       dateFormat = DateFormat('dd/MM/yyyy');
     }
 
-    final createdAt = dateFormat.format(invitation.room.createdAt.toLocal());
+    final createdAt = dateFormat.format(invitation.createdAt.toLocal());
     if (isValid) {
       return Row(
         children: [

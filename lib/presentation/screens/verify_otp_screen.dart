@@ -1,18 +1,18 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../../data/extensions/extensions.dart';
-import '../../injection_container.dart';
+import '../../core/injection_container.dart';
 import '../blocs/setup/setup_bloc.dart';
 import '../components/intuitive_otp.dart';
 import '../components/intuitive_scaffold.dart';
-import '../services/navigator_service.dart';
 import '../services/theme_service.dart';
 import '../services/ui_service.dart';
-import '../utils/app_localizations.dart';
-import '../utils/dimension.dart';
-import 'skeleton_screen.dart';
+import '../utils/context_shortcut.dart';
+import '../utils/failure_translation.dart';
 
 class VerifyOtpScreen extends StatelessWidget {
   static const routeName = '/verify-otp';
@@ -23,16 +23,13 @@ class VerifyOtpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<SetupBloc, SetupState>(
       listener: (context, state) {
-        final NavigatorService navigatorService = sl();
         final UiService uiService = sl();
         state.maybeMap(
           inputOtpValidationInProgress: (_) {
             uiService.showLoading();
           },
           inputOtpValidationSuccess: (_) {
-            uiService.hideLoading();
-            navigatorService.pushNamedAndRemoveUntil(
-                RootScreen.routeName, (route) => false);
+            // Handled by root screen
           },
           inputOtpValidationFailure: (_) {
             uiService.hideLoading();
@@ -52,28 +49,87 @@ class VerifyOtpScreen extends StatelessWidget {
         );
       },
       builder: (context, state) {
-        return IntuitiveScaffold(
-          appBar: IntuitiveAppBar(
-            middle: Text(AppLocalizations.of(context)!.verifyYourPhoneNumber),
-          ),
-          builder: (context) {
-            return ListView(
-              padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace)
-                  .add(context.padding),
-              children: [
-                _buildInfoText(),
-                const SizedBox(height: IntuitiveUiConstant.normalSpace),
-                IntuitiveOtp(
-                  onCompleted: (otp) {
-                    context.read<SetupBloc>().add(SetupEvent.otpChanged(otp));
-                  },
-                  obscure: false,
-                ),
-                const SizedBox(height: IntuitiveUiConstant.normalSpace),
-                _buildResendCodeText(context),
-              ],
-            );
+        return PopScope(
+          onPopInvoked: (didPop) {
+            if (didPop) {
+              context
+                  .read<SetupBloc>()
+                  .add(const SetupEvent.inputPhoneNumberStarted());
+            }
           },
+          child: IntuitiveScaffold(
+            appBar: IntuitiveAppBar(
+              middle: Text(AppLocalizations.of(context)!.verifyYourPhoneNumber),
+              cupertinoTrailing: GestureDetector(
+                onTap: state.isAbleToSubmitOtp
+                    ? () {
+                        context
+                            .read<SetupBloc>()
+                            .add(const SetupEvent.submitOtpStarted());
+                      }
+                    : null,
+                child: Text(
+                  AppLocalizations.of(context)!.send,
+                  style: TextStyle(
+                    color: state.isAbleToSubmitOtp
+                        ? context.colorScheme().primary
+                        : context.colorScheme().onSurface.withOpacity(0.5),
+                  ),
+                ),
+              ),
+            ),
+            builder: (context) {
+              return ListView(
+                padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace)
+                    .add(context.padding),
+                children: [
+                  _buildInfoText(),
+                  const SizedBox(height: IntuitiveUiConstant.normalSpace),
+                  IntuitiveOtp(
+                    onChanged: (otp) {
+                      context.read<SetupBloc>().add(SetupEvent.otpChanged(otp));
+                    },
+                    onCompleted: (otp) {
+                      context.read<SetupBloc>().add(SetupEvent.otpChanged(otp));
+                    },
+                    obscure: false,
+                    errorMessage: state.maybeMap(
+                      inputOtpValidationFailure: (state) =>
+                          state.failure.code.translate(context),
+                      orElse: () => null,
+                    ),
+                    errorColor: context.colorScheme().error,
+                  ),
+                  if (Platform.isAndroid) ...[
+                    const SizedBox(height: IntuitiveUiConstant.smallSpace),
+                    _buildSendButton(),
+                  ],
+                  const SizedBox(height: IntuitiveUiConstant.normalSpace),
+                  _buildResendCodeText(context),
+                ],
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildSendButton() {
+    return BlocBuilder<SetupBloc, SetupState>(
+      builder: (context, state) {
+        return Center(
+          child: ElevatedButton.icon(
+            onPressed: state.isAbleToSubmitOtp
+                ? () {
+                    context
+                        .read<SetupBloc>()
+                        .add(const SetupEvent.submitOtpStarted());
+                  }
+                : null,
+            icon: Icon(Icons.adaptive.arrow_forward_rounded),
+            label: Text(AppLocalizations.of(context)!.send),
+          ),
         );
       },
     );
@@ -82,8 +138,33 @@ class VerifyOtpScreen extends StatelessWidget {
   Widget _buildInfoText() {
     return BlocBuilder<SetupBloc, SetupState>(
       builder: (context, state) {
-        return Text(AppLocalizations.of(context)!
-            .otpSendToInfo(state.phoneNumber.toFormattedPhoneNumber()));
+        return Text(
+          AppLocalizations.of(context)!.otpSendToInfo(
+            state.maybeWhen(
+              inputOtpInitial: (phoneNumber, _) {
+                return phoneNumber.toString();
+              },
+              inputOtpValidationInProgress: (phoneNumber, _) {
+                return phoneNumber.toString();
+              },
+              inputOtpValidationFailure: (phoneNumber, _, __) {
+                return phoneNumber.toString();
+              },
+              resendOtpInProgress: (phoneNumber, _) {
+                return phoneNumber.toString();
+              },
+              resendOtpSuccess: (phoneNumber, _) {
+                return phoneNumber.toString();
+              },
+              resendOtpFailure: (phoneNumber, _, __) {
+                return phoneNumber.toString();
+              },
+              orElse: () {
+                return '';
+              },
+            ),
+          ),
+        );
       },
     );
   }
@@ -101,9 +182,7 @@ class VerifyOtpScreen extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            context
-                .read<SetupBloc>()
-                .add(const SetupEvent.resendOtpStarted());
+            context.read<SetupBloc>().add(const SetupEvent.resendOtpStarted());
           },
           child: Text(
             AppLocalizations.of(context)!.resendCode,

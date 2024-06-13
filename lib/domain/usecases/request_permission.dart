@@ -1,16 +1,16 @@
 import 'package:dartz/dartz.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/use_case.dart';
+import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../entities/app_permission.dart';
+import 'use_case.dart';
 
-class RequestPermission extends UseCase<AppPermission, bool> {
+class RequestPermission extends UseCase<AppPermission, bool?> {
   const RequestPermission();
 
   @override
-  Future<Either<Failure, bool>> call(AppPermission param) async {
+  Future<Either<Failure, bool?>> call(AppPermission param) async {
     try {
       late final Permission permission;
       switch (param) {
@@ -19,13 +19,21 @@ class RequestPermission extends UseCase<AppPermission, bool> {
           break;
       }
 
+      if (await permission.isPermanentlyDenied) {
+        await openAppSettings();
+        return const Right(null);
+      }
+
       final status = await permission.request();
       final isGranted = status.isGranted;
+      if (!isGranted) {
+        return Left(PermissionFailure(param, createdAt: DateTime.now()));
+      }
 
       return Right(isGranted);
     } catch (error) {
       Logger.error(error, event: 'requesting permission $param');
-      return Left(UnknownFailure(createdAt: DateTime.now()));
+      return Left(PermissionFailure(param, createdAt: DateTime.now()));
     }
   }
 }

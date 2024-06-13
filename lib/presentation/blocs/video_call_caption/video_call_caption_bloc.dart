@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/errors/failures.dart';
+import '../../../core/errors/failure.dart';
 import '../../../core/utils/logger.dart';
 import '../../../domain/entities/caption.dart';
 import '../../../domain/entities/room.dart';
@@ -15,15 +15,23 @@ import '../../../domain/usecases/stream_caption.dart';
 import '../../../domain/usecases/upload_caption.dart';
 
 part 'video_call_caption_bloc.freezed.dart';
-
 part 'video_call_caption_event.dart';
-
 part 'video_call_caption_state.dart';
 
 const _tagName = 'VideoCallCaptionBloc';
 
 class VideoCallCaptionBloc
     extends Bloc<VideoCallCaptionEvent, VideoCallCaptionState> {
+  final InitCaption _initCaption;
+  final EnableCaption _enableCaption;
+  final DisableCaption _disableCaption;
+  final StreamCaption _streamCaption;
+  final UploadCaption _uploadCaption;
+
+  StreamSubscription<Either<Failure, List<Caption>>>? _streamSubscription;
+  Timer? _updateRemoteCaptionTimer;
+  Timer? _updateLocalCaptionTimer;
+
   VideoCallCaptionBloc(
     this._initCaption,
     this._enableCaption,
@@ -42,18 +50,9 @@ class VideoCallCaptionBloc
   Future<void> close() async {
     await _streamSubscription?.cancel();
     _updateRemoteCaptionTimer?.cancel();
+    _updateLocalCaptionTimer?.cancel();
     return await super.close();
   }
-
-  final InitCaption _initCaption;
-  final EnableCaption _enableCaption;
-  final DisableCaption _disableCaption;
-  final StreamCaption _streamCaption;
-  final UploadCaption _uploadCaption;
-
-  StreamSubscription<Either<Failure, List<Caption>>>? _streamSubscription;
-  Timer? _updateRemoteCaptionTimer;
-  Timer? _updateLocalCaptionTimer;
 
   void _startInitCaption(
       _Started event, Emitter<VideoCallCaptionState> emit) async {
@@ -143,9 +142,12 @@ class VideoCallCaptionBloc
       name: _tagName,
     );
 
+    // Handle new caption
     if (currentCaptionIndex < 0) {
       captions.add(newCaption);
-    } else {
+    }
+    // Handle update caption
+    else {
       captions[currentCaptionIndex] = newCaption;
     }
 
@@ -155,7 +157,7 @@ class VideoCallCaptionBloc
   void _startUploadCaption(
       _UploadCaptionStarted event, Emitter<VideoCallCaptionState> emit) async {
     Logger.print(
-      'upload caption started...',
+      'upload caption "${event.caption.rawData}" started...',
       name: _tagName,
     );
     final uploadCaptionResult = await _uploadCaption(event.caption);
@@ -173,6 +175,8 @@ class VideoCallCaptionBloc
         }
 
         emit(state.copyWith(localCaptions: captions));
+
+        Logger.print('new local caption = ${captions.combine()?.rawData}');
       },
     );
 

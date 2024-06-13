@@ -1,38 +1,42 @@
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:dartz/dartz.dart';
 
-import '../../core/interfaces/return_type.dart';
 import '../entities/contact.dart';
 import '../entities/invitation.dart';
 import '../entities/room.dart';
 import '../entities/video_call_user_update_info.dart';
 import '../entities/video_frame.dart';
+import 'repo_outcome.dart';
 
 abstract class VideoCallRepository {
-  Future<RepoResponse<RtcEngine>> init();
+  Future<RepoOutcome<RtcEngine>> init();
 
-  Future<RepoResponse<Room>> createRoom({required Contact contact});
+  Future<RepoOutcome<Room>> createRoom({required Contact contact});
 
-  Future<RepoResponse<Unit>> joinRoom({required Room room});
+  Future<RepoOutcome<Unit>> joinRoom({required Room room});
 
-  Future<RepoResponse<Unit>> leaveRoom({required Room room});
+  Future<RepoOutcome<Unit>> leaveRoom({required Room room});
 
-  Future<RepoResponse<Unit>> flipCamera();
+  Future<RepoOutcome<Room>> acceptInvitation({required Invitation invitation});
 
-  Future<RepoResponse<Unit>> muteAudio({required bool isMuted});
+  Future<RepoOutcome<Unit>> rejectInvitation({required Invitation invitation});
 
-  Future<RepoResponse<Unit>> muteVideo({required bool isMuted});
+  Future<RepoOutcome<Unit>> flipCamera();
 
-  Stream<RepoResponse<VideoCallUserUpdateInfo>> get videoCallStatus;
+  Future<RepoOutcome<Unit>> muteAudio({required bool isMuted});
 
-  Stream<RepoResponse<List<Invitation>>> get rooms;
+  Future<RepoOutcome<Unit>> muteVideo({required bool isMuted});
 
-  RepoResponse<RtcEngine> get engine;
+  Stream<RepoOutcome<VideoCallUserUpdateInfo>> get videoCallStatus;
+
+  Stream<RepoOutcome<List<Invitation>>> get invitations;
+
+  RepoOutcome<RtcEngine> get engine;
 
   /// Photo snapshot usecase
-  Future<RepoResponse<Unit>> enableTakeSnapshot();
+  Future<RepoOutcome<Unit>> enableTakeSnapshot();
 
-  Future<RepoResponse<Unit>> disableTakeSnapshot();
+  Future<RepoOutcome<Unit>> disableTakeSnapshot();
 
-  Stream<RepoResponse<PhotoSnapshot>> get photoSnapshot;
+  Stream<RepoOutcome<PhotoSnapshot>> get photoSnapshot;
 }

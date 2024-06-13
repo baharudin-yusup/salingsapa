@@ -11,7 +11,7 @@ class IntuitiveOtp extends StatefulWidget {
   final String? errorMessage;
   final void Function(String otp) onCompleted;
   final void Function(String otp)? onChanged;
-  final OtpLength? ceriaOTPType;
+  final OtpLength? length;
   final bool? obscure;
   final Color errorColor;
 
@@ -23,7 +23,7 @@ class IntuitiveOtp extends StatefulWidget {
     this.errorMessage,
     required this.onCompleted,
     this.onChanged,
-    this.ceriaOTPType,
+    this.length,
     this.errorColor = Colors.red,
   });
 
@@ -58,7 +58,7 @@ class _IntuitiveOtpState extends State<IntuitiveOtp> {
   @override
   void initState() {
     super.initState();
-    totalFields = widget.ceriaOTPType == OtpLength.otp5 ? 5 : 6;
+    totalFields = widget.length == OtpLength.otp5 ? 5 : 6;
     controllers = List<TextEditingController>.generate(
         totalFields, (_) => TextEditingController());
     focusNodes = List<FocusNode>.generate(totalFields,
@@ -116,21 +116,22 @@ class _IntuitiveOtpState extends State<IntuitiveOtp> {
   }
 
   Widget _buildErrorMessage() {
-    return Container(
-      height: IntuitiveUiConstant.largeSpace,
-      padding: const EdgeInsets.only(top: 8.0),
-      child: AnimatedSize(
-        duration: const Duration(milliseconds: 250),
-        child: hasError && isAllFieldFilled
-            ? Text(
+    return AnimatedSize(
+      duration: const Duration(milliseconds: 100),
+      child: hasError && isAllFieldFilled
+          ? Padding(
+              padding:
+                  const EdgeInsets.only(top: IntuitiveUiConstant.smallSpace),
+              child: Text(
                 errorMessage,
-                style: Theme.of(context)
-                    .primaryTextTheme
-                    .bodySmall
-                    ?.copyWith(color: Colors.red),
-              )
-            : null,
-      ),
+                style: context.textTheme().bodySmall?.copyWith(
+                      color: context.colorScheme().error,
+                    ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            )
+          : const SizedBox(),
     );
   }
 
@@ -146,8 +147,6 @@ class _IntuitiveOtpState extends State<IntuitiveOtp> {
         FocusScope.of(context).requestFocus(nextFocusNode);
       }
 
-      if (widget.onChanged != null) widget.onChanged!(field);
-
       final currentValue = controllers.map((e) => e.text.trim()).join();
 
       /// Valid condition for calling onResult method:
@@ -155,6 +154,8 @@ class _IntuitiveOtpState extends State<IntuitiveOtp> {
       /// 2. first time value (previous value != current value)
       if (isAllFieldFilled && previousValue != currentValue) {
         widget.onCompleted(currentValue);
+      } else if (widget.onChanged != null) {
+        widget.onChanged!(controllers.map((e) => e.text.trim()).join());
       }
       previousValue = currentValue;
 
@@ -167,7 +168,7 @@ class _IntuitiveOtpState extends State<IntuitiveOtp> {
       child: Container(
         width: double.maxFinite,
         decoration: BoxDecoration(
-          color: context.colorScheme().background,
+          color: context.colorScheme().surface,
           border: Border.all(
             color: hasError && isAllFieldFilled
                 ? widget.errorColor

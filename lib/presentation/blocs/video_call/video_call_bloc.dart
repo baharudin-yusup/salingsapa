@@ -4,7 +4,7 @@ import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/errors/failures.dart';
+import '../../../core/errors/failure.dart';
 import '../../../core/utils/logger.dart';
 import '../../../domain/entities/room.dart';
 import '../../../domain/entities/video_call_status.dart';
@@ -17,9 +17,7 @@ import '../../../domain/usecases/leave_room.dart';
 import '../../../domain/usecases/stream_video_call_status.dart';
 
 part 'video_call_bloc.freezed.dart';
-
 part 'video_call_event.dart';
-
 part 'video_call_state.dart';
 
 class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
@@ -94,12 +92,21 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
 
   void _onStartJoinRoom(
       _JoinRoomStarted event, Emitter<VideoCallState> emit) async {
-    state.maybeWhen(
+    final isInitialConditionValid = state.maybeWhen(
       initEngineSuccess: (room, engine) {
         emit(VideoCallState.joinRoomInProgress(room, engine));
+        return true;
       },
-      orElse: () {},
+      orElse: () {
+        return false;
+      },
     );
+
+    if (!isInitialConditionValid) {
+      emit(
+          VideoCallState.initEngineFailure(state.room, const FeatureFailure()));
+      return;
+    }
 
     final joinVideoCallResult = await _joinRoom(state.room);
     joinVideoCallResult.fold(
@@ -131,7 +138,13 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
       _JoinRoomFailed event, Emitter<VideoCallState> emit) async {
     state.maybeWhen(
       joinRoomInProgress: (room, engine) {
-        emit(VideoCallState.joinRoomFailure(room, engine, const UnknownFailure()));
+        emit(
+          VideoCallState.joinRoomFailure(
+            room,
+            engine,
+            const UnknownFailure(),
+          ),
+        );
       },
       orElse: () {},
     );
@@ -139,31 +152,51 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
 
   void _onStartLeaveRoom(
       _LeaveRoomStarted event, Emitter<VideoCallState> emit) async {
-    state.maybeWhen(
+    final isPreConditionValid = state.when(
       initial: (room) {
         emit(VideoCallState.leaveRoomInProgress(room: room));
+        return true;
       },
       initEngineInProgress: (room) {
         emit(VideoCallState.leaveRoomInProgress(room: room));
+        return true;
       },
       initEngineSuccess: (room, engine) {
         emit(VideoCallState.leaveRoomInProgress(room: room, engine: engine));
+        return true;
       },
       initEngineFailure: (room, failure) {
         emit(VideoCallState.leaveRoomInProgress(room: room));
+        return true;
       },
       joinRoomInProgress: (room, engine) {
         emit(VideoCallState.leaveRoomInProgress(room: room, engine: engine));
+        return true;
       },
       joinRoomSuccess:
           (room, engine, remoteUserStatus, isTakePhotoEnabled, _, __) {
         emit(VideoCallState.leaveRoomInProgress(room: room, engine: engine));
+        return true;
       },
       joinRoomFailure: (room, engine, failure) {
         emit(VideoCallState.leaveRoomInProgress(room: room, engine: engine));
+        return true;
       },
-      orElse: () {},
+      leaveRoomInProgress: (room, engine) {
+        return false;
+      },
+      leaveRoomFailure: (room, _) {
+        emit(VideoCallState.leaveRoomInProgress(room: room));
+        return true;
+      },
+      leaveRoomSuccess: (room, engine) {
+        return false;
+      },
     );
+
+    if (!isPreConditionValid) {
+      return;
+    }
 
     final startVideoCallResult = await _leaveRoom(state.room);
     startVideoCallResult.fold(
@@ -185,7 +218,8 @@ class VideoCallBloc extends Bloc<VideoCallEvent, VideoCallState> {
       _UpdateUserStatusStarted event, Emitter<VideoCallState> emit) {
     final info = event.info;
 
-    Logger.print('Update user status (${info.runtimeType} ${info.status}), current state: ${state.runtimeType}');
+    Logger.print(
+        'Update user status (${info.runtimeType} ${info.status}), current state: ${state.runtimeType}');
 
     switch (info.status) {
       case VideoCallStatus.joined:

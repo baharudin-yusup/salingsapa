@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/use_case.dart';
+import '../../core/errors/failure.dart';
 import '../entities/video_call_user_update_info.dart';
 import '../repositories/video_call_repository.dart';
+import 'use_case.dart';
 
 class StreamVideoCallStatus
     extends NoParamUseCaseStreamSync<VideoCallUserUpdateInfo> {

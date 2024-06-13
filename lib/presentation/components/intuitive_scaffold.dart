@@ -1,16 +1,17 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'intuitive_scaffold/builder.dart';
-import 'intuitive_scaffold/intuitive_floating_action_button.dart';
+import '../../core/injection_container.dart';
+import '../services/platform_service.dart';
+import 'intuitive_floating_action_button.dart';
 
 class IntuitiveScaffold extends StatelessWidget {
   final Widget Function(BuildContext context) builder;
   final IntuitiveAppBar? appBar;
   final IntuitiveBottomNavigationBar? bottomNavigationBar;
   final IntuitiveFloatingActionButton? floatingActionButton;
+  final IntuitivePageConfiguration? pageConfiguration;
+  final bool? resizeToAvoidBottomInset;
 
   const IntuitiveScaffold({
     super.key,
@@ -18,15 +19,46 @@ class IntuitiveScaffold extends StatelessWidget {
     this.appBar,
     this.bottomNavigationBar,
     this.floatingActionButton,
+    this.pageConfiguration,
+    this.resizeToAvoidBottomInset,
   });
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS) {
-      return _buildCupertinoScaffold();
+    switch (sl<PlatformService>().os) {
+      case PlatformOS.iOS:
+        return _buildCupertinoScaffold();
+      default:
+        return _buildMaterialScaffold();
+    }
+  }
+
+  Widget? _buildFloatingActionButton(IntuitiveFloatingActionButton? button) {
+    if (button == null) {
+      return null;
     }
 
-    return _buildMaterialScaffold();
+    switch (button.size) {
+      case IntuitiveFloatingActionButtonSize.normal:
+        return FloatingActionButton(
+          onPressed: button.onPressed,
+          tooltip: button.label,
+          child: button.icon,
+        );
+      case IntuitiveFloatingActionButtonSize.large:
+        return FloatingActionButton.large(
+          onPressed: button.onPressed,
+          tooltip: button.label,
+          child: button.icon,
+        );
+      case IntuitiveFloatingActionButtonSize.extended:
+        return FloatingActionButton.extended(
+          onPressed: button.onPressed,
+          label: Text(button.label),
+          tooltip: button.label,
+          icon: button.icon,
+        );
+    }
   }
 
   Widget _buildCupertinoScaffold() {
@@ -55,7 +87,9 @@ class IntuitiveScaffold extends StatelessWidget {
     }
 
     return CupertinoPageScaffold(
+      resizeToAvoidBottomInset: resizeToAvoidBottomInset ?? true,
       navigationBar: navigationBar,
+      backgroundColor: pageConfiguration?.backgroundColor,
       child: Builder(builder: builder),
     );
   }
@@ -78,8 +112,12 @@ class IntuitiveScaffold extends StatelessWidget {
         selectedIndex: bottomNavigationBar!.currentIndex,
         onDestinationSelected: bottomNavigationBar!.onChanged,
         destinations: bottomNavigationBar!.items
-            .map((item) =>
-                NavigationDestination(icon: item.icon, label: item.label))
+            .map(
+              (item) => NavigationDestination(
+                icon: item.icon,
+                label: item.label,
+              ),
+            )
             .toList(),
       );
     } else {
@@ -87,10 +125,11 @@ class IntuitiveScaffold extends StatelessWidget {
     }
 
     return Scaffold(
+      resizeToAvoidBottomInset: resizeToAvoidBottomInset,
       appBar: materialAppBar,
       body: Builder(builder: builder),
       bottomNavigationBar: materialNavigationBar,
-      floatingActionButton: floatingActionButton?.build,
+      floatingActionButton: _buildFloatingActionButton(floatingActionButton),
     );
   }
 }
@@ -131,4 +170,10 @@ class IntuitiveBottomNavigationBarItem {
     required this.icon,
     required this.label,
   });
+}
+
+class IntuitivePageConfiguration {
+  final Color? backgroundColor;
+
+  const IntuitivePageConfiguration({required this.backgroundColor});
 }

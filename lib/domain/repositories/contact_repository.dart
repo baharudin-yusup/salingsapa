@@ -1,8 +1,10 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
+import '../../core/errors/failure.dart';
 import '../entities/contact.dart';
 
 abstract class ContactRepository {
+  Future<Either<Failure, Unit>> init();
+
   Future<Either<Failure, List<Contact>>> getContactList();
 }

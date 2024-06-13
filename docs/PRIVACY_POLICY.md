@@ -15,12 +15,16 @@ number) and images.
 **1.1 Contact Information:**
 
 - We require your name and phone number for specific functionalities within the app, facilitating
-  features like [mention specific functionalities, e.g., in-app messaging, contact sharing].
+  features like making video calls to your contacts. Your contact information is stored securely on
+  our servers solely for the purpose of enabling these in-app functionalities. We do not share your
+  contact information with any third parties.
 
 **1.2 Images:**
 
-- The app may request access to your device's images
-  for [mention specific functionalities, e.g., profile picture upload, image sharing].
+- The app may request access to your device's images for setting profile pictures within the app.
+  This feature allows users to personalize their accounts by uploading a profile picture. Please
+  note that access to images is solely for the purpose of setting a profile picture and is not used
+  for any other functionalities.
 
 Please be assured that any information you provide is stored locally on your device and is not
 collected by us.

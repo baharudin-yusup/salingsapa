@@ -2,18 +2,19 @@ import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:dartz/dartz.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/return_type.dart';
+import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/contact.dart';
 import '../../domain/entities/invitation.dart';
 import '../../domain/entities/room.dart';
 import '../../domain/entities/video_call_user_update_info.dart';
 import '../../domain/entities/video_frame.dart';
+import '../../domain/repositories/repo_outcome.dart';
 import '../../domain/repositories/video_call_repository.dart';
+import '../datasources/local/video_call_local_data_source.dart';
+import '../datasources/remote/video_call_remote_data_source.dart';
+import '../models/invitation_model.dart';
 import '../models/room_model.dart';
-import '../sources/video_call_local_data_source.dart';
-import '../sources/video_call_remote_data_source.dart';
 
 const _tagName = 'VideoCallRepository';
 
@@ -27,11 +28,11 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
       : _isInitialized = false;
 
   @override
-  Stream<RepoResponse<VideoCallUserUpdateInfo>> get videoCallStatus =>
+  Stream<RepoOutcome<VideoCallUserUpdateInfo>> get videoCallStatus =>
       _remoteDataSource.status.map((event) => Right(event));
 
   @override
-  Future<RepoResponse<RtcEngine>> init() async {
+  Future<RepoOutcome<RtcEngine>> init() async {
     final result = await [Permission.microphone, Permission.camera].request();
     if (result.containsValue(PermissionStatus.denied) ||
         result.containsValue(PermissionStatus.permanentlyDenied)) {
@@ -82,7 +83,7 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
   }
 
   @override
-  Future<RepoResponse<Room>> createRoom({required Contact contact}) async {
+  Future<RepoOutcome<Room>> createRoom({required Contact contact}) async {
     try {
       final room = await _remoteDataSource.createRoom(contact);
       return Right(room.toEntity());
@@ -93,7 +94,7 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
   }
 
   @override
-  Future<RepoResponse<Unit>> joinRoom({required Room room}) async {
+  Future<RepoOutcome<Unit>> joinRoom({required Room room}) async {
     try {
       await _remoteDataSource.joinRoom(room.roomId);
 
@@ -104,7 +105,12 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
   }
 
   @override
-  Future<RepoResponse<Unit>> leaveRoom({required Room room}) async {
+  Future<RepoOutcome<Unit>> leaveRoom({required Room room}) async {
+    if (!_isInitialized) {
+      Logger.print('Already leave room, no need redo');
+      return const Right(unit);
+    }
+
     try {
       _localDataSource.removeObserver();
     } catch (_) {
@@ -123,7 +129,7 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
   }
 
   @override
-  RepoResponse<RtcEngine> get engine {
+  RepoOutcome<RtcEngine> get engine {
     if (!_isInitialized) {
       return const Left(UnknownFailure());
     }
@@ -132,13 +138,12 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
   }
 
   @override
-  Stream<RepoResponse<List<Invitation>>> get rooms =>
-      _remoteDataSource.rooms.map((invitations) =>
-          // TODO: Fix this
-          Right(invitations));
+  Stream<RepoOutcome<List<Invitation>>> get invitations =>
+      _remoteDataSource.invitations.map((invitations) => Right(
+          invitations.map((invitation) => invitation.toEntity()).toList()));
 
   @override
-  Future<RepoResponse<Unit>> flipCamera() async {
+  Future<RepoOutcome<Unit>> flipCamera() async {
     try {
       await _remoteDataSource.flipCamera();
       return const Right(unit);
@@ -148,7 +153,7 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
   }
 
   @override
-  Future<RepoResponse<Unit>> muteAudio({required bool isMuted}) async {
+  Future<RepoOutcome<Unit>> muteAudio({required bool isMuted}) async {
     try {
       await _remoteDataSource.muteAudio(isMuted);
       return const Right(unit);
@@ -158,7 +163,7 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
   }
 
   @override
-  Future<RepoResponse<Unit>> muteVideo({required bool isMuted}) async {
+  Future<RepoOutcome<Unit>> muteVideo({required bool isMuted}) async {
     try {
       await _remoteDataSource.muteVideo(isMuted);
       return const Right(unit);
@@ -183,7 +188,7 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
   //     _localDataSource.videoFrame.map((frame) => Right(frame.toEntity()));
 
   @override
-  Future<RepoResponse<Unit>> disableTakeSnapshot() async {
+  Future<RepoOutcome<Unit>> disableTakeSnapshot() async {
     try {
       await _remoteDataSource.disableTakeSnapshot();
       return const Right(unit);
@@ -198,7 +203,7 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
   }
 
   @override
-  Future<RepoResponse<Unit>> enableTakeSnapshot() async {
+  Future<RepoOutcome<Unit>> enableTakeSnapshot() async {
     try {
       await _remoteDataSource.enableTakeSnapshot();
       return const Right(unit);
@@ -213,6 +218,41 @@ class VideoCallRepositoryImpl implements VideoCallRepository {
   }
 
   @override
-  Stream<RepoResponse<PhotoSnapshot>> get photoSnapshot =>
+  Stream<RepoOutcome<PhotoSnapshot>> get photoSnapshot =>
       _remoteDataSource.photoSnapshot.map((model) => Right(model.toEntity()));
+
+  @override
+  Future<RepoOutcome<Room>> acceptInvitation({
+    required Invitation invitation,
+  }) async {
+    try {
+      final model =
+          await _remoteDataSource.acceptInvitation(invitation.invitationId);
+      return Right(model.toEntity());
+    } catch (error) {
+      Logger.error(
+        error,
+        event: 'accepting invitation',
+        name: _tagName,
+      );
+      return Left(UnknownFailure(createdAt: DateTime.now()));
+    }
+  }
+
+  @override
+  Future<RepoOutcome<Unit>> rejectInvitation({
+    required Invitation invitation,
+  }) async {
+    try {
+      await _remoteDataSource.rejectInvitation(invitation.invitationId);
+      return const Right(unit);
+    } catch (error) {
+      Logger.error(
+        error,
+        event: 'rejecting invitation',
+        name: _tagName,
+      );
+      return Left(UnknownFailure(createdAt: DateTime.now()));
+    }
+  }
 }

@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/use_case.dart';
+import '../../core/errors/failure.dart';
 import '../entities/user.dart';
 import '../repositories/authentication_repository.dart';
+import 'use_case.dart';
 
 class VerifyPhoneNumber extends UseCase<String, User> {
   final AuthenticationRepository _repository;

@@ -1,17 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../blocs/contact_list/contact_list_bloc.dart';
 import '../../blocs/home/home_cubit.dart';
 import '../../components/intuitive_scaffold.dart';
-import 'account_screen.dart';
+import '../../utils/context_shortcut.dart';
+import '../account/account_screen.dart';
 import 'recent_call_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    if (state == AppLifecycleState.resumed) {
+      context
+          .read<ContactListBloc>()
+          .add(const ContactListEvent.refreshPulled());
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocConsumer<HomeCubit, HomeState>(
+      listener: (context, state) {
+        // TODO: Add initialization here
+      },
       builder: (context, state) {
         final HomeCubit cubit = context.read();
         return IntuitiveScaffold(
@@ -25,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                       ? Icons.video_call_rounded
                       : Icons.video_call_outlined,
                 ),
-                label: 'Calls',
+                label: context.localization.recentCalls,
               ),
               IntuitiveBottomNavigationBarItem(
                 icon: Icon(
@@ -33,7 +65,7 @@ class HomeScreen extends StatelessWidget {
                       ? Icons.account_circle_rounded
                       : Icons.account_circle_outlined,
                 ),
-                label: 'Account',
+                label: context.localization.account,
               ),
             ],
             tabBuilder: (_, index) => buildFragment(index),

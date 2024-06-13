@@ -1,48 +1,32 @@
 import 'package:equatable/equatable.dart';
 
+import 'room_participant.dart';
+
 class Room extends Equatable {
   final String roomId;
-  final String hostId;
-  final String hostPhoneNumber;
-  final bool _isValid;
   final DateTime createdAt;
   final DateTime updatedAt;
-  final Duration expirationTime;
-  final List<String> invitedPhoneNumbers;
-
-  bool get isValid {
-    return _isValid && DateTime.now().isBefore(createdAt.add(expirationTime));
-  }
+  final bool _isValid;
+  final List<RoomParticipant> participants;
 
   const Room({
-    required this.createdAt,
     required this.roomId,
-    required this.hostPhoneNumber,
+    required this.createdAt,
     required this.updatedAt,
-    required this.expirationTime,
     required bool isValid,
-    required this.hostId,
-    required this.invitedPhoneNumbers,
+    required this.participants,
   }) : _isValid = isValid;
+
+  bool get isValid {
+    return _isValid;
+  }
 
   @override
   List<Object?> get props => [
-        createdAt,
         roomId,
-        hostPhoneNumber,
+        createdAt,
         updatedAt,
-        expirationTime,
         isValid,
-        hostId,
-        invitedPhoneNumbers,
+        participants,
       ];
-
-  @override
-  String toString() {
-    return '$props';
-  }
-}
-
-extension RoomExtension on Room {
-  DateTime get validUntil => createdAt.add(expirationTime);
 }

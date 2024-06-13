@@ -2,46 +2,84 @@ import 'dart:typed_data';
 
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/return_type.dart';
+import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/user.dart';
+import '../../domain/repositories/repo_outcome.dart';
 import '../../domain/repositories/user_repository.dart';
-import '../models/user_model.dart';
-import '../sources/user_remote_data_source.dart';
+import '../datasources/local/user_local_data_source.dart';
+import '../datasources/remote/user_remote_data_source.dart';
 
 class UserRepositoryImpl extends UserRepository {
+  final UserLocalDataSource _localDataSource;
   final UserRemoteDataSource _remoteDataSource;
 
-  UserRepositoryImpl(this._remoteDataSource);
+  UserRepositoryImpl(this._remoteDataSource, this._localDataSource);
 
   @override
   Future<Either<Failure, Unit>> updateFcmToken({
-    required String userId,
-    required String fcmToken,
+    required String token,
   }) async {
-    try {
-      await _remoteDataSource.updateInitialData(
-          userId: userId, fcmToken: fcmToken);
+    if (await _remoteDataSource.getCurrentUser() == null) {
+      Logger.print('user is not logged in, so skip the next flow');
       return const Right(unit);
+    }
+
+    final localUserData = await _localDataSource.getCurrentUser();
+    if (localUserData.fcmToken?.value == token) {
+      Logger.print(
+          'user already have updated FCM token, so skip the next flow');
+      return const Right(unit);
+    }
+
+    try {
+      await _remoteDataSource.updateFcmToken(token: token);
     } catch (error) {
+      Logger.error(error, event: 'updating FCM token');
       return const Left(ServerFailure());
     }
-  }
 
-  @override
-  Future<RepoResponse<String>> updateName({required String name}) async {
     try {
-      await _remoteDataSource.updateName(name: name);
-
-      return Right(name);
-    } catch (_) {
+      await _localDataSource.updateFcmToken(token);
+      Logger.print('updating FCM token success!');
+      return const Right(unit);
+    } catch (error) {
+      Logger.error(error, event: 'updating FCM token');
       return const Left(UnknownFailure());
     }
   }
 
   @override
-  Future<RepoResponse<String>> updateProfilePicture({
+  Future<RepoOutcome<String>> updateName({required String name}) async {
+    if (await _remoteDataSource.getCurrentUser() == null) {
+      Logger.print('user is not logged in, so skip the next flow');
+      return const Left(UnknownFailure());
+    }
+
+    final localUserData = await _localDataSource.getCurrentUser();
+    if (localUserData.name?.value == name) {
+      Logger.print('user already have updated name, so skip the next flow');
+      return Right(name);
+    }
+
+    try {
+      await _remoteDataSource.updateName(name: name);
+    } catch (error) {
+      Logger.error(error, event: 'updating user profile name');
+      return const Left(UnknownFailure());
+    }
+
+    try {
+      await _localDataSource.updateName(name);
+      return Right(name);
+    } catch (error) {
+      Logger.error(error, event: 'updating user profile name');
+      return const Left(UnknownFailure());
+    }
+  }
+
+  @override
+  Future<RepoOutcome<String>> updateProfilePicture({
     required Uint8List imageBytes,
   }) async {
     try {
@@ -63,7 +101,7 @@ class UserRepositoryImpl extends UserRepository {
         }
         try {
           Logger.print(
-              '(repository) current user number: ${model.phoneNumber}');
+              '(repository) current user phone number: ${model.phoneNumber}');
           return Right(model.toEntity());
         } catch (error) {
           Logger.error(error,
@@ -74,7 +112,7 @@ class UserRepositoryImpl extends UserRepository {
       });
 
   @override
-  Future<RepoResponse<User>> getCurrentUser() async {
+  Future<RepoOutcome<User>> getCurrentUser() async {
     try {
       final user = await _remoteDataSource.getCurrentUser();
 
@@ -86,6 +124,16 @@ class UserRepositoryImpl extends UserRepository {
       return Right(user.toEntity());
     } catch (error) {
       Logger.error(error, event: 'getting current user');
+      return const Left(UnknownFailure());
+    }
+  }
+
+  @override
+  Future<RepoOutcome<bool>> deleteAccount() async {
+    try {
+      final result = await _remoteDataSource.deleteAccount();
+      return Right(result);
+    } catch (exception) {
       return const Left(UnknownFailure());
     }
   }

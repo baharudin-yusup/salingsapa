@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/use_case.dart';
+import '../../core/errors/failure.dart';
 import '../entities/room.dart';
 import '../repositories/video_call_repository.dart';
+import 'use_case.dart';
 
 class LeaveRoom extends UseCase<Room, Unit> {
   final VideoCallRepository _repository;

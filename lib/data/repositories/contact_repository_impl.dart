@@ -1,18 +1,30 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
+import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/contact.dart';
 import '../../domain/repositories/contact_repository.dart';
-import '../extensions/extensions.dart';
-import '../sources/contact_local_data_source.dart';
-import '../sources/contact_remote_data_source.dart';
+import '../datasources/local/contact_local_data_source.dart';
+import '../datasources/remote/contact_remote_data_source.dart';
+import '../models/phone_number_model.dart';
 
 class ContactRepositoryImpl implements ContactRepository {
   final ContactLocalDataSource _localDataSource;
   final ContactRemoteDataSource _remoteDataSource;
 
   ContactRepositoryImpl(this._localDataSource, this._remoteDataSource);
+
+  @override
+  Future<Either<Failure, Unit>> init() async {
+    try {
+      await _localDataSource.init();
+
+      return const Right(unit);
+    } catch (error) {
+      Logger.error(error, event: 'initializing contact repository');
+      return const Left(UnknownFailure());
+    }
+  }
 
   @override
   Future<Either<Failure, List<Contact>>> getContactList() async {
@@ -22,16 +34,36 @@ class ContactRepositoryImpl implements ContactRepository {
         return const Right([]);
       }
 
-      final profilePictureUrls =
-          await _remoteDataSource.getProfilePictureUrls();
+      Logger.print('get unknown contacts profile cache...');
+      final unknownContactsProfileCache =
+          _localDataSource.getUnknownContactsProfileCache(contactModels);
+
+      Logger.print('total unknown contacts profile cache: ${unknownContactsProfileCache.length}');
+      if (unknownContactsProfileCache.isNotEmpty) {
+        final unknownRemoteContactsProfile = await _remoteDataSource
+            .getRemoteContacts(unknownContactsProfileCache);
+        await _localDataSource
+            .updateCacheContactsProfile(unknownRemoteContactsProfile);
+      }
+
+      final remoteContactsProfileNumber =
+          (await _remoteDataSource.getRemoteContacts(contactModels))
+              .map((c) => c.phoneNumber);
+
+      final cacheContactProfileMap =
+          _localDataSource.getCacheContactsProfileMap();
 
       final entities = contactModels.map((model) {
-        final phoneNumber = model.phoneNumber.toFormattedPhoneNumber();
+        final phoneNumber = model.phoneNumber;
         return Contact(
-            name: model.name,
-            phoneNumber: model.phoneNumber,
-            profilePictureUrl: profilePictureUrls[phoneNumber],
-            isRegistered: profilePictureUrls.containsKey(phoneNumber));
+            name: cacheContactProfileMap[phoneNumber.raw]?.name?.value ??
+                model.name,
+            phoneNumber: phoneNumber.toEntity(),
+            profilePictureUrl: cacheContactProfileMap[phoneNumber.raw]
+                ?.profilePictureUrl
+                ?.value,
+            isRegistered:
+                remoteContactsProfileNumber.contains(phoneNumber.raw));
       }).toList();
       entities.sort((a, b) {
         if (a.isRegistered && b.isRegistered) {

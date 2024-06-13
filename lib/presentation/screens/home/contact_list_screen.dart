@@ -2,31 +2,77 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../core/errors/failure.dart';
+import '../../../core/injection_container.dart';
+import '../../../core/utils/logger.dart';
 import '../../../domain/entities/contact.dart';
 import '../../blocs/contact_list/contact_list_bloc.dart';
 import '../../components/contact_card.dart';
 import '../../components/intuitive_scaffold.dart';
-import '../../components/show_error_message.dart';
+import '../../components/no_contact_access_button.dart';
+import '../../services/navigator_service.dart';
 import '../../services/theme_service.dart';
+import '../../services/ui_service.dart';
 import '../room/create_room_screen.dart';
 
-class ContactListScreen extends StatelessWidget {
+class ContactListScreen extends StatefulWidget {
   static const routeName = '/contacts';
 
   const ContactListScreen({super.key});
 
   @override
+  State<ContactListScreen> createState() => _ContactListScreenState();
+}
+
+class _ContactListScreenState extends State<ContactListScreen>
+    with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+
+    sl<ContactListBloc>().add(const ContactListEvent.refreshPulled());
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    if (state == AppLifecycleState.resumed) {
+      context
+          .read<ContactListBloc>()
+          .add(const ContactListEvent.refreshPulled());
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocConsumer<ContactListBloc, ContactListState>(
-      bloc: context.read<ContactListBloc>()
-        ..add(const ContactListEvent.refreshPulled()),
       listener: (context, state) {
-        state.maybeWhen(
-            orElse: () {},
-            startVideoCallSuccess: (_, contact, __) => Navigator.pushNamed(
-                context, CreateRoomScreen.routeName, arguments: contact),
-            startVideoCallFailure: (errorMessage, _, __) =>
-                showErrorMessage(context, errorMessage));
+        state.maybeMap(
+          orElse: () {},
+          startVideoCallSuccess: (state) {
+            final NavigatorService navigatorService = sl();
+            Logger.print('Selected contact: ${state.selectedContact.toString()}');
+            navigatorService.pushNamed(
+              CreateRoomScreen.routeName,
+              arguments: state.selectedContact,
+            );
+          },
+          startVideoCallFailure: (state) {
+            final UiService uiService = sl();
+            uiService.showErrorMessage(
+              ErrorData(
+                message: state.errorMessage,
+              ),
+            );
+          },
+        );
       },
       buildWhen: (previousState, currentState) => currentState.maybeMap(
         startVideoCallFailure: (_) => false,
@@ -52,7 +98,24 @@ class ContactListScreen extends StatelessWidget {
           builder: (context) {
             return state.maybeMap(
               loadSuccess: (_) => buildContactList(context, state.contacts),
-              loadFailure: (_) => buildContactList(context, state.contacts),
+              loadFailure: (state) {
+                if (state.failure is PermissionFailure) {
+                  final ContactListBloc contactListBloc = context.read();
+                  return NoContactAccessButton(
+                    onRequest: () {
+                      contactListBloc.add(
+                          const ContactListEvent.requestPermissionStarted());
+                    },
+                    onPermissionGranted: () {
+                      // Do nothing for now
+                    },
+                    onPermissionDenied: () {
+                      // Do nothing for now
+                    },
+                  );
+                }
+                return buildContactList(context, state.contacts);
+              },
               orElse: () => buildLoadingUi(),
             );
           },

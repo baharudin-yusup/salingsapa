@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/use_case.dart';
+import '../../core/errors/failure.dart';
 import '../entities/app_permission.dart';
+import 'use_case.dart';
 
 class HasPermission extends UseCase<AppPermission, bool> {
   const HasPermission();
@@ -18,6 +18,9 @@ class HasPermission extends UseCase<AppPermission, bool> {
     }
 
     final isGranted = await permission.isGranted;
+    if (!isGranted) {
+      return Left(PermissionFailure(param, createdAt: DateTime.now()));
+    }
 
     return Right(isGranted);
   }

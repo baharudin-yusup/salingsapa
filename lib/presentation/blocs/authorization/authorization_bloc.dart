@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/errors/failures.dart';
+import '../../../core/errors/failure.dart';
 import '../../../core/utils/logger.dart';
 import '../../../domain/entities/auth_status.dart';
 import '../../../domain/usecases/authorization_status.dart';
@@ -19,7 +19,19 @@ class AuthorizationBloc extends Bloc<AuthorizationEvent, AuthorizationState> {
       : super(const AuthorizationState.initial()) {
     on<_AuthStatusChanged>(_onAuthStatusChanged);
 
-    _getAuthStatus().listen((status) {
+    _getAuthStatus().distinct(
+      (previous, next) {
+        if (previous.isLeft() || next.isLeft()) {
+          return true;
+        }
+
+        final prevState = previous.getOrElse(() => AuthStatus.unknown);
+        final currentState = next.getOrElse(() => AuthStatus.unknown);
+
+        return prevState != currentState;
+      },
+    ).listen((status) {
+      Logger.print('(bloc) change auth status to $status');
       status.fold(
           (failure) =>
               add(AuthorizationEvent.authStatusChanged(failure: failure)),
