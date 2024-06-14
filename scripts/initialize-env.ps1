@@ -1,12 +1,16 @@
+param (
+    [string]$env
+)
+
 # Source and destination variables
 $fileName = "ENV"
-$sourceFile = ".\\configs\\$env:ENV\\.env"
+$sourceFile = ".\\configs\\$env\\.env"
 $destinationFolder = ".\\"
 
-Write-Host "Initialize $env:ENV $fileName started..."
+Write-Host "Initialize $env $fileName started..."
 
 # Check if environment variable is set
-if (-Not $env:ENV) {
+if (-Not $env) {
     Write-Host "Environment variable ENV is not set."
     exit 1
 }

@@ -1,12 +1,16 @@
+param (
+    [string]$env
+)
+
 # Source and destination variables
 $fileName = "Firebase option"
-$sourceFile = ".\\configs\\$env:ENV\\firebase_options.dart"
+$sourceFile = ".\\configs\\$env\\firebase_options.dart"
 $destinationFolder = ".\\lib\\core"
 
-Write-Host "Initialize $env:ENV $fileName started..."
+Write-Host "Initialize $env $fileName started..."
 
 # Check if environment variable is set
-if (-Not $env:ENV) {
+if (-Not $env) {
     Write-Host "Environment variable ENV is not set."
     exit 1
 }
