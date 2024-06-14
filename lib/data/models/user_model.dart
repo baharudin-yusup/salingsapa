@@ -67,8 +67,16 @@ class UserModel extends BasicUserModel {
         updatedAt: isNewAccount ? Timestamp.now() : null,
       );
 
-  factory UserModel.fromJson(Map<String, dynamic> json) =>
-      _$UserModelFromJson(json);
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    const converter = TimestampConverter();
+    if (json['createdAt'].runtimeType == Timestamp) {
+      json['createdAt'] = converter.toJson(json['createdAt']);
+    }
+    if (json['updatedAt'].runtimeType == Timestamp) {
+      json['updatedAt'] = converter.toJson(json['updatedAt']);
+    }
+    return _$UserModelFromJson(json);
+  }
 
   @override
   Map<String, dynamic> toJson() => _$UserModelToJson(this);
