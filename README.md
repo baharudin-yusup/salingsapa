@@ -7,50 +7,40 @@
 
 [![Codemagic build status](https://api.codemagic.io/apps/642645586c092f62d7cd27b1/642c4ec2aac5ee7954a0bf2e/status_badge.svg)](https://codemagic.io/apps/642645586c092f62d7cd27b1/642c4ec2aac5ee7954a0bf2e/latest_build)
 
-Salingsapa is a [Flutter](https://flutter.dev) application designed to facilitate inclusive video
-calls with a unique focus
-on enabling communication for individuals with hearing impairments. The app incorporates advanced
-features such
-as [Sign Language Recognition](https://en.wikipedia.org/wiki/Sign_language_recognition)
-and [Speech-to-Text](https://aws.amazon.com/what-is/speech-to-text/) functionality. It follows the
-principles
-of [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
-and utilizes [BLoC state management](https://bloclibrary.dev/).
+Salingsapa is a [Flutter](https://flutter.dev) application designed to make video calls more
+inclusive. The app focuses on improving communication for individuals with hearing impairments by
+incorporating [Sign Language Recognition](https://en.wikipedia.org/wiki/Sign_language_recognition)
+and [Speech-to-Text](https://aws.amazon.com/what-is/speech-to-text/) features. Built
+following [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+principles and utilizing [BLoC state management](https://bloclibrary.dev/), Salingsapa ensures a
+robust and scalable solution.
+
+Enjoy seamless, high-quality video calls powered by [Agora](https://www.agora.io/en/) and supported
+by a strong [Firebase](https://firebase.google.com/) backend. Salingsapa aims to make communication
+easier and more accessible for everyone.
 
 ## 🚀 Features
 
 ### Inclusive Video Calls
 
 - Conduct video calls with a unique emphasis on inclusivity.
-- [Sign Language Recognition](https://en.wikipedia.org/wiki/Sign_language_recognition)
-  and [Speech-to-Text](https://aws.amazon.com/what-is/speech-to-text/) features for enhanced
-  communication.
-
-### WebRTC with Agora Integration
-
+- Features
+  advanced [Sign Language Recognition](https://en.wikipedia.org/wiki/Sign_language_recognition)
+  and [Speech-to-Text](https://aws.amazon.com/what-is/speech-to-text/) for enhanced communication.
 - Seamless video calls powered by WebRTC with [Agora](https://www.agora.io/en/) for high-quality and
   efficient communication.
-
-### Firebase Backend
-
-- Robust backend infrastructure provided by [Firebase](https://firebase.google.com/).
-- Features include authentication, messaging, and remote configuration.
-
-### Speech-to-Text Conversion
-
-- Utilizes native Android and iOS APIs for
-  real-time [Speech-to-Text](https://aws.amazon.com/what-is/speech-to-text/) conversion.
 
 ### Sign Language Recognition
 
 - Employs [TensorFlowLite](https://www.tensorflow.org/lite) to recognize and interpret Sign Language
   gestures.
+- Enhances communication for individuals with hearing impairments.
 
-### Clean Architecture and BLoC State Management
+### Speech-to-Text Conversion
 
-- Ensures maintainability and scalability
-  through [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
-- [BLoC state management](https://bloclibrary.dev/) for efficient handling of application state.
+- Utilizes native Android and iOS APIs for
+  real-time [Speech-to-Text](https://aws.amazon.com/what-is/speech-to-text/) conversion.
+- Converts spoken words into text to aid understanding during calls.
 
 ## 🗂️ Project Structure
 
@@ -70,50 +60,43 @@ For more details, please refer to the [PROJECT_STRUCTURE.md](docs/PROJECT_STRUCT
 
 ## 🛠️ Technical Specifications
 
-### Dependencies
+### Backend and Infrastructure
 
-Salingsapa utilizes a variety of Flutter packages and external libraries to deliver its
-functionalities. Here are some key dependencies:
+- **[Firebase](https://firebase.google.com/)**: Provides backend services for authentication,
+  messaging, and remote configuration.
 
-- **Firebase**
-    - Provides a robust backend infrastructure, including authentication, messaging, and remote
-      configuration.
-    -
-  Package: `firebase_core`, `firebase_analytics`, `firebase_auth`, `firebase_messaging`, `firebase_remote_config`, `cloud_firestore`, `firebase_app_check`, `firebase_storage`
+### Core Technologies
 
-- **State Management**
-    - Ensures efficient handling of application state.
-    - Package: `bloc`, `flutter_bloc`, `freezed`, `equatable`
+- **[Agora RTC Engine](https://www.agora.io/en/)**: Powers seamless and high-quality video calls
+  using WebRTC.
+- **[TensorFlowLite](https://www.tensorflow.org/lite)**: Utilized for Sign Language Recognition to
+  enhance communication for individuals with hearing impairments.
+- **[BLoC (Business Logic Component)](https://bloclibrary.dev/)**: Manages state efficiently,
+  ensuring scalable and maintainable application logic.
 
-- **UI/UX**
-    - Enhances user interface and experience.
-    - Package: `dynamic_color`, `flutter_localizations`, `intl`, `flutter_markdown`
+### Additional Dependencies
 
-- **WebRTC**
-    - Enables seamless video calls.
-    - Package: `agora_rtc_engine`
+- **[Dio](https://pub.dev/packages/dio)**: Manages HTTP requests for data communication.
+- **[Flutter Localizations](https://docs.flutter.dev/ui/accessibility-and-internationalization/internationalization)
+  and [Intl](https://pub.dev/packages/intl)**: Supports multiple languages and localization.
+- **[Dynamic Color](https://pub.dev/packages/dynamic_color)**: Enhances the user interface and
+  experience with adaptive color schemes.
 
-- **TensorFlowLite**
-    - Powers Sign Language Recognition.
-    - Package: `tflite`
+### Architecture
 
-- **HTTP Requests**
-    - Manages HTTP requests for data communication.
-    - Package: `dio`
-
-- **Contacts Service**
-    - Facilitates access to device contacts.
-    - Package: `flutter_contacts`
+- **[Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+  **: Ensures the maintainability and scalability of the codebase, separating concerns into distinct
+  layers (presentation, domain, data).
 
 ### Continuous Integration and Deployment
 
-Automated CI/CD through [Codemagic](https://codemagic.io/) for
-streamlined development.
+- **[Codemagic](https://codemagic.io/)**: Automates CI/CD processes, streamlining development and
+  deployment.
 
-### Dataset
+### Machine Learning Model
 
-The Sign Language Recognition model is trained on
-the [ASL Alphabet dataset by Akash](https://www.kaggle.com/datasets/grassknoted/asl-alphabet/data)
+- **[ASL Alphabet Dataset](https://www.kaggle.com/datasets/grassknoted/asl-alphabet/data)**: The
+  Sign Language Recognition model is trained using the ASL Alphabet dataset by Akash.
 
 ## ▶️ How to Run the App
 
@@ -123,47 +106,91 @@ Before you begin, make sure you have:
 
 - Flutter installed on your machine.
 - An emulator or a physical device connected for testing.
+- Android SDK (for running the Android app).
+- Cocoapods and Xcode (for running the iOS app).
 
 ### Steps
 
 1. **Clone the Repository**
+
    ```shell
    git clone https://github.com/baharudin-yusup/salingsapa.git
    cd salingsapa
    ```
 
-2. **Install Dependencies**
-   ```shell
-   flutter pub get
-   ```
+2. **Run the App**
 
-3. **Generate Firebase Configuration**
-    - Development:
-      ```shell
-      flutterfire config \
-      --project=salingsapa-project \
-      --out=lib/firebase_options_dev.dart \
-      --ios-bundle-id=dev.baharudin.salingsapa-dev \
-      --android-app-id=dev.baharudin.salingsapa.dev
-      ```
-    - Production:
-      ```shell
-      flutterfire config \
-      --project=salingsapa-project \
-      --out=lib/firebase_options_prod.dart \
-      --ios-bundle-id=dev.baharudin.salingsapa \
-      --android-package-name=dev.baharudin.salingsapa
-      ```
+   - **Configuring and Running Automatically**
 
-4. **Run the App**
-    - Development
-      ```shell
-      flutter run --flavor dev --target=lib/main_dev.dart
-      ```
-    - Production
-      ```shell
-      flutter run --flavor prod --target=lib/main_prod.dart
-      ```
+     - **Visual Studio Code**
+
+       1. Open the "Run and Debug" panel.
+       2. Choose the appropriate configuration:
+
+          - DEV App
+          - PROD App
+
+       3. Run the selected configuration.
+
+     - **Android Studio/IntelliJ IDEA**
+
+       1. Open the "Run/Debug and Configuration" dropdown.
+       2. Choose the appropriate configuration:
+
+          - DEV App (Windows)
+          - PROD App (Windows)
+          - DEV App (Mac/Linux)
+          - PROD App (Mac/Linux)
+
+       3. Run the selected configuration.
+
+   - **Configuring and Running Manually**
+
+     This example demonstrates how to run the app manually on MacOS in a development environment:
+
+     1. Initialize Environment
+
+        Run the `initialize-env.sh` script with the `--env dev` argument to set up the
+        development
+        environment.
+
+        ```shell
+        chmod +x ./scripts/initialize-env.sh && ./scripts/initialize-env.sh --env dev
+        ```
+
+     2. Initialize Firebase Options
+
+        Run the `initialize-firebase-options.sh` script with the `--env dev` argument to set up
+        Firebase
+        options for the development environment.
+
+        ```shell
+        chmod +x ./scripts/initialize-firebase-options.sh && ./scripts/initialize-firebase-options.sh --env dev
+        ```
+
+     3. Generate Necessary Files
+
+        Run the following command to generate necessary files and delete any conflicting outputs.
+
+        ```shell
+        dart run build_runner build --delete-conflicting-outputs
+        ```
+
+     4. Install Flutter Packages
+
+        Run the following command to install required Flutter packages.
+
+        ```shell
+        flutter pub get
+        ```
+
+     5. Run the App
+
+        Finally, run the app with the specified flavor and target.
+
+        ```shell
+        flutter run --flavor dev --target=lib/main_dev.dart
+        ```
 
 ---
 
