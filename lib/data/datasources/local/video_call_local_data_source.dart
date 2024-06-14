@@ -85,7 +85,7 @@ class VideoCallLocalDataSourceImpl implements VideoCallLocalDataSource {
 
     _videoFrameSendTimer =
         Timer.periodic(const Duration(milliseconds: 750), (timer) async {
-      var appDocumentsDir = (await getExternalStorageDirectory())!.path;
+      var appDocumentsDir = (await getTemporaryDirectory()).path;
       if (appDocumentsDir.substring(appDocumentsDir.length - 1) == '/') {
         appDocumentsDir =
             appDocumentsDir.substring(0, appDocumentsDir.length - 1);

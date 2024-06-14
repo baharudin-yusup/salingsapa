@@ -199,6 +199,9 @@ class _SetupScreenState extends State<SetupScreen> {
                             child: Column(
                               children: [
                                 _buildCountryPicker(),
+                                const SizedBox(
+                                  height: IntuitiveUiConstant.smallSpace,
+                                ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   mainAxisSize: MainAxisSize.min,

@@ -1,5 +1,6 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -48,6 +49,7 @@ class _RootScreenState extends State<RootScreen> {
 
   @override
   void initState() {
+    platformBrightness = PlatformDispatcher.instance.platformBrightness;
     var dispatcher = SchedulerBinding.instance.platformDispatcher;
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
