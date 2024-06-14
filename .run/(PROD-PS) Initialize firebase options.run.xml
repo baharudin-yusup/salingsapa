@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="(PROD-PS) Initialize firebase options" type="ShConfigurationType" folderName="Windows (Script)">
-    <option name="SCRIPT_TEXT" value=".\scripts\initialize-firebase-options.ps1 --env prod" />
+    <option name="SCRIPT_TEXT" value="powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\initialize-firebase-options.ps1 --env prod" />
     <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
     <option name="SCRIPT_PATH" value="$PROJECT_DIR$/scripts/initialize-firebase-options.ps1" />
     <option name="SCRIPT_OPTIONS" value="" />
