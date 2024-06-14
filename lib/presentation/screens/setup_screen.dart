@@ -6,22 +6,22 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../../core/injection_container.dart';
 import '../../core/utils/logger.dart';
 import '../../data/constants/exception_code.dart';
-import '../../injection_container.dart';
 import '../blocs/open_external_link/open_external_link_bloc.dart';
 import '../blocs/setup/setup_bloc.dart';
-import '../components/intuitive_scaffold/intuitive_scaffold.dart';
+import '../components/intuitive_scaffold.dart';
 import '../components/intuitive_textfield.dart';
 import '../services/navigator_service.dart';
 import '../services/theme_service.dart';
 import '../services/ui_service.dart';
-import '../utils/app_localizations.dart';
-import '../utils/dimension.dart';
+import '../utils/context_shortcut.dart';
 import '../utils/failure_translation.dart';
-import 'common/markdown_screen.dart';
+import 'markdown_screen.dart';
 import 'verify_otp_screen.dart';
 
 class SetupScreen extends StatefulWidget {
@@ -199,6 +199,9 @@ class _SetupScreenState extends State<SetupScreen> {
                             child: Column(
                               children: [
                                 _buildCountryPicker(),
+                                const SizedBox(
+                                  height: IntuitiveUiConstant.smallSpace,
+                                ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   mainAxisSize: MainAxisSize.min,

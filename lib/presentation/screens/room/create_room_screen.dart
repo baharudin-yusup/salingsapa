@@ -2,12 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/injection_container.dart';
 import '../../../domain/entities/contact.dart';
-import '../../../injection_container.dart';
 import '../../blocs/create_room/create_room_bloc.dart';
 import '../../services/navigator_service.dart';
 import '../../services/theme_service.dart';
-import '../../utils/dimension.dart';
+import '../../utils/context_shortcut.dart';
 import '../video_call/video_call_screen.dart';
 
 class CreateRoomScreen extends StatelessWidget {

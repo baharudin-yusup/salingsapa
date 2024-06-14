@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 
-import '../../core/errors/exceptions.dart';
+import '../../core/errors/exception.dart';
 import '../../core/utils/logger.dart';
 
 abstract class NetworkPlugin {

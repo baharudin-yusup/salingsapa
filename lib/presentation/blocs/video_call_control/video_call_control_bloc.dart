@@ -1,12 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/errors/failures.dart';
+import '../../../core/errors/failure.dart';
 import '../../../core/utils/logger.dart';
 import '../../../domain/usecases/flip_video_call_camera.dart';
 import '../../../domain/usecases/mute_video_call_audio.dart';
 import '../../../domain/usecases/mute_video_call_video.dart';
-import '../../common/data_state.dart';
+import '../data_state.dart';
 
 part 'video_call_control_bloc.freezed.dart';
 part 'video_call_control_event.dart';

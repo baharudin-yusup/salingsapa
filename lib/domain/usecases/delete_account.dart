@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/use_case.dart';
+import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../repositories/user_repository.dart';
+import 'use_case.dart';
 
 class DeleteAccount extends NoParamUseCase<bool> {
   final UserRepository _repository;

@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../injection_container.dart';
+import '../../../core/injection_container.dart';
 import '../../blocs/account/account_bloc.dart';
-import '../../components/intuitive_scaffold/intuitive_scaffold.dart';
+import '../../components/intuitive_scaffold.dart';
 import '../../services/navigator_service.dart';
 import '../../services/ui_service.dart';
-import '../../utils/dimension.dart';
+import '../../utils/context_shortcut.dart';
 import 'delete_account_screen.dart';
 
 class AccountSettingScreen extends StatelessWidget {

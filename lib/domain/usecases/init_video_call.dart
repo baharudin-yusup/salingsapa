@@ -1,9 +1,9 @@
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/use_case.dart';
+import '../../core/errors/failure.dart';
 import '../repositories/video_call_repository.dart';
+import 'use_case.dart';
 
 class InitVideoEngine extends NoParamUseCase<RtcEngine> {
   final VideoCallRepository _repository;

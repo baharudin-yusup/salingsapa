@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failures.dart';
-import '../../core/interfaces/use_case.dart';
+import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../entities/contact.dart';
 import '../repositories/contact_repository.dart';
+import 'use_case.dart';
 
 class RefreshContactList extends NoParamUseCase<List<Contact>> {
   final ContactRepository _contactRepository;

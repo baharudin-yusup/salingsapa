@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "PROD App",
+      "type": "dart",
+      "request": "launch",
+      "program": "${workspaceFolder}/lib/main_prod.dart",
+      "args": ["--flavor", "prod"],
+      "preLaunchTask": "PROD - Initialize app"
+    },
+    {
+      "name": "DEV App",
+      "type": "dart",
+      "request": "launch",
+      "program": "${workspaceFolder}/lib/main_dev.dart",
+      "args": ["--flavor", "dev"],
+      "preLaunchTask": "DEV - Initialize app"
+    }
+  ]
+}

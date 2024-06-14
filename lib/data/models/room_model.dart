@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../domain/entities/room.dart';
-import 'converter/timestamp_converter.dart';
+import '../utils/timestamp_converter.dart';
 import 'room_participant_model.dart';
 
 part 'room_model.g.dart';

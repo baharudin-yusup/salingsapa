@@ -1,13 +1,15 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/errors/failures.dart';
-import '../../../domain/usecases/external_link/get_privacy_and_policy.dart';
-import '../../../domain/usecases/external_link/get_support_content.dart';
-import '../../../domain/usecases/external_link/get_terms_and_condition_content.dart';
+import '../../../core/errors/failure.dart';
+import '../../../domain/usecases/get_privacy_and_policy.dart';
+import '../../../domain/usecases/get_support_content.dart';
+import '../../../domain/usecases/get_terms_and_condition_content.dart';
 
 part 'open_external_link_bloc.freezed.dart';
+
 part 'open_external_link_event.dart';
+
 part 'open_external_link_state.dart';
 
 class OpenExternalLinkBloc

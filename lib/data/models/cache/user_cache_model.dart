@@ -1,17 +1,17 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'base/string_cache_status.dart';
+import 'string_cache_model.dart';
 
 part 'user_cache_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class UserProfileCacheModel extends Equatable {
-  final StringCacheStatus? userId;
-  final StringCacheStatus? name;
-  final StringCacheStatus? phoneNumber;
-  final StringCacheStatus? profilePictureUrl;
-  final StringCacheStatus? fcmToken;
+  final StringCacheModel? userId;
+  final StringCacheModel? name;
+  final StringCacheModel? phoneNumber;
+  final StringCacheModel? profilePictureUrl;
+  final StringCacheModel? fcmToken;
 
   const UserProfileCacheModel({
     this.userId,
@@ -27,11 +27,11 @@ class UserProfileCacheModel extends Equatable {
   Map<String, dynamic> toJson() => _$UserProfileCacheModelToJson(this);
 
   UserProfileCacheModel copyWith({
-    final StringCacheStatus? userId,
-    final StringCacheStatus? name,
-    final StringCacheStatus? phoneNumber,
-    final StringCacheStatus? profilePictureUrl,
-    final StringCacheStatus? fcmToken,
+    final StringCacheModel? userId,
+    final StringCacheModel? name,
+    final StringCacheModel? phoneNumber,
+    final StringCacheModel? profilePictureUrl,
+    final StringCacheModel? fcmToken,
   }) {
     return UserProfileCacheModel(
       userId: userId ?? this.userId,
