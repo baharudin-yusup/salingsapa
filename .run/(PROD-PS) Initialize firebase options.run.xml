@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="(PROD-PS) Initialize Env" type="ShConfigurationType">
-    <option name="SCRIPT_TEXT" value="$env:ENV = &quot;prod&quot;; .\scripts\initialize-env.ps1" />
-    <option name="INDEPENDENT_SCRIPT_PATH" value="false" />
-    <option name="SCRIPT_PATH" value="$PROJECT_DIR$/scripts/initialize-env.ps1" />
+  <configuration default="false" name="(PROD-PS) Initialize firebase options" type="ShConfigurationType" folderName="Windows (Script)">
+    <option name="SCRIPT_TEXT" value=".\scripts\initialize-firebase-options.ps1 --env prod" />
+    <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+    <option name="SCRIPT_PATH" value="$PROJECT_DIR$/scripts/initialize-firebase-options.ps1" />
     <option name="SCRIPT_OPTIONS" value="" />
     <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="false" />
     <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />

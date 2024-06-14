@@ -1,17 +1,36 @@
 #!/bin/bash
 
+# Function to print usage
+usage() {
+    echo "Usage: $0 --env ENV"
+    exit 1
+}
+
+# Parse command line arguments
+while [ "$1" != "" ]; do
+    case $1 in
+        --env ) shift
+                ENV=$1
+                ;;
+        * )     usage
+                exit 1
+    esac
+    shift
+done
+
+# Check if ENV is set
+if [ -z "$ENV" ]; then
+    echo "Environment variable ENV is not set."
+    usage
+    exit 1
+fi
+
 # Source and destination variables
 fileName="ENV"
 sourceFile="./configs/$ENV/.env"
 destinationFolder="./"
 
 echo "Initialize $ENV $fileName started..."
-
-# Check if environment variable is set
-if [ -z "$ENV" ]; then
-    echo "Environment variable ENV is not set."
-    exit 1
-fi
 
 # Check if source file exists
 if [ ! -f "$sourceFile" ]; then
