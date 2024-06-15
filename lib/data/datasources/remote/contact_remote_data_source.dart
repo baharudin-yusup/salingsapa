@@ -44,16 +44,18 @@ class ContactRemoteDataSourceImpl implements ContactRemoteDataSource {
     final contactsPhoneNumber =
         contacts.map((contact) => contact.phoneNumber.raw);
 
+    // TODO: Enhance this logic
     final collectionRef = _firestore.collection('users');
-    final snapshots = await collectionRef
-        .where('phoneNumber', whereIn: contactsPhoneNumber)
-        .get();
+    final snapshots = await collectionRef.get();
 
     final result = <BasicUserModel>[];
     for (var element in snapshots.docs) {
       final json = element.data();
       final model = BasicUserModel.fromJson(json);
-      result.add(model);
+
+      if (contactsPhoneNumber.contains(model.phoneNumber)) {
+        result.add(model);
+      }
     }
 
     Logger.print(
