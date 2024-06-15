@@ -9,7 +9,6 @@ import '../datasources/remote/contact_remote_data_source.dart';
 import '../models/cache/user_cache_model.dart';
 import '../models/contact_model.dart';
 import '../models/phone_number_model.dart';
-import '../models/user_model.dart';
 
 class ContactRepositoryImpl implements ContactRepository {
   final ContactLocalDataSource _localDataSource;
