@@ -52,16 +52,21 @@ class ContactLocalDataSourceImpl implements ContactLocalDataSource {
 
       for (final filteredContact in filteredContacts) {
         try {
+          // TODO: Handle the case when one contact has more than one phone number
           final phoneNumber = await _phoneNumberFormatterPlugin.build(
               phoneNumber: filteredContact.phones.first.number);
+
           output.add(ContactModel(
+            id: filteredContact.id,
             name: filteredContact.displayName,
             phoneNumber: phoneNumber,
           ));
         } catch (error) {
-          Logger.error(error, event: 'adding contact');
+          Logger.error(error, event: 'reading contacts');
         }
       }
+
+      Logger.print('Total filtered contacts: ${filteredContacts.length}');
 
       return output;
     } catch (error) {
@@ -191,6 +196,8 @@ class ContactLocalDataSourceImpl implements ContactLocalDataSource {
   @override
   Map<String, UserProfileCacheModel> getCacheContactsProfileMap() {
     final contactsProfile = getCacheContactsProfile();
-    return {for (var item in contactsProfile) '${item.phoneNumber?.value}': item};
+    return {
+      for (var item in contactsProfile) '${item.phoneNumber?.value}': item
+    };
   }
 }

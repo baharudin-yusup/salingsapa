@@ -11,15 +11,18 @@ import 'presentation/services/notification_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   try {
     await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform);
   } catch (error) {
     Logger.error(error, event: 'initializing firebase');
   }
+
   await FirebaseAppCheck.instance.activate(
-    androidProvider: AndroidProvider.debug,
+    androidProvider: AndroidProvider.playIntegrity,
   );
+
   FirebaseMessaging.onBackgroundMessage(handleBackgroundNotification);
 
   await di.setup();
