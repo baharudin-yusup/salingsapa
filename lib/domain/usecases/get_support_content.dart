@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../core/errors/failure.dart';
 import '../../../core/utils/logger.dart';
+import '../errors/failure.dart';
 import '../repositories/external_link_repository.dart';
 import 'use_case.dart';
 

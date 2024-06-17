@@ -2,9 +2,9 @@ import 'dart:typed_data';
 
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/user.dart';
+import '../../domain/errors/failure.dart';
 import '../../domain/repositories/repo_outcome.dart';
 import '../../domain/repositories/user_repository.dart';
 import '../datasources/local/user_local_data_source.dart';

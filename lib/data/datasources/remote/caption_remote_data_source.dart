@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../core/errors/exception.dart';
 import '../../../core/utils/logger.dart';
 import '../../constants/firestore_constant.dart';
-import '../../models/caption_model.dart';
+import '../../models/api/caption_model.dart';
+import '../../models/exception/exception.dart';
 
 abstract class CaptionRemoteDataSource {
   Future<void> init(String roomId);

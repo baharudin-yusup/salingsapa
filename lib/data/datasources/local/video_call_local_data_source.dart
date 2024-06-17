@@ -5,9 +5,9 @@ import 'package:path_provider/path_provider.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../../core/errors/exception.dart';
 import '../../../core/utils/logger.dart';
-import '../../models/video_frame_model.dart';
+import '../../models/exception/exception.dart';
+import '../../models/local/video_frame_model.dart';
 
 abstract class VideoCallLocalDataSource {
   void setEngine(RtcEngine engine);

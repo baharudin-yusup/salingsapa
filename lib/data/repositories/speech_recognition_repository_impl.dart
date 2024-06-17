@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/caption.dart';
 import '../../domain/entities/recognition_status.dart';
+import '../../domain/errors/failure.dart';
 import '../../domain/repositories/repo_outcome.dart';
 import '../../domain/repositories/speech_recognition_repository.dart';
-import '../models/caption_model.dart';
+import '../models/api/caption_model.dart';
 import '../plugins/speech_recognition_plugin.dart';
 
 const _tagName = 'SpeechRecognitionRepository';

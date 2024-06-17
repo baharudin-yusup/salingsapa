@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failure.dart';
 import '../entities/call_info.dart';
+import '../errors/failure.dart';
 import 'use_case.dart';
 
 class GetRecentCall extends NoParamUseCase<List<CallInfo>> {

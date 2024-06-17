@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 import '../../data/constants/exception_code.dart';
-import '../../domain/entities/app_permission.dart';
+import '../entities/app_permission.dart';
 
 abstract class Failure extends Equatable {
   final String errorMessage;

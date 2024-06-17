@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failure.dart';
 import '../entities/phone_number.dart';
+import '../errors/failure.dart';
 
 abstract class GeneralRepository {
   Future<Either<Failure, Unit>> init();

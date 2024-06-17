@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import '../../models/tflite_model.dart';
+import '../../models/local/tflite_model.dart';
 
 abstract class SignLanguageRecognitionLocalDataSource {
   Future<TfliteModel> getModel();

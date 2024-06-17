@@ -5,9 +5,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-import '../../core/errors/failure.dart';
 import '../../core/firebase_options.dart';
 import '../../core/utils/logger.dart';
+import '../../domain/errors/failure.dart';
 
 @pragma('vm:entry-point')
 Future<void> handleBackgroundNotification(RemoteMessage message) async {

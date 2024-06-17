@@ -3,11 +3,11 @@ import 'dart:ui';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
 
-import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/phone_number.dart';
+import '../../domain/errors/failure.dart';
 import '../../domain/repositories/general_repository.dart';
-import '../models/phone_number_model.dart';
+import '../models/local/phone_number_model.dart';
 import '../plugins/phone_number_formatter_plugin.dart';
 
 class GeneralRepositoryImpl implements GeneralRepository {

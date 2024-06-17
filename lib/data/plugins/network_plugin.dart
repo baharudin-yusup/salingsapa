@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 
-import '../../core/errors/exception.dart';
 import '../../core/utils/logger.dart';
+import '../models/exception/exception.dart';
 
 abstract class NetworkPlugin {
   void setAuthToken(String? authorization);

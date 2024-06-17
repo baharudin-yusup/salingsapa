@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import '../../domain/entities/video_frame.dart';
+import '../../../domain/entities/video_frame.dart';
 
 class SalingsapaVideoFrameModel {
   final Uint8List y;
