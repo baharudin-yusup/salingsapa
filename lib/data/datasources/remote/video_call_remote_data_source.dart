@@ -10,16 +10,16 @@ import 'package:path_provider/path_provider.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../../core/errors/exception.dart';
 import '../../../core/utils/logger.dart';
 import '../../../domain/entities/contact.dart';
 import '../../../domain/entities/video_call_status.dart';
 import '../../../domain/entities/video_call_user_update_info.dart';
 import '../../constants/firestore_constant.dart';
+import '../../models/api/invitation_model.dart';
 import '../../models/api/requests/create_room_request.dart';
-import '../../models/invitation_model.dart';
-import '../../models/room_model.dart';
-import '../../models/video_frame_model.dart';
+import '../../models/api/room_model.dart';
+import '../../models/exception/exception.dart';
+import '../../models/local/video_frame_model.dart';
 import 'api_service.dart';
 
 const _tagName = 'VideoCallRemoteDataSource';

@@ -4,8 +4,8 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
+import '../../domain/errors/failure.dart';
 
 abstract class NavigatorService {
   GlobalKey<NavigatorState> get navigatorKey;

@@ -2,8 +2,8 @@ import 'dart:typed_data';
 
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failure.dart';
 import '../entities/user.dart';
+import '../errors/failure.dart';
 import 'repo_outcome.dart';
 
 abstract class UserRepository {

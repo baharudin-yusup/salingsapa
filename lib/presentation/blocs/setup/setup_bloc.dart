@@ -2,11 +2,11 @@ import 'package:bloc/bloc.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/errors/failure.dart';
 import '../../../core/utils/logger.dart';
 import '../../../data/constants/exception_code.dart';
 import '../../../domain/entities/phone_number.dart';
 import '../../../domain/entities/user.dart';
+import '../../../domain/errors/failure.dart';
 import '../../../domain/usecases/format_phone_number.dart';
 import '../../../domain/usecases/get_device_locale.dart';
 import '../../../domain/usecases/is_phone_number_valid.dart';
@@ -15,9 +15,7 @@ import '../../../domain/usecases/verify_otp.dart';
 import '../../../domain/usecases/verify_phone_number.dart';
 
 part 'setup_bloc.freezed.dart';
-
 part 'setup_event.dart';
-
 part 'setup_state.dart';
 
 class SetupBloc extends Bloc<SetupEvent, SetupState> {

@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failure.dart';
+import '../errors/failure.dart';
 
 abstract class SettingRepository {
   Future<Either<Failure, bool>> getIsFirstLaunchApp();

@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failure.dart';
+import '../../domain/errors/failure.dart';
 import '../../domain/repositories/external_link_repository.dart';
 import '../datasources/remote/external_link_remote_data_source.dart';
 

@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../entities/contact.dart';
+import '../errors/failure.dart';
 import '../repositories/contact_repository.dart';
 import 'use_case.dart';
 

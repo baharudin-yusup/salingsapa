@@ -1,12 +1,12 @@
 import 'package:flutter_contacts/flutter_contacts.dart';
 
-import '../../../core/errors/exception.dart';
 import '../../../core/utils/logger.dart';
 import '../../constants/cache_key.dart';
+import '../../models/api/user_model.dart';
 import '../../models/cache/string_cache_model.dart';
 import '../../models/cache/user_cache_model.dart';
-import '../../models/contact_model.dart';
-import '../../models/user_model.dart';
+import '../../models/exception/exception.dart';
+import '../../models/local/contact_model.dart';
 import '../../plugins/phone_number_formatter_plugin.dart';
 import '../cache/cache_service.dart';
 

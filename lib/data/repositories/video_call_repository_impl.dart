@@ -2,19 +2,19 @@ import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:dartz/dartz.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/contact.dart';
 import '../../domain/entities/invitation.dart';
 import '../../domain/entities/room.dart';
 import '../../domain/entities/video_call_user_update_info.dart';
 import '../../domain/entities/video_frame.dart';
+import '../../domain/errors/failure.dart';
 import '../../domain/repositories/repo_outcome.dart';
 import '../../domain/repositories/video_call_repository.dart';
 import '../datasources/local/video_call_local_data_source.dart';
 import '../datasources/remote/video_call_remote_data_source.dart';
-import '../models/invitation_model.dart';
-import '../models/room_model.dart';
+import '../models/api/invitation_model.dart';
+import '../models/api/room_model.dart';
 
 const _tagName = 'VideoCallRepository';
 

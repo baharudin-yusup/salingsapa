@@ -6,9 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 
-import '../../../core/errors/failure.dart';
 import '../../../core/injection_container.dart';
 import '../../../domain/entities/invitation.dart';
+import '../../../domain/errors/failure.dart';
 import '../../blocs/contact_list/contact_list_bloc.dart';
 import '../../blocs/recent_call/recent_call_bloc.dart';
 import '../../components/intuitive_floating_action_button.dart';

@@ -1,14 +1,14 @@
 import 'package:dio/dio.dart';
 
-import '../../../core/errors/exception.dart';
 import '../../../core/utils/logger.dart';
-import '../../constants/api_constant.dart';
+import '../../constants/api_endpoints.dart';
 import '../../models/api/requests/create_room_request.dart';
 import '../../models/api/requests/update_user_profile_request.dart';
 import '../../models/api/responses/accept_invitation_response.dart';
 import '../../models/api/responses/base_api_response.dart';
 import '../../models/api/responses/create_room_response.dart';
 import '../../models/api/responses/join_room_response.dart';
+import '../../models/exception/exception.dart';
 import '../../plugins/network_plugin.dart';
 
 abstract class ApiService {

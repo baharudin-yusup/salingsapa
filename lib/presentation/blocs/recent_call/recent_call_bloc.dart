@@ -2,10 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/errors/failure.dart';
 import '../../../domain/entities/call_info.dart';
 import '../../../domain/entities/invitation.dart';
 import '../../../domain/entities/room.dart';
+import '../../../domain/errors/failure.dart';
 import '../../../domain/usecases/accept_invitation.dart';
 import '../../../domain/usecases/get_recent_call.dart';
 import '../../../domain/usecases/stream_video_call_invitations.dart';
@@ -13,9 +13,7 @@ import '../../screens/home/contact_list_screen.dart';
 import '../../services/navigator_service.dart';
 
 part 'recent_call_bloc.freezed.dart';
-
 part 'recent_call_event.dart';
-
 part 'recent_call_state.dart';
 
 class RecentCallBloc extends Bloc<RecentCallEvent, RecentCallState> {

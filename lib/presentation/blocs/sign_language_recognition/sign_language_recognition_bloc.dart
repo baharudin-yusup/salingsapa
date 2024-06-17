@@ -5,11 +5,11 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/errors/failure.dart';
 import '../../../core/utils/logger.dart';
 import '../../../domain/entities/caption.dart';
 import '../../../domain/entities/recognition_status.dart';
 import '../../../domain/entities/video_frame.dart';
+import '../../../domain/errors/failure.dart';
 import '../../../domain/usecases/close_sign_language_recognition.dart';
 import '../../../domain/usecases/disable_sign_language_recognition.dart';
 import '../../../domain/usecases/enable_sign_language_recognition.dart';
@@ -21,9 +21,7 @@ import '../../../domain/usecases/stream_sign_language_recognition_result.dart';
 import '../../../domain/usecases/stream_sign_language_recognition_status.dart';
 
 part 'sign_language_recognition_bloc.freezed.dart';
-
 part 'sign_language_recognition_event.dart';
-
 part 'sign_language_recognition_state.dart';
 
 const _tagName = 'SignLanguageRecognitionBloc';

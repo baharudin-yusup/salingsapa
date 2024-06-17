@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failure.dart';
 import '../entities/caption.dart';
 import '../entities/recognition_status.dart';
 import '../entities/video_frame.dart';
+import '../errors/failure.dart';
 
 abstract class SignLanguageRecognitionRepository {
   Future<Either<Failure, String>> analyzeFrame(SalingsapaVideoFrame frame);

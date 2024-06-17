@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../domain/entities/room_participant.dart';
-import '../utils/timestamp_converter.dart';
+import '../../../domain/entities/room_participant.dart';
+import '../../utils/timestamp_converter.dart';
 import 'user_model.dart';
 
 part 'room_participant_model.g.dart';

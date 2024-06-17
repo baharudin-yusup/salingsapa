@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../room_model.dart';
+import '../room_model.dart';
 import 'base_api_response.dart';
 
 part 'accept_invitation_response.g.dart';
