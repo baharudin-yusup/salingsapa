@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failure.dart';
 import '../entities/auth_status.dart';
+import '../errors/failure.dart';
 import '../repositories/authentication_repository.dart';
 import 'use_case.dart';
 

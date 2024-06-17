@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../domain/entities/phone_number.dart';
+import '../../../domain/entities/phone_number.dart';
 
 part 'phone_number_model.g.dart';
 

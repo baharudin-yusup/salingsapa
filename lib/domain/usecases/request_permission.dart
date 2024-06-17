@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
 import '../entities/app_permission.dart';
+import '../errors/failure.dart';
 import 'use_case.dart';
 
 class RequestPermission extends UseCase<AppPermission, bool?> {

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failure.dart';
 import '../entities/caption.dart';
+import '../errors/failure.dart';
 
 abstract class CaptionRepository {
   Future<Either<Failure, Unit>> init({required String roomId});

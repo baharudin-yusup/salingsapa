@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as http;
 
-import '../../../core/errors/exception.dart';
+import '../../models/exception/exception.dart';
 
 abstract class ExternalLinkRemoteDataSource {
   Future<String> getPrivacyPolicy();

@@ -4,11 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:rxdart/rxdart.dart';
 
-import '../../../core/errors/exception.dart';
 import '../../../core/utils/logger.dart';
 import '../../constants/exception_code.dart';
-import '../../models/submit_phone_number_status.dart';
-import '../../models/user_model.dart';
+import '../../models/api/user_model.dart';
+import '../../models/exception/exception.dart';
+import '../../models/local/submit_phone_number_status.dart';
 import '../../plugins/network_plugin.dart';
 
 abstract class AuthenticationRemoteDatSource {

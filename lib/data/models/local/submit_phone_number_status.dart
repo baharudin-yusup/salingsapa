@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 
-import 'user_model.dart';
+import '../api/user_model.dart';
 
 abstract class SubmitPhoneNumberStatus {
   final String phoneNumber;

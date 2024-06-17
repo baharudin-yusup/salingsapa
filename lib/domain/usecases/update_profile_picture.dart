@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failure.dart';
+import '../errors/failure.dart';
 import '../repositories/user_repository.dart';
 import 'use_case.dart';
 

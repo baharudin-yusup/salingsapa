@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/errors/failure.dart';
 import '../../../domain/entities/app_permission.dart';
 import '../../../domain/entities/contact.dart';
+import '../../../domain/errors/failure.dart';
 import '../../../domain/usecases/get_current_user.dart';
 import '../../../domain/usecases/has_permission.dart';
 import '../../../domain/usecases/init_contact.dart';
@@ -11,9 +11,7 @@ import '../../../domain/usecases/refresh_contact_list.dart';
 import '../../../domain/usecases/request_permission.dart';
 
 part 'contact_list_bloc.freezed.dart';
-
 part 'contact_list_event.dart';
-
 part 'contact_list_state.dart';
 
 class ContactListBloc extends Bloc<ContactListEvent, ContactListState> {

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../core/errors/failure.dart';
 import '../../core/utils/logger.dart';
+import '../../domain/errors/failure.dart';
 import '../../domain/repositories/setting_repository.dart';
 import '../datasources/local/setting_local_data_source.dart';
 

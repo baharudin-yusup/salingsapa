@@ -4,11 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
-import '../../../core/errors/exception.dart';
 import '../../../core/utils/logger.dart';
 import '../../constants/firestore_constant.dart';
 import '../../models/api/requests/update_user_profile_request.dart';
-import '../../models/user_model.dart';
+import '../../models/api/user_model.dart';
+import '../../models/exception/exception.dart';
 import 'api_service.dart';
 
 abstract class UserRemoteDataSource {

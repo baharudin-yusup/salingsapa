@@ -4,11 +4,11 @@ import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/errors/failure.dart';
 import '../../../core/utils/logger.dart';
 import '../../../domain/entities/room.dart';
 import '../../../domain/entities/video_call_status.dart';
 import '../../../domain/entities/video_call_user_update_info.dart';
+import '../../../domain/errors/failure.dart';
 import '../../../domain/usecases/disable_take_photo_snapshot.dart';
 import '../../../domain/usecases/enable_take_photo_snapshot.dart';
 import '../../../domain/usecases/init_video_call.dart';

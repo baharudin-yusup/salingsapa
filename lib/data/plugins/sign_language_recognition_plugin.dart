@@ -7,10 +7,10 @@ import 'package:uuid/uuid.dart';
 
 import '../../core/utils/logger.dart';
 import '../../domain/entities/recognition_status.dart';
-import '../models/sign_language_recognition_caption_model.dart';
-import '../models/sign_language_recognition_result_model.dart';
-import '../models/tflite_model.dart';
-import '../models/video_frame_model.dart';
+import '../models/local/sign_language_recognition_caption_model.dart';
+import '../models/local/sign_language_recognition_result_model.dart';
+import '../models/local/tflite_model.dart';
+import '../models/local/video_frame_model.dart';
 
 abstract class SignLanguageRecognitionPlugin {
   Future<void> init(TfliteModel model);

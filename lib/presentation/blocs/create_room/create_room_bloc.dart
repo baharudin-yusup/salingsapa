@@ -2,15 +2,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../core/errors/failure.dart';
 import '../../../domain/entities/contact.dart';
 import '../../../domain/entities/room.dart';
+import '../../../domain/errors/failure.dart';
 import '../../../domain/usecases/create_room.dart';
 
 part 'create_room_bloc.freezed.dart';
-
 part 'create_room_event.dart';
-
 part 'create_room_state.dart';
 
 class CreateRoomBloc extends Bloc<CreateRoomEvent, CreateRoomState> {

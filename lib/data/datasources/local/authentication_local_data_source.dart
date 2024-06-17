@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../../constants/cache_key.dart';
-import '../../models/auth_token_model.dart';
+import '../../models/local/auth_token_model.dart';
 import '../cache/cache_service.dart';
 
 abstract class AuthenticationLocalDataSource {

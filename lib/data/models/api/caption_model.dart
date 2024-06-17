@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../domain/entities/caption.dart';
+import '../../../domain/entities/caption.dart';
 
 part 'caption_model.g.dart';
 
