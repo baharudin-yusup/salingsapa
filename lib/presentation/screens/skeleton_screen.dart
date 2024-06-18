@@ -60,7 +60,11 @@ class _RootScreenState extends State<RootScreen> {
     super.initState();
 
     dispatcher.onPlatformBrightnessChanged = () {
-      platformBrightness = dispatcher.platformBrightness;
+      if (mounted) {
+        setState(() {
+          platformBrightness = dispatcher.platformBrightness;
+        });
+      }
     };
   }
 
