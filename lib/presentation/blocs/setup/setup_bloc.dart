@@ -15,7 +15,9 @@ import '../../../domain/usecases/verify_otp.dart';
 import '../../../domain/usecases/verify_phone_number.dart';
 
 part 'setup_bloc.freezed.dart';
+
 part 'setup_event.dart';
+
 part 'setup_state.dart';
 
 class SetupBloc extends Bloc<SetupEvent, SetupState> {
@@ -51,27 +53,37 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
     on<_ClearSetupStarted>(_onStartClearData);
 
     /// Initial setup
-    _getDeviceLocale().fold(
-      (_) {},
-      (deviceLocale) {
-        final countryCode = CountryCode.fromCode(deviceLocale.countryCode);
-        if (countryCode != null) {
-          Logger.print('[INIT] Change country picker to ${countryCode.name}');
-          add(SetupEvent.countryPickerSelected(countryCode));
-        }
-      },
-    );
+    add(const SetupEvent.inputPhoneNumberStarted());
   }
 
   void _onStartClearData(_ClearSetupStarted event, Emitter<SetupState> emit) {
-    Logger.print('clear all setup data success!');
-    emit(const SetupState.inputPhoneNumberInitial());
+    final deviceLocale = _getDeviceLocale().fold(
+          (_) => null,
+          (deviceLocale) => deviceLocale,
+    );
+    final defaultCountryCode = deviceLocale != null
+        ? CountryCode.fromCode(deviceLocale.countryCode)
+        : null;
+    emit(SetupState.inputPhoneNumberInitial('', defaultCountryCode));
   }
 
   void _onStartInputPhoneNumber(
       _InputPhoneNumberStarted event, Emitter<SetupState> emit) {
     Logger.print('input phone number started...');
-    state.maybeWhen(
+
+    final deviceLocale = _getDeviceLocale().fold(
+      (_) => null,
+      (deviceLocale) => deviceLocale,
+    );
+    final defaultCountryCode = deviceLocale != null
+        ? CountryCode.fromCode(deviceLocale.countryCode)
+        : null;
+
+    state.when(
+      inputPhoneNumberInitial: (phoneNumber, countryCode) {
+        emit(SetupState.inputPhoneNumberInitial(
+            '', countryCode ?? defaultCountryCode));
+      },
       inputPhoneNumberVerifyInProgress: (phoneNumber, countryCode) {
         emit(SetupState.inputPhoneNumberInitial('', countryCode));
       },
@@ -81,9 +93,10 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
             '',
             phoneNumber.dialCode != null
                 ? CountryCode.fromDialCode(
-                    phoneNumber.dialCode!,
-                  )
-                : null,
+                      phoneNumber.dialCode!,
+                    ) ??
+                    defaultCountryCode
+                : defaultCountryCode,
           ),
         );
       },
@@ -99,9 +112,10 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
             '',
             phoneNumber.dialCode != null
                 ? CountryCode.fromDialCode(
-                    phoneNumber.dialCode!,
-                  )
-                : null,
+                      phoneNumber.dialCode!,
+                    ) ??
+                    defaultCountryCode
+                : defaultCountryCode,
           ),
         );
       },
@@ -111,9 +125,10 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
             '',
             phoneNumber.dialCode != null
                 ? CountryCode.fromDialCode(
-                    phoneNumber.dialCode!,
-                  )
-                : null,
+                      phoneNumber.dialCode!,
+                    ) ??
+                    defaultCountryCode
+                : defaultCountryCode,
           ),
         );
       },
@@ -123,9 +138,10 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
             '',
             phoneNumber.dialCode != null
                 ? CountryCode.fromDialCode(
-                    phoneNumber.dialCode!,
-                  )
-                : null,
+                      phoneNumber.dialCode!,
+                    ) ??
+                    defaultCountryCode
+                : defaultCountryCode,
           ),
         );
       },
@@ -135,9 +151,10 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
             '',
             phoneNumber.dialCode != null
                 ? CountryCode.fromDialCode(
-                    phoneNumber.dialCode!,
-                  )
-                : null,
+                      phoneNumber.dialCode!,
+                    ) ??
+                    defaultCountryCode
+                : defaultCountryCode,
           ),
         );
       },
@@ -147,38 +164,51 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
             '',
             phoneNumber.dialCode != null
                 ? CountryCode.fromDialCode(
-                    phoneNumber.dialCode!,
-                  )
-                : null,
+                      phoneNumber.dialCode!,
+                    ) ??
+                    defaultCountryCode
+                : defaultCountryCode,
           ),
         );
       },
-      resendOtpFailure: (phoneNumber, otp, failure) {
+      resendOtpFailure: (phoneNumber, _, __) {
         emit(
           SetupState.inputPhoneNumberInitial(
             '',
             phoneNumber.dialCode != null
                 ? CountryCode.fromDialCode(
-                    phoneNumber.dialCode!,
-                  )
-                : null,
+                      phoneNumber.dialCode!,
+                    ) ??
+                    defaultCountryCode
+                : defaultCountryCode,
           ),
         );
       },
-      resendOtpSuccess: (phoneNumber, otp) {
+      resendOtpSuccess: (phoneNumber, _) {
         emit(
           SetupState.inputPhoneNumberInitial(
             '',
             phoneNumber.dialCode != null
                 ? CountryCode.fromDialCode(
-                    phoneNumber.dialCode!,
-                  )
-                : null,
+                      phoneNumber.dialCode!,
+                    ) ??
+                    defaultCountryCode
+                : defaultCountryCode,
           ),
         );
       },
-      orElse: () {
-        emit(const SetupState.inputPhoneNumberInitial(''));
+      autoSignInSuccess: (phoneNumber, _) {
+        emit(
+          SetupState.inputPhoneNumberInitial(
+            '',
+            phoneNumber.dialCode != null
+                ? CountryCode.fromDialCode(
+                      phoneNumber.dialCode!,
+                    ) ??
+                    defaultCountryCode
+                : defaultCountryCode,
+          ),
+        );
       },
     );
   }
@@ -419,7 +449,7 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
           add(const SetupEvent.submitOtpStarted());
         }
       },
-      inputOtpValidationFailure: (phoneNumber, otp, failure) {
+      inputOtpValidationFailure: (phoneNumber, _, __) {
         final newState = SetupState.inputOtpInitial(phoneNumber, newOtp);
         Logger.print('Change state to ${newState.toString()}');
         emit(newState);

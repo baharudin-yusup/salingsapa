@@ -339,7 +339,12 @@ class _SetupScreenState extends State<SetupScreen> {
       searchBarTextStyle: context.textTheme().bodyMedium,
     );
     // Show the country code picker when tapped.
-    countryPickerWithParams.showPicker(context: context).then(
+    countryPickerWithParams
+        .showPicker(
+          context: context,
+          backgroundColor: context.colorScheme().surface,
+        )
+        .then(
           _onCountryPickerClosed,
         );
   }
