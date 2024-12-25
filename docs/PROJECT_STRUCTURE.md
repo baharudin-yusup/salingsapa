@@ -128,7 +128,7 @@ other layer, ensuring that business rules are not influenced by external concern
 - **usecases**: Application-specific use cases encapsulating the business logic.
   - Example: `get_user_data.dart` use case for retrieving user data.
 
-### `l10n/`
+### `lib/l10n/`
 
 Contains localization files to support multiple languages in the application.
 
@@ -150,8 +150,7 @@ layer to present the data to the user.
 - **services**: Services used in the presentation layer.
   - Example: `navigation_service.dart` handles navigation.
 - **utils**: Utility classes and functions used in the presentation layer.
-  - Example: `timestamp_converter.dart` for converting `DateTime` to `Timestamp` and vice
-    versa.
+  - Example: `input_validators.dart` provides utility functions for validating various types of user inputs.
 
 ### `main_dev.dart`
 
