@@ -5,7 +5,6 @@
     <method v="2">
       <option name="RunConfigurationTask" enabled="true" run_configuration_name="(PROD-PS) Initialize environment" run_configuration_type="ShConfigurationType" />
       <option name="RunConfigurationTask" enabled="true" run_configuration_name="(PROD-PS) Initialize firebase options" run_configuration_type="ShConfigurationType" />
-      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Build Runner (Windows)" run_configuration_type="ShConfigurationType" />
       <option name="RunConfigurationTask" enabled="true" run_configuration_name="Get Packages" run_configuration_type="ShConfigurationType" />
     </method>
   </configuration>
