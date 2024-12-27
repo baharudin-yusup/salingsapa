@@ -119,7 +119,7 @@ class _RootScreenState extends State<RootScreen> {
             changeAuthStatusSuccess: (state) {
               context
                   .read<SetupBloc>()
-                  .add(const SetupEvent.clearSetupStarted());
+                  .add(const SetupEvent.inputPhoneNumberStarted());
               uiService.resetLoading();
 
               switch (state.status) {
@@ -147,7 +147,7 @@ class _RootScreenState extends State<RootScreen> {
                   msg: state.failure.code.translate(context));
               context
                   .read<SetupBloc>()
-                  .add(const SetupEvent.clearSetupStarted());
+                  .add(const SetupEvent.inputPhoneNumberStarted());
               uiService.resetLoading();
 
               navigatorService.pushNamedAndRemoveUntil(

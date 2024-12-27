@@ -35,12 +35,13 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
     this._isPhoneNumberValid,
     this._formatPhoneNumber,
     this._getDeviceLocale,
-  ) : super(const SetupState.inputPhoneNumberInitial()) {
+  ) : super(const SetupState.changePhoneNumberSuccess()) {
     // Handle phone number events
     on<_InputPhoneNumberStarted>(_onStartInputPhoneNumber);
     on<_DialCodeChanged>(_startCheckDialCode);
     on<_CountryPickerSelected>(_startPickCountry);
     on<_PhoneNumberChanged>(_onPhoneNumberChanged);
+    on<_ValidatePhoneNumberFormatStarted>(_validatePhoneNumberFormat);
     on<_SubmitPhoneNumberStarted>(_startSubmitPhoneNumber);
 
     // Handle OTP events
@@ -49,22 +50,29 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
     on<_ResendOtpStarted>(_onStartResendOtp);
     on<_SubmitOtpStarted>(_onStartSubmitOtp);
 
-    // Handle clear data
-    on<_ClearSetupStarted>(_onStartClearData);
-
     /// Initial setup
     add(const SetupEvent.inputPhoneNumberStarted());
   }
 
-  void _onStartClearData(_ClearSetupStarted event, Emitter<SetupState> emit) {
-    final deviceLocale = _getDeviceLocale().fold(
-          (_) => null,
-          (deviceLocale) => deviceLocale,
-    );
-    final defaultCountryCode = deviceLocale != null
-        ? CountryCode.fromCode(deviceLocale.countryCode)
-        : null;
-    emit(SetupState.inputPhoneNumberInitial('', defaultCountryCode));
+  void _validatePhoneNumberFormat(
+      _ValidatePhoneNumberFormatStarted event, Emitter<SetupState> emit) {
+    final dialCode = event.dialCode ?? '';
+    final phoneNumber = event.phoneNumber ?? '';
+    final countryCode = CountryCode.fromDialCode('+$dialCode');
+
+    if (countryCode == null) {
+      emit(SetupState.validatePhoneNumberFormatFailure());
+      return;
+    }
+
+    // TODO: Move this into remote repo
+    final minPhoneNumberLength = 5;
+    if (phoneNumber.length < minPhoneNumberLength) {
+      emit(SetupState.validatePhoneNumberFormatFailure());
+      return;
+    }
+
+    emit(SetupState.validatePhoneNumberFormatSuccess());
   }
 
   void _onStartInputPhoneNumber(
@@ -78,307 +86,86 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
     final defaultCountryCode = deviceLocale != null
         ? CountryCode.fromCode(deviceLocale.countryCode)
         : null;
+    emit(SetupState.changePhoneNumberSuccess(''));
 
-    state.when(
-      inputPhoneNumberInitial: (phoneNumber, countryCode) {
-        emit(SetupState.inputPhoneNumberInitial(
-            '', countryCode ?? defaultCountryCode));
-      },
-      inputPhoneNumberVerifyInProgress: (phoneNumber, countryCode) {
-        emit(SetupState.inputPhoneNumberInitial('', countryCode));
-      },
-      inputPhoneNumberSuccess: (phoneNumber) {
-        emit(
-          SetupState.inputPhoneNumberInitial(
-            '',
-            phoneNumber.dialCode != null
-                ? CountryCode.fromDialCode(
-                      phoneNumber.dialCode!,
-                    ) ??
-                    defaultCountryCode
-                : defaultCountryCode,
-          ),
-        );
-      },
-      inputPhoneNumberFailure: (_, countryCode, __) {
-        emit(SetupState.inputPhoneNumberInitial('', countryCode));
-      },
-      pickCountrySuccess: (_, countryCode) {
-        emit(SetupState.inputPhoneNumberInitial('', countryCode));
-      },
-      inputOtpInitial: (phoneNumber, _) {
-        emit(
-          SetupState.inputPhoneNumberInitial(
-            '',
-            phoneNumber.dialCode != null
-                ? CountryCode.fromDialCode(
-                      phoneNumber.dialCode!,
-                    ) ??
-                    defaultCountryCode
-                : defaultCountryCode,
-          ),
-        );
-      },
-      inputOtpValidationFailure: (phoneNumber, otp, failure) {
-        emit(
-          SetupState.inputPhoneNumberInitial(
-            '',
-            phoneNumber.dialCode != null
-                ? CountryCode.fromDialCode(
-                      phoneNumber.dialCode!,
-                    ) ??
-                    defaultCountryCode
-                : defaultCountryCode,
-          ),
-        );
-      },
-      inputOtpValidationInProgress: (phoneNumber, otp) {
-        emit(
-          SetupState.inputPhoneNumberInitial(
-            '',
-            phoneNumber.dialCode != null
-                ? CountryCode.fromDialCode(
-                      phoneNumber.dialCode!,
-                    ) ??
-                    defaultCountryCode
-                : defaultCountryCode,
-          ),
-        );
-      },
-      inputOtpValidationSuccess: (phoneNumber, otp) {
-        emit(
-          SetupState.inputPhoneNumberInitial(
-            '',
-            phoneNumber.dialCode != null
-                ? CountryCode.fromDialCode(
-                      phoneNumber.dialCode!,
-                    ) ??
-                    defaultCountryCode
-                : defaultCountryCode,
-          ),
-        );
-      },
-      resendOtpInProgress: (phoneNumber, otp) {
-        emit(
-          SetupState.inputPhoneNumberInitial(
-            '',
-            phoneNumber.dialCode != null
-                ? CountryCode.fromDialCode(
-                      phoneNumber.dialCode!,
-                    ) ??
-                    defaultCountryCode
-                : defaultCountryCode,
-          ),
-        );
-      },
-      resendOtpFailure: (phoneNumber, _, __) {
-        emit(
-          SetupState.inputPhoneNumberInitial(
-            '',
-            phoneNumber.dialCode != null
-                ? CountryCode.fromDialCode(
-                      phoneNumber.dialCode!,
-                    ) ??
-                    defaultCountryCode
-                : defaultCountryCode,
-          ),
-        );
-      },
-      resendOtpSuccess: (phoneNumber, _) {
-        emit(
-          SetupState.inputPhoneNumberInitial(
-            '',
-            phoneNumber.dialCode != null
-                ? CountryCode.fromDialCode(
-                      phoneNumber.dialCode!,
-                    ) ??
-                    defaultCountryCode
-                : defaultCountryCode,
-          ),
-        );
-      },
-      autoSignInSuccess: (phoneNumber, _) {
-        emit(
-          SetupState.inputPhoneNumberInitial(
-            '',
-            phoneNumber.dialCode != null
-                ? CountryCode.fromDialCode(
-                      phoneNumber.dialCode!,
-                    ) ??
-                    defaultCountryCode
-                : defaultCountryCode,
-          ),
-        );
-      },
-    );
+    if (defaultCountryCode != null) {
+      emit(SetupState.pickCountrySuccess(defaultCountryCode));
+    }
   }
 
   void _startPickCountry(
       _CountryPickerSelected event, Emitter<SetupState> emit) {
-    state.maybeWhen(
-      inputPhoneNumberInitial: (phoneNumber, _) {
-        emit(SetupState.pickCountrySuccess(phoneNumber, event.countryCode));
-        emit(
-            SetupState.inputPhoneNumberInitial(phoneNumber, event.countryCode));
-      },
-      pickCountrySuccess: (phoneNumber, _) {
-        emit(SetupState.pickCountrySuccess(phoneNumber, event.countryCode));
-        emit(
-            SetupState.inputPhoneNumberInitial(phoneNumber, event.countryCode));
-      },
-      orElse: () {},
-    );
+    // TODO: Add some analytics here
+    emit(SetupState.pickCountrySuccess(event.countryCode));
   }
 
   void _startCheckDialCode(_DialCodeChanged event, Emitter<SetupState> emit) {
     final countryCode = CountryCode.fromDialCode('+${event.dialCode}');
-    state.maybeWhen(
-      pickCountrySuccess: (phoneNumber, _) {
-        emit(SetupState.inputPhoneNumberInitial(phoneNumber, countryCode));
-      },
-      inputPhoneNumberInitial: (phoneNumber, _) {
-        emit(SetupState.inputPhoneNumberInitial(phoneNumber, countryCode));
-      },
-      orElse: () {},
-    );
+    emit(SetupState.changeDialCodeSuccess(event.dialCode, countryCode));
   }
 
   void _onPhoneNumberChanged(
       _PhoneNumberChanged event, Emitter<SetupState> emit) {
-    state.maybeWhen(
-      inputPhoneNumberInitial: (_, countryCode) {
-        emit(
-            SetupState.inputPhoneNumberInitial(event.phoneNumber, countryCode));
-      },
-      inputPhoneNumberFailure: (_, countryCode, __) {
-        emit(
-            SetupState.inputPhoneNumberInitial(event.phoneNumber, countryCode));
-      },
-      orElse: () {},
-    );
+    emit(SetupState.changePhoneNumberSuccess(event.phoneNumber));
   }
 
   void _startSubmitPhoneNumber(
       _SubmitPhoneNumberStarted event, Emitter<SetupState> emit) async {
     Logger.print('Submitting phone number started...');
-    String? rawMobileNumber;
-    String? rawDialCode;
-    String? rawCountryCode;
-    final isPreConditionValid = state.maybeWhen(
-      inputPhoneNumberInitial: (phoneNumber, countryCode) {
-        if (countryCode == null) {
-          return false;
-        }
+    final rawMobileNumber = event.phoneNumber ?? '';
+    final rawDialCode = event.dialCode ?? '';
+    final countryCode =
+        CountryCode.fromDialCode('+${event.dialCode}')?.code ?? '';
 
-        rawCountryCode = countryCode.code;
-        rawDialCode = countryCode.dialCode;
-        rawMobileNumber = phoneNumber;
+    emit(SetupState.verifyPhoneNumberInProgress());
 
-        emit(SetupState.inputPhoneNumberVerifyInProgress(
-            phoneNumber, countryCode));
-        return true;
-      },
-      pickCountrySuccess: (phoneNumber, countryCode) {
-        rawCountryCode = countryCode.code;
-        rawDialCode = countryCode.dialCode;
-        rawMobileNumber = phoneNumber;
-
-        emit(SetupState.inputPhoneNumberVerifyInProgress(
-            phoneNumber, countryCode));
-        return true;
-      },
-      inputPhoneNumberFailure: (phoneNumber, countryCode, _) {
-        rawCountryCode = countryCode.code;
-        rawDialCode = countryCode.dialCode;
-        rawMobileNumber = phoneNumber;
-
-        emit(SetupState.inputPhoneNumberVerifyInProgress(
-            phoneNumber, countryCode));
-        return true;
-      },
-      orElse: () {
-        return false;
-      },
-    );
-
-    if (!isPreConditionValid ||
-        rawCountryCode == null ||
-        rawDialCode == null ||
-        rawMobileNumber == null) {
-      Logger.error('pre condition not valid', event: 'submitting phone number');
+    if (rawDialCode.isEmpty || rawMobileNumber.isEmpty || countryCode.isEmpty) {
+      Logger.error(
+          'pre condition not valid: rawDialCode $rawDialCode rawMobileNumber: $rawMobileNumber countryCode: $countryCode',
+          event: 'submitting phone number');
+      // TODO: Use localization
+      emit(SetupState.verifyPhoneNumberFailure(
+          FeatureFailure(errorMessage: 'Your phone number is not valid')));
       return;
     }
+
     Logger.print('Pre-condition checking passed!');
     Logger.print('Raw mobile number: +$rawDialCode$rawMobileNumber');
-    Logger.print('Raw country code: $rawCountryCode');
+    Logger.print('Raw country code: $countryCode');
 
     final createPhoneNumberResult = await _formatPhoneNumber(
       RawPhoneNumber(
         phoneNumber: '+$rawDialCode$rawMobileNumber',
-        countryCode: rawCountryCode!,
+        countryCode: countryCode,
       ),
     );
-    PhoneNumber? unvalidatedPhoneNumber;
-    final isCreatePhoneNumberSuccess = createPhoneNumberResult.fold(
+    final unvalidatedPhoneNumber = createPhoneNumberResult.fold(
       (failure) {
         Logger.error(failure.errorMessage,
             event: 'creating unvalidated phone number');
-        return state.maybeWhen(
-          inputPhoneNumberVerifyInProgress: (phoneNumber, countryCode) {
-            emit(
-              SetupState.inputPhoneNumberFailure(
-                phoneNumber,
-                countryCode,
-                failure,
-              ),
-            );
-            return false;
-          },
-          orElse: () {
-            return false;
-          },
-        );
+        emit(SetupState.verifyPhoneNumberFailure(failure));
+
+        return null;
       },
       (phoneNumber) {
-        unvalidatedPhoneNumber = phoneNumber;
-        return true;
+        return phoneNumber;
       },
     );
 
-    if (!isCreatePhoneNumberSuccess || unvalidatedPhoneNumber == null) {
+    if (unvalidatedPhoneNumber == null) {
       Logger.error('null data', event: 'creating unvalidated phone number');
-      state.maybeWhen(
-        inputPhoneNumberVerifyInProgress: (phoneNumber, countryCode) {
-          emit(SetupState.inputPhoneNumberFailure(
-              phoneNumber, countryCode, const UnknownFailure()));
-        },
-        orElse: () {},
-      );
       return;
     }
 
     Logger.print(
-        'Creating unvalidated phone number model succeed!, raw phone number: ${unvalidatedPhoneNumber?.raw}');
+        'Creating unvalidated phone number model succeed!, raw phone number: ${unvalidatedPhoneNumber.raw}');
     final isPhoneNumberValid =
-        (await _isPhoneNumberValid(unvalidatedPhoneNumber!)).fold(
+        (await _isPhoneNumberValid(unvalidatedPhoneNumber)).fold(
       (failure) {
         Logger.error(failure.errorMessage,
             event: 'validating phone number format');
-        return state.maybeWhen(
-          inputPhoneNumberVerifyInProgress: (phoneNumber, countryCode) {
-            emit(
-              SetupState.inputPhoneNumberFailure(
-                phoneNumber,
-                countryCode,
-                failure,
-              ),
-            );
-            return false;
-          },
-          orElse: () {
-            return false;
-          },
-        );
+        emit(SetupState.verifyPhoneNumberFailure(failure));
+        return false;
       },
       (isValid) {
         return isValid;
@@ -394,25 +181,14 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
     final validatedPhoneNumber = unvalidatedPhoneNumber;
 
     final verifyPhoneNumberResult =
-        await _verifyPhoneNumber(validatedPhoneNumber!.raw);
+        await _verifyPhoneNumber(validatedPhoneNumber.raw);
     verifyPhoneNumberResult.fold(
       (failure) {
         if (failure.code == AppFailureCode.autoSignInFailed) {
-          emit(SetupState.inputPhoneNumberSuccess(validatedPhoneNumber));
+          emit(SetupState.inputPhoneNumberVerifySuccess(validatedPhoneNumber));
           add(const SetupEvent.inputOtpStarted());
         } else {
-          state.maybeWhen(
-            inputPhoneNumberVerifyInProgress: (phoneNumber, countryCode) {
-              emit(
-                SetupState.inputPhoneNumberFailure(
-                  phoneNumber,
-                  countryCode,
-                  failure,
-                ),
-              );
-            },
-            orElse: () {},
-          );
+          emit(SetupState.verifyPhoneNumberFailure(failure));
         }
       },
       (user) => emit(SetupState.autoSignInSuccess(validatedPhoneNumber, user)),
@@ -422,7 +198,7 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
   void _onStartInputOtp(_InputOtpStarted event, Emitter<SetupState> emit) {
     Logger.print('input otp started...');
     state.maybeWhen(
-      inputPhoneNumberSuccess: (phoneNumber) {
+      inputPhoneNumberVerifySuccess: (phoneNumber) {
         final newState = SetupState.inputOtpInitial(phoneNumber);
         Logger.print('change state to ${newState.toString()}');
         emit(newState);
@@ -469,7 +245,7 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
     Logger.print('(BLOC) Resend otp started...');
     // TODO: Add loading state
     state.maybeWhen(
-      inputPhoneNumberSuccess: (phoneNumber) {
+      inputPhoneNumberVerifySuccess: (phoneNumber) {
         emit(SetupState.resendOtpInProgress(phoneNumber, ''));
       },
       inputOtpInitial: (phoneNumber, otp) {

@@ -49,67 +49,58 @@ class VerifyOtpScreen extends StatelessWidget {
         );
       },
       builder: (context, state) {
-        return PopScope(
-          onPopInvoked: (didPop) {
-            if (didPop) {
-              context
-                  .read<SetupBloc>()
-                  .add(const SetupEvent.inputPhoneNumberStarted());
-            }
-          },
-          child: IntuitiveScaffold(
-            appBar: IntuitiveAppBar(
-              middle: Text(AppLocalizations.of(context)!.verifyYourPhoneNumber),
-              cupertinoTrailing: GestureDetector(
-                onTap: state.isAbleToSubmitOtp
-                    ? () {
-                        context
-                            .read<SetupBloc>()
-                            .add(const SetupEvent.submitOtpStarted());
-                      }
-                    : null,
-                child: Text(
-                  AppLocalizations.of(context)!.send,
-                  style: TextStyle(
-                    color: state.isAbleToSubmitOtp
-                        ? context.colorScheme().primary
-                        : context.colorScheme().onSurface.withOpacity(0.5),
-                  ),
+        return IntuitiveScaffold(
+          appBar: IntuitiveAppBar(
+            middle: Text(AppLocalizations.of(context)!.verifyYourPhoneNumber),
+            cupertinoTrailing: GestureDetector(
+              onTap: state.isAbleToSubmitOtp
+                  ? () {
+                context
+                    .read<SetupBloc>()
+                    .add(const SetupEvent.submitOtpStarted());
+              }
+                  : null,
+              child: Text(
+                AppLocalizations.of(context)!.send,
+                style: TextStyle(
+                  color: state.isAbleToSubmitOtp
+                      ? context.colorScheme().primary
+                      : context.colorScheme().onSurface.withOpacity(0.5),
                 ),
               ),
             ),
-            builder: (context) {
-              return ListView(
-                padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace)
-                    .add(context.padding),
-                children: [
-                  _buildInfoText(),
-                  const SizedBox(height: IntuitiveUiConstant.normalSpace),
-                  IntuitiveOtp(
-                    onChanged: (otp) {
-                      context.read<SetupBloc>().add(SetupEvent.otpChanged(otp));
-                    },
-                    onCompleted: (otp) {
-                      context.read<SetupBloc>().add(SetupEvent.otpChanged(otp));
-                    },
-                    obscure: false,
-                    errorMessage: state.maybeMap(
-                      inputOtpValidationFailure: (state) =>
-                          state.failure.code.translate(context),
-                      orElse: () => null,
-                    ),
-                    errorColor: context.colorScheme().error,
-                  ),
-                  if (Platform.isAndroid) ...[
-                    const SizedBox(height: IntuitiveUiConstant.smallSpace),
-                    _buildSendButton(),
-                  ],
-                  const SizedBox(height: IntuitiveUiConstant.normalSpace),
-                  _buildResendCodeText(context),
-                ],
-              );
-            },
           ),
+          builder: (context) {
+            return ListView(
+              padding: const EdgeInsets.all(IntuitiveUiConstant.normalSpace)
+                  .add(context.padding),
+              children: [
+                _buildInfoText(),
+                const SizedBox(height: IntuitiveUiConstant.normalSpace),
+                IntuitiveOtp(
+                  onChanged: (otp) {
+                    context.read<SetupBloc>().add(SetupEvent.otpChanged(otp));
+                  },
+                  onCompleted: (otp) {
+                    context.read<SetupBloc>().add(SetupEvent.otpChanged(otp));
+                  },
+                  obscure: false,
+                  errorMessage: state.maybeMap(
+                    inputOtpValidationFailure: (state) =>
+                        state.failure.code.translate(context),
+                    orElse: () => null,
+                  ),
+                  errorColor: context.colorScheme().error,
+                ),
+                if (Platform.isAndroid) ...[
+                  const SizedBox(height: IntuitiveUiConstant.smallSpace),
+                  _buildSendButton(),
+                ],
+                const SizedBox(height: IntuitiveUiConstant.normalSpace),
+                _buildResendCodeText(context),
+              ],
+            );
+          },
         );
       },
     );

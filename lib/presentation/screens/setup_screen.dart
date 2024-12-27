@@ -35,6 +35,7 @@ class _SetupScreenState extends State<SetupScreen> {
   /// Input controllers
   final _countryPickerController = TextEditingController();
   final _dialCodeController = TextEditingController();
+  final _phoneNumberController = TextEditingController();
 
   /// Inout focus nodes
   FocusScopeNode? _focusScope;
@@ -48,21 +49,12 @@ class _SetupScreenState extends State<SetupScreen> {
       (_) {
         _focusScope = FocusScope.of(context);
         final initialValue = context.read<SetupBloc>().state.maybeWhen(
-          pickCountrySuccess: (_, countryCode) {
-            return countryCode.dialCode;
-          },
-          inputPhoneNumberInitial: (_, countryCode) {
-            if (countryCode == null) {
-              return '';
-            }
-
-            return countryCode.dialCode;
-          },
-          orElse: () {
-            return '';
-          },
-        ).replaceAll('+', '');
-        _dialCodeController.text = initialValue;
+              pickCountrySuccess: (countryCode) => countryCode,
+              orElse: () => null,
+            );
+        if (initialValue == null) return;
+        _updateCountryAndDialCode(
+            dialCode: initialValue.dialCode, countryName: initialValue.name);
       },
     );
   }
@@ -76,29 +68,52 @@ class _SetupScreenState extends State<SetupScreen> {
     super.dispose();
   }
 
-  void _onCountryPickerClosed(selectedCountry) {
+  void _validatePhoneNumberFormat(BuildContext context) {
+    context.read<SetupBloc>().add(SetupEvent.validatePhoneNumberFormatStarted(
+        dialCode: _dialCodeController.text,
+        phoneNumber: _phoneNumberController.text));
+  }
+
+  void _updateCountryAndDialCode({
+    String? dialCode,
+    String? countryName,
+  }) {
+    if (dialCode != null) {
+      _dialCodeController.text = dialCode.replaceAll('+', '');
+    }
+    if (countryName != null) {
+      _countryPickerController.text = countryName;
+    }
+  }
+
+  void _onCountryPickerClosed(BuildContext context, selectedCountry) {
     if (selectedCountry != null) {
       Logger.print('Change country picker to ${selectedCountry.name}');
       context
           .read<SetupBloc>()
           .add(SetupEvent.countryPickerSelected(selectedCountry));
+      _validatePhoneNumberFormat(context);
       _focusScope?.requestFocus(_phoneNumberFocusNode);
     } else {
       _focusScope?.unfocus();
     }
   }
 
-  void _onDialCodeChanged(dialCode) {
+  void _onDialCodeChanged(BuildContext context, String dialCode) {
     context.read<SetupBloc>().add(SetupEvent.dialCodeChanged(dialCode));
+    _validatePhoneNumberFormat(context);
   }
 
-  void _onPhoneNumberChanged(phoneNumber) {
+  void _onPhoneNumberChanged(BuildContext context, String phoneNumber) {
     context.read<SetupBloc>().add(SetupEvent.phoneNumberChanged(phoneNumber));
+    _validatePhoneNumberFormat(context);
   }
 
   void _onButtonDonePressed() {
     FocusManager.instance.primaryFocus?.unfocus();
-    context.read<SetupBloc>().add(const SetupEvent.submitPhoneNumberStarted());
+    context.read<SetupBloc>().add(SetupEvent.submitPhoneNumberStarted(
+        dialCode: _dialCodeController.text,
+        phoneNumber: _phoneNumberController.text));
   }
 
   @override
@@ -138,10 +153,13 @@ class _SetupScreenState extends State<SetupScreen> {
             final UiService uiService = sl();
             final NavigatorService navigatorService = sl();
             state.maybeMap(
-              inputPhoneNumberVerifyInProgress: (_) {
+              changePhoneNumberSuccess: (state) {
+                _phoneNumberController.text = state.phoneNumber;
+              },
+              verifyPhoneNumberInProgress: (_) {
                 uiService.showLoading();
               },
-              inputPhoneNumberFailure: (state) {
+              verifyPhoneNumberFailure: (state) {
                 uiService.hideLoading();
                 final errorCode = state.failure.code;
 
@@ -151,12 +169,24 @@ class _SetupScreenState extends State<SetupScreen> {
                       : state.failure.errorMessage,
                 );
               },
-              inputPhoneNumberSuccess: (_) {
+              inputPhoneNumberVerifySuccess: (_) {
                 uiService.hideLoading();
                 context
                     .read<SetupBloc>()
                     .add(const SetupEvent.inputOtpStarted());
                 navigatorService.pushNamed(VerifyOtpScreen.routeName);
+              },
+              pickCountrySuccess: (state) {
+                _updateCountryAndDialCode(
+                  dialCode: state.countryCode.dialCode,
+                  countryName: state.countryCode.name,
+                );
+              },
+              changeDialCodeSuccess: (state) {
+                _updateCountryAndDialCode(
+                  dialCode: state.dialCode,
+                  countryName: state.countryCode?.name ?? '',
+                );
               },
               orElse: () {},
             );
@@ -164,19 +194,34 @@ class _SetupScreenState extends State<SetupScreen> {
         ),
       ],
       child: BlocBuilder<SetupBloc, SetupState>(
+        buildWhen: (previous, current) {
+          final previousStatus = previous.maybeWhen(
+              validatePhoneNumberFormatFailure: (_) => false,
+              validatePhoneNumberFormatSuccess: () => true,
+              orElse: () => null);
+          final currentStatus = current.maybeWhen(
+              validatePhoneNumberFormatFailure: (_) => false,
+              validatePhoneNumberFormatSuccess: () => true,
+              orElse: () => null);
+
+          if (currentStatus == null) return false;
+
+          return previousStatus != currentStatus;
+        },
         builder: (context, state) {
+          final isAbleToVerifyPhoneNumber = state.maybeWhen(
+              validatePhoneNumberFormatSuccess: () => true,
+              orElse: () => false);
           return IntuitiveScaffold(
             resizeToAvoidBottomInset: false,
             appBar: IntuitiveAppBar(
               middle: Text(AppLocalizations.of(context)!.enterYourPhoneNumber),
               cupertinoTrailing: GestureDetector(
-                onTap: state.isAbleToSubmitPhoneNumber
-                    ? _onButtonDonePressed
-                    : null,
+                onTap: isAbleToVerifyPhoneNumber ? _onButtonDonePressed : null,
                 child: Text(
                   AppLocalizations.of(context)!.done,
                   style: TextStyle(
-                    color: state.isAbleToSubmitPhoneNumber
+                    color: isAbleToVerifyPhoneNumber
                         ? context.colorScheme().primary
                         : context.colorScheme().onSurface.withOpacity(0.5),
                   ),
@@ -239,59 +284,20 @@ class _SetupScreenState extends State<SetupScreen> {
 
   Widget _buildCountryPicker() {
     return BlocBuilder<SetupBloc, SetupState>(
-      buildWhen: (previous, current) {
-        final previousCountryCode = previous.maybeWhen(
-          inputPhoneNumberInitial: (_, countryCode) {
-            return countryCode;
-          },
-          pickCountrySuccess: (_, countryCode) {
-            return countryCode;
-          },
-          orElse: () {
-            return null;
-          },
+      buildWhen: (_, current) {
+        final currentCountryName = current.maybeWhen(
+          pickCountrySuccess: (countryCode) => countryCode.name,
+          orElse: () => null,
         );
 
-        final currentCountryCode = current.maybeWhen(
-          inputPhoneNumberInitial: (_, countryCode) {
-            return countryCode;
-          },
-          pickCountrySuccess: (_, countryCode) {
-            return countryCode;
-          },
-          orElse: () {
-            return null;
-          },
-        );
-
-        if (previousCountryCode?.name != currentCountryCode?.name) {
-          return true;
+        if (currentCountryName == null) {
+          return false;
         }
 
-        return false;
+        final previousCountryName = _countryPickerController.text;
+        return previousCountryName != currentCountryName;
       },
       builder: (context, state) {
-        final selectedCountry = state.maybeWhen(
-          inputPhoneNumberInitial: (phoneNumber, countryCode) {
-            if (countryCode != null) {
-              return countryCode.name;
-            }
-            return 'Invalid Country';
-          },
-          pickCountrySuccess: (phoneNumber, countryCode) {
-            return countryCode.name;
-          },
-          inputPhoneNumberVerifyInProgress: (phoneNumber, countryCode) {
-            return countryCode.name;
-          },
-          inputPhoneNumberFailure: (phoneNumber, countryCode, failure) {
-            return countryCode.name;
-          },
-          orElse: () {
-            return 'Invalid Country';
-          },
-        );
-        _countryPickerController.text = selectedCountry;
         return IntuitiveTextField(
           autofocus: false,
           readOnly: true,
@@ -299,13 +305,13 @@ class _SetupScreenState extends State<SetupScreen> {
           padding: const EdgeInsets.all(
             IntuitiveUiConstant.smallSpace,
           ),
-          onTap: _showCountryPicker,
+          onTap: () => _showCountryPicker(context),
         );
       },
     );
   }
 
-  void _showCountryPicker() {
+  void _showCountryPicker(BuildContext context) {
     final countryPickerWithParams = FlCountryCodePicker(
       localize: true,
       showDialCode: true,
@@ -341,43 +347,20 @@ class _SetupScreenState extends State<SetupScreen> {
     // Show the country code picker when tapped.
     countryPickerWithParams
         .showPicker(
-          context: context,
-          backgroundColor: context.colorScheme().surface,
-        )
+      context: context,
+      backgroundColor: context.colorScheme().surface,
+    )
         .then(
-          _onCountryPickerClosed,
-        );
+      (country) {
+        if (mounted) {
+          _onCountryPickerClosed(context, country);
+        }
+      },
+    );
   }
 
   Widget _buildDialCodeInput() {
-    return BlocConsumer<SetupBloc, SetupState>(
-      listenWhen: (previous, current) {
-        return current.maybeMap(
-          pickCountrySuccess: (_) => true,
-          orElse: () {
-            return false;
-          },
-        );
-      },
-      listener: (context, state) {
-        final initialValue = state.maybeWhen(
-          pickCountrySuccess: (_, countryCode) {
-            return countryCode.dialCode;
-          },
-          inputPhoneNumberInitial: (_, countryCode) {
-            if (countryCode == null) {
-              return '';
-            }
-
-            return countryCode.dialCode;
-          },
-          orElse: () {
-            return '';
-          },
-        ).replaceAll('+', '');
-
-        _dialCodeController.text = initialValue;
-      },
+    return BlocBuilder<SetupBloc, SetupState>(
       buildWhen: (previous, current) {
         return current.maybeMap(
           pickCountrySuccess: (_) => true,
@@ -404,7 +387,7 @@ class _SetupScreenState extends State<SetupScreen> {
               IntuitiveUiConstant.smallSpace,
             ),
             textInputAction: TextInputAction.next,
-            onChanged: _onDialCodeChanged,
+            onChanged: (dialCode) => _onDialCodeChanged(context, dialCode),
           ),
         );
       },
@@ -425,7 +408,8 @@ class _SetupScreenState extends State<SetupScreen> {
         padding: const EdgeInsets.all(
           IntuitiveUiConstant.smallSpace,
         ),
-        onChanged: _onPhoneNumberChanged,
+        controller: _phoneNumberController,
+        onChanged: (phoneNumber) => _onPhoneNumberChanged(context, phoneNumber),
         onSubmitted: (_) {
           // TODO: Check this in iOS device
           FocusManager.instance.primaryFocus?.unfocus();
@@ -436,14 +420,26 @@ class _SetupScreenState extends State<SetupScreen> {
 
   Widget _buildNextButton() {
     return BlocBuilder<SetupBloc, SetupState>(
-      buildWhen: (previous, current) =>
-          previous.isAbleToSubmitPhoneNumber !=
-          current.isAbleToSubmitPhoneNumber,
+      buildWhen: (previous, current) {
+        final previousStatus = previous.maybeWhen(
+            validatePhoneNumberFormatFailure: (_) => false,
+            validatePhoneNumberFormatSuccess: () => true,
+            orElse: () => null);
+        final currentStatus = current.maybeWhen(
+            validatePhoneNumberFormatFailure: (_) => false,
+            validatePhoneNumberFormatSuccess: () => true,
+            orElse: () => null);
+
+        if (currentStatus == null) return false;
+
+        return previousStatus != currentStatus;
+      },
       builder: (context, state) {
+        final isAbleToVerifyPhoneNumber = state.maybeWhen(
+            validatePhoneNumberFormatSuccess: () => true, orElse: () => false);
         return Center(
           child: ElevatedButton.icon(
-            onPressed:
-                state.isAbleToSubmitPhoneNumber ? _onButtonDonePressed : null,
+            onPressed: isAbleToVerifyPhoneNumber ? _onButtonDonePressed : null,
             icon: Icon(Icons.adaptive.arrow_forward_rounded),
             label: Text(AppLocalizations.of(context)!.next),
           ),
