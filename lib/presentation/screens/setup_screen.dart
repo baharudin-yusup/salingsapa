@@ -6,12 +6,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../core/injection_container.dart';
 import '../../core/utils/logger.dart';
 import '../../data/constants/exception_code.dart';
+import '../../l10n/app_localizations.dart';
 import '../blocs/open_external_link/open_external_link_bloc.dart';
 import '../blocs/setup/setup_bloc.dart';
 import '../components/intuitive_scaffold.dart';

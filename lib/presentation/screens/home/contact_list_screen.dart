@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/injection_container.dart';
 import '../../../core/utils/logger.dart';
 import '../../../domain/entities/contact.dart';
 import '../../../domain/errors/failure.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../blocs/contact_list/contact_list_bloc.dart';
 import '../../components/contact_card.dart';
 import '../../components/intuitive_scaffold.dart';

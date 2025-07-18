@@ -1,7 +1,7 @@
 part of 'recent_call_bloc.dart';
 
 @freezed
-class RecentCallState with _$RecentCallState {
+abstract class RecentCallState with _$RecentCallState {
   const factory RecentCallState.initial(
       [@Default(Stream.empty())
       Stream<Either<Failure, List<Invitation>>> invitations,
