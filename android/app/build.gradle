@@ -32,8 +32,8 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    compileSdkVersion 34
-    ndkVersion "26.1.10909125"
+    compileSdkVersion flutter.compileSdkVersion
+    ndkVersion flutter.ndkVersion
 
     compileOptions {
         // Flag to enable support for the new language APIs
@@ -53,8 +53,8 @@ android {
 
     defaultConfig {
         applicationId "dev.baharudin.salingsapa"
-        minSdkVersion 24
-        targetSdkVersion 34
+        minSdkVersion flutter.minSdkVersion
+        targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
 
@@ -106,11 +106,11 @@ android {
         }
     }
 
-    aaptOptions {
+    namespace 'dev.baharudin.salingsapa'
+    androidResources {
         noCompress 'tflite'
         noCompress 'lite'
     }
-    namespace 'dev.baharudin.salingsapa'
 }
 
 flutter {

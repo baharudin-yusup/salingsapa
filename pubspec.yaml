@@ -24,17 +24,17 @@ dependencies:
   cloud_firestore: ^5.6.0
   firebase_app_check: ^0.3.1+7
   get_it: ^8.0.3
-  flutter_local_notifications: ^18.0.1
+  flutter_local_notifications: ^19.3.1
   rxdart: ^0.28.0
   json_annotation: ^4.8.0
-  flutter_secure_storage: ^9.0.0
-  freezed: ^2.3.2
-  bloc: ^8.1.1
-  flutter_bloc: ^8.1.2
-  freezed_annotation: ^2.2.0
+  flutter_secure_storage: ^10.0.0-beta.4
+  freezed: ^3.1.0
+  bloc: ^9.0.0
+  flutter_bloc: ^9.1.1
+  freezed_annotation: ^3.1.0
   dynamic_color: ^1.6.2
   flutter_contacts: ^1.1.6
-  permission_handler: ^11.0.1
+  permission_handler: ^12.0.1
   agora_rtc_engine: ^6.5.0
   uuid: ^4.1.0
   firebase_storage: ^12.3.7
@@ -63,7 +63,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
   build_runner: ^2.4.10
   json_serializable: ^6.6.1
   envied_generator: ^1.0.0
