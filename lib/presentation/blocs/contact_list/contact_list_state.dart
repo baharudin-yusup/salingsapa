@@ -1,7 +1,7 @@
 part of 'contact_list_bloc.dart';
 
 @freezed
-class ContactListState with _$ContactListState {
+abstract class ContactListState with _$ContactListState {
   const factory ContactListState.initial([
     @Default([]) List<Contact> contacts,
     @Default(null) final bool? isPermissionValid,

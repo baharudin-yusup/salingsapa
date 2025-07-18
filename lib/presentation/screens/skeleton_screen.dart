@@ -4,13 +4,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../core/env.dart';
 import '../../core/injection_container.dart';
 import '../../core/utils/logger.dart';
 import '../../domain/entities/auth_status.dart';
+import '../../l10n/app_localizations.dart';
 import '../blocs/account/account_bloc.dart';
 import '../blocs/authorization/authorization_bloc.dart';
 import '../blocs/contact_list/contact_list_bloc.dart';
@@ -119,7 +119,7 @@ class _RootScreenState extends State<RootScreen> {
             changeAuthStatusSuccess: (state) {
               context
                   .read<SetupBloc>()
-                  .add(const SetupEvent.clearSetupStarted());
+                  .add(const SetupEvent.inputPhoneNumberStarted());
               uiService.resetLoading();
 
               switch (state.status) {
@@ -147,7 +147,7 @@ class _RootScreenState extends State<RootScreen> {
                   msg: state.failure.code.translate(context));
               context
                   .read<SetupBloc>()
-                  .add(const SetupEvent.clearSetupStarted());
+                  .add(const SetupEvent.inputPhoneNumberStarted());
               uiService.resetLoading();
 
               navigatorService.pushNamedAndRemoveUntil(

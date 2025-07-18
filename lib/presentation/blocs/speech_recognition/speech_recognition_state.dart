@@ -1,7 +1,7 @@
 part of 'speech_recognition_bloc.dart';
 
 @freezed
-class SpeechRecognitionState with _$SpeechRecognitionState {
+abstract class SpeechRecognitionState with _$SpeechRecognitionState {
   const factory SpeechRecognitionState.initial({
     @Default(false) bool isReady,
     @Default(DataState(RecognitionStatus.off))

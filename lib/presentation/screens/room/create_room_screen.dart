@@ -48,7 +48,7 @@ class CreateRoomScreen extends StatelessWidget {
                       foregroundImage:
                           buildProfilePicture(state.contact.profilePictureUrl),
                       backgroundColor:
-                          context.colorScheme().primary.withOpacity(0.1),
+                          context.colorScheme().primary.withValues(alpha: 0.1),
                       radius: context.maxWidth / 2 * 0.6,
                       child: const Icon(Icons.person_outline_rounded),
                     ),

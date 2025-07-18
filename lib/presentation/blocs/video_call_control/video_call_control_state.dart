@@ -7,7 +7,7 @@ enum VideoCallControlFeature {
 }
 
 @freezed
-class VideoCallControlState with _$VideoCallControlState {
+abstract class VideoCallControlState with _$VideoCallControlState {
   const factory VideoCallControlState.initial({
     @Default(DataState(false)) DataState<bool> isAudioMuted,
     @Default(DataState(false)) DataState<bool> isVideoMuted,

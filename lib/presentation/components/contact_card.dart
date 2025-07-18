@@ -24,7 +24,7 @@ class ContactCard extends StatelessWidget {
           contact.phoneNumber.raw),
       leading: showProfilePicture(),
       trailing: showCallIcon(),
-      tileColor: context.colorScheme().tertiary.withOpacity(0.05),
+      tileColor: context.colorScheme().tertiary.withValues(alpha: 0.05),
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
               Radius.circular(IntuitiveUiConstant.normalRadius))),
@@ -43,7 +43,7 @@ class ContactCard extends StatelessWidget {
         radius: radius + 1,
         child: CircleAvatar(
           foregroundImage: profilePicture,
-          backgroundColor: context.colorScheme().primary.withOpacity(0.1),
+          backgroundColor: context.colorScheme().primary.withValues(alpha: 0.1),
           radius: radius,
           child: const Icon(Icons.person_outline_rounded),
         ),

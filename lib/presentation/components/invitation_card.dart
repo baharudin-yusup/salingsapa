@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 
 import '../../domain/entities/invitation.dart';
+import '../../l10n/app_localizations.dart';
 import '../services/theme_service.dart';
 
 class InvitationCard extends StatelessWidget {
@@ -36,7 +36,7 @@ class InvitationCard extends StatelessWidget {
         horizontal: IntuitiveUiConstant.normalSpace,
         vertical: IntuitiveUiConstant.tinySpace,
       ),
-      tileColor: context.colorScheme().tertiary.withOpacity(0.1),
+      tileColor: context.colorScheme().tertiary.withValues(alpha: 0.1),
       iconColor: context.colorScheme().onTertiaryContainer,
       selectedTileColor: context.colorScheme().primaryContainer,
       selectedColor: context.colorScheme().onPrimaryContainer,
@@ -70,7 +70,7 @@ class InvitationCard extends StatelessWidget {
         radius: radius + 1,
         child: CircleAvatar(
           foregroundImage: profilePicture,
-          backgroundColor: context.colorScheme().primary.withOpacity(0.1),
+          backgroundColor: context.colorScheme().primary.withValues(alpha: 0.1),
           radius: radius,
           child: const Icon(Icons.person_outline_rounded),
         ),

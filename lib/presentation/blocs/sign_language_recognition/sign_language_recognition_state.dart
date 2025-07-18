@@ -1,7 +1,7 @@
 part of 'sign_language_recognition_bloc.dart';
 
 @freezed
-class SignLanguageRecognitionState with _$SignLanguageRecognitionState {
+abstract class SignLanguageRecognitionState with _$SignLanguageRecognitionState {
   const factory SignLanguageRecognitionState.initial({
     @Default(false) bool isReady,
     @Default(RecognitionStatus.off) RecognitionStatus status,
