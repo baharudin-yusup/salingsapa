@@ -3,26 +3,29 @@ part of 'setup_bloc.dart';
 @freezed
 class SetupState with _$SetupState {
   /// Handle step-1
-  const factory SetupState.inputPhoneNumberInitial(
-      [@Default('') String phoneNumber,
-      @Default(null) CountryCode? countryCode]) = InputPhoneNumberInitial;
+  const factory SetupState.changePhoneNumberSuccess(
+      [@Default('') String phoneNumber]) = ChangePhoneNumberSuccess;
 
-  const factory SetupState.pickCountrySuccess(
-      String phoneNumber, CountryCode countryCode) = PickCountrySuccess;
+  const factory SetupState.pickCountrySuccess(CountryCode countryCode) =
+      PickCountrySuccess;
 
-  const factory SetupState.inputPhoneNumberVerifyInProgress(
-    String phoneNumber,
-    CountryCode countryCode,
-  ) = _InputPhoneNumberVerifyInProgress;
+  const factory SetupState.changeDialCodeSuccess(
+      String dialCode, CountryCode? countryCode) = ChangeDialCodeSuccess;
 
-  const factory SetupState.inputPhoneNumberFailure(
-    String phoneNumber,
-    CountryCode countryCode,
-    Failure failure,
-  ) = _InputPhoneNumberFailure;
+  const factory SetupState.validatePhoneNumberFormatFailure(
+      [@Default(null) Failure? failure]) = _ValidatePhoneNumberFormatFailure;
 
-  const factory SetupState.inputPhoneNumberSuccess(PhoneNumber phoneNumber) =
-      _InputPhoneNumberSuccess;
+  const factory SetupState.validatePhoneNumberFormatSuccess() =
+      _ValidatePhoneNumberFormatSuccess;
+
+  const factory SetupState.verifyPhoneNumberInProgress() =
+      _VerifyPhoneNumberInProgress;
+
+  const factory SetupState.verifyPhoneNumberFailure(Failure failure) =
+      _VerifyPhoneNumberFailure;
+
+  const factory SetupState.inputPhoneNumberVerifySuccess(
+      PhoneNumber phoneNumber) = _InputPhoneNumberVerifySuccess;
 
   /// Handle step-2
   const factory SetupState.inputOtpInitial(PhoneNumber phoneNumber,
@@ -51,69 +54,9 @@ class SetupState with _$SetupState {
   /// Handle auto sign in
   const factory SetupState.autoSignInSuccess(
       PhoneNumber phoneNumber, User user) = _AutoSignInSuccess;
-
-  @override
-  String toString() {
-    return when(
-      inputPhoneNumberInitial: (phoneNumber, _) {
-        return '$runtimeType\t phone number: $phoneNumber\t can submit? ${isAbleToSubmitPhoneNumber ? 'yes' : 'no'}';
-      },
-      pickCountrySuccess: (phoneNumber, _) {
-        return '$runtimeType\t phone number: $phoneNumber\t can submit? ${isAbleToSubmitPhoneNumber ? 'yes' : 'no'}';
-      },
-      inputPhoneNumberVerifyInProgress: (phoneNumber, _) {
-        return '$runtimeType\t phone number: $phoneNumber';
-      },
-      inputPhoneNumberFailure: (phoneNumber, _, failure) {
-        return '$runtimeType\t phone number: $phoneNumber\t failure: $failure\t can submit? ${isAbleToSubmitPhoneNumber ? 'yes' : 'no'}';
-      },
-      inputPhoneNumberSuccess: (phoneNumber) {
-        return '$runtimeType\t phone number: $phoneNumber';
-      },
-      inputOtpInitial: (phoneNumber, otp) {
-        return '$runtimeType\t phone number: $phoneNumber\t otp: $otp\t can submit? ${isAbleToSubmitOtp ? 'yes' : 'no'}';
-      },
-      inputOtpValidationInProgress: (phoneNumber, otp) {
-        return '$runtimeType\t phone number: $phoneNumber\t otp: $otp';
-      },
-      inputOtpValidationSuccess: (phoneNumber, otp) {
-        return '$runtimeType\t phone number: $phoneNumber\t otp: $otp';
-      },
-      inputOtpValidationFailure: (phoneNumber, otp, failure) {
-        return '$runtimeType\t phone number: $phoneNumber\t otp: $otp'
-            '\t failure: $failure';
-      },
-      resendOtpInProgress: (phoneNumber, otp) {
-        return '$runtimeType\t phone number: $phoneNumber\t otp: $otp';
-      },
-      resendOtpSuccess: (phoneNumber, otp) {
-        return '$runtimeType\t phone number: $phoneNumber\t otp: $otp';
-      },
-      resendOtpFailure: (phoneNumber, otp, failure) {
-        return '$runtimeType\t phone number: $phoneNumber\t otp: $otp';
-      },
-      autoSignInSuccess: (phoneNumber, user) {
-        return '$runtimeType\t phone number: $phoneNumber';
-      },
-    );
-  }
 }
 
 extension SetupStateChecker on SetupState {
-  bool get isAbleToSubmitPhoneNumber {
-    return maybeWhen(
-      inputPhoneNumberInitial: (phoneNumber, countryCode) {
-        return (phoneNumber.length >= 5) && countryCode != null;
-      },
-      inputPhoneNumberFailure: (phoneNumber, countryCode, _) {
-        return (phoneNumber.length >= 5);
-      },
-      orElse: () {
-        return false;
-      },
-    );
-  }
-
   bool get isAbleToSubmitOtp {
     return maybeMap(
       inputOtpInitial: (state) => state.otp.length == 6,

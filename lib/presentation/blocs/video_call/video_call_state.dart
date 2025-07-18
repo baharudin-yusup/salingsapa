@@ -1,7 +1,7 @@
 part of 'video_call_bloc.dart';
 
 @freezed
-class VideoCallState with _$VideoCallState {
+abstract class VideoCallState with _$VideoCallState {
   const factory VideoCallState.initial(Room room) = _Initial;
 
   // Handle init engine state

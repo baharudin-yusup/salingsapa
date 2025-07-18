@@ -1,7 +1,7 @@
 part of 'video_call_caption_bloc.dart';
 
 @freezed
-class VideoCallCaptionState with _$VideoCallCaptionState {
+abstract class VideoCallCaptionState with _$VideoCallCaptionState {
   const factory VideoCallCaptionState.initial({
     @Default(false) bool isEnabled,
     @Default([]) List<Caption> localCaptions,

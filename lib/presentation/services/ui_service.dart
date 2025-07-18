@@ -84,7 +84,7 @@ class UiServiceImpl implements UiService {
               BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
                 child: Container(
-                  color: context.colorScheme().surface.withOpacity(0.6),
+                  color: context.colorScheme().surface.withValues(alpha: 0.6),
                 ),
               ),
               const cupertino.CupertinoActivityIndicator(),

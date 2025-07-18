@@ -3,9 +3,9 @@ import 'dart:math';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/injection_container.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../blocs/account/account_bloc.dart';
 import '../../components/intuitive_scaffold.dart';
 import '../../components/intuitive_textfield.dart';
@@ -139,8 +139,10 @@ class AccountScreen extends StatelessWidget {
                         children: [
                           const Spacer(),
                           Container(
-                            color:
-                                context.colorScheme().surface.withOpacity(0.5),
+                            color: context
+                                .colorScheme()
+                                .surface
+                                .withValues(alpha: 0.5),
                             width: radius * 2,
                             height: radius / 2,
                             child: Row(

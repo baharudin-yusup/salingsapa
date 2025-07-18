@@ -7,8 +7,8 @@ class NoVideoInterface extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     return Container(
-      color: context.colorScheme().surface.withOpacity(0.3),
+    return Container(
+      color: context.colorScheme().surface.withValues(alpha: 0.3),
       child: const Center(
         child: Icon(Icons.no_accounts),
       ),
