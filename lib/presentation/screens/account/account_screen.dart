@@ -139,8 +139,10 @@ class AccountScreen extends StatelessWidget {
                         children: [
                           const Spacer(),
                           Container(
-                            color:
-                                context.colorScheme().surface.withOpacity(0.5),
+                            color: context
+                                .colorScheme()
+                                .surface
+                                .withValues(alpha: 0.5),
                             width: radius * 2,
                             height: radius / 2,
                             child: Row(

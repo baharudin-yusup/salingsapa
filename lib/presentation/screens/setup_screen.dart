@@ -223,7 +223,10 @@ class _SetupScreenState extends State<SetupScreen> {
                   style: TextStyle(
                     color: isAbleToVerifyPhoneNumber
                         ? context.colorScheme().primary
-                        : context.colorScheme().onSurface.withOpacity(0.5),
+                        : context
+                            .colorScheme()
+                            .onSurface
+                            .withValues(alpha: 0.5),
                   ),
                 ),
               ),
@@ -331,7 +334,7 @@ class _SetupScreenState extends State<SetupScreen> {
       countryTextStyle: context.textTheme().bodyMedium,
       dialCodeTextStyle: context.textTheme().bodySmall?.copyWith(
             fontWeight: FontWeight.bold,
-            color: context.colorScheme().onSurface.withOpacity(0.7),
+            color: context.colorScheme().onSurface.withValues(alpha: 0.7),
           ),
       searchBarDecoration: InputDecoration(
         hintText: 'Search',
@@ -353,6 +356,7 @@ class _SetupScreenState extends State<SetupScreen> {
         .then(
       (country) {
         if (mounted) {
+          // ignore: use_build_context_synchronously
           _onCountryPickerClosed(context, country);
         }
       },

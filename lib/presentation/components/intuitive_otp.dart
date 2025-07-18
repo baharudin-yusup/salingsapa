@@ -62,6 +62,7 @@ class _IntuitiveOtpState extends State<IntuitiveOtp> {
     controllers = List<TextEditingController>.generate(
         totalFields, (_) => TextEditingController());
     focusNodes = List<FocusNode>.generate(totalFields,
+        // ignore: no_wildcard_variable_uses
         (_) => FocusNode()..addListener(() => _listenFocusChanges(_)));
     previousTotalValue = '';
   }
@@ -198,7 +199,7 @@ class _IntuitiveOtpState extends State<IntuitiveOtp> {
           border: Border.all(
             color: hasError && isAllFieldFilled
                 ? widget.errorColor
-                : context.colorScheme().outline.withOpacity(0.3),
+                : context.colorScheme().outline.withValues(alpha: 0.3),
           ),
           borderRadius: const BorderRadius.all(
               Radius.circular(IntuitiveUiConstant.normalRadius)),

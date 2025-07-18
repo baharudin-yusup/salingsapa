@@ -36,7 +36,7 @@ class InvitationCard extends StatelessWidget {
         horizontal: IntuitiveUiConstant.normalSpace,
         vertical: IntuitiveUiConstant.tinySpace,
       ),
-      tileColor: context.colorScheme().tertiary.withOpacity(0.1),
+      tileColor: context.colorScheme().tertiary.withValues(alpha: 0.1),
       iconColor: context.colorScheme().onTertiaryContainer,
       selectedTileColor: context.colorScheme().primaryContainer,
       selectedColor: context.colorScheme().onPrimaryContainer,
@@ -70,7 +70,7 @@ class InvitationCard extends StatelessWidget {
         radius: radius + 1,
         child: CircleAvatar(
           foregroundImage: profilePicture,
-          backgroundColor: context.colorScheme().primary.withOpacity(0.1),
+          backgroundColor: context.colorScheme().primary.withValues(alpha: 0.1),
           radius: radius,
           child: const Icon(Icons.person_outline_rounded),
         ),

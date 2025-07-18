@@ -55,17 +55,17 @@ class VerifyOtpScreen extends StatelessWidget {
             cupertinoTrailing: GestureDetector(
               onTap: state.isAbleToSubmitOtp
                   ? () {
-                context
-                    .read<SetupBloc>()
-                    .add(const SetupEvent.submitOtpStarted());
-              }
+                      context
+                          .read<SetupBloc>()
+                          .add(const SetupEvent.submitOtpStarted());
+                    }
                   : null,
               child: Text(
                 AppLocalizations.of(context)!.send,
                 style: TextStyle(
                   color: state.isAbleToSubmitOtp
                       ? context.colorScheme().primary
-                      : context.colorScheme().onSurface.withOpacity(0.5),
+                      : context.colorScheme().onSurface.withValues(alpha: 0.5),
                 ),
               ),
             ),
